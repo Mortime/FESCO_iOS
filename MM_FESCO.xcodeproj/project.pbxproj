@@ -15,7 +15,6 @@
 		597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597762231D489AE000BD8472 /* LaunchScreen.storyboard */; };
 		597762301D489AE000BD8472 /* MM_FESCOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977622F1D489AE000BD8472 /* MM_FESCOTests.m */; };
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
-		5977624A1D48A80B00BD8472 /* MMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762491D48A80B00BD8472 /* MMMainViewController.m */; };
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
@@ -33,6 +32,8 @@
 		59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E141D499EF2001F3122 /* UIImage+Helper.m */; };
 		59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */; };
 		59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */; };
+		59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E321D49C6A3001F3122 /* MMLoginController.m */; };
+		59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E381D49CADF001F3122 /* MMMainController.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -72,8 +73,6 @@
 		597762361D489AE000BD8472 /* MM_FESCOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MM_FESCOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FESCOUITests.m; sourceTree = "<group>"; };
 		5977623C1D489AE000BD8472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		597762481D48A80B00BD8472 /* MMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainViewController.h; sourceTree = "<group>"; };
-		597762491D48A80B00BD8472 /* MMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainViewController.m; sourceTree = "<group>"; };
 		5977624E1D48ABCB00BD8472 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
@@ -111,6 +110,10 @@
 		59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWedImage.m"; sourceTree = "<group>"; };
 		59A59E171D499EF2001F3122 /* UINavigationItem+BackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+BackItem.h"; sourceTree = "<group>"; };
 		59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+BackItem.m"; sourceTree = "<group>"; };
+		59A59E311D49C6A3001F3122 /* MMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginController.h; sourceTree = "<group>"; };
+		59A59E321D49C6A3001F3122 /* MMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginController.m; sourceTree = "<group>"; };
+		59A59E371D49CADF001F3122 /* MMMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainController.h; sourceTree = "<group>"; };
+		59A59E381D49CADF001F3122 /* MMMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainController.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,8 +180,8 @@
 				597762191D489AE000BD8472 /* AppDelegate.m */,
 				5977621B1D489AE000BD8472 /* ViewController.h */,
 				5977621C1D489AE000BD8472 /* ViewController.m */,
-				597762481D48A80B00BD8472 /* MMMainViewController.h */,
-				597762491D48A80B00BD8472 /* MMMainViewController.m */,
+				59A59E351D49CADF001F3122 /* MM_HomeMain */,
+				59A59E301D49C6A3001F3122 /* MM_Login */,
 				59A59DEC1D499937001F3122 /* ThirdPary */,
 				5977624C1D48AB8100BD8472 /* Tool */,
 				597762151D489AE000BD8472 /* Supporting Files */,
@@ -305,6 +308,40 @@
 				59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */,
 			);
 			path = UntityBox;
+			sourceTree = "<group>";
+		};
+		59A59E301D49C6A3001F3122 /* MM_Login */ = {
+			isa = PBXGroup;
+			children = (
+				59A59E311D49C6A3001F3122 /* MMLoginController.h */,
+				59A59E321D49C6A3001F3122 /* MMLoginController.m */,
+			);
+			path = MM_Login;
+			sourceTree = "<group>";
+		};
+		59A59E351D49CADF001F3122 /* MM_HomeMain */ = {
+			isa = PBXGroup;
+			children = (
+				59A59E361D49CADF001F3122 /* Controller */,
+				59A59E391D49CADF001F3122 /* View */,
+			);
+			path = MM_HomeMain;
+			sourceTree = "<group>";
+		};
+		59A59E361D49CADF001F3122 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59A59E371D49CADF001F3122 /* MMMainController.h */,
+				59A59E381D49CADF001F3122 /* MMMainController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		59A59E391D49CADF001F3122 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D21145FCB92E766519624DFD /* Pods */ = {
@@ -503,13 +540,14 @@
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
+				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.m in Sources */,
+				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
-				5977624A1D48A80B00BD8472 /* MMMainViewController.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,

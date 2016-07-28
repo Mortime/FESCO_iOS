@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MMMainViewController.h"
+#import "MMMainController.h"
+#import "MMLoginController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MMMainViewController *mainVC = [[MMMainViewController alloc] init];
+    MMLoginController *mainVC = [[MMLoginController alloc] init];
     self.window.rootViewController = mainVC;
     [self.window makeKeyAndVisible];
     
