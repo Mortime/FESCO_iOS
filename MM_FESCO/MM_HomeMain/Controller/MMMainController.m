@@ -44,12 +44,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-//        CGFloat hue = arc4random() % 100 / 100.0; //色调：0.0 ~ 1.0
-//        CGFloat saturation = (arc4random() % 50 / 100) + 0.5; //饱和度：0.5 ~ 1.0
-//        CGFloat brightness = (arc4random() % 50 / 100) + 0.5; //亮度：0.5 ~ 1.0
-        
-       
-//        cell.backgroundColor =  [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+        CGFloat hue = arc4random() % 100 / 100.0; //色调：0.0 ~ 1.0
+        CGFloat saturation = (arc4random() % 50 / 100) + 0.5; //饱和度：0.5 ~ 1.0
+        CGFloat brightness = (arc4random() % 50 / 100) + 0.5; //亮度：0.5 ~ 1.0
+        cell.backgroundColor =  [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
     }
     
     return cell;
