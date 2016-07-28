@@ -15,6 +15,25 @@
 		597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597762231D489AE000BD8472 /* LaunchScreen.storyboard */; };
 		597762301D489AE000BD8472 /* MM_FESCOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977622F1D489AE000BD8472 /* MM_FESCOTests.m */; };
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
+		5977624A1D48A80B00BD8472 /* MMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762491D48A80B00BD8472 /* MMMainViewController.m */; };
+		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
+		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
+		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
+		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
+		59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF91D499937001F3122 /* UIView+TKCategory.m */; };
+		59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DFB1D499937001F3122 /* UIViewAdditions.m */; };
+		59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E041D499EF2001F3122 /* DVVDoubleRowToolBarView.m */; };
+		59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E061D499EF2001F3122 /* DVVToolBarView.m */; };
+		59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E081D499EF2001F3122 /* HMButton.m */; };
+		59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E0A1D499EF2001F3122 /* NGOSegmentControl.m */; };
+		59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E0C1D499EF2001F3122 /* NSString+Helper.m */; };
+		59A59E201D499EF2001F3122 /* PortraitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E0E1D499EF2001F3122 /* PortraitView.m */; };
+		59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E101D499EF2001F3122 /* UIBarButtonItem+Helper.m */; };
+		59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E121D499EF2001F3122 /* UIColor+Extension.m */; };
+		59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E141D499EF2001F3122 /* UIImage+Helper.m */; };
+		59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */; };
+		59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */; };
+		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EC1627435845BB3423165EA /* Pods-MM_FESCO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.debug.xcconfig"; sourceTree = "<group>"; };
+		4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MM_FESCO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762161D489AE000BD8472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		597762181D489AE000BD8472 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +72,46 @@
 		597762361D489AE000BD8472 /* MM_FESCOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MM_FESCOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FESCOUITests.m; sourceTree = "<group>"; };
 		5977623C1D489AE000BD8472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		597762481D48A80B00BD8472 /* MMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainViewController.h; sourceTree = "<group>"; };
+		597762491D48A80B00BD8472 /* MMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainViewController.m; sourceTree = "<group>"; };
+		5977624E1D48ABCB00BD8472 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
+		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
+		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
+		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
+		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
+		59A59DF21D499937001F3122 /* ToastAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastAlertView.m; sourceTree = "<group>"; };
+		59A59DF41D499937001F3122 /* Dlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dlog.h; sourceTree = "<group>"; };
+		59A59DF51D499937001F3122 /* SWCommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCommonMacro.h; sourceTree = "<group>"; };
+		59A59DF61D499937001F3122 /* UIView+Sizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sizes.h"; sourceTree = "<group>"; };
+		59A59DF71D499937001F3122 /* UIView+Sizes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizes.m"; sourceTree = "<group>"; };
+		59A59DF81D499937001F3122 /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
+		59A59DF91D499937001F3122 /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
+		59A59DFA1D499937001F3122 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		59A59DFB1D499937001F3122 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		59A59E011D499BDC001F3122 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		59A59E031D499EF2001F3122 /* DVVDoubleRowToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVDoubleRowToolBarView.h; sourceTree = "<group>"; };
+		59A59E041D499EF2001F3122 /* DVVDoubleRowToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDoubleRowToolBarView.m; sourceTree = "<group>"; };
+		59A59E051D499EF2001F3122 /* DVVToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVToolBarView.h; sourceTree = "<group>"; };
+		59A59E061D499EF2001F3122 /* DVVToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVToolBarView.m; sourceTree = "<group>"; };
+		59A59E071D499EF2001F3122 /* HMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMButton.h; sourceTree = "<group>"; };
+		59A59E081D499EF2001F3122 /* HMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMButton.m; sourceTree = "<group>"; };
+		59A59E091D499EF2001F3122 /* NGOSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGOSegmentControl.h; sourceTree = "<group>"; };
+		59A59E0A1D499EF2001F3122 /* NGOSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGOSegmentControl.m; sourceTree = "<group>"; };
+		59A59E0B1D499EF2001F3122 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		59A59E0C1D499EF2001F3122 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		59A59E0D1D499EF2001F3122 /* PortraitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitView.h; sourceTree = "<group>"; };
+		59A59E0E1D499EF2001F3122 /* PortraitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitView.m; sourceTree = "<group>"; };
+		59A59E0F1D499EF2001F3122 /* UIBarButtonItem+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Helper.h"; sourceTree = "<group>"; };
+		59A59E101D499EF2001F3122 /* UIBarButtonItem+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Helper.m"; sourceTree = "<group>"; };
+		59A59E111D499EF2001F3122 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		59A59E121D499EF2001F3122 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		59A59E131D499EF2001F3122 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		59A59E141D499EF2001F3122 /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
+		59A59E151D499EF2001F3122 /* UIImageView+SDWedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDWedImage.h"; sourceTree = "<group>"; };
+		59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWedImage.m"; sourceTree = "<group>"; };
+		59A59E171D499EF2001F3122 /* UINavigationItem+BackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+BackItem.h"; sourceTree = "<group>"; };
+		59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+BackItem.m"; sourceTree = "<group>"; };
+		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3307DFA9C514EA781167E167 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		597762091D489AE000BD8472 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +155,8 @@
 				5977622E1D489AE000BD8472 /* MM_FESCOTests */,
 				597762391D489AE000BD8472 /* MM_FESCOUITests */,
 				597762131D489AE000BD8472 /* Products */,
+				D21145FCB92E766519624DFD /* Pods */,
+				3307DFA9C514EA781167E167 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,10 +177,10 @@
 				597762191D489AE000BD8472 /* AppDelegate.m */,
 				5977621B1D489AE000BD8472 /* ViewController.h */,
 				5977621C1D489AE000BD8472 /* ViewController.m */,
-				5977621E1D489AE000BD8472 /* Main.storyboard */,
-				597762211D489AE000BD8472 /* Assets.xcassets */,
-				597762231D489AE000BD8472 /* LaunchScreen.storyboard */,
-				597762261D489AE000BD8472 /* Info.plist */,
+				597762481D48A80B00BD8472 /* MMMainViewController.h */,
+				597762491D48A80B00BD8472 /* MMMainViewController.m */,
+				59A59DEC1D499937001F3122 /* ThirdPary */,
+				5977624C1D48AB8100BD8472 /* Tool */,
 				597762151D489AE000BD8472 /* Supporting Files */,
 			);
 			path = MM_FESCO;
@@ -118,6 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				597762161D489AE000BD8472 /* main.m */,
+				5977621E1D489AE000BD8472 /* Main.storyboard */,
+				597762211D489AE000BD8472 /* Assets.xcassets */,
+				597762231D489AE000BD8472 /* LaunchScreen.storyboard */,
+				597762261D489AE000BD8472 /* Info.plist */,
+				59A59E011D499BDC001F3122 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +217,105 @@
 			path = MM_FESCOUITests;
 			sourceTree = "<group>";
 		};
+		5977624C1D48AB8100BD8472 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				5977624D1D48AB8100BD8472 /* 网络 */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		5977624D1D48AB8100BD8472 /* 网络 */ = {
+			isa = PBXGroup;
+			children = (
+				5977624E1D48ABCB00BD8472 /* NetworkTool.h */,
+				5977624F1D48ABCB00BD8472 /* NetworkTool.m */,
+			);
+			path = "网络";
+			sourceTree = "<group>";
+		};
+		59A59DEC1D499937001F3122 /* ThirdPary */ = {
+			isa = PBXGroup;
+			children = (
+				59A59E021D499EF2001F3122 /* UntityBox */,
+				59A59DED1D499937001F3122 /* SafeDic */,
+				59A59DF01D499937001F3122 /* ToastAlertView */,
+				59A59DF31D499937001F3122 /* UIView+Sizes */,
+			);
+			path = ThirdPary;
+			sourceTree = "<group>";
+		};
+		59A59DED1D499937001F3122 /* SafeDic */ = {
+			isa = PBXGroup;
+			children = (
+				59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */,
+				59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */,
+			);
+			path = SafeDic;
+			sourceTree = "<group>";
+		};
+		59A59DF01D499937001F3122 /* ToastAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				59A59DF11D499937001F3122 /* ToastAlertView.h */,
+				59A59DF21D499937001F3122 /* ToastAlertView.m */,
+			);
+			path = ToastAlertView;
+			sourceTree = "<group>";
+		};
+		59A59DF31D499937001F3122 /* UIView+Sizes */ = {
+			isa = PBXGroup;
+			children = (
+				59A59DF41D499937001F3122 /* Dlog.h */,
+				59A59DF51D499937001F3122 /* SWCommonMacro.h */,
+				59A59DF61D499937001F3122 /* UIView+Sizes.h */,
+				59A59DF71D499937001F3122 /* UIView+Sizes.m */,
+				59A59DF81D499937001F3122 /* UIView+TKCategory.h */,
+				59A59DF91D499937001F3122 /* UIView+TKCategory.m */,
+				59A59DFA1D499937001F3122 /* UIViewAdditions.h */,
+				59A59DFB1D499937001F3122 /* UIViewAdditions.m */,
+			);
+			path = "UIView+Sizes";
+			sourceTree = "<group>";
+		};
+		59A59E021D499EF2001F3122 /* UntityBox */ = {
+			isa = PBXGroup;
+			children = (
+				59A59E031D499EF2001F3122 /* DVVDoubleRowToolBarView.h */,
+				59A59E041D499EF2001F3122 /* DVVDoubleRowToolBarView.m */,
+				59A59E051D499EF2001F3122 /* DVVToolBarView.h */,
+				59A59E061D499EF2001F3122 /* DVVToolBarView.m */,
+				59A59E071D499EF2001F3122 /* HMButton.h */,
+				59A59E081D499EF2001F3122 /* HMButton.m */,
+				59A59E091D499EF2001F3122 /* NGOSegmentControl.h */,
+				59A59E0A1D499EF2001F3122 /* NGOSegmentControl.m */,
+				59A59E0B1D499EF2001F3122 /* NSString+Helper.h */,
+				59A59E0C1D499EF2001F3122 /* NSString+Helper.m */,
+				59A59E0D1D499EF2001F3122 /* PortraitView.h */,
+				59A59E0E1D499EF2001F3122 /* PortraitView.m */,
+				59A59E0F1D499EF2001F3122 /* UIBarButtonItem+Helper.h */,
+				59A59E101D499EF2001F3122 /* UIBarButtonItem+Helper.m */,
+				59A59E111D499EF2001F3122 /* UIColor+Extension.h */,
+				59A59E121D499EF2001F3122 /* UIColor+Extension.m */,
+				59A59E131D499EF2001F3122 /* UIImage+Helper.h */,
+				59A59E141D499EF2001F3122 /* UIImage+Helper.m */,
+				59A59E151D499EF2001F3122 /* UIImageView+SDWedImage.h */,
+				59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */,
+				59A59E171D499EF2001F3122 /* UINavigationItem+BackItem.h */,
+				59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */,
+			);
+			path = UntityBox;
+			sourceTree = "<group>";
+		};
+		D21145FCB92E766519624DFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0EC1627435845BB3423165EA /* Pods-MM_FESCO.debug.xcconfig */,
+				851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +323,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5977623F1D489AE000BD8472 /* Build configuration list for PBXNativeTarget "MM_FESCO" */;
 			buildPhases = (
+				3AEE7BCBEF451046856A7050 /* [CP] Check Pods Manifest.lock */,
 				5977620E1D489AE000BD8472 /* Sources */,
 				5977620F1D489AE000BD8472 /* Frameworks */,
 				597762101D489AE000BD8472 /* Resources */,
+				AE628FD50888F688C3811A9D /* [CP] Embed Pods Frameworks */,
+				937AE8C062C1D19AD144FAAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,14 +444,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3AEE7BCBEF451046856A7050 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		937AE8C062C1D19AD144FAAB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE628FD50888F688C3811A9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5977620E1D489AE000BD8472 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
+				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
+				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
+				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
+				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.m in Sources */,
+				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
+				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
+				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
+				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
+				5977624A1D48A80B00BD8472 /* MMMainViewController.m in Sources */,
+				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
+				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
+				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
+				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
+				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
+				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
+				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
+				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,8 +656,11 @@
 		};
 		597762401D489AE000BD8472 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EC1627435845BB3423165EA /* Pods-MM_FESCO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mortimey.MM-FESCO";
@@ -422,8 +670,11 @@
 		};
 		597762411D489AE000BD8472 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mortimey.MM-FESCO";
@@ -498,6 +749,7 @@
 				597762411D489AE000BD8472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		597762421D489AE000BD8472 /* Build configuration list for PBXNativeTarget "MM_FESCOTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +758,7 @@
 				597762441D489AE000BD8472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		597762451D489AE000BD8472 /* Build configuration list for PBXNativeTarget "MM_FESCOUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +767,7 @@
 				597762471D489AE000BD8472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

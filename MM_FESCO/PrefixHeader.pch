@@ -1,0 +1,83 @@
+//
+//  PrefixHeader.pch
+//  MM_FESCO
+//
+//  Created by Mortimey on 16/7/28.
+//  Copyright © 2016年 Mortimey. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+
+#import "UIView+Sizes.h"
+#import "UIViewAdditions.h"
+#import "SWCommonMacro.h"
+#import "ToastAlertView.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
+#import "JSONKit.h"
+#import "NSDictionary+StrDic.h"
+#import "Masonry.h"
+#import "UIColor+Extension.h"
+#import "UIBarButtonItem+Helper.h"
+#import "UIImageView+SDWedImage.h"
+
+
+
+
+#define RGB_Color(r,g,b)    RGBA_Color(r,g,b,1)
+#define RGBA_Color(r,g,b,a) ([UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a])
+
+#define MM_HIGHTCOLOR [UIColor colorWithWhite:0.9 alpha:1]
+#define MM_LINE_COLOR  RGB_Color(0xe6, 0xe6, 0xe6)
+#define MM_LINE_HEIGHT  0.5f
+#define RELOADDATACOUNT 10
+
+#define kMMWidth [UIScreen mainScreen].bounds.size.width
+#define kMMHeight [UIScreen mainScreen].bounds.size.height
+
+// V_2.0 深色字体颜色
+#define kFEDarkTextColor RGB_Color(47,47,47)
+// V_2.0 浅色字体颜色
+#define kFELightTextColor RGB_Color(140,140,140)
+// V_2.0 Nav主色
+#define kFENavBackgroundColor RGB_Color(29,28,33)
+// V_2.0 红色
+#define kFERedColor RGB_Color(232,0,49)
+
+
+
+// V_2.0 主背景颜色 #e8e8ed
+#define FE_MAIN_BACKGROUND_COLOR RGB_Color(232,232,237)
+// V_2.0 主题蓝色蓝色 #3d8bff (61 139 255)
+#define FE_BLUE_COLOR RGB_Color(61,139,255)
+
+
+// 白色字体颜色
+#define FE_FONTCOLOR_WHITE   RGB_Color(255,255,255)
+
+// 灰色字体颜色
+#define FE_FONTCOLOR_LIGHTWHITE   RGB_Color(185,185,185)
+
+// 数据库名称
+#define yikaojiuguodDBName @"yikaojiuguo_v20150520"
+
+#define KNOTIFICATION_USERLOADED @"userLoaded"
+
+
+#define YBIphone6Plus [UIScreen mainScreen].bounds.size.height==736
+#define YBIphone6 [UIScreen mainScreen].bounds.size.height==667
+#define YBIphone5 [UIScreen mainScreen].bounds.size.height==568
+#define YBIphone4 [UIScreen mainScreen].bounds.size.height==480
+
+
+#define FERatio 1.15
+#define FESizeRatio 1.5
+
+static const CGFloat viewSlideHorizonRatio = 0.64;
+static const CGFloat viewHeightNarrowRatio = 0.80;
+static const CGFloat menuStartNarrowRatio  = 0.70;
+
+#endif /* PrefixHeader_pch */
