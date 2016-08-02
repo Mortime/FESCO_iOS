@@ -8,6 +8,8 @@
 
 #import "MMMainController.h"
 #import "MMMianCell.h"
+#import "PersonalMessageController.h"
+#import "NetworkEntity.h"
 
 @interface MMMainController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -31,7 +33,26 @@
     
     UIView *headerView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
     headerView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableHeaderView = headerView;
+    self.tableView.tableHeaderView = headerView;  http://11.0.142.214:8080/payroll/mob/test.json
+    
+//    
+//    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"main.html?do=index&limit=20&os=android&ver=2.61&develop=0&page=1&readtype=1" success:^(id responseObject) {
+//        NSLog(@"___responseObject == %@",responseObject);
+//    } failure:^(NSError *failure) {
+//        
+//        NSLog(@"---------  failure");
+//        
+//    }];
+    
+    
+    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"payroll/mob/test.json" success:^(id responseObject) {
+        NSLog(@"___responseObject == %@",responseObject);
+    } failure:^(NSError *failure) {
+        
+        NSLog(@"---------  failure");
+        
+    }];
+
     
     [self.view addSubview:self.tableView];
     
@@ -69,6 +90,8 @@
     
     if (indexPath.row == 0) {
         // 个人信息
+        PersonalMessageController *personalMegVC = [[PersonalMessageController alloc] init];
+        [self.navigationController pushViewController:personalMegVC animated:YES];
         
     }
     if (indexPath.row == 1) {

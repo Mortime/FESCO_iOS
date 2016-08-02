@@ -35,6 +35,9 @@
 		59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */; };
 		59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E321D49C6A3001F3122 /* MMLoginController.m */; };
 		59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E381D49CADF001F3122 /* MMMainController.m */; };
+		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
+		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
+		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,12 @@
 		59A59E321D49C6A3001F3122 /* MMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginController.m; sourceTree = "<group>"; };
 		59A59E371D49CADF001F3122 /* MMMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainController.h; sourceTree = "<group>"; };
 		59A59E381D49CADF001F3122 /* MMMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainController.m; sourceTree = "<group>"; };
+		59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
+		59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
+		59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
+		59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageDetailCell.m; sourceTree = "<group>"; };
+		59D3FE971D507C62002CCCA4 /* NetworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEntity.h; sourceTree = "<group>"; };
+		59D3FE981D507C62002CCCA4 /* NetworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEntity.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +245,8 @@
 			children = (
 				5977624E1D48ABCB00BD8472 /* NetworkTool.h */,
 				5977624F1D48ABCB00BD8472 /* NetworkTool.m */,
+				59D3FE971D507C62002CCCA4 /* NetworkEntity.h */,
+				59D3FE981D507C62002CCCA4 /* NetworkEntity.m */,
 			);
 			path = "网络";
 			sourceTree = "<group>";
@@ -336,6 +347,7 @@
 			children = (
 				59A59E371D49CADF001F3122 /* MMMainController.h */,
 				59A59E381D49CADF001F3122 /* MMMainController.m */,
+				59D3FE901D506CAB002CCCA4 /* MMMainDetailController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,8 +357,27 @@
 			children = (
 				595B45B91D502FD30054ED8C /* MMMianCell.h */,
 				595B45BA1D502FD30054ED8C /* MMMianCell.m */,
+				59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */,
+				59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */,
+			);
+			path = MMMainDetailView;
+			sourceTree = "<group>";
+		};
+		59D3FE901D506CAB002CCCA4 /* MMMainDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */,
+				59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */,
+			);
+			path = MMMainDetailController;
 			sourceTree = "<group>";
 		};
 		D21145FCB92E766519624DFD /* Pods */ = {
@@ -540,8 +571,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
+				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
+				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
@@ -550,6 +583,7 @@
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
+				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
@@ -704,6 +738,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				ENABLE_BITCODE = YES;
 				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -718,6 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				ENABLE_BITCODE = YES;
 				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

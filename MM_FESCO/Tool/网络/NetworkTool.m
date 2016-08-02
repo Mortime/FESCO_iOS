@@ -12,7 +12,12 @@
 
 #define  HOST_TEST_DAMIAN  @"http://101.200.204.240:8181/api"   // 测试服务器地址
 
-#define  HOST_LINE_DOMAIN  @"http://jzapi.yibuxueche.com/api"   // 正式服务器地址
+//#define  HOST_LINE_DOMAIN  @"http://jzapi.yibuxueche.com/api"   // 正式服务器地址  http://api.epetbar.com/gutouv2
+
+//#define  HOST_LINE_DOMAIN  @"http://api.epetbar.com/gutouv2"    http://11.0.142.214:8080
+
+
+#define  HOST_LINE_DOMAIN  @"http://11.0.142.214:8080"
 
 //#define QA_TEST
 
@@ -27,6 +32,18 @@
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif", nil];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        
+        
+        
+    
+        
+//        //接收无效的证书 默认是NO
+//        _sharedClient.securityPolicy.allowInvalidCertificates = YES;
+//        
+//        //不验证域名,默认是YES
+//        _sharedClient.securityPolicy.validatesDomainName = NO;
+        
+
 //        [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
         
         //        [_sharedClient.requestSerializer setValue:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1NjU4MmNhZjFmY2YwM2Q4MTNmNWZiZmMiLCJ0aW1lc3RhbXAiOiIyMDE1LTExLTI5VDA1OjI2OjM3LjAxNFoiLCJhdWQiOiJibGFja2NhdGUiLCJpYXQiOjE0NDg3NzQ3OTd9.FkiYdCgKMWFpYV2Bymbg8hAGrmutMTEHpfcOsAMnT-8" forHTTPHeaderField:@"authorization"];
@@ -83,6 +100,8 @@
     failure:(NetworkFailureBlock)failure {
     
     AFHttpClient *manager = [AFHttpClient sharedClient];
+    
+    NSLog(@"*8888888888-===================");
     
     [manager GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
