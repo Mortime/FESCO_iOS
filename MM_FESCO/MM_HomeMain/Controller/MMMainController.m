@@ -10,6 +10,7 @@
 #import "MMMianCell.h"
 #import "PersonalMessageController.h"
 #import "NetworkEntity.h"
+#import "LeaveApplicationDetailController.h"
 
 @interface MMMainController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -104,6 +105,10 @@
     }
     if (indexPath.row == 3) {
         // 休假申请
+        // 个人信息
+        LeaveApplicationDetailController *LeaveVC = [[LeaveApplicationDetailController alloc] init];
+        [self.navigationController pushViewController:LeaveVC animated:YES];
+
         
     }
     if (indexPath.row == 4) {

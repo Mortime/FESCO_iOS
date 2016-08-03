@@ -38,6 +38,8 @@
 		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
 		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
+		59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */; };
+		59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,10 @@
 		59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageDetailCell.m; sourceTree = "<group>"; };
 		59D3FE971D507C62002CCCA4 /* NetworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEntity.h; sourceTree = "<group>"; };
 		59D3FE981D507C62002CCCA4 /* NetworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEntity.m; sourceTree = "<group>"; };
+		59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaveApplicationDetailController.h; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.h; sourceTree = "<group>"; };
+		59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveApplicationDetailController.m; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.m; sourceTree = "<group>"; };
+		59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
+		59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplicationDetailCell.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -367,6 +373,8 @@
 			children = (
 				59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */,
 				59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */,
+				59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */,
+				59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */,
 			);
 			path = MMMainDetailView;
 			sourceTree = "<group>";
@@ -376,6 +384,8 @@
 			children = (
 				59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */,
 				59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */,
+				59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */,
+				59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -571,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
+				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
@@ -596,6 +607,7 @@
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
+				59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

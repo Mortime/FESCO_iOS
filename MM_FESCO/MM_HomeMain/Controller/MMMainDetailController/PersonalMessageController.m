@@ -31,9 +31,9 @@
 @implementation PersonalMessageController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-
     self.title = @"个人信息";
     self.dataArray  = @[@"姓名",@"性别",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
     self.view.backgroundColor = [UIColor whiteColor];
