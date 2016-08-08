@@ -17,6 +17,7 @@
 		597762301D489AE000BD8472 /* MM_FESCOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977622F1D489AE000BD8472 /* MM_FESCOTests.m */; };
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
+		5996FFB01D58163D0005307C /* SignDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFAF1D58163D0005307C /* SignDetailController.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
 		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
@@ -83,6 +84,8 @@
 		5977623C1D489AE000BD8472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5977624E1D48ABCB00BD8472 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
+		5996FFAE1D58163D0005307C /* SignDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignDetailController.h; sourceTree = "<group>"; };
+		5996FFAF1D58163D0005307C /* SignDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignDetailController.m; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */,
 				59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */,
 				59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */,
+				5996FFAE1D58163D0005307C /* SignDetailController.h */,
+				5996FFAF1D58163D0005307C /* SignDetailController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -603,6 +608,7 @@
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
+				5996FFB01D58163D0005307C /* SignDetailController.m in Sources */,
 				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,

@@ -50,6 +50,7 @@
     
     [headerView addSubview:headerLaber];
     [headerView addSubview:lineHeader];
+
     
     
     // 创建尾部视图
@@ -61,10 +62,7 @@
     [footView addSubview:lineFootView];
     
     
-    
-    
-    
-    
+
     self.tableView.tableHeaderView = headerView;
     self.tableView.tableFooterView = footView;
     [self.view addSubview:self.submitButton];

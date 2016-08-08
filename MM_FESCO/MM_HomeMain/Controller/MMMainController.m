@@ -11,6 +11,7 @@
 #import "PersonalMessageController.h"
 #import "NetworkEntity.h"
 #import "LeaveApplicationDetailController.h"
+#import "SignDetailController.h"
 
 @interface MMMainController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -57,6 +58,8 @@
     
     [self.view addSubview:self.tableView];
     
+
+    
     
     
 }
@@ -97,6 +100,8 @@
     }
     if (indexPath.row == 1) {
         // 签到签退
+        SignDetailController *signVC = [[SignDetailController alloc] init];
+        [self.navigationController pushViewController:signVC animated:YES];
         
     }
     if (indexPath.row == 2) {
