@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
-		5977621A1D489AE000BD8472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.m */; };
+		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
 		5977621D1D489AE000BD8472 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977621C1D489AE000BD8472 /* ViewController.m */; };
 		597762201D489AE000BD8472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5977621E1D489AE000BD8472 /* Main.storyboard */; };
 		597762221D489AE000BD8472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597762211D489AE000BD8472 /* Assets.xcassets */; };
@@ -18,6 +18,7 @@
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
 		5996FFB01D58163D0005307C /* SignDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFAF1D58163D0005307C /* SignDetailController.m */; };
+		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
 		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
@@ -69,7 +70,7 @@
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762161D489AE000BD8472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		597762181D489AE000BD8472 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		597762191D489AE000BD8472 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		597762191D489AE000BD8472 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		5977621B1D489AE000BD8472 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5977621C1D489AE000BD8472 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5977621F1D489AE000BD8472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +87,8 @@
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		5996FFAE1D58163D0005307C /* SignDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignDetailController.h; sourceTree = "<group>"; };
 		5996FFAF1D58163D0005307C /* SignDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignDetailController.m; sourceTree = "<group>"; };
+		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -198,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				597762181D489AE000BD8472 /* AppDelegate.h */,
-				597762191D489AE000BD8472 /* AppDelegate.m */,
+				597762191D489AE000BD8472 /* AppDelegate.mm */,
 				5977621B1D489AE000BD8472 /* ViewController.h */,
 				5977621C1D489AE000BD8472 /* ViewController.m */,
 				59A59E351D49CADF001F3122 /* MM_HomeMain */,
@@ -276,6 +279,8 @@
 			children = (
 				59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */,
 				59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */,
+				5996FFB11D5876BE0005307C /* NSString+MD5.h */,
+				5996FFB21D5876BE0005307C /* NSString+MD5.m */,
 			);
 			path = SafeDic;
 			sourceTree = "<group>";
@@ -595,8 +600,9 @@
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
 				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
-				5977621A1D489AE000BD8472 /* AppDelegate.m in Sources */,
+				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
+				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,

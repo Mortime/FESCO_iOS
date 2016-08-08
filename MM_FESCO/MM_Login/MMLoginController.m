@@ -8,6 +8,8 @@
 
 #import "MMLoginController.h"
 #import "MMMainController.h"
+#import "NSString+MD5.h"
+
 
 @interface MMLoginController ()
 
@@ -127,13 +129,38 @@
 - (void)pushHomeMainController:(UIButton *)btn{
     
     
+    NSString * mdsPass = [@"test123" MD5Digest];
     
-    UIWindow *window  = [UIApplication sharedApplication].keyWindow;
     
-    MMMainController *mainVC = [[MMMainController alloc] init];
+    [NetworkEntity postLoginWithPhotoNumber:@"rjw20051111@126.com" password:mdsPass deviceId:@"wwwookooikii" deviceType:@"1" success:^(id responseObject) {
+        
+        
+        UIWindow *window  = [UIApplication sharedApplication].keyWindow;
+        
+        MMMainController *mainVC = [[MMMainController alloc] init];
+        
+        
+        
+        UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        window.rootViewController = navigationVC;
+        
+
+        NSLog(@"responseObject  responseObject  responseObject%@",responseObject);
+    } failure:^(NSError *failure) {
+        
+        
+        
+    }];
     
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    window.rootViewController = navigationVC;
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
 

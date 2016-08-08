@@ -47,13 +47,13 @@
 //    }];
     
     
-    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"payroll/mob/test.json" success:^(id responseObject) {
-        NSLog(@"___responseObject == %@",responseObject);
-    } failure:^(NSError *failure) {
-        
-        NSLog(@"---------  failure");
-        
-    }];
+//    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"payroll/mob/test.json" success:^(id responseObject) {
+//        NSLog(@"___responseObject == %@",responseObject);
+//    } failure:^(NSError *failure) {
+//        
+//        NSLog(@"---------  failure");
+//        
+//    }];
 
     
     [self.view addSubview:self.tableView];

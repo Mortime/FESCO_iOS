@@ -12,20 +12,26 @@
 
 @interface NetworkEntity : NSObject
 
-
 /**
- *  测试接口数据 GET
- */
-+ (void)getTesTInfoWithUserInfoWithUserId:(NSString *)userId
-                                  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
-
-
-
-/**
- *  测试接口数据 POST
+ *  用户教练登录 返回信息描述见 获取用户详情
  *
- *  @param param     测试字段
+ *  @param photoNumber （req）  手机号
+ *  @param password     (req)  密码 MD5加密后
+ *  @param deviceId （req）  设备唯一标识
+ *  @param deviceType     (req)  设备类型 (iOS : 1 ,android : 0);
+ 
  */
-+ (void)postTestParam:(NSString *)param success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postLoginWithPhotoNumber:(NSString *)photoNumber password:(NSString *)password deviceId:(NSString *)deviceId deviceType:(NSString *)deviceType   success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+
+
+///**
+// *  测试接口数据 POST
+// *
+// *  @param param     测试字段
+// */
+//+ (void)postTestParam:(NSString *)param success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 @end
