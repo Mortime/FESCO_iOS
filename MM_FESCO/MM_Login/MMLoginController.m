@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong) UITextField *phoneNumTextField;
 
-@property (nonatomic, strong) UIView *lineView;
 
 @property (nonatomic, strong) UITextField *passwordTextField;
 
@@ -28,7 +27,11 @@
 
 @property (nonatomic, strong) UILabel *recommendPasswordLabel;
 
-@property (nonatomic, strong) UIButton *regiestButton;
+@property (nonatomic, strong) UIView *lineView;
+
+@property (nonatomic, strong) UILabel *bottomLabel;
+
+
 
 
 
@@ -38,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = RGB_Color(245, 245, 245);
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Login_Bg.jpg"]];
     [self initUI];
     
 
@@ -48,11 +51,12 @@
     [self.view addSubview:self.iconImage];
     [self.view addSubview:self.bgView];
     [self.bgView addSubview:self.phoneNumTextField];
-    [self.bgView addSubview:self.lineView];
     [self.bgView addSubview:self.passwordTextField];
     [self.view addSubview:self.loginButton];
     [self.view addSubview:self.recommendPasswordLabel];
-        [self.view addSubview:self.regiestButton];
+    [self.view addSubview:self.lineView];
+    [self.view addSubview:self.bottomLabel];
+
     
 }
 
@@ -60,40 +64,34 @@
 - (void)viewWillLayoutSubviews{
     
     [super viewWillLayoutSubviews];
-    CGFloat magin = self.view.frame.size.width/7;
+    CGFloat magin = 72;
     [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(self.view.frame.size.height/6);
-        make.width.mas_equalTo(@100);
+        make.top.mas_equalTo(self.view.mas_top).offset(90);
+        make.width.mas_equalTo(@160);
         make.height.mas_equalTo(@100);
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.iconImage.mas_bottom).offset(30);
+        make.top.mas_equalTo(self.iconImage.mas_bottom).offset(74);
         make.right.mas_equalTo(self.view.mas_right).offset(-magin);
         make.left.mas_equalTo(self.view.mas_left).offset(magin);
-        make.height.mas_equalTo(@101);
+        make.height.mas_equalTo(@104);
         
     }];
     [self.phoneNumTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top).offset(0);
         make.right.mas_equalTo(self.bgView.mas_right).offset(0);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
-        make.height.mas_equalTo(@50);
-        
-    }];
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.phoneNumTextField.mas_bottom).offset(0);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(0);
         make.left.mas_equalTo(self.bgView.mas_left).offset(0);
-        make.height.mas_equalTo(@1);
+        make.height.mas_equalTo(@40);
         
     }];
     
+    
     [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.lineView.mas_bottom).offset(0);
+        make.top.mas_equalTo(self.phoneNumTextField.mas_bottom).offset(20);
         make.right.mas_equalTo(self.bgView.mas_right).offset(0);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
-        make.height.mas_equalTo(@50);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
+        make.height.mas_equalTo(@40);
         
     }];
     
@@ -108,21 +106,28 @@
     
     
     [self.recommendPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(15);
-        make.left.mas_equalTo(self.loginButton.mas_left).offset(0);
-        make.height.mas_equalTo(@25);
+        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(20);
+        make.centerX.mas_equalTo(self.loginButton.mas_centerX);
+        make.height.mas_equalTo(@14);
+        make.width.mas_equalTo(@150);
         
     }];
     
-    
-    
-    [self.regiestButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(80);
-        make.right.mas_equalTo(self.view.mas_right).offset(-80);
-        make.left.mas_equalTo(self.view.mas_left).offset(80);
-        make.height.mas_equalTo(@30);
-        
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-100);
+        make.centerX.mas_equalTo(self.bgView.mas_centerX);
+        make.height.mas_equalTo(@1.5);
+        make.left.mas_equalTo(self.bgView.mas_left);
     }];
+    [self.bottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.lineView.mas_bottom).offset(15);
+        make.centerX.mas_equalTo(self.lineView.mas_centerX);
+        make.height.mas_equalTo(@16);
+        make.width.mas_equalTo(@150);
+    }];
+
+    
+
 }
 
 #pragma make --- Action
@@ -175,7 +180,7 @@
 - (UIImageView *)iconImage{
     if (_iconImage == nil) {
         _iconImage = [[UIImageView alloc] init];
-        _iconImage.image = [UIImage imageNamed:@"LoginIcon"];
+        _iconImage.image = [UIImage imageNamed:@"Login_Icon"];
         _iconImage.backgroundColor = [UIColor clearColor];
     }
     return _iconImage;
@@ -183,9 +188,8 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor whiteColor];
-        _bgView.layer.masksToBounds = YES;
-        _bgView.layer.cornerRadius = 5;
+        _bgView.backgroundColor = [UIColor clearColor];
+        
     }
     return _bgView;
 }
@@ -195,13 +199,18 @@
     if (_phoneNumTextField == nil) {
         
         _phoneNumTextField    = [[UITextField alloc] init];
-        _phoneNumTextField.font = [UIFont systemFontOfSize:17];
-        _phoneNumTextField.textColor = [UIColor colorWithRed:(51)/255.f green:(51)/255.f blue:(51)/255.f alpha:1.f];
-        _phoneNumTextField.placeholder  = @"  用户名";
+        _phoneNumTextField.font = [UIFont systemFontOfSize:16];
+        _phoneNumTextField.textColor = [UIColor colorWithHexString:@"fff100"];
+        _phoneNumTextField.placeholder  = @" Email";
+        [_phoneNumTextField setValue:[UIColor colorWithHexString:@"fff100"] forKeyPath:@"_placeholderLabel.textColor"];
+        [_phoneNumTextField setValue:[UIFont systemFontOfSize:16] forKeyPath:@"_placeholderLabel.font"];
+           
+           
+           
         _phoneNumTextField.leftViewMode = UITextFieldViewModeAlways;
         _phoneNumTextField.keyboardType = UIKeyboardTypeNumberPad;
-        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 20)];
-        leftView.image = [UIImage imageNamed:@"LoginUser"];
+        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        leftView.image = [UIImage imageNamed:@""];
         
         _phoneNumTextField.leftView = leftView;
         
@@ -209,6 +218,11 @@
         //        _phoneNumTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         
         _phoneNumTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _phoneNumTextField.backgroundColor = [UIColor blackColor];
+        _phoneNumTextField.alpha = 0.45;
+        
+        _phoneNumTextField.layer.masksToBounds = YES;
+        _phoneNumTextField.layer.cornerRadius = 5;
         
         //       [_phoneNumTextField.leftView SET]
     }
@@ -216,24 +230,18 @@
     return _phoneNumTextField;
     
 }
-- (UIView *)lineView{
-    if (_lineView == nil) {
-        _lineView = [[UIView alloc] init];
-        _lineView.backgroundColor = [UIColor grayColor];
-        _lineView.alpha = 0.2;
-    }
-    return _lineView;
-}
 - (UITextField *)passwordTextField {
     if (_passwordTextField == nil) {
         _passwordTextField = [[UITextField alloc] init];
-        _passwordTextField.placeholder = @"  密码";
+        _passwordTextField.placeholder = @" password";
+        [_passwordTextField setValue:[UIColor colorWithHexString:@"666666"] forKeyPath:@"_placeholderLabel.textColor"];
+        [_passwordTextField setValue:[UIFont systemFontOfSize:16] forKeyPath:@"_placeholderLabel.font"];
         
         _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
-        _passwordTextField.font = [UIFont systemFontOfSize:17];
-        _passwordTextField.textColor = [UIColor colorWithRed:(51)/255.f green:(51)/255.f blue:(51)/255.f alpha:1.f];
-        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 20)];
-        leftView.image = [UIImage imageNamed:@"LoginPassword"];
+        _passwordTextField.font = [UIFont systemFontOfSize:16];
+        _passwordTextField.textColor = [UIColor colorWithHexString:@"fff100"];
+        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        leftView.image = [UIImage imageNamed:@""];
         
         //        _passwordTextField.textAlignment = NSTextAlignmentCenter;
         //        _passwordTextField.leftView.frame = CGRectMake(0, 0, 10, 10);
@@ -241,8 +249,14 @@
         
         // _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
+//        _passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
         _passwordTextField.secureTextEntry = YES;
+        
+        _passwordTextField.backgroundColor = [UIColor blackColor];
+        _passwordTextField.alpha = 0.45;
+        
+        _passwordTextField.layer.masksToBounds = YES;
+        _passwordTextField.layer.cornerRadius = 5;
         
     }
     return _passwordTextField;
@@ -250,13 +264,13 @@
 - (UIButton *)loginButton {
     if (_loginButton == nil) {
         _loginButton                 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.backgroundColor = [UIColor colorWithRed:(63)/255.f green:(153)/255.f blue:(235)/255.f alpha:1.f];;
+        _loginButton.backgroundColor = [UIColor colorWithHexString:@"00b6d8"];;
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-        _loginButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        _loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_loginButton addTarget:self action:@selector(pushHomeMainController:) forControlEvents:UIControlEventTouchUpInside];
         _loginButton.layer.masksToBounds = YES;
-        _loginButton.layer.cornerRadius = 3;
+        _loginButton.layer.cornerRadius = 22;
         
     }
     return _loginButton;
@@ -266,27 +280,30 @@
 - (UILabel *)recommendPasswordLabel{
     if (_recommendPasswordLabel == nil) {
         _recommendPasswordLabel = [[UILabel alloc] init];
-        _recommendPasswordLabel.text = @"记住密码";
-        _recommendPasswordLabel.font = [UIFont systemFontOfSize:12];
-        _recommendPasswordLabel.textColor = [UIColor colorWithRed:(63)/255.f green:(153)/255.f blue:(235)/255.f alpha:1.f];
+        _recommendPasswordLabel.text = @"Forgot password";
+        _recommendPasswordLabel.font = [UIFont systemFontOfSize:14];
+        _recommendPasswordLabel.textAlignment = NSTextAlignmentCenter;
+        _recommendPasswordLabel.textColor = [UIColor whiteColor];
     }
     return _recommendPasswordLabel;
 }
 
-- (UIButton *)regiestButton {
-    if (_regiestButton == nil) {
-        _regiestButton                 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _regiestButton.backgroundColor = [UIColor colorWithRed:(63)/255.f green:(153)/255.f blue:(235)/255.f alpha:1.f];;
-        [_regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_regiestButton setTitle:@"注册" forState:UIControlStateNormal];
-        _regiestButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        
-        _regiestButton.layer.masksToBounds = YES;
-        _regiestButton.layer.cornerRadius = 3;
-        
+- (UIView *)lineView{
+    if (_lineView == nil) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = [UIColor whiteColor];
     }
-    return _regiestButton;
-    
+    return _lineView;
+}
+- (UILabel *)bottomLabel{
+    if (_bottomLabel == nil) {
+        _bottomLabel = [[UILabel alloc] init];
+        _bottomLabel.text = @"Welcome to Log on";
+        _bottomLabel.font = [UIFont systemFontOfSize:14];
+        _bottomLabel.textAlignment = NSTextAlignmentCenter;
+        _bottomLabel.textColor = [UIColor whiteColor];
+    }
+    return _bottomLabel;
 }
 
 

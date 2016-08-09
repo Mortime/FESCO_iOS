@@ -87,8 +87,8 @@
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		5996FFAE1D58163D0005307C /* SignDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignDetailController.h; sourceTree = "<group>"; };
 		5996FFAF1D58163D0005307C /* SignDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignDetailController.m; sourceTree = "<group>"; };
-		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "../SafeDic/NSString+MD5.h"; sourceTree = "<group>"; };
+		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "../SafeDic/NSString+MD5.m"; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -279,8 +279,6 @@
 			children = (
 				59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */,
 				59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */,
-				5996FFB11D5876BE0005307C /* NSString+MD5.h */,
-				5996FFB21D5876BE0005307C /* NSString+MD5.m */,
 			);
 			path = SafeDic;
 			sourceTree = "<group>";
@@ -334,6 +332,8 @@
 				59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */,
 				59A59E171D499EF2001F3122 /* UINavigationItem+BackItem.h */,
 				59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */,
+				5996FFB11D5876BE0005307C /* NSString+MD5.h */,
+				5996FFB21D5876BE0005307C /* NSString+MD5.m */,
 			);
 			path = UntityBox;
 			sourceTree = "<group>";
