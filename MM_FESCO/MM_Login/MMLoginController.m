@@ -116,7 +116,7 @@
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view.mas_bottom).offset(-100);
         make.centerX.mas_equalTo(self.bgView.mas_centerX);
-        make.height.mas_equalTo(@1.5);
+        make.height.mas_equalTo(@1);
         make.left.mas_equalTo(self.bgView.mas_left);
     }];
     [self.bottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
