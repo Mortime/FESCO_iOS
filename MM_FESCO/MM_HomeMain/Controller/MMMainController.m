@@ -32,7 +32,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"首页";
-    
+    NSLog(@"[UserInfoModel defaultUserInfo].password = %@",[UserInfoModel defaultUserInfo].password);
     UIView *headerView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
     headerView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = headerView;  http://11.0.142.214:8080/payroll/mob/test.json

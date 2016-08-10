@@ -24,6 +24,8 @@
 #import "UIBarButtonItem+Helper.h"
 #import "UIImageView+SDWedImage.h"
 #import "NetworkEntity.h"
+#import "UserInfoModel.h"
+#import "UIViewController+Method.h"
 
 
 
@@ -38,6 +40,15 @@
 
 #define kMMWidth [UIScreen mainScreen].bounds.size.width
 #define kMMHeight [UIScreen mainScreen].bounds.size.height
+
+
+
+#ifdef DEBUG
+#define MMLog(...) NSLog(__VA_ARGS__)
+#else
+#define MMLog(...)
+#endif
+
 
 // V_2.0 深色字体颜色
 #define kFEDarkTextColor RGB_Color(47,47,47)

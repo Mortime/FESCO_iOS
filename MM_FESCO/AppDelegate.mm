@@ -45,6 +45,8 @@
     MMLoginController *mainVC = [[MMLoginController alloc] init];
     self.window.rootViewController = mainVC;
     
+    	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     [self initMapSDk];
     
     

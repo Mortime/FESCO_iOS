@@ -44,6 +44,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Login_Bg.jpg"]];
     [self initUI];
     
+    NSLog(@"=======[UserInfoModel defaultUserInfo].password = %@",[UserInfoModel defaultUserInfo].password);
 
 }
 - (void)initUI{
@@ -133,27 +134,78 @@
 #pragma make --- Action
 - (void)pushHomeMainController:(UIButton *)btn{
     
+       
+    NSLog(@"self.phone = %@",self.phoneNumTextField.text);
     
-    NSString * mdsPass = [@"test123" MD5Digest];
+    if (self.phoneNumTextField.text == nil || [self.phoneNumTextField.text isEqualToString:@""]) {
+//        [self showTotasViewWithMes:@"请输入密码"];
+        
+        
+        
+        NSLog(@"self.phone = %@",self.phoneNumTextField.text);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入邮箱"];
+        [toastView show];
+
+        return;
+    }
     
+    if (self.passwordTextField.text == nil || [self.passwordTextField.text isEqualToString:@""]) {
+        //        [self showTotasViewWithMes:@"请输入密码"];
+        
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入密码"];
+        [toastView show];
+        
+        return;
+    }
+
     
-    [NetworkEntity postLoginWithPhotoNumber:@"rjw20051111@126.com" password:mdsPass deviceId:@"wwwookooikii" deviceType:@"1" success:^(id responseObject) {
+    NSString * mdsPass = [_passwordTextField.text MD5Digest];
+    
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+
+    
+    [NetworkEntity postLoginWithPhotoNumber:_phoneNumTextField.text password:mdsPass deviceId:idfv deviceType:@"1" success:^(id responseObject) {
         
         
-        UIWindow *window  = [UIApplication sharedApplication].keyWindow;
-        
-        MMMainController *mainVC = [[MMMainController alloc] init];
-        
-        
-        
-        UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
-        window.rootViewController = navigationVC;
+        if ([[responseObject  objectForKey:@"SUCCESS"] isEqualToString:@"success"]) {
+            // 登录成功后保存数据
+            
+            // 基本数据保存
+            NSMutableDictionary * loginInfo = [responseObject mutableCopy];
+            [loginInfo setValue:_phoneNumTextField.text forKey:@"MM_phoneNum"];
+            [loginInfo setValue:_passwordTextField.text forKey:@"MM_password"];
+            
+            [[UserInfoModel defaultUserInfo] loginViewDic:loginInfo];
+            [NetworkTool setHTTPHeaderField:[loginInfo  objectForKey:@"token"]];
+            
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"登录成功"];
+            [toastView show];
+            [MBProgressHUD hideHUDForView:self.view animated:NO];
+            
+            UIWindow *window  = [UIApplication sharedApplication].keyWindow;
+            MMMainController *mainVC = [[MMMainController alloc] init];
+            
+            UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+            window.rootViewController = navigationVC;
+        }
+        else{
+            NSString *msgError = [responseObject objectForKey:@"ERROR"];
+            
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msgError];
+            [toastView show];
+        }
         
 
         NSLog(@"responseObject  responseObject  responseObject%@",responseObject);
     } failure:^(NSError *failure) {
         
+        NSLog(@"failure = %@",failure);
         
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络连接失败"];
+                [toastView show];
+//        [self showTotasViewWithMes:@"网络连接失败"];
         
     }];
     
@@ -224,6 +276,8 @@
         _phoneNumTextField.layer.masksToBounds = YES;
         _phoneNumTextField.layer.cornerRadius = 5;
         
+        _phoneNumTextField.text = @"rjw20051111@126.com";
+        
         //       [_phoneNumTextField.leftView SET]
     }
     
@@ -257,6 +311,8 @@
         
         _passwordTextField.layer.masksToBounds = YES;
         _passwordTextField.layer.cornerRadius = 5;
+        
+        _passwordTextField.text = @"test123";
         
     }
     return _passwordTextField;
@@ -295,6 +351,7 @@
     }
     return _lineView;
 }
+
 - (UILabel *)bottomLabel{
     if (_bottomLabel == nil) {
         _bottomLabel = [[UILabel alloc] init];

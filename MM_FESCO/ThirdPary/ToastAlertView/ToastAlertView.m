@@ -24,7 +24,7 @@
         _title.textAlignment = NSTextAlignmentCenter;
         _title.numberOfLines = 0;
         _title.backgroundColor = [UIColor clearColor];
-        _title.font = [UIFont systemFontOfSize:12];
+        _title.font = [UIFont systemFontOfSize:14];
         _title.textColor = [UIColor whiteColor];
         _title.text = title;
         [_alertboxImageView addSubview:_title];

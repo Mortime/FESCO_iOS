@@ -17,9 +17,9 @@
 //#define  HOST_LINE_DOMAIN  @"http://api.epetbar.com/gutouv2"    http://11.0.142.214:8080
 
 
-//#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com"
+#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com"
 
-#define  HOST_LINE_DOMAIN  @"http://11.0.147.115:8080/payroll"
+//#define  HOST_LINE_DOMAIN  @"http://11.0.147.115:8080/payroll"   // 接口测试
 
 //#define QA_TEST
 
@@ -46,7 +46,7 @@
 //        _sharedClient.securityPolicy.validatesDomainName = NO;
         
 
-//        [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
+        [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
         
         //        [_sharedClient.requestSerializer setValue:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1NjU4MmNhZjFmY2YwM2Q4MTNmNWZiZmMiLCJ0aW1lc3RhbXAiOiIyMDE1LTExLTI5VDA1OjI2OjM3LjAxNFoiLCJhdWQiOiJibGFja2NhdGUiLCJpYXQiOjE0NDg3NzQ3OTd9.FkiYdCgKMWFpYV2Bymbg8hAGrmutMTEHpfcOsAMnT-8" forHTTPHeaderField:@"authorization"];
         
