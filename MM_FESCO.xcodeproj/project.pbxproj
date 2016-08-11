@@ -40,6 +40,10 @@
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
 		59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */; };
 		59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */; };
+		59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C311D5C27F900CE0385 /* NSDate+Category.m */; };
+		59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C341D5C281700CE0385 /* NSDateFormatter+Category.m */; };
+		59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */; };
+		59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */; };
 		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
 		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
@@ -137,6 +141,14 @@
 		59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Method.m"; sourceTree = "<group>"; };
 		59C90C2D1D5C07B300CE0385 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		59C90C301D5C27F900CE0385 /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
+		59C90C311D5C27F900CE0385 /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
+		59C90C331D5C281700CE0385 /* NSDateFormatter+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Category.h"; sourceTree = "<group>"; };
+		59C90C341D5C281700CE0385 /* NSDateFormatter+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Category.m"; sourceTree = "<group>"; };
+		59C90C351D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+sharedDateFormatter.h"; sourceTree = "<group>"; };
+		59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+sharedDateFormatter.m"; sourceTree = "<group>"; };
+		59C90C371D5C281700CE0385 /* NSString+CurrentTimeDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CurrentTimeDay.h"; sourceTree = "<group>"; };
+		59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CurrentTimeDay.m"; sourceTree = "<group>"; };
 		59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
 		59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
 		59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
@@ -320,6 +332,14 @@
 		59A59E021D499EF2001F3122 /* UntityBox */ = {
 			isa = PBXGroup;
 			children = (
+				59C90C301D5C27F900CE0385 /* NSDate+Category.h */,
+				59C90C311D5C27F900CE0385 /* NSDate+Category.m */,
+				59C90C331D5C281700CE0385 /* NSDateFormatter+Category.h */,
+				59C90C341D5C281700CE0385 /* NSDateFormatter+Category.m */,
+				59C90C351D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.h */,
+				59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */,
+				59C90C371D5C281700CE0385 /* NSString+CurrentTimeDay.h */,
+				59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */,
 				59C90C2D1D5C07B300CE0385 /* UIViewController+HUD.h */,
 				59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */,
 				59C197C61D5AC27A00C7F593 /* UIViewController+Method.h */,
@@ -616,6 +636,7 @@
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
+				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
@@ -630,15 +651,18 @@
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
+				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
+				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
+				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
 				5996FFB01D58163D0005307C /* SignDetailController.m in Sources */,
 				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
