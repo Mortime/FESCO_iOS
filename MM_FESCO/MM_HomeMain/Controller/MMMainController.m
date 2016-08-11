@@ -12,12 +12,20 @@
 #import "NetworkEntity.h"
 #import "LeaveApplicationDetailController.h"
 #import "SignDetailController.h"
+#import "MMCycleShowImageView.h"
+#import "MMMainCollectionCell.h"
 
-@interface MMMainController () <UITableViewDataSource,UITableViewDelegate>
+static NSString *kMallID = @"MallID";
 
-@property (nonatomic, strong) UITableView  *tableView;
+@interface MMMainController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic, strong) NSArray *titleArray;
+
+@property (nonatomic, strong) NSArray *imgArray;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+
 
 
 
@@ -28,35 +36,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray  = @[@"个人信息",@"签到签退",@"考勤记录",@"休假申请",@"休假记录",@"休假审批",@"加班申请",@"加班记录",@"加班审批",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.titleArray  = @[@"个人信息",@"签到签退",@"考勤记录",@"休假申请",@"休假记录",@"休假审批",@"加班申请",@"加班记录",@"加班审批",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
+    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_kaoqinjilu",@"HomeFlag_Xiujiashenqing",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Jiabanjilu",@"HomeFlag_Jiabanshenpi",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"首页";
-    NSLog(@"[UserInfoModel defaultUserInfo].password = %@",[UserInfoModel defaultUserInfo].password);
-    UIView *headerView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableHeaderView = headerView;  http://11.0.142.214:8080/payroll/mob/test.json
     
-//    
-//    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"main.html?do=index&limit=20&os=android&ver=2.61&develop=0&page=1&readtype=1" success:^(id responseObject) {
-//        NSLog(@"___responseObject == %@",responseObject);
-//    } failure:^(NSError *failure) {
-//        
-//        NSLog(@"---------  failure");
-//        
-//    }];
+    UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
+    MMCycleShowImageView *cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 125)];
+    cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
+    [cycleImageView setPageControlLocation:0 isCycle:YES];
+    cycleImageView.placeImage = img;
+    [self.view addSubview:cycleImageView];
     
-//    [NetworkEntity getTesTInfoWithUserInfoWithUserId:@"payroll/mob/test.json" success:^(id responseObject) {
-//        NSLog(@"___responseObject == %@",responseObject);
-//    } failure:^(NSError *failure) {
-//        
-//        NSLog(@"---------  failure");
-//        
-//    }];
-
-    
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.collectionView];
     
 
     
@@ -64,34 +62,27 @@
     
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"self.dataArray.count = %lu",self.dataArray.count);
-    return self.dataArray.count;
+
+#pragma mark - collectionView
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.titleArray.count;
+    
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // 加载积分商城
+    
+    MMMainCollectionCell *mallCell = [collectionView dequeueReusableCellWithReuseIdentifier:kMallID forIndexPath:indexPath];
+//    mallCell.integralMallModel = self.dataArray[indexPath.row];
+    mallCell.flagImageView.image = [UIImage imageNamed:_imgArray[indexPath.row]];
+    mallCell.tittleLabel.text = _titleArray[indexPath.row];
+    
+    return mallCell;
+    
 }
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *mainCellID = @"mainCellID";
-    
-    MMMianCell *cell = [tableView dequeueReusableCellWithIdentifier:mainCellID];
-    
-    if (!cell) {
-        cell = [[MMMianCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mainCellID];
-    }
-    
-    cell.messageStr = self.dataArray[indexPath.row];
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         // 个人信息
         PersonalMessageController *personalMegVC = [[PersonalMessageController alloc] init];
@@ -113,7 +104,7 @@
         // 个人信息
         LeaveApplicationDetailController *LeaveVC = [[LeaveApplicationDetailController alloc] init];
         [self.navigationController pushViewController:LeaveVC animated:YES];
-
+        
         
     }
     if (indexPath.row == 4) {
@@ -158,24 +149,53 @@
         
     }if (indexPath.row == 14) {
         //  HRS数据勘查
-                
+        
     }
+    
 }
+
+#pragma mark - collectionView flowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    return CGSizeMake((self.view.width) / 3, 105);
+    
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+// 行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+// 列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
-- (UITableView *)tableView {
-    
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
 
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        
+        UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - 125 - 64) collectionViewLayout:flowLayout];
+        _collectionView.backgroundColor = [UIColor colorWithHexString:@"d9f5f9"];
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+                // 注册Cell
+        _collectionView.contentSize = CGSizeMake(self.view.width, self.view.height);
+        [_collectionView registerClass:[MMMainCollectionCell class] forCellWithReuseIdentifier:kMallID];
+        
         
     }
-    return _tableView;
+    return _collectionView;
 }
+
 @end

@@ -44,6 +44,8 @@
 		59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C341D5C281700CE0385 /* NSDateFormatter+Category.m */; };
 		59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */; };
 		59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */; };
+		59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */; };
+		59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */; };
 		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
 		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
@@ -149,6 +151,10 @@
 		59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+sharedDateFormatter.m"; sourceTree = "<group>"; };
 		59C90C371D5C281700CE0385 /* NSString+CurrentTimeDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CurrentTimeDay.h"; sourceTree = "<group>"; };
 		59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CurrentTimeDay.m"; sourceTree = "<group>"; };
+		59C90C3F1D5C627500CE0385 /* MMCycleShowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMCycleShowImageView.h; path = ../Controller/MMCycleShowImageView.h; sourceTree = "<group>"; };
+		59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMCycleShowImageView.m; path = ../Controller/MMCycleShowImageView.m; sourceTree = "<group>"; };
+		59C90C421D5C6FE900CE0385 /* MMMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainCollectionCell.h; sourceTree = "<group>"; };
+		59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainCollectionCell.m; sourceTree = "<group>"; };
 		59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
 		59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
 		59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
@@ -403,8 +409,12 @@
 		59A59E391D49CADF001F3122 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59C90C3F1D5C627500CE0385 /* MMCycleShowImageView.h */,
+				59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */,
 				595B45B91D502FD30054ED8C /* MMMianCell.h */,
 				595B45BA1D502FD30054ED8C /* MMMianCell.m */,
+				59C90C421D5C6FE900CE0385 /* MMMainCollectionCell.h */,
+				59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */,
 				59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */,
 			);
 			path = View;
@@ -652,6 +662,7 @@
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
+				59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
@@ -661,6 +672,7 @@
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
+				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
 				5996FFB01D58163D0005307C /* SignDetailController.m in Sources */,
