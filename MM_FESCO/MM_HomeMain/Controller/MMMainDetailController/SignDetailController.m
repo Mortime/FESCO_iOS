@@ -59,7 +59,8 @@
     
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(initData) userInfo:nil repeats:YES];
-    
+    [self initUI];
+    [self initData];
 
     
 }
@@ -89,6 +90,8 @@
     
 }
 - (void)viewWillLayoutSubviews{
+    
+    [super viewWillLayoutSubviews];
     [self.bgTopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(64);
         make.left.mas_equalTo(self.view.mas_left).offset(0);

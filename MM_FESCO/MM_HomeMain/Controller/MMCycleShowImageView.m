@@ -200,7 +200,7 @@
         right = 0;
     }
     //下载并缓存图片
-    NSLog(@"________________imagesUrlArray[center]]%@",_imagesUrlArray[center]);
+//    NSLog(@"________________imagesUrlArray[center]]%@",_imagesUrlArray[center]);
 //    self.centerImageView.image = [UIImage imageNamed:_imagesUrlArray[center]];
 //    self.leftImageView.image = [UIImage imageNamed:_imagesUrlArray[left]];
 //    self.rightImageView.image = [UIImage imageNamed:_imagesUrlArray[right]];
