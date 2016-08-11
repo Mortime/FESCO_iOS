@@ -39,6 +39,7 @@
 		59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E381D49CADF001F3122 /* MMMainController.m */; };
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
 		59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */; };
+		59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */; };
 		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
 		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
@@ -134,6 +135,8 @@
 		59C197C41D5ABFB100C7F593 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		59C197C61D5AC27A00C7F593 /* UIViewController+Method.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Method.h"; sourceTree = "<group>"; };
 		59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Method.m"; sourceTree = "<group>"; };
+		59C90C2D1D5C07B300CE0385 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
 		59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
 		59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 		59A59E021D499EF2001F3122 /* UntityBox */ = {
 			isa = PBXGroup;
 			children = (
+				59C90C2D1D5C07B300CE0385 /* UIViewController+HUD.h */,
+				59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */,
 				59C197C61D5AC27A00C7F593 /* UIViewController+Method.h */,
 				59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */,
 				59A59E031D499EF2001F3122 /* DVVDoubleRowToolBarView.h */,
@@ -614,6 +619,7 @@
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
+				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,

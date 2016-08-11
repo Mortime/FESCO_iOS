@@ -9,6 +9,7 @@
 #import "MMLoginController.h"
 #import "MMMainController.h"
 #import "NSString+MD5.h"
+#import "UIViewController+HUD.h"
 
 
 @interface MMLoginController ()
@@ -133,8 +134,7 @@
 
 #pragma make --- Action
 - (void)pushHomeMainController:(UIButton *)btn{
-    
-       
+
     NSLog(@"self.phone = %@",self.phoneNumTextField.text);
     
     if (self.phoneNumTextField.text == nil || [self.phoneNumTextField.text isEqualToString:@""]) {
@@ -162,9 +162,9 @@
     NSString * mdsPass = [_passwordTextField.text MD5Digest];
     
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-
+    [self showHudInView:self.view hint:NSLocalizedString(@"登录中...", @"登录中...")];
     
     [NetworkEntity postLoginWithPhotoNumber:_phoneNumTextField.text password:mdsPass deviceId:idfv deviceType:@"1" success:^(id responseObject) {
         
