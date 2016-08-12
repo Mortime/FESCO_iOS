@@ -203,6 +203,7 @@
         
         NSLog(@"failure = %@",failure);
         
+                    [MBProgressHUD hideHUDForView:self.view animated:NO];
                 ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络连接失败"];
                 [toastView show];
 //        [self showTotasViewWithMes:@"网络连接失败"];

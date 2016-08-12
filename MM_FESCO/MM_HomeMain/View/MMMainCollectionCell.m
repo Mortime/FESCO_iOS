@@ -46,13 +46,13 @@
 
         make.centerX.mas_equalTo(self.mas_centerX);
         make.centerY.mas_equalTo(self.mas_centerY);
-        make.width.mas_equalTo(@28);
+        make.width.mas_equalTo(@40);
         make.height.mas_equalTo(@33);
 
         
     }];
     [self.tittleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flagImageView.mas_bottom).offset(20);
+        make.top.mas_equalTo(self.flagImageView.mas_bottom).offset(10);
         make.centerX.mas_equalTo (self.mas_centerX);
         make.width.mas_equalTo(self.width);
         make.height.mas_equalTo(14);

@@ -43,7 +43,7 @@ static NSString *kMallID = @"MallID";
     self.titleArray  = @[@"个人信息",@"签到签退",@"考勤记录",@"休假申请",@"休假记录",@"休假审批",@"加班申请",@"加班记录",@"加班审批",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
     self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_kaoqinjilu",@"HomeFlag_Xiujiashenqing",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Jiabanjilu",@"HomeFlag_Jiabanshenpi",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"d9f5f9"];
     self.title = @"首页";
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
