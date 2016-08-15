@@ -143,6 +143,16 @@
     
     [self setCurrentPage];
     [self loadImages];
+    
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self endCycle];
+}
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    [self beginCycle];
+//}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self beginCycle];
 }
 
 #pragma mark - 设置当前显示的图片 method
