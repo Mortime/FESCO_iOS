@@ -65,7 +65,7 @@ static NSString *kMallID = @"MallID";
 - (void)initData{
 //    jsonParam={"menthodname":"getAppMenu","tokenkey":"42711...154" , "secret", "appsecret";}
     
-    NSString *menth = [NSString stringWithFormat:@"%@%@",@"menthodname",@"getAppMenu"];
+    NSString *menth = [NSString stringWithFormat:@"%@%@",@"methodname",@"getMenu"];
     NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
     NSString *resultStr = [NSString stringWithFormat:@"%@%@",menth,secret];
     
@@ -75,7 +75,7 @@ static NSString *kMallID = @"MallID";
     
     
     
-    [NetworkEntity postHomeMainListWithParamMD5:md5Str menthodname:@"getAppMenu" tokenkeyID:[UserInfoModel defaultUserInfo].token secret:@"appsecret" success:^(id responseObject) {
+    [NetworkEntity postHomeMainListWithParamMD5:md5Str menthodname:@"getMenu" tokenkeyID:[UserInfoModel defaultUserInfo].token secret:@"appsecret" success:^(id responseObject) {
         
         MMLog(@"HomeMain ----responseObject %@",responseObject);
         

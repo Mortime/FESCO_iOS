@@ -29,11 +29,8 @@
         NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getMenu.json"];
     NSLog(@"mainHomeUrlstr  %@",urlStr);
     
-    NSDictionary *param = @{@"menthodname":menthodname,
-                            @"tokenkey":tokenkey,
-                            @"secret":secret};
     
-    NSString *str = @"{'menthodname':'getAppMenu'}";
+    NSString *str = @"{'methodname':'getMenu'}";
     
     NSDictionary * dic = @{@"sign":paramMD5,
                            
