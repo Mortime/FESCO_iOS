@@ -12,6 +12,10 @@
 
 @interface NetworkEntity : NSObject
 
+
+
++ (void)postHomeMainListWithParamMD5:(NSString *)paramMD5  menthodname:(NSString *)menthodname tokenkeyID:(NSString *)tokenkey secret:(NSString *)secret success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 /**
  *  用户教练登录 返回信息描述见 获取用户详情
  *

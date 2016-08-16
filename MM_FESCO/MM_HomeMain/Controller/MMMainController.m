@@ -14,6 +14,7 @@
 #import "SignDetailController.h"
 #import "MMCycleShowImageView.h"
 #import "MMMainCollectionCell.h"
+#import "NSString+MD5.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -57,11 +58,36 @@ static NSString *kMallID = @"MallID";
     [self.view addSubview:self.collectionView];
     
 
+    [self initData];
+    
+    
+}
+- (void)initData{
+//    jsonParam={"menthodname":"getAppMenu","tokenkey":"42711...154" , "secret", "appsecret";}
+    
+    NSString *menth = [NSString stringWithFormat:@"%@%@",@"menthodname",@"getAppMenu"];
+    NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
+    NSString *resultStr = [NSString stringWithFormat:@"%@%@",menth,secret];
+    
+    NSLog(@"resultstr = ======= %@",resultStr);
+    NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
+    NSLog(@"md5Str =============== %@",md5Str);
+    
+    
+    [NetworkEntity postHomeMainListWithParamMD5:md5Str menthodname:@"getAppMenu" tokenkeyID:[UserInfoModel defaultUserInfo].token secret:@"appsecret" success:^(id responseObject) {
+        NSLog(@"HomeMain ----responseObject %@",responseObject);
+    } failure:^(NSError *failure) {
+        NSLog(@"HomeMain ----failure %@",failure);
+
+    }];
+    
+    
+    
+    
     
     
     
 }
-
 
 #pragma mark - collectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

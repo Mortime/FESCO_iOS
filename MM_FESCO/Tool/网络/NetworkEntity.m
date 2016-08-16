@@ -10,6 +10,46 @@
 
 @implementation NetworkEntity
 
+/**
+ *   首页标签信息
+ */
++ (void)postHomeMainListWithParamMD5:(NSString *)paramMD5  menthodname:(NSString *)menthodname tokenkeyID:(NSString *)tokenkey secret:(NSString *)secret success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    
+    // sign， jsonParam
+    
+
+    
+    // jsonParam={"menthodname":"getAppMenu","tokenkey":"42711...154"}
+    
+    // TMz/bhZ8WBP/V5CE7iOTGmqu42yOrSJrWSh9BXbE4ZIP+RjwgWufiWd9rjPFlIi4
+    if (!paramMD5) {
+                return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+        NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getMenu.json"];
+    NSLog(@"mainHomeUrlstr  %@",urlStr);
+    
+    NSDictionary *param = @{@"menthodname":menthodname,
+                            @"tokenkey":tokenkey,
+                            @"secret":secret};
+    
+    NSString *str = @"{'menthodname':'getAppMenu'}";
+    
+    NSDictionary * dic = @{@"sign":paramMD5,
+                           
+                           @"jsonParam":str,
+                           
+                           @"tokenkey":tokenkey
+                           
+                           };
+
+    
+    
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+
+}
+
+
 
 /**
  *  测试接口数据 GET

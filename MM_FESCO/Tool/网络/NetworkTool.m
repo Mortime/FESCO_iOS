@@ -17,9 +17,9 @@
 //#define  HOST_LINE_DOMAIN  @"http://api.epetbar.com/gutouv2"    http://11.0.142.214:8080
 
 
-#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com"
+//#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com"
 
-//#define  HOST_LINE_DOMAIN  @"http://11.0.147.115:8080/payroll"   // 接口测试
+#define  HOST_LINE_DOMAIN  @"http://11.0.147.115:8080/payroll"   // 接口测试
 
 //#define QA_TEST
 
