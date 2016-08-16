@@ -39,7 +39,7 @@ static NSString *kMallID = @"MallID";
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.titleArray  = @[@"个人信息",@"签到签退",@"考勤记录",@"休假申请",@"休假记录",@"休假审批",@"加班申请",@"加班记录",@"加班审批",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
     self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_kaoqinjilu",@"HomeFlag_Xiujiashenqing",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Jiabanjilu",@"HomeFlag_Jiabanshenpi",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
@@ -69,23 +69,23 @@ static NSString *kMallID = @"MallID";
     NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
     NSString *resultStr = [NSString stringWithFormat:@"%@%@",menth,secret];
     
-    NSLog(@"resultstr = ======= %@",resultStr);
+    MMLog(@"resultstr = ======= %@",resultStr);
     NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
-    NSLog(@"md5Str =============== %@",md5Str);
+    MMLog(@"md5Str =============== %@",md5Str);
+    
     
     
     [NetworkEntity postHomeMainListWithParamMD5:md5Str menthodname:@"getAppMenu" tokenkeyID:[UserInfoModel defaultUserInfo].token secret:@"appsecret" success:^(id responseObject) {
-        NSLog(@"HomeMain ----responseObject %@",responseObject);
+        
+        MMLog(@"HomeMain ----responseObject %@",responseObject);
+        
     } failure:^(NSError *failure) {
-        NSLog(@"HomeMain ----failure %@",failure);
+        
+        MMLog(@"HomeMain ----failure %@",failure);
 
     }];
     
-    
-    
-    
-    
-    
+
     
 }
 
