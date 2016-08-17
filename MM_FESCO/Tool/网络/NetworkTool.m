@@ -10,18 +10,11 @@
 
 #import "AFNetworking.h"
 
-#define  HOST_TEST_DAMIAN  @"http://101.200.204.240:8181/api"   // 测试服务器地址
+#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com" // 正式服务器地址
 
-//#define  HOST_LINE_DOMAIN  @"http://jzapi.yibuxueche.com/api"   // 正式服务器地址  http://api.epetbar.com/gutouv2
+#define  HOST_TEST_DAMIAN  @"http://11.0.147.115:8080/payroll"   // 测试服务器地址
 
-//#define  HOST_LINE_DOMAIN  @"http://api.epetbar.com/gutouv2"    http://11.0.142.214:8080
-
-
-//#define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com"
-
-#define  HOST_LINE_DOMAIN  @"http://11.0.147.115:8080/payroll"   // 接口测试
-
-//#define QA_TEST
+#define QA_TEST
 
 @implementation AFHttpClient
 

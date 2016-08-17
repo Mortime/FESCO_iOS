@@ -63,7 +63,7 @@
 
 
 /**
- *  用户教练登录 返回信息描述见 获取用户详情
+ *  用户登录 
  *
  *  @param photoNumber （req）  手机号
  *  @param password     (req)  密码 MD5加密后
