@@ -74,23 +74,32 @@
 - (BOOL)loginViewDic:(NSDictionary *)info
 {
     
-//    self.userID = [[info objectForKey:@"data"] objectForKey:@"userid"];
-//    self.portrait = [[info objectForKey:@"data"] objectForKey:@"headportrait"];
-//    self.name = [[info objectForKey:@"data"] objectForKey:@"name"];
-//    self.tel = [[info objectForKey:@"data"] objectForKey:@"mobile"];
     
+   /*
+    responseObject{
+        SUCCESS = success;
+        "cust_Id" = 1091;
+        "cust_Name" = test123;
+        "emp_Id" = 4403;
+        "emp_Name" = "\U5f20\U4e94";
+        token = "e72ffsla7z3y6DULSlISld8DL2yOef7Oj+DBpbuHfudSByzrZWOuelnxV+Ydshr3JebMySz3bhZ9
+        \n4dseSTLfuw==";
+    }
+    */    
     self.token = [info objectForKey:@"token"];
+    
     self.mailNum = [info objectForKey:@"MM_phoneNum"];
+    
     self.password = [info objectForKey:@"MM_password"];
     
-//    self.schoolId = [[[info objectForKey:@"data"] objectForKey:@"driveschool"] objectForKey:@"schoolid"];
-//    self.schoolName = [[[info objectForKey:@"data"] objectForKey:@"driveschool"] objectForKey:@"name"];
-//    self.complaintreminder = [[[[info objectForKey:@"data"] objectForKey:@"usersetting"] objectForKey:@"complaintreminder"] stringValue];
-//    self.newmessagereminder = [[[[info objectForKey:@"data"] objectForKey:@"usersetting"] objectForKey:@"newmessagereminder"] stringValue];
-//    self.applyreminder = [[[[info objectForKey:@"data"] objectForKey:@"usersetting"] objectForKey:@"applyreminder"] stringValue];
-//    
+    self.custId = [info objectForKey:@"cust_Id"];
     
-//    NSString * mds = [info objectForKey:@"md5Pass"];
+    self.custName = [info objectForKey:@"cust_Name"];
+    
+    self.empId = [info objectForKey:@"emp_Id"];
+    
+    self.empName = [info objectForKey:@"emp_Name"];
+    
     
     if (![[self class] isLogin]) {
         [[self class] storeData:[info JSONData] forKey:USERINFO_IDENTIFY];

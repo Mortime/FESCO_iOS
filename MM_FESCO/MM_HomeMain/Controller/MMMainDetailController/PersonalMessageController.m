@@ -8,6 +8,7 @@
 
 #import "PersonalMessageController.h"
 #import "PersonalMessageDetailCell.h"
+#import "NSString+MD5.h"
 
 #define kBottomButtonW       (((kMMWidth) - 15 - 15 - 10)/2)
 
@@ -42,10 +43,43 @@
     headerView.backgroundColor = [UIColor whiteColor];
     [headerView addSubview:self.preservationButton];
     [headerView addSubview:self.cancelButton];
+    
     self.tableView.tableFooterView = headerView;
     
     
     [self.view addSubview:self.tableView];
+    
+    [self initData];
+    
+}
+
+- (void)initData{
+    
+    
+    
+    
+     NSString *custIdStr = [NSString stringWithFormat:@"%@%@",@"cust_Id",[UserInfoModel defaultUserInfo].custId];
+     NSString *empIdStr = [NSString stringWithFormat:@"%@%@",@"emp_Id",[UserInfoModel defaultUserInfo].empId];
+    
+    
+    NSString *menth = [NSString stringWithFormat:@"%@%@",@"methodname",@"emp/loadEmpInfo.json"];
+    NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
+
+     NSString *resultStr = [NSString stringWithFormat:@"%@%@%@%@",custIdStr,empIdStr,menth,secret];
+     
+     MMLog(@"resultstr = ======= %@",resultStr);
+    MMLog(@"resultStr  ----=========  ================================  = ===============  =======%@",resultStr);
+     NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
+     MMLog(@"md5Str =============== %@",md5Str);
+    
+    
+    
+    [NetworkEntity postPersonMessageWithCustId:[UserInfoModel defaultUserInfo].custId emptId:[UserInfoModel defaultUserInfo].empId tokenkeyID:[UserInfoModel defaultUserInfo].token sign:md5Str success:^(id responseObject) {
+        MMLog(@"=============   PersonlMessagecong responseObject =  %@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"=============   PersonlMessagecong failure =  %@",failure);
+    }];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

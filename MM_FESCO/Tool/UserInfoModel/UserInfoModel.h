@@ -13,9 +13,18 @@
 //@property(nonatomic,strong)NSString * portrait;
 //@property(nonatomic,strong)NSString * name;
 //@property(nonatomic,strong)NSString * tel;
-@property(nonatomic,strong)NSString *mailNum;
-@property(nonatomic,strong)NSString *password;
+@property(nonatomic,strong)NSString *mailNum; // 用户名
+
+@property(nonatomic,strong)NSString *password;  // 用户密码
+
 @property(nonatomic,strong)NSString * token;
+
+@property(nonatomic,strong)NSString * custId;  // 公司id
+@property(nonatomic,strong)NSString * custName;
+
+@property(nonatomic,strong)NSString * empId;   // 员工id
+@property(nonatomic,strong)NSString * empName;
+
 //@property(nonatomic,strong)NSString * schoolId;
 //@property(nonatomic,strong)NSString * schoolName;
 //@property(nonatomic,strong)NSString * complaintreminder;

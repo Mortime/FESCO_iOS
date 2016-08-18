@@ -10,6 +10,8 @@
 #import "MMMainController.h"
 #import "NSString+MD5.h"
 #import "UIViewController+HUD.h"
+#import "NSData+AES.h"
+#import "NSString+BASE64.h"
 
 
 @interface MMLoginController ()
@@ -157,16 +159,23 @@
         
         return;
     }
-
     
-    NSString * mdsPass = [_passwordTextField.text MD5Digest];
+    // 密码使用AES加密
+    NSData *data = [[NSData data] AES256EncryptWithKey:_passwordTextField.text];
+    MMLog(@"data ======  ===========  = =============%@",data);
     
+    NSString *aesStr = [NSString encodeBase64Data:data];
+    MMLog(@"aesStr ======  ===========  = =============%@",aesStr);
+    
+    // 密码使用md5加密
+//    NSString * mdsPass = [_passwordTextField.text MD5Digest];
+    
+    // 获取设备的UUID
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self showHudInView:self.view hint:NSLocalizedString(@"登录中...", @"登录中...")];
     
-    [NetworkEntity postLoginWithPhotoNumber:_phoneNumTextField.text password:mdsPass deviceId:idfv deviceType:@"1" success:^(id responseObject) {
+    [NetworkEntity postLoginWithPhotoNumber:_phoneNumTextField.text password:_passwordTextField.text deviceId:idfv deviceType:@"1" success:^(id responseObject) {
         
         
         if ([[responseObject  objectForKey:@"SUCCESS"] isEqualToString:@"success"]) {
@@ -192,9 +201,9 @@
         }
         else{
             NSString *msgError = [responseObject objectForKey:@"ERROR"];
-            
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msgError];
             [toastView show];
+            [MBProgressHUD hideHUDForView:self.view animated:NO];
         }
         
 
@@ -261,7 +270,7 @@
            
            
         _phoneNumTextField.leftViewMode = UITextFieldViewModeAlways;
-        _phoneNumTextField.keyboardType = UIKeyboardTypeNumberPad;
+//        _phoneNumTextField.keyboardType = UIKeyboardTypeNumberPad;
         UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         leftView.image = [UIImage imageNamed:@""];
         
@@ -277,7 +286,7 @@
         _phoneNumTextField.layer.masksToBounds = YES;
         _phoneNumTextField.layer.cornerRadius = 5;
         
-        _phoneNumTextField.text = @"rjw20051111@126.com";
+        _phoneNumTextField.text = @"abc";
         
         //       [_phoneNumTextField.leftView SET]
     }

@@ -41,7 +41,7 @@
                            };
 
     
-    
+    NSLog(@"mainHomeUrlstrdic  %@",dic);
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 
 }
@@ -77,7 +77,7 @@
         if (!photoNumber || !password) {
             return [NetworkTool missParagramerCallBackFailure:failure];
         }
-        NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"mob/login.json"];
+        NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"login.json"];
         
         NSDictionary * dic = @{@"login_Name":photoNumber,
                                @"password":password,
@@ -92,6 +92,37 @@
     }
     
 
+/**
+ *   加载个人信息
+ */
++ (void)postPersonMessageWithCustId:(NSString *)custid emptId:(NSString *)emptId tokenkeyID:(NSString *)tokenkey   sign:(NSString *)sign  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure
+{
+    if (!custid || !emptId) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    
+    
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/loadEmpInfo.json"];
+    
+    
+    NSString *custidStr = [NSString stringWithFormat:@"'cust_Id':'%@'",custid];
+    NSString *empStr = [NSString stringWithFormat:@"'emp_Id':'%@'",emptId];
+    NSString *str = @"'methodname':'emp/loadEmpInfo.json'}";
+    
+    NSString *resultStr = [NSString stringWithFormat:@"{%@,%@,%@}",custidStr,empStr,str];
+    
+    
+    NSDictionary * dic = @{@"jsonParam":resultStr,
+                           
+                           @"sign":sign,
+                           
+                           @"tokenkey":tokenkey
+                           
 
-
+                           };
+    NSLog(@"url ------ %@, %@",resultStr,dic);
+    
+    
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
 @end

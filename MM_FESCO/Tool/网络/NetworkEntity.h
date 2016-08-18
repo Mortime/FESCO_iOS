@@ -28,7 +28,14 @@
 + (void)postLoginWithPhotoNumber:(NSString *)photoNumber password:(NSString *)password deviceId:(NSString *)deviceId deviceType:(NSString *)deviceType   success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
+/**
+ *   HomeMain ======== 加载个人信息
+ 
+ *  @param custid （req）  公司id
+ *  @param emptId     (req)  员工id
 
+ */
++ (void)postPersonMessageWithCustId:(NSString *)custid emptId:(NSString *)emptId tokenkeyID:(NSString *)tokenkey   sign:(NSString *)sign  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 ///**
