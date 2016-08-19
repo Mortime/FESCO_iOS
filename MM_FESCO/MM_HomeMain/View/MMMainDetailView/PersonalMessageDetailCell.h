@@ -10,6 +10,9 @@
 
 @interface PersonalMessageDetailCell : UITableViewCell
 
-@property (nonatomic, strong) NSString *titleStr;
+@property (nonatomic, strong) NSString *imgStr;
+
+@property (nonatomic, strong) NSString *dataStr;
+
 
 @end

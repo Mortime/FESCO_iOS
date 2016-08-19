@@ -52,10 +52,6 @@
 #endif
 
 
-// V_2.0 深色字体颜色
-#define kFEDarkTextColor RGB_Color(47,47,47)
-// V_2.0 浅色字体颜色
-#define kFELightTextColor RGB_Color(140,140,140)
 // V_2.0 Nav主色
 #define kFENavBackgroundColor RGB_Color(29,28,33)
 // V_2.0 红色
@@ -63,17 +59,15 @@
 
 
 
-// V_2.0 主背景颜色 #e8e8ed
-#define FE_MAIN_BACKGROUND_COLOR RGB_Color(232,232,237)
-// V_2.0 主题蓝色蓝色 #3d8bff (61 139 255)
-#define FE_BLUE_COLOR RGB_Color(61,139,255)
+// 主背景颜色 #323a45
+#define MM_MAIN_BACKGROUND_COLOR [UIColor colorWithHexString:@"323a45"]
 
+// 蓝色字体
+#define MM_MAIN_FONTCOLOR_BLUE [UIColor colorWithHexString:@"00b6d8"]
 
-// 白色字体颜色
-#define FE_FONTCOLOR_WHITE   RGB_Color(255,255,255)
+// 线条颜色  #414d5e
+#define MM_MAIN_LINE_COLOR [UIColor colorWithHexString:@"414d5e"]
 
-// 灰色字体颜色
-#define FE_FONTCOLOR_LIGHTWHITE   RGB_Color(185,185,185)
 
 // 数据库名称
 #define yikaojiuguodDBName @"yikaojiuguo_v20150520"
@@ -93,5 +87,6 @@
 static const CGFloat viewSlideHorizonRatio = 0.64;
 static const CGFloat viewHeightNarrowRatio = 0.80;
 static const CGFloat menuStartNarrowRatio  = 0.70;
+
 
 #endif /* PrefixHeader_pch */

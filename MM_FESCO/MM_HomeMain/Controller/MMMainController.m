@@ -58,7 +58,7 @@ static NSString *kMallID = @"MallID";
     [self.view addSubview:self.collectionView];
     
 
-    [self initData];
+//    [self initData];
     
     
 }

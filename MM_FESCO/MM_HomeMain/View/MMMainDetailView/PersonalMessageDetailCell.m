@@ -13,11 +13,13 @@
 
 @property (nonatomic ,strong) UIView *bgView;
 
-@property (nonatomic ,strong) UILabel *titleLabel;
+@property (nonatomic ,strong) UIImageView *lineImageView;
+
+@property (nonatomic ,strong) UIImageView *leftImageView;
 
 @property (nonatomic ,strong) UITextField *detailFiled;
 
-@property (nonatomic ,strong) UIImageView *lineImageView;
+
 
 @end
 
@@ -26,15 +28,16 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellAccessoryNone;
+        self.backgroundColor = [UIColor clearColor];
         [self initUI];
     }
     return self;
 }
 - (void)initUI{
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.titleLabel];
-    [self.bgView addSubview:self.detailFiled];
     [self.bgView addSubview:self.lineImageView];
+    [self.bgView addSubview:self.leftImageView];
+    [self.bgView addSubview:self.detailFiled];
 }
 - (void)awakeFromNib {
     
@@ -53,29 +56,30 @@
         make.top.mas_equalTo(self.mas_top).offset(0);
         make.left.mas_equalTo(self.mas_left).offset(0);
         make.right.mas_equalTo(self.mas_right).offset(0);
-        make.height.mas_equalTo(@105);
+        make.height.mas_equalTo(@75);
     }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.bgView.mas_top).offset(15);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(15);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(0);
-        make.height.mas_equalTo(@14);
-    }];
-    [self.detailFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(10);
-        make.left.mas_equalTo(self.titleLabel.mas_left).offset(0);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-15);
-        make.height.mas_equalTo(@40);
-    }];
-
     [self.lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(self.bgView.mas_left).offset(15);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-15);
-        make.bottom.mas_equalTo(self.bgView.mas_bottom).offset(-1);
-        make.height.mas_equalTo(@0.5);
+        make.top.mas_equalTo(self.bgView.mas_top).offset(0);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
+        make.right.mas_equalTo(self.bgView.mas_right).offset(0);
+        make.height.mas_equalTo(@1);
+    }];
+    [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.left.mas_equalTo(self.bgView.mas_left).offset(35);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.width.mas_equalTo(@20);
+        make.height.mas_equalTo(@22);
+    }];
+
+    [self.detailFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.mas_equalTo(self.leftImageView.mas_right).offset(44);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.right.mas_equalTo(self.bgView.mas_right).offset(0);
+        make.height.mas_equalTo(self.bgView.mas_height);
     }];
 
 }
@@ -84,41 +88,46 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor  =  RGB_Color(246, 246, 246);
+        _bgView.backgroundColor  =  [UIColor clearColor];
         
     }
     return _bgView;
 }
 
-- (UILabel *)titleLabel{
-    if (_titleLabel == nil) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textColor = RGB_Color(72, 72, 72);
-        
+- (UIImageView *)lineImageView{
+    if (_lineImageView == nil) {
+        _lineImageView = [[UIImageView alloc] init];
+        _lineImageView.backgroundColor = MM_MAIN_LINE_COLOR;
     }
-    return _titleLabel;
+    return _lineImageView;
+}
+- (UIImageView *)leftImageView{
+    if (_leftImageView == nil) {
+        _leftImageView = [[UIImageView alloc] init];
+        _leftImageView.backgroundColor = [UIColor clearColor];
+    }
+    return _leftImageView;
 }
 - (UITextField *)detailFiled{
     if (_detailFiled == nil ) {
         _detailFiled = [[UITextField alloc] init];
-        _detailFiled.backgroundColor = RGB_Color(246, 246, 246);
-        _detailFiled.layer.cornerRadius = 5;
-        _detailFiled.layer.masksToBounds = YES;
-        _detailFiled.layer.borderColor = RGB_Color(72, 72, 72).CGColor;
-        _detailFiled.layer.borderWidth = 1.f;
+        _detailFiled.placeholder = @"姓名";
+        _detailFiled.text = @"王宝强";
+        [_detailFiled setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+        [_detailFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
+        _detailFiled.font = [UIFont systemFontOfSize:15];
+        _detailFiled.textColor = [UIColor whiteColor];
+        _detailFiled.backgroundColor = [UIColor clearColor];
+
         
     }
     return _detailFiled;
 }
-- (UIImageView *)lineImageView{
-    if (_lineImageView == nil) {
-        _lineImageView = [[UIImageView alloc] init];
-        _lineImageView.backgroundColor = [UIColor blackColor];
-    }
-    return _lineImageView;
+#pragma mark ---- 
+- (void)setImgStr:(NSString *)imgStr{
+    self.leftImageView.image = [UIImage imageNamed:imgStr];
 }
-- (void)setTitleStr:(NSString *)titleStr{
-    self.titleLabel.text = titleStr;
+- (void)setDataStr:(NSString *)dataStr{
+    self.detailFiled.text = dataStr;
 }
 @end

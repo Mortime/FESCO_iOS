@@ -331,7 +331,7 @@
 - (UIButton *)loginButton {
     if (_loginButton == nil) {
         _loginButton                 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.backgroundColor = [UIColor colorWithHexString:@"00b6d8"];;
+        _loginButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         _loginButton.titleLabel.font = [UIFont systemFontOfSize:16];

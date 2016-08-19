@@ -9,12 +9,15 @@
 #import "PersonalMessageController.h"
 #import "PersonalMessageDetailCell.h"
 #import "NSString+MD5.h"
+#import "PersonalMessageHeaderView.h"
 
-#define kBottomButtonW       (((kMMWidth) - 15 - 15 - 10)/2)
+#define kBottomButtonW     (kMMWidth/2)
 
 @interface PersonalMessageController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
+
+@property (nonatomic, strong) NSArray *imgArray;
 
 @property (nonatomic, strong) NSArray *dataArray;
 
@@ -36,17 +39,22 @@
     [super viewDidLoad];
     
     self.title = @"个人信息";
-    self.dataArray  = @[@"姓名",@"性别",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
-    self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *headerView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 105)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    [headerView addSubview:self.preservationButton];
-    [headerView addSubview:self.cancelButton];
+    self.imgArray  = @[@"PersonalMes_Landline",@"PersonalMes_Mobile",@"PersonalMes_weixin",@"PersonalMes_Mail",@"PersonalMes_Address",@"PersonalMes_MailCode"];
     
-    self.tableView.tableFooterView = headerView;
+    self.dataArray  = @[@"座机",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
+    self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+    
+    PersonalMessageHeaderView *headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 131)];
+    self.tableView.tableHeaderView = headerView;
     
     
+    UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50, self.view.width, 50)];
+    footerView.backgroundColor = [UIColor clearColor];
+    [footerView addSubview:self.preservationButton];
+    [footerView addSubview:self.cancelButton];
+    
+    [self.view addSubview:footerView];
     [self.view addSubview:self.tableView];
     
     [self initData];
@@ -91,7 +99,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 105;
+    return 75;
 }
 
 
@@ -105,8 +113,8 @@
     if (!cell) {
         cell = [[PersonalMessageDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mainCellID];
     }
-    
-    cell.titleStr = self.dataArray[indexPath.row];
+    cell.imgStr = self.imgArray[indexPath.row];
+    cell.dataStr = self.dataArray[indexPath.row];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -132,7 +140,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 50 - 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -147,28 +155,24 @@
 - (UIButton *)preservationButton{
     if (_preservationButton == nil) {
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _preservationButton.frame = CGRectMake(15, 20, kBottomButtonW, 40);
+        _preservationButton.frame = CGRectMake(0, 0, kBottomButtonW, 50);
         [_preservationButton setTitle:@"保存修改" forState:UIControlStateNormal];
-        [_preservationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_preservationButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
         [_preservationButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
-        [_preservationButton setBackgroundColor:RGB_Color(65, 126, 159)];
+        [_preservationButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         
-        _preservationButton.layer.masksToBounds = YES;
-        _preservationButton.layer.cornerRadius = 10;
     }
     return _preservationButton;
 }
 - (UIButton *)cancelButton{
     if (_cancelButton == nil) {
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame) + 5, 20, kBottomButtonW, 40);
+        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame), 0, kBottomButtonW, 50);
         [_cancelButton setTitle:@"取消修改" forState:UIControlStateNormal];
-        [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(didCancelButton:) forControlEvents:UIControlEventTouchUpInside];
-        [_cancelButton setBackgroundColor:RGB_Color(65, 126, 159)];
+        [_cancelButton setBackgroundColor:[UIColor clearColor]];
         
-        _cancelButton.layer.masksToBounds = YES;
-        _cancelButton.layer.cornerRadius = 10;
     }
     return _cancelButton;
 }

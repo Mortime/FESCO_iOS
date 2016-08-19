@@ -20,6 +20,7 @@
 		597762301D489AE000BD8472 /* MM_FESCOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977622F1D489AE000BD8472 /* MM_FESCOTests.m */; };
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
+		5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */; };
 		5996FFB01D58163D0005307C /* SignDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFAF1D58163D0005307C /* SignDetailController.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
@@ -104,6 +105,8 @@
 		5977623C1D489AE000BD8472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5977624E1D48ABCB00BD8472 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
+		5981A94F1D66D8F700DAC097 /* PersonalMessageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageHeaderView.h; sourceTree = "<group>"; };
+		5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageHeaderView.m; sourceTree = "<group>"; };
 		5996FFAE1D58163D0005307C /* SignDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignDetailController.h; sourceTree = "<group>"; };
 		5996FFAF1D58163D0005307C /* SignDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignDetailController.m; sourceTree = "<group>"; };
 		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "../SafeDic/NSString+MD5.h"; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 				59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */,
 				59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */,
 				59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */,
+				5981A94F1D66D8F700DAC097 /* PersonalMessageHeaderView.h */,
+				5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */,
 			);
 			path = MMMainDetailView;
 			sourceTree = "<group>";
@@ -689,6 +694,7 @@
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
 				59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
+				5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
