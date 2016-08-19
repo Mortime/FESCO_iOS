@@ -8,7 +8,7 @@
 
 #import "PersonalMessageDetailCell.h"
 
-@interface PersonalMessageDetailCell ()
+@interface PersonalMessageDetailCell () <UITextFieldDelegate>
 
 
 @property (nonatomic ,strong) UIView *bgView;
@@ -29,6 +29,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellAccessoryNone;
         self.backgroundColor = [UIColor clearColor];
+        self.detailFiled.delegate = self;
         [self initUI];
     }
     return self;
@@ -122,6 +123,13 @@
         
     }
     return _detailFiled;
+}
+#pragma mark ---- UITextFileDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.textColor = MM_MAIN_FONTCOLOR_BLUE;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    textField.textColor = [UIColor whiteColor];
 }
 #pragma mark ---- 
 - (void)setImgStr:(NSString *)imgStr{
