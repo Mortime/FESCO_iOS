@@ -73,4 +73,21 @@
 + (CGFloat)autoWidthWithString:(NSString *)string
                          Font:(UIFont *)font;
 
+/**
+ *  一个字典按key值升序排序,然后根据keyValuekeyVale...keyValuekeyVale拼成字符串,并返回字符串
+ *
+ *  @param Dictionary：字典
+ *
+ */
++ (NSString *)sortKeyWith:(NSDictionary *)dic;
+
+
+
+/**
+ *  将json格式转换成json字符串   @"'methodname':'emp/loadEmpInfo.json', 'tonnnn':'iiiiiiiii' }"
+ *
+ *  @param Dictionary：字典
+ *
+ */
++ (NSString *)jsonToJsonStingWith:(NSDictionary *)dic;
 @end

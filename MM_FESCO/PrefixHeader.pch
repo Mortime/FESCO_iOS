@@ -26,6 +26,7 @@
 #import "NetworkEntity.h"
 #import "UserInfoModel.h"
 #import "UIViewController+Method.h"
+#import "NSString+Helper.h"
 
 
 

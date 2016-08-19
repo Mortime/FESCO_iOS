@@ -136,6 +136,17 @@
 
 #pragma make --- Action
 - (void)pushHomeMainController:(UIButton *)btn{
+    
+    
+    NSDictionary *param  = @{@"cust_Id": @"zhang",
+                             @"emp_Id":@"yatao",
+                             @"methodname":@"emp/loadEmpInfo.json"};
+    NSString *re = [NSString jsonToJsonStingWith:param];
+
+    
+    
+    return;
+    
 
     NSLog(@"self.phone = %@",self.phoneNumTextField.text);
     

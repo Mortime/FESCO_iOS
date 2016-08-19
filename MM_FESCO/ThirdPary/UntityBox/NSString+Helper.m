@@ -8,6 +8,10 @@
 
 #import "NSString+Helper.h"
 
+#import "NSString+MD5.h"
+
+
+
 @implementation NSString (Helper)
 
 #pragma mark 是否空字符串
@@ -104,5 +108,70 @@
                                          attributes:fontDict context:nil].size.width;
     return newFloat;
 }
+#pragma mark ---- 个字典按key值升序排序,然后根据keyValuekeyVale...keyValuekeyVale拼成字符串,并返回字符串
++ (NSString *)sortKeyWith:(NSDictionary *)dic{
+    /*
+     enum{
+     NSCaseInsensitiveSearch = 1,//不区分大小写比较
+     NSLiteralSearch = 2,//区分大小写比较
+     NSBackwardsSearch = 4,//从字符串末尾开始搜索
+     NSAnchoredSearch = 8,//搜索限制范围的字符串
+     NSNumbericSearch = 64//按照字符串里的数字为依据，算出顺序。例如 Foo2.txt < Foo7.txt < Foo25.txt
+     //以下定义高于 mac os 10.5 或者高于 iphone 2.0 可用
+     ,
+     NSDiacriticInsensitiveSearch = 128,//忽略 "-" 符号的比较
+     NSWidthInsensitiveSearch = 256,//忽略字符串的长度，比较出结果
+     NSForcedOrderingSearch = 512//忽略不区分大小写比较的选项，并强制返回 NSOrderedAscending 或者 NSOrderedDescending
+     //以下定义高于 iphone 3.2 可用
+     ,
+     NSRegularExpressionSearch = 1024//只能应用于 rangeOfString:..., stringByReplacingOccurrencesOfString:...和 replaceOccurrencesOfString:... 方法。使用通用兼容的比较方法，如果设置此项，可以去掉 NSCaseInsensitiveSearch 和 NSAnchoredSearch
+     }
+     */
+    
+    
+    
+    
+    
+    // NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
+    NSMutableDictionary *mutableDic = dic.mutableCopy;
+    [mutableDic setValue:@"appsecret" forKey:@"secret"];
+    NSArray *allKey = [mutableDic allKeys];
+    MMLog(@"allKey  排序前 = %@",allKey);
+    // 对key进行排序
+    NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|
+    NSWidthInsensitiveSearch|NSForcedOrderingSearch;
+    NSComparator sort = ^(NSString *obj1,NSString *obj2){
+        NSRange range = NSMakeRange(0,obj1.length);
+        return [obj1 compare:obj2 options:comparisonOptions range:range];
+    };
+    NSArray *resultArray = [allKey sortedArrayUsingComparator:sort];
+    MMLog(@"resultArray2  排序后 = %@",resultArray);
+    // 根据keyValuekeyVale...keyValuekeyVale拼成字符串
+    NSString *resultStr = @"";
+    for (NSString *keyStr in resultArray) {
+        NSString *valueStr = [mutableDic objectForKey:keyStr];
+        resultStr = [NSString stringWithFormat:@"%@%@%@",resultStr,keyStr,valueStr];
+    }
+    MMLog(@" sort =======   =======    resultStr ========%@",resultStr);
+    NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
+    MMLog(@" md5Str =======   =======    md5Str ========%@",md5Str);
+    return md5Str;
+}
+#pragma mark ----- 将json格式转换成json字符串   @"'methodname':'emp/loadEmpInfo.json', 'tonnnn':'iiiiiiiii' }"
++ (NSString *)jsonToJsonStingWith:(NSDictionary *)dic{
+    
+    NSString *resultStr = @"";
+    NSArray *allKey = [dic allKeys];
+    for (NSString *key in allKey) {
+        NSString *valueStr = [dic objectForKey:key];
+        NSString *mignhtStr = [NSString stringWithFormat:@"'%@':'%@'",key,valueStr];
+        resultStr = [NSString stringWithFormat:@"%@,%@",resultStr,mignhtStr];
+    }
+    
+//    MMLog(@"00000000000000 ===========  re %@",resultStr);
+    return resultStr;
+}
+
+
 
 @end
