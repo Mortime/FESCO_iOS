@@ -71,10 +71,10 @@
     MMLog(@"resultStr  ----=========  ================================  = ===============  =======%@",resultStr);
      NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
      MMLog(@"md5Str =============== %@",md5Str);
-    NSDictionary *param  = @{@"cust_Id": [UserInfoModel defaultUserInfo].custId,
-                             @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-                             @"methodname":@"emp/loadEmpInfo.json"};
-    NSString *re = [NSString sortKeyWith:param];
+//    NSDictionary *param  = @{@"cust_Id": [UserInfoModel defaultUserInfo].custId,
+//                             @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+//                             @"methodname":@"emp/loadEmpInfo.json"};
+//    NSString *re = [NSString sortKeyWith:param];
     
     
     [NetworkEntity postPersonMessageWithCustId:[UserInfoModel defaultUserInfo].custId emptId:[UserInfoModel defaultUserInfo].empId tokenkeyID:[UserInfoModel defaultUserInfo].token sign:md5Str success:^(id responseObject) {

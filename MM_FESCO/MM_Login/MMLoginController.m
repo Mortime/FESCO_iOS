@@ -138,17 +138,17 @@
 - (void)pushHomeMainController:(UIButton *)btn{
     
     
-    NSDictionary *param  = @{@"cust_Id": @"zhang",
-                             @"emp_Id":@"yatao",
-                             @"methodname":@"emp/loadEmpInfo.json"};
-    NSString *re = [NSString jsonToJsonStingWith:param];
-
-    
-    
-    return;
-    
-
-    NSLog(@"self.phone = %@",self.phoneNumTextField.text);
+//    NSDictionary *param  = @{@"cust_Id": @"zhang",
+//                             @"emp_Id":@"yatao",
+//                             @"methodname":@"emp/loadEmpInfo.json"};
+//    NSString *re = [NSString jsonToJsonStingWith:param];
+//
+//    
+//    
+//    return;
+//    
+//
+//    NSLog(@"self.phone = %@",self.phoneNumTextField.text);
     
     if (self.phoneNumTextField.text == nil || [self.phoneNumTextField.text isEqualToString:@""]) {
 //        [self showTotasViewWithMes:@"请输入密码"];
@@ -229,16 +229,6 @@
 //        [self showTotasViewWithMes:@"网络连接失败"];
         
     }];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
 

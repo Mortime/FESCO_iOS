@@ -42,8 +42,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MMLoginController *mainVC = [[MMLoginController alloc] init];
-    self.window.rootViewController = mainVC;
+    
+    if ([UserInfoModel  isLogin]) {
+        
+        MMMainController *mainVC = [[MMMainController alloc] init];
+        UINavigationController *NC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        self.window.rootViewController = NC;
+
+    }else{
+        
+        MMLoginController *loginVC = [[MMLoginController alloc] init];
+        self.window.rootViewController = loginVC;
+    }
+    
     
     	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
