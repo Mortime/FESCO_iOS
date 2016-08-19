@@ -19,8 +19,6 @@
 
 @property (nonatomic ,strong) UITextField *detailFiled;
 
-
-
 @end
 
 @implementation PersonalMessageDetailCell
@@ -78,7 +76,7 @@
     [self.detailFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.leftImageView.mas_right).offset(44);
-        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY).offset(2);
         make.right.mas_equalTo(self.bgView.mas_right).offset(0);
         make.height.mas_equalTo(self.bgView.mas_height);
     }];

@@ -8,7 +8,7 @@
 
 #import "PersonalMessageHeaderView.h"
 
-@interface PersonalMessageHeaderView ()
+@interface PersonalMessageHeaderView () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -38,6 +38,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.nameTextFiled.delegate = self;
+        self.sexTextFiled.delegate = self;
         [self initUI];
     }
     return self;
@@ -160,6 +162,14 @@
     }];
 
 
+}
+
+#pragma mark ---- UITextFileDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.textColor = MM_MAIN_FONTCOLOR_BLUE;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    textField.textColor = [UIColor whiteColor];
 }
 #pragma mark ----- icon
 - (UIView *)bgView{
