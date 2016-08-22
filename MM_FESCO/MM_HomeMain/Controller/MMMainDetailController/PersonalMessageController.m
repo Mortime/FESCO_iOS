@@ -46,6 +46,7 @@
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     
     PersonalMessageHeaderView *headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 131)];
+    headerView.paramentVC = self;
     self.tableView.tableHeaderView = headerView;
     
     

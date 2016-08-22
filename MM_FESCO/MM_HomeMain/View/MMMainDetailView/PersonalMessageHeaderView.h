@@ -10,4 +10,5 @@
 
 @interface PersonalMessageHeaderView : UIView
 
+@property (nonatomic, strong) UIViewController *paramentVC;
 @end

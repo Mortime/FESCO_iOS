@@ -7,8 +7,9 @@
 //
 
 #import "PersonalMessageHeaderView.h"
+#import "DVVImagePickerControllerManager.h"
 
-@interface PersonalMessageHeaderView () <UITextFieldDelegate>
+@interface PersonalMessageHeaderView () <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -32,7 +33,13 @@
 
 @property (nonatomic, strong) UIButton *flagButton;
 
+@property (strong, nonatomic) UIPickerView *pickerView;
+
+@property (strong, nonatomic) NSArray *dataArray;
+
+
 @end
+
 
 @implementation PersonalMessageHeaderView
 
@@ -59,7 +66,18 @@
     [self.sexBG addSubview:self.sexLabel];
     [self.sexBG addSubview:self.sexTextFiled];
     [self.sexBG addSubview:self.flagButton];
+    
+    
+    self.sexTextFiled.inputView = self.pickerView;
+    
+    UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
+    [self.imageView addGestureRecognizer:tapGesRe];
 
+
+}
+
+- (void)selectIcon:(UIGestureRecognizer *)ges{
+     [DVVImagePickerControllerManager showImagePickerControllerFrom:self.paramentVC delegate:self];
 }
 - (void)layoutSubviews{
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -171,6 +189,74 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     textField.textColor = [UIColor whiteColor];
 }
+#pragma mark ------ UIPickViewDelegate
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.dataArray.count;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.dataArray[row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSString *resultString = self.dataArray[row];
+    self.sexTextFiled.text = resultString;
+    
+}
+#pragma mark - imagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *photoImage = [info valueForKey:UIImagePickerControllerEditedImage];
+    NSData *photeoData = UIImageJPEGRepresentation(photoImage, 0.5);
+    self.imageView.image = photoImage;
+    
+//    __weak typeof(self) weakself = self;
+//    __block NSData *gcdPhotoData = photeoData;
+//    NSString *qiniuUrl = [NSString stringWithFormat:BASEURL,kQiniuUpdateUrl];
+//    [JENetwoking startDownLoadWithUrl:qiniuUrl postParam:nil WithMethod:JENetworkingRequestMethodGet withCompletion:^(id data) {
+//        
+//        NSDictionary *dataDic = data;
+//        NSString *qiniuToken = dataDic[@"data"];
+//        QNUploadManager *upLoadManager = [[QNUploadManager alloc] init];
+//        NSString *keyUrl = [NSString stringWithFormat:@"%@-%@.png",[NSString currentTimeDay],[AcountManager manager].userid];
+//        
+//        [upLoadManager putData:gcdPhotoData key:keyUrl token:qiniuToken complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+//            if (info) {
+//                
+//                NSString *upImageUrl = [NSString stringWithFormat:kQiniuImageUrl,key];
+//                NSString *updateUserInfoUrl = [NSString stringWithFormat:BASEURL,@"userinfo/updateuserinfo"];
+//                NSDictionary *headPortrait  = @{@"originalpic":upImageUrl,@"thumbnailpic":@"",@"width":@"",@"height":@""};
+//                
+//                NSDictionary *dicParam = @{@"headportrait":[JsonTransformManager dictionaryTransformJsonWith:headPortrait],@"userid":[AcountManager manager].userid};
+//                [JENetwoking startDownLoadWithUrl:updateUserInfoUrl postParam:dicParam WithMethod:JENetworkingRequestMethodPost withCompletion:^(id data) {
+//                    NSDictionary *dataParam = data;
+//                    NSNumber *messege = dataParam[@"type"];
+//                    if (messege.intValue == 1) {
+//                        [self showTotasViewWithMes:@"修改成功"];
+//                        [AcountManager saveUserHeadImageUrl:upImageUrl];
+//                        [weakself.iconImageView sd_setImageWithURL:[NSURL URLWithString:[AcountManager manager].userHeadImageUrl] placeholderImage:[UIImage imageWithData:gcdPhotoData]];
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:YBNotif_ChangeUserPortrait object:nil];
+//                        
+//                    }else {
+//                        [self obj_showTotasViewWithMes:@"修改失败"];
+//                        
+//                        return;
+//                    }
+//                }];
+//            }
+//        } option:nil];
+//    }];
+}
+#pragma mark ----- Acction
+- (void)didClickSex:(UIButton *)btn{
+    [self.sexTextFiled becomeFirstResponder];
+}
 #pragma mark ----- icon
 - (UIView *)bgView{
     if (_bgView == nil) {
@@ -186,6 +272,7 @@
         _bgImageView.backgroundColor = [UIColor whiteColor];
         _bgImageView.layer.masksToBounds = YES;
         _bgImageView.layer.cornerRadius = 35;
+        _bgImageView.userInteractionEnabled = YES;
     }
     return _bgImageView;
 }
@@ -195,6 +282,7 @@
         _imageView.backgroundColor = [UIColor cyanColor];
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.cornerRadius = 32.5;
+        _imageView.userInteractionEnabled = YES;
     }
     return _imageView;
 }
@@ -278,8 +366,25 @@
     if (_flagButton == nil) {
         _flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_flagButton setBackgroundImage:[UIImage imageNamed:@"PersonalMes_FlagButton"] forState:UIControlStateNormal];
+        [_flagButton addTarget:self action:@selector(didClickSex:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _flagButton;
+}
+
+- (NSArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = @[@"男",@"女"];
+    }
+    return _dataArray;
+}
+- (UIPickerView *)pickerView {
+    if (_pickerView == nil) {
+        _pickerView = [[UIPickerView alloc] init];
+        _pickerView.delegate = self;
+        _pickerView.dataSource = self;
+        _pickerView.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+    }
+    return _pickerView;
 }
 @end

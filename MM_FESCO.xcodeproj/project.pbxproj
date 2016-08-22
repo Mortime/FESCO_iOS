@@ -53,6 +53,9 @@
 		59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */; };
 		59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
+		59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */; };
+		59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */; };
+		59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */; };
 		59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */; };
 		59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
@@ -174,6 +177,12 @@
 		59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageDetailCell.m; sourceTree = "<group>"; };
 		59D3FE971D507C62002CCCA4 /* NetworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEntity.h; sourceTree = "<group>"; };
 		59D3FE981D507C62002CCCA4 /* NetworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEntity.m; sourceTree = "<group>"; };
+		59E729EA1D6A8AD700920CC1 /* DVVImagePickerControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVImagePickerControllerManager.h; sourceTree = "<group>"; };
+		59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVImagePickerControllerManager.m; sourceTree = "<group>"; };
+		59E729ED1D6A8B6200920CC1 /* PFActionSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFActionSheetView.h; sourceTree = "<group>"; };
+		59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFActionSheetView.m; sourceTree = "<group>"; };
+		59E729F01D6A8C0300920CC1 /* BLPFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPFAlertView.h; sourceTree = "<group>"; };
+		59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPFAlertView.m; sourceTree = "<group>"; };
 		59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaveApplicationDetailController.h; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.h; sourceTree = "<group>"; };
 		59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveApplicationDetailController.m; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.m; sourceTree = "<group>"; };
 		59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
@@ -342,6 +351,8 @@
 			children = (
 				59A59DF11D499937001F3122 /* ToastAlertView.h */,
 				59A59DF21D499937001F3122 /* ToastAlertView.m */,
+				59E729F01D6A8C0300920CC1 /* BLPFAlertView.h */,
+				59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */,
 			);
 			path = ToastAlertView;
 			sourceTree = "<group>";
@@ -364,6 +375,10 @@
 		59A59E021D499EF2001F3122 /* UntityBox */ = {
 			isa = PBXGroup;
 			children = (
+				59E729ED1D6A8B6200920CC1 /* PFActionSheetView.h */,
+				59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */,
+				59E729EA1D6A8AD700920CC1 /* DVVImagePickerControllerManager.h */,
+				59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */,
 				59C90C301D5C27F900CE0385 /* NSDate+Category.h */,
 				59C90C311D5C27F900CE0385 /* NSDate+Category.m */,
 				59C90C331D5C281700CE0385 /* NSDateFormatter+Category.h */,
@@ -678,6 +693,7 @@
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
+				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
@@ -685,6 +701,7 @@
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
 				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
+				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
@@ -712,6 +729,7 @@
 				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
+				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,

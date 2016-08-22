@@ -19,6 +19,8 @@
 
 @property (nonatomic ,strong) UITextField *detailFiled;
 
+
+
 @end
 
 @implementation PersonalMessageDetailCell
@@ -122,6 +124,8 @@
     }
     return _detailFiled;
 }
+
+
 #pragma mark ---- UITextFileDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.textColor = MM_MAIN_FONTCOLOR_BLUE;
@@ -129,6 +133,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     textField.textColor = [UIColor whiteColor];
 }
+
 #pragma mark ---- 
 - (void)setImgStr:(NSString *)imgStr{
     self.leftImageView.image = [UIImage imageNamed:imgStr];
