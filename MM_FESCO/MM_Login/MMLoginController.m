@@ -151,7 +151,7 @@
 //    NSLog(@"self.phone = %@",self.phoneNumTextField.text);
     
     if (self.phoneNumTextField.text == nil || [self.phoneNumTextField.text isEqualToString:@""]) {
-//        [self showTotasViewWithMes:@"请输入密码"];
+//        [self showTotasViewWithMes:@"请输入密码"]; a
         
         
         
@@ -287,7 +287,7 @@
         _phoneNumTextField.layer.masksToBounds = YES;
         _phoneNumTextField.layer.cornerRadius = 5;
         
-        _phoneNumTextField.text = @"abc";
+//        _phoneNumTextField.text = @"abc";
         
         //       [_phoneNumTextField.leftView SET]
     }
@@ -323,7 +323,7 @@
         _passwordTextField.layer.masksToBounds = YES;
         _passwordTextField.layer.cornerRadius = 5;
         
-        _passwordTextField.text = @"test123";
+//        _passwordTextField.text = @"test123";
         
     }
     return _passwordTextField;

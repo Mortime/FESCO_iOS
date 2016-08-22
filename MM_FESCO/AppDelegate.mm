@@ -43,7 +43,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    if (![UserInfoModel  isLogin]) {
+    if ([UserInfoModel  isLogin]) {
         
         MMMainController *mainVC = [[MMMainController alloc] init];
         UINavigationController *NC = [[UINavigationController alloc] initWithRootViewController:mainVC];
