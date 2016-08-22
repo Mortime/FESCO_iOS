@@ -109,7 +109,7 @@
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.bgImageView.mas_right).offset(20);
         make.right.mas_equalTo(self.bgView.mas_right);
-        make.height.mas_equalTo(@65);
+        make.height.mas_equalTo(@60);
         
     }];
     
@@ -146,7 +146,7 @@
         make.top.mas_equalTo(self.lineView.mas_bottom);
         make.left.mas_equalTo(self.nameBG.mas_left);
         make.right.mas_equalTo(self.nameBG.mas_right);
-        make.height.mas_equalTo(@65);
+        make.height.mas_equalTo(@60);
         
     }];
     [self.sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {

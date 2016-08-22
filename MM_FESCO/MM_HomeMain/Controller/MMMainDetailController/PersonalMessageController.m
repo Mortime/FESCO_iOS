@@ -50,7 +50,7 @@
     self.dataArray  = @[@"座机",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     
-    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 131)];
+    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 121)];
     _headerView.paramentVC = self;
     self.tableView.tableHeaderView = _headerView;
     
@@ -120,7 +120,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75;
+    return 60;
 }
 
 
@@ -137,6 +137,7 @@
     cell.imgStr = self.imgArray[indexPath.row];
     cell.dataStr = self.dataArray[indexPath.row];
     cell.index = indexPath.row;
+    cell.detailFiled.tag = 100 + indexPath.row;
     cell.personalMessageModel = self.personalMessageModel;
     return cell;
 }

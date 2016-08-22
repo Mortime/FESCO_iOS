@@ -17,7 +17,10 @@
 
 @property (nonatomic ,strong) UIImageView *leftImageView;
 
-@property (nonatomic ,strong) UITextField *detailFiled;
+
+
+
+@property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
 
 
 
@@ -57,7 +60,7 @@
         make.top.mas_equalTo(self.mas_top).offset(0);
         make.left.mas_equalTo(self.mas_left).offset(0);
         make.right.mas_equalTo(self.mas_right).offset(0);
-        make.height.mas_equalTo(@75);
+        make.height.mas_equalTo(@60);
     }];
     [self.lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -119,19 +122,29 @@
         _detailFiled.font = [UIFont systemFontOfSize:15];
         _detailFiled.textColor = [UIColor whiteColor];
         _detailFiled.backgroundColor = [UIColor clearColor];
+        
 
         
     }
     return _detailFiled;
 }
 
+- (void)dvv_setTextFieldDidEndEditingBlock:(DVVSearchViewUITextFieldDelegateBlock)handle {
+    _didEndEditingBlock = handle;
+}
 
 #pragma mark ---- UITextFileDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.textColor = MM_MAIN_FONTCOLOR_BLUE;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    MMLog(@"textField = %lu",textField.tag);
     textField.textColor = [UIColor whiteColor];
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(textField);
+    }
+
 }
 
 #pragma mark ----  data
