@@ -44,14 +44,16 @@
     
     self.mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64 + 150, self.view.width, 300)];
     _mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+    _mapView.userTrackingMode = BMKUserTrackingModeFollow;//设置定位的状态
     _mapView.showsUserLocation = YES;//显示定位图层
     _mapView.compassPosition = CGPointMake(100, 100);
+    _mapView.zoomLevel = 19.1; //地图等级，数字越大越清晰
     [self.view addSubview:self.mapView];
     
     //初始化BMKLocationService
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
+    [BMKLocationService setLocationDistanceFilter:10];
     //启动LocationService
     [_locService startUserLocationService];
 
