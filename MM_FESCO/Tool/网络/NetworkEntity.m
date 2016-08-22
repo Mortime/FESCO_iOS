@@ -125,4 +125,53 @@
     
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 }
+
+/**
+ *   HomeMain ======== 个人信息修改
+ 
+ *  @param emptId     (req)  员工id
+ 
+ */
+
++ (void)postSubmitPersonMessageWithEmpId:(NSString *)empId empName:(NSString *)empName  gender:(NSString *)gender mobile:(NSString *)mobile phone:(NSString *)phone weixinid:(NSString *)weixinid email:(NSString *)email address:(NSString *)address zipcode:(NSString *)zipcode  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    if (!empId ) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    
+    
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/updateEmpInfo.json"];
+    
+        NSDictionary *param  = @{@"emp_Name":empName,
+                                 @"emp_Id":empId,
+                                 @"methodname":@"emp/updateEmpInfo.json",
+                                 @"gender":gender,
+                                 @"phone":phone,
+                                 @"mobile":mobile,
+                                 @"email":email,
+                                 @"weixinid":weixinid,
+                                 @"address":address,
+                                 @"zipcode":zipcode,
+                                };
+    NSString *sign = [NSString sortKeyWith:param];
+    NSString *jsonParamStr = [NSString jsonToJsonStingWith:param];
+    
+    
+    
+    
+    
+
+    
+    NSDictionary * dic = @{@"jsonParam":jsonParamStr,
+                           
+                           @"sign":sign,
+                           
+                           @"tokenkey":[UserInfoModel defaultUserInfo].token
+                           
+                           };
+    NSLog(@"url ------ %@",dic);
+    
+    
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+
+}
 @end

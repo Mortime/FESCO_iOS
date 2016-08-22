@@ -74,7 +74,7 @@
                          Font:(UIFont *)font;
 
 /**
- *  一个字典按key值升序排序,然后根据keyValuekeyVale...keyValuekeyVale拼成字符串,并返回字符串
+ *  一个字典按key值升序排序,然后根据keyValuekeyVale...keyValuekeyVale拼成字符串,并返回字符串 sign
  *
  *  @param Dictionary：字典
  *

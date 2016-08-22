@@ -31,11 +31,50 @@
 /**
  *   HomeMain ======== 加载个人信息
  
+ Submit
+
+ 
  *  @param custid （req）  公司id
  *  @param emptId     (req)  员工id
 
  */
 + (void)postPersonMessageWithCustId:(NSString *)custid emptId:(NSString *)emptId tokenkeyID:(NSString *)tokenkey   sign:(NSString *)sign  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+/**
+ *   HomeMain ======== 个人信息修改
+ 
+ *  @param emp_Id    (req)  员工id
+ 
+  *  @param emp_Name     (req)  员工姓名
+ 
+  *  @param gender     (req)  员工性别
+ 
+  *  @param mobile     (req)  员工电话
+ 
+ *  @param phone     (req)  员工手机
+ 
+  *  @param weixinid     (req)  员工微信号
+ 
+  *  @param email     (req)  员工邮箱
+ 
+ *  @param address     (req)  员工地址
+ 
+ *  @param zipcode     (req)  员工邮编
+ 
+ emp_Id, emp_Name, gender, mobile, phone, weixinid, email, address, zipcode
+ 
+ */
+
++ (void)postSubmitPersonMessageWithEmpId:(NSString *)empId empName:(NSString *)empName  gender:(NSString *)gender mobile:(NSString *)mobile phone:(NSString *)phone weixinid:(NSString *)weixinid email:(NSString *)email address:(NSString *)address zipcode:(NSString *)zipcode  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+
+
+
+
 
 
 ///**
