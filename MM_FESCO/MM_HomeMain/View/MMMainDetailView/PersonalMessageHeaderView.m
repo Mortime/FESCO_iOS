@@ -21,7 +21,6 @@
 
 @property (nonatomic, strong) UILabel *nameLabel;
 
-@property (nonatomic, strong) UITextField *nameTextFiled;
 
 @property (nonatomic, strong) UIView *lineView;
 
@@ -29,7 +28,6 @@
 
 @property (nonatomic, strong) UILabel *sexLabel;
 
-@property (nonatomic, strong) UITextField *sexTextFiled;
 
 @property (nonatomic, strong) UIButton *flagButton;
 

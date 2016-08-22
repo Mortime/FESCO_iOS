@@ -107,7 +107,7 @@
     
     NSString *custidStr = [NSString stringWithFormat:@"'cust_Id':'%@'",custid];
     NSString *empStr = [NSString stringWithFormat:@"'emp_Id':'%@'",emptId];
-    NSString *str = @"'methodname':'emp/loadEmpInfo.json'}";
+    NSString *str = @"'methodname':'emp/loadEmpInfo.json'";
     
     NSString *resultStr = [NSString stringWithFormat:@"{%@,%@,%@}",custidStr,empStr,str];
     

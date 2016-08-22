@@ -10,5 +10,9 @@
 
 @interface PersonalMessageHeaderView : UIView
 
+@property (nonatomic, strong) UITextField *nameTextFiled;
+
+@property (nonatomic, strong) UITextField *sexTextFiled;
+
 @property (nonatomic, strong) UIViewController *paramentVC;
 @end

@@ -27,6 +27,7 @@
 #import "UserInfoModel.h"
 #import "UIViewController+Method.h"
 #import "NSString+Helper.h"
+#import <YYModel.h>
 
 
 

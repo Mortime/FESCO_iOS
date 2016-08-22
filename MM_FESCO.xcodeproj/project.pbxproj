@@ -56,6 +56,7 @@
 		59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */; };
 		59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */; };
 		59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */; };
+		59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */; };
 		59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */; };
 		59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
@@ -183,6 +184,8 @@
 		59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFActionSheetView.m; sourceTree = "<group>"; };
 		59E729F01D6A8C0300920CC1 /* BLPFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPFAlertView.h; sourceTree = "<group>"; };
 		59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPFAlertView.m; sourceTree = "<group>"; };
+		59E729F41D6AE3E800920CC1 /* PersonalMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageModel.h; sourceTree = "<group>"; };
+		59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageModel.m; sourceTree = "<group>"; };
 		59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaveApplicationDetailController.h; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.h; sourceTree = "<group>"; };
 		59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveApplicationDetailController.m; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.m; sourceTree = "<group>"; };
 		59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
@@ -433,6 +436,7 @@
 		59A59E351D49CADF001F3122 /* MM_HomeMain */ = {
 			isa = PBXGroup;
 			children = (
+				59E729F31D6AE38100920CC1 /* Model */,
 				59A59E361D49CADF001F3122 /* Controller */,
 				59A59E391D49CADF001F3122 /* View */,
 			);
@@ -496,6 +500,15 @@
 				5996FFAF1D58163D0005307C /* SignDetailController.m */,
 			);
 			path = MMMainDetailController;
+			sourceTree = "<group>";
+		};
+		59E729F31D6AE38100920CC1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E729F41D6AE3E800920CC1 /* PersonalMessageModel.h */,
+				59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D21145FCB92E766519624DFD /* Pods */ = {
@@ -689,6 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
+				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,

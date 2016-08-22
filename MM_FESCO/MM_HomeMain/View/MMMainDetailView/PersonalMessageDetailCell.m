@@ -134,11 +134,57 @@
     textField.textColor = [UIColor whiteColor];
 }
 
-#pragma mark ---- 
+#pragma mark ----  data
 - (void)setImgStr:(NSString *)imgStr{
     self.leftImageView.image = [UIImage imageNamed:imgStr];
 }
 - (void)setDataStr:(NSString *)dataStr{
     self.detailFiled.text = dataStr;
+}
+- (void)setPersonalMessageModel:(PersonalMessageModel *)personalMessageModel{
+    NSString *messageStr = nil;
+    if (_index == 0) {
+        //  座机
+        messageStr = personalMessageModel.phone;
+           }
+    
+    if (_index == 1) {
+        // 电话
+        messageStr =  personalMessageModel.mobile;
+        
+    }
+    
+    if (_index == 2) {
+        // 微信号
+        messageStr = personalMessageModel.weixinid;
+        
+    }
+    if (_index == 3) {
+        // 邮箱
+        messageStr = personalMessageModel.email;
+        
+    }
+    if (_index == 4) {
+        // 地址
+        messageStr = personalMessageModel.address;
+        
+    }
+    if (_index == 5) {
+        // 邮编
+        messageStr = personalMessageModel.zipcode;
+        
+    }
+
+
+    
+    
+    if (messageStr == nil || [messageStr isEqualToString:@""]) {
+        self.detailFiled.text = @"暂无";
+    }else{
+        self.detailFiled.text = messageStr;
+    }
+
+
+    
 }
 @end

@@ -10,6 +10,7 @@
 #import "PersonalMessageDetailCell.h"
 #import "NSString+MD5.h"
 #import "PersonalMessageHeaderView.h"
+#import "PersonalMessageModel.h"
 
 #define kBottomButtonW     (kMMWidth/2)
 
@@ -24,6 +25,10 @@
 @property (nonatomic, strong) UIButton *preservationButton;
 
 @property (nonatomic, strong) UIButton *cancelButton;
+
+@property (nonatomic, strong) PersonalMessageModel * personalMessageModel;
+
+@property (nonatomic, strong) PersonalMessageHeaderView *headerView;
 
 
 
@@ -45,9 +50,9 @@
     self.dataArray  = @[@"座机",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     
-    PersonalMessageHeaderView *headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 131)];
-    headerView.paramentVC = self;
-    self.tableView.tableHeaderView = headerView;
+    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 131)];
+    _headerView.paramentVC = self;
+    self.tableView.tableHeaderView = _headerView;
     
     
     UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50, self.view.width, 50)];
@@ -88,6 +93,21 @@
     
     [NetworkEntity postPersonMessageWithCustId:[UserInfoModel defaultUserInfo].custId emptId:[UserInfoModel defaultUserInfo].empId tokenkeyID:[UserInfoModel defaultUserInfo].token sign:md5Str success:^(id responseObject) {
         MMLog(@"=============   PersonlMessagecong responseObject =  %@",responseObject);
+        _personalMessageModel = [PersonalMessageModel yy_modelWithDictionary:responseObject];
+        
+        _headerView.nameTextFiled.text = _personalMessageModel.empName;
+        if (_personalMessageModel.gender == 1) {
+            _headerView.sexTextFiled.text = @"男";
+        }else if (_personalMessageModel.gender == 2){
+            _headerView.sexTextFiled.text = @"女";
+        }else{
+            _headerView.sexTextFiled.text = @"暂无";
+        }
+        
+        
+    
+        [self.tableView reloadData];
+        
     } failure:^(NSError *failure) {
         MMLog(@"=============   PersonlMessagecong failure =  %@",failure);
     }];
@@ -116,6 +136,8 @@
     }
     cell.imgStr = self.imgArray[indexPath.row];
     cell.dataStr = self.dataArray[indexPath.row];
+    cell.index = indexPath.row;
+    cell.personalMessageModel = self.personalMessageModel;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
