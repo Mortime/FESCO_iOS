@@ -192,4 +192,7 @@
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 
 }
++ (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+}
 @end

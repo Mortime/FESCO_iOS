@@ -12,7 +12,7 @@
 #import "PersonalMessageHeaderView.h"
 #import "PersonalMessageModel.h"
 
-#define kBottomButtonW     (kMMWidth/2)
+#define kBottomButtonW     (kMMWidth)
 
 @interface PersonalMessageController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -52,13 +52,18 @@
     [_headerView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
         [self messageEdit:textField];
     }];
+    
+    UIImageView *lineView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 1)];
+    lineView.backgroundColor =  MM_MAIN_LINE_COLOR;
+    
     self.tableView.tableHeaderView = _headerView;
+    self.tableView.tableFooterView = lineView;
     
     
     UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50, self.view.width, 50)];
     footerView.backgroundColor = [UIColor clearColor];
     [footerView addSubview:self.preservationButton];
-    [footerView addSubview:self.cancelButton];
+//    [footerView addSubview:self.cancelButton];
     
     [self.view addSubview:footerView];
     [self.view addSubview:self.tableView];

@@ -65,7 +65,7 @@
 - (UIImageView *)flagImageView{
     if (_flagImageView == nil) {
         _flagImageView = [[UIImageView alloc] init];
-        _flagImageView.backgroundColor = [UIColor grayColor];
+        _flagImageView.backgroundColor = [UIColor clearColor];
     }
     return _flagImageView;
 }

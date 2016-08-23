@@ -31,9 +31,6 @@
 /**
  *   HomeMain ======== 加载个人信息
  
- Submit
-
- 
  *  @param custid （req）  公司id
  *  @param emptId     (req)  员工id
 
@@ -72,7 +69,13 @@
 
 
 
-
+/**
+ *    加载员工通讯录
+ 
+ *  @param cust_Id （req）  公司id
+ 
+ */
++ (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 
