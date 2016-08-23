@@ -194,5 +194,29 @@
 }
 + (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
+    if (!custid ) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSDictionary *dic = @{@"cust_Id":custid,
+                          @"methodname":@"getAllPhoneNumber.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getAllPhoneNumber.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                           
+                           @"sign":sign,
+                           
+                           @"tokenkey":[UserInfoModel defaultUserInfo].token
+                           
+                           
+                           };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
 }
 @end
