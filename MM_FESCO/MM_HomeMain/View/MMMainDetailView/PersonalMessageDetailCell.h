@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PersonalMessageModel.h"
 
+#define    kPhone    @"kPhone"
+#define    kMobile    @"kMobile"
+#define    kWeixin    @"kWeixin"
+#define    kMail    @"kMail"
+#define    kAddress    @"kAddress"
+#define    kZipCode   @"kZipCode"
+
+
 typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField);
 
 @interface PersonalMessageDetailCell : UITableViewCell

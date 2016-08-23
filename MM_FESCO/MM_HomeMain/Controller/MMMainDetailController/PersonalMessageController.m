@@ -49,6 +49,9 @@
     
     self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 121)];
     _headerView.paramentVC = self;
+    [_headerView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
+        [self messageEdit:textField];
+    }];
     self.tableView.tableHeaderView = _headerView;
     
     
@@ -67,26 +70,11 @@
 - (void)initData{
     
     
-    
-    
-     NSString *custIdStr = [NSString stringWithFormat:@"%@%@",@"cust_Id",[UserInfoModel defaultUserInfo].custId];
-     NSString *empIdStr = [NSString stringWithFormat:@"%@%@",@"emp_Id",[UserInfoModel defaultUserInfo].empId];
-    
-    
-    NSString *menth = [NSString stringWithFormat:@"%@%@",@"methodname",@"emp/loadEmpInfo.json"];
-    NSString *secret = [NSString stringWithFormat:@"%@%@",@"secret",@"appsecret"];
-
-     NSString *resultStr = [NSString stringWithFormat:@"%@%@%@%@",custIdStr,empIdStr,menth,secret];
-     
-     MMLog(@"resultstr = ======= %@",resultStr);
-    MMLog(@"resultStr  ----=========  ================================  = ===============  =======%@",resultStr);
-     NSString *md5Str = [[resultStr MD5Digest] uppercaseString];
-     MMLog(@"md5Str =============== %@",md5Str);
-//    NSDictionary *param  = @{@"cust_Id": [UserInfoModel defaultUserInfo].custId,
-//                             @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-//                             @"methodname":@"emp/loadEmpInfo.json"};
-//    NSString *re = [NSString sortKeyWith:param];
-    
+    NSDictionary *sign = @{@"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                           @"methodname":@"emp/loadEmpInfo.json"};
+    NSString *md5Str  = [NSString sortKeyWith:sign];
+    MMLog(@"md5Str = %@",md5Str);
     
     [NetworkEntity postPersonMessageWithCustId:[UserInfoModel defaultUserInfo].custId emptId:[UserInfoModel defaultUserInfo].empId tokenkeyID:[UserInfoModel defaultUserInfo].token sign:md5Str success:^(id responseObject) {
         MMLog(@"=============   PersonlMessagecong responseObject =  %@",responseObject);
@@ -101,7 +89,9 @@
             _headerView.sexTextFiled.text = @"暂无";
         }
         
-        
+        // 保存姓名和性别
+        [self storeData:_personalMessageModel.empName forKey:kName];
+        [self storeData:_headerView.sexTextFiled.text forKey:kSex];
     
         [self.tableView reloadData];
         
@@ -143,9 +133,49 @@
     
 }
 
+- (void)messageEdit:(UITextField *)textFiled{
+    // 当姓名和性别更改时再次保存
+    if (textFiled.tag == 200) {
+        // 姓名
+        [self storeData:textFiled.text forKey:kName];
+        
+    }
+    if (textFiled.tag == 201) {
+        // 性别
+        [self storeData:textFiled.text forKey:kSex];
+
+    }
+    MMLog(@"MM _ ---  name ------ sex   %@", textFiled.text);
+}
 #pragma mark --- Action Targaet
 // 保存修改
 - (void)didPreservationButton:(UIButton *)btn{
+    MMLog(@"%@",[self dataForKey:kPhone]);
+    MMLog(@"%@",[self dataForKey:kMobile]);
+    MMLog(@"%@",[self dataForKey:kWeixin]);
+    MMLog(@"%@",[self dataForKey:kMail]);
+    MMLog(@"%@",[self dataForKey:kAddress]);
+    MMLog(@"%@",[self dataForKey:kZipCode]);
+    MMLog(@"%@",[self dataForKey:kName]);
+    MMLog(@"%@",[self dataForKey:kSex]);
+    [NetworkEntity postSubmitPersonMessageWithEmpId:[UserInfoModel defaultUserInfo].empId empName:[self dataForKey:kName] gender:[self dataForKey:kSex] mobile:[self dataForKey:kMobile] phone:[self dataForKey:kPhone] weixinid:[self dataForKey:kWeixin] email:[self dataForKey:kMail] address:[self dataForKey:kAddress] zipcode:[self dataForKey:kZipCode] success:^(id responseObject) {
+        MMLog(@"submitpersonMessage =====   ======= %@",responseObject);
+        
+        
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改成功"];
+        [toastView show];
+        [self.navigationController popViewControllerAnimated:YES];
+
+    } failure:^(NSError *failure) {
+        
+        
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改失败"];
+        [toastView show];
+
+    }];
+    
+    
+    
     
 }
 // 取消修改
@@ -196,5 +226,20 @@
         
     }
     return _cancelButton;
+}
+#pragma mark ----  NSUserDefaults
+
+- (void)storeData:(id)data forKey:(NSString *)key
+{
+    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
+    [defults setObject:data forKey:key];
+    [defults synchronize];
+}
+
+- (id)dataForKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString * data = [defaults objectForKey:key];
+    return data;
 }
 @end

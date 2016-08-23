@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define kName @"kName"
+#define kSex @"kSex"
+
 @interface PersonalMessageController : UIViewController
 
 @end

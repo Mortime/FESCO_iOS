@@ -169,6 +169,9 @@
     }
     
 //    MMLog(@"00000000000000 ===========  re %@",resultStr);
+    
+    resultStr = [resultStr substringFromIndex:1];//截取掉下标0之后的字符串
+    resultStr = [NSString stringWithFormat:@"{%@}",resultStr];
     return resultStr;
 }
 

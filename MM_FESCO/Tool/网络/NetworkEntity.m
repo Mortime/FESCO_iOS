@@ -105,11 +105,21 @@
     NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/loadEmpInfo.json"];
     
     
-    NSString *custidStr = [NSString stringWithFormat:@"'cust_Id':'%@'",custid];
-    NSString *empStr = [NSString stringWithFormat:@"'emp_Id':'%@'",emptId];
-    NSString *str = @"'methodname':'emp/loadEmpInfo.json'";
+//    NSString *custidStr = [NSString stringWithFormat:@"'cust_Id':'%@'",custid];
+//    NSString *empStr = [NSString stringWithFormat:@"'emp_Id':'%@'",emptId];
+//    NSString *str = @"'methodname':'emp/loadEmpInfo.json'";
+//    
+//    NSString *resultStr = [NSString stringWithFormat:@"{%@,%@,%@}",custidStr,empStr,str];
+//    
+//    MMLog(@"test ==== test json parnnn    1 %@",resultStr);
+
+    NSDictionary *jsonParam = @{@"cust_Id":custid,
+                                @"emp_Id":emptId,
+                                @"methodname":@"emp/loadEmpInfo.json"};
     
-    NSString *resultStr = [NSString stringWithFormat:@"{%@,%@,%@}",custidStr,empStr,str];
+    NSString *resultStr =  [NSString jsonToJsonStingWith:jsonParam];
+    
+    
     
     
     NSDictionary * dic = @{@"jsonParam":resultStr,
@@ -137,14 +147,22 @@
     if (!empId ) {
         return [NetworkTool missParagramerCallBackFailure:failure];
     }
-    
+    NSLog(@"%@",address);
     
     NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/updateEmpInfo.json"];
     
-        NSDictionary *param  = @{@"emp_Name":empName,
+    
+    NSString *sexTag = @"";
+    if ([gender isEqualToString:@"男"]) {
+        sexTag = @"1";
+    }
+    if ([gender isEqualToString:@"女"]) {
+        sexTag = @"2";
+    }
+    NSDictionary *param  = @{@"emp_Name":empName,
                                  @"emp_Id":empId,
                                  @"methodname":@"emp/updateEmpInfo.json",
-                                 @"gender":gender,
+                                 @"gender":sexTag,
                                  @"phone":phone,
                                  @"mobile":mobile,
                                  @"email":email,
@@ -155,7 +173,7 @@
     NSString *sign = [NSString sortKeyWith:param];
     NSString *jsonParamStr = [NSString jsonToJsonStingWith:param];
     
-    
+    MMLog(@"MMMMsign ====%@       MMMjsonParamStr ===== =======%@",sign,jsonParamStr);
     
     
     

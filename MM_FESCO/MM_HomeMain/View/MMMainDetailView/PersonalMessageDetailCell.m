@@ -8,6 +8,7 @@
 
 #import "PersonalMessageDetailCell.h"
 
+
 @interface PersonalMessageDetailCell () <UITextFieldDelegate>
 
 
@@ -144,7 +145,40 @@
     if (_didEndEditingBlock) {
         _didEndEditingBlock(textField);
     }
+    
+    // 编辑完成后重新保存个人信息
+    NSString *messageStr = textField.text;
+    NSString *keyStr = @"";
+    
+    if (textField.tag == 100 ) {
+        //  座机
+         keyStr = kPhone;
+    }
+    if (textField.tag == 101 ) {
+        //  电话
+        keyStr = kMobile;
+    }
+    if (textField.tag == 102 ) {
+        //  微信号
+        keyStr = kWeixin;
+    }
+    if (textField.tag == 103 ) {
+        //  邮箱
+        keyStr = kMail;
+    }
+    if (textField.tag == 104 ) {
+        //  地址
+         keyStr = kAddress;
+    }
+    if (textField.tag == 105 ) {
+        //  邮编
+         keyStr = kZipCode;
+        
+    }
+    // 将个人信息进行保存
+    [self storeData:messageStr forKey:keyStr];
 
+    
 }
 
 #pragma mark ----  data
@@ -155,49 +189,64 @@
     self.detailFiled.text = dataStr;
 }
 - (void)setPersonalMessageModel:(PersonalMessageModel *)personalMessageModel{
-    NSString *messageStr = nil;
+    NSString *messageStr = @"";
+    NSString *keyStr = @"";
+    
     if (_index == 0) {
         //  座机
         messageStr = personalMessageModel.phone;
+        keyStr = kPhone;
            }
     
     if (_index == 1) {
         // 电话
         messageStr =  personalMessageModel.mobile;
+        keyStr = kMobile;
         
     }
     
     if (_index == 2) {
         // 微信号
         messageStr = personalMessageModel.weixinid;
-        
+        keyStr = kWeixin;
     }
     if (_index == 3) {
         // 邮箱
         messageStr = personalMessageModel.email;
-        
+        keyStr = kMail;
     }
     if (_index == 4) {
         // 地址
         messageStr = personalMessageModel.address;
+        keyStr = kAddress;
         
     }
     if (_index == 5) {
         // 邮编
         messageStr = personalMessageModel.zipcode;
-        
+        keyStr = kZipCode;
     }
 
 
-    
-    
     if (messageStr == nil || [messageStr isEqualToString:@""]) {
         self.detailFiled.text = @"暂无";
+        messageStr = @"";
     }else{
         self.detailFiled.text = messageStr;
     }
 
-
+    // 将个人信息进行保存
+    [self storeData:messageStr forKey:keyStr];
     
 }
+
+#pragma mark - StoreDefaults
+- (void)storeData:(id)data forKey:(NSString *)key
+{
+    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
+    [defults setObject:data forKey:key];
+    [defults synchronize];
+}
+
+
 @end

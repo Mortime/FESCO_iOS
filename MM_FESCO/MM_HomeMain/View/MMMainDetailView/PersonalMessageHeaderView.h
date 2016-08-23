@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField);
+
+
 @interface PersonalMessageHeaderView : UIView
 
 @property (nonatomic, strong) UITextField *nameTextFiled;
@@ -15,4 +18,13 @@
 @property (nonatomic, strong) UITextField *sexTextFiled;
 
 @property (nonatomic, strong) UIViewController *paramentVC;
+
+
+/**
+ *  textField结束编辑
+ *
+ *  @param handle DVVSearchViewUITextFieldDelegateBlock
+ */
+- (void)dvv_setTextFieldDidEndEditingBlock:(DVVSearchViewUITextFieldDelegateBlock)handle;
+
 @end

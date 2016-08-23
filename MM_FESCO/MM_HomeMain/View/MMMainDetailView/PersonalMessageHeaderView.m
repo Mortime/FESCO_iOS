@@ -35,6 +35,8 @@
 
 @property (strong, nonatomic) NSArray *dataArray;
 
+@property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
+
 
 @end
 
@@ -76,6 +78,10 @@
 
 - (void)selectIcon:(UIGestureRecognizer *)ges{
      [DVVImagePickerControllerManager showImagePickerControllerFrom:self.paramentVC delegate:self];
+}
+
+- (void)dvv_setTextFieldDidEndEditingBlock:(DVVSearchViewUITextFieldDelegateBlock)handle {
+    _didEndEditingBlock = handle;
 }
 - (void)layoutSubviews{
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -186,6 +192,11 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     textField.textColor = [UIColor whiteColor];
+    if (textField.tag == 200) {
+        if (_didEndEditingBlock) {
+                _didEndEditingBlock(textField);
+            }
+    }
 }
 #pragma mark ------ UIPickViewDelegate
 // returns the number of 'columns' to display.
@@ -204,6 +215,10 @@
     NSString *resultString = self.dataArray[row];
     self.sexTextFiled.text = resultString;
     
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(self.sexTextFiled);
+    }
+
 }
 #pragma mark - imagePickerController delegate
 
@@ -313,6 +328,7 @@
         _nameTextFiled.font = [UIFont systemFontOfSize:15];
         _nameTextFiled.textColor = [UIColor whiteColor];
         _nameTextFiled.backgroundColor = [UIColor clearColor];
+        _nameTextFiled.tag = 200;
         
    
     }
@@ -355,6 +371,7 @@
         _sexTextFiled.font = [UIFont systemFontOfSize:15];
         _sexTextFiled.textColor = [UIColor whiteColor];
         _sexTextFiled.backgroundColor = [UIColor clearColor];
+        _sexTextFiled.tag = 201;
     
         
     }
