@@ -322,7 +322,6 @@
     if (_nameTextFiled == nil) {
         _nameTextFiled = [[UITextField alloc] init];
         _nameTextFiled.placeholder = @"姓名";
-        _nameTextFiled.text = @"王宝强";
         [_nameTextFiled setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         [_nameTextFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
         _nameTextFiled.font = [UIFont systemFontOfSize:15];
@@ -366,7 +365,6 @@
     if (_sexTextFiled == nil) {
         _sexTextFiled = [[UITextField alloc] init];
         _sexTextFiled.placeholder = @"性别";
-        _sexTextFiled.text = @"男";
         [_sexTextFiled setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         [_sexTextFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
         _sexTextFiled.font = [UIFont systemFontOfSize:15];

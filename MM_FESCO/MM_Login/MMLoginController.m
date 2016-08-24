@@ -264,7 +264,7 @@
         _phoneNumTextField    = [[UITextField alloc] init];
         _phoneNumTextField.font = [UIFont systemFontOfSize:16];
         _phoneNumTextField.textColor = [UIColor colorWithHexString:@"fff100"];
-        _phoneNumTextField.placeholder  = @" Email";
+        _phoneNumTextField.placeholder  = @" 账号";
         [_phoneNumTextField setValue:[UIColor colorWithHexString:@"fff100"] forKeyPath:@"_placeholderLabel.textColor"];
         [_phoneNumTextField setValue:[UIFont systemFontOfSize:16] forKeyPath:@"_placeholderLabel.font"];
            
@@ -298,7 +298,7 @@
 - (UITextField *)passwordTextField {
     if (_passwordTextField == nil) {
         _passwordTextField = [[UITextField alloc] init];
-        _passwordTextField.placeholder = @" password";
+        _passwordTextField.placeholder = @" 密码";
         [_passwordTextField setValue:[UIColor colorWithHexString:@"666666"] forKeyPath:@"_placeholderLabel.textColor"];
         [_passwordTextField setValue:[UIFont systemFontOfSize:16] forKeyPath:@"_placeholderLabel.font"];
         
