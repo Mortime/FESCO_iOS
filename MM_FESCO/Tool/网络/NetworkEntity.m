@@ -168,7 +168,7 @@
                                  @"email":email,
                                  @"weixinid":weixinid,
                                  @"address":address,
-                                 @"zipcode":zipcode,
+                                 @"zipcode":zipcode
                                 };
     NSString *sign = [NSString sortKeyWith:param];
     NSString *jsonParamStr = [NSString jsonToJsonStingWith:param];
@@ -203,6 +203,8 @@
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
     NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getAllPhoneNumber.json"];
     

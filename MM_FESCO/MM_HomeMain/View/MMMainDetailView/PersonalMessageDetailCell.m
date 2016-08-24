@@ -116,10 +116,6 @@
 - (UITextField *)detailFiled{
     if (_detailFiled == nil ) {
         _detailFiled = [[UITextField alloc] init];
-        _detailFiled.placeholder = @"姓名";
-        _detailFiled.text = @"王宝强";
-        [_detailFiled setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [_detailFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
         _detailFiled.font = [UIFont systemFontOfSize:15];
         _detailFiled.textColor = [UIColor whiteColor];
         _detailFiled.backgroundColor = [UIColor clearColor];
@@ -185,9 +181,7 @@
 - (void)setImgStr:(NSString *)imgStr{
     self.leftImageView.image = [UIImage imageNamed:imgStr];
 }
-- (void)setDataStr:(NSString *)dataStr{
-    self.detailFiled.text = dataStr;
-}
+
 - (void)setPersonalMessageModel:(PersonalMessageModel *)personalMessageModel{
     NSString *messageStr = @"";
     NSString *keyStr = @"";
@@ -229,8 +223,12 @@
 
 
     if (messageStr == nil || [messageStr isEqualToString:@""]) {
-        self.detailFiled.text = @"暂无";
+        
+        [_detailFiled setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+        [_detailFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
+        self.detailFiled.placeholder = self.dataStr;
         messageStr = @"";
+        
     }else{
         self.detailFiled.text = messageStr;
     }

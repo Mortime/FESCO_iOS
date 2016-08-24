@@ -44,7 +44,7 @@
     
     self.imgArray  = @[@"PersonalMes_Landline",@"PersonalMes_Mobile",@"PersonalMes_weixin",@"PersonalMes_Mail",@"PersonalMes_Address",@"PersonalMes_MailCode"];
     
-    self.dataArray  = @[@"座机",@"联系电话",@"微信号",@"邮箱",@"地址",@"邮编"];
+    self.dataArray  = @[@"请输入座机",@"请输入联系电话",@"请输入微信号",@"请输入邮箱",@"请输入地址",@"请输入邮编"];
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     
     self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 121)];

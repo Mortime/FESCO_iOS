@@ -15,6 +15,7 @@
 #import "MMCycleShowImageView.h"
 #import "MMMainCollectionCell.h"
 #import "NSString+MD5.h"
+#import "PhoneListController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -155,6 +156,9 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 9) {
         // 通讯录
+        PhoneListController *phoneListVC = [[PhoneListController alloc] init];
+        [self.navigationController pushViewController:phoneListVC animated:YES];
+        
         
     }
     if (indexPath.row == 10) {

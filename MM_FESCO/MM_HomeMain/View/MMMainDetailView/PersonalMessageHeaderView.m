@@ -329,6 +329,7 @@
         _nameTextFiled.textColor = [UIColor whiteColor];
         _nameTextFiled.backgroundColor = [UIColor clearColor];
         _nameTextFiled.tag = 200;
+        _nameTextFiled.userInteractionEnabled = NO;
         
    
     }
