@@ -198,7 +198,7 @@
         return [NetworkTool missParagramerCallBackFailure:failure];
     }
     NSDictionary *dic = @{@"cust_Id":custid,
-                          @"methodname":@"getAllPhoneNumber.json"};
+                          @"methodname":@"emp/getAllPhoneNumber.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -206,7 +206,7 @@
     
     NSLog(@"%@%@",jsonParam,sign);
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getAllPhoneNumber.json"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/getAllPhoneNumber.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                            

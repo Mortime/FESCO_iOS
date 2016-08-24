@@ -11,6 +11,8 @@
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
 		59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF01D6D413D00DC6E50 /* PhoneListController.m */; };
+		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
+		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -92,6 +94,9 @@
 		59182B3E1D644D7E00842352 /* NSString+BASE64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BASE64.m"; sourceTree = "<group>"; };
 		59474CEF1D6D413D00DC6E50 /* PhoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListController.h; sourceTree = "<group>"; };
 		59474CF01D6D413D00DC6E50 /* PhoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListController.m; sourceTree = "<group>"; };
+		59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSQManagerTool.h; sourceTree = "<group>"; };
+		59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSQManagerTool.m; sourceTree = "<group>"; };
+		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */,
 				F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +231,7 @@
 		3307DFA9C514EA781167E167 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59474CF71D6D956000DC6E50 /* libsqlite3.tbd */,
 				4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */,
 			);
 			name = Frameworks;
@@ -240,6 +247,15 @@
 				59182B3E1D644D7E00842352 /* NSString+BASE64.m */,
 			);
 			path = Base64;
+			sourceTree = "<group>";
+		};
+		59474CF31D6D85D400DC6E50 /* 数据库 */ = {
+			isa = PBXGroup;
+			children = (
+				59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */,
+				59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */,
+			);
+			path = "数据库";
 			sourceTree = "<group>";
 		};
 		597762091D489AE000BD8472 = {
@@ -314,6 +330,7 @@
 		5977624C1D48AB8100BD8472 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				59474CF31D6D85D400DC6E50 /* 数据库 */,
 				59C197C21D5ABF8D00C7F593 /* UserInfoModel */,
 				5977624D1D48AB8100BD8472 /* 网络 */,
 			);
@@ -737,6 +754,7 @@
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
+				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
