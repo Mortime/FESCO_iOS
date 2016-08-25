@@ -17,8 +17,18 @@
 
 @implementation PhoneListTableController
 
+- (instancetype)init{
+    if (self = [super init]) {
+        self.view.backgroundColor = [UIColor clearColor];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.showsVerticalScrollIndicator = NO;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.tableView.backgroundColor = [UIColor clearColor];
     
     
 }
@@ -28,14 +38,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 65;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataList.count;
+    return 10;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *phoneCell = @"messageCellID";
+    static NSString *phoneCell = @"phoneCellID";
     
     PhoneListTableCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCell];
     

@@ -23,9 +23,11 @@
 {
     _urlString = urlString;
     
-    _phoneListVC.view.frame = self.bounds;
+    _phoneListVC = [[PhoneListTableController alloc] init];
+    
     _phoneListVC.view.frame = self.bounds;
     _phoneListVC.urlString = urlString;
+    [self removeAllSubviews];
     [self addSubview:_phoneListVC.view];
 }
 

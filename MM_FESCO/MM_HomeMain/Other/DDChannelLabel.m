@@ -31,7 +31,7 @@
 {
 	_scale = scale;
 
-	self.textColor = [UIColor colorWithRed:scale*0.176 green:scale*0.722 blue:scale*0.945 alpha:1];
+//	self.textColor = [UIColor colorWithRed:scale*0.176 green:scale*0.722 blue:scale*0.945 alpha:1];
 }
 
 

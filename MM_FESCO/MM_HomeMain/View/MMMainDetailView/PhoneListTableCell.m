@@ -99,7 +99,7 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor  =  [UIColor clearColor];
+        _bgView.backgroundColor  =  [UIColor whiteColor];
         
     }
     return _bgView;
@@ -128,7 +128,7 @@
     if (_mobileLabel == nil) {
         _mobileLabel = [[UILabel alloc] init];
         _mobileLabel.font = [UIFont systemFontOfSize:14];
-        _mobileLabel.textColor = MM_MAIN_LINE_COLOR;
+        _mobileLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _mobileLabel.text = @"13522535090";
         
     }

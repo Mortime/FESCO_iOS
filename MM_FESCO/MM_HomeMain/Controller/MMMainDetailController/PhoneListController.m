@@ -92,16 +92,12 @@ static sqlite3 *database;
     labelLeft.scale  = scaleLeft;
     labelRight.scale = scaleRight;
     
-    //	 NSLog(@"value = %f leftIndex = %zd, rightIndex = %zd", value, leftIndex, rightIndex);
-    //	 NSLog(@"左%f 右%f", scaleLeft, scaleRight);
-    //	 NSLog(@"左：%@ 右：%@", labelLeft.text, labelRight.text);
-    
     // 点击label会调用此方法1次，会导致【scrollViewDidEndScrollingAnimation】方法中的动画失效，这时直接return。
     if (scaleLeft == 1 && scaleRight == 0) {
         return;
     }
     
-    // 下划线动态跟随滚动：马勒戈壁的可算让我算出来了
+    // 下划线动态跟随滚动
     _underline.centerX = labelLeft.centerX   + (labelRight.centerX   - labelLeft.centerX)   * scaleRight;
     _underline.width   = labelLeft.textWidth + (labelRight.textWidth - labelLeft.textWidth) * scaleRight;
 }
@@ -154,7 +150,7 @@ static sqlite3 *database;
 }
 
 #pragma mark -
-/** 设置频道标题 */
+/** 设置部门标题 */
 - (void)setupChannelLabel
 {
     CGFloat margin = 20.0;
@@ -260,11 +256,11 @@ static sqlite3 *database;
         // 设置下划线
         [_smallScrollView addSubview:({
             DDChannelLabel *firstLabel = [self getLabelArrayFromSubviews][0];
-            firstLabel.textColor = AppColor;
+            firstLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
             // smallScrollView高度44，取下面4个点的高度为下划线的高度。
             _underline = [[UIView alloc] initWithFrame:CGRectMake(0, 77, firstLabel.textWidth, 3)];
             _underline.centerX = firstLabel.centerX;
-            _underline.backgroundColor = AppColor;
+            _underline.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
             _underline;
         })];
     }
