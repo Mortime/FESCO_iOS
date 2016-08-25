@@ -10,7 +10,7 @@
 #import <sqlite3.h>
 
 
-#define FESCODATABASE  @"catalog.sqlite"
+
 
 
 static sqlite3 *database;

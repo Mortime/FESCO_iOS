@@ -47,7 +47,9 @@ static sqlite3 *database;
     self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
     
     [self initUI];
-//    [self initData];
+    [self initData];
+    
+//    [self initDBData];
     
 }
 - (void)initUI{
@@ -180,6 +182,10 @@ static sqlite3 *database;
     [self scrollViewDidEndScrollingAnimation:self.collectionView];
 }
 
+- (void)initDBData{
+    
+}
+
 - (void)initData{
     
     // 创建通讯录数据库表
@@ -189,41 +195,48 @@ static sqlite3 *database;
     [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
         MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
         
+        NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString* dbpath = [docsdir stringByAppendingPathComponent:FESCODATABASE];
+        FMDatabase* db = [FMDatabase databaseWithPath:dbpath];
+        [db open];
         
-        [MMSQManagerTool initializeDatabaseWith:^(BOOL dataBaseIsExit, BOOL initResult) {
-            MMLog(@"dataBaseIsExit:%d    initResult%d",dataBaseIsExit,initResult);
-            [MMSQManagerTool openDataBaseWith:^(BOOL dataBaseIsOpen) {
-                if (dataBaseIsOpen) {
-                    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS PHONELIST (ID INTEGER PRIMARY KEY, group_name TEXT, emp_id INTEGER, emp_name TEXT, mobile TEXT,phone TEXT)";
-                    [ws execSql:sqlCreateTable];
-                    // 保存数据
-                    NSArray  *param =   [responseObject objectForKey:@"emps"];
-                    for (NSDictionary *dic in param) {
-                    
-                        
-                        NSString *groupName = [dic objectForKey:@"group_Name"];
-                         NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
-                         NSString *empName = [dic objectForKey:@"emp_Name"];
-                         NSString *mobile = [dic objectForKey:@"mobile"];
-                         NSString *phone = [dic objectForKey:@"phone"];
-                        
-                        NSString *sql1 = [NSString stringWithFormat:
-                                          @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
-                                          @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
-                        [ws execSql:sql1];
-                    }
-                    
-                   
-                }
+        BOOL result=[db executeUpdate:@"CREATE TABLE IF NOT EXISTS PHONELIST (ID INTEGER PRIMARY KEY, group_name TEXT, emp_id INTEGER, emp_name TEXT, mobile TEXT,phone TEXT)"];
+        if (result) {
+            NSLog(@"创建表成功");
+            // 保存数据
+            NSArray  *param =   [responseObject objectForKey:@"emps"];
+            NSLog(@"param.count = %lu",param.count);
+            for (NSDictionary *dic in param) {
                 
                 
+                NSString *groupName = [dic objectForKey:@"group_Name"];
+                NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
+                NSString *empName = [dic objectForKey:@"emp_Name"];
+                NSString *mobile = [dic objectForKey:@"mobile"];
+                NSString *phone = [dic objectForKey:@"phone"];
                 
-                
-                
-            }];
-        }];
-        
+                NSString *sql1 = [NSString stringWithFormat:
+                                  @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
+                                  @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
+                [db executeUpdate:sql1];
 
+            }
+
+            
+        }else
+        { NSLog(@"创建表失败");
+        }
+        
+        
+        
+        
+        
+        
+        NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                   NSUserDomainMask,
+                                                                   YES);
+        NSString *restltDocumentDirectory = [resultPaths lastObject];
+        NSLog(@"restltDocumentDirectory  =====  restltDocumentDirectory------%@",restltDocumentDirectory);
         
     } failure:^(NSError *failure) {
         MMLog(@"PhoneListController =====failure ==========%@",failure);
