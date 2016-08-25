@@ -44,6 +44,10 @@
 		59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */; };
 		59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E321D49C6A3001F3122 /* MMLoginController.m */; };
 		59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E381D49CADF001F3122 /* MMMainController.m */; };
+		59A8D1071D6E944F002CB709 /* PhoneListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1061D6E944F002CB709 /* PhoneListCell.m */; };
+		59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1091D6E94E8002CB709 /* PhoneListTableController.m */; };
+		59A8D10D1D6E9646002CB709 /* PhoneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */; };
+		59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1101D6EB001002CB709 /* DDChannelLabel.m */; };
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
 		59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */; };
 		59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */; };
@@ -162,6 +166,14 @@
 		59A59E321D49C6A3001F3122 /* MMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginController.m; sourceTree = "<group>"; };
 		59A59E371D49CADF001F3122 /* MMMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainController.h; sourceTree = "<group>"; };
 		59A59E381D49CADF001F3122 /* MMMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainController.m; sourceTree = "<group>"; };
+		59A8D1051D6E944F002CB709 /* PhoneListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListCell.h; sourceTree = "<group>"; };
+		59A8D1061D6E944F002CB709 /* PhoneListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListCell.m; sourceTree = "<group>"; };
+		59A8D1081D6E94E8002CB709 /* PhoneListTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableController.h; sourceTree = "<group>"; };
+		59A8D1091D6E94E8002CB709 /* PhoneListTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableController.m; sourceTree = "<group>"; };
+		59A8D10B1D6E9646002CB709 /* PhoneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableCell.h; sourceTree = "<group>"; };
+		59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableCell.m; sourceTree = "<group>"; };
+		59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChannelLabel.h; sourceTree = "<group>"; };
+		59A8D1101D6EB001002CB709 /* DDChannelLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChannelLabel.m; sourceTree = "<group>"; };
 		59C197C31D5ABFB100C7F593 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		59C197C41D5ABFB100C7F593 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		59C197C61D5AC27A00C7F593 /* UIViewController+Method.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Method.h"; sourceTree = "<group>"; };
@@ -456,6 +468,7 @@
 		59A59E351D49CADF001F3122 /* MM_HomeMain */ = {
 			isa = PBXGroup;
 			children = (
+				59A8D10E1D6EB001002CB709 /* Other */,
 				59E729F31D6AE38100920CC1 /* Model */,
 				59A59E361D49CADF001F3122 /* Controller */,
 				59A59E391D49CADF001F3122 /* View */,
@@ -487,6 +500,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		59A8D10E1D6EB001002CB709 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */,
+				59A8D1101D6EB001002CB709 /* DDChannelLabel.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		59C197C21D5ABF8D00C7F593 /* UserInfoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +527,10 @@
 				59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */,
 				5981A94F1D66D8F700DAC097 /* PersonalMessageHeaderView.h */,
 				5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */,
+				59A8D1051D6E944F002CB709 /* PhoneListCell.h */,
+				59A8D1061D6E944F002CB709 /* PhoneListCell.m */,
+				59A8D10B1D6E9646002CB709 /* PhoneListTableCell.h */,
+				59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */,
 			);
 			path = MMMainDetailView;
 			sourceTree = "<group>";
@@ -520,6 +546,8 @@
 				5996FFAF1D58163D0005307C /* SignDetailController.m */,
 				59474CEF1D6D413D00DC6E50 /* PhoneListController.h */,
 				59474CF01D6D413D00DC6E50 /* PhoneListController.m */,
+				59A8D1081D6E94E8002CB709 /* PhoneListTableController.h */,
+				59A8D1091D6E94E8002CB709 /* PhoneListTableController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -730,6 +758,8 @@
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
+				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
+				59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
@@ -759,6 +789,7 @@
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
+				59A8D1071D6E944F002CB709 /* PhoneListCell.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
@@ -766,6 +797,7 @@
 				59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */,
 				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
+				59A8D10D1D6E9646002CB709 /* PhoneListTableCell.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,

@@ -60,10 +60,6 @@
     
     [self initMapSDk];
     
-    // 创建数据库
-    [MMSQManagerTool initializeDatabaseWith:^(BOOL dataBaseIsExit, BOOL initResult) {
-        MMLog(@"dataBaseIsExit:%d    initResult%d",dataBaseIsExit,initResult);
-    }];
     [self.window makeKeyAndVisible];
     
     // Override point for customization after application launch.
