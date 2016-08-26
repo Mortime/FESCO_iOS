@@ -7,6 +7,7 @@
 //
 
 #import "PhoneListTableCell.h"
+#import "BLPFAlertView.h"
 
 @interface PhoneListTableCell ()
 
@@ -89,6 +90,46 @@
     // Configure the view for the selected state
 }
 
+#pragma mark ------  UIGestureRecognizer
+- (void)didCall:(UIGestureRecognizer *)ges{
+    UILabel *label = (UILabel *)[ges view];
+    
+    NSLog( @"%@",_parantVC);
+    
+    if (label.text == nil || [label.text isEqualToString:@"暂无"]) {
+        return;
+    }else{
+        
+        [BLPFAlertView showAlertWithTitle:@"电话号码" message:label.text cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] completion:^(NSUInteger selectedOtherButtonIndex) {
+            MMLog(@"index = %lu",selectedOtherButtonIndex+1);
+            NSUInteger indexAlert = selectedOtherButtonIndex + 1;
+            if (indexAlert == 1) {
+                NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",label.text];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            }else {
+                return ;
+            }
+            
+        }];
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",label.text];
+        UIWebView * callWebview = [[UIWebView alloc] init];
+        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+        [_parantVC.view addSubview:callWebview];
+    }
+    
+}
+
 #pragma mark ---- Lazy 加载
 - (UIView *)bgView{
     if (_bgView == nil) {
@@ -123,7 +164,10 @@
         _mobileLabel = [[UILabel alloc] init];
         _mobileLabel.font = [UIFont systemFontOfSize:14];
         _mobileLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
-        _mobileLabel.text = @"13522535090";
+        _mobileLabel.tag = 300;
+        _mobileLabel.userInteractionEnabled =  YES;
+        UITapGestureRecognizer *tapGS = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didCall:)];
+        [_mobileLabel addGestureRecognizer:tapGS];
         
     }
     return _mobileLabel;
@@ -134,7 +178,11 @@
         _phoneLabel = [[UILabel alloc] init];
         _phoneLabel.font = [UIFont systemFontOfSize:14];
         _phoneLabel.textColor = [UIColor grayColor];
-        _phoneLabel.text = @"010--110";
+        _phoneLabel.tag = 301;
+        _phoneLabel.userInteractionEnabled =  YES;
+        UITapGestureRecognizer *tapGS = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didCall:)];
+        [_phoneLabel addGestureRecognizer:tapGS];
+        
         
     }
     return _phoneLabel;

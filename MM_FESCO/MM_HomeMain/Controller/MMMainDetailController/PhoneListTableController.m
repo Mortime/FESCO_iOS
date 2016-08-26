@@ -60,6 +60,9 @@
     
     cell.mobileLabel.text = [dic objectForKey:@"mobile"];
     
+    cell.parantVC = nil;
+    cell.parantVC  = self;
+    
     NSString *phoneStr = [dic objectForKey:@"phone"];
     if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
         phoneStr = @"暂无";

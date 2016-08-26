@@ -18,4 +18,6 @@
 
 @property (nonatomic ,strong) UILabel *mobileLabel;
 
+@property (nonatomic, strong) UIViewController *parantVC;
+
 @end
