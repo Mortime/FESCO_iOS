@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSMutableArray *dataList;
 
+
+
 @end
 
 @implementation PhoneListTableController
@@ -42,7 +44,7 @@
     return 65;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _allPersonListArray.count;
+    return self.allPersonListArray.count;
 }
 
 
@@ -68,12 +70,6 @@
         phoneStr = @"暂无";
     }
      cell.phoneLabel.text = phoneStr;
-    
-//    if ( == nil || [[dic objectForKey:@"phone"] isEqualToString:@""]) {
-//        cell.phoneLabel.text =@"" ;
-//    }else{
-//        cell.phoneLabel.text = [dic objectForKey:@"phone"];
-//    }
     
     return cell;
 

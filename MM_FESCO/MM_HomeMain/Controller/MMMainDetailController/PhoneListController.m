@@ -72,9 +72,9 @@ static sqlite3 *database;
 {
     PhoneListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     NSString *title = _gropArray[indexPath.row];
-    cell.urlString = title;
-    cell.personListArray = nil;
     cell.personListArray = self.allPersonMessageArray[indexPath.row];
+    cell.urlString = title;
+    
     
     // 如果不加入响应者链，则无法利用NavController进行Push/Pop等操作。
 //    [self addChildViewController:(UIViewController *)cell.phoneListVC];
@@ -250,10 +250,7 @@ static sqlite3 *database;
                                   @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
                                   @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
                 [db executeUpdate:sql1];
-                
-//                PhoneListModel *listModel = [PhoneListModel yy_modelWithDictionary:dic];
-//                [self.allPersonMessageArray addObject:listModel];
-//            
+                            
 
             }
              [self.collectionView reloadData];

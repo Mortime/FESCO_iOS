@@ -13,11 +13,6 @@
 
 @property (nonatomic ,strong) UIView *bgView;
 
-
-
-
-
-
 @end
 
 @implementation PhoneListTableCell
@@ -94,8 +89,6 @@
 - (void)didCall:(UIGestureRecognizer *)ges{
     UILabel *label = (UILabel *)[ges view];
     
-    NSLog( @"%@",_parantVC);
-    
     if (label.text == nil || [label.text isEqualToString:@"暂无"]) {
         return;
     }else{
@@ -112,20 +105,7 @@
             
         }];
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",label.text];
-        UIWebView * callWebview = [[UIWebView alloc] init];
-        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-        [_parantVC.view addSubview:callWebview];
+    
     }
     
 }
