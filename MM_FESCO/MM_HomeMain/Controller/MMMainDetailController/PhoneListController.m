@@ -11,6 +11,7 @@
 #import "PhoneListCell.h"
 #import "DDChannelLabel.h"
 #import "PhoneListModel.h"
+#import "EasySerachViewController.h"
 
 
 #define ScrW [UIScreen mainScreen].bounds.size.width
@@ -41,7 +42,9 @@ static sqlite3 *database;
 
 @property (nonatomic, strong) UIButton *searchButton;
 
-@property (nonnull, strong) UIView *seachBGView;
+@property (nonatomic, strong) UIView *seachBGView;
+
+@property (nonatomic, strong) NSArray *paramArray;
 @end
 
 @implementation PhoneListController
@@ -223,8 +226,8 @@ static sqlite3 *database;
         if (result) {
             NSLog(@"创建表成功");
             // 保存数据
-            NSArray  *param =   [responseObject objectForKey:@"emps"];
-         NSArray *resultArray =   [self sortGroupWith:param];
+           self.paramArray =   [responseObject objectForKey:@"emps"];
+         NSArray *resultArray =   [self sortGroupWith:_paramArray];
           
             NSMutableArray *gropNameArray = [NSMutableArray array];
             for (NSArray *array  in resultArray) {
@@ -250,8 +253,8 @@ static sqlite3 *database;
             
             
             
-            NSLog(@"param.count = %lu",param.count);
-            for (NSDictionary *dic in param) {
+            
+            for (NSDictionary *dic in _paramArray) {
                 
             
                 NSString *groupName = [dic objectForKey:@"group_Name"];
@@ -380,21 +383,30 @@ static sqlite3 *database;
 }
 
 - (void)didSearch:(UIButton *)btn{
-    MMLog(@",btn.selected = %d",btn.selected);
-    if (!btn.selected) {
-        self.seachBGView = [[UIView alloc] initWithFrame:CGRectMake(0, -64, self.view.width, self.view.height + 64)];
-        _seachBGView.backgroundColor = [UIColor whiteColor];
-        _seachBGView.alpha = 0.5;
-        [self.view addSubview:_seachBGView];
-        btn.selected = YES;
-        
-
-    }else{
-        [self.seachBGView removeFromSuperview];
-        btn.selected = NO;
-    }
+//    MMLog(@",btn.selected = %d",btn.selected);
+//    if (!btn.selected) {
+//        self.seachBGView = [[UIView alloc] initWithFrame:CGRectMake(0, -64, self.view.width, self.view.height + 64)];
+//        _seachBGView.backgroundColor = [UIColor whiteColor];
+////        _seachBGView.alpha = 0.5;
+//        EasySerachViewController *VC = [[EasySerachViewController alloc] init];
+//        [_seachBGView addSubview:VC.view];
+//        [self.view addSubview:_seachBGView];
+//        btn.selected = YES;
+//        
+//
+//    }else{
+//        [self.seachBGView removeFromSuperview];
+//        btn.selected = NO;
+//    }
     
-    
+    EasySerachViewController *easy = [EasySerachViewController new];
+    easy.dataArray = self.paramArray;
+    //返回选中搜索的结果
+    [easy didSelectedItem:^(NSString *item) {
+//        cell.detailTextLabel.text = item;
+    }];
+//    easy.title = _dataSource[indexPath.row];
+    [self.navigationController pushViewController:easy animated:YES];
     
     
     

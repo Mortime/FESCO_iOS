@@ -19,22 +19,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MM_FESCO/MM_HomeMain/Controller/MMMainDetailController/PhoneListController.m"
-            timestampString = "493891692.451154"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "-initData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MM_FESCO/MM_HomeMain/View/MMMainDetailView/PhoneListCell.m"
             timestampString = "493888684.405469"
             startingColumnNumber = "9223372036854775807"
