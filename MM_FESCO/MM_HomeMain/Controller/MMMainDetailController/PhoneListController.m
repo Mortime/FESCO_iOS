@@ -10,6 +10,7 @@
 #import <sqlite3.h>
 #import "PhoneListCell.h"
 #import "DDChannelLabel.h"
+#import "PhoneListModel.h"
 
 
 #define ScrW [UIScreen mainScreen].bounds.size.width
@@ -33,9 +34,13 @@ static sqlite3 *database;
 // 给随的线
 @property (nonatomic, strong) UIView *underline;
 
+
+// 全部员工的信息
+@property (nonatomic, strong) NSMutableArray *allPersonMessageArray;
 @end
 
 @implementation PhoneListController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +49,7 @@ static sqlite3 *database;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"通讯录";
+    self.allPersonMessageArray = [NSMutableArray array];
     self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
     
     [self initUI];
@@ -182,9 +188,6 @@ static sqlite3 *database;
     [self scrollViewDidEndScrollingAnimation:self.collectionView];
 }
 
-- (void)initDBData{
-    
-}
 
 - (void)initData{
     
@@ -205,10 +208,24 @@ static sqlite3 *database;
             NSLog(@"创建表成功");
             // 保存数据
             NSArray  *param =   [responseObject objectForKey:@"emps"];
+         NSArray *resultArray =   [self sortGroupWith:param];
+          
+            NSMutableArray *gropNameArray = [NSMutableArray array];
+            for (NSArray *array  in resultArray) {
+                NSDictionary *dic = array[0];
+                NSString *gropName = [dic objectForKey:@"group_Name"];
+                [gropNameArray addObject:gropName];
+            }
+            self.gropArray = gropNameArray;
+            
+            
+            
+            
+            
             NSLog(@"param.count = %lu",param.count);
             for (NSDictionary *dic in param) {
                 
-                
+            
                 NSString *groupName = [dic objectForKey:@"group_Name"];
                 NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
                 NSString *empName = [dic objectForKey:@"emp_Name"];
@@ -219,8 +236,13 @@ static sqlite3 *database;
                                   @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
                                   @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
                 [db executeUpdate:sql1];
+                
+                PhoneListModel *listModel = [PhoneListModel yy_modelWithDictionary:dic];
+                [self.allPersonMessageArray addObject:listModel];
+            
 
             }
+             [self.collectionView reloadData];
 
             
         }else
@@ -229,9 +251,7 @@ static sqlite3 *database;
         
         
         
-        
-        
-        
+
         NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                    NSUserDomainMask,
                                                                    YES);
@@ -304,7 +324,46 @@ static sqlite3 *database;
     return _collectionView;
 }
 
-
+- (NSArray  *)sortGroupWith:(NSArray *)array{
+//    NSMutableArray  *mutableArray  = array.mutableCopy;
+    NSArray *sortDesc = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"group_Name" ascending:YES]];
+    NSArray *sortedArr = [array sortedArrayUsingDescriptors:sortDesc];
+    NSLog(@"sortedArr = %@",sortedArr);
+    
+    // 2、对数组进行分组，按GroupTag
+    // 遍历,创建组数组,组数组中的每一个元素是一个模型数组
+    NSMutableArray *_groupArr = [NSMutableArray array];
+    NSMutableArray *currentArr = [NSMutableArray array];
+    NSLog(@"class--%@",[currentArr class]);
+    // 因为肯定有一个字典返回,先添加一个
+    [currentArr addObject:sortedArr[0]];
+    [_groupArr addObject:currentArr];
+    
+    
+    // 如果不止一个,才要动画添加
+    if(sortedArr.count > 1){
+        for (int i = 1; i < sortedArr.count; i++) {
+            // 先取出组数组中  上一个模型数组的第一个字典模型的groupID
+            NSMutableArray *preModelArr = [_groupArr objectAtIndex:_groupArr.count-1];
+            NSString *preGroupID = [[preModelArr objectAtIndex:0] objectForKey:@"group_Name"];
+            // 取出当前字典,根据groupID比较,如果相同则添加到同一个模型数组;如果不相同,说明不是同一个组的
+            NSDictionary *currentDict = sortedArr[i];
+            NSString *groupID = [currentDict objectForKey:@"group_Name"];
+            if ([groupID isEqualToString:preGroupID]) {
+                [currentArr addObject:currentDict];
+            }else{
+                // 如果不相同,说明 有新的一组,那么创建一个模型数组,并添加到组数组_groupArr
+                currentArr = [NSMutableArray array];
+                [currentArr addObject:currentDict];
+                [_groupArr addObject:currentArr];
+            }
+        }
+    }
+    
+    MMLog(@"_groupArr ==   %@",_groupArr);
+    
+    return _groupArr;
+}
 
 
 
