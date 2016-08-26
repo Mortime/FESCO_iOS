@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MM_FESCO/MM_HomeMain/Controller/MMMainDetailController/PhoneListController.m"
-            timestampString = "493874856.843677"
+            timestampString = "493878754.977998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-initData"
             landmarkType = "5">
          </BreakpointContent>

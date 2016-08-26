@@ -12,4 +12,5 @@
 
 @property (nonatomic, copy) NSString *urlString;
 
+@property (nonatomic, strong) NSArray *allPersonListArray;
 @end

@@ -36,7 +36,7 @@ static sqlite3 *database;
 
 
 // 全部员工的信息
-@property (nonatomic, strong) NSMutableArray *allPersonMessageArray;
+@property (nonatomic, strong) NSArray *allPersonMessageArray;
 @end
 
 @implementation PhoneListController
@@ -49,8 +49,8 @@ static sqlite3 *database;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"通讯录";
-    self.allPersonMessageArray = [NSMutableArray array];
-    self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
+//    self.allPersonMessageArray = [NSMutableArray array];
+//    self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
     
     [self initUI];
     [self initData];
@@ -73,6 +73,8 @@ static sqlite3 *database;
     PhoneListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     NSString *title = _gropArray[indexPath.row];
     cell.urlString = title;
+    cell.personListArray = nil;
+    cell.personListArray = self.allPersonMessageArray[indexPath.row];
     
     // 如果不加入响应者链，则无法利用NavController进行Push/Pop等操作。
 //    [self addChildViewController:(UIViewController *)cell.phoneListVC];
@@ -216,9 +218,21 @@ static sqlite3 *database;
                 NSString *gropName = [dic objectForKey:@"group_Name"];
                 [gropNameArray addObject:gropName];
             }
+            self.allPersonMessageArray = resultArray;
             self.gropArray = gropNameArray;
             
-            
+                    [self setupChannelLabel];
+                    // 设置下划线
+                    [_smallScrollView addSubview:({
+                        DDChannelLabel *firstLabel = [self getLabelArrayFromSubviews][0];
+                        firstLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
+                        // smallScrollView高度44，取下面4个点的高度为下划线的高度。
+                        _underline = [[UIView alloc] initWithFrame:CGRectMake(0, 77, firstLabel.textWidth, 3)];
+                        _underline.centerX = firstLabel.centerX;
+                        _underline.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+                        _underline;
+                    })];
+
             
             
             
@@ -237,9 +251,9 @@ static sqlite3 *database;
                                   @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
                 [db executeUpdate:sql1];
                 
-                PhoneListModel *listModel = [PhoneListModel yy_modelWithDictionary:dic];
-                [self.allPersonMessageArray addObject:listModel];
-            
+//                PhoneListModel *listModel = [PhoneListModel yy_modelWithDictionary:dic];
+//                [self.allPersonMessageArray addObject:listModel];
+//            
 
             }
              [self.collectionView reloadData];
@@ -285,17 +299,6 @@ static sqlite3 *database;
         
         // 设置频道
         
-        [self setupChannelLabel];
-        // 设置下划线
-        [_smallScrollView addSubview:({
-            DDChannelLabel *firstLabel = [self getLabelArrayFromSubviews][0];
-            firstLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
-            // smallScrollView高度44，取下面4个点的高度为下划线的高度。
-            _underline = [[UIView alloc] initWithFrame:CGRectMake(0, 77, firstLabel.textWidth, 3)];
-            _underline.centerX = firstLabel.centerX;
-            _underline.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-            _underline;
-        })];
     }
     return _smallScrollView;
 }

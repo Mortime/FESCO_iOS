@@ -42,7 +42,7 @@
     return 65;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _allPersonListArray.count;
 }
 
 
@@ -54,6 +54,24 @@
     if (!cell) {
         cell = [[PhoneListTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:phoneCell];
     }
+    NSDictionary *dic = _allPersonListArray[indexPath.row];
+    
+    cell.nameLabel.text = [dic objectForKey:@"emp_Name"];
+    
+    cell.mobileLabel.text = [dic objectForKey:@"mobile"];
+    
+    NSString *phoneStr = [dic objectForKey:@"phone"];
+    if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
+        phoneStr = @"暂无";
+    }
+     cell.phoneLabel.text = phoneStr;
+    
+//    if ( == nil || [[dic objectForKey:@"phone"] isEqualToString:@""]) {
+//        cell.phoneLabel.text =@"" ;
+//    }else{
+//        cell.phoneLabel.text = [dic objectForKey:@"phone"];
+//    }
+    
     return cell;
 
 }

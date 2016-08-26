@@ -27,6 +27,8 @@
     
     _phoneListVC.view.frame = self.bounds;
     _phoneListVC.urlString = urlString;
+    _phoneListVC.allPersonListArray  = nil;
+    _phoneListVC.allPersonListArray = self.personListArray;
     [self removeAllSubviews];
     [self addSubview:_phoneListVC.view];
 }

@@ -12,13 +12,7 @@
 
 @property (nonatomic ,strong) UIView *bgView;
 
-@property (nonatomic ,strong) UIImageView *leftImageView;
 
-@property (nonatomic ,strong) UILabel *nameLabel;
-
-@property (nonatomic ,strong) UILabel *phoneLabel;
-
-@property (nonatomic ,strong) UILabel *mobileLabel;
 
 
 

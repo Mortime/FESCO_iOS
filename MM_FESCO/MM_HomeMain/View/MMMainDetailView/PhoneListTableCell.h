@@ -10,4 +10,12 @@
 
 @interface PhoneListTableCell : UITableViewCell
 
+@property (nonatomic ,strong) UIImageView *leftImageView;
+
+@property (nonatomic ,strong) UILabel *nameLabel;
+
+@property (nonatomic ,strong) UILabel *phoneLabel;
+
+@property (nonatomic ,strong) UILabel *mobileLabel;
+
 @end

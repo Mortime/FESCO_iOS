@@ -15,5 +15,6 @@
 
 @property (nonatomic, strong) PhoneListTableController *phoneListVC;
 @property (nonatomic, copy  ) NSString  *urlString;
+@property (nonatomic, strong) NSArray *personListArray;
 
 @end
