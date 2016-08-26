@@ -88,7 +88,7 @@
 #pragma mark ------  UIGestureRecognizer
 - (void)didCall:(UIGestureRecognizer *)ges{
     UILabel *label = (UILabel *)[ges view];
-    
+    [self.parantVC dismissViewControllerAnimated:YES completion:nil];
     if (label.text == nil || [label.text isEqualToString:@"暂无"]) {
         return;
     }else{

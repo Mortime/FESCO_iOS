@@ -23,10 +23,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    
-    
-    
-//    _dataSource = @[@"九寨沟",@"鼓浪屿",@"香格里拉",@"千岛湖",@"西双版纳",@"+-*/",@"故宫",@"上海科技馆",@"东方明珠",@"外滩",@"CapeTown",@"The Grand Canyon",@"4567.com",@"长江",@"长江1号",@"&*>?",@"弯弯月亮",@"that is it ?",@"山水之间",@"倩女幽魂",@"疆土无边",@"荡秋千"];
+
     _searchDataSource = [NSMutableArray new];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
 }
@@ -36,7 +33,7 @@
         _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
         _searchController.dimsBackgroundDuringPresentation = NO;
-        _searchController.hidesNavigationBarDuringPresentation = YES;
+        _searchController.hidesNavigationBarDuringPresentation = NO;
         _searchController.searchBar.placeholder = @"搜索";
         [_searchController.searchBar sizeToFit];
     }
@@ -72,8 +69,7 @@
     
     cell.mobileLabel.text = [dic objectForKey:@"mobile"];
     
-    cell.parantVC = nil;
-    cell.parantVC  = self;
+    cell.parantVC  = self.searchController;
     
     NSString *phoneStr = [dic objectForKey:@"phone"];
     if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
@@ -87,13 +83,15 @@
 
 #pragma mark - Table View Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.searchController.active) {
-        self.block(_dataArray[indexPath.row]);
-    }else{
-        self.block(_searchDataSource[indexPath.row]);
-    }
-    self.searchController.active = NO;
-    [self.navigationController popViewControllerAnimated:YES];
+    
+//     [self dismissViewControllerAnimated:YES completion:nil];
+//    if (!self.searchController.active) {
+//        self.block(_dataArray[indexPath.row]);
+//    }else{
+//        self.block(_searchDataSource[indexPath.row]);
+//    }
+//    self.searchController.active = NO;
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UISearchDelegate

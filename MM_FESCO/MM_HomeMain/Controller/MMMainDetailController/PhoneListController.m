@@ -401,11 +401,11 @@ static sqlite3 *database;
     
     EasySerachViewController *easy = [EasySerachViewController new];
     easy.dataArray = self.paramArray;
-    //返回选中搜索的结果
-    [easy didSelectedItem:^(NSString *item) {
-//        cell.detailTextLabel.text = item;
-    }];
-//    easy.title = _dataSource[indexPath.row];
+//    //返回选中搜索的结果
+//    [easy didSelectedItem:^(NSString *item) {
+////        cell.detailTextLabel.text = item;
+//    }];
+////    easy.title = _dataSource[indexPath.row];
     [self.navigationController pushViewController:easy animated:YES];
     
     
