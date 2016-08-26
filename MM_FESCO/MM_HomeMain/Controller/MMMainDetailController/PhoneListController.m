@@ -37,6 +37,11 @@ static sqlite3 *database;
 
 // 全部员工的信息
 @property (nonatomic, strong) NSArray *allPersonMessageArray;
+
+
+@property (nonatomic, strong) UIButton *searchButton;
+
+@property (nonnull, strong) UIView *seachBGView;
 @end
 
 @implementation PhoneListController
@@ -49,13 +54,22 @@ static sqlite3 *database;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"通讯录";
+    // 添加右上角的搜查按钮
+    _searchButton = [UIButton new];
+    [_searchButton setImage:[UIImage imageNamed:@"phoneList_Search"] forState:UIControlStateNormal];
+    _searchButton.bounds = CGRectMake(0, 0, 24, 44);
+    [_searchButton addTarget:self action:@selector(didSearch:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *bbiPhone = [[UIBarButtonItem alloc] initWithCustomView:_searchButton];
+    self.navigationItem.rightBarButtonItem = bbiPhone;
+
+    
+    
 //    self.allPersonMessageArray = [NSMutableArray array];
 //    self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
     
     [self initUI];
     [self initData];
     
-//    [self initDBData];
     
 }
 - (void)initUI{
@@ -250,7 +264,7 @@ static sqlite3 *database;
                                   @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
                                   @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
                 [db executeUpdate:sql1];
-                            
+                
 
             }
              [self.collectionView reloadData];
@@ -365,6 +379,26 @@ static sqlite3 *database;
     return _groupArr;
 }
 
+- (void)didSearch:(UIButton *)btn{
+    MMLog(@",btn.selected = %d",btn.selected);
+    if (!btn.selected) {
+        self.seachBGView = [[UIView alloc] initWithFrame:CGRectMake(0, -64, self.view.width, self.view.height + 64)];
+        _seachBGView.backgroundColor = [UIColor whiteColor];
+        _seachBGView.alpha = 0.5;
+        [self.view addSubview:_seachBGView];
+        btn.selected = YES;
+        
 
+    }else{
+        [self.seachBGView removeFromSuperview];
+        btn.selected = NO;
+    }
+    
+    
+    
+    
+    
+    
+}
 
 @end
