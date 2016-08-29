@@ -20,4 +20,5 @@ typedef void (^openDataBaseBlock)(BOOL dataBaseIsOpen);
 
 // 打开数据库
 + (void)openDataBaseWith:(openDataBaseBlock)openDataBaseBlock;
+
 @end

@@ -71,6 +71,7 @@ static sqlite3 *database;
 //    self.gropArray = @[@"管理咨询",@"会计事业",@"薪酬事业",@"行政部",@"财务部",@"人力资源",@"管理层",@"营销管理",@"业务外包"];
     
     [self initUI];
+    // 加载数据(如果数据库中有就从数据库中取,如果没有就网络请求数据)
     [self initData];
     
     
@@ -293,15 +294,6 @@ static sqlite3 *database;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
-}
-
--(void)execSql:(NSString *)sql
-{
-    char *err;
-    if (sqlite3_exec(database, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK) {
-        sqlite3_close(database);
-//        NSLog(@"数据库操作数据失败!");
-    }
 }
 
 - (UIScrollView *)smallScrollView
