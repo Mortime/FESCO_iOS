@@ -16,4 +16,5 @@ typedef void(^SelectedItem)(NSString *item);
 @property (nonatomic, strong) NSArray *dataArray;  /**<排序前的整个数据源*/
 
 - (void)didSelectedItem:(SelectedItem)block;
+
 @end
