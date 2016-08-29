@@ -77,6 +77,7 @@ static sqlite3 *database;
     
 }
 - (void)initUI{
+
     [self.view addSubview:self.smallScrollView];
     [self.view addSubview:self.collectionView];
 }
@@ -206,90 +207,60 @@ static sqlite3 *database;
     [_collectionView setContentOffset:CGPointMake(label.tag * _collectionView.frame.size.width, 0)];
     // 重新调用一下滚定停止方法，让label的着色和下划线到正确的位置。
     [self scrollViewDidEndScrollingAnimation:self.collectionView];
+    
 }
 
 
 - (void)initData{
     
-    // 创建通讯录数据库表
-    
     __weak typeof(self) ws = self;
     
-    [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-        MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
-        
-        NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString* dbpath = [docsdir stringByAppendingPathComponent:FESCODATABASE];
-        FMDatabase* db = [FMDatabase databaseWithPath:dbpath];
-        [db open];
-        
-        BOOL result=[db executeUpdate:@"CREATE TABLE IF NOT EXISTS PHONELIST (ID INTEGER PRIMARY KEY, group_name TEXT, emp_id INTEGER, emp_name TEXT, mobile TEXT,phone TEXT)"];
-        if (result) {
-            NSLog(@"创建表成功");
-            // 保存数据
-           self.paramArray =   [responseObject objectForKey:@"emps"];
-         NSArray *resultArray =   [self sortGroupWith:_paramArray];
-          
-            NSMutableArray *gropNameArray = [NSMutableArray array];
-            for (NSArray *array  in resultArray) {
-                NSDictionary *dic = array[0];
-                NSString *gropName = [dic objectForKey:@"group_Name"];
-                [gropNameArray addObject:gropName];
-            }
-            self.allPersonMessageArray = resultArray;
-            self.gropArray = gropNameArray;
+    [MMDataBase isExistWithId:@"exist" isExist:^(BOOL isExist) {
+        if (isExist) {
+            // 数据已经存在
+            [ws initDataUI];
             
-                    [self setupChannelLabel];
-                    // 设置下划线
-                    [_smallScrollView addSubview:({
-                        DDChannelLabel *firstLabel = [self getLabelArrayFromSubviews][0];
-                        firstLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
-                        // smallScrollView高度44，取下面4个点的高度为下划线的高度。
-                        _underline = [[UIView alloc] initWithFrame:CGRectMake(0, 77, firstLabel.textWidth, 3)];
-                        _underline.centerX = firstLabel.centerX;
-                        _underline.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-                        _underline;
-                    })];
-
+        }else{
+            // 数据不存在,进行网络请求
+            
+        [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
+                    MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+            
+                   [MMDataBase  initializeDatabaseWith:^(BOOL isSuccess) {
+                       if (isSuccess) {
+                           // 表创建成功
+                           MMLog(@"表创建成功");
+                           // 添加判断数据是否存在的字段
+                           NSDictionary *dic = (NSDictionary *)responseObject;
+                           NSMutableDictionary *mutableDic = dic.mutableCopy;
+                           [mutableDic setValue:@"exist" forKey:@"ID"];
+//                           [mutableDic setValue:@"exist" forKeyPath:@"ID"];
+                           
+                           // 保存数据
+                           [MMDataBase saveItemDict:mutableDic];
+                           
+                           [ws initDataUI];
+ 
+                           
+                       }
+                   }];
+                } failure:^(NSError *failure) {
+                    MMLog(@"PhoneListController =====failure ==========%@",failure);
+                }];
             
             
-            
-            
-            for (NSDictionary *dic in _paramArray) {
-                
-            
-                NSString *groupName = [dic objectForKey:@"group_Name"];
-                NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
-                NSString *empName = [dic objectForKey:@"emp_Name"];
-                NSString *mobile = [dic objectForKey:@"mobile"];
-                NSString *phone = [dic objectForKey:@"phone"];
-                
-                NSString *sql1 = [NSString stringWithFormat:
-                                  @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
-                                  @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
-                [db executeUpdate:sql1];
-                
-
-            }
-             [self.collectionView reloadData];
-
-            
-        }else
-        { NSLog(@"创建表失败");
         }
-        
-        
-        
-
-        NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                                   NSUserDomainMask,
-                                                                   YES);
-        NSString *restltDocumentDirectory = [resultPaths lastObject];
-        NSLog(@"restltDocumentDirectory  =====  restltDocumentDirectory------%@",restltDocumentDirectory);
-        
-    } failure:^(NSError *failure) {
-        MMLog(@"PhoneListController =====failure ==========%@",failure);
     }];
+    
+//                NSString *groupName = [dic objectForKey:@"group_Name"];
+//                NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
+//                NSString *empName = [dic objectForKey:@"emp_Name"];
+//                NSString *mobile = [dic objectForKey:@"mobile"];
+//                NSString *phone = [dic objectForKey:@"phone"];
+//                
+//                NSString *sql1 = [NSString stringWithFormat:
+//                                  @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
+//                                  @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -404,5 +375,43 @@ static sqlite3 *database;
     
     
 }
+- (void)initDataUI{
+    // 取出全部数据
+    NSDictionary *dataBaseDic = [MMDataBase allDatalist];
+    MMLog(@"数据库返回数据: %@",dataBaseDic);
+    
+    NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                               NSUserDomainMask,
+                                                               YES);
+    NSString *restltDocumentDirectory = [resultPaths lastObject];
+    NSLog(@"restltDocumentDirectory  =====  restltDocumentDirectory------%@",restltDocumentDirectory);
+    
+    self.paramArray =   [dataBaseDic objectForKey:@"emps"];
+    NSArray *resultArray =   [self sortGroupWith:_paramArray];
+    
+    NSMutableArray *gropNameArray = [NSMutableArray array];
+    for (NSArray *array  in resultArray) {
+        NSDictionary *dic = array[0];
+        NSString *gropName = [dic objectForKey:@"group_Name"];
+        [gropNameArray addObject:gropName];
+    }
+    self.allPersonMessageArray = resultArray;
+    self.gropArray = gropNameArray;
+    
+    [self setupChannelLabel];
+    // 设置下划线
+    [_smallScrollView addSubview:({
+        DDChannelLabel *firstLabel = [self getLabelArrayFromSubviews][0];
+        firstLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
+        // smallScrollView高度44，取下面4个点的高度为下划线的高度。
+        _underline = [[UIView alloc] initWithFrame:CGRectMake(0, 77, firstLabel.textWidth, 3)];
+        _underline.centerX = firstLabel.centerX;
+        _underline.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        _underline;
+    })];
+    
+    [self.collectionView reloadData];
 
+  
+}
 @end

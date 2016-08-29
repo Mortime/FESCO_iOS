@@ -20,12 +20,12 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 + (void)initializeDatabaseWith:(initDatabaseBlock)initializeDatabaseBlock;
 
 //存入数据库
-+ (void)saveItemDict:(NSDictionary *)itemDict;
++ (void)saveItemDict:(NSMutableDictionary *)itemDict;
 
 //返回全部数据
 + (NSDictionary *)allDatalist;
 
-// 打开数据库
+// 数据库中是否存在某数据
 + (void)isExistWithId:(NSString *)idStr isExist:(existData)existData;
 
 

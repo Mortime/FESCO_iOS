@@ -41,11 +41,11 @@ static FMDatabase *_db;
 }
 
 //存入数据库
-+ (void)saveItemDict:(NSDictionary *)itemDict {
++ (void)saveItemDict:(NSMutableDictionary *)itemDict {
     //此处把字典归档成二进制数据直接存入数据库，避免添加过多的数据库字段
     NSData *dictData = [NSKeyedArchiver archivedDataWithRootObject:itemDict];
     
-    [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"id"]];
+    [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
 }
 
 //返回全部数据
@@ -72,8 +72,8 @@ static FMDatabase *_db;
 {
     BOOL isExist = NO;
     
-    FMResultSet *resultSet= [_db executeQuery:@"SELECT * FROM t_item where idStr = ?",idStr];
-    while ([resultSet next]) {
+    FMResultSet *resultSet= [_db executeQuery:@"SELECT * FROM t_phoneList"];
+    while (resultSet.next) {
         if([resultSet stringForColumn:@"idStr"]) {
             isExist = YES;
         }else{

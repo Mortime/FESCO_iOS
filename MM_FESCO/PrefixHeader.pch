@@ -28,7 +28,7 @@
 #import "UIViewController+Method.h"
 #import "NSString+Helper.h"
 #import <YYModel.h>
-#import "MMSQManagerTool.h"
+#import "MMDataBase.h"
 #import <FMDatabase.h>
 
 
