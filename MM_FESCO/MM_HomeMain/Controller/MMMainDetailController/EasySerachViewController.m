@@ -19,8 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 
@@ -33,7 +34,7 @@
         _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
         _searchController.dimsBackgroundDuringPresentation = NO;
-        _searchController.hidesNavigationBarDuringPresentation = NO;
+        _searchController.hidesNavigationBarDuringPresentation = YES;
         _searchController.searchBar.placeholder = @"搜索";
         [_searchController.searchBar sizeToFit];
     }
