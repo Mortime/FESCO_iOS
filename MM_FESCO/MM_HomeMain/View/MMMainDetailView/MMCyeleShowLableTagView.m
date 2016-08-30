@@ -29,7 +29,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor clearColor];
         //调用初始化属性
         [self chuShiHuaShuXing];
     }
@@ -178,13 +177,9 @@
 }
 
 
-
-
-
 - (UIScrollView *)smallScrollView
 {
     if (_smallScrollView == nil) {
-        
         _smallScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
         _smallScrollView.backgroundColor = [UIColor clearColor];
         _smallScrollView.delegate = self;

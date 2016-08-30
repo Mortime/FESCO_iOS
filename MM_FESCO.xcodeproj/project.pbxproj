@@ -13,6 +13,7 @@
 		59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF01D6D413D00DC6E50 /* PhoneListController.m */; };
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
+		594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775DC1D752B990094D354 /* NSArray+Sort.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -114,6 +115,8 @@
 		59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSQManagerTool.h; sourceTree = "<group>"; };
 		59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSQManagerTool.m; sourceTree = "<group>"; };
 		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		594775DB1D752B990094D354 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
+		594775DC1D752B990094D354 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -546,6 +549,8 @@
 				59A8D1101D6EB001002CB709 /* DDChannelLabel.m */,
 				5981AFBA1D73C43D0003166C /* MMDataBase.h */,
 				5981AFBB1D73C43D0003166C /* MMDataBase.m */,
+				594775DB1D752B990094D354 /* NSArray+Sort.h */,
+				594775DC1D752B990094D354 /* NSArray+Sort.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -871,6 +876,7 @@
 				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
 				59A8D1071D6E944F002CB709 /* PhoneListCell.m in Sources */,
+				594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
