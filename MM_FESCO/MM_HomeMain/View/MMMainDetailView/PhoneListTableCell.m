@@ -122,7 +122,7 @@
 - (UIImageView *)leftImageView{
     if (_leftImageView == nil) {
         _leftImageView = [[UIImageView alloc] init];
-        _leftImageView.backgroundColor = [UIColor cyanColor];
+        _leftImageView.backgroundColor = [UIColor clearColor];
         _leftImageView.layer.masksToBounds = YES;
         _leftImageView.layer.cornerRadius = 20;
         

@@ -167,7 +167,6 @@
         label.textColor = [UIColor whiteColor];
     }
     
-    MMLog(@"titleLable.centerX = %f titleLable.textWidth = %f",titleLable.centerX,titleLable.textWidth);
     // 下划线滚动并着色
     [UIView animateWithDuration:0.5 animations:^{
         _underline.width = titleLable.textWidth;

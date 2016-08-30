@@ -29,13 +29,8 @@ static NSString * const reuseID  = @"PhoneListCell";
 // 通讯录视图
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-// 给随的线
-@property (nonatomic, strong) UIView *underline;
-
-
 // 全部员工的信息
 @property (nonatomic, strong) NSArray *allPersonMessageArray;
-
 
 @property (nonatomic, strong) UIButton *searchButton;
 
