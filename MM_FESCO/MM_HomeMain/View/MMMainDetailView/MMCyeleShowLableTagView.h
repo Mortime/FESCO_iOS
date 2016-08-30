@@ -26,4 +26,7 @@ typedef void(^MMToolBarViewBlock)(UILabel *label);
 //模拟点击一项的方法(参数为一个Block)
 - (void)MMToolBarViewItemSelected:(MMToolBarViewBlock)handle;
 
+/** 手指点击smallScrollView */
+- (void)MMscrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
+
 @end

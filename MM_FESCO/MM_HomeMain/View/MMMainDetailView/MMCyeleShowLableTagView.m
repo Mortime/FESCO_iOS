@@ -25,11 +25,11 @@
 @end
 
 @implementation MMCyeleShowLableTagView
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+//        self.backgroundColor = [UIColor clearColor];
         //调用初始化属性
         [self chuShiHuaShuXing];
     }
@@ -37,11 +37,14 @@
 }
 #pragma mark - 初始化属性
 - (void)chuShiHuaShuXing {
-    self.smallScrollView.delegate = self;
+    
+    [self addSubview:self.smallScrollView];
+    
 }
 
 
 - (void)initTag:(NSArray *)tagArray{
+    
     CGFloat margin = 20.0;
     CGFloat x = 8;
     CGFloat h = _smallScrollView.bounds.size.height;
@@ -50,6 +53,8 @@
         DDChannelLabel *label = [DDChannelLabel channelLabelWithTitle:channel];
         label.frame = CGRectMake(x, 0, label.width + margin, h);
         label.textColor = [UIColor whiteColor];
+        label.text = tagArray[i];
+        
         [_smallScrollView addSubview:label];
         
         x += label.bounds.size.width;
@@ -90,15 +95,17 @@
         return;
     }
     
-    // 下划线动态跟随滚动
-    _underline.centerX = labelLeft.centerX   + (labelRight.centerX   - labelLeft.centerX)   * scaleRight;
-    _underline.width   = labelLeft.textWidth + (labelRight.textWidth - labelLeft.textWidth) * scaleRight;
+//    // 下划线动态跟随滚动
+//    _underline.centerX = labelLeft.centerX   + (labelRight.centerX   - labelLeft.centerX)   * scaleRight;
+//    _underline.width   = labelLeft.textWidth + (labelRight.textWidth - labelLeft.textWidth) * scaleRight;
 }
 /** 获取smallScrollView中所有的DDChannelLabel，合成一个数组，因为smallScrollView.subViews中有其他非Label元素 */
 - (NSArray *)getLabelArrayFromSubviews
 {
     NSMutableArray *arrayM = [NSMutableArray array];
-    for (DDChannelLabel *label in _smallScrollView.subviews) {
+    
+//    NSLog(@"%@",self.smallScrollView.subviews);
+    for (DDChannelLabel *label in self.smallScrollView.subviews) {
         if ([label isKindOfClass:[DDChannelLabel class]]) {
             [arrayM addObject:label];
         }
@@ -116,14 +123,6 @@
     if (_itemBlock) {
         _itemBlock(label);
     }
-
-    
-    
-    // +++++++++  在这里回调
-//    [_collectionView setContentOffset:CGPointMake(label.tag * _collectionView.frame.size.width, 0)];
-//    // 重新调用一下滚定停止方法，让label的着色和下划线到正确的位置。
-//    [self scrollViewDidEndScrollingAnimation:self.collectionView];
-    
 }
 // 设置下滑线
 - (void)setLine{
@@ -148,6 +147,51 @@
 
     //指向用户实现的Block
     _itemBlock = handle;
+}
+/** 手指点击smallScrollView */
+- (void)MMscrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+
+    // 获得索引
+    NSUInteger index = scrollView.contentOffset.x / self.width;
+    // 滚动标题栏到中间位置
+    DDChannelLabel *titleLable = [self getLabelArrayFromSubviews][index];
+    CGFloat offsetx   =  titleLable.center.x - _smallScrollView.width * 0.5;
+    CGFloat offsetMax = _smallScrollView.contentSize.width - _smallScrollView.width;
+    // 在最左和最右时，标签没必要滚动到中间位置。
+    if (offsetx < 0)		 {offsetx = 0;}
+    if (offsetx > offsetMax) {offsetx = offsetMax;}
+    [_smallScrollView setContentOffset:CGPointMake(offsetx, 0) animated:YES];
+    
+    // 先把之前着色的去色：（快速滑动会导致有些文字颜色深浅不一，点击label会导致之前的标题不变回黑色）
+    for (DDChannelLabel *label in [self getLabelArrayFromSubviews]) {
+        label.textColor = [UIColor whiteColor];
+    }
+    
+    MMLog(@"titleLable.centerX = %f titleLable.textWidth = %f",titleLable.centerX,titleLable.textWidth);
+    // 下划线滚动并着色
+    [UIView animateWithDuration:0.5 animations:^{
+        _underline.width = titleLable.textWidth;
+        _underline.centerX = titleLable.centerX;
+        titleLable.textColor = MM_MAIN_FONTCOLOR_BLUE;
+    }];
+}
+
+
+
+
+
+- (UIScrollView *)smallScrollView
+{
+    if (_smallScrollView == nil) {
+        
+        _smallScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
+        _smallScrollView.backgroundColor = [UIColor clearColor];
+        _smallScrollView.delegate = self;
+        _smallScrollView.showsHorizontalScrollIndicator = NO;
+        
+    }
+    return _smallScrollView;
 }
 
 
