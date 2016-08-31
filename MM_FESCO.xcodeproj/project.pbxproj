@@ -14,9 +14,17 @@
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
 		594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775DC1D752B990094D354 /* NSArray+Sort.m */; };
-		594775E81D7674630094D354 /* MMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775E71D7674630094D354 /* MMBaseViewController.m */; };
 		594775EB1D7674AC0094D354 /* CheckWorkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775EA1D7674AC0094D354 /* CheckWorkController.m */; };
 		594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775ED1D7678410094D354 /* JZPassRateToolBarView.m */; };
+		594775F21D767FF90094D354 /* CheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775F11D767FF90094D354 /* CheckView.m */; };
+		594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775F61D7684D80094D354 /* MMBaseViewController.m */; };
+		594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775FA1D7686DB0094D354 /* YiRefreshFooter.m */; };
+		594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775FC1D7686DB0094D354 /* YiRefreshHeader.m */; };
+		594776011D768FEF0094D354 /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776001D768FEF0094D354 /* RefreshTableView.m */; };
+		594776041D76906C0094D354 /* CheckRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776031D76906C0094D354 /* CheckRecordView.m */; };
+		594776071D7691F30094D354 /* CheckRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776061D7691F30094D354 /* CheckRecordCell.m */; };
+		5947760D1D76ACBE0094D354 /* FillRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5947760C1D76ACBE0094D354 /* FillRecordView.m */; };
+		594776101D76AD0A0094D354 /* FillRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5947760F1D76AD0A0094D354 /* FillRecordCell.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -120,12 +128,29 @@
 		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		594775DB1D752B990094D354 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
 		594775DC1D752B990094D354 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
-		594775E61D7674630094D354 /* MMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewController.h; sourceTree = "<group>"; };
-		594775E71D7674630094D354 /* MMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewController.m; sourceTree = "<group>"; };
 		594775E91D7674AC0094D354 /* CheckWorkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckWorkController.h; sourceTree = "<group>"; };
 		594775EA1D7674AC0094D354 /* CheckWorkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckWorkController.m; sourceTree = "<group>"; };
 		594775EC1D7678410094D354 /* JZPassRateToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZPassRateToolBarView.h; sourceTree = "<group>"; };
 		594775ED1D7678410094D354 /* JZPassRateToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZPassRateToolBarView.m; sourceTree = "<group>"; };
+		594775F01D767FF90094D354 /* CheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckView.h; sourceTree = "<group>"; };
+		594775F11D767FF90094D354 /* CheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckView.m; sourceTree = "<group>"; };
+		594775F51D7684D80094D354 /* MMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewController.h; sourceTree = "<group>"; };
+		594775F61D7684D80094D354 /* MMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewController.m; sourceTree = "<group>"; };
+		594775F81D7686DB0094D354 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		594775F91D7686DB0094D354 /* YiRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiRefreshFooter.h; sourceTree = "<group>"; };
+		594775FA1D7686DB0094D354 /* YiRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRefreshFooter.m; sourceTree = "<group>"; };
+		594775FB1D7686DB0094D354 /* YiRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiRefreshHeader.h; sourceTree = "<group>"; };
+		594775FC1D7686DB0094D354 /* YiRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRefreshHeader.m; sourceTree = "<group>"; };
+		594775FF1D768FEF0094D354 /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
+		594776001D768FEF0094D354 /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
+		594776021D76906C0094D354 /* CheckRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordView.h; sourceTree = "<group>"; };
+		594776031D76906C0094D354 /* CheckRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordView.m; sourceTree = "<group>"; };
+		594776051D7691F30094D354 /* CheckRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordCell.h; sourceTree = "<group>"; };
+		594776061D7691F30094D354 /* CheckRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordCell.m; sourceTree = "<group>"; };
+		5947760B1D76ACBE0094D354 /* FillRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordView.h; sourceTree = "<group>"; };
+		5947760C1D76ACBE0094D354 /* FillRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordView.m; sourceTree = "<group>"; };
+		5947760E1D76AD0A0094D354 /* FillRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordCell.h; sourceTree = "<group>"; };
+		5947760F1D76AD0A0094D354 /* FillRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordCell.m; sourceTree = "<group>"; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +345,39 @@
 			path = "数据库";
 			sourceTree = "<group>";
 		};
+		594775EF1D767FC50094D354 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				594775F01D767FF90094D354 /* CheckView.h */,
+				594775F11D767FF90094D354 /* CheckView.m */,
+				594776021D76906C0094D354 /* CheckRecordView.h */,
+				594776031D76906C0094D354 /* CheckRecordView.m */,
+				5947760B1D76ACBE0094D354 /* FillRecordView.h */,
+				5947760C1D76ACBE0094D354 /* FillRecordView.m */,
+				594776051D7691F30094D354 /* CheckRecordCell.h */,
+				594776061D7691F30094D354 /* CheckRecordCell.m */,
+				5947760E1D76AD0A0094D354 /* FillRecordCell.h */,
+				5947760F1D76AD0A0094D354 /* FillRecordCell.m */,
+			);
+			path = Check;
+			sourceTree = "<group>";
+		};
+		594775F41D7684D80094D354 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				594775FF1D768FEF0094D354 /* RefreshTableView.h */,
+				594776001D768FEF0094D354 /* RefreshTableView.m */,
+				594775F81D7686DB0094D354 /* Header.h */,
+				594775F91D7686DB0094D354 /* YiRefreshFooter.h */,
+				594775FA1D7686DB0094D354 /* YiRefreshFooter.m */,
+				594775FB1D7686DB0094D354 /* YiRefreshHeader.h */,
+				594775FC1D7686DB0094D354 /* YiRefreshHeader.m */,
+				594775F51D7684D80094D354 /* MMBaseViewController.h */,
+				594775F61D7684D80094D354 /* MMBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		597762091D489AE000BD8472 = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +407,7 @@
 				597762191D489AE000BD8472 /* AppDelegate.mm */,
 				5977621B1D489AE000BD8472 /* ViewController.h */,
 				5977621C1D489AE000BD8472 /* ViewController.m */,
+				594775F41D7684D80094D354 /* Base */,
 				59A59E351D49CADF001F3122 /* MM_HomeMain */,
 				59A59E301D49C6A3001F3122 /* MM_Login */,
 				59A59DEC1D499937001F3122 /* ThirdPary */,
@@ -530,8 +589,6 @@
 		59A59E361D49CADF001F3122 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				594775E61D7674630094D354 /* MMBaseViewController.h */,
-				594775E71D7674630094D354 /* MMBaseViewController.m */,
 				59A59E371D49CADF001F3122 /* MMMainController.h */,
 				59A59E381D49CADF001F3122 /* MMMainController.m */,
 				59D3FE901D506CAB002CCCA4 /* MMMainDetailController */,
@@ -578,6 +635,7 @@
 		59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				594775EF1D767FC50094D354 /* Check */,
 				59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */,
 				59D3FE951D506E7C002CCCA4 /* PersonalMessageDetailCell.m */,
 				59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */,
@@ -846,17 +904,18 @@
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
-				594775E81D7674630094D354 /* MMBaseViewController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
+				594775F21D767FF90094D354 /* CheckView.m in Sources */,
 				594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,
 				59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */,
+				594776101D76AD0A0094D354 /* FillRecordCell.m in Sources */,
 				59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
@@ -865,8 +924,11 @@
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
+				594776041D76906C0094D354 /* CheckRecordView.m in Sources */,
 				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
+				594776011D768FEF0094D354 /* RefreshTableView.m in Sources */,
 				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
+				594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */,
 				59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
@@ -874,7 +936,9 @@
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
 				594775EB1D7674AC0094D354 /* CheckWorkController.m in Sources */,
+				594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
+				5947760D1D76ACBE0094D354 /* FillRecordView.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
 				59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */,
@@ -909,8 +973,10 @@
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
+				594776071D7691F30094D354 /* CheckRecordCell.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
+				594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */,
 				59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

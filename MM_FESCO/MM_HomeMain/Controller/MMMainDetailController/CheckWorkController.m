@@ -8,12 +8,21 @@
 
 #import "CheckWorkController.h"
 #import "JZPassRateToolBarView.h"
+#import "CheckView.h"
+#import "CheckRecordView.h"
+#import "FillRecordView.h"
 
 @interface CheckWorkController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) JZPassRateToolBarView *toolBarView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) CheckView *checkView;
+
+@property (nonatomic, strong)  CheckRecordView *checkRecordView;
+
+@property (nonatomic, strong)  FillRecordView *fillRecordView;
 
 @end
 
@@ -35,6 +44,13 @@
     [self.view addSubview:self.toolBarView];
     [self.view addSubview:self.scrollView];
     
+    [_scrollView addSubview:self.checkView];
+    [_scrollView addSubview:self.checkRecordView];
+    [_scrollView addSubview:self.fillRecordView];
+    CGFloat contentOffsetX = 0 * self.view.width;
+    _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+
+    
     
 }
 
@@ -46,8 +62,8 @@
     
     if (0 == index) {
         
-//        CGFloat contentOffsetX = 0;
-//        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        CGFloat contentOffsetX = 0;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
 //                self.lastMonthView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
 //        self.lastMonthView.commnetLevel = self.commentLevel;
 //        self.lastMonthView.parementVC = self;
@@ -55,8 +71,8 @@
     
         
     }else if (1 == index) {
-//        CGFloat contentOffsetX = self.view.width;
-//        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        CGFloat contentOffsetX = self.view.width;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
 //        self.lastWeekView.commentDateSearchType = kCommentDateSearchTypeLastWeek;
 //        self.lastWeekView.commnetLevel = self.commentLevel;
 //        self.lastWeekView.parementVC = self;
@@ -64,9 +80,9 @@
     
         
     }else if (2 == index) {
-//        CGFloat contentOffsetX = 2 * self.view.width;
-//        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//        
+        CGFloat contentOffsetX = 2 * self.view.width;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+//
 //        self.todayView.commentDateSearchType = kCommentDateSearchTypeToday;
 //        self.todayView.commnetLevel = self.commentLevel;
 //        self.todayView.parementVC = self;
@@ -76,8 +92,8 @@
         
     }
     else if (3 == index) {
-//        CGFloat contentOffsetX = 3 * self.view.width;
-//        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        CGFloat contentOffsetX = 3 * self.view.width;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
 //        self.thisWeekView.commentDateSearchType = kCommentDateSearchTypeThisWeek;
 //        self.thisWeekView.commnetLevel = self.commentLevel;
 //        self.thisWeekView.parementVC = self;
@@ -86,21 +102,50 @@
         
         
     }
-    else if (4 == index) {
-//        CGFloat contentOffsetX = 4 * self.view.width;
-//        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//        self.thisMonthView.commentDateSearchType = kCommentDateSearchTypeThisMonth;
-//        self.thisMonthView.commnetLevel = self.commentLevel;
-//        self.thisMonthView.parementVC = self;
+    
         
+        
+    
+    
+//    NSLog(@"+++++++_scrollView.contentOffset.y:%f",_scrollView.contentOffset.y);
+    
+//    [self loadNetworkData];
+    
+}
+#pragma mark --- UIScroller delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat width = self.view.width;
+    
+    if (0 == scrollView.contentOffset.x) {
+        // 考勤
+        [_toolBarView selectItem:0];
+        //         self.allListView.frame = CGRectMake(0, -64, self.view.width, self.scrollView.height);
+    }
+    if (width == scrollView.contentOffset.x) {
+        // 考勤记录
+        [_toolBarView selectItem:1];
+        //self.noExameListView.frame = CGRectMake(self.view.width, -64, self.view.width, self.scrollView.height);
+        
+        
+    }
+    if (2 * width== scrollView.contentOffset.x) {
+        // 补签申请
+        [_toolBarView selectItem:2];
+        //        self.appointListView.frame = CGRectMake(self.view.width * 2, -64, self.view.width, self.scrollView.height);
+        
+    }
+    if (3 * width == scrollView.contentOffset.x) {
+        // 补签记录
+        [_toolBarView selectItem:3];
+        //        self.retestListView.frame = CGRectMake(self.view.width * 3, -64, self.view.width, self.scrollView.height);
         
         
         
     }
     
-//    NSLog(@"+++++++_scrollView.contentOffset.y:%f",_scrollView.contentOffset.y);
     
-//    [self loadNetworkData];
+    
     
 }
 
@@ -143,6 +188,37 @@
         }
     }
     return _toolBarView;
+}
+
+// 考勤
+- (CheckView *)checkView{
+    if (_checkView == nil) {
+        _checkView = [[CheckView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.scrollView.height)];
+        _checkView.backgroundColor = [UIColor clearColor];
+//        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        
+    }
+    return _checkView;
+}
+// 考勤记录
+- ( CheckRecordView *)checkRecordView{
+    if (_checkRecordView == nil) {
+        _checkRecordView = [[CheckRecordView alloc] initWithFrame:CGRectMake(kMMWidth, 0, self.view.width, self.scrollView.height)];
+        _checkRecordView.backgroundColor = [UIColor clearColor];
+        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        
+    }
+    return _checkRecordView;
+}
+// 补签记录
+- (FillRecordView *)fillRecordView{
+    if (_fillRecordView == nil) {
+        _fillRecordView = [[FillRecordView alloc] initWithFrame:CGRectMake(3 * kMMWidth, 0, self.view.width, self.scrollView.height)];
+        _fillRecordView.backgroundColor = [UIColor clearColor];
+        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        
+    }
+    return _fillRecordView;
 }
 
 
