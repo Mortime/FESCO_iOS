@@ -10,6 +10,7 @@
 #import "JZPassRateToolBarView.h"
 #import "CheckView.h"
 #import "CheckRecordView.h"
+#import "FillApplyView.h"
 #import "FillRecordView.h"
 
 @interface CheckWorkController () <UIScrollViewDelegate>
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) CheckView *checkView;
 
 @property (nonatomic, strong)  CheckRecordView *checkRecordView;
+
+@property (nonatomic, strong) FillApplyView *applyView;
 
 @property (nonatomic, strong)  FillRecordView *fillRecordView;
 
@@ -46,7 +49,9 @@
     
     [_scrollView addSubview:self.checkView];
     [_scrollView addSubview:self.checkRecordView];
+    [_scrollView addSubview:self.applyView];
     [_scrollView addSubview:self.fillRecordView];
+    
     CGFloat contentOffsetX = 0 * self.view.width;
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
 
@@ -139,14 +144,7 @@
         // 补签记录
         [_toolBarView selectItem:3];
         //        self.retestListView.frame = CGRectMake(self.view.width * 3, -64, self.view.width, self.scrollView.height);
-        
-        
-        
     }
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -210,6 +208,17 @@
     }
     return _checkRecordView;
 }
+// 补签申请
+- (FillApplyView *)applyView{
+    if (_applyView == nil) {
+        _applyView = [[FillApplyView alloc] initWithFrame:CGRectMake( 2 * kMMWidth, 0, self.view.width, self.scrollView.height)];
+        _applyView.backgroundColor = [UIColor clearColor];
+        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        
+    }
+    return _applyView;
+}
+
 // 补签记录
 - (FillRecordView *)fillRecordView{
     if (_fillRecordView == nil) {

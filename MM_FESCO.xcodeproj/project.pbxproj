@@ -25,6 +25,8 @@
 		594776071D7691F30094D354 /* CheckRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776061D7691F30094D354 /* CheckRecordCell.m */; };
 		5947760D1D76ACBE0094D354 /* FillRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5947760C1D76ACBE0094D354 /* FillRecordView.m */; };
 		594776101D76AD0A0094D354 /* FillRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5947760F1D76AD0A0094D354 /* FillRecordCell.m */; };
+		594776131D76CE290094D354 /* MMChooseTextFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776121D76CE290094D354 /* MMChooseTextFile.m */; };
+		594776161D76D5CF0094D354 /* FillApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776151D76D5CF0094D354 /* FillApplyView.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -151,6 +153,10 @@
 		5947760C1D76ACBE0094D354 /* FillRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordView.m; sourceTree = "<group>"; };
 		5947760E1D76AD0A0094D354 /* FillRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordCell.h; sourceTree = "<group>"; };
 		5947760F1D76AD0A0094D354 /* FillRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordCell.m; sourceTree = "<group>"; };
+		594776111D76CE290094D354 /* MMChooseTextFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFile.h; sourceTree = "<group>"; };
+		594776121D76CE290094D354 /* MMChooseTextFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFile.m; sourceTree = "<group>"; };
+		594776141D76D5CF0094D354 /* FillApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillApplyView.h; sourceTree = "<group>"; };
+		594776151D76D5CF0094D354 /* FillApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillApplyView.m; sourceTree = "<group>"; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,12 +358,16 @@
 				594775F11D767FF90094D354 /* CheckView.m */,
 				594776021D76906C0094D354 /* CheckRecordView.h */,
 				594776031D76906C0094D354 /* CheckRecordView.m */,
+				594776141D76D5CF0094D354 /* FillApplyView.h */,
+				594776151D76D5CF0094D354 /* FillApplyView.m */,
 				5947760B1D76ACBE0094D354 /* FillRecordView.h */,
 				5947760C1D76ACBE0094D354 /* FillRecordView.m */,
 				594776051D7691F30094D354 /* CheckRecordCell.h */,
 				594776061D7691F30094D354 /* CheckRecordCell.m */,
 				5947760E1D76AD0A0094D354 /* FillRecordCell.h */,
 				5947760F1D76AD0A0094D354 /* FillRecordCell.m */,
+				594776111D76CE290094D354 /* MMChooseTextFile.h */,
+				594776121D76CE290094D354 /* MMChooseTextFile.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -951,6 +961,7 @@
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
+				594776161D76D5CF0094D354 /* FillApplyView.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */,
@@ -972,6 +983,7 @@
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,
+				594776131D76CE290094D354 /* MMChooseTextFile.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
 				594776071D7691F30094D354 /* CheckRecordCell.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
