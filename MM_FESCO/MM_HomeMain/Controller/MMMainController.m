@@ -16,6 +16,7 @@
 #import "MMMainCollectionCell.h"
 #import "NSString+MD5.h"
 #import "PhoneListController.h"
+#import "CheckWorkController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -124,6 +125,7 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 2) {
         // 考勤记录
+        [self.navigationController pushViewController:[[CheckWorkController alloc] init] animated:YES];
         
     }
     if (indexPath.row == 3) {

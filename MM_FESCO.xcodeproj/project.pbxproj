@@ -14,6 +14,9 @@
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
 		594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775DC1D752B990094D354 /* NSArray+Sort.m */; };
+		594775E81D7674630094D354 /* MMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775E71D7674630094D354 /* MMBaseViewController.m */; };
+		594775EB1D7674AC0094D354 /* CheckWorkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775EA1D7674AC0094D354 /* CheckWorkController.m */; };
+		594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775ED1D7678410094D354 /* JZPassRateToolBarView.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -117,6 +120,12 @@
 		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		594775DB1D752B990094D354 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
 		594775DC1D752B990094D354 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		594775E61D7674630094D354 /* MMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewController.h; sourceTree = "<group>"; };
+		594775E71D7674630094D354 /* MMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewController.m; sourceTree = "<group>"; };
+		594775E91D7674AC0094D354 /* CheckWorkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckWorkController.h; sourceTree = "<group>"; };
+		594775EA1D7674AC0094D354 /* CheckWorkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckWorkController.m; sourceTree = "<group>"; };
+		594775EC1D7678410094D354 /* JZPassRateToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZPassRateToolBarView.h; sourceTree = "<group>"; };
+		594775ED1D7678410094D354 /* JZPassRateToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZPassRateToolBarView.m; sourceTree = "<group>"; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -521,6 +530,8 @@
 		59A59E361D49CADF001F3122 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				594775E61D7674630094D354 /* MMBaseViewController.h */,
+				594775E71D7674630094D354 /* MMBaseViewController.m */,
 				59A59E371D49CADF001F3122 /* MMMainController.h */,
 				59A59E381D49CADF001F3122 /* MMMainController.m */,
 				59D3FE901D506CAB002CCCA4 /* MMMainDetailController */,
@@ -579,6 +590,8 @@
 				59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */,
 				599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */,
 				599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */,
+				594775EC1D7678410094D354 /* JZPassRateToolBarView.h */,
+				594775ED1D7678410094D354 /* JZPassRateToolBarView.m */,
 			);
 			path = MMMainDetailView;
 			sourceTree = "<group>";
@@ -598,6 +611,8 @@
 				59A8D1091D6E94E8002CB709 /* PhoneListTableController.m */,
 				59F650EF1D70333D000596A7 /* EasySerachViewController.h */,
 				59F650F01D70333D000596A7 /* EasySerachViewController.m */,
+				594775E91D7674AC0094D354 /* CheckWorkController.h */,
+				594775EA1D7674AC0094D354 /* CheckWorkController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -831,11 +846,13 @@
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
+				594775E81D7674630094D354 /* MMBaseViewController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
+				594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,
@@ -856,6 +873,7 @@
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
+				594775EB1D7674AC0094D354 /* CheckWorkController.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,

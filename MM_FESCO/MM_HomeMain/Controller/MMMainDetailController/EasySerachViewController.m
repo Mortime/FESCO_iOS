@@ -78,6 +78,8 @@
     }
     cell.phoneLabel.text = phoneStr;
     
+    [cell.leftImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"People_placehode"]];
+    
 
     return cell;
 }
