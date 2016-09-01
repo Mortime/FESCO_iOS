@@ -65,7 +65,7 @@
     [self.leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
-        make.centerY.mas_equalTo(self.bgView.centerY);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.height.mas_equalTo(@14);
         make.width.mas_equalTo(@60);
         
@@ -73,7 +73,7 @@
     [self.rightTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.leftLabel.mas_right).offset(10);
-        make.centerY.mas_equalTo(self.bgView.centerY);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.height.mas_equalTo(self.mas_height);
         make.right.mas_equalTo(self.bgView.mas_right);
         
@@ -166,7 +166,7 @@
 - (UILabel *)leftLabel{
     if (_leftLabel == nil) {
         _leftLabel = [[UILabel alloc] init];
-        _leftLabel.centerY = self.bgView.centerY;
+//        _leftLabel.centerY = self.bgView.centerY;
         _leftLabel.font = [UIFont systemFontOfSize:14];
         _leftLabel.textColor = [UIColor grayColor];
     }
