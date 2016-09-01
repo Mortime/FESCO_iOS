@@ -77,11 +77,41 @@
         make.height.mas_equalTo(@44);
     }];
 }
+- (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
+    if (indexTag == 400 ) {
+        // 签到类型
+        MMLog(@"签到类型回调");
+    }
+    if (indexTag == 401 ) {
+        // 签到时间
+         MMLog(@"签到时间回调");
+    }
+    if (indexTag == 402 ) {
+        // 签到地点
+         MMLog(@"签到地点回调");
+    }
+    if (indexTag == 403 ) {
+        // 补签原因
+         MMLog(@"补签原因回调");
+    }
+    if (indexTag == 404 ) {
+        // 审批人
+         MMLog(@"审批人回调");
+    }
+}
 - (MMChooseTextFile *)signType{
     if (_signType == nil) {
         _signType = [[MMChooseTextFile alloc] init];
         _signType.leftTitle = @"签到类型";
         _signType.placeHold = @"请选择签到类型";
+        NSArray *typeArray = @[@"签到",@"签退",@"外勤"];
+        _signType.dataArray = typeArray;
+        _signType.tag = 400;
+        [_signType dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+    
+        
         
     }
     return _signType;
@@ -91,6 +121,12 @@
         _signTime = [[MMChooseTextFile alloc] init];
         _signTime.leftTitle = @"签到时间";
         _signTime.placeHold = @"请选择签到时间";
+        _signTime.isShowDataPickView = YES;
+        _signTime.tag = 401;
+        [_signTime dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+
         
     }
     return _signTime;
@@ -101,6 +137,13 @@
         _signAddress = [[MMChooseTextFile alloc] init];
         _signAddress.leftTitle = @"签到地点";
         _signAddress.placeHold = @"请选择签到地点";
+        NSArray *addressArray = @[@"外企",@"丹棱街5号",@"东方美"];
+        _signAddress.dataArray = addressArray;
+        _signAddress.tag = 402;
+        [_signAddress dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+
         
     }
     return _signAddress;
@@ -110,6 +153,11 @@
         _signReason = [[MMChooseTextFile alloc] init];
         _signReason.leftTitle = @"补签原因";
         _signReason.placeHold = @"请输入补签原因";
+        _signReason.tag = 403;
+        [_signReason dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+
         
     }
     return _signReason;
@@ -119,6 +167,11 @@
         _checkPerson = [[MMChooseTextFile alloc] init];
         _checkPerson.leftTitle = @"审批人";
         _checkPerson.placeHold = @"请选择审批人";
+        _checkPerson.tag = 404;
+        [_checkPerson dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+
         
     }
     return _checkPerson;

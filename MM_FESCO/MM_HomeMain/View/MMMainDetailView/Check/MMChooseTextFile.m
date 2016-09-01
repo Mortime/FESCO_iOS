@@ -8,7 +8,7 @@
 
 #import "MMChooseTextFile.h"
 
-@interface MMChooseTextFile ()<UITextFieldDelegate>
+@interface MMChooseTextFile ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -16,6 +16,11 @@
 
 @property (nonatomic, strong) UITextField *rightTextFiled;
 
+@property (strong, nonatomic) UIPickerView *pickerView;
+
+@property (strong, nonatomic) UIDatePicker *dateView;
+
+@property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
 
 @end
 
@@ -23,17 +28,27 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if (self = [super initWithFrame:frame]) {
+        
+        self.isShowDataPickView = NO;
+        
         [self initUI];
     }
     return self;
 }
 - (void)initUI{
     self.rightTextFiled.delegate = self;
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
     [self addSubview:self.bgView];
     
     [self.bgView addSubview:self.leftLabel];
     [self.bgView addSubview:self.rightTextFiled];
     
+    if (!_isShowDataPickView) {
+        
+       self.rightTextFiled.inputView = self.pickerView;
+        
+    }
     
 }
 - (void)layoutSubviews{
@@ -69,6 +84,12 @@
     self.rightTextFiled.placeholder = self.placeHold;
     self.rightTextFiled.text = self.textFileStr;
     
+    if (_isShowDataPickView) {
+        
+    self.rightTextFiled.inputView = self.dateView;
+
+    }
+    
 }
 #pragma mark ----- UIScrollerDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -81,15 +102,61 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
+    if (_isShowDataPickView) {
+        [self valueChange:_dateView];
+    }
+    
     self.leftLabel.textColor = [UIColor grayColor];
     self.rightTextFiled.textColor = [UIColor grayColor];
     _bgView.layer.borderColor = [UIColor whiteColor].CGColor;
 }
+#pragma mark ------ UIPickViewDelegate
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.dataArray.count;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.dataArray[row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSString *resultString = self.dataArray[row];
+    self.rightTextFiled.text = resultString;
+    
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(self.rightTextFiled,self.tag);
+    }
+    
+}
+#pragma mark ----- UIDataView
+- (void)valueChange:(UIDatePicker *)datePicker{
+    //创建一个日期格式
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    //设置日期的显示格式
+    fmt.dateFormat = @"MM-dd HH:mm";
+    //将日期转为指定格式显示
+    NSString *dateStr = [fmt stringFromDate:datePicker.date];
+    _rightTextFiled.text = dateStr;
+    
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(self.rightTextFiled,self.tag);
+    }
+
+}
+
+- (void)dvv_setTextFieldDidEndEditingBlock:(DVVSearchViewUITextFieldDelegateBlock)handle {
+    _didEndEditingBlock = handle;
+}
+
 #pragma mark ---- Lazy加载
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor redColor];
+        _bgView.backgroundColor = [UIColor clearColor];
         _bgView.layer.borderWidth = 2;
         _bgView.userInteractionEnabled = YES;
         _bgView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -112,9 +179,31 @@
         [_rightTextFiled setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         _rightTextFiled.font = [UIFont systemFontOfSize:14];
         _rightTextFiled.textColor = [UIColor grayColor];
-        _rightTextFiled.backgroundColor = [UIColor cyanColor];
+        _rightTextFiled.backgroundColor = [UIColor clearColor];
     
     }
     return _rightTextFiled;
+}
+- (UIPickerView *)pickerView {
+    if (_pickerView == nil) {
+        _pickerView = [[UIPickerView alloc] init];
+        _pickerView.delegate = self;
+        _pickerView.dataSource = self;
+//        _pickerView.backgroundColor = [UIColor whiteColor];
+    }
+    return _pickerView;
+}
+- (UIDatePicker *)dateView{
+    if (_dateView == nil) {
+        _dateView = [[UIDatePicker alloc] init];
+        //设置本地语言
+        _dateView.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
+        //设置日期显示的格式
+        _dateView.datePickerMode = UIDatePickerModeDateAndTime;
+        //监听datePicker的ValueChanged事件
+        [_dateView addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
+    
+    }
+    return _dateView;
 }
 @end
