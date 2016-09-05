@@ -15,6 +15,8 @@
 
 #define kButtonH  50
 
+#define kMapTypeW  50
+
 @interface CheckView ()<BMKLocationServiceDelegate,BMKMapViewDelegate>
 
 @property (nonatomic, strong) BMKLocationService *locService;
@@ -36,11 +38,25 @@
 @property (nonatomic, strong) NSTimer *timer;
 
 
-@property (nonatomic,strong) UIButton *signUpButton;
+@property (nonatomic, strong) UIButton *scaleBoomButton; // 放大
 
-@property (nonatomic, strong) UIButton *signOutButton;
+@property (nonatomic, strong) UIButton *scaleReduceButton; // 缩小
 
-@property (nonatomic, strong) UIButton *outButton;
+
+@property (nonatomic,strong) UIView *bgView;
+
+@property (nonatomic, strong) UIButton *standardButton; //  标准模式
+
+@property (nonatomic, strong) UIButton *statelliteButton;  // 卫星模式
+
+
+
+
+@property (nonatomic,strong) UIButton *signUpButton; // 签到
+
+@property (nonatomic, strong) UIButton *signOutButton; // 签退
+
+@property (nonatomic, strong) UIButton *outButton; // 外勤
 
 
 
@@ -80,9 +96,18 @@
     [self.bgTopView addSubview:self.bigSignLable];
     [self.bgTopView addSubview:self.lineView];
     [self.bgTopView addSubview:self.timeLable];
+    
+    [self addSubview:self.scaleBoomButton];
+    [self addSubview:self.scaleReduceButton];
+    
+    
     [self addSubview:self.signOutButton];
     [self addSubview:self.signUpButton];
     [self addSubview:self.outButton];
+    
+    [self addSubview:self.bgView];
+    [self.bgView addSubview:self.standardButton];
+    [self.bgView addSubview:self.statelliteButton];
     
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(initData) userInfo:nil repeats:YES];
@@ -162,10 +187,11 @@
     [_mapView updateLocationData:userLocation];
 }
 
-#pragma mark ----- ActionTag
+#pragma mark ----- ActionSignStatus
 - (void)didSignButon:(UIButton *)btn{
     if (btn.tag == 500) {
         // 签到
+        
     }
     if (btn.tag == 501) {
         // 签退
@@ -173,6 +199,54 @@
 
     if (btn.tag == 502) {
         // 外勤
+    }
+
+}
+#pragma mark --- ActionMapScale
+-(void)didClickMapScale:(UIButton *)sender{
+    if (sender.tag == 600) {
+        // 放大
+        _mapView.zoomLevel++;
+        
+    }
+    if (sender.tag == 601) {
+        // 缩小
+        _mapView.zoomLevel--;
+    }
+    
+}
+#pragma  mark ---- ActionMapType
+- (void)didClickMapType:(UIButton *)sender{
+    
+    MMLog(@"%d",sender.selected);
+    if (sender.tag == 700) {
+        // 地图
+        _mapView.mapType = BMKMapTypeStandard;
+        
+        _standardButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_standardButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        _statelliteButton.backgroundColor = [UIColor whiteColor];
+        [_statelliteButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        
+        [_scaleBoomButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Boom"] forState:UIControlStateNormal];
+         [_scaleReduceButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Reduce"] forState:UIControlStateNormal];
+        
+        
+    }
+    if (sender.tag == 701) {
+        // 卫星
+       _mapView.mapType = BMKMapTypeSatellite;
+        
+        _statelliteButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_statelliteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        _standardButton.backgroundColor = [UIColor whiteColor];
+        [_standardButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        
+        [_scaleBoomButton setBackgroundImage:[UIImage imageNamed:@"MapView_Satellite-Boom"] forState:UIControlStateNormal];
+        [_scaleReduceButton setBackgroundImage:[UIImage imageNamed:@"MapView_Satellite-Reduce"] forState:UIControlStateNormal];
+
     }
 
 }
@@ -233,6 +307,77 @@
     }
     return _timeLable;
 }
+
+- (UIButton *)scaleBoomButton {
+    
+    if (_scaleBoomButton == nil) {
+        _scaleBoomButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        _scaleBoomButton.frame = CGRectMake(20, 230, 20, 22);
+        [_scaleBoomButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Boom"] forState:UIControlStateNormal];
+//        _scaleBoomButton.backgroundColor = [UIColor redColor];
+        [_scaleBoomButton addTarget:self action:@selector(didClickMapScale:) forControlEvents:UIControlEventTouchUpInside];
+        _scaleBoomButton.tag = 600;
+    }
+    return _scaleBoomButton;
+    
+}
+- (UIButton *)scaleReduceButton {
+    
+    if (_scaleReduceButton == nil) {
+        _scaleReduceButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        _scaleReduceButton.frame = CGRectMake(20, 230 + 30, 20, 22);
+        [_scaleReduceButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Reduce"] forState:UIControlStateNormal];
+//        _scaleReduceButton.backgroundColor = [UIColor redColor];
+        [_scaleReduceButton addTarget:self action:@selector(didClickMapScale:) forControlEvents:UIControlEventTouchUpInside];
+        _scaleReduceButton.tag = 601;
+    }
+    return _scaleReduceButton;
+    
+}
+
+- (UIView *)bgView{
+    if (_bgView == nil) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(self.width - kMapTypeW - 20,self.height - 50 - kMapTypeW - 50 , kMapTypeW, kMapTypeW)];
+        _bgView.backgroundColor = [UIColor clearColor];
+        _bgView.layer.masksToBounds = YES;
+        _bgView.layer.cornerRadius = 5;
+    }
+    return _bgView;
+    
+}
+
+- (UIButton *)standardButton {
+    
+    if (_standardButton == nil) {
+        _standardButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        _standardButton.frame = CGRectMake(0, kMapTypeW / 2, kMapTypeW, kMapTypeW / 2);
+        _standardButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_standardButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_standardButton setTitle:@"地图" forState:UIControlStateNormal];
+        _standardButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_standardButton addTarget:self action:@selector(didClickMapType:) forControlEvents:UIControlEventTouchUpInside];
+        _standardButton.tag = 700;
+        _standardButton.selected = YES;
+    }
+    return _standardButton;
+    
+}
+- (UIButton *)statelliteButton {
+    
+    if (_statelliteButton == nil) {
+        _statelliteButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        _statelliteButton.frame = CGRectMake(0, 0, kMapTypeW, kMapTypeW / 2);
+        _statelliteButton.backgroundColor = [UIColor whiteColor];
+        [_statelliteButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        [_statelliteButton setTitle:@"卫星" forState:UIControlStateNormal];
+        _statelliteButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_statelliteButton addTarget:self action:@selector(didClickMapType:) forControlEvents:UIControlEventTouchUpInside];
+        _statelliteButton.tag = 701;
+    }
+    return _statelliteButton;
+    
+}
+
 
 - (UIButton *)signOutButton {
     
