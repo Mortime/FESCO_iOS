@@ -11,7 +11,6 @@
 #import "PersonalMessageController.h"
 #import "NetworkEntity.h"
 #import "LeaveApplicationDetailController.h"
-#import "SignDetailController.h"
 #import "MMCycleShowImageView.h"
 #import "MMMainCollectionCell.h"
 #import "NSString+MD5.h"
@@ -119,8 +118,7 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 1) {
         // 签到签退
-        SignDetailController *signVC = [[SignDetailController alloc] init];
-        [self.navigationController pushViewController:signVC animated:YES];
+        
         
     }
     if (indexPath.row == 2) {

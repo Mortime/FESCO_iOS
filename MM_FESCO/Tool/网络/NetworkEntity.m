@@ -221,4 +221,71 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
+
+/**
+ *   签到
+ */
++ (void)postSignUpTypeWithLongitude:(NSInteger)longitude latitude:(NSInteger)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{@"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"longitude":[NSString stringWithFormat:@"%lu",longitude],
+                          @"latitude":[NSString stringWithFormat:@"%lu",latitude],
+                          @"type":[NSString stringWithFormat:@"%lu",type],
+                          @"memo":memo,
+                          @"methodname":@"kq/sign.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/sign.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+    
+}
+/**
+ *   考勤记录
+ */
++ (void)postSignUpListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"pageNum":[NSString stringWithFormat:@"%lu",pageNum],
+                          @"pageSize":[NSString stringWithFormat:@"%lu",pageSize],
+                          @"methodname":@"kq/getCedList.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getCedList.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
 @end

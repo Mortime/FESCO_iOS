@@ -78,13 +78,29 @@
 + (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
+/**
+ *    签到
+ 
+ *  @param cust_Id （req）  公司id
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param longitude （req） ,latitude  经纬度  ,  memo (外勤时说明内容)
+ 
+ *  @param type （req）  type  (type=1为签到，2为签退，3为外勤）
+ 
+ */
++ (void)postSignUpTypeWithLongitude:(NSInteger)longitude latitude:(NSInteger)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
-
-///**
-// *  测试接口数据 POST
-// *
-// *  @param param     测试字段
-// */
-//+ (void)postTestParam:(NSString *)param success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
-
+/**
+ *    考勤记录
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param pageNum （req） 页码
+ 
+ *  @param pageSize （req）  每页条数
+ 
+ */
++ (void)postSignUpListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

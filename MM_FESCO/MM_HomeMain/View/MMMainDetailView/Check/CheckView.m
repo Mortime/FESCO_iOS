@@ -58,6 +58,14 @@
 
 @property (nonatomic, strong) UIButton *outButton; // 外勤
 
+@property (nonatomic, assign) NSInteger signType; // 签到类型 1,签到; 2,签退; 3,外勤
+
+@property (nonatomic,assign) CGFloat latitude;
+
+@property (nonatomic,assign) CGFloat longitude;
+
+
+
 
 
 
@@ -179,7 +187,10 @@
 //处理位置坐标更新
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    //NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    
+    _latitude = userLocation.location.coordinate.latitude;
+    _longitude = userLocation.location.coordinate.longitude;
     
     //普通态
     //以下_mapView为BMKMapView对象
@@ -187,19 +198,47 @@
     [_mapView updateLocationData:userLocation];
 }
 
+#pragma mark ---- Data
+
+- (void)postNetWork{
+    
+    [NetworkEntity postSignUpTypeWithLongitude:_longitude latitude:_latitude type:_signType memo:@"" success:^(id responseObject) {
+        
+        NSString *msg = [responseObject objectForKey:@"message"];
+        
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msg];
+        [toastView show];
+        
+        MMLog(@"SignUp=======responseObject======%@",responseObject);
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"SignUp=======failure======%@",failure);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络连接失败"];
+        [toastView show];
+    }];
+    
+    
+    
+    
+}
+
 #pragma mark ----- ActionSignStatus
 - (void)didSignButon:(UIButton *)btn{
     if (btn.tag == 500) {
         // 签到
+        _signType = 1;
         
     }
     if (btn.tag == 501) {
         // 签退
+        _signType = 2;
     }
 
     if (btn.tag == 502) {
         // 外勤
+        _signType = 3;
     }
+    [self postNetWork];
 
 }
 #pragma mark --- ActionMapScale
