@@ -27,6 +27,9 @@
 // 审批人
 @property (nonatomic, strong) MMChooseTextFile *checkPerson;
 
+//
+@property (nonatomic, strong) UIButton *commitButton;
+
 
 @end
 @implementation FillApplyView
@@ -44,6 +47,7 @@
     [self addSubview:self.signAddress];
     [self addSubview:self.signReason];
     [self addSubview:self.checkPerson];
+    [self addSubview:self.commitButton];
 }
 - (void)layoutSubviews{
     [self.signType mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,6 +80,12 @@
         make.right.mas_equalTo(self.signType.mas_right);
         make.height.mas_equalTo(@44);
     }];
+    [self.commitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.mas_bottom).offset(0);
+        make.left.mas_equalTo(self.mas_left);
+        make.right.mas_equalTo(self.mas_right);
+        make.height.mas_equalTo(@50);
+    }];
 }
 - (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
     if (indexTag == 400 ) {
@@ -98,6 +108,10 @@
         // 审批人
          MMLog(@"审批人回调");
     }
+}
+#pragma mark ---- Action
+- (void)didSignButon:(UIButton *)sender{
+    
 }
 - (MMChooseTextFile *)signType{
     if (_signType == nil) {
@@ -153,6 +167,7 @@
         _signReason = [[MMChooseTextFile alloc] init];
         _signReason.leftTitle = @"补签原因";
         _signReason.placeHold = @"请输入补签原因";
+        _signReason.isExist = YES;
         _signReason.tag = 403;
         [_signReason dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
@@ -177,5 +192,20 @@
     return _checkPerson;
 }
 
+- (UIButton *)commitButton {
+    
+    if (_commitButton == nil) {
+        _commitButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        _commitButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_commitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [_commitButton setTitle:@"提交申请" forState:UIControlStateNormal];
+        _commitButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_commitButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
+    
+    }
+    return _commitButton;
+    
+}
 
 @end

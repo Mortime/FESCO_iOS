@@ -85,7 +85,7 @@ static NSString * const reuseID  = @"PhoneListCell";
             // 数据不存在,进行网络请求
             
             [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+//                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
                 
                 [MMDataBase  initializeDatabaseWith:^(BOOL isSuccess) {
                     if (isSuccess) {
@@ -124,7 +124,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 - (void)initDataUI{
     // 取出全部数据
     NSDictionary *dataBaseDic = [MMDataBase allDatalist];
-    MMLog(@"数据库返回数据: %@",dataBaseDic);
+//    MMLog(@"数据库返回数据: %@",dataBaseDic);
     
     NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                NSUserDomainMask,

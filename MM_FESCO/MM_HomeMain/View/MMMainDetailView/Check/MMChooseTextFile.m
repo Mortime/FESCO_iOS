@@ -30,6 +30,7 @@
     if (self = [super initWithFrame:frame]) {
         
         self.isShowDataPickView = NO;
+        self.isExist = NO;
         
         [self initUI];
     }
@@ -44,7 +45,7 @@
     [self.bgView addSubview:self.leftLabel];
     [self.bgView addSubview:self.rightTextFiled];
     
-    if (!_isShowDataPickView) {
+    if (!_isShowDataPickView && !_isExist) {
         
        self.rightTextFiled.inputView = self.pickerView;
         
@@ -85,11 +86,14 @@
     self.rightTextFiled.text = self.textFileStr;
     
     if (_isShowDataPickView) {
-        
+        // 显示日期选择器
     self.rightTextFiled.inputView = self.dateView;
 
     }
-    
+    if (_isExist) {
+        // 不显示选择器,让用户输入内容
+        self.rightTextFiled.inputView = nil;
+    }
 }
 #pragma mark ----- UIScrollerDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{

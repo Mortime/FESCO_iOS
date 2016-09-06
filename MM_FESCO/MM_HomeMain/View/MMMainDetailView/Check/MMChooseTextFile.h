@@ -26,6 +26,8 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 
 @property (nonatomic, assign) BOOL isShowDataPickView; // 默认是不显示的
 
+@property (nonatomic,assign) BOOL isExist; // 是否可输入 , 默认不可输入
+
 /**
  *  textField结束编辑
  *
