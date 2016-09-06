@@ -76,11 +76,8 @@
     
 }
 
-
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.viewModel.checkListArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         return 162;
@@ -92,6 +89,7 @@
         if (!cell) {
             cell = [[CheckRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
         }
+    cell.listModel = self.viewModel.checkListArray[indexPat.row];
         
         return cell;
         

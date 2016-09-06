@@ -160,6 +160,21 @@
     return [[NSDate dateWithTimeIntervalInMilliSecondSince1970:time] formattedTime];
 }
 
++ (NSString *)dateFromSSWithDateType:(NSString *)DateType ss:(NSString *)ss{
+    
+    long long time=[ss longLongValue];
+    
+    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000.0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:DateType];
+    
+    NSString*timeString=[formatter stringFromDate:d];
+    
+    return timeString;
+}
+
 #pragma mark Relative Dates
 
 + (NSDate *) dateWithDaysFromNow: (NSInteger) days

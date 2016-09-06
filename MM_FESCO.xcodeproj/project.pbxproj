@@ -29,6 +29,9 @@
 		594776161D76D5CF0094D354 /* FillApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776151D76D5CF0094D354 /* FillApplyView.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F741D7E4626004D3AAE /* SignUpViewModel.m */; };
+		59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */; };
+		59614F7D1D7E9911004D3AAE /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F7C1D7E9911004D3AAE /* CheckListModel.m */; };
+		59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F7F1D7E9A5E004D3AAE /* FillListModel.m */; };
 		596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -163,6 +166,12 @@
 		59614F731D7E4626004D3AAE /* SignUpViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewModel.h; sourceTree = "<group>"; };
 		59614F741D7E4626004D3AAE /* SignUpViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewModel.m; sourceTree = "<group>"; };
 		59614F771D7E484D004D3AAE /* MMModelDataMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMModelDataMacro.h; sourceTree = "<group>"; };
+		59614F781D7E90A8004D3AAE /* TTRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTRefreshFooter.h; sourceTree = "<group>"; };
+		59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRefreshFooter.m; sourceTree = "<group>"; };
+		59614F7B1D7E9911004D3AAE /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
+		59614F7C1D7E9911004D3AAE /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
+		59614F7E1D7E9A5E004D3AAE /* FillListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillListModel.h; sourceTree = "<group>"; };
+		59614F7F1D7E9A5E004D3AAE /* FillListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillListModel.m; sourceTree = "<group>"; };
 		596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
 		596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,6 +388,8 @@
 		594775F41D7684D80094D354 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				59614F781D7E90A8004D3AAE /* TTRefreshFooter.h */,
+				59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */,
 				594775FF1D768FEF0094D354 /* RefreshTableView.h */,
 				594776001D768FEF0094D354 /* RefreshTableView.m */,
 				594775F81D7686DB0094D354 /* Header.h */,
@@ -707,6 +718,10 @@
 				59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */,
 				59F650EC1D6FCC41000596A7 /* PhoneListModel.h */,
 				59F650ED1D6FCC41000596A7 /* PhoneListModel.m */,
+				59614F7B1D7E9911004D3AAE /* CheckListModel.h */,
+				59614F7C1D7E9911004D3AAE /* CheckListModel.m */,
+				59614F7E1D7E9A5E004D3AAE /* FillListModel.h */,
+				59614F7F1D7E9A5E004D3AAE /* FillListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -928,6 +943,7 @@
 			files = (
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
+				59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
@@ -986,6 +1002,7 @@
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
 				59A8D1071D6E944F002CB709 /* PhoneListCell.m in Sources */,
 				594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */,
+				59614F7D1D7E9911004D3AAE /* CheckListModel.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
@@ -1001,6 +1018,7 @@
 				594776131D76CE290094D354 /* MMChooseTextFile.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
 				594776071D7691F30094D354 /* CheckRecordCell.m in Sources */,
+				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
 				596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */,

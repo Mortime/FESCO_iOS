@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckListModel.h"
 
 @interface CheckRecordCell : UITableViewCell
+
+@property (nonatomic, strong) CheckListModel *listModel;
 
 @end

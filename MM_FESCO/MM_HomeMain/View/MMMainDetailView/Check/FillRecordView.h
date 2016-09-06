@@ -6,15 +6,13 @@
 //  Copyright © 2016年 Mortimey. All rights reserved.
 //
 
-#import "RefreshTableView.h"
+#import "TTRefreshFooter.h"
 
-@interface FillRecordView : RefreshTableView
+@interface FillRecordView : TTRefreshFooter
 
 @property (nonatomic, strong) UIViewController *parementVC;
 
 @property (nonatomic, assign) RecodeType recodeType;
-
-
 
 // 刷新数据的方法
 - (void)refreshUI;

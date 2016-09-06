@@ -31,9 +31,6 @@
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         
         
-        
-    
-        
 //        //接收无效的证书 默认是NO
 //        _sharedClient.securityPolicy.allowInvalidCertificates = YES;
 //        

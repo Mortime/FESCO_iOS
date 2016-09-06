@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Mortimey. All rights reserved.
 //
 
-#import "RefreshTableView.h"
+#import "TTRefreshFooter.h"
 
-@interface CheckRecordView : RefreshTableView
+@interface CheckRecordView : TTRefreshFooter
 
 
 @property (nonatomic, strong) UIViewController *parementVC;

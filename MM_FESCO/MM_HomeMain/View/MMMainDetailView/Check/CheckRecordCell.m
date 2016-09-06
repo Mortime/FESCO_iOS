@@ -7,6 +7,7 @@
 //
 
 #import "CheckRecordCell.h"
+#import "NSDate+Category.h"
 
 @interface CheckRecordCell ()
 
@@ -117,7 +118,7 @@
         _addressLabel = [[UILabel alloc] init];
         _addressLabel.font = [UIFont systemFontOfSize:14];
         _addressLabel.textColor = [UIColor blackColor];
-        _addressLabel.text = @"Fesco";
+//        _addressLabel.text = @"Fesco";
         
     }
     return _addressLabel;
@@ -127,7 +128,7 @@
         _signUpLabel = [[UILabel alloc] init];
         _signUpLabel.font = [UIFont systemFontOfSize:12];
         _signUpLabel.textColor = [UIColor grayColor];
-        _signUpLabel.text = @"签到时间: 2016.8.30";
+//        _signUpLabel.text = @"签到时间: 2016.8.30";
         
     }
     return _signUpLabel;
@@ -138,7 +139,7 @@
         _signOutLabel = [[UILabel alloc] init];
         _signOutLabel.font = [UIFont systemFontOfSize:12];
         _signOutLabel.textColor = [UIColor grayColor];
-        _signOutLabel.text = @"签退时间: 2016.8.31";
+//        _signOutLabel.text = @"签退时间: 2016.8.31";
         
     }
     return _signOutLabel;
@@ -149,7 +150,7 @@
         _remarkLabel = [[UILabel alloc] init];
         _remarkLabel.font = [UIFont systemFontOfSize:12];
         _remarkLabel.textColor = [UIColor grayColor];
-        _remarkLabel.text = @"备注: 系统添加";
+//        _remarkLabel.text = @"备注: 系统添加";
         
     }
     return _remarkLabel;
@@ -164,6 +165,39 @@
     }
     return _lineView;
 }
+- (void)setListModel:(CheckListModel *)listModel{
+    
+    // 地址
+    if (listModel.signAddress) {
+        self.addressLabel.text = listModel.signAddress;
+    }
+    // 签到时间
+    if (listModel.beginTime) {
+        
+        NSString *dateStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime];
+        self.signUpLabel.text = [NSString stringWithFormat:@"签到时间: %@",dateStr];
+    }else{
+        self.signUpLabel.text = @"暂无";
+    }
 
+    // 签退时间
+    if (listModel.endTime) {
+        
+        NSString *dateStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime];
+        self.signOutLabel.text = [NSString stringWithFormat:@"签到时间: %@",dateStr];
+        
+        self.signOutLabel.text = [NSString stringWithFormat:@"签退时间: %@",dateStr];;
+    }else{
+        self.signOutLabel.text = @"暂无";
+    }
+    // 备注信息
+    if (listModel.memo) {
+        self.remarkLabel.text = [NSString stringWithFormat:@"备注: %@",listModel.memo];
+    }else{
+        self.remarkLabel.text = @"备注:暂无";
+    }
+
+    
+}
 
 @end

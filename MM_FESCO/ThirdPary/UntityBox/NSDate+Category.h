@@ -37,6 +37,14 @@
 + (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes;
 + (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes;
 
+/*
+ * 将毫秒转化为指定的时间格式 
+ *  DateType  指定的时间格式
+ *  ss        要转化的毫秒
+ 
+ */
++ (NSString *)dateFromSSWithDateType:(NSString *)DateType ss:(NSString *)ss;
+
 // Comparing dates
 - (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
 - (BOOL) isToday;
