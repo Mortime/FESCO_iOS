@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BaiduMapAPI/BMKLocationService.h>
+#import <BaiduMapAPI/BMKMapView.h>
 
 @interface CheckView : UIView
+
+
+@property (nonatomic, strong) BMKMapView *mapView;
+
+@property (nonatomic, strong) BMKLocationService *locService;
 
 @end

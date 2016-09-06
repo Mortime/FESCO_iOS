@@ -30,6 +30,7 @@
 #import <YYModel.h>
 #import "MMDataBase.h"
 #import <FMDatabase.h>
+#import "MMModelDataMacro.h"
 
 
 

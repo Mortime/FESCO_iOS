@@ -39,8 +39,12 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"考勤";
     [self initUI];
+    [self initRefesh];
     
     
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.checkView.locService stopUserLocationService];
 }
 - (void)initUI{
     
@@ -58,7 +62,50 @@
     
     
 }
+- (void)initRefesh{
 
+    __weak typeof (self) ws = self;
+    
+    self.checkRecordView.refreshFooter.beginRefreshingBlock = ^(){
+        [ws moreLoadData];
+    };
+    
+}
+
+
+- (void)loadNetworkData {
+    
+    CGFloat offSetX = self.scrollView.contentOffset.x;
+    CGFloat width = self.scrollView.width;
+    
+     if (offSetX >= width && offSetX < width * 2) {
+         
+         // 考勤记录
+        [self.checkRecordView networkRequest];
+    }
+    if (offSetX >= width * 3 && offSetX < width * 4) {
+        
+        // 补签申请
+        [self.fillRecordView networkRequest];
+    }
+}
+
+- (void)moreLoadData {
+    
+    CGFloat offSetX = self.scrollView.contentOffset.x;
+    CGFloat width = self.scrollView.width;
+    if (offSetX >= width && offSetX < width * 2) {
+        // 考勤记录
+        [self.checkRecordView moreData];
+        
+    }if (offSetX >= width * 3 && offSetX < width * 4) {
+        
+        // 补签申请
+        
+        [self.fillRecordView moreData];
+    }
+
+}
 
 #pragma mark 筛选条件
 - (void)dvvToolBarViewItemSelectedAction:(NSInteger)index {
@@ -69,52 +116,33 @@
         
         CGFloat contentOffsetX = 0;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//                self.lastMonthView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
-//        self.lastMonthView.commnetLevel = self.commentLevel;
-//        self.lastMonthView.parementVC = self;
-        
     
         
     }else if (1 == index) {
+        // 考勤记录
         CGFloat contentOffsetX = self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//        self.lastWeekView.commentDateSearchType = kCommentDateSearchTypeLastWeek;
-//        self.lastWeekView.commnetLevel = self.commentLevel;
-//        self.lastWeekView.parementVC = self;
+        self.checkRecordView.recodeType = RecodeTypeCheck;
+        self.checkRecordView.parementVC = self;
+        
+        [self loadNetworkData];
         
     
         
     }else if (2 == index) {
         CGFloat contentOffsetX = 2 * self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//
-//        self.todayView.commentDateSearchType = kCommentDateSearchTypeToday;
-//        self.todayView.commnetLevel = self.commentLevel;
-//        self.todayView.parementVC = self;
-        
-        
-       
         
     }
     else if (3 == index) {
+        // 补签记录
         CGFloat contentOffsetX = 3 * self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//        self.thisWeekView.commentDateSearchType = kCommentDateSearchTypeThisWeek;
-//        self.thisWeekView.commnetLevel = self.commentLevel;
-//        self.thisWeekView.parementVC = self;
+        self.fillRecordView.recodeType = RecodeTypeFill;
+        self.fillRecordView.parementVC = self;
         
-        
-        
-        
+        [self loadNetworkData];
     }
-    
-        
-        
-    
-    
-//    NSLog(@"+++++++_scrollView.contentOffset.y:%f",_scrollView.contentOffset.y);
-    
-//    [self loadNetworkData];
     
 }
 #pragma mark --- UIScroller delegate

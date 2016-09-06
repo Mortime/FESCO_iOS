@@ -28,6 +28,7 @@
 		594776131D76CE290094D354 /* MMChooseTextFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776121D76CE290094D354 /* MMChooseTextFile.m */; };
 		594776161D76D5CF0094D354 /* FillApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776151D76D5CF0094D354 /* FillApplyView.m */; };
 		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
+		59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F741D7E4626004D3AAE /* SignUpViewModel.m */; };
 		596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
@@ -159,6 +160,9 @@
 		594776151D76D5CF0094D354 /* FillApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillApplyView.m; sourceTree = "<group>"; };
 		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
 		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
+		59614F731D7E4626004D3AAE /* SignUpViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewModel.h; sourceTree = "<group>"; };
+		59614F741D7E4626004D3AAE /* SignUpViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewModel.m; sourceTree = "<group>"; };
+		59614F771D7E484D004D3AAE /* MMModelDataMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMModelDataMacro.h; sourceTree = "<group>"; };
 		596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
 		596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,6 +397,8 @@
 			children = (
 				596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */,
 				596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */,
+				59614F731D7E4626004D3AAE /* SignUpViewModel.h */,
+				59614F741D7E4626004D3AAE /* SignUpViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				597762231D489AE000BD8472 /* LaunchScreen.storyboard */,
 				597762261D489AE000BD8472 /* Info.plist */,
 				59A59E011D499BDC001F3122 /* PrefixHeader.pch */,
+				59614F771D7E484D004D3AAE /* MMModelDataMacro.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -949,6 +956,7 @@
 				594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */,
 				59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
+				59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,

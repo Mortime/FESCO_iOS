@@ -8,8 +8,13 @@
 
 #import "FillRecordView.h"
 #import "FillRecordCell.h"
+#import "SignUpViewModel.h"
 
 @interface FillRecordView () <UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) SignUpViewModel *viewModel;
+
+@property (nonatomic, assign) BOOL successRequest;
 
 
 @end
@@ -24,30 +29,52 @@
         self.backgroundColor = [UIColor clearColor];
         
         
-        //        self.viewModel = [JZCommentListViewModel new];
-        //        [self.viewModel successRefreshBlock:^{
-        //            [self refreshUI];
-        //            //            NSInteger index = _commnetLevel - 1;
-        //            //            [self expandTitleIndex:index];
-        //            //            [self expandPieIndex:index];
-        //            self.successRequest = 1;
-        //
-        //            return;
-        //        }];
-        //        [self.viewModel successLoadMoreBlock:^{
-        //            [self refreshUI];
-        //            [self.refreshFooter endRefreshing];
-        //
-        //
-        //        }];
-        //        [self.viewModel successLoadMoreBlockAndNoData:^{
-        //            [self.parementVC showTotasViewWithMes:@"已经加载更多"];
-        //            [self.refreshFooter endRefreshing];
-        //        }];
+        
+        self.viewModel = [SignUpViewModel new];
+        [self.viewModel successRefreshBlock:^{
+            
+            [self refreshUI];
+            self.successRequest = 1;
+            
+            return;
+        }];
+        [self.viewModel successLoadMoreBlock:^{
+            [self refreshUI];
+            [self.refreshFooter endRefreshing];
+            
+            
+        }];
+        [self.viewModel successLoadMoreBlockAndNoData:^{
+            [self.parementVC showTotasViewWithMes:@"已经加载更多"];
+            [self.refreshFooter endRefreshing];
+        }];
     }
     
     return self;
 }
+#pragma mark - 刷新数据
+- (void)refreshUI {
+    
+    [self reloadData];
+}
+
+#pragma mark - 刷新数据
+- (void)networkRequest {
+    
+    self.viewModel.recodeType = self.recodeType;
+    
+    [self.viewModel networkRequestRefresh];
+}
+
+#pragma mark --- 加载更多
+- (void)moreData{
+    
+    self.viewModel.recodeType = self.recodeType;
+    
+    [self.viewModel networkRequestLoadMore];
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;
 }

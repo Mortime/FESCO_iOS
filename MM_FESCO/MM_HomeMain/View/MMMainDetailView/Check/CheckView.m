@@ -7,8 +7,7 @@
 //
 
 #import "CheckView.h"
-#import <BaiduMapAPI/BMKLocationService.h>
-#import <BaiduMapAPI/BMKMapView.h>
+
 #import "NSDate+Category.h"
 
 #define kButtonW  (kMMWidth / 3)
@@ -19,9 +18,9 @@
 
 @interface CheckView ()<BMKLocationServiceDelegate,BMKMapViewDelegate>
 
-@property (nonatomic, strong) BMKLocationService *locService;
 
-@property (nonatomic, strong) BMKMapView *mapView;
+
+
 
 @property (nonatomic, strong) UIView *bgTopView;
 
@@ -87,12 +86,15 @@
     _mapView.showsUserLocation = YES;//显示定位图层
     _mapView.compassPosition = CGPointMake(100, 100);
     _mapView.zoomLevel = 19.1; //地图等级，数字越大越清晰
+    _mapView.scrollEnabled = YES;
     [self addSubview:self.mapView];
     
     //初始化BMKLocationService
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
     [BMKLocationService setLocationDistanceFilter:10];
+    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+//    _locService.desiredAccuracy = kCLLocationAccuracyBest;     
     //启动LocationService
     [_locService startUserLocationService];
     
@@ -442,6 +444,7 @@
         _signUpButton.frame = CGRectMake(CGRectGetMaxX(self.signOutButton.frame), self.signOutButton.frame.origin.y, kButtonW, kButtonH);
         _signUpButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         [_signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
         [_signUpButton setTitle:@"签到" forState:UIControlStateNormal];
         _signUpButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signUpButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
@@ -465,5 +468,7 @@
     return _outButton;
     
 }
-
+- (void)dealloc{
+    
+}
 @end

@@ -103,4 +103,16 @@
  
  */
 + (void)postSignUpListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+/**
+ *    补签记录
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postFillListWithSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end
