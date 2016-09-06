@@ -7,6 +7,7 @@
 //
 
 #import "FillRecordCell.h"
+#import "NSDate+Category.h"
 
 @interface FillRecordCell ()
 
@@ -153,7 +154,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.text = @"签退";
+//        _titleLabel.text = @"签退";
         
     }
     return _titleLabel;
@@ -164,7 +165,7 @@
         _applyTimeLabel = [[UILabel alloc] init];
         _applyTimeLabel.font = [UIFont systemFontOfSize:14];
         _applyTimeLabel.textColor = [UIColor blackColor];
-        _applyTimeLabel.text = @"申请时间: 2016-08-09 12:09";
+//        _applyTimeLabel.text = @"申请时间: 2016-08-09 12:09";
         
     }
     return _applyTimeLabel;
@@ -175,7 +176,7 @@
         _signUpLabel = [[UILabel alloc] init];
         _signUpLabel.font = [UIFont systemFontOfSize:14];
         _signUpLabel.textColor = [UIColor grayColor];
-        _signUpLabel.text = @"签到时间: 2016.8.30";
+//        _signUpLabel.text = @"签到时间: 2016.8.30";
         
     }
     return _signUpLabel;
@@ -186,7 +187,7 @@
         _addressLabel = [[UILabel alloc] init];
         _addressLabel.font = [UIFont systemFontOfSize:14];
         _addressLabel.textColor = [UIColor blackColor];
-        _addressLabel.text = @"签到地点: Fesco";
+//        _addressLabel.text = @"签到地点: Fesco";
         
     }
     return _addressLabel;
@@ -197,7 +198,7 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = [UIFont systemFontOfSize:14];
         _nameLabel.textColor = [UIColor grayColor];
-        _nameLabel.text = @"当前审批人: 松哥";
+//        _nameLabel.text = @"当前审批人: 松哥";
         
     }
     return _nameLabel;
@@ -222,5 +223,58 @@
         
     }
     return _lineView;
+}
+- (void)setListModel:(FillListModel *)listModel{
+    
+    // 补签类型
+    if (listModel.checkType == 1) {
+        // 签到
+        _titleLabel.text = @"签到";
+    }else if (listModel.checkType == 2){
+        // 签退
+        _titleLabel.text = @"签退";
+    }else if (listModel.checkType == 3){
+        // 外勤
+        _titleLabel.text = @"外勤";
+    }
+    
+    // 申请时间  yyyy-MM-dd HH:mm
+    if (listModel.applyDate) {
+        NSString *dateStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:dd" ss:listModel.applyDate];
+        _applyTimeLabel.text = [NSString stringWithFormat:@"申请时间: %@",dateStr];
+    }
+    // 签到时间
+    if (listModel.checkTime) {
+        NSString *dateStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:dd" ss:listModel.checkTime];
+        _signUpLabel.text = [NSString stringWithFormat:@"签到时间: %@",dateStr];
+    }
+    // 签到地点
+    if (listModel.custAddress) {
+        _addressLabel.text = [NSString stringWithFormat:@"签到地点: %@",listModel.custAddress];
+    }
+    // 当前审批人
+    if (listModel.applePeople) {
+        _nameLabel.text = [NSString stringWithFormat:@"当前审批人: %@",listModel.applePeople];
+    }
+    
+    // 审批状态
+    if (listModel.applyResult == 1) {
+        //  通过
+        [_statusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_statusButton setTitle:@"同意" forState:UIControlStateNormal];
+        _statusButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+
+        
+    }
+    if (listModel.applyResult == 2) {
+        //  审批中
+        [_statusButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        [_statusButton setTitle:@"审批中..." forState:UIControlStateNormal];
+        _statusButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+        
+        
+    }
+
+    
 }
 @end

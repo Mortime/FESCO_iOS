@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Mortimey. All rights reserved.
 //
 
-#import "TTRefreshFooter.h"
+#import <UIKit/UIKit.h>
 
-@interface FillRecordView : TTRefreshFooter
+@interface FillRecordView : UITableView
 
 @property (nonatomic, strong) UIViewController *parementVC;
 

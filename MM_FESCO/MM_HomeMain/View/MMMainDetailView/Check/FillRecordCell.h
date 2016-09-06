@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FillListModel.h"
 @interface FillRecordCell : UITableViewCell
+
+@property (nonatomic, strong) FillListModel *listModel;
 
 @end

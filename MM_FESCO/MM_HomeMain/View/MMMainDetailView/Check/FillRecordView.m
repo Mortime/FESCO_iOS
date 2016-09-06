@@ -40,13 +40,13 @@
         }];
         [self.viewModel successLoadMoreBlock:^{
             [self refreshUI];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing]; ----
             
             
         }];
         [self.viewModel successLoadMoreBlockAndNoData:^{
             [self.parementVC showTotasViewWithMes:@"已经加载更多"];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing];  //
         }];
     }
     
@@ -76,7 +76,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.viewModel.fillListArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 163;
@@ -88,7 +88,7 @@
     if (!cell) {
         cell = [[FillRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
     }
-    
+    cell.listModel = self.viewModel.fillListArray[indexPat.row];
     return cell;
     
 }
