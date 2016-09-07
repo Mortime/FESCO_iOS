@@ -16,17 +16,17 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 
 @interface MMDataBase : NSObject
 
-// 创建数据库
-+ (void)initializeDatabaseWith:(initDatabaseBlock)initializeDatabaseBlock;
+// 创建数据库表
++ (void)initializeDatabaseWithTableName:(NSString *)tname  baseBlock:(initDatabaseBlock)initDatabaseBlock;
 
 //存入数据库
-+ (void)saveItemDict:(NSMutableDictionary *)itemDict;
++ (void)saveItemDict:(NSMutableDictionary *)itemDict tname:(NSString *)tname;
 
 //返回全部数据
-+ (NSDictionary *)allDatalist;
++ (NSDictionary *)allDatalistWithTname:(NSString *)tname;
 
-// 数据库中是否存在某数据
-+ (void)isExistWithId:(NSString *)idStr isExist:(existData)existData;
+//通过一组数据的唯一标识判断数据是否存在  
++ (void)isExistWithId:(NSString *)idStr tname:(NSString *)tname isExist:(existData)existData;
 
 
 @end

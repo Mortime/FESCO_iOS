@@ -10,6 +10,12 @@
 #define MMModelDataMacro_h
 
 
+#define t_phoneList   @"t_phoneList"  // 通讯录表数据库表
+
+#define t_applySignup @"t_applySignup"  // 补签申请数据库表
+
+
+
 
 
 typedef NS_ENUM(NSUInteger,RecodeType){

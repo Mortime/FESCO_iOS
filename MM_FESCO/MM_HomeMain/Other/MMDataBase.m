@@ -26,32 +26,43 @@ static FMDatabase *_db;
     }
     return self;
 }
-// 创建数据库 t_phoneList 表
-+ (void)initializeDatabaseWith:(initDatabaseBlock)initDatabaseBlock{
+// 创建数据库表
++ (void)initializeDatabaseWithTableName:(NSString *)tname  baseBlock:(initDatabaseBlock)initDatabaseBlock{
     
     NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
     
-    BOOL result= [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_phoneList (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)"];
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
+    BOOL result= [_db executeUpdate:sql];
     // 返回创建表的结果
     initDatabaseBlock(result);
 
 }
 
 //存入数据库
-+ (void)saveItemDict:(NSMutableDictionary *)itemDict {
++ (void)saveItemDict:(NSMutableDictionary *)itemDict tname:(NSString *)tname {
     //此处把字典归档成二进制数据直接存入数据库，避免添加过多的数据库字段
     NSData *dictData = [NSKeyedArchiver archivedDataWithRootObject:itemDict];
     
-    [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
+    if ([tname isEqualToString:t_applySignup]) {
+        [_db executeUpdateWithFormat:@"INSERT INTO t_applySignup (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
+    }
+    if ([tname isEqualToString:@"t_phoneList"]) {
+        
+        [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
+    }
+  
+    
 }
 
 //返回全部数据
-+ (NSDictionary *)allDatalist {
++ (NSDictionary *)allDatalistWithTname:(NSString *)tname {
     
-    FMResultSet *set = [_db executeQuery:@"SELECT * FROM t_phoneList"];
+    NSString *sli = [NSString stringWithFormat:@"SELECT * FROM %@",tname];
+    
+    FMResultSet *set = [_db executeQuery:sli];
     
     
     while (set.next) {
@@ -67,12 +78,13 @@ static FMDatabase *_db;
     return nil;
 }
 
-//通过一组数据的唯一标识判断数据是否存在
-+ (void)isExistWithId:(NSString *)idStr isExist:(existData)existData
+//通过一组数据的唯一标识判断数据是否存在  t_phoneList
++ (void)isExistWithId:(NSString *)idStr tname:(NSString *)tname isExist:(existData)existData
 {
     BOOL isExist = NO;
     
-    FMResultSet *resultSet= [_db executeQuery:@"SELECT * FROM t_phoneList"];
+    NSString *spi = [NSString stringWithFormat:@"SELECT * FROM %@",tname];
+    FMResultSet *resultSet= [_db executeQuery:spi];
     while (resultSet.next) {
         if([resultSet stringForColumn:@"idStr"]) {
             isExist = YES;

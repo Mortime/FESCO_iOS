@@ -76,7 +76,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     
     __weak typeof(self) ws = self;
     
-    [MMDataBase isExistWithId:@"exist" isExist:^(BOOL isExist) {
+    [MMDataBase isExistWithId:@"exist" tname:t_phoneList isExist:^(BOOL isExist) {
         if (isExist) {
             // 数据已经存在
             [ws initDataUI];
@@ -85,9 +85,8 @@ static NSString * const reuseID  = @"PhoneListCell";
             // 数据不存在,进行网络请求
             
             [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-//                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
-                
-                [MMDataBase  initializeDatabaseWith:^(BOOL isSuccess) {
+                //                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+                [MMDataBase initializeDatabaseWithTableName:t_phoneList baseBlock:^(BOOL isSuccess) {
                     if (isSuccess) {
                         // 表创建成功
                         MMLog(@"表创建成功");
@@ -97,19 +96,24 @@ static NSString * const reuseID  = @"PhoneListCell";
                         [mutableDic setValue:@"exist" forKey:@"ID"];
                         
                         // 保存数据
-                        [MMDataBase saveItemDict:mutableDic];
+                        [MMDataBase saveItemDict:mutableDic tname:t_phoneList];
                         [ws initDataUI];
                         
                         
                     }
+
                 }];
+                
+                
             } failure:^(NSError *failure) {
                 MMLog(@"PhoneListController =====failure ==========%@",failure);
             }];
             
             
         }
+
     }];
+  
     
     //                NSString *groupName = [dic objectForKey:@"group_Name"];
     //                NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
@@ -123,7 +127,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 }
 - (void)initDataUI{
     // 取出全部数据
-    NSDictionary *dataBaseDic = [MMDataBase allDatalist];
+    NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_phoneList];
 //    MMLog(@"数据库返回数据: %@",dataBaseDic);
     
     NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,

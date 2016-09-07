@@ -91,23 +91,67 @@
     }];
 }
 -(void)initData{
+    __weak typeof(self) ws = self;
     
-    [NetworkEntity postApplyPeopleListWithSuccess:^(id responseObject) {
-        
-        MMLog(@"ApplyPeopleList =====responseObject======%@",responseObject);
-        NSArray *param = [responseObject objectForKey:@"approvalManList"];
-        if (param.count) {
-            for (NSDictionary *dic in param) {
-                NSString *name = [dic objectForKey:@"emp_Name"];
-                [self.dataArray addObject:name];
-            }
+    [MMDataBase isExistWithId:@"exist" tname:t_applySignup isExist:^(BOOL isExist) {
+        if (isExist) {
+            // 数据已经存在
+            [ws showData];
+            
+        }else{
+            // 数据不存在,进行网络请求
+            [NetworkEntity postApplyPeopleListWithSuccess:^(id responseObject) {
+                
+//                MMLog(@"ApplyPeopleList =====responseObject======%@",responseObject);
+                [MMDataBase initializeDatabaseWithTableName:t_applySignup baseBlock:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        // 表创建成功
+                        MMLog(@"表创建成功");
+                        // 添加判断数据是否存在的字段
+                        NSDictionary *dic = (NSDictionary *)responseObject;
+                        NSMutableDictionary *mutableDic = dic.mutableCopy;
+                        [mutableDic setValue:@"exist" forKey:@"ID"];
+                        
+                        // 保存数据
+                        [MMDataBase saveItemDict:mutableDic tname:t_applySignup];
+                        [ws showData];
+                        
+                    }
+                    
+                }];
+                
+                
+            } failure:^(NSError *failure) {
+                MMLog(@"ApplyPeopleList =====failure======%@",failure);
+            }];
+            
+            
         }
         
-        
-        
-    } failure:^(NSError *failure) {
-        MMLog(@"ApplyPeopleList =====failure======%@",failure);
     }];
+    
+}
+- (void)showData{
+    // 取出全部数据
+    NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_applySignup];
+//        MMLog(@"数据库返回数据: %@",dataBaseDic);
+    
+    NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                               NSUserDomainMask,
+                                                               YES);
+    NSString *restltDocumentDirectory = [resultPaths lastObject];
+    MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
+    
+    
+    NSArray *param = [dataBaseDic objectForKey:@"approvalManList"];
+    if (param.count) {
+        for (NSDictionary *dic in param) {
+            NSString *name = [dic objectForKey:@"emp_Name"];
+            [self.dataArray addObject:name];
+        }
+    }
+
+
 }
 - (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
     if (indexTag == 400 ) {
