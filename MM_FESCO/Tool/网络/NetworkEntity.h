@@ -90,7 +90,7 @@
  *  @param type （req）  type  (type=1为签到，2为签退，3为外勤）
  
  */
-+ (void)postSignUpTypeWithLongitude:(NSInteger)longitude latitude:(NSInteger)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postSignUpTypeWithLongitude:(CGFloat)longitude latitude:(CGFloat)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
  *    考勤记录

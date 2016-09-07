@@ -192,12 +192,12 @@
 /**
  *   签到
  */
-+ (void)postSignUpTypeWithLongitude:(NSInteger)longitude latitude:(NSInteger)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postSignUpTypeWithLongitude:(CGFloat)longitude latitude:(CGFloat)latitude type:(NSInteger)type memo:(NSString *)memo  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
     NSDictionary *dic = @{@"cust_Id":[UserInfoModel defaultUserInfo].custId,
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-                          @"longitude":[NSString stringWithFormat:@"%lu",longitude],
-                          @"latitude":[NSString stringWithFormat:@"%lu",latitude],
+                          @"longitude":[NSString stringWithFormat:@"%f",longitude],
+                          @"latitude":[NSString stringWithFormat:@"%f",latitude],
                           @"type":[NSString stringWithFormat:@"%lu",type],
                           @"memo":memo,
                           @"methodname":@"kq/sign.json"};

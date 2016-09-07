@@ -100,7 +100,7 @@
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
     [BMKLocationService setLocationDistanceFilter:10];
-    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBest];
 //    _locService.desiredAccuracy = kCLLocationAccuracyBest;     
     //启动LocationService
     [_locService startUserLocationService];
