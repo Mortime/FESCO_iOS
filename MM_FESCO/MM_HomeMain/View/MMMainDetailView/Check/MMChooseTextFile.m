@@ -110,6 +110,12 @@
         [self valueChange:_dateView];
     }
     
+    if (_isExist) {
+        if (_didEndEditingBlock) {
+            _didEndEditingBlock(self.rightTextFiled,self.tag);
+        }
+    }
+    
     self.leftLabel.textColor = [UIColor grayColor];
     self.rightTextFiled.textColor = [UIColor grayColor];
     _bgView.layer.borderColor = [UIColor whiteColor].CGColor;

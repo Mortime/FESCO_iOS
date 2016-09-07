@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MM_FESCO/MM_HomeMain/View/MMMainDetailView/Check/FillApplyView.m"
-            timestampString = "494908004.148915"
+            timestampString = "494922711.591762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-checkPerson"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-initWithTextFile:indexTag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

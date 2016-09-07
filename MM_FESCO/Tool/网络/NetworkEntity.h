@@ -127,4 +127,25 @@
  */
 + (void)postApplyPeopleListWithSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+/**
+ *    提交审批  emp_Id,cust_Id,check_Type,cust_Addr,check_Time(String),memo,approval_Man(long)
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param check_Type （req）  签到类型 (type=1为签到，2为签退，3为外勤）
+ 
+ *  @param cust_Addr （req）  签到地点
+ 
+ *  @param check_Time （req） 签到时间
+ 
+ *  @param memo （req）  补签原因
+ 
+ *  @param approval_Man （req） 审批人
+ 
+ 
+ */
++ (void)postCommitApplyWithCheckType:(NSInteger)checkType  address:(NSString *)address time:(NSString *)time memo:(NSString *)memo  applyPeople:(NSString *)applyPeople Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 @end

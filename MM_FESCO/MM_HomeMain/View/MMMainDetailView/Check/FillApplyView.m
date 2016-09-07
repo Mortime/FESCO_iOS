@@ -8,6 +8,7 @@
 
 #import "FillApplyView.h"
 #import "MMChooseTextFile.h"
+#import "NSDate+Category.h"
 
 
 @interface FillApplyView ()
@@ -31,6 +32,20 @@
 @property (nonatomic, strong) UIButton *commitButton;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+
+// 回调数据结果
+@property (nonatomic, assign) NSInteger type; // 1 签到 , 2 签退 , 3 外勤
+
+@property (nonatomic, strong) NSString *timeStr; // 签到时间
+
+@property (nonatomic, strong) NSString *addStr; // 签到地点
+
+@property (nonatomic, strong) NSString *resultStr; // 补签原因
+
+@property (nonatomic, strong) NSString *peopleStr; // 审批人
+
+
 
 
 @end
@@ -157,27 +172,98 @@
     if (indexTag == 400 ) {
         // 签到类型
         MMLog(@"签到类型回调");
+        if ([textfile.text isEqualToString:@"签到"]) {
+            _type = 1;
+        }
+        if ([textfile.text isEqualToString:@"签退"]) {
+            _type = 2;
+        }
+
+        if ([textfile.text isEqualToString:@"外勤"]) {
+            _type = 3;
+        }
+
     }
     if (indexTag == 401 ) {
         // 签到时间
          MMLog(@"签到时间回调");
+        // 时间字符串转换为毫秒
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM-dd HH:ss"];
+        NSDate *date = [dateFormatter dateFromString:textfile.text];
+        
+        long long timeStr = [@(floor([date timeIntervalSince1970] * 1000)) longLongValue];
+        _timeStr = [NSString stringWithFormat:@"%lli",timeStr];
+        
+        
     }
     if (indexTag == 402 ) {
         // 签到地点
          MMLog(@"签到地点回调");
+        _addStr = textfile.text;
     }
     if (indexTag == 403 ) {
         // 补签原因
          MMLog(@"补签原因回调");
+        _resultStr = textfile.text;
     }
     if (indexTag == 404 ) {
         // 审批人
          MMLog(@"审批人回调");
+        _peopleStr = textfile.text;
     }
 }
 #pragma mark ---- Action
 - (void)didSignButon:(UIButton *)sender{
+    NSString *msg ;
+    if ((_type != 1) && (_type != 2) &&(_type != 3) ) {
+        msg = @"请选择签到类型";
+        [self showMsg:msg];
+        return;
+    }
+    if (_timeStr == nil || [_timeStr isEqualToString:@""] ) {
+        msg = @"请选择签到时间";
+        [self showMsg:msg];
+        return;
+    }
+    if (_addStr == nil || [_addStr isEqualToString:@""] ) {
+        msg = @"请选择签到地点";
+        [self showMsg:msg];
+        return;
+    }
+    if (_resultStr == nil || [_resultStr isEqualToString:@""] ) {
+        msg = @"请输入补签原因";
+        [self showMsg:msg];
+        return;
+    }if (_peopleStr == nil || [_peopleStr isEqualToString:@""] ) {
+        msg = @"请选择审批人";
+        [self showMsg:msg];
+        return;
+    }
     
+    [NetworkEntity postCommitApplyWithCheckType:_type address:_addStr time:_timeStr memo:_resultStr applyPeople:_peopleStr Success:^(id responseObject) {
+        
+        MMLog(@"commitApply ========responseObject======%@",responseObject);
+        NSString *msg = [responseObject objectForKey:@"message"];
+        if ([msg isEqualToString:@"success"]) {
+            [self showMsg:@"提交成功"];
+        }
+        if ([msg isEqualToString:@"erroe"]) {
+            [self showMsg:@"提交失败"];
+        }
+        
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"commitApply ========failure======%@",failure);
+        [self showMsg:@"网络错误"];
+    }];
+    
+    
+}
+- (void)showMsg:(NSString *)msg{
+    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msg];
+    [toastView show];
+
 }
 - (MMChooseTextFile *)signType{
     if (_signType == nil) {
