@@ -26,7 +26,7 @@ static FMDatabase *_db;
     }
     return self;
 }
-// 创建数据库
+// 创建数据库 t_phoneList 表
 + (void)initializeDatabaseWith:(initDatabaseBlock)initDatabaseBlock{
     
     NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];

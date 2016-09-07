@@ -15,14 +15,6 @@
  */
 + (void)postHomeMainListWithParamMD5:(NSString *)paramMD5  menthodname:(NSString *)menthodname tokenkeyID:(NSString *)tokenkey secret:(NSString *)secret success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
-    
-    // sign， jsonParam
-    
-
-    
-    // jsonParam={"menthodname":"getAppMenu","tokenkey":"42711...154"}
-    
-    // TMz/bhZ8WBP/V5CE7iOTGmqu42yOrSJrWSh9BXbE4ZIP+RjwgWufiWd9rjPFlIi4
     if (!paramMD5) {
                 return [NetworkTool missParagramerCallBackFailure:failure];
     }
@@ -45,21 +37,6 @@
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 
 }
-
-
-
-/**
- *  测试接口数据 GET
- */
-//+ (void)getTesTInfoWithUserInfoWithUserId:(NSString *)userId
-//                                  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure
-//{
-//    if (!userId) {
-//        return [NetworkTool missParagramerCallBackFailure:failure];
-//    }
-//    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],userId];
-//    [NetworkTool GET:urlStr params:nil success:success failure:failure];
-//}
 
 
 /**
@@ -105,21 +82,11 @@
     NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/loadEmpInfo.json"];
     
     
-//    NSString *custidStr = [NSString stringWithFormat:@"'cust_Id':'%@'",custid];
-//    NSString *empStr = [NSString stringWithFormat:@"'emp_Id':'%@'",emptId];
-//    NSString *str = @"'methodname':'emp/loadEmpInfo.json'";
-//    
-//    NSString *resultStr = [NSString stringWithFormat:@"{%@,%@,%@}",custidStr,empStr,str];
-//    
-//    MMLog(@"test ==== test json parnnn    1 %@",resultStr);
-
     NSDictionary *jsonParam = @{@"cust_Id":custid,
                                 @"emp_Id":emptId,
                                 @"methodname":@"emp/loadEmpInfo.json"};
     
     NSString *resultStr =  [NSString jsonToJsonStingWith:jsonParam];
-    
-    
     
     
     NSDictionary * dic = @{@"jsonParam":resultStr,
@@ -319,4 +286,35 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
+/**
+ *    获取审批人列表
+ */
+
++ (void)postApplyPeopleListWithSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"methodname":@"kq/getApprovalMans.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getApprovalMans.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
+
 @end

@@ -30,13 +30,16 @@
 //
 @property (nonatomic, strong) UIButton *commitButton;
 
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 
 @end
 @implementation FillApplyView
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [self initUI];
         
+        [self initUI];
+        [self initData];
     }
     return self;
 }
@@ -85,6 +88,25 @@
         make.left.mas_equalTo(self.mas_left);
         make.right.mas_equalTo(self.mas_right);
         make.height.mas_equalTo(@50);
+    }];
+}
+-(void)initData{
+    
+    [NetworkEntity postApplyPeopleListWithSuccess:^(id responseObject) {
+        
+        MMLog(@"ApplyPeopleList =====responseObject======%@",responseObject);
+        NSArray *param = [responseObject objectForKey:@"approvalManList"];
+        if (param.count) {
+            for (NSDictionary *dic in param) {
+                NSString *name = [dic objectForKey:@"emp_Name"];
+                [self.dataArray addObject:name];
+            }
+        }
+        
+        
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"ApplyPeopleList =====failure======%@",failure);
     }];
 }
 - (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
@@ -183,6 +205,7 @@
         _checkPerson.leftTitle = @"审批人";
         _checkPerson.placeHold = @"请选择审批人";
         _checkPerson.tag = 404;
+        _checkPerson.dataArray = self.dataArray;
         [_checkPerson dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
         }];
@@ -207,5 +230,11 @@
     return _commitButton;
     
 }
-
+- (NSMutableArray *)dataArray{
+    
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 @end
