@@ -97,6 +97,7 @@
 		59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F651031D70338C000596A7 /* ZYPinYinSearch.m */; };
 		59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */; };
 		59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */; };
+		59FECE341D7FF3B10094EDD4 /* popOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FECE331D7FF3B10094EDD4 /* popOutView.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -304,6 +305,8 @@
 		59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveApplicationDetailController.m; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.m; sourceTree = "<group>"; };
 		59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
 		59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplicationDetailCell.m; sourceTree = "<group>"; };
+		59FECE321D7FF3B10094EDD4 /* popOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popOutView.h; sourceTree = "<group>"; };
+		59FECE331D7FF3B10094EDD4 /* popOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popOutView.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -381,6 +384,8 @@
 				5947760F1D76AD0A0094D354 /* FillRecordCell.m */,
 				594776111D76CE290094D354 /* MMChooseTextFile.h */,
 				594776121D76CE290094D354 /* MMChooseTextFile.m */,
+				59FECE321D7FF3B10094EDD4 /* popOutView.h */,
+				59FECE331D7FF3B10094EDD4 /* popOutView.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -990,6 +995,7 @@
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
+				59FECE341D7FF3B10094EDD4 /* popOutView.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,

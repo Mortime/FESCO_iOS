@@ -10,6 +10,8 @@
 
 #import "NSDate+Category.h"
 
+#import "popOutView.h"
+
 #define kButtonW  (kMMWidth / 3)
 
 #define kButtonH  50
@@ -62,6 +64,11 @@
 @property (nonatomic,assign) CGFloat latitude;
 
 @property (nonatomic,assign) CGFloat longitude;
+
+@property (nonatomic, strong) popOutView *popView;
+
+
+@property (nonatomic, strong) NSString *memoOut;
 
 
 
@@ -204,7 +211,23 @@
 
 - (void)postNetWork{
     
-    [NetworkEntity postSignUpTypeWithLongitude:_longitude latitude:_latitude type:_signType memo:@"" success:^(id responseObject) {
+    NSString *memo = @"";
+    if (_signType == 1 || _signType == 2) {
+        memo = @"";
+    }else if (_signType == 3){
+        if (_memoOut) {
+            memo = _memoOut;
+        }else{
+            memo = @"";
+        }
+    }
+    
+    [NetworkEntity postSignUpTypeWithLongitude:_longitude latitude:_latitude type:_signType memo:memo success:^(id responseObject) {
+        
+        
+        if (_signType == 3) {
+            [self.popView removeFromSuperview];
+        }
         
         NSString *msg = [responseObject objectForKey:@"message"];
         
@@ -229,19 +252,54 @@
     if (btn.tag == 500) {
         // 签到
         _signType = 1;
+        [self postNetWork];
         
     }
     if (btn.tag == 501) {
         // 签退
         _signType = 2;
+        [self postNetWork];
     }
 
     if (btn.tag == 502) {
         // 外勤
         _signType = 3;
+        // 点击外勤弹出备注输入框
+        [self popUI];
     }
-    [self postNetWork];
+    
 
+}
+- (void)popUI{
+    
+    self.popView = [[popOutView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
+    _popView.backgroundColor = [UIColor clearColor];
+    
+    // 备注输入完成后Block回调
+    [_popView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
+        
+        _memoOut = textField.text;
+    }];
+    
+    // 按钮点击回调
+    [_popView mm_setSignOutSelected:^(UIButton *button) {
+        [self didClick:button];
+    }];
+    [self addSubview:_popView];
+}
+
+#pragma mark ----- Button Block
+
+- (void)didClick:(UIButton *)sender{
+    
+    if (sender.tag == 900) {
+        // 取消
+        [self.popView removeFromSuperview];
+    }
+    if (sender.tag == 901) {
+        // 确定
+        [self postNetWork];
+    }
 }
 #pragma mark --- ActionMapScale
 -(void)didClickMapScale:(UIButton *)sender{
