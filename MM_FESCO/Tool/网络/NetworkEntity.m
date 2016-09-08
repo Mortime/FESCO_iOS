@@ -322,6 +322,23 @@
  */
 + (void)postCommitApplyWithCheckType:(NSInteger)checkType  address:(NSString *)address time:(NSString *)time memo:(NSString *)memo  applyPeople:(NSString *)applyPeople Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
+    
+    
+    // 取出审批人多对应的id
+    NSString *ID = @"";
+    NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_applySignup];
+//            MMLog(@"数据库返回数据: %@",dataBaseDic);
+    NSArray *paramArray = [dataBaseDic objectForKey:@"approvalManList"];
+    if (paramArray.count) {
+        for (NSDictionary *dic in paramArray) {
+             NSString *name = [dic objectForKey:@"emp_Name"];
+            if ([name isEqualToString:applyPeople]) {
+                ID = [dic objectForKey:@"emp_Id"];
+            }
+            
+        }
+    }
+    
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
@@ -329,7 +346,7 @@
                           @"cust_Addr":address,
                           @"check_Time":time,
                           @"memo":memo,
-                          @"applyPeople":applyPeople,
+                          @"approval_Man":ID,
                           @"methodname":@"kq/saveSignLater.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];

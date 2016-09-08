@@ -85,6 +85,7 @@
     }
     return self;
 }
+
 - (void)initUI{
     
     self.mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height - 50)];
@@ -198,15 +199,26 @@
 {
     NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     
-    _latitude = userLocation.location.coordinate.latitude;
-    _longitude = userLocation.location.coordinate.longitude;
+//    _latitude = userLocation.location.coordinate.latitude;
+//    _longitude = userLocation.location.coordinate.longitude;
+    
+    [self transformationLongitude:userLocation.location.coordinate.longitude latitude:userLocation.location.coordinate.latitude];
+    
     
     //普通态
     //以下_mapView为BMKMapView对象
     _mapView.showsUserLocation = YES;//显示定位图层
     [_mapView updateLocationData:userLocation];
 }
-
+- (void)transformationLongitude:(CGFloat)longitude  latitude:(CGFloat)latitude{
+    
+    double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    double x = longitude - 0.0065, y = latitude - 0.006;
+    double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
+    double theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
+    _longitude = z * cos(theta);
+    _latitude = z * sin(theta);
+}
 #pragma mark ---- Data
 
 - (void)postNetWork{
@@ -231,8 +243,24 @@
         
         NSString *msg = [responseObject objectForKey:@"message"];
         
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msg];
-        [toastView show];
+        if ([msg isEqualToString:@"success"]) {
+            NSString *showMsg = @"";
+            if (_signType == 1) {
+                showMsg = @"签到成功";
+            }else if (_signType == 2){
+                showMsg = @"签退成功";
+            }else if (_signType == 2){
+                showMsg = @"外勤签到成功";
+            }
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:showMsg];
+            [toastView show];
+            
+            
+        }else{
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msg];
+            [toastView show];
+        }
+        
         
         MMLog(@"SignUp=======responseObject======%@",responseObject);
         
@@ -527,6 +555,6 @@
     
 }
 - (void)dealloc{
-    
+//     [_locService stopUserLocationService];
 }
 @end

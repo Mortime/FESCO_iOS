@@ -45,6 +45,8 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [self.checkView.locService stopUserLocationService];
+    [self.checkView.mapView viewWillDisappear];
+    self.checkView.mapView.delegate = nil;
 }
 - (void)initUI{
     
