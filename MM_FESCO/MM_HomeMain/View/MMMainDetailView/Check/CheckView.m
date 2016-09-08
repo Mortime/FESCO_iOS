@@ -249,7 +249,7 @@
                 showMsg = @"签到成功";
             }else if (_signType == 2){
                 showMsg = @"签退成功";
-            }else if (_signType == 2){
+            }else if (_signType == 3){
                 showMsg = @"外勤签到成功";
             }
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:showMsg];
