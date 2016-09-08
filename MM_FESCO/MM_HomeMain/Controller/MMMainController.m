@@ -16,6 +16,8 @@
 #import "NSString+MD5.h"
 #import "PhoneListController.h"
 #import "CheckWorkController.h"
+#import "MMLoginController.h"
+#import "JZUserLoginManager.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -27,6 +29,8 @@ static NSString *kMallID = @"MallID";
 @property (nonatomic, strong) NSArray *imgArray;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) UIButton *loginOutButton;
 
 
 
@@ -55,6 +59,18 @@ static NSString *kMallID = @"MallID";
     [cycleImageView setPageControlLocation:0 isCycle:YES];
     cycleImageView.placeImage = img;
     [self.view addSubview:cycleImageView];
+    
+    
+    // 添加右上角的搜查按钮
+    _loginOutButton = [UIButton new];
+    [_loginOutButton setTitle:@"退出" forState:UIControlStateNormal];
+    _loginOutButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    _loginOutButton.bounds = CGRectMake(0, 0, 32, 44);
+    [_loginOutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_loginOutButton addTarget:self action:@selector(didSearch:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *bbiPhone = [[UIBarButtonItem alloc] initWithCustomView:_loginOutButton];
+    self.navigationItem.rightBarButtonItem = bbiPhone;
+
     
     [self.view addSubview:self.collectionView];
     
@@ -89,7 +105,16 @@ static NSString *kMallID = @"MallID";
 
     
 }
+#pragma mark --- Action 
+- (void)didSearch:(UIButton *)btn{
+    
+    [[UserInfoModel defaultUserInfo] loginOut];
+    MMLoginController *logninVC = (MMLoginController *)[JZUserLoginManager loginController];
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = logninVC;
 
+    
+    
+}
 #pragma mark - collectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.titleArray.count;
