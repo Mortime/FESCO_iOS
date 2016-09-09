@@ -149,7 +149,12 @@
     // 根据keyValuekeyVale...keyValuekeyVale拼成字符串
     NSString *resultStr = @"";
     for (NSString *keyStr in resultArray) {
-        NSString *valueStr = [mutableDic objectForKey:keyStr];
+        
+        NSString *valueStr = @"";
+        if ([keyStr isEqualToString:@"methodname"] || [keyStr isEqualToString:@"secret"]) {
+            valueStr = [mutableDic objectForKey:keyStr];
+        }
+        
         resultStr = [NSString stringWithFormat:@"%@%@%@",resultStr,keyStr,valueStr];
     }
     MMLog(@" sort =======   =======    resultStr ========%@",resultStr);
