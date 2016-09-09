@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MMMainController.h"
 #import "MMLoginController.h"
+#import "MMLoginTool.h"
 
 
 #import <BaiduMapAPI/BMapKit.h>
@@ -40,6 +41,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    BOOL isGetNewTonkey = [MMLoginTool checkCancelAppointmentWithBeginTime];
+    if (!isGetNewTonkey) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTonkenChangeNotifition object:nil];
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

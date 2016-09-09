@@ -56,6 +56,9 @@
     if (self) {
         if ([[self class] isLogin]) {
             [self loginViewDic:[[[self class] dataForKey:USERINFO_IDENTIFY] objectFromJSONData]];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tonkenChangeNotifition) name:kTonkenChangeNotifition object:nil];
+
         }
     }
     return self;
@@ -100,6 +103,8 @@
     
     self.empName = [info objectForKey:@"emp_Name"];
     
+    self.loginTime = [info objectForKey:@"MM_loginTime"];
+    
     
     if (![[self class] isLogin]) {
         [[self class] storeData:[info JSONData] forKey:USERINFO_IDENTIFY];
@@ -119,5 +124,14 @@
 //              @"userType":@"2"
 //              };
 //}
-
+- (void)tonkenChangeNotifition{
+    // 接受到通知
+    [NetworkEntity postGetNewTokenkey:self.token Success:^(id responseObject) {
+        
+        MMLog(@"getNewToken =responseObject ======%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"getNewToken = ===failure===========%@",failure);
+    }];
+    
+}
 @end

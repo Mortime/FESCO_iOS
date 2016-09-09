@@ -175,6 +175,17 @@
     return timeString;
 }
 
+// 获得系统时间
++ (NSString *)dateFromLocalWithFormatString:(NSString *)formatString {
+    
+    NSDate *localDate = [NSDate new];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:formatString];
+    return [dateFormatter stringFromDate:localDate];
+}
+
+
 #pragma mark Relative Dates
 
 + (NSDate *) dateWithDaysFromNow: (NSInteger) days

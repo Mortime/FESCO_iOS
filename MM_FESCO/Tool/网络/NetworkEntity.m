@@ -440,4 +440,21 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
+/**
+ *   获取新的tokenkey
+ */
++ (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    if (!tokenkey) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getNewToken"];
+    
+    NSDictionary * dic = @{@"tokenkey":tokenkey
+                
+                           };
+    NSLog(@"url ------ %@, %@",urlStr,dic);
+    
+    
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
 @end

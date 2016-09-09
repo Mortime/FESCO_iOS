@@ -168,4 +168,13 @@
  
  */
 + (void)postCommitNewPasswordWithOld:(NSString *)newPswd   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *    获取新的tonkey
+ 
+ *  @param tokenkey  旧的tokenkey
+ 
+ */
++ (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
 @end

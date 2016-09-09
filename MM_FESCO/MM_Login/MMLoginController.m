@@ -192,10 +192,17 @@
         if ([[responseObject  objectForKey:@"SUCCESS"] isEqualToString:@"success"]) {
             // 登录成功后保存数据
             
+            
+            NSDate *localDate = [NSDate new];
+            NSDateFormatter *dateFormatter = [NSDateFormatter new];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm "];
+            NSString *loginTime =  [dateFormatter stringFromDate:localDate];
+            
             // 基本数据保存
             NSMutableDictionary * loginInfo = [responseObject mutableCopy];
             [loginInfo setValue:_phoneNumTextField.text forKey:@"MM_phoneNum"];
             [loginInfo setValue:_passwordTextField.text forKey:@"MM_password"];
+            [loginInfo setValue:loginTime forKey:@"MM_loginTime"];
             
             [[UserInfoModel defaultUserInfo] loginViewDic:loginInfo];
             [NetworkTool setHTTPHeaderField:[loginInfo  objectForKey:@"token"]];

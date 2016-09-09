@@ -166,10 +166,6 @@
             }
             
             
-            
-            
-            
-            
         }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
             
             [self showTotasViewWithMes:@"旧密码输入错误"];

@@ -45,6 +45,10 @@
  */
 + (NSString *)dateFromSSWithDateType:(NSString *)DateType ss:(NSString *)ss;
 
+
++ (NSString *)dateFromLocalWithFormatString:(NSString *)formatString;
+
+
 // Comparing dates
 - (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
 - (BOOL) isToday;

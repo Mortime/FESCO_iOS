@@ -45,6 +45,7 @@
 		5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */; };
 		5981AFBC1D73C43D0003166C /* MMDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981AFBB1D73C43D0003166C /* MMDataBase.m */; };
 		5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C46E1D823615007660DD /* ModifyPasswordViewController.m */; };
+		5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C4711D8271FD007660DD /* MMLoginTool.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
@@ -202,6 +203,8 @@
 		5981AFBB1D73C43D0003166C /* MMDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataBase.m; sourceTree = "<group>"; };
 		5994C46D1D823615007660DD /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		5994C46E1D823615007660DD /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		5994C4701D8271FD007660DD /* MMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginTool.h; sourceTree = "<group>"; };
+		5994C4711D8271FD007660DD /* MMLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginTool.m; sourceTree = "<group>"; };
 		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "../SafeDic/NSString+MD5.h"; sourceTree = "<group>"; };
 		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "../SafeDic/NSString+MD5.m"; sourceTree = "<group>"; };
 		599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCyeleShowLableTagView.h; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 				59F4D6381D81387200C56E5D /* JZUserLoginManager.m */,
 				59A59E311D49C6A3001F3122 /* MMLoginController.h */,
 				59A59E321D49C6A3001F3122 /* MMLoginController.m */,
+				5994C4701D8271FD007660DD /* MMLoginTool.h */,
+				5994C4711D8271FD007660DD /* MMLoginTool.m */,
 			);
 			path = MM_Login;
 			sourceTree = "<group>";
@@ -971,6 +976,7 @@
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				594775F21D767FF90094D354 /* CheckView.m in Sources */,
 				594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */,
+				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,

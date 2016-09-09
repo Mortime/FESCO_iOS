@@ -14,6 +14,7 @@
 
 #define t_applySignup @"t_applySignup"  // 补签申请数据库表
 
+#define kTonkenChangeNotifition  @"TonkenChangeNotifition" // tonkey改变的通知
 
 
 

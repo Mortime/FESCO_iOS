@@ -156,8 +156,8 @@
     [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgTopView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgTopView.mas_centerY);
-        make.height.mas_equalTo(@80);
-        make.width.mas_equalTo(@80);
+        make.height.mas_equalTo(@65);
+        make.width.mas_equalTo(@65);
     }];
     [self.signResultLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgTopView.mas_top).offset(35);
@@ -390,9 +390,10 @@
 - (UIImageView *)iconView{
     if (_iconView == nil) {
         _iconView = [[UIImageView alloc] init];
-        _iconView.backgroundColor = RGB_Color(76, 129, 181);
+        _iconView.backgroundColor = [UIColor clearColor];
         _iconView.layer.masksToBounds = YES;
-        _iconView.layer.cornerRadius = 40;
+        _iconView.layer.cornerRadius = 32.5;
+        _iconView.image = [UIImage imageNamed:@"People_placehode"];
     }
     return _iconView;
 }

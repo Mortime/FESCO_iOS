@@ -292,7 +292,8 @@
 - (UIImageView *)imageView{
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor cyanColor];
+        _imageView.backgroundColor = [UIColor clearColor];
+        _imageView.image = [UIImage imageNamed:@"People_placehode"];
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.cornerRadius = 32.5;
         _imageView.userInteractionEnabled = YES;
