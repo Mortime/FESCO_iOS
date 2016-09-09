@@ -11,8 +11,9 @@
 #import "NSString+MD5.h"
 #import "PersonalMessageHeaderView.h"
 #import "PersonalMessageModel.h"
+#import "ModifyPasswordViewController.h"
 
-#define kBottomButtonW     (kMMWidth)
+#define kBottomButtonW    ((kMMWidth) / 2)
 
 @interface PersonalMessageController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -63,7 +64,7 @@
     UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50, self.view.width, 50)];
     footerView.backgroundColor = [UIColor clearColor];
     [footerView addSubview:self.preservationButton];
-//    [footerView addSubview:self.cancelButton];
+    [footerView addSubview:self.cancelButton];
     
     [self.view addSubview:footerView];
     [self.view addSubview:self.tableView];
@@ -183,9 +184,10 @@
     
     
 }
-// 取消修改
+// 修改密码
 - (void)didCancelButton:(UIButton *)btn{
-    
+    ModifyPasswordViewController *modelfyVC =[[ModifyPasswordViewController alloc] init];
+    [self.navigationController pushViewController:modelfyVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -223,11 +225,11 @@
 - (UIButton *)cancelButton{
     if (_cancelButton == nil) {
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame), 0, kBottomButtonW, 50);
-        [_cancelButton setTitle:@"取消修改" forState:UIControlStateNormal];
-        [_cancelButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame) + 2, 0, kBottomButtonW - 2, 50);
+        [_cancelButton setTitle:@"修改密码" forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(didCancelButton:) forControlEvents:UIControlEventTouchUpInside];
-        [_cancelButton setBackgroundColor:[UIColor clearColor]];
+        [_cancelButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         
     }
     return _cancelButton;

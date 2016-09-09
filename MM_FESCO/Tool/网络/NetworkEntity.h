@@ -148,4 +148,24 @@
  */
 + (void)postCommitApplyWithCheckType:(NSInteger)checkType  address:(NSString *)address time:(NSString *)time memo:(NSString *)memo  applyPeople:(NSString *)applyPeople Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+/**
+ *    验证旧密码  emp_Id, oldPswd
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param oldPswd （req） 旧密码
+ 
+ */
++ (void)postVerificationOldPasswordWithOld:(NSString *)oldPswd   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    保存新密  emp_Id, newPswd
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param newPswd （req） 新密码
+ 
+ */
++ (void)postCommitNewPasswordWithOld:(NSString *)newPswd   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

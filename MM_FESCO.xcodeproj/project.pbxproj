@@ -44,6 +44,7 @@
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
 		5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */; };
 		5981AFBC1D73C43D0003166C /* MMDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981AFBB1D73C43D0003166C /* MMDataBase.m */; };
+		5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C46E1D823615007660DD /* ModifyPasswordViewController.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
@@ -85,6 +86,7 @@
 		59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */; };
 		59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */; };
 		59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F4D6381D81387200C56E5D /* JZUserLoginManager.m */; };
+		59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */; };
 		59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F650ED1D6FCC41000596A7 /* PhoneListModel.m */; };
 		59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F650F01D70333D000596A7 /* EasySerachViewController.m */; };
 		59F651041D70338C000596A7 /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F650F41D70338C000596A7 /* ChineseInclude.m */; };
@@ -198,6 +200,8 @@
 		5981A9501D66D8F700DAC097 /* PersonalMessageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageHeaderView.m; sourceTree = "<group>"; };
 		5981AFBA1D73C43D0003166C /* MMDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataBase.h; sourceTree = "<group>"; };
 		5981AFBB1D73C43D0003166C /* MMDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataBase.m; sourceTree = "<group>"; };
+		5994C46D1D823615007660DD /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		5994C46E1D823615007660DD /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "../SafeDic/NSString+MD5.h"; sourceTree = "<group>"; };
 		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "../SafeDic/NSString+MD5.m"; sourceTree = "<group>"; };
 		599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCyeleShowLableTagView.h; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 		59E729F51D6AE3E800920CC1 /* PersonalMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageModel.m; sourceTree = "<group>"; };
 		59F4D6371D81387200C56E5D /* JZUserLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZUserLoginManager.h; sourceTree = "<group>"; };
 		59F4D6381D81387200C56E5D /* JZUserLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZUserLoginManager.m; sourceTree = "<group>"; };
+		59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMShuxin.plist; sourceTree = "<group>"; };
 		59F650EC1D6FCC41000596A7 /* PhoneListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListModel.h; sourceTree = "<group>"; };
 		59F650ED1D6FCC41000596A7 /* PhoneListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListModel.m; sourceTree = "<group>"; };
 		59F650EF1D70333D000596A7 /* EasySerachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasySerachViewController.h; sourceTree = "<group>"; };
@@ -464,6 +469,7 @@
 		597762151D489AE000BD8472 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */,
 				597762161D489AE000BD8472 /* main.m */,
 				5977621E1D489AE000BD8472 /* Main.storyboard */,
 				597762211D489AE000BD8472 /* Assets.xcassets */,
@@ -707,6 +713,8 @@
 			children = (
 				59D3FE911D506CFA002CCCA4 /* PersonalMessageController.h */,
 				59D3FE921D506CFA002CCCA4 /* PersonalMessageController.m */,
+				5994C46D1D823615007660DD /* ModifyPasswordViewController.h */,
+				5994C46E1D823615007660DD /* ModifyPasswordViewController.m */,
 				59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */,
 				59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */,
 				59474CEF1D6D413D00DC6E50 /* PhoneListController.h */,
@@ -875,6 +883,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
@@ -1006,6 +1015,7 @@
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
 				594776161D76D5CF0094D354 /* FillApplyView.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
+				5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
@@ -1185,6 +1195,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1201,6 +1212,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
