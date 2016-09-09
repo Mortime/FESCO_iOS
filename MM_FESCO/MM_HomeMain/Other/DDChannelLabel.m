@@ -15,7 +15,7 @@
 	DDChannelLabel *label = [self new];
 	label.text = title;
 	label.textAlignment = NSTextAlignmentCenter;
-	label.font = [UIFont systemFontOfSize:18];
+	label.font = [UIFont systemFontOfSize:16];
 	[label sizeToFit];
 	label.userInteractionEnabled = YES;
 	return label;

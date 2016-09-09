@@ -210,7 +210,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 - (MMCyeleShowLableTagView *)tagView
 {
     if (_tagView == nil) {
-        _tagView = [[MMCyeleShowLableTagView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
+        _tagView = [[MMCyeleShowLableTagView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 60)];
         _tagView.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
         
     }
