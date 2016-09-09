@@ -187,14 +187,15 @@
     if (indexTag == 401 ) {
         // 签到时间
          MMLog(@"签到时间回调");
-        // 时间字符串转换为毫秒
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM-dd HH:ss"];
-        NSDate *date = [dateFormatter dateFromString:textfile.text];
+//        // 时间字符串转换为毫秒
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:ss"];
+//        NSDate *date = [dateFormatter dateFromString:textfile.text];
+//        
+//        long long timeStr = [@(floor([date timeIntervalSince1970] * 1000)) longLongValue];
+//        _timeStr = [NSString stringWithFormat:@"%lli",timeStr];
         
-        long long timeStr = [@(floor([date timeIntervalSince1970] * 1000)) longLongValue];
-        _timeStr = [NSString stringWithFormat:@"%lli",timeStr];
-        
+        _timeStr = textfile.text;
         
     }
     if (indexTag == 402 ) {

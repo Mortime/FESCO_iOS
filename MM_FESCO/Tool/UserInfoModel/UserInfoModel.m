@@ -129,6 +129,18 @@
     [NetworkEntity postGetNewTokenkey:self.token Success:^(id responseObject) {
         
         MMLog(@"getNewToken =responseObject ======%@",responseObject);
+        
+        //  ERROR = "get token error.";
+        // token = "";
+        
+        //SUCCESS = success;
+        //  token = 3e9b5e3478e21fc320c9a835eae1733f;
+        if ([[responseObject objectForKey:@"SUCCESS"] isEqualToString:@"success"]) {
+            
+            self.token = [responseObject objectForKey:@"token"];
+        }
+        
+
     } failure:^(NSError *failure) {
         MMLog(@"getNewToken = ===failure===========%@",failure);
     }];

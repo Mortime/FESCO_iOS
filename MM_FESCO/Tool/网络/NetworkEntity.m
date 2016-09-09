@@ -447,10 +447,11 @@
     if (!tokenkey) {
         return [NetworkTool missParagramerCallBackFailure:failure];
     }
-    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"getNewToken"];
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"login.json"];
     
-    NSDictionary * dic = @{@"tokenkey":tokenkey
-                
+    NSDictionary * dic = @{@"token":tokenkey,
+                           
+                           
                            };
     NSLog(@"url ------ %@, %@",urlStr,dic);
     

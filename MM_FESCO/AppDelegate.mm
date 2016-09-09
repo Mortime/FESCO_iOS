@@ -43,7 +43,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     BOOL isGetNewTonkey = [MMLoginTool checkCancelAppointmentWithBeginTime];
-    if (!isGetNewTonkey) {
+    if (isGetNewTonkey) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kTonkenChangeNotifition object:nil];
     }
     

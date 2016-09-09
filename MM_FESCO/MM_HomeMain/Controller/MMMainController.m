@@ -149,8 +149,8 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 2) {
         // 休假申请
-        LeaveApplicationDetailController *LeaveVC = [[LeaveApplicationDetailController alloc] init];
-        [self.navigationController pushViewController:LeaveVC animated:YES];
+//        LeaveApplicationDetailController *LeaveVC = [[LeaveApplicationDetailController alloc] init];
+//        [self.navigationController pushViewController:LeaveVC animated:YES];
         
         
     }
