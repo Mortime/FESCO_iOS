@@ -33,7 +33,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initUI];
-        self.backgroundColor = RGB_Color(236, 235, 243);
+        self.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
         
     }
     return self;

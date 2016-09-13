@@ -72,6 +72,8 @@
 // 线条颜色  #414d5e
 #define MM_MAIN_LINE_COLOR [UIColor colorWithHexString:@"414d5e"]
 
+// 灰白背景颜色
+#define MM_GRAYWHITE_BACKGROUND_COLOR RGB_Color(236, 235, 243)
 
 // 数据库名称
 #define yikaojiuguodDBName @"yikaojiuguo_v20150520"

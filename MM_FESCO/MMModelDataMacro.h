@@ -26,5 +26,12 @@ typedef NS_ENUM(NSUInteger,RecodeType){
 };
 
 
+typedef NS_ENUM(NSUInteger,ApprovalType){
+    
+    overTimeApprovalType,   // 加班审批
+    signUpApprovalType      // 签到审批
+};
+
+
 
 #endif /* MMModelDataMacro_h */

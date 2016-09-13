@@ -18,6 +18,7 @@
 #import "CheckWorkController.h"
 #import "MMLoginController.h"
 #import "JZUserLoginManager.h"
+#import "ApprovalController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -160,6 +161,8 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 4) {
         // 休假审批
+        ApprovalController *approvalVC = [[ApprovalController alloc] init];
+        [self.navigationController pushViewController:approvalVC animated:YES];
         
     }
     if (indexPath.row == 5) {
