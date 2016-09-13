@@ -9,6 +9,7 @@
 #import "OverTimeView.h"
 #import "ApprovalViewModel.h"
 #import "OverTimeCell.h"
+#import "OverTimeDetailController.h"
 
 @interface OverTimeView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -93,5 +94,9 @@
     
     return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OverTimeDetailController *overVC = [[OverTimeDetailController alloc] init];
+    [self.parementVC.navigationController pushViewController:overVC animated:YES];
 }
 @end

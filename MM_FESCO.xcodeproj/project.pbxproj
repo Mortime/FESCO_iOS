@@ -52,6 +52,9 @@
 		598EAF2F1D87DC7700D36889 /* SignUpApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF2E1D87DC7700D36889 /* SignUpApprovalCell.m */; };
 		598EAF321D87DF9E00D36889 /* LeaveApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF311D87DF9E00D36889 /* LeaveApprovalView.m */; };
 		598EAF351D87DFBD00D36889 /* LeaveApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF341D87DFBD00D36889 /* LeaveApprovalCell.m */; };
+		598EAF381D87F45C00D36889 /* OverTimeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF371D87F45C00D36889 /* OverTimeDetailController.m */; };
+		598EAF3B1D87F84100D36889 /* TextMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF3A1D87F84100D36889 /* TextMainApprovalDetailCell.m */; };
+		598EAF3E1D87F86100D36889 /* FileMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF3D1D87F86100D36889 /* FileMainApprovalDetailCell.m */; };
 		5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C46E1D823615007660DD /* ModifyPasswordViewController.m */; };
 		5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C4711D8271FD007660DD /* MMLoginTool.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
@@ -225,6 +228,12 @@
 		598EAF311D87DF9E00D36889 /* LeaveApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalView.m; sourceTree = "<group>"; };
 		598EAF331D87DFBD00D36889 /* LeaveApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalCell.h; sourceTree = "<group>"; };
 		598EAF341D87DFBD00D36889 /* LeaveApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalCell.m; sourceTree = "<group>"; };
+		598EAF361D87F45C00D36889 /* OverTimeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeDetailController.h; sourceTree = "<group>"; };
+		598EAF371D87F45C00D36889 /* OverTimeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeDetailController.m; sourceTree = "<group>"; };
+		598EAF391D87F84100D36889 /* TextMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMainApprovalDetailCell.h; sourceTree = "<group>"; };
+		598EAF3A1D87F84100D36889 /* TextMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMainApprovalDetailCell.m; sourceTree = "<group>"; };
+		598EAF3C1D87F86100D36889 /* FileMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMainApprovalDetailCell.h; sourceTree = "<group>"; };
+		598EAF3D1D87F86100D36889 /* FileMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMainApprovalDetailCell.m; sourceTree = "<group>"; };
 		5994C46D1D823615007660DD /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		5994C46E1D823615007660DD /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		5994C4701D8271FD007660DD /* MMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginTool.h; sourceTree = "<group>"; };
@@ -564,6 +573,10 @@
 				598EAF311D87DF9E00D36889 /* LeaveApprovalView.m */,
 				598EAF331D87DFBD00D36889 /* LeaveApprovalCell.h */,
 				598EAF341D87DFBD00D36889 /* LeaveApprovalCell.m */,
+				598EAF391D87F84100D36889 /* TextMainApprovalDetailCell.h */,
+				598EAF3A1D87F84100D36889 /* TextMainApprovalDetailCell.m */,
+				598EAF3C1D87F86100D36889 /* FileMainApprovalDetailCell.h */,
+				598EAF3D1D87F86100D36889 /* FileMainApprovalDetailCell.m */,
 			);
 			path = Approval;
 			sourceTree = "<group>";
@@ -778,6 +791,8 @@
 				594775EA1D7674AC0094D354 /* CheckWorkController.m */,
 				598EAF171D87A82800D36889 /* ApprovalController.h */,
 				598EAF181D87A82800D36889 /* ApprovalController.m */,
+				598EAF361D87F45C00D36889 /* OverTimeDetailController.h */,
+				598EAF371D87F45C00D36889 /* OverTimeDetailController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -1022,6 +1037,7 @@
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
+				598EAF3B1D87F84100D36889 /* TextMainApprovalDetailCell.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				594775F21D767FF90094D354 /* CheckView.m in Sources */,
 				594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */,
@@ -1036,6 +1052,7 @@
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
 				59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */,
+				598EAF381D87F45C00D36889 /* OverTimeDetailController.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
@@ -1079,6 +1096,7 @@
 				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
 				59A8D1071D6E944F002CB709 /* PhoneListCell.m in Sources */,
+				598EAF3E1D87F86100D36889 /* FileMainApprovalDetailCell.m in Sources */,
 				594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */,
 				59614F7D1D7E9911004D3AAE /* CheckListModel.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,

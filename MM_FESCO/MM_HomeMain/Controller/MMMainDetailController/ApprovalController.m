@@ -49,6 +49,7 @@
     
     CGFloat contentOffsetX = 0 * self.view.width;
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+    self.overTimeView.parementVC = self;
     
     
     
@@ -68,6 +69,7 @@
         
         CGFloat contentOffsetX = 0;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        
         
         
     }else if (1 == index) {
