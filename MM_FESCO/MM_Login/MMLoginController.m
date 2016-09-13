@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) UIButton *loginButton;
 
+@property (nonatomic, strong) UIView *bottomView;
+
 @property (nonatomic, strong) UILabel *recommendPasswordLabel;
 
 @property (nonatomic, strong) UIView *lineView;
@@ -57,9 +59,10 @@
     [self.bgView addSubview:self.phoneNumTextField];
     [self.bgView addSubview:self.passwordTextField];
     [self.view addSubview:self.loginButton];
-    [self.view addSubview:self.recommendPasswordLabel];
-    [self.view addSubview:self.lineView];
-    [self.view addSubview:self.bottomLabel];
+    [self.view addSubview:self.bottomView];
+    [self.bottomView addSubview:self.recommendPasswordLabel];
+    [self.bottomView addSubview:self.lineView];
+    [self.bottomView addSubview:self.bottomLabel];
 
     
 }
@@ -108,18 +111,26 @@
     }];
     
     
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.right.mas_equalTo(self.view.mas_right);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(20);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+        
+    }];
     
     [self.recommendPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(20);
-        make.centerX.mas_equalTo(self.loginButton.mas_centerX);
+        make.top.mas_equalTo(self.bottomView.mas_top).offset(0);
+        make.centerX.mas_equalTo(self.bottomView.mas_centerX);
         make.height.mas_equalTo(@14);
         make.width.mas_equalTo(@150);
         
     }];
     
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-100);
-        make.centerX.mas_equalTo(self.bgView.mas_centerX);
+        make.top.mas_equalTo(self.recommendPasswordLabel.mas_bottom).offset(15);
+        make.centerX.mas_equalTo(self.bottomView.mas_centerX);
         make.height.mas_equalTo(@1);
         make.left.mas_equalTo(self.bgView.mas_left);
     }];
@@ -349,6 +360,14 @@
     }
     return _loginButton;
     
+}
+
+- (UIView *)bottomView{
+    if (_bottomView == nil) {
+        _bottomView = [[UIView alloc] init];
+        _bottomView.backgroundColor = [UIColor clearColor];
+    }
+    return _bottomView;
 }
 
 - (UILabel *)recommendPasswordLabel{

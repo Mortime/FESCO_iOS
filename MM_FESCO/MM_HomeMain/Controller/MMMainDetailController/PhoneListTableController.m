@@ -67,7 +67,7 @@
     
     NSString *phoneStr = [dic objectForKey:@"phone"];
     if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
-        phoneStr = @"暂无";
+        phoneStr = @" ";
     }
      cell.phoneLabel.text = phoneStr;
     

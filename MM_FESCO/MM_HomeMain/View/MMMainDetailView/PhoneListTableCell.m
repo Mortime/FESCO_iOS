@@ -51,23 +51,25 @@
     }];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(self.leftImageView.mas_right).offset(16);
+        make.left.mas_equalTo(self.leftImageView.mas_right).offset(10);
         make.centerY.mas_equalTo(self.leftImageView.mas_centerY);
         make.height.mas_equalTo(@14);
         
     }];
     [self.mobileLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(self.leftImageView.mas_top);
+        make.top.mas_equalTo(self.bgView.mas_top);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-16);
-        make.height.mas_equalTo(@14);
+        make.bottom.mas_equalTo(self.bgView.mas_bottom);
+//        make.centerY.mas_equalTo(self.bgView.centerY);
         
     }];
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(self.mobileLabel.mas_bottom).offset(10);
-        make.right.mas_equalTo(self.mobileLabel.mas_right);
-        make.height.mas_equalTo(@14);
+//        make.top.mas_equalTo(self.mobileLabel.mas_bottom).offset(10);
+        make.top.mas_equalTo(self.bgView.mas_top);
+        make.right.mas_equalTo(self.mobileLabel.mas_left).offset(-10);
+        make.bottom.mas_equalTo(self.bgView.mas_bottom);
         
     }];
 
@@ -89,7 +91,7 @@
 - (void)didCall:(UIGestureRecognizer *)ges{
     UILabel *label = (UILabel *)[ges view];
     [self.parantVC dismissViewControllerAnimated:YES completion:nil];
-    if (label.text == nil || [label.text isEqualToString:@"暂无"]) {
+    if (label.text == nil || [label.text isEqualToString:@" "]) {
         return;
     }else{
         
