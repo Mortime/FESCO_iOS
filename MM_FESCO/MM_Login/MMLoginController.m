@@ -46,7 +46,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Login_Bg.jpg"]];
+    
+    UIImage *image = [UIImage imageNamed:@"Login_Bg.jpg"];
+    self.view.layer.contents = (id) image.CGImage;
+    
+    
+    
+    
+//    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Login_Bg.jpg"]]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Login_Bg.jpg"]];
     [self initUI];
     
     NSLog(@"=======[UserInfoModel defaultUserInfo].password = %@",[UserInfoModel defaultUserInfo].password);
@@ -72,6 +80,13 @@
     
     [super viewWillLayoutSubviews];
     CGFloat magin = 72;
+    CGFloat bottomH = 20;
+    if (MMIphone6Plus) {
+        bottomH = 70;
+    }
+    if (MMIphone6) {
+        bottomH = 50;
+    }
     [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(90);
         make.width.mas_equalTo(@160);
@@ -115,7 +130,7 @@
         
         make.right.mas_equalTo(self.view.mas_right);
         make.left.mas_equalTo(self.view.mas_left);
-        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(20);
+        make.top.mas_equalTo(self.loginButton.mas_bottom).offset(bottomH);
         make.bottom.mas_equalTo(self.view.mas_bottom);
         
     }];
@@ -123,7 +138,7 @@
     [self.recommendPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bottomView.mas_top).offset(0);
         make.centerX.mas_equalTo(self.bottomView.mas_centerX);
-        make.height.mas_equalTo(@14);
+        make.height.mas_equalTo(@16);
         make.width.mas_equalTo(@150);
         
     }];

@@ -211,7 +211,7 @@
             [ws dvvToolBarViewItemSelectedAction:button.tag];
         }];
         
-        if (YBIphone6Plus) {
+        if (MMIphone6Plus) {
             _toolBarView.titleFont = [UIFont systemFontOfSize:14*1.15];
         }
     }

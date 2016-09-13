@@ -23,6 +23,7 @@
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.title = @"查找联系人";
     
 
     _searchDataSource = [NSMutableArray new];
@@ -74,7 +75,7 @@
     
     NSString *phoneStr = [dic objectForKey:@"phone"];
     if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
-        phoneStr = @"暂无";
+        phoneStr = @" ";
     }
     cell.phoneLabel.text = phoneStr;
     

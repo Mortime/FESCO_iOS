@@ -79,10 +79,10 @@
 #define KNOTIFICATION_USERLOADED @"userLoaded"
 
 
-#define YBIphone6Plus [UIScreen mainScreen].bounds.size.height==736
-#define YBIphone6 [UIScreen mainScreen].bounds.size.height==667
-#define YBIphone5 [UIScreen mainScreen].bounds.size.height==568
-#define YBIphone4 [UIScreen mainScreen].bounds.size.height==480
+#define MMIphone6Plus [UIScreen mainScreen].bounds.size.height==736
+#define MMIphone6 [UIScreen mainScreen].bounds.size.height==667
+#define MMIphone5 [UIScreen mainScreen].bounds.size.height==568
+#define MMIphone4 [UIScreen mainScreen].bounds.size.height==480
 
 
 #define FERatio 1.15

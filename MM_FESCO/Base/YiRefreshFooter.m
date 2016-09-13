@@ -48,7 +48,7 @@
     self.headerLabel.text=@"正在加载...";
     self.headerLabel.textColor = [UIColor grayColor];
     self.headerLabel.font=[UIFont systemFontOfSize:14];
-    if (YBIphone6Plus) {
+    if (MMIphone6Plus) {
         self.headerLabel.font=[UIFont systemFontOfSize:14];
     }
     

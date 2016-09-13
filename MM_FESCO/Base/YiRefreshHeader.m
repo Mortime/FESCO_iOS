@@ -50,7 +50,7 @@
     headerLabel.text=@"";
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font=[UIFont systemFontOfSize:14];
-    if (YBIphone6Plus) {
+    if (MMIphone6Plus) {
         headerLabel.font=[UIFont systemFontOfSize:14];
     }
     
