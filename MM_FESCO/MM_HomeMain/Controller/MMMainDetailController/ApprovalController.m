@@ -86,7 +86,7 @@
     }else if (2 == index) {
         CGFloat contentOffsetX = 2 * self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-        
+        self.leaveApprovalView.parementVC = self;
     }
     
     

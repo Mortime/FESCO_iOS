@@ -9,6 +9,7 @@
 #import "LeaveApprovalView.h"
 #import "ApprovalViewModel.h"
 #import "LeaveApprovalCell.h"
+#import "LeaveApprovalDetailController.h"
 
 @interface LeaveApprovalView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -93,5 +94,9 @@
     
     return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LeaveApprovalDetailController *leaveApprovaVC = [[LeaveApprovalDetailController alloc] init];
+    [self.parementVC.navigationController pushViewController:leaveApprovaVC animated:YES];
 }
 @end

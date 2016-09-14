@@ -11,6 +11,8 @@
 		590699B41D88EA9900A92A72 /* MMBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B31D88EA9900A92A72 /* MMBottomButton.m */; };
 		590699B71D88F49100A92A72 /* SignUpApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B61D88F49100A92A72 /* SignUpApprovalDetailController.m */; };
 		590699BA1D890D9200A92A72 /* MMTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B91D890D9200A92A72 /* MMTitleLabel.m */; };
+		590699BD1D8923E400A92A72 /* LeaveApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699BC1D8923E400A92A72 /* LeaveApprovalDetailController.m */; };
+		590699C01D8926C800A92A72 /* MMLeaveTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699BF1D8926C800A92A72 /* MMLeaveTitleView.m */; };
 		59182B351D6448CE00842352 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B341D6448CE00842352 /* NSData+AES.m */; };
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
@@ -148,6 +150,10 @@
 		590699B61D88F49100A92A72 /* SignUpApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalDetailController.m; sourceTree = "<group>"; };
 		590699B81D890D9200A92A72 /* MMTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTitleLabel.h; sourceTree = "<group>"; };
 		590699B91D890D9200A92A72 /* MMTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTitleLabel.m; sourceTree = "<group>"; };
+		590699BB1D8923E400A92A72 /* LeaveApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalDetailController.h; sourceTree = "<group>"; };
+		590699BC1D8923E400A92A72 /* LeaveApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalDetailController.m; sourceTree = "<group>"; };
+		590699BE1D8926C800A92A72 /* MMLeaveTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLeaveTitleView.h; sourceTree = "<group>"; };
+		590699BF1D8926C800A92A72 /* MMLeaveTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLeaveTitleView.m; sourceTree = "<group>"; };
 		59182B331D6448CE00842352 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		59182B341D6448CE00842352 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		59182B381D644C7B00842352 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
@@ -595,6 +601,8 @@
 				590699B31D88EA9900A92A72 /* MMBottomButton.m */,
 				590699B81D890D9200A92A72 /* MMTitleLabel.h */,
 				590699B91D890D9200A92A72 /* MMTitleLabel.m */,
+				590699BE1D8926C800A92A72 /* MMLeaveTitleView.h */,
+				590699BF1D8926C800A92A72 /* MMLeaveTitleView.m */,
 			);
 			path = Approval;
 			sourceTree = "<group>";
@@ -813,6 +821,8 @@
 				598EAF371D87F45C00D36889 /* OverTimeDetailController.m */,
 				590699B51D88F49100A92A72 /* SignUpApprovalDetailController.h */,
 				590699B61D88F49100A92A72 /* SignUpApprovalDetailController.m */,
+				590699BB1D8923E400A92A72 /* LeaveApprovalDetailController.h */,
+				590699BC1D8923E400A92A72 /* LeaveApprovalDetailController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -1049,6 +1059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				598EAF2F1D87DC7700D36889 /* SignUpApprovalCell.m in Sources */,
+				590699C01D8926C800A92A72 /* MMLeaveTitleView.m in Sources */,
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */,
@@ -1127,6 +1138,7 @@
 				598EAF261D87CF4600D36889 /* ApprovalViewModel.m in Sources */,
 				598EAF321D87DF9E00D36889 /* LeaveApprovalView.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
+				590699BD1D8923E400A92A72 /* LeaveApprovalDetailController.m in Sources */,
 				59F651041D70338C000596A7 /* ChineseInclude.m in Sources */,
 				5981AFBC1D73C43D0003166C /* MMDataBase.m in Sources */,
 				59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */,
