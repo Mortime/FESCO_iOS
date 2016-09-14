@@ -9,6 +9,7 @@
 #import "OverTimeDetailController.h"
 #import "TextMainApprovalDetailCell.h"
 #import "FileMainApprovalDetailCell.h"
+#import "MMBottomButton.h"
 
 @interface OverTimeDetailController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -27,6 +28,9 @@
 
 @property (nonatomic, strong) NSArray *mightDataArray;
 
+@property (nonatomic, strong) NSArray *pickDataArray;
+
+@property (nonatomic, strong) MMBottomButton *bottomButton;
 
 
 @end
@@ -40,11 +44,17 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.bottomButton];
     self.topArray = @[@"开始时间",@"截止时间",@"加班原因"];
     self.topDataArray = @[@"2016年8月29",@"2016年8月90日",@"证书配置"];
     
+    self.mightArray = @[@"审批意见",@"再次审批"];
+    self.mightDataArray = @[@"请输入审批意见",@"请选择再次审批人"];
+    
     self.bottomArray = @[@"前次审批",@"审批结果",@"审批意见"];
     self.bottomDataArray = @[@"2016年8月29",@"2016年8月90日",@"dlllll"];
+    
+    self.pickDataArray = @[@"小明",@"小红",@"小张",@"小赵",@"小孙"];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -84,9 +94,6 @@
         }
         cell.leftTitle = self.topArray[indexPath.row];
         cell.rightTitle = self.topDataArray[indexPath.row];
-//        cell.index = indexPath.row;
-//        cell.detailFiled.tag = 100 + indexPath.row;
-//        cell.personalMessageModel = self.personalMessageModel;
         return cell;
 
     }
@@ -97,11 +104,16 @@
         if (!cell) {
             cell = [[FileMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-//        cell.leftTitle = self.topArray[indexPath.row];
-//        cell.rightTitle = self.topDataArray[indexPath.row];
-        //        cell.index = indexPath.row;
-        //        cell.detailFiled.tag = 100 + indexPath.row;
-        //        cell.personalMessageModel = self.personalMessageModel;
+        cell.leftTitle = self.mightArray[indexPath.row];
+        cell.rightTitle = self.mightDataArray[indexPath.row];
+        // pickView的数据源
+        if (indexPath.row == 1) {
+            cell.pickDataArray = self.pickDataArray;
+            cell.isExist = NO;
+        }
+        cell.textFiledTag = indexPath.row + 1000;
+        
+    
         return cell;
         
     }
@@ -114,9 +126,6 @@
         }
         cell.leftTitle = self.bottomArray[indexPath.row];
         cell.rightTitle = self.bottomDataArray[indexPath.row];
-        //        cell.index = indexPath.row;
-        //        cell.detailFiled.tag = 100 + indexPath.row;
-        //        cell.personalMessageModel = self.personalMessageModel;
         return cell;
         
     }
@@ -136,7 +145,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 64 - 50) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -146,5 +155,10 @@
     }
     return _tableView;
 }
-
+- (MMBottomButton *)bottomButton{
+    if (_bottomButton == nil) {
+        _bottomButton = [[MMBottomButton alloc] initWithFrame:CGRectMake(0, self.view.height - 64 - 50, self.view.width, 50)];
+    }
+    return _bottomButton;
+}
 @end

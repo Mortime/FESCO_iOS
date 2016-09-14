@@ -7,12 +7,10 @@
 //
 
 #import "FileMainApprovalDetailCell.h"
-#import "MMChooseTextFile.h"
+#import "ApprovalTextFiledView.h"
 @interface FileMainApprovalDetailCell ()
 
-@property (nonatomic ,strong) UILabel *leftlabel;
-
-@property (nonatomic ,strong) MMChooseTextFile *rightTextFiled;
+@property (nonatomic ,strong) ApprovalTextFiledView *rightTextFiled;
 
 @end
 
@@ -23,38 +21,42 @@
         [self initUI];
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        // 设置是否显示pickView yes 为不显示
+        _isExist = YES;
     }
     return self;
 }
 
 - (void)initUI{
     
-    [self addSubview:self.leftlabel];
     [self addSubview:self.rightTextFiled];
 }
 - (void)layoutSubviews{
     
-    [self.leftlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.mas_left).offset(10);
-        make.height.mas_equalTo(@14);
-        make.centerY.mas_equalTo(self.mas_centerY);
-        make.width.mas_equalTo(@100);
-        
-        
-    }];
-    
     [self.rightTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.leftlabel.mas_right).offset(0);
-        make.height.mas_equalTo(@12);
-        make.centerY.mas_equalTo(self.mas_centerY);
+        
+        make.top.mas_equalTo(self.mas_top);
+        make.left.mas_equalTo(self.mas_left).offset(0);
+        make.height.mas_equalTo(self.mas_height);
         make.right.mas_equalTo(self.mas_right).offset(0);
         
         
     }];
+    
+    // cell中设置后重新赋值
+    self.rightTextFiled.dataArray =  self.pickDataArray;
+    _rightTextFiled.isExist = _isExist;
+    _rightTextFiled.tag = _textFiledTag;
 }
 - (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
-    
+    if (indexTag == 1000) {
+        // 审批意见
+        MMLog(@"审批意见");
+    }
+    if (indexTag == 1001) {
+        // 审批人
+        MMLog(@"审批人");
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -66,21 +68,9 @@
     
     // Configure the view for the selected state
 }
-- (UILabel *)leftlabel{
-    if (_leftlabel == nil) {
-        _leftlabel = [[UILabel alloc] init];
-        _leftlabel.font = [UIFont systemFontOfSize:14];
-        _leftlabel.textColor = [UIColor blackColor];
-    }
-    return _leftlabel;
-}
-- (MMChooseTextFile *)rightTextFiled{
+- (ApprovalTextFiledView *)rightTextFiled{
     if (_rightTextFiled == nil) {
-        _rightTextFiled = [[MMChooseTextFile alloc] init];
-        _rightTextFiled.leftTitle = @"补签原因";
-        _rightTextFiled.placeHold = @"请输入补签原因";
-        _rightTextFiled.isExist = YES;
-        _rightTextFiled.tag = 1000;
+        _rightTextFiled = [[ApprovalTextFiledView alloc] init];
         [_rightTextFiled dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
         }];
@@ -90,7 +80,9 @@
     return _rightTextFiled;
 }
 - (void)setLeftTitle:(NSString *)leftTitle{
-    _leftlabel.text = leftTitle;
+    _rightTextFiled.leftTitle = leftTitle;
 }
-
+- (void)setRightTitle:(NSString *)rightTitle{
+    _rightTextFiled.placeHold = rightTitle;
+}
 @end

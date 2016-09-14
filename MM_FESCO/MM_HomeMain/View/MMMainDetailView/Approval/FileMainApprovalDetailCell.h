@@ -12,4 +12,12 @@
 
 @property (nonatomic ,strong) NSString *leftTitle;
 
+@property (nonatomic, strong) NSString *rightTitle;
+
+@property (nonatomic, strong) NSArray *pickDataArray;
+
+@property (nonatomic, assign) BOOL isExist;
+
+@property (nonatomic, assign) NSInteger textFiledTag;
+
 @end
