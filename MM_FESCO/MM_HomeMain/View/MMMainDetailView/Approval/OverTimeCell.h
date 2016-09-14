@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OverTimeListModel.h"
 
 @interface OverTimeCell : UITableViewCell
 
+@property (nonatomic, strong) OverTimeListModel *overTimeModel;
 @end

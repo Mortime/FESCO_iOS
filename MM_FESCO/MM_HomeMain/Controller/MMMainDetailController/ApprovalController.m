@@ -50,6 +50,8 @@
     CGFloat contentOffsetX = 0 * self.view.width;
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
     self.overTimeView.parementVC = self;
+    self.overTimeView.approvalType = overTimeApprovalType;
+    [_overTimeView networkRequest];
     
     
     

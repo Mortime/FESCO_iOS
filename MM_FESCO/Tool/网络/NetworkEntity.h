@@ -176,5 +176,22 @@
  */
 + (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
-
+/**
+ *    获取加班审批列表
+ 
+ *  @param emp_Id  员工id
+ 
+ */
++ (void)postGetOverTimeApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *    获取加班审批信息  
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ */
++ (void)postOverTimeApproalMessageWithApply:(NSInteger)applyid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

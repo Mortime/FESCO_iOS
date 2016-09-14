@@ -9,6 +9,11 @@
 
 @interface ApprovalViewModel : MMBaseViewModel
 
+@property (nonatomic, strong) NSMutableArray *overTimeListArray;
+
+@property (nonatomic, strong) NSMutableArray *signUpListArray;
+
+@property (nonatomic, strong) NSMutableArray *LeaveListArray;
 
 @property (nonatomic, assign) ApprovalType approvalType;
 

@@ -40,13 +40,13 @@
         }];
         [self.viewModel successLoadMoreBlock:^{
             [self refreshUI];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing];
             
             
         }];
         [self.viewModel successLoadMoreBlockAndNoData:^{
             [self.parementVC showTotasViewWithMes:@"已经加载更多"];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing];
         }];
     }
     
@@ -77,8 +77,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.viewModel.checkListArray.count;
-    return 10;
+    return self.viewModel.overTimeListArray.count;
+//    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 120;
@@ -90,13 +90,15 @@
     if (!cell) {
         cell = [[OverTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
     }
-//    cell.listModel = self.viewModel.checkListArray[indexPat.row];
+    cell.overTimeModel = self.viewModel.overTimeListArray[indexPat.row];
     
     return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     OverTimeDetailController *overVC = [[OverTimeDetailController alloc] init];
+    overVC.overTimeModel = self.viewModel.overTimeListArray[indexPath.row];
     [self.parementVC.navigationController pushViewController:overVC animated:YES];
 }
 @end

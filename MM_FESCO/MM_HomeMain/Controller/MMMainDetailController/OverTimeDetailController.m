@@ -55,6 +55,15 @@
     self.bottomDataArray = @[@"2016年8月29",@"2016年8月90日",@"dlllll"];
     
     self.pickDataArray = @[@"小明",@"小红",@"小张",@"小赵",@"小孙"];
+    [self initData];
+}
+- (void)initData{
+    [NetworkEntity postOverTimeApproalMessageWithApply:_overTimeModel.applyid Success:^(id responseObject) {
+        
+                 MMLog(@"OverTimeMessage ====== responseObject====%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"OverTimeMessage ====== failure====%@",failure);
+    }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;

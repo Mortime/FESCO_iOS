@@ -7,7 +7,10 @@
 //
 
 #import "MMBaseViewController.h"
+#import "OverTimeListModel.h"
 
 @interface OverTimeDetailController : MMBaseViewController
+
+@property (nonatomic, strong) OverTimeListModel *overTimeModel;
 
 @end
