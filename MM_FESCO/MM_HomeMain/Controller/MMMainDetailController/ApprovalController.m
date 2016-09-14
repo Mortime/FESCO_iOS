@@ -77,7 +77,7 @@
         CGFloat contentOffsetX = self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
 //        self.checkRecordView.recodeType = RecodeTypeCheck;
-//        self.checkRecordView.parementVC = self;
+        self.signUpApprovalView.parementVC = self;
         
 //        [self loadNetworkData];
         

@@ -9,6 +9,7 @@
 #import "SignUpApprovalView.h"
 #import "ApprovalViewModel.h"
 #import "SignUpApprovalCell.h"
+#import "SignUpApprovalDetailController.h"
 
 @interface SignUpApprovalView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -93,5 +94,9 @@
     
     return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SignUpApprovalDetailController *signUpApprovaVC = [[SignUpApprovalDetailController alloc] init];
+    [self.parementVC.navigationController pushViewController:signUpApprovaVC animated:YES];
 }
 @end
