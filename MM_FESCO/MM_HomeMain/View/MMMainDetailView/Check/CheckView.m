@@ -8,7 +8,6 @@
 
 #import "CheckView.h"
 
-#import "NSDate+Category.h"
 
 #import "popOutView.h"
 

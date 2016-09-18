@@ -148,7 +148,7 @@
                         [self showTotasViewWithMes:@"密码修改成功"];
                         [self.navigationController popToRootViewControllerAnimated:YES];
                         
-                    }else if ([[responseObject objectForKey:@"error"] isEqualToString:@"success"]){
+                    }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
                         
                         [self showTotasViewWithMes:@"密码修改失败"];
                     }

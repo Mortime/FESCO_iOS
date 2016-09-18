@@ -7,7 +7,7 @@
 //
 
 #import "CheckRecordCell.h"
-#import "NSDate+Category.h"
+
 
 @interface CheckRecordCell ()
 

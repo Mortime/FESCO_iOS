@@ -7,7 +7,7 @@
 //
 
 #import "SignUpApprovalCell.h"
-#import "NSDate+Category.h"
+
 
 @interface SignUpApprovalCell ()
 

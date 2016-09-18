@@ -522,6 +522,41 @@
 }
 
 /**
+ *   提交加班审批
+ */
++ (void)postCommitOverTimeWithApply:(NSInteger)applyid isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyid],
+                          @"is_Pass":[NSString stringWithFormat:@"%lu",isPass],
+                          @"next_Approval_Man":nextApprovalManId,
+                          @"memo":memo,
+                          @"methodname":@"kq/saveExtraWorkExamStep.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/saveExtraWorkExamStep.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
+
+/**
  *   获取签到审批列表
  */
 + (void)postSignUpApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{

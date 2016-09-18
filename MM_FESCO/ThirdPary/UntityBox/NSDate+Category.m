@@ -175,6 +175,21 @@
     return timeString;
 }
 
++ (NSString *)dateFromSSWithss:(NSString *)ss{
+    long long time=[ss longLongValue];
+    
+    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000.0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    NSString*timeString=[formatter stringFromDate:d];
+    
+    return timeString;
+
+}
+
 // 获得系统时间
 + (NSString *)dateFromLocalWithFormatString:(NSString *)formatString {
     

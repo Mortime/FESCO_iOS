@@ -195,7 +195,23 @@
  */
 + (void)postOverTimeApproalMessageWithApply:(NSInteger)applyid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
-
+/**
+ *    提交加班审批   'methodname':'','emp_Id':'','cust_Id':'','apply_Id':'','is_Pass':'','next_Approval_Man':'','memo':''
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ *  @param is_Pass （req）  是否通过  0 不通过 , 1 通过
+ 
+ *  @param next_Approval_Man （req） 下次审批人
+ 
+ *  @param memo （req）  说明
+ 
+ */
++ (void)postCommitOverTimeWithApply:(NSInteger)applyid isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
  *    获取签到审批列表

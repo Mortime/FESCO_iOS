@@ -46,6 +46,14 @@
 + (NSString *)dateFromSSWithDateType:(NSString *)DateType ss:(NSString *)ss;
 
 
+/*
+ * 将毫秒转化为指定的时间格式
+ *  ss        要转化的毫秒
+ 
+ */
++ (NSString *)dateFromSSWithss:(NSString *)ss;
+
+
 + (NSString *)dateFromLocalWithFormatString:(NSString *)formatString;
 
 

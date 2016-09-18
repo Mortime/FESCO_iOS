@@ -143,7 +143,7 @@
     if (_approvalType == leaveApprovalType) {
         [NetworkEntity postLeaveApproalListSuccess:^(id responseObject) {
             
-             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
+//             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
             
             if (! [[responseObject objectForKey:@"list"] count]) {
                 return ;

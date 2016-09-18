@@ -49,13 +49,8 @@
     _rightTextFiled.tag = _textFiledTag;
 }
 - (void)initWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
-    if (indexTag == 1000) {
-        // 审批意见
-        MMLog(@"审批意见");
-    }
-    if (indexTag == 1001) {
-        // 审批人
-        MMLog(@"审批人");
+    if ([_delegate respondsToSelector:@selector(fileMainApprovalDetailCellDelegateWithTextFile:indexTag:)]) {
+        [_delegate fileMainApprovalDetailCellDelegateWithTextFile:textfile indexTag:indexTag];
     }
 }
 - (void)awakeFromNib {
