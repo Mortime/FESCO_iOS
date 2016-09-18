@@ -176,6 +176,8 @@
  */
 + (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+#pragma =========================================================
 /**
  *    获取加班审批列表
  
@@ -196,7 +198,7 @@
 + (void)postOverTimeApproalMessageWithApply:(NSInteger)applyid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *    提交加班审批   'methodname':'','emp_Id':'','cust_Id':'','apply_Id':'','is_Pass':'','next_Approval_Man':'','memo':''
+ *    提交加班审批
  
  *  @param emp_Id （req）  员工id
  
@@ -213,6 +215,9 @@
  */
 + (void)postCommitOverTimeWithApply:(NSInteger)applyid isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+
+#pragma =========================================================
 /**
  *    获取签到审批列表
  
@@ -221,6 +226,41 @@
  */
 + (void)postSignUpApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+/**
+ *    获取签到审批信息
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ */
++ (void)postSignUpApproalMessageWithApply:(NSInteger)applyid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    提交签到审批  kq/saveSignLaterExamStep.json','emp_Id':'','cust_Id':'','apply_Id':'','is_Pass':'','next_Approval_Man':'','memo':''
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ *  @param is_Pass （req）  是否通过  0 不通过 , 1 通过
+ 
+ *  @param next_Approval_Man （req） 下次审批人
+ 
+ *  @param memo （req）  说明
+ 
+ */
++ (void)postCommitSignUpApproalWithApply:(NSInteger)applyid isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+
+#pragma =========================================================
 /**
  *    获取请假审批列表
  
@@ -228,4 +268,36 @@
  
  */
 + (void)postLeaveApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    获取签到审批信息
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ */
++ (void)postLeaveApproalMessageWithApply:(NSInteger)holEmpExamId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    提交签到审批  kq/saveSignLaterExamStep.json','emp_Id':'','cust_Id':'','apply_Id':'','is_Pass':'','next_Approval_Man':'','memo':''
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param apply_Id （req）  申请id
+ 
+ *  @param is_Pass （req）  是否通过  0 不通过 , 1 通过
+ 
+ *  @param next_Approval_Man （req） 下次审批人
+ 
+ *  @param memo （req）  说明
+ 
+ */
++ (void)postCommitLeaveApproalWithApply:(NSInteger)holEmpExamId isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
 @end

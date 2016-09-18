@@ -47,6 +47,8 @@
 
 @property (nonatomic, strong) NSString *name; // 假期名称
 
+@property (nonatomic, assign) NSInteger applyId;
+
 
 
 @end

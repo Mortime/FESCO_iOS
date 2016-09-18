@@ -7,7 +7,9 @@
 //
 
 #import "MMBaseViewController.h"
+#import "LeaveApprovalListModel.h"
 
 @interface LeaveApprovalDetailController : MMBaseViewController
 
+@property (nonatomic, strong) LeaveApprovalListModel *listModel;
 @end

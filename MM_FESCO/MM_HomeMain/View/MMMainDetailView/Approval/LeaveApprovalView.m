@@ -97,7 +97,9 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     LeaveApprovalDetailController *leaveApprovaVC = [[LeaveApprovalDetailController alloc] init];
+    leaveApprovaVC.listModel = self.viewModel.LeaveListArray[indexPath.row];
     [self.parementVC.navigationController pushViewController:leaveApprovaVC animated:YES];
 }
 @end

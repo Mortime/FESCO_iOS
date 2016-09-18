@@ -24,10 +24,23 @@
 
 @property (nonatomic, strong) LeaveApprovalView *leaveApprovalView;
 
+@property (nonatomic, assign) NSInteger  index;
+
 @end
 
 @implementation ApprovalController
-
+- (void)viewWillAppear:(BOOL)animated{
+    MMLog(@"MMMMMMM ========= %lu",_index);
+    if (_index == 0) {
+        [_overTimeView networkRequest];
+    }
+    if (_index == 1) {
+        [_signUpApprovalView networkRequest];
+    }
+    if (_index == 2) {
+        [_leaveApprovalView networkRequest];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -66,16 +79,19 @@
 - (void)dvvToolBarViewItemSelectedAction:(NSInteger)index {
     
     NSLog(@"11_scrollView.contentOffset.y:%f",_scrollView.contentOffset.y);
-    
+    _index = index;
     if (0 == index) {
         
         CGFloat contentOffsetX = 0;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        self.overTimeView.parementVC = self;
+        self.overTimeView.approvalType = overTimeApprovalType;
+        [_overTimeView networkRequest];
         
         
         
     }else if (1 == index) {
-        // 考勤记录
+      
         CGFloat contentOffsetX = self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
         self.signUpApprovalView.parementVC = self;

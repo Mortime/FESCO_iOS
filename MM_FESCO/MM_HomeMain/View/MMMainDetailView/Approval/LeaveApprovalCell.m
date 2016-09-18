@@ -52,9 +52,9 @@
     [self addSubview:self.bgView];
     [self.bgView addSubview:self.name];
     [self.bgView addSubview:self.applyTime];
-    [self.bgView addSubview:self.leftLineView];
-    [self.bgView addSubview:self.leaveTypeLabel];
     [self.bgView addSubview:self.rightLineView];
+    [self.bgView addSubview:self.leaveTypeLabel];
+    [self.bgView addSubview:self.leftLineView];
     [self.bgView addSubview:self.startTime];
     [self.bgView addSubview:self.endTime];
     [self.bgView addSubview:self.flagButon];
@@ -87,25 +87,28 @@
     }];
 
     
-    [self.leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    
+    [self.rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.name.mas_bottom).offset(15);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-56);
+        make.width.mas_equalTo(@20);
         make.height.mas_equalTo(@1);
+        make.right.mas_equalTo(self.bgView.mas_right);
         
     }];
     
     [self.leaveTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.leftLineView.mas_right).offset(8);
-        make.height.mas_equalTo(@14);
+        make.right.mas_equalTo(self.rightLineView.mas_left).offset(-8);
+        make.height.mas_equalTo(@18);
         make.centerY.mas_equalTo(self.leftLineView.mas_centerY);
         
     }];
-    [self.rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.leftLineView.mas_top);
-        make.left.mas_equalTo(self.leaveTypeLabel.mas_right).offset(5);
+    
+    [self.leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.rightLineView.mas_top);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
+        make.right.mas_equalTo(self.leaveTypeLabel.mas_left).offset(-8);
         make.height.mas_equalTo(@1);
-        make.right.mas_equalTo(self.bgView.mas_right);
         
     }];
     
@@ -123,7 +126,7 @@
     }];
     [self.flagButon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.leaveTypeLabel.mas_bottom).offset(10);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
+        make.centerX.mas_equalTo(self.leaveTypeLabel.mas_centerX);
         make.width.mas_equalTo(@30);
         make.height.mas_equalTo(@30);
         

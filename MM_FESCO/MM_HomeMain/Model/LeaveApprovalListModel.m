@@ -16,7 +16,8 @@
               @"beginTime":@"hol_Begin",
               @"empName":@"emp_Name",
               @"endTime":@"hol_End",
-              @"name":@"hol_Name"
+              @"name":@"hol_Name",
+              @"applyId":@"hol_Emp_Exam_Id"
               };
 }
 

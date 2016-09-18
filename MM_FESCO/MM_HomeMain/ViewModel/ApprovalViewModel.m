@@ -39,10 +39,11 @@
         [NetworkEntity postGetOverTimeApproalListSuccess:^(id responseObject) {
             
 //            MMLog(@"OverTimeList ====== responseObject====%@",responseObject);
+            [_overTimeListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
                 return ;
             }
-            [_overTimeListArray removeAllObjects];
+            
             for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
                 OverTimeListModel *model = [OverTimeListModel yy_modelWithDictionary:dic];
                 [_overTimeListArray addObject:model];
@@ -118,12 +119,13 @@
     if (_approvalType == signUpApprovalType) {
         [NetworkEntity postSignUpApproalListSuccess:^(id responseObject) {
             
-//            MMLog(@"SignUpApproalList ====== responseObject====%@",responseObject);
+            MMLog(@"SignUpApproalList ====== responseObject====%@",responseObject);
             
+            [_signUpListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
                 return ;
             }
-            [_signUpListArray removeAllObjects];
+            
             for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
                 SignUpApprovalListModel *model = [SignUpApprovalListModel yy_modelWithDictionary:dic];
                 [_signUpListArray addObject:model];
@@ -145,10 +147,11 @@
             
 //             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
             
+            [_LeaveListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
                 return ;
             }
-            [_LeaveListArray removeAllObjects];
+            
             for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
                 LeaveApprovalListModel *model = [LeaveApprovalListModel yy_modelWithDictionary:dic];
                 [_LeaveListArray addObject:model];

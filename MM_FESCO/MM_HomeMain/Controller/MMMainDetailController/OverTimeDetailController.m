@@ -68,7 +68,7 @@
 - (void)initData{
     [NetworkEntity postOverTimeApproalMessageWithApply:_overTimeModel.applyid Success:^(id responseObject) {
         
-                 MMLog(@"OverTimeMessage ====== responseObject====%@",responseObject);
+//                 MMLog(@"OverTimeMessage ====== responseObject====%@",responseObject);
         NSArray *allKey = [responseObject allKeys];
         if (allKey.count == 2) {
             _isShowLaterMessage = NO;
@@ -239,13 +239,13 @@
         msgError = @"驳回失败";
     }
     
-    [NetworkEntity postCommitOverTimeWithApply:_overTimeModel.applyid isPass:isPass nextApprovalManId:applyPeople memo:@"" Success:^(id responseObject) {
+    [NetworkEntity postCommitOverTimeWithApply:_overTimeModel.applyid isPass:isPass nextApprovalManId:applyPeople memo:applyIdea Success:^(id responseObject) {
         MMLog(@"CommitOverTime ========= responseObject ============%@",responseObject);
         
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
             
             [self showTotasViewWithMes:msgSuccess];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
             
         }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
             

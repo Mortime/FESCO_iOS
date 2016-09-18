@@ -143,6 +143,8 @@
             if ([_neTextFiled.text isEqualToString:_textFiled.text]) {
                // 提交新密码
                 [NetworkEntity postCommitNewPasswordWithOld:_neTextFiled.text Success:^(id responseObject) {
+                    
+                    MMLog(@"responseObject = %@",responseObject);
                     if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
                         
                         [self showTotasViewWithMes:@"密码修改成功"];
@@ -156,9 +158,6 @@
                     [self showTotasViewWithMes:@"网络错误"];
 
                 }];
-                
-                
-                
                 
                 
             }else{
