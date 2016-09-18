@@ -194,4 +194,22 @@
  
  */
 + (void)postOverTimeApproalMessageWithApply:(NSInteger)applyid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+/**
+ *    获取签到审批列表
+ 
+ *  @param emp_Id  员工id
+ 
+ */
++ (void)postSignUpApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    获取请假审批列表
+ 
+ *  @param emp_Id  员工id
+ 
+ */
++ (void)postLeaveApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

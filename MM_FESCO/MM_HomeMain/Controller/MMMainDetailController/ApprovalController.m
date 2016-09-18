@@ -78,10 +78,9 @@
         // 考勤记录
         CGFloat contentOffsetX = self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-//        self.checkRecordView.recodeType = RecodeTypeCheck;
         self.signUpApprovalView.parementVC = self;
-        
-//        [self loadNetworkData];
+        self.signUpApprovalView.approvalType = signUpApprovalType;
+        [_signUpApprovalView networkRequest];
         
         
         
@@ -89,6 +88,9 @@
         CGFloat contentOffsetX = 2 * self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
         self.leaveApprovalView.parementVC = self;
+        self.leaveApprovalView.approvalType = leaveApprovalType;
+        [_leaveApprovalView networkRequest];
+
     }
     
     

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SignUpApprovalListModel.h"
 
 @interface SignUpApprovalCell : UITableViewCell
+
+@property (nonatomic, strong) SignUpApprovalListModel *listModel;
 
 @end

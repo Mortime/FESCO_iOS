@@ -497,7 +497,7 @@
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
                           @"apply_Id":[NSString stringWithFormat:@"%lu",applyid],
-                          @"methodname":@"'kq/getExtraWorkApply.json"};
+                          @"methodname":@"kq/getExtraWorkApply.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -505,7 +505,7 @@
     
     NSLog(@"%@%@",jsonParam,sign);
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"'kq/getExtraWorkApply.json"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getExtraWorkApply.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                             
@@ -519,5 +519,66 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
+}
+
+/**
+ *   获取签到审批列表
+ */
++ (void)postSignUpApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"methodname":@"kq/signLaterExamList.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/signLaterExamList.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
+
+
+/**
+ *   获取请假审批列表
+ */
++ (void)postLeaveApproalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"methodname":@"kq/holExamList.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/holExamList.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 @end

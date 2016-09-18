@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LeaveApprovalListModel.h"
 
 @interface LeaveApprovalCell : UITableViewCell
+
+@property (nonatomic, strong)LeaveApprovalListModel *listModel;
+
+@property (nonatomic, assign) NSInteger index;
 
 @end

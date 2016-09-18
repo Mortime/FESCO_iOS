@@ -9,6 +9,8 @@
 
 #import "ApprovalViewModel.h"
 #import "OverTimeListModel.h"
+#import "SignUpApprovalListModel.h"
+#import "LeaveApprovalListModel.h"
 
 @implementation ApprovalViewModel
 - (instancetype)init
@@ -30,6 +32,7 @@
 // 加载数据
 - (void)networkRequestRefresh {
     
+    // 加班审批列表
     if ( _approvalType == overTimeApprovalType) {
         
         
@@ -51,9 +54,6 @@
         } failure:^(NSError *failure) {
             MMLog(@"OverTimeList ====== failure=========%@",failure);
         }];
-        
-        
-        
         
 //        [NetworkEntity postSignUpListWithPageNum:index pageSize:10 success:^(id responseObject) {
 //            
@@ -111,6 +111,56 @@
 //        }];
 //        
 //        
+    }
+    
+    
+    // 签到审批列表
+    if (_approvalType == signUpApprovalType) {
+        [NetworkEntity postSignUpApproalListSuccess:^(id responseObject) {
+            
+//            MMLog(@"SignUpApproalList ====== responseObject====%@",responseObject);
+            
+            if (! [[responseObject objectForKey:@"list"] count]) {
+                return ;
+            }
+            [_signUpListArray removeAllObjects];
+            for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
+                SignUpApprovalListModel *model = [SignUpApprovalListModel yy_modelWithDictionary:dic];
+                [_signUpListArray addObject:model];
+                
+            }
+            [self successRefreshBlock];
+            
+        } failure:^(NSError *failure) {
+            
+            MMLog(@"SignUpApproalList ====== failure=========%@",failure);
+            
+        }];
+        
+        [self successRefreshBlock];
+    }
+    // 请假审批列表
+    if (_approvalType == leaveApprovalType) {
+        [NetworkEntity postLeaveApproalListSuccess:^(id responseObject) {
+            
+             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
+            
+            if (! [[responseObject objectForKey:@"list"] count]) {
+                return ;
+            }
+            [_LeaveListArray removeAllObjects];
+            for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
+                LeaveApprovalListModel *model = [LeaveApprovalListModel yy_modelWithDictionary:dic];
+                [_LeaveListArray addObject:model];
+                
+            }
+            [self successRefreshBlock];
+
+        } failure:^(NSError *failure) {
+            
+            MMLog(@"LeaveApproalList ====== failure=========%@",failure);
+        }];
+        
     }
     
     

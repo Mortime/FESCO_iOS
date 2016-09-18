@@ -7,6 +7,7 @@
 //
 
 #import "LeaveApprovalCell.h"
+#import "NSDate+Category.h"
 
 #define fontSize 12
 
@@ -26,7 +27,7 @@
 
 @property (nonatomic ,strong) UILabel *startTime;
 
-@property (nonatomic ,strong) UILabel *signType;
+@property (nonatomic ,strong) UILabel *endTime;
 
 @property (nonatomic, strong) UIButton *flagButon;
 
@@ -55,7 +56,7 @@
     [self.bgView addSubview:self.leaveTypeLabel];
     [self.bgView addSubview:self.rightLineView];
     [self.bgView addSubview:self.startTime];
-    [self.bgView addSubview:self.signType];
+    [self.bgView addSubview:self.endTime];
     [self.bgView addSubview:self.flagButon];
     
 }
@@ -114,8 +115,8 @@
         make.height.mas_equalTo(@fontSize);
         
     }];
-    [self.signType mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.startTime.mas_bottom).offset(10);
+    [self.endTime mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.startTime.mas_bottom).offset(15);
         make.left.mas_equalTo(self.name.mas_left);
         make.height.mas_equalTo(@fontSize);
         
@@ -201,20 +202,20 @@
         _startTime = [[UILabel alloc] init];
         _startTime.font = [UIFont systemFontOfSize:12];
         _startTime.textColor = [UIColor grayColor];
-        _startTime.text = @"签到时间: 2016-8-31 20:56";
+//        _startTime.text = @"签到时间: 2016-8-31 20:56";
         
     }
     return _startTime;
 }
-- (UILabel *)signType{
-    if (_signType == nil) {
-        _signType = [[UILabel alloc] init];
-        _signType.font = [UIFont systemFontOfSize:12];
-        _signType.textColor = [UIColor grayColor];
-        _signType.text = @"签到类型: 签到";
+- (UILabel *)endTime{
+    if (_endTime == nil) {
+        _endTime = [[UILabel alloc] init];
+        _endTime.font = [UIFont systemFontOfSize:12];
+        _endTime.textColor = [UIColor grayColor];
+//        _endTime.text = @"签到类型: 签到";
         
     }
-    return _signType;
+    return _endTime;
 }
 
 
@@ -228,5 +229,13 @@
     }
     return _flagButon;
 }
+- (void)setListModel:(LeaveApprovalListModel *)listModel{
+    _name.text = listModel.empName;
+    _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
+    _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+    _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
+    _leaveTypeLabel.text = listModel.name;
+    [_flagButon setTitle:[NSString stringWithFormat:@"%lu",_index] forState:UIControlStateNormal];
 
+}
 @end

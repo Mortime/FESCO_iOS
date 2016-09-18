@@ -40,13 +40,13 @@
         }];
         [self.viewModel successLoadMoreBlock:^{
             [self refreshUI];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing];
             
             
         }];
         [self.viewModel successLoadMoreBlockAndNoData:^{
             [self.parementVC showTotasViewWithMes:@"已经加载更多"];
-            [self.refreshFooter endRefreshing];
+//            [self.refreshFooter endRefreshing];
         }];
     }
     
@@ -62,8 +62,12 @@
 #pragma mark - 刷新数据
 - (void)networkRequest {
     
+    MMLog(@"=================    %lu",self.approvalType);
     self.viewModel.approvalType = self.approvalType;
     
+    
+    MMLog(@"=================    %lu",self.viewModel.approvalType);
+
     [self.viewModel networkRequestRefresh];
 }
 
@@ -77,8 +81,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return self.viewModel.checkListArray.count;
-    return 10;
+        return self.viewModel.signUpListArray.count;
+//    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 120;
@@ -90,7 +94,7 @@
     if (!cell) {
         cell = [[SignUpApprovalCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
     }
-    //    cell.listModel = self.viewModel.checkListArray[indexPat.row];
+        cell.listModel = self.viewModel.signUpListArray[indexPat.row];
     
     return cell;
     

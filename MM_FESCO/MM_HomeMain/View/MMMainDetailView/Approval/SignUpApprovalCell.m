@@ -7,6 +7,7 @@
 //
 
 #import "SignUpApprovalCell.h"
+#import "NSDate+Category.h"
 
 @interface SignUpApprovalCell ()
 
@@ -189,5 +190,21 @@
     }
     return _signType;
 }
+- (void)setListModel:(SignUpApprovalListModel *)listModel{
+    _name.text = listModel.empName;
+    _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
+    _startTime.text =  [NSString stringWithFormat:@"签到时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+    NSString *typeStr = @"";
+    if (listModel.checkType == 1) {
+        typeStr = @"签到";
+    }
+    if (listModel.checkType == 2) {
+        typeStr = @"签退";
+    }
+    if (listModel.checkType == 3) {
+        typeStr = @"外勤";
+    }
+    _signType.text = [NSString stringWithFormat:@"签到类型: %@",typeStr];
 
+}
 @end

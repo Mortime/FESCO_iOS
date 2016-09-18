@@ -17,6 +17,8 @@
 		59182B351D6448CE00842352 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B341D6448CE00842352 /* NSData+AES.m */; };
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
+		5931CD5F1D8E26CA00950264 /* SignUpApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */; };
+		5931CD621D8E2E3400950264 /* LeaveApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931CD611D8E2E3400950264 /* LeaveApprovalListModel.m */; };
 		59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF01D6D413D00DC6E50 /* PhoneListController.m */; };
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
@@ -164,6 +166,10 @@
 		59182B3A1D644C7B00842352 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		59182B3D1D644D7E00842352 /* NSString+BASE64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BASE64.h"; sourceTree = "<group>"; };
 		59182B3E1D644D7E00842352 /* NSString+BASE64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BASE64.m"; sourceTree = "<group>"; };
+		5931CD5D1D8E26CA00950264 /* SignUpApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalListModel.h; sourceTree = "<group>"; };
+		5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalListModel.m; sourceTree = "<group>"; };
+		5931CD601D8E2E3400950264 /* LeaveApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalListModel.h; sourceTree = "<group>"; };
+		5931CD611D8E2E3400950264 /* LeaveApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalListModel.m; sourceTree = "<group>"; };
 		59474CEF1D6D413D00DC6E50 /* PhoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListController.h; sourceTree = "<group>"; };
 		59474CF01D6D413D00DC6E50 /* PhoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListController.m; sourceTree = "<group>"; };
 		59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSQManagerTool.h; sourceTree = "<group>"; };
@@ -843,6 +849,10 @@
 				59614F7F1D7E9A5E004D3AAE /* FillListModel.m */,
 				590699C11D8938DA00A92A72 /* OverTimeListModel.h */,
 				590699C21D8938DA00A92A72 /* OverTimeListModel.m */,
+				5931CD5D1D8E26CA00950264 /* SignUpApprovalListModel.h */,
+				5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */,
+				5931CD601D8E2E3400950264 /* LeaveApprovalListModel.h */,
+				5931CD611D8E2E3400950264 /* LeaveApprovalListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1093,6 +1103,7 @@
 				590699B41D88EA9900A92A72 /* MMBottomButton.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
+				5931CD621D8E2E3400950264 /* LeaveApprovalListModel.m in Sources */,
 				594776041D76906C0094D354 /* CheckRecordView.m in Sources */,
 				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
 				594776011D768FEF0094D354 /* RefreshTableView.m in Sources */,
@@ -1131,6 +1142,7 @@
 				5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */,
+				5931CD5F1D8E26CA00950264 /* SignUpApprovalListModel.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,

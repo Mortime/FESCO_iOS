@@ -6,12 +6,22 @@
 //  Copyright © 2016年 Mortimey. All rights reserved.
 //
 
-#import "TTRefreshFooter.h"
+#import <UIKit/UIKit.h>
 
-@interface LeaveApprovalView : TTRefreshFooter
+@interface LeaveApprovalView : UITableView
 
 @property (nonatomic, strong) UIViewController *parementVC;
 
 @property (nonatomic, assign) ApprovalType approvalType;
+
+
+// 刷新数据的方法
+- (void)refreshUI;
+
+// 请求网络数据的方法
+- (void)networkRequest;
+
+// 加载更多
+- (void)moreData;
 
 @end
