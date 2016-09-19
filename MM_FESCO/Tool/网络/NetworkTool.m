@@ -10,6 +10,9 @@
 
 #import "AFNetworking.h"
 
+#import "MMLoginController.h"
+#import "JZUserLoginManager.h"
+
 #define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com/payroll" // 正式服务器地址
 
 #define  HOST_TEST_DAMIAN  @"http://11.0.147.115:8080/payroll"   // 测试服务器地址  rui
@@ -77,6 +80,16 @@
     [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (success == nil) return;
+        
+        
+        // 当请求超时时直接跳转到登录界面(默认为7天)
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"time out"]) {
+            [[UserInfoModel defaultUserInfo] loginOut];
+            MMLoginController *logninVC = (MMLoginController *)[JZUserLoginManager loginController];
+            ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = logninVC;
+
+        }
+        
         success(responseObject);
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
