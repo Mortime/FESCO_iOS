@@ -33,7 +33,7 @@
 
 - (void)initUI{
     
-    self.backgroundColor = RGB_Color(208, 243, 248);
+    self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.flagImageView];
     [self addSubview:self.tittleLabel];
     

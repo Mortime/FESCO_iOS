@@ -235,7 +235,7 @@ static NSString *kMallID = @"MallID";
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - 125 - 64) collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = [UIColor colorWithHexString:@"d9f5f9"];
+        _collectionView.backgroundColor = RGB_Color(208, 243, 248);
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
                 // 注册Cell
