@@ -38,6 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"修改密码";
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     [self initUI];
@@ -59,7 +61,7 @@
 }
 - (void)viewWillLayoutSubviews{
     [self.lineTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(20 + 64);
+        make.top.mas_equalTo(self.view.mas_top).offset(20);
         make.left.mas_equalTo(self.view.mas_left);
         make.right.mas_equalTo(self.view.mas_right);
         make.height.mas_equalTo(@1);

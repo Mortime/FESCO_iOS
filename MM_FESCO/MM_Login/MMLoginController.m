@@ -181,7 +181,7 @@
         
         
         
-        NSLog(@"self.phone = %@",self.phoneNumTextField.text);
+        MMLog(@"self.phone = %@",self.phoneNumTextField.text);
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入邮箱"];
         [toastView show];
 
@@ -240,7 +240,7 @@
             UIWindow *window  = [UIApplication sharedApplication].keyWindow;
             MMMainController *mainVC = [[MMMainController alloc] init];
             
-            UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+         HMNagationController *navigationVC = [[HMNagationController alloc] initWithRootViewController:mainVC];
             window.rootViewController = navigationVC;
         }
         else{
@@ -251,10 +251,10 @@
         }
         
 
-        NSLog(@"responseObject  responseObject  responseObject%@",responseObject);
+        MMLog(@"responseObject  responseObject  responseObject%@",responseObject);
     } failure:^(NSError *failure) {
         
-        NSLog(@"failure = %@",failure);
+        MMLog(@"failure = %@",failure);
         
                     [MBProgressHUD hideHUDForView:self.view animated:NO];
                 ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络连接失败"];

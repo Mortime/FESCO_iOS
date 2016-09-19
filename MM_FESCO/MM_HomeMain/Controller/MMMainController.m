@@ -47,8 +47,8 @@ static NSString *kMallID = @"MallID";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.titleArray  = @[@"个人信息",@"考勤",@"休假申请",@"休假记录",@"休假审批",@"加班申请",@"加班记录",@"加班审批",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
-    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiashenqing",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Jiabanjilu",@"HomeFlag_Jiabanshenpi",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
+    self.titleArray  = @[@"个人信息",@"考勤",@"休假申请",@"休假记录",@"审批",@"加班申请",@"加班记录",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
+    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiashenqing",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Jiabanjilu",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"d9f5f9"];
     self.title = @"首页";
@@ -174,33 +174,29 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 7) {
-        // 加班审批
-        
-    }
-    if (indexPath.row == 8) {
         // 通讯录
         PhoneListController *phoneListVC = [[PhoneListController alloc] init];
         [self.navigationController pushViewController:phoneListVC animated:YES];
         
         
     }
-    if (indexPath.row == 9) {
+    if (indexPath.row == 8) {
         //  迟到排行
         
     }
     
-    if (indexPath.row == 10) {
+    if (indexPath.row == 9) {
         // 加班排行
         
     }
-    if (indexPath.row == 11) {
+    if (indexPath.row == 10) {
         //  薪酬列表
         
     }
-    if (indexPath.row == 12) {
+    if (indexPath.row == 11) {
         // HRS数据录入
         
-    }if (indexPath.row == 13) {
+    }if (indexPath.row == 12) {
         //  HRS数据勘查
         
     }

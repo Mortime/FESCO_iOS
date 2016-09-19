@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5901494A1D8FBDD200B2BAE2 /* YBBaseNavigationController.m */; };
+		5901494E1D8FC57900B2BAE2 /* HMNagationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5901494D1D8FC57900B2BAE2 /* HMNagationController.m */; };
 		590699B11D88E01000A92A72 /* ApprovalTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B01D88E01000A92A72 /* ApprovalTextFiledView.m */; };
 		590699B41D88EA9900A92A72 /* MMBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B31D88EA9900A92A72 /* MMBottomButton.m */; };
 		590699B71D88F49100A92A72 /* SignUpApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 590699B61D88F49100A92A72 /* SignUpApprovalDetailController.m */; };
@@ -145,6 +147,10 @@
 /* Begin PBXFileReference section */
 		0EC1627435845BB3423165EA /* Pods-MM_FESCO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.debug.xcconfig"; sourceTree = "<group>"; };
 		4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MM_FESCO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		590149491D8FBDD200B2BAE2 /* YBBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBBaseNavigationController.h; sourceTree = "<group>"; };
+		5901494A1D8FBDD200B2BAE2 /* YBBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBBaseNavigationController.m; sourceTree = "<group>"; };
+		5901494C1D8FC57900B2BAE2 /* HMNagationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMNagationController.h; sourceTree = "<group>"; };
+		5901494D1D8FC57900B2BAE2 /* HMNagationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNagationController.m; sourceTree = "<group>"; };
 		590699AF1D88E01000A92A72 /* ApprovalTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTextFiledView.h; sourceTree = "<group>"; };
 		590699B01D88E01000A92A72 /* ApprovalTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTextFiledView.m; sourceTree = "<group>"; };
 		590699B21D88EA9900A92A72 /* MMBottomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBottomButton.h; sourceTree = "<group>"; };
@@ -464,6 +470,8 @@
 		594775F41D7684D80094D354 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				5901494C1D8FC57900B2BAE2 /* HMNagationController.h */,
+				5901494D1D8FC57900B2BAE2 /* HMNagationController.m */,
 				59614F781D7E90A8004D3AAE /* TTRefreshFooter.h */,
 				59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */,
 				594775FF1D768FEF0094D354 /* RefreshTableView.h */,
@@ -475,6 +483,8 @@
 				594775FC1D7686DB0094D354 /* YiRefreshHeader.m */,
 				594775F51D7684D80094D354 /* MMBaseViewController.h */,
 				594775F61D7684D80094D354 /* MMBaseViewController.m */,
+				590149491D8FBDD200B2BAE2 /* YBBaseNavigationController.h */,
+				5901494A1D8FBDD200B2BAE2 /* YBBaseNavigationController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1074,6 +1084,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				598EAF2F1D87DC7700D36889 /* SignUpApprovalCell.m in Sources */,
+				5901494E1D8FC57900B2BAE2 /* HMNagationController.m in Sources */,
 				590699C01D8926C800A92A72 /* MMLeaveTitleView.m in Sources */,
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
@@ -1110,6 +1121,7 @@
 				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
 				594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */,
 				598EAF351D87DFBD00D36889 /* LeaveApprovalCell.m in Sources */,
+				5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */,
 				59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */,

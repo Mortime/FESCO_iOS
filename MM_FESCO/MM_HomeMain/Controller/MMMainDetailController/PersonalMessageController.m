@@ -41,6 +41,9 @@
     
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.title = @"个人信息";
     
     self.imgArray  = @[@"PersonalMes_Landline",@"PersonalMes_Mobile",@"PersonalMes_weixin",@"PersonalMes_Mail",@"PersonalMes_Address",@"PersonalMes_MailCode"];
@@ -48,7 +51,7 @@
     self.dataArray  = @[@"请输入座机",@"请输入联系电话",@"请输入微信号",@"请输入邮箱",@"请输入地址",@"请输入邮编"];
     self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     
-    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 121)];
+    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 121)];
     _headerView.paramentVC = self;
     [_headerView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
         [self messageEdit:textField];
@@ -61,8 +64,9 @@
     self.tableView.tableFooterView = lineView;
     
     
-    UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50, self.view.width, 50)];
+    UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50 - 64, self.view.width, 50)];
     footerView.backgroundColor = [UIColor clearColor];
+    footerView.userInteractionEnabled  = YES;
     [footerView addSubview:self.preservationButton];
     [footerView addSubview:self.cancelButton];
     
@@ -198,7 +202,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 50 - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 50 - 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;

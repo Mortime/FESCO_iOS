@@ -52,7 +52,7 @@
     if ([UserInfoModel  isLogin]) {
         
         MMMainController *mainVC = [[MMMainController alloc] init];
-        UINavigationController *NC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        HMNagationController *NC = [[HMNagationController alloc] initWithRootViewController:mainVC];
         self.window.rootViewController = NC;
 
     }else{
