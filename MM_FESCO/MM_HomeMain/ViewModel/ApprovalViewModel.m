@@ -41,6 +41,7 @@
 //            MMLog(@"OverTimeList ====== responseObject====%@",responseObject);
             [_overTimeListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
+                [self successRefreshBlock];
                 return ;
             }
             
@@ -123,6 +124,7 @@
             
             [_signUpListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
+                [self successRefreshBlock];
                 return ;
             }
             
@@ -145,10 +147,11 @@
     if (_approvalType == leaveApprovalType) {
         [NetworkEntity postLeaveApproalListSuccess:^(id responseObject) {
             
-//             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
+             MMLog(@"LeaveApproalList ====== responseObject====%@",responseObject);
             
             [_LeaveListArray removeAllObjects];
             if (! [[responseObject objectForKey:@"list"] count]) {
+                 [self successRefreshBlock];
                 return ;
             }
             

@@ -108,8 +108,6 @@
     
     AFHttpClient *manager = [AFHttpClient sharedClient];
     
-    NSLog(@"*8888888888-===================");
-    
     [manager GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (success == nil) return;
