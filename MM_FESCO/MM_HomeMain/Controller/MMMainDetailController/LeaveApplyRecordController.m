@@ -47,7 +47,7 @@
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
     self.leaveApplyView.parementVC = self;
 //    self.overTimeView.approvalType = overTimeApprovalType;
-//    [_overTimeView networkRequest];
+    [_leaveApplyView networkRequest];
     
     
     

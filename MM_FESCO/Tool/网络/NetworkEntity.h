@@ -77,7 +77,7 @@
  */
 + (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
-
+#pragma ================== 考勤 =====================
 /**
  *    签到
  
@@ -148,7 +148,7 @@
  */
 + (void)postCommitApplyWithCheckType:(NSInteger)checkType  address:(NSString *)address time:(NSString *)time memo:(NSString *)memo  applyPeople:(NSString *)applyPeople Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
-
+#pragma ================== 密码 =====================
 /**
  *    验证旧密码  emp_Id, oldPswd
  
@@ -177,7 +177,7 @@
 + (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
-#pragma =========================================================
+#pragma ================== 加班审批 =====================
 /**
  *    获取加班审批列表
  
@@ -217,7 +217,7 @@
 
 
 
-#pragma =========================================================
+#pragma ================== 签到审批 =====================
 /**
  *    获取签到审批列表
  
@@ -259,8 +259,7 @@
 
 
 
-
-#pragma =========================================================
+#pragma ================== 请假审批 =====================
 /**
  *    获取请假审批列表
  
@@ -282,7 +281,7 @@
 + (void)postLeaveApproalMessageWithApply:(NSInteger)holEmpExamId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *    提交签到审批  kq/saveSignLaterExamStep.json','emp_Id':'','cust_Id':'','apply_Id':'','is_Pass':'','next_Approval_Man':'','memo':''
+ *    提交签到审批
  
  *  @param emp_Id （req）  员工id
  
@@ -299,5 +298,51 @@
  */
 + (void)postCommitLeaveApproalWithApply:(NSInteger)holEmpExamId isPass:(NSInteger)isPass nextApprovalManId:(NSString *)nextApprovalManId  memo:(NSString *)memo Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+#pragma ================== 休假申请、记录 =====================
+
+/**
+ *    获取休假申请信息
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postLeaveApplyMessageSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    提交休假申请  
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param time_Unit （req）  时间单位
+ 
+ *  @param work_Duration （req）  时间段
+ 
+ *  @param begin_Time （req）  开始时间
+ 
+ *  @param end_Time （req）  结束时间
+ 
+ *  @param approval_Man （req） 审批人
+ 
+ *  @param reason （req）  原因
+ 
+ */
++ (void)postCommitLeaveApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *   休假记录
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postLeaveRecordListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+#pragma ================== 加班申请、记录 =====================
 
 @end

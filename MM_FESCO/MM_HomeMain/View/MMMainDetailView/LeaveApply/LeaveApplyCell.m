@@ -43,6 +43,9 @@
     if (_index == 3002 || _index == 3004) {
         _textFile.isExist = YES;
     }
+    if (_index == 3005) {
+        _textFile.dataArray = _pickData;
+    }
 
 }
 - (void)awakeFromNib {
@@ -59,11 +62,11 @@
     if (_textFile == nil) {
         _textFile = [[MMChooseTextFile alloc] init];
         _textFile.backgroundColor  = [UIColor whiteColor];
-//        _textFile.dataArray = self.dataArray;
-        [_textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-//            [self initWithTextFile:textField indexTag:indexTag];
-        }];
-        
+////        _textFile.dataArray = self.dataArray;
+//        [_textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+//            
+//        }];
+//        
         
     }
     return _textFile;
