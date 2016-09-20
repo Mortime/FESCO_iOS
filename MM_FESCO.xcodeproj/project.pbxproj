@@ -66,10 +66,15 @@
 		598EAF381D87F45C00D36889 /* OverTimeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF371D87F45C00D36889 /* OverTimeDetailController.m */; };
 		598EAF3B1D87F84100D36889 /* TextMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF3A1D87F84100D36889 /* TextMainApprovalDetailCell.m */; };
 		598EAF3E1D87F86100D36889 /* FileMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 598EAF3D1D87F86100D36889 /* FileMainApprovalDetailCell.m */; };
+		5991AE241D90BE450034E23B /* LeaveApplyRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5991AE231D90BE450034E23B /* LeaveApplyRecordController.m */; };
+		5991AE271D90C44A0034E23B /* OverTimeApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5991AE261D90C44A0034E23B /* OverTimeApplyController.m */; };
+		5991AE2B1D90CC2B0034E23B /* LeaveApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5991AE2A1D90CC2B0034E23B /* LeaveApplyView.m */; };
+		5991AE2E1D90CD680034E23B /* LeaveApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5991AE2D1D90CD680034E23B /* LeaveApplyCell.m */; };
 		5994C46F1D823615007660DD /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C46E1D823615007660DD /* ModifyPasswordViewController.m */; };
 		5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C4711D8271FD007660DD /* MMLoginTool.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */; };
+		599FECD51D90D84400D381A0 /* LeaveRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECD41D90D84400D381A0 /* LeaveRecordView.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
 		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
@@ -267,6 +272,14 @@
 		598EAF3A1D87F84100D36889 /* TextMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMainApprovalDetailCell.m; sourceTree = "<group>"; };
 		598EAF3C1D87F86100D36889 /* FileMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMainApprovalDetailCell.h; sourceTree = "<group>"; };
 		598EAF3D1D87F86100D36889 /* FileMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMainApprovalDetailCell.m; sourceTree = "<group>"; };
+		5991AE221D90BE450034E23B /* LeaveApplyRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyRecordController.h; sourceTree = "<group>"; };
+		5991AE231D90BE450034E23B /* LeaveApplyRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyRecordController.m; sourceTree = "<group>"; };
+		5991AE251D90C44A0034E23B /* OverTimeApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyController.h; sourceTree = "<group>"; };
+		5991AE261D90C44A0034E23B /* OverTimeApplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyController.m; sourceTree = "<group>"; };
+		5991AE291D90CC2B0034E23B /* LeaveApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyView.h; sourceTree = "<group>"; };
+		5991AE2A1D90CC2B0034E23B /* LeaveApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyView.m; sourceTree = "<group>"; };
+		5991AE2C1D90CD680034E23B /* LeaveApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyCell.h; sourceTree = "<group>"; };
+		5991AE2D1D90CD680034E23B /* LeaveApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyCell.m; sourceTree = "<group>"; };
 		5994C46D1D823615007660DD /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		5994C46E1D823615007660DD /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		5994C4701D8271FD007660DD /* MMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginTool.h; sourceTree = "<group>"; };
@@ -275,6 +288,8 @@
 		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "../SafeDic/NSString+MD5.m"; sourceTree = "<group>"; };
 		599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCyeleShowLableTagView.h; sourceTree = "<group>"; };
 		599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCyeleShowLableTagView.m; sourceTree = "<group>"; };
+		599FECD31D90D84400D381A0 /* LeaveRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordView.h; sourceTree = "<group>"; };
+		599FECD41D90D84400D381A0 /* LeaveRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordView.m; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -626,6 +641,19 @@
 			path = Approval;
 			sourceTree = "<group>";
 		};
+		5991AE281D90CBF40034E23B /* LeaveApply */ = {
+			isa = PBXGroup;
+			children = (
+				5991AE291D90CC2B0034E23B /* LeaveApplyView.h */,
+				5991AE2A1D90CC2B0034E23B /* LeaveApplyView.m */,
+				5991AE2C1D90CD680034E23B /* LeaveApplyCell.h */,
+				5991AE2D1D90CD680034E23B /* LeaveApplyCell.m */,
+				599FECD31D90D84400D381A0 /* LeaveRecordView.h */,
+				599FECD41D90D84400D381A0 /* LeaveRecordView.m */,
+			);
+			path = LeaveApply;
+			sourceTree = "<group>";
+		};
 		59A59DEC1D499937001F3122 /* ThirdPary */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +825,7 @@
 		59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				5991AE281D90CBF40034E23B /* LeaveApply */,
 				598EAF1A1D87CCAB00D36889 /* Approval */,
 				594775EF1D767FC50094D354 /* Check */,
 				59D3FE941D506E7C002CCCA4 /* PersonalMessageDetailCell.h */,
@@ -842,6 +871,10 @@
 				590699B61D88F49100A92A72 /* SignUpApprovalDetailController.m */,
 				590699BB1D8923E400A92A72 /* LeaveApprovalDetailController.h */,
 				590699BC1D8923E400A92A72 /* LeaveApprovalDetailController.m */,
+				5991AE221D90BE450034E23B /* LeaveApplyRecordController.h */,
+				5991AE231D90BE450034E23B /* LeaveApplyRecordController.m */,
+				5991AE251D90C44A0034E23B /* OverTimeApplyController.h */,
+				5991AE261D90C44A0034E23B /* OverTimeApplyController.m */,
 			);
 			path = MMMainDetailController;
 			sourceTree = "<group>";
@@ -1092,6 +1125,7 @@
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
+				5991AE2B1D90CC2B0034E23B /* LeaveApplyView.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
 				598EAF3B1D87F84100D36889 /* TextMainApprovalDetailCell.m in Sources */,
@@ -1126,6 +1160,7 @@
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */,
 				590699B11D88E01000A92A72 /* ApprovalTextFiledView.m in Sources */,
+				5991AE241D90BE450034E23B /* LeaveApplyRecordController.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
@@ -1139,6 +1174,8 @@
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
 				59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
+				5991AE271D90C44A0034E23B /* OverTimeApplyController.m in Sources */,
+				5991AE2E1D90CD680034E23B /* LeaveApplyCell.m in Sources */,
 				59F651051D70338C000596A7 /* ChineseToPinyinResource.m in Sources */,
 				5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
@@ -1162,6 +1199,7 @@
 				598EAF3E1D87F86100D36889 /* FileMainApprovalDetailCell.m in Sources */,
 				594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */,
 				59614F7D1D7E9911004D3AAE /* CheckListModel.m in Sources */,
+				599FECD51D90D84400D381A0 /* LeaveRecordView.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,

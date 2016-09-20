@@ -19,6 +19,7 @@
 #import "MMLoginController.h"
 #import "JZUserLoginManager.h"
 #import "ApprovalController.h"
+#import "LeaveApplyRecordController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -156,7 +157,10 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 3) {
-        // 休假记录
+        // 休假记录 休假申请
+        LeaveApplyRecordController *leaveApplyVC = [[LeaveApplyRecordController alloc] init];
+        [self.navigationController pushViewController:leaveApplyVC animated:YES];
+        
         
     }
     if (indexPath.row == 4) {
