@@ -75,6 +75,13 @@
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
 		599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */; };
 		599FECD51D90D84400D381A0 /* LeaveRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECD41D90D84400D381A0 /* LeaveRecordView.m */; };
+		599FECD81D91155200D381A0 /* OverTimeApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECD71D91155200D381A0 /* OverTimeApplyView.m */; };
+		599FECDB1D9115EE00D381A0 /* LeaveRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECDA1D9115EE00D381A0 /* LeaveRecordCell.m */; };
+		599FECDE1D91296A00D381A0 /* LeavaRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECDD1D91296A00D381A0 /* LeavaRecordListModel.m */; };
+		599FECE11D912E6600D381A0 /* OverTimeApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECE01D912E6600D381A0 /* OverTimeApplyCell.m */; };
+		599FECE41D912EA400D381A0 /* OverTimeRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECE31D912EA400D381A0 /* OverTimeRecordView.m */; };
+		599FECE71D912EC700D381A0 /* OverTimeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECE61D912EC700D381A0 /* OverTimeRecordCell.m */; };
+		599FECEA1D91306100D381A0 /* OverTimeRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 599FECE91D91306100D381A0 /* OverTimeRecordListModel.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
 		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
@@ -290,6 +297,20 @@
 		599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCyeleShowLableTagView.m; sourceTree = "<group>"; };
 		599FECD31D90D84400D381A0 /* LeaveRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordView.h; sourceTree = "<group>"; };
 		599FECD41D90D84400D381A0 /* LeaveRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordView.m; sourceTree = "<group>"; };
+		599FECD61D91155200D381A0 /* OverTimeApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyView.h; sourceTree = "<group>"; };
+		599FECD71D91155200D381A0 /* OverTimeApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyView.m; sourceTree = "<group>"; };
+		599FECD91D9115EE00D381A0 /* LeaveRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordCell.h; sourceTree = "<group>"; };
+		599FECDA1D9115EE00D381A0 /* LeaveRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordCell.m; sourceTree = "<group>"; };
+		599FECDC1D91296A00D381A0 /* LeavaRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavaRecordListModel.h; sourceTree = "<group>"; };
+		599FECDD1D91296A00D381A0 /* LeavaRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavaRecordListModel.m; sourceTree = "<group>"; };
+		599FECDF1D912E6600D381A0 /* OverTimeApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyCell.h; sourceTree = "<group>"; };
+		599FECE01D912E6600D381A0 /* OverTimeApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyCell.m; sourceTree = "<group>"; };
+		599FECE21D912EA400D381A0 /* OverTimeRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordView.h; sourceTree = "<group>"; };
+		599FECE31D912EA400D381A0 /* OverTimeRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordView.m; sourceTree = "<group>"; };
+		599FECE51D912EC700D381A0 /* OverTimeRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordCell.h; sourceTree = "<group>"; };
+		599FECE61D912EC700D381A0 /* OverTimeRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordCell.m; sourceTree = "<group>"; };
+		599FECE81D91306100D381A0 /* OverTimeRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordListModel.h; sourceTree = "<group>"; };
+		599FECE91D91306100D381A0 /* OverTimeRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordListModel.m; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -650,6 +671,16 @@
 				5991AE2D1D90CD680034E23B /* LeaveApplyCell.m */,
 				599FECD31D90D84400D381A0 /* LeaveRecordView.h */,
 				599FECD41D90D84400D381A0 /* LeaveRecordView.m */,
+				599FECD91D9115EE00D381A0 /* LeaveRecordCell.h */,
+				599FECDA1D9115EE00D381A0 /* LeaveRecordCell.m */,
+				599FECD61D91155200D381A0 /* OverTimeApplyView.h */,
+				599FECD71D91155200D381A0 /* OverTimeApplyView.m */,
+				599FECDF1D912E6600D381A0 /* OverTimeApplyCell.h */,
+				599FECE01D912E6600D381A0 /* OverTimeApplyCell.m */,
+				599FECE21D912EA400D381A0 /* OverTimeRecordView.h */,
+				599FECE31D912EA400D381A0 /* OverTimeRecordView.m */,
+				599FECE51D912EC700D381A0 /* OverTimeRecordCell.h */,
+				599FECE61D912EC700D381A0 /* OverTimeRecordCell.m */,
 			);
 			path = LeaveApply;
 			sourceTree = "<group>";
@@ -896,6 +927,10 @@
 				5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */,
 				5931CD601D8E2E3400950264 /* LeaveApprovalListModel.h */,
 				5931CD611D8E2E3400950264 /* LeaveApprovalListModel.m */,
+				599FECDC1D91296A00D381A0 /* LeavaRecordListModel.h */,
+				599FECDD1D91296A00D381A0 /* LeavaRecordListModel.m */,
+				599FECE81D91306100D381A0 /* OverTimeRecordListModel.h */,
+				599FECE91D91306100D381A0 /* OverTimeRecordListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1123,6 +1158,7 @@
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
+				599FECE11D912E6600D381A0 /* OverTimeApplyCell.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
 				5991AE2B1D90CC2B0034E23B /* LeaveApplyView.m in Sources */,
@@ -1137,14 +1173,18 @@
 				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,
 				59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */,
+				599FECDE1D91296A00D381A0 /* LeavaRecordListModel.m in Sources */,
 				594776101D76AD0A0094D354 /* FillRecordCell.m in Sources */,
 				59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
+				599FECDB1D9115EE00D381A0 /* LeaveRecordCell.m in Sources */,
 				59D3FE931D506CFA002CCCA4 /* PersonalMessageController.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
 				59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */,
+				599FECE41D912EA400D381A0 /* OverTimeRecordView.m in Sources */,
 				598EAF381D87F45C00D36889 /* OverTimeDetailController.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
+				599FECEA1D91306100D381A0 /* OverTimeRecordListModel.m in Sources */,
 				590699B41D88EA9900A92A72 /* MMBottomButton.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
@@ -1177,6 +1217,7 @@
 				5991AE271D90C44A0034E23B /* OverTimeApplyController.m in Sources */,
 				5991AE2E1D90CD680034E23B /* LeaveApplyCell.m in Sources */,
 				59F651051D70338C000596A7 /* ChineseToPinyinResource.m in Sources */,
+				599FECE71D912EC700D381A0 /* OverTimeRecordCell.m in Sources */,
 				5981A9511D66D8F700DAC097 /* PersonalMessageHeaderView.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
@@ -1214,6 +1255,7 @@
 				598EAF201D87CD4100D36889 /* OverTimeView.m in Sources */,
 				598EAF191D87A82800D36889 /* ApprovalController.m in Sources */,
 				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
+				599FECD81D91155200D381A0 /* OverTimeApplyView.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
 				590699BA1D890D9200A92A72 /* MMTitleLabel.m in Sources */,
 				59A8D10D1D6E9646002CB709 /* PhoneListTableCell.m in Sources */,

@@ -343,6 +343,49 @@
  
  */
 + (void)postLeaveRecordListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
-#pragma ================== 加班申请、记录 =====================
 
+#pragma ================== 加班申请、记录 =====================
+/**
+ *    获取休假申请信息
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postOverTimeApplyMessageSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    提交休假申请
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param time_Unit （req）  时间单位
+ 
+ *  @param work_Duration （req）  时间段
+ 
+ *  @param begin_Time （req）  开始时间
+ 
+ *  @param end_Time （req）  结束时间
+ 
+ *  @param approval_Man （req） 审批人
+ 
+ *  @param reason （req）  原因
+ 
+ */
++ (void)postCommitOverTimeApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *   休假记录
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postOverTimeRecordListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

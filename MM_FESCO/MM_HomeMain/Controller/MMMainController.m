@@ -20,6 +20,7 @@
 #import "JZUserLoginManager.h"
 #import "ApprovalController.h"
 #import "LeaveApplyRecordController.h"
+#import "OverTimeApplyController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -170,7 +171,10 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 5) {
-        // 加班申请
+        // 加班申请  OverTimeApplyController
+        
+        OverTimeApplyController *overTimeApplyVC = [[OverTimeApplyController alloc] init];
+        [self.navigationController pushViewController:overTimeApplyVC animated:YES];
         
     }
     if (indexPath.row == 6) {

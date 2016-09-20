@@ -67,8 +67,7 @@
         CGFloat contentOffsetX = 0;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
         self.leaveApplyView.parementVC = self;
-//        self.overTimeView.approvalType = overTimeApprovalType;
-//        [_overTimeView networkRequest];
+        [_leaveApplyView networkRequest];
         
         
         
@@ -77,8 +76,7 @@
         CGFloat contentOffsetX = self.view.width;
         _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
         self.recordApplyView.parementVC = self;
-//        self.signUpApprovalView.approvalType = signUpApprovalType;
-//        [_signUpApprovalView networkRequest];
+        [_recordApplyView networkRequest];
         
         
         
@@ -93,19 +91,17 @@
     if (0 == scrollView.contentOffset.x) {
         // 考勤
         [_toolBarView selectItem:0];
-        //         self.allListView.frame = CGRectMake(0, -64, self.view.width, self.scrollView.height);
+       
     }
     if (width == scrollView.contentOffset.x) {
         // 考勤记录
         [_toolBarView selectItem:1];
-        //self.noExameListView.frame = CGRectMake(self.view.width, -64, self.view.width, self.scrollView.height);
         
         
     }
     if (2 * width== scrollView.contentOffset.x) {
         // 补签申请
         [_toolBarView selectItem:2];
-        //        self.appointListView.frame = CGRectMake(self.view.width * 2, -64, self.view.width, self.scrollView.height);
         
     }
 }
@@ -156,7 +152,6 @@
     if (_leaveApplyView == nil) {
         _leaveApplyView = [[LeaveApplyView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.scrollView.height)];
         _leaveApplyView.backgroundColor = [UIColor clearColor];
-        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
         
     }
     return _leaveApplyView;
@@ -166,7 +161,6 @@
     if (_recordApplyView == nil) {
         _recordApplyView = [[LeaveRecordView alloc] initWithFrame:CGRectMake(self.view.width, 0, self.view.width, self.scrollView.height)];
         _recordApplyView.backgroundColor = [UIColor clearColor];
-        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
         
     }
     return _recordApplyView;

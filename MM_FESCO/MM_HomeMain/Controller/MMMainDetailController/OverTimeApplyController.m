@@ -8,12 +8,18 @@
 
 #import "OverTimeApplyController.h"
 #import "JZPassRateToolBarView.h"
+#import "OverTimeApplyView.h"
+#import "OverTimeRecordView.h"
 
 @interface OverTimeApplyController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) JZPassRateToolBarView *toolBarView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) OverTimeApplyView *overTimeApplyView;
+
+@property (nonatomic, strong) OverTimeRecordView *overTimeRecordView;
 
 @end
 
@@ -23,7 +29,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.title = @"休假申请";
+    self.title = @"加班申请";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.scrollView.delegate = self;
     [self initUI];
@@ -33,16 +39,15 @@
     
     [self.view addSubview:self.toolBarView];
     [self.view addSubview:self.scrollView];
-    //
-    //    [_scrollView addSubview:self.overTimeView];
-    //    [_scrollView addSubview:self.signUpApprovalView];
+    [_scrollView addSubview:self.overTimeApplyView];
+    [_scrollView addSubview:self.overTimeRecordView];
     
     
     CGFloat contentOffsetX = 0 * self.view.width;
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-    //    self.overTimeView.parementVC = self;
+    self.overTimeApplyView.parementVC = self;
     //    self.overTimeView.approvalType = overTimeApprovalType;
-    //    [_overTimeView networkRequest];
+    [_overTimeApplyView networkRequest];
     
     
     
@@ -52,32 +57,30 @@
     
     NSLog(@"11_scrollView.contentOffset.y:%f",_scrollView.contentOffset.y);
     if (index == 0) {
-        self.title = @"休假申请";
+        self.title = @"加班申请";
     }else{
-        self.title = @"休假记录";
+        self.title = @"加班记录";
     }
     
-    //    if (0 == index) {
-    //
-    //        CGFloat contentOffsetX = 0;
-    //        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-    //        self.overTimeView.parementVC = self;
-    //        self.overTimeView.approvalType = overTimeApprovalType;
-    //        [_overTimeView networkRequest];
-    //
-    //
-    //
-    //    }else if (1 == index) {
-    //
-    //        CGFloat contentOffsetX = self.view.width;
-    //        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
-    //        self.signUpApprovalView.parementVC = self;
-    //        self.signUpApprovalView.approvalType = signUpApprovalType;
-    //        [_signUpApprovalView networkRequest];
-    //
-    //
-    //
-    //    }
+    if (0 == index) {
+        
+        CGFloat contentOffsetX = 0;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        self.overTimeApplyView.parementVC = self;
+        [_overTimeApplyView networkRequest];
+        
+        
+        
+    }else if (1 == index) {
+        
+        CGFloat contentOffsetX = self.view.width;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        self.overTimeRecordView.parementVC = self;
+        [_overTimeRecordView networkRequest];
+        
+        
+        
+    }
     
 }
 #pragma mark --- UIScroller delegate
@@ -86,29 +89,23 @@
     CGFloat width = self.view.width;
     
     if (0 == scrollView.contentOffset.x) {
-        // 考勤
+        // 加班申请
         [_toolBarView selectItem:0];
-        //         self.allListView.frame = CGRectMake(0, -64, self.view.width, self.scrollView.height);
+        
     }
     if (width == scrollView.contentOffset.x) {
-        // 考勤记录
+        // 加班记录
         [_toolBarView selectItem:1];
-        //self.noExameListView.frame = CGRectMake(self.view.width, -64, self.view.width, self.scrollView.height);
         
         
     }
-    if (2 * width== scrollView.contentOffset.x) {
-        // 补签申请
-        [_toolBarView selectItem:2];
-        //        self.appointListView.frame = CGRectMake(self.view.width * 2, -64, self.view.width, self.scrollView.height);
-        
-    }
+    
 }
 - (UIScrollView *)scrollView{
     
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, self.view.height - 40 - 64)];
-        _scrollView.contentSize = CGSizeMake(3 * self.view.width, 0);
+        _scrollView.contentSize = CGSizeMake(2 * self.view.width, 0);
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.pagingEnabled = YES;
         _scrollView.userInteractionEnabled = YES;
@@ -145,6 +142,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+// 加班申请
+- (OverTimeApplyView *)overTimeApplyView{
+    if (_overTimeApplyView == nil) {
+        _overTimeApplyView = [[OverTimeApplyView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.scrollView.height)];
+        _overTimeApplyView.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _overTimeApplyView;
+}
+// 加班记录
+- (OverTimeRecordView *)overTimeRecordView{
+    if (_overTimeRecordView == nil) {
+        _overTimeRecordView = [[OverTimeRecordView alloc] initWithFrame:CGRectMake(self.view.width, 0, self.view.width, self.scrollView.height)];
+        _overTimeRecordView.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _overTimeRecordView;
 }
 
 
