@@ -19,7 +19,11 @@
 
 @property (nonatomic ,strong) UIView *bottomBgView;
 
-@property (nonatomic, strong) UIButton *flagButon;
+@property (nonatomic, strong) UIView *flagView;
+
+@property (nonatomic, strong) UIImageView *flagImageView;
+
+@property (nonatomic, strong) UILabel *flagLabel;
 
 @property (nonatomic, strong) UIButton *flagBottomButon;
 
@@ -58,7 +62,9 @@
     [self.bgView addSubview:self.titleName];
     [self.bgView addSubview:self.bottomBgView];
     
-    [self.bottomBgView addSubview:self.flagButon];
+    [self.bottomBgView addSubview:self.flagView];
+    [self.flagView addSubview:self.flagImageView];
+    [self.flagView addSubview:self.flagLabel];
     [self.bottomBgView addSubview:self.flagBottomButon];
     [self.bottomBgView addSubview:self.name];
     [self.bottomBgView addSubview:self.applyTime];
@@ -92,7 +98,7 @@
         
     }];
     
-    [self.flagButon mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bottomBgView.mas_top).offset(10);
         make.left.mas_equalTo(self.bottomBgView.mas_left).offset(20);
         make.width.mas_equalTo(@100);
@@ -100,17 +106,34 @@
         
     }];
     
+    
+    [self.flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.flagView.mas_centerX);
+        make.centerY.mas_equalTo(self.flagView.mas_centerY);
+        make.width.mas_equalTo(@60);
+        make.height.mas_equalTo(@72);
+        
+    }];
+    [self.flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.flagView.mas_centerX);
+        make.centerY.mas_equalTo(self.flagView.mas_centerY);
+        make.width.mas_equalTo(self.flagView.mas_width);
+        make.height.mas_equalTo(@14);
+        
+    }];
+
+    
     [self.flagBottomButon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flagButon.mas_bottom);
-        make.left.mas_equalTo(self.flagButon.mas_left);
-        make.right.mas_equalTo(self.flagButon.mas_right);
+        make.top.mas_equalTo(self.flagView.mas_bottom);
+        make.left.mas_equalTo(self.flagView.mas_left);
+        make.right.mas_equalTo(self.flagView.mas_right);
         make.height.mas_equalTo(@20);
         
     }];
     
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bottomBgView.mas_top).offset(15);
-        make.left.mas_equalTo(self.flagButon.mas_right).offset(20);
+        make.left.mas_equalTo(self.flagView.mas_right).offset(20);
         make.right.mas_equalTo(self.bottomBgView.mas_right);
         make.height.mas_equalTo(@15);
         
@@ -129,7 +152,7 @@
     
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.applyTime.mas_bottom).offset(10);
-        make.left.mas_equalTo(self.flagButon.mas_right).offset(5);
+        make.left.mas_equalTo(self.flagView.mas_right).offset(5);
         make.right.mas_equalTo(self.bottomBgView.mas_right).offset(-5);
         make.height.mas_equalTo(@1);
 
@@ -192,21 +215,33 @@
     }
     return _bottomBgView;
 }
-- (UIButton *)flagButon{
-    if (_flagButon == nil) {
-        _flagButon = [UIButton buttonWithType:UIButtonTypeCustom];
-        _flagButon.backgroundColor = [UIColor clearColor];
-        [_flagButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _flagButon.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_flagButon setImage:[UIImage imageNamed:@"apply_ing"] forState:UIControlStateNormal];
-        [_flagButon setTitle:@"审批中" forState:UIControlStateNormal];
-        _flagButon.layer.borderWidth = 0.5;
-        _flagButon.layer.borderColor = [UIColor grayColor].CGColor;
-        [_flagButon setImageEdgeInsets:UIEdgeInsetsMake(4, 20, 4, 20)];
-        [_flagButon setTitleEdgeInsets:UIEdgeInsetsMake(20, -60, 10, 0)];
+- (UIView *)flagView{
+    if (_flagView == nil) {
+        _flagView = [[UIView alloc] init];
+        _flagView.backgroundColor = [UIColor whiteColor];
+        _flagView.layer.borderWidth = 0.5;
+        _flagView.layer.borderColor = [UIColor grayColor].CGColor;
         
     }
-    return _flagButon;
+    return _flagView;
+}
+- (UIImageView *)flagImageView{
+    if (_flagImageView == nil) {
+        _flagImageView = [[UIImageView alloc] init];
+        _flagImageView.backgroundColor = [UIColor clearColor];
+    }
+    return _flagImageView;
+}
+
+- (UILabel *)flagLabel{
+    if (_flagLabel == nil) {
+        _flagLabel = [[UILabel alloc] init];
+        _flagLabel.font = [UIFont systemFontOfSize:14];
+        _flagLabel.textColor = [UIColor blackColor];
+        _flagLabel.textAlignment = NSTextAlignmentCenter;
+        
+    }
+    return _flagLabel;
 }
 - (UIButton *)flagBottomButon{
     if (_flagBottomButon == nil) {
@@ -273,13 +308,59 @@
     return _endTime;
 }
 
-//- (void)setListModel:(LeaveApprovalListModel *)listModel{
-//    _name.text = listModel.empName;
-//    _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
-//    _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
-//    _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
-//    _leaveTypeLabel.text = listModel.name;
-//    [_flagButon setTitle:[NSString stringWithFormat:@"%lu",_index] forState:UIControlStateNormal];
-//    
-//}
+- (void)setListModel:(LeavaRecordListModel *)listModel{
+    _titleName.text = listModel.holName;
+    _name.text = listModel.empName;
+    _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
+    _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+    _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
+    
+    [_flagBottomButon setTitle:[NSString stringWithFormat:@"审批人:%@",listModel.currApprovalMan] forState:UIControlStateNormal];
+    MMLog(@"listModel.statusType == %lu",listModel.statusType);
+    
+    
+    // 1 是通过，2 是正在审批，0 是审批未通过
+    
+    if (listModel.statusType == 0) {
+        // 未通过
+        _flagView.layer.borderColor = [UIColor grayColor].CGColor;
+        _flagImageView.image = [UIImage imageNamed:@"apply_no"];
+        _flagLabel.text = @"未通过";
+        
+        _flagBottomButon.backgroundColor = [UIColor grayColor];
+        [_flagBottomButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        _bgView.backgroundColor = [UIColor grayColor];
+        _titleName.textColor = [UIColor blackColor];
+        
+    }
+    
+    if (listModel.statusType == 1) {
+        // 通过
+        _flagView.layer.borderColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
+        _flagImageView.image = [UIImage imageNamed:@"apply_pass"];
+        _flagLabel.text = @"通过";
+        
+        _flagBottomButon.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_flagBottomButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        _bgView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        _titleName.textColor = [UIColor whiteColor];
+        
+    }
+    if (listModel.statusType == 2) {
+        // 正在审批中
+        _flagView.layer.borderColor = [UIColor blackColor].CGColor;
+        _flagImageView.image = [UIImage imageNamed:@"apply_ing"];
+        _flagLabel.text = @"审批中";
+        
+        _flagBottomButon.backgroundColor = [UIColor blackColor];
+        [_flagBottomButon setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        
+        _bgView.backgroundColor = [UIColor blackColor];
+        _titleName.textColor = MM_MAIN_FONTCOLOR_BLUE;
+        
+    }
+    
+}
 @end

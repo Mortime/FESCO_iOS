@@ -756,7 +756,7 @@
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"methodname":@"kq/workApply.json"};
+                          @"methodname":@"kq/holApply.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -764,7 +764,7 @@
     
     NSLog(@"%@%@",jsonParam,sign);
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/workApply.json"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/holApply.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                             
@@ -780,7 +780,7 @@
 
 }
 /**
- *   提交休假申请  
+ *   提交休假申请  'hol_Set_Id':'','hol_Begin':'','hol_End':'','hol_Begin_Apm':'','hol_End_Apm':'','hol_Num':'','momo':'','approval_Man':'','hol_Unit
  */
 + (void)postCommitLeaveApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
@@ -792,7 +792,7 @@
                           @"end_Time":endTime,
                           @"reason":reason,
                           @"approval_Man":[NSString stringWithFormat:@"%lu",approvalManID],
-                          @"methodname":@"kq/saveWorkApply.json"};
+                          @"methodname":@"kq/saveHolApply.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -800,7 +800,7 @@
     
     NSLog(@"%@%@",jsonParam,sign);
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/saveWorkApply.json"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/saveHolApply.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                             
@@ -824,7 +824,7 @@
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"methodname":@"kq/getEmpWorkList.json"};
+                          @"methodname":@"kq/getEmpHol.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -832,7 +832,7 @@
     
     NSLog(@"%@%@",jsonParam,sign);
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getEmpWorkList.json"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getEmpHol.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                             
@@ -847,7 +847,7 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 /**
- *   获取休假申请信息
+ *   获取加班申请信息
  */
 + (void)postOverTimeApplyMessageSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
@@ -878,7 +878,7 @@
     
 }
 /**
- *   提交休假申请
+ *   提交加班申请
  */
 + (void)postCommitOverTimeApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
@@ -915,7 +915,7 @@
     
 }
 /**
- *   休假记录
+ *   加班记录
  */
 + (void)postOverTimeRecordListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     

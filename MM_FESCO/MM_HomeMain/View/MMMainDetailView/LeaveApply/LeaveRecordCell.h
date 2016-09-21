@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LeavaRecordListModel.h"
 
 @interface LeaveRecordCell : UITableViewCell
 
+@property (nonatomic, strong) LeavaRecordListModel *listModel;
 @end
