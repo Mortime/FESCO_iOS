@@ -279,7 +279,7 @@
 - (UIButton *)preservationButton{
     if (_preservationButton == nil) {
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _preservationButton.frame = CGRectMake(0, self.view.height - 50, kMMWidth, 50);
+        _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kMMWidth, 50);
         [_preservationButton setTitle:@"保存修改" forState:UIControlStateNormal];
         [_preservationButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
         [_preservationButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
