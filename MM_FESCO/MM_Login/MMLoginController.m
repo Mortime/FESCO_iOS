@@ -12,6 +12,7 @@
 #import "UIViewController+HUD.h"
 #import "NSData+AES.h"
 #import "NSString+BASE64.h"
+#import "RegisterController.h"
 
 
 @interface MMLoginController ()
@@ -245,10 +246,13 @@
         }
         else{
             NSString *msgError = [responseObject objectForKey:@"ERROR"];
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:msgError];
-            [toastView show];
-            [MBProgressHUD hideHUDForView:self.view animated:NO];
-        }
+            if ([msgError isEqualToString:@"get token error."]) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"用户名或密码错误"];
+                [toastView show];
+                [MBProgressHUD hideHUDForView:self.view animated:NO];
+ 
+            }
+            }
         
 
         MMLog(@"responseObject  responseObject  responseObject%@",responseObject);
@@ -265,7 +269,11 @@
 
 }
 
-
+// 跳转到注册界面
+- (void)pushRegister:(UITapGestureRecognizer *)tap{
+    RegisterController *registerVC = [[RegisterController alloc] init];
+    [self presentViewController:registerVC animated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -388,10 +396,13 @@
 - (UILabel *)recommendPasswordLabel{
     if (_recommendPasswordLabel == nil) {
         _recommendPasswordLabel = [[UILabel alloc] init];
-        _recommendPasswordLabel.text = @"Forgot password";
+        _recommendPasswordLabel.text = @"注册";
         _recommendPasswordLabel.font = [UIFont systemFontOfSize:14];
         _recommendPasswordLabel.textAlignment = NSTextAlignmentCenter;
         _recommendPasswordLabel.textColor = [UIColor whiteColor];
+        _recommendPasswordLabel.userInteractionEnabled = YES;
+         UITapGestureRecognizer * ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegister:)];
+        [_recommendPasswordLabel addGestureRecognizer:ges];
     }
     return _recommendPasswordLabel;
 }
@@ -407,7 +418,7 @@
 - (UILabel *)bottomLabel{
     if (_bottomLabel == nil) {
         _bottomLabel = [[UILabel alloc] init];
-        _bottomLabel.text = @"Welcome to Log on";
+        _bottomLabel.text = @"找回密码";
         _bottomLabel.font = [UIFont systemFontOfSize:14];
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
         _bottomLabel.textColor = [UIColor whiteColor];

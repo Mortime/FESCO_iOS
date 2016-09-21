@@ -104,6 +104,8 @@
 		59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1091D6E94E8002CB709 /* PhoneListTableController.m */; };
 		59A8D10D1D6E9646002CB709 /* PhoneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */; };
 		59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1101D6EB001002CB709 /* DDChannelLabel.m */; };
+		59C005C61D92542300A329CD /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C51D92542300A329CD /* RegisterController.m */; };
+		59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */; };
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
 		59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C71D5AC27A00C7F593 /* UIViewController+Method.m */; };
 		59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C2E1D5C07B300CE0385 /* UIViewController+HUD.m */; };
@@ -358,6 +360,10 @@
 		59A8D10C1D6E9646002CB709 /* PhoneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableCell.m; sourceTree = "<group>"; };
 		59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChannelLabel.h; sourceTree = "<group>"; };
 		59A8D1101D6EB001002CB709 /* DDChannelLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChannelLabel.m; sourceTree = "<group>"; };
+		59C005C41D92542300A329CD /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		59C005C51D92542300A329CD /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRegisterTextFiledView.h; sourceTree = "<group>"; };
+		59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRegisterTextFiledView.m; sourceTree = "<group>"; };
 		59C197C31D5ABFB100C7F593 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		59C197C41D5ABFB100C7F593 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		59C197C61D5AC27A00C7F593 /* UIViewController+Method.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Method.h"; sourceTree = "<group>"; };
@@ -789,8 +795,12 @@
 				59F4D6381D81387200C56E5D /* JZUserLoginManager.m */,
 				59A59E311D49C6A3001F3122 /* MMLoginController.h */,
 				59A59E321D49C6A3001F3122 /* MMLoginController.m */,
+				59C005C41D92542300A329CD /* RegisterController.h */,
+				59C005C51D92542300A329CD /* RegisterController.m */,
 				5994C4701D8271FD007660DD /* MMLoginTool.h */,
 				5994C4711D8271FD007660DD /* MMLoginTool.m */,
+				59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */,
+				59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */,
 			);
 			path = MM_Login;
 			sourceTree = "<group>";
@@ -1155,6 +1165,7 @@
 				5901494E1D8FC57900B2BAE2 /* HMNagationController.m in Sources */,
 				590699C01D8926C800A92A72 /* MMLeaveTitleView.m in Sources */,
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
+				59C005C61D92542300A329CD /* RegisterController.m in Sources */,
 				59E729F61D6AE3E800920CC1 /* PersonalMessageModel.m in Sources */,
 				59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */,
 				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
@@ -1259,6 +1270,7 @@
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
 				590699BA1D890D9200A92A72 /* MMTitleLabel.m in Sources */,
 				59A8D10D1D6E9646002CB709 /* PhoneListTableCell.m in Sources */,
+				59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,

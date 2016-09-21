@@ -153,7 +153,7 @@
     
     [NetworkEntity postCommitOverTimeApplyWihtTimeUnit:_timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
         
-        MMLog(@"CommitOverTimeApply ========responseObject=========%@",responseObject);
+//        MMLog(@"CommitOverTimeApply ========responseObject=========%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
             [self.parementVC showTotasViewWithMes:@"提交失败"];
         }

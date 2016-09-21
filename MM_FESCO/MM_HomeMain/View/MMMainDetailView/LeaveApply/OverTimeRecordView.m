@@ -50,7 +50,7 @@
 #pragma mark - 刷新数据
 - (void)networkRequest {
     [NetworkEntity postOverTimeRecordListSuccess:^(id responseObject) {
-        MMLog(@"OverTimeRecordList ========responseObject=========%@",responseObject);
+//        MMLog(@"OverTimeRecordList ========responseObject=========%@",responseObject);
         [_dataArray removeAllObjects];
         if ([[responseObject objectForKey:@"list"] count] == 0) {
             [self refreshUI];
@@ -64,6 +64,7 @@
         
     } failure:^(NSError *failure) {
         MMLog(@"OverTimeRecordList ========failure=========%@",failure);
+         [_parementVC showTotasViewWithMes:@"网络错误"];
     }];
     
 }

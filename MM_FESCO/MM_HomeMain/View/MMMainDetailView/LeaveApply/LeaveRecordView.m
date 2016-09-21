@@ -49,7 +49,7 @@
 #pragma mark - 刷新数据
 - (void)networkRequest {
     [NetworkEntity postLeaveRecordListSuccess:^(id responseObject) {
-        MMLog(@"LeaveRecordList ========responseObject=========%@",responseObject);
+//        MMLog(@"LeaveRecordList ========responseObject=========%@",responseObject);
         [_dataArray removeAllObjects];
         if ([[responseObject objectForKey:@"list"] count] == 0) {
             [self refreshUI];
@@ -63,6 +63,7 @@
 
     } failure:^(NSError *failure) {
         MMLog(@"LeaveRecordList ========failure=========%@",failure);
+        [_parementVC showTotasViewWithMes:@"网络错误"];
     }];
     
 }

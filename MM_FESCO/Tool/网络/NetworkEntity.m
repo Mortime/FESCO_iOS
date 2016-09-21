@@ -11,6 +11,57 @@
 @implementation NetworkEntity
 
 /**
+ *   注册 获取验证码
+ */
+
++ (void)postRegisterCodeNumberWithMail:(NSString *)mail success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    if (!mail) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/preRegister.json"];
+    NSLog(@"mainHomeUrlstr  %@",urlStr);
+    
+    
+    
+    NSDictionary * dic = @{@"email":mail
+                           
+                           };
+    
+    
+    NSLog(@"mainHomeUrlstrdic  %@",dic);
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+
+}
+/**
+ *   注册 注册
+ */
+
+
++ (void)postRegisterNumberWithMail:(NSString *)mail  userName:(NSString *)userName password:(NSString *)password  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    if (!mail) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/register.json"];
+    NSLog(@"mainHomeUrlstr  %@",urlStr);
+    
+    
+    
+    NSDictionary * dic = @{@"email":mail,
+                           @"login_name":userName,
+                           @"login_password":password
+                           
+                           };
+    
+    
+    NSLog(@"mainHomeUrlstrdic  %@",dic);
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
+
+
+
+
+/**
  *   首页标签信息
  */
 + (void)postHomeMainListWithParamMD5:(NSString *)paramMD5  menthodname:(NSString *)menthodname tokenkeyID:(NSString *)tokenkey secret:(NSString *)secret success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{

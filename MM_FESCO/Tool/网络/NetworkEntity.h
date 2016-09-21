@@ -12,6 +12,27 @@
 
 @interface NetworkEntity : NSObject
 
+#pragma ================== 注册 登录 =====================
+/**
+ *  用户注册  获取验证码
+ *
+ *  @param email （req） 用于接受验证码的邮箱
+ */
+
++ (void)postRegisterCodeNumberWithMail:(NSString *)mail success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *  用户注册  注册
+ *
+ *  @param email （req） 邮箱
+ 
+ *  @param userName （req） 用户名
+ 
+ *  @param password （req） 密码
+ */
+
++ (void)postRegisterNumberWithMail:(NSString *)mail  userName:(NSString *)userName password:(NSString *)password  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 
 
 + (void)postHomeMainListWithParamMD5:(NSString *)paramMD5  menthodname:(NSString *)menthodname tokenkeyID:(NSString *)tokenkey secret:(NSString *)secret success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;

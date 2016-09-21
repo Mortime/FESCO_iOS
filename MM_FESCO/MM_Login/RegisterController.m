@@ -1,0 +1,381 @@
+//
+//  RegisterController.m
+//  MM_FESCO
+//
+//  Created by Mortimey on 16/9/21.
+//  Copyright © 2016年 Mortimey. All rights reserved.
+//
+
+#import "RegisterController.h"
+#import "MMRegisterTextFiledView.h"
+
+#define kTextFiledH  44
+
+#define kMarginH   15
+
+@interface RegisterController ()
+
+@property (nonatomic, strong) UIImageView *headerImageView;
+
+@property (nonatomic, strong) UIView *iconBgView;
+
+@property (nonatomic, strong) UIImageView *iconImageView;
+
+@property (nonatomic, strong) UIView *iconTopBgView;
+
+@property (nonatomic, strong) UIView *bgTextFiled;
+
+@property (nonatomic, strong) MMRegisterTextFiledView *mailTextFiled;
+
+@property (nonatomic, strong) MMRegisterTextFiledView *userNameTextFiled;
+
+@property (nonatomic, strong) MMRegisterTextFiledView *passwordTextFiled;
+
+@property (nonatomic,strong) MMRegisterTextFiledView *codeNumTextFiled;
+
+@property (nonatomic, strong) UIButton *codeNumButton;
+
+@property (nonatomic, strong) UIButton *registButton;
+
+@property (nonatomic, strong) UIButton *backButton;
+
+@property (nonatomic ,strong) NSString *mailStr;
+@property (nonatomic ,strong) NSString *userName;
+@property (nonatomic ,strong) NSString *password;
+@property (nonatomic ,strong) NSString *codeNum;
+
+
+
+
+
+@end
+
+@implementation RegisterController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+    [self initUI];
+}
+- (void)initUI{
+    
+    [self.view addSubview:self.headerImageView];
+    [self.view addSubview:self.backButton];
+    [self.view addSubview:self.iconBgView];
+    [self.view addSubview:self.iconTopBgView];
+    [self.iconTopBgView addSubview:self.iconImageView];
+    [self.view addSubview:self.iconImageView];
+    
+    [self.view addSubview:self.bgTextFiled];
+    [self.bgTextFiled addSubview:self.codeNumTextFiled];
+    [self.view addSubview:self.codeNumButton];
+    [self.bgTextFiled addSubview:self.mailTextFiled];
+    [self.bgTextFiled addSubview:self.userNameTextFiled];
+    [self.bgTextFiled addSubview:self.passwordTextFiled];
+    [self.view addSubview:self.registButton];
+}
+- (void)viewWillLayoutSubviews{
+    [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.right.mas_equalTo(self.view.mas_right);
+        make.height.mas_equalTo(@200);
+    }];
+    
+    [self.iconBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.headerImageView.mas_centerX);
+        make.centerY.mas_equalTo(self.headerImageView.mas_centerY);
+        make.height.mas_equalTo(@168);
+        make.width.mas_equalTo(@189);
+    }];
+    [self.iconTopBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.headerImageView.mas_centerX).offset(-10);
+        make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(-10);
+        make.height.mas_equalTo(@168);
+        make.width.mas_equalTo(@189);
+    }];
+    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.iconTopBgView.mas_centerX);
+        make.centerY.mas_equalTo(self.iconTopBgView.mas_centerY);
+        make.height.mas_equalTo(@100);
+        make.width.mas_equalTo(@160);
+    }];
+    
+    [self.bgTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.headerImageView.mas_bottom).offset(40);
+        make.left.mas_equalTo(self.view.mas_left).offset(20);
+        make.right.mas_equalTo(self.view.mas_right).offset(-20);
+        make.height.mas_equalTo(@300);
+        
+    }];
+    [self.mailTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.bgTextFiled.mas_top).offset(0);
+        make.left.mas_equalTo(self.bgTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.bgTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+    [self.codeNumTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mailTextFiled.mas_bottom).offset(kMarginH);
+        make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+    [self.codeNumButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.codeNumTextFiled.mas_top);
+        make.bottom.mas_equalTo(self.codeNumTextFiled.mas_bottom);
+        make.right.mas_equalTo(self.codeNumTextFiled.mas_right).offset(-10);
+        
+    }];
+    [self.userNameTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.codeNumTextFiled.mas_bottom).offset(kMarginH);
+        make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+    [self.passwordTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.userNameTextFiled.mas_bottom).offset(kMarginH);
+        make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+    
+    
+    [self.registButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.passwordTextFiled.mas_bottom).offset(40);
+        make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+    
+
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+#pragma mark --- Action 
+- (void)initWithTextFile:(UITextField *)textFiled indexTag:(NSInteger )indexTag{
+    if (indexTag == 4000) {
+        // 邮箱
+        MMLog(@"textFiled == %@",textFiled.text);
+        _mailStr = textFiled.text;
+        MMLog(@"邮箱");
+    }
+    if (indexTag == 4001) {
+        //  账户
+        MMLog(@"账户");
+        _userName = textFiled.text;
+    }
+
+    if (indexTag == 4002) {
+        // 密码
+        MMLog(@"密码");
+        _password = textFiled.text;
+    }
+
+    if (indexTag == 4003) {
+        // 验证码
+        MMLog(@"验证码");
+        _codeNum = textFiled.text;
+    }
+
+}
+- (void)didClick{
+    [NetworkEntity postRegisterNumberWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
+        
+        MMLog(@"RegisterNumber ========responseObject ============%@",responseObject);
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
+            [self showTotasViewWithMes:@"该用户已经存在"];
+            return;
+        }
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+            [self showTotasViewWithMes:@"注册成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+
+        
+    } failure:^(NSError *failure) {
+        
+        MMLog(@"RegisterNumber ========failure ============%@",failure);
+        
+    }];
+}
+- (void)pushBack{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)didClickCodeNum{
+    MMLog(@"点击了发送验证吗");
+    if (_mailStr == nil || [_mailStr isEqualToString:@""]) {
+        [self showTotasViewWithMes:@"请输入邮箱"];
+        return;
+    }
+    [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
+        MMLog(@"RegisterCodeNumber ========responseObject ============%@",responseObject);
+        if (responseObject) {
+            NSArray *allkey = [responseObject allKeys];
+            if ([allkey[0] isEqualToString:@"ValidateCode"]) {
+                [self showTotasViewWithMes:@"验证码发送成功"];
+                return ;
+            }
+            if ([allkey[0] isEqualToString:@"invalid email address"]) {
+                [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
+                return;
+            }
+            if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
+                [self showTotasViewWithMes:@"该用户已经存在"];
+                return;
+            }
+        }
+    } failure:^(NSError *failure) {
+        MMLog(@"RegisterCodeNumber ========failure ============%@",failure);
+        [self showTotasViewWithMes:@"网络错误"];
+    }];
+
+}
+#pragma mark ---- Lazy
+- (UIImageView *)headerImageView{
+    if (_headerImageView == nil) {
+        _headerImageView = [[UIImageView alloc] init];
+        _headerImageView.image = [UIImage imageNamed:@"Regist_BG"];
+    }
+    return _headerImageView;
+}
+
+- (UIView *)iconBgView{
+    if (_iconBgView == nil) {
+        _iconBgView = [[UIView alloc] init];
+        _iconBgView.backgroundColor = [UIColor blackColor];
+        _iconBgView.alpha = 0.2;
+        
+    }
+    return _iconBgView;
+}
+- (UIView *)iconTopBgView{
+    if (_iconTopBgView == nil) {
+        _iconTopBgView = [[UIView alloc] init];
+        _iconTopBgView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+         _iconTopBgView.alpha = 0.95;
+        
+    }
+    return _iconTopBgView;
+}
+
+- (UIImageView *)iconImageView{
+    if (_iconImageView == nil) {
+        _iconImageView = [[UIImageView alloc] init];
+        _iconImageView.image = [UIImage imageNamed:@"Register_Icon"];
+    }
+    return _iconImageView;
+}
+
+- (UIView *)bgTextFiled{
+    if (_bgTextFiled == nil) {
+        _bgTextFiled = [[UIView alloc] init];
+        _bgTextFiled.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _bgTextFiled;
+}
+
+- (MMRegisterTextFiledView *)mailTextFiled{
+    if (_mailTextFiled == nil) {
+        _mailTextFiled = [[MMRegisterTextFiledView alloc] init];
+        _mailTextFiled.leftTitle = @"邮箱";
+        _mailTextFiled.tag = 4000;
+        [_mailTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+
+        }];
+    }
+    return _mailTextFiled;
+}
+- (MMRegisterTextFiledView *)userNameTextFiled{
+    if (_userNameTextFiled == nil) {
+        _userNameTextFiled = [[MMRegisterTextFiledView alloc] init];
+        _userNameTextFiled.leftTitle = @"账户";
+        _userNameTextFiled.tag = 4001;
+        [_userNameTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+            
+        }];
+    }
+    return _userNameTextFiled;
+}
+
+- (MMRegisterTextFiledView *)passwordTextFiled{
+    if (_passwordTextFiled == nil) {
+        _passwordTextFiled = [[MMRegisterTextFiledView alloc] init];
+        _passwordTextFiled.leftTitle = @"密码";
+        _passwordTextFiled.tag = 4002;
+        [_passwordTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+            
+        }];
+    }
+    return _passwordTextFiled;
+}
+
+- (MMRegisterTextFiledView *)codeNumTextFiled{
+    if (_codeNumTextFiled == nil) {
+        _codeNumTextFiled = [[MMRegisterTextFiledView alloc] init];
+        _codeNumTextFiled.leftTitle = @"验证码";
+        _codeNumTextFiled.placeHold = @"请输入验证码";
+        _codeNumTextFiled.tag = 4003;
+        [_codeNumTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+            
+        }];
+    }
+    return _codeNumTextFiled;
+}
+
+- (UIButton *)registButton{
+    if (_registButton == nil) {
+        _registButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_registButton setTitle:@"点击注册" forState:UIControlStateNormal];
+        [_registButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_registButton addTarget:self action:@selector(didClick) forControlEvents:UIControlEventTouchUpInside];
+//        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        
+        
+    }
+    return _registButton;
+}
+- (UIButton *)codeNumButton{
+    if (_codeNumButton == nil) {
+        _codeNumButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_codeNumButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+        _codeNumButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_codeNumButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_codeNumButton addTarget:self action:@selector(didClickCodeNum) forControlEvents:UIControlEventTouchUpInside];
+        //        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        
+        
+    }
+    return _codeNumButton;
+}
+- (UIButton *)backButton{
+    if (_backButton == nil) {
+        _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _backButton.backgroundColor = [UIColor clearColor];
+        _backButton.frame = CGRectMake(20, 20, 24, 24);
+        [_backButton setImage:[UIImage imageNamed:@"side"] forState:UIControlStateNormal];
+        [_backButton setImage:[UIImage imageNamed:@"side"] forState:UIControlStateHighlighted];
+
+        [_backButton addTarget:self action:@selector(pushBack) forControlEvents:UIControlEventTouchUpInside];
+        //        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        
+        
+    }
+    return _backButton;
+}
+
+- (void)showTotasViewWithMes:(NSString *)message{
+    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:message];
+    [toastView show];
+}
+@end
