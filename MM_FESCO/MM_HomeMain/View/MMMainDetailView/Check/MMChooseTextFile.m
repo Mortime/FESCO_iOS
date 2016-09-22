@@ -108,11 +108,11 @@
         [self valueChange:_dateView];
     }
     
-    if (_isExist) {
+   
         if (_didEndEditingBlock) {
             _didEndEditingBlock(self.rightTextFiled,self.tag);
         }
-    }
+   
     
     self.leftLabel.textColor = [UIColor grayColor];
     self.rightTextFiled.textColor = [UIColor grayColor];
@@ -135,9 +135,9 @@
     NSString *resultString = self.dataArray[row];
     self.rightTextFiled.text = resultString;
     
-    if (_didEndEditingBlock) {
-        _didEndEditingBlock(self.rightTextFiled,self.tag);
-    }
+//    if (_didEndEditingBlock) {
+//        _didEndEditingBlock(self.rightTextFiled,self.tag);
+//    }
     
 }
 #pragma mark ----- UIDataView

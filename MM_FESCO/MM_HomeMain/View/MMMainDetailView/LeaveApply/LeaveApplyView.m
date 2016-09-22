@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, assign) BOOL isShowAMPM;
+
 
 @end
 
@@ -170,30 +172,33 @@
         [self initWithTextFile:textField indexTag:indexTag];
     }];
     
+    // 显示上午或下午
+    cell.isShowAMPM = _isShowAMPM;
+    
     return cell;
     
 }
 #pragma mark ---- Action
 - (void)didClick:(UIButton *)sender{
     if (_beginTime == nil || [_beginTime isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请选择开始时间"];
+        [self.parementVC showTotasViewWithMes:@"请选择假期类型"];
         return;
     }
     if (_endTime == nil || [_endTime isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请选择截止时间"];
+        [self.parementVC showTotasViewWithMes:@"请选择时间单位"];
         return;
     }
 
     if (_timeDuring == nil || [_timeDuring isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请输入加班时长"];
+        [self.parementVC showTotasViewWithMes:@"请选择开始时间"];
         return;
     }
     if (_timeUntiy == nil || [_timeUntiy isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请选择时长单位"];
+        [self.parementVC showTotasViewWithMes:@"请选择截止时间"];
         return;
     }
     if (_applyIdea == nil || [_applyIdea isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请输入加班原因"];
+        [self.parementVC showTotasViewWithMes:@"请输入休假原因"];
         return;
     }
     if (_applyPeopel == nil || [_applyPeopel isEqualToString:@" "]) {
@@ -246,6 +251,15 @@
     if (indexTag == 3001) {
         MMLog(@"时间单位");
         _endTime = textFiled.text;
+        if ([_endTime isEqualToString:@"半天"]) {
+            _isShowAMPM = YES;
+        }else{
+            _isShowAMPM = NO;
+        }
+        
+        [self refreshUI];
+        
+        
     }
     if (indexTag == 3002) {
         MMLog(@"开始时间");

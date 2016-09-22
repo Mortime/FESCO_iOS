@@ -28,4 +28,6 @@
 
 @property (nonatomic, strong) NSString *holNumberStr; // 剩余假期数
 
+@property (nonatomic, assign) BOOL isShowAMPM;   // 是否显示上午或者下午选择框
+
 @end
