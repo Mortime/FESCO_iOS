@@ -9,7 +9,7 @@
 #import "LeaveApplyView.h"
 #import "LeaveApplyCell.h"
 
-@interface LeaveApplyView ()<UITableViewDelegate,UITableViewDataSource>
+@interface LeaveApplyView ()<UITableViewDelegate,UITableViewDataSource,LeaveApplyCellDelegate>
 
 @property (nonatomic, strong) NSArray *leftTitleArray;
 
@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, assign) BOOL isShowAMPM;
+
+@property (nonatomic, assign) BOOL isShowHourTime;
 
 
 @end
@@ -53,6 +55,12 @@
     NSString *_yearHolNumber; // 剩余年假
     
     NSString *_wearHolNumber; // 剩余调休
+    
+    NSString *_hourTimeNum; //  调休时以半天为小时单位的小时数
+    
+    NSString *_beginTimeAMPM;
+    
+    NSString *_endAMPM;
 
 }
 
@@ -154,7 +162,7 @@
         
         cell = [[LeaveApplyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
     }
-    
+    cell.delegate = self;
     cell.index = indexPat.row + 3000;
     cell.pickData = _pickDataArray;
     cell.holTypeArray = _holTypeArray;
@@ -175,8 +183,28 @@
     // 显示上午或下午
     cell.isShowAMPM = _isShowAMPM;
     
+    // 是否显示调休小时数
+    cell.isShowTimeNum = _isShowHourTime;
+    
     return cell;
     
+}
+
+#pragma mark ------ LeaveApplyCellDelegate
+// 调休时以半天为小时单位的小时数
+- (void)leaveApplyCellDelegateWithHourTime:(NSString *)hourtime{
+    _hourTimeNum = hourtime;
+}
+// 选择的上午或者下午  3012 开始时间  ,  3013 结束时间
+- (void)leaveApplyCellDelegateWithAMPM:(UITextField *)AMPM{
+    if (AMPM.tag == 3012) {
+        _beginTime = AMPM.text;
+        
+    }
+    if (AMPM.tag == 3013) {
+        _endTime = AMPM.text;
+        
+    }
 }
 #pragma mark ---- Action
 - (void)didClick:(UIButton *)sender{
@@ -193,10 +221,10 @@
         [self.parementVC showTotasViewWithMes:@"请选择开始时间"];
         return;
     }
-    if (_timeUntiy == nil || [_timeUntiy isEqualToString:@" "]) {
-        [self.parementVC showTotasViewWithMes:@"请选择截止时间"];
-        return;
-    }
+//    if (_timeUntiy == nil || [_timeUntiy isEqualToString:@" "]) {
+//        [self.parementVC showTotasViewWithMes:@"请选择截止时间"];
+//        return;
+//    }
     if (_applyIdea == nil || [_applyIdea isEqualToString:@" "]) {
         [self.parementVC showTotasViewWithMes:@"请输入休假原因"];
         return;
@@ -206,26 +234,92 @@
         return;
     }
     
+    // 审批人ID
     NSInteger applyPeopleID = 0;
     for (NSDictionary *dic in _resultArray) {
         if ([[dic objectForKey:@"emp_Name"] isEqualToString:_applyPeopel]) {
             applyPeopleID =  [[dic objectForKey:@"emp_Id"] integerValue];
         }
     }
-
-    [NetworkEntity postCommitLeaveApplyWihtTimeUnit:_timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
+    // 假期ID
+    NSInteger holSetId = 0;
+    for (NSDictionary *dic in _hoeResultArray) {
+        if ([[dic objectForKey:@"hol_Name"] isEqualToString:_beginTime]) {
+            holSetId =  [[dic objectForKey:@"hol_Set_Id"] integerValue];
+        }
+    }
+    // 时间单位ID
+    NSInteger unitID = 0;
+    if ([_endTime isEqualToString:@"天"]) {
+        unitID = 1;
+    }
+    if ([_endTime isEqualToString:@"小时"]) {
+        unitID = 2;
+    }
+    if ([_endTime isEqualToString:@"半天"]) {
+        unitID = 3;
+    }
+    
+    // holNum  调休时以半天为小时单位的小时数   endTime
+    NSString *holNum = @"";
+    NSString *endTime = @"";
+    if ([_beginTime isEqualToString:@"调休"] && [_endTime isEqualToString:@"小时"]) {
+        holNum = _hourTimeNum;
+        
+    }else{
+        endTime = _timeUntiy;
+    }
+    
+    // beginAMPM  endAMPM
+    NSString *beginAMPM = @"";
+    NSString *endAMPM = @"";
+    if ([_endTime isEqualToString:@"半天"]) {
+        beginAMPM = _beginTimeAMPM;
+        endAMPM = _endAMPM;
+    }
+    
+    
+    [NetworkEntity postCommitLeaveApplyWihtHolSetId:holSetId holUnit:unitID holNum:holNum beginTime:_timeDuring endTime:endTime holBeginApm:beginAMPM holEndApm:endAMPM reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
         
         MMLog(@"CommitLeaveApply ========responseObject=========%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
             [self.parementVC showTotasViewWithMes:@"提交失败"];
-        }
+        }else
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
             [self.parementVC showTotasViewWithMes:@"提交成功"];
+        }else
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"not enough"]) {
+            [self.parementVC showTotasViewWithMes:@"没有足够的假期"];
+        }else{
+            [self.parementVC showTotasViewWithMes:@"提交失败"];
         }
+        
     } failure:^(NSError *failure) {
         MMLog(@"CommitLeaveApply ========failure=========%@",failure);
         [self.parementVC showTotasViewWithMes:@"网络错误"];
     }];
+    
+    
+    
+    
+    
+    
+    
+    
+//
+//    [NetworkEntity postCommitLeaveApplyWihtTimeUnit:_timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
+//        
+//        MMLog(@"CommitLeaveApply ========responseObject=========%@",responseObject);
+//        if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
+//            [self.parementVC showTotasViewWithMes:@"提交失败"];
+//        }
+//        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+//            [self.parementVC showTotasViewWithMes:@"提交成功"];
+//        }
+//    } failure:^(NSError *failure) {
+//        MMLog(@"CommitLeaveApply ========failure=========%@",failure);
+//        [self.parementVC showTotasViewWithMes:@"网络错误"];
+//    }];
 
 }
 #pragma mark ----- TextFiledDelegate Block
@@ -246,6 +340,15 @@
         }else{
             _isShowOverpluHolNum = NO;
         }
+        
+         // 是否显示请假时数  这里为了恢复初始值
+        if (![_beginTime isEqualToString:@"调休"]) {
+            _isShowHourTime = NO;
+        }
+        
+        
+        
+        
         [self refreshUI];
     }
     if (indexTag == 3001) {
@@ -255,6 +358,14 @@
             _isShowAMPM = YES;
         }else{
             _isShowAMPM = NO;
+        }
+        
+        // 是否显示请假时数
+        MMLog(@"%@=====%@",_beginTime,_endTime);
+        if (([_beginTime isEqualToString:@"调休"]) && ([_endTime isEqualToString:@"小时"])) {
+            _isShowHourTime = YES;
+        }else{
+            _isShowHourTime = NO;
         }
         
         [self refreshUI];

@@ -151,7 +151,18 @@
         }
     }
     
-    [NetworkEntity postCommitOverTimeApplyWihtTimeUnit:_timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
+    NSInteger timeUntiy = 0;
+    if ([_timeUntiy isEqualToString:@"天"]) {
+        timeUntiy = 1;
+    }
+    if ([_timeUntiy isEqualToString:@"小时"]) {
+        timeUntiy = 2;
+    }
+    if ([_timeUntiy isEqualToString:@"半天"]) {
+        timeUntiy = 3;
+    }
+    
+    [NetworkEntity postCommitOverTimeApplyWihtTimeUnit:timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
         
 //        MMLog(@"CommitOverTimeApply ========responseObject=========%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {

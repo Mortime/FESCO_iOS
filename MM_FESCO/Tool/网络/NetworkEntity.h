@@ -333,7 +333,8 @@
 + (void)postLeaveApplyMessageSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *    提交休假申请  
+ *    提交休假申请    'hol_Set_Id':'','hol_Begin':'','hol_End':'','hol_Begin_Apm':'','hol_End_Apm':'','hol_Num':'','momo':'','approval_Man':'','hol_Unit
+
  
  *  @param emp_Id （req）  员工id
  
@@ -352,7 +353,7 @@
  *  @param reason （req）  原因
  
  */
-+ (void)postCommitLeaveApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCommitLeaveApplyWihtHolSetId:(NSInteger)holSetId holUnit:(NSInteger)holUnit holNum:(NSString *)holNum  beginTime:(NSString *)beginTime endTime:(NSString *)endTime   holBeginApm:(NSString *)holBeginApm holEndApm:(NSString *)holEndApm reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
  *   休假记录
@@ -367,7 +368,7 @@
 
 #pragma ================== 加班申请、记录 =====================
 /**
- *    获取休假申请信息
+ *    获取加班申请信息
  
  *  @param emp_Id （req）  员工id
  
@@ -378,13 +379,13 @@
 + (void)postOverTimeApplyMessageSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *    提交休假申请
+ *    提交加班申请
  
  *  @param emp_Id （req）  员工id
  
  *  @param cust_Id （req） 公司id
  
- *  @param time_Unit （req）  时间单位
+ *  @param time_Unit （req）  时间单位   1 天 , 2 小时, 3 半天
  
  *  @param work_Duration （req）  时间段
  
@@ -397,10 +398,10 @@
  *  @param reason （req）  原因
  
  */
-+ (void)postCommitOverTimeApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCommitOverTimeApplyWihtTimeUnit:(NSInteger)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *   休假记录
+ *   加班记录
  
  *  @param emp_Id （req）  员工id
  

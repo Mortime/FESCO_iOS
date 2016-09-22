@@ -833,15 +833,18 @@
 /**
  *   提交休假申请  'hol_Set_Id':'','hol_Begin':'','hol_End':'','hol_Begin_Apm':'','hol_End_Apm':'','hol_Num':'','momo':'','approval_Man':'','hol_Unit
  */
-+ (void)postCommitLeaveApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitLeaveApplyWihtHolSetId:(NSInteger)holSetId holUnit:(NSInteger)holUnit holNum:(NSString *)holNum  beginTime:(NSString *)beginTime endTime:(NSString *)endTime   holBeginApm:(NSString *)holBeginApm holEndApm:(NSString *)holEndApm reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"time_Unit":timeUnit,
-                          @"work_Duration":workDuration,
-                          @"begin_Time":beginTime,
-                          @"end_Time":endTime,
-                          @"reason":reason,
+                          @"hol_Set_Id":[NSString stringWithFormat:@"%lu",holSetId],
+                          @"hol_Unit":[NSString stringWithFormat:@"%lu",holUnit],
+                          @"hol_Num":holNum,
+                          @"hol_Begin_Apm":holBeginApm,
+                          @"hol_End_Apm":holEndApm,
+                          @"hol_Begin":beginTime,
+                          @"hol_End":endTime,
+                          @"momo":reason,
                           @"approval_Man":[NSString stringWithFormat:@"%lu",approvalManID],
                           @"methodname":@"kq/saveHolApply.json"};
     
@@ -931,11 +934,16 @@
 /**
  *   提交加班申请
  */
-+ (void)postCommitOverTimeApplyWihtTimeUnit:(NSString *)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitOverTimeApplyWihtTimeUnit:(NSInteger)timeUnit workDuration:(NSString *)workDuration beginTime:(NSString *)beginTime endTime:(NSString *)endTime reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    
+    
+    
+    
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"time_Unit":timeUnit,
+                          @"time_Unit":[NSString stringWithFormat:@"%lu",timeUnit],
                           @"work_Duration":workDuration,
                           @"begin_Time":beginTime,
                           @"end_Time":endTime,

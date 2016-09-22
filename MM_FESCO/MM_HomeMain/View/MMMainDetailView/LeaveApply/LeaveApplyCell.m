@@ -7,6 +7,7 @@
 //
 
 #import "LeaveApplyCell.h"
+#import "MMChooseTextFile.h"
 
 @interface LeaveApplyCell ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 
@@ -14,9 +15,11 @@
 
 @property (nonatomic, strong) UIPickerView *pickView;
 
-@property (nonatomic,strong) UITextField *rithtTextFiled; // 上午或者下午选择
+@property (nonatomic,strong) UITextField *rithtTextFiled; // 上午或者下午选择 默认是隐藏的
 
 @property (nonatomic, strong) NSArray *holArray;
+
+@property (nonatomic, strong) MMChooseTextFile *hourTimeNumTextFiled; //   // 当选择休假并且选择时间单位为小时时 截止时间显示为请假时数,  默认是隐藏的
 
 @end
 
@@ -35,6 +38,7 @@
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.textFile];
     [self addSubview:self.rithtTextFiled];
+    [self addSubview:self.hourTimeNumTextFiled];
     self.rithtTextFiled.inputView = self.pickView;
 }
 - (void)layoutSubviews{
@@ -54,9 +58,20 @@
         
     }];
     
+    [self.hourTimeNumTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_top).offset(10);
+        make.left.mas_equalTo(self.mas_left).offset(10);
+        make.right.mas_equalTo(self.mas_right).offset(-10);
+        make.bottom.mas_equalTo(self.mas_bottom);
+        
+    }];
+
+    
     
     
     _textFile.tag = _index;
+    
+    _rithtTextFiled.tag = _index + 10;
     
     if (_index == 3000) {
         _textFile.dataArray = _holTypeArray;
@@ -105,6 +120,22 @@
             _rithtTextFiled.hidden = YES;
         }
     }
+
+    
+    if ( _index == 3003) {
+        if (_isShowTimeNum) {
+            _hourTimeNumTextFiled.hidden = NO;
+            _textFile.hidden = YES;
+        }else{
+            _hourTimeNumTextFiled.hidden = YES;
+             _textFile.hidden = NO;
+        }
+    }
+
+    
+    
+    // 当选择休假并且选择时间单位为小时时 截止时间显示为请假时数,
+        
     
 
 }
@@ -118,7 +149,12 @@
     _rithtTextFiled.layer.borderColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    // 3012 开始时间  ,  3013 结束时间
     _rithtTextFiled.layer.borderColor = [UIColor whiteColor].CGColor;
+    if ([_delegate respondsToSelector:@selector(leaveApplyCellDelegateWithAMPM:)]) {
+        [_delegate leaveApplyCellDelegateWithAMPM:textField];
+    }
 }
 #pragma mark ------ UIPickViewDelegate
 // returns the number of 'columns' to display.
@@ -148,6 +184,13 @@
     [super setSelected:selected animated:animated];
 
     
+}
+
+#pragma makr MMChooseTixtFileBlock
+- (void)initHourTime:(NSString *)hourTime{
+    if ([_delegate respondsToSelector:@selector(leaveApplyCellDelegateWithHourTime:)]) {
+        [_delegate leaveApplyCellDelegateWithHourTime:hourTime];
+    }
 }
 - (MMChooseTextFile *)textFile{
     if (_textFile == nil) {
@@ -186,6 +229,22 @@
     }
     return _rithtTextFiled;
 }
+
+- (MMChooseTextFile *)hourTimeNumTextFiled {
+    if (_hourTimeNumTextFiled == nil) {
+        _hourTimeNumTextFiled = [[MMChooseTextFile alloc] init];
+        _hourTimeNumTextFiled.leftTitle = @"请假时数";
+        _hourTimeNumTextFiled.placeHold = @"请输入请假时数";
+        _hourTimeNumTextFiled.isExist = YES;
+        _hourTimeNumTextFiled.hidden = YES;
+        _hourTimeNumTextFiled.backgroundColor = [UIColor whiteColor];
+        [_hourTimeNumTextFiled dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initHourTime:textField.text];
+        }];
+    }
+    return _hourTimeNumTextFiled;
+}
+
 - (UIPickerView *)pickView {
     if (_pickView == nil) {
         _pickView = [[UIPickerView alloc] init];

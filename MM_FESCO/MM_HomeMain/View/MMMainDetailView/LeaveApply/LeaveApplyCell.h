@@ -9,6 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "MMChooseTextFile.h"
 
+
+@protocol LeaveApplyCellDelegate <NSObject>
+
+
+@optional
+- (void)leaveApplyCellDelegateWithHourTime:(NSString *)hourtime;  
+
+- (void)leaveApplyCellDelegateWithAMPM:(UITextField *)AMPM;
+
+@end
+
 @interface LeaveApplyCell : UITableViewCell
 
 @property (nonatomic,strong) MMChooseTextFile *textFile;
@@ -29,5 +40,10 @@
 @property (nonatomic, strong) NSString *holNumberStr; // 剩余假期数
 
 @property (nonatomic, assign) BOOL isShowAMPM;   // 是否显示上午或者下午选择框
+
+@property (nonatomic, assign) BOOL isShowTimeNum; // 当假期类型为休假 时间单位为小时时显示
+
+
+@property (nonatomic, weak) id <LeaveApplyCellDelegate> delegate;
 
 @end
