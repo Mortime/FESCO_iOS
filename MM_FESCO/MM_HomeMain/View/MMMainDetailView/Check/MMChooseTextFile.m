@@ -14,8 +14,6 @@
 
 @property (nonatomic, strong) UILabel *leftLabel;
 
-@property (nonatomic, strong) UITextField *rightTextFiled;
-
 @property (strong, nonatomic) UIPickerView *pickerView;
 
 @property (strong, nonatomic) UIDatePicker *dateView;
@@ -80,7 +78,7 @@
         
     }];
     
-    
+    MMLog(@"00000000self.textFileStr = %@",self.textFileStr);
     self.leftLabel.text = self.leftTitle;
     self.rightTextFiled.placeholder = self.placeHold;
     self.rightTextFiled.text = self.textFileStr;

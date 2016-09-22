@@ -39,6 +39,18 @@
     NSString *_applyIdea;
     
     NSString *_applyPeopel;
+    
+    NSMutableArray *_holTypeArray;
+    
+    NSArray *_hoeResultArray;
+    
+    NSArray *_unitsArray;
+    
+    BOOL _isShowOverpluHolNum; // 是否显示剩余假期数目
+    
+    NSString *_yearHolNumber; // 剩余年假
+    
+    NSString *_wearHolNumber; // 剩余调休
 
 }
 
@@ -55,13 +67,16 @@
     
     self.backgroundColor = [UIColor clearColor];
     _pickDataArray = [NSMutableArray array];
+    _holTypeArray = [NSMutableArray array];
+    _hoeResultArray = [NSArray array];
+    
     [self addSubview:self.tableView];
     [self addSubview:self.commitButton];
 
 }
 - (void)initData{
-    self.leftTitleArray = @[@"假期类型",@"时间单位",@"开始时间",@"截止时间",@"休假原因",@"审批人"];
-    self.placeTitleArray = @[@"请选择假期类型",@"请选择时间",@"请输入开始时间",@"请选择截止时间",@"请输入休假原因",@"请选择审批人"];
+    self.leftTitleArray = @[@"假期类型",@"时间单位",@"开始时间",@"截止时间",@"休假原因",@"审批人",@"剩余假期"];
+    self.placeTitleArray = @[@"请选择假期类型",@"请选择时间单位",@"请输入开始时间",@"请选择截止时间",@"请输入休假原因",@"请选择审批人",@" "];
 }
 #pragma mark - 刷新数据
 - (void)refreshUI {
@@ -80,6 +95,38 @@
             NSString *str = [dic objectForKey:@"emp_Name"];
             [_pickDataArray addObject:str];
         }
+        // 假期类型数组
+        NSArray  *holTypeArray = [responseObject objectForKey:@"holSetList"];
+        _hoeResultArray =  holTypeArray;
+        for (NSDictionary *dic in holTypeArray) {
+            NSString *str = [dic objectForKey:@"hol_Name"];
+            [_holTypeArray addObject:str];
+        }
+        // 剩余假期数目
+        NSArray  *holNumArray = [responseObject objectForKey:@"holPoolList"];
+        for (NSDictionary *dic in holNumArray) {
+            NSString *str = [dic objectForKey:@"hol_Name"];
+            if ([str isEqualToString:@"年假"]) {
+                if ([[dic objectForKey:@"time_Unit"] integerValue] == 1) {
+                    _yearHolNumber = [NSString stringWithFormat:@"%lu天",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                }
+            }
+            if ([str isEqualToString:@"调休"]) {
+                if ([[dic objectForKey:@"time_Unit"] integerValue] == 2) {
+                    _wearHolNumber = [NSString stringWithFormat:@"%lu小时",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                }
+                if ([[dic objectForKey:@"time_Unit"] integerValue] == 1) {
+                    _wearHolNumber = [NSString stringWithFormat:@"%lu天",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                }
+                if ([[dic objectForKey:@"time_Unit"] integerValue] == 3) {
+                    _wearHolNumber = [NSString stringWithFormat:@"%lu半天",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                }
+            }
+
+        }
+
+        
+        
         [self refreshUI];
 
     } failure:^(NSError *failure) {
@@ -89,6 +136,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (_isShowOverpluHolNum) {
+        return 7;
+    }
     return 6;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,9 +155,17 @@
     
     cell.index = indexPat.row + 3000;
     cell.pickData = _pickDataArray;
-    
+    cell.holTypeArray = _holTypeArray;
+    cell.unitsArray = _unitsArray;
     cell.leftTitle = self.leftTitleArray[indexPat.row];
     cell.placeTitle = self.placeTitleArray[indexPat.row];
+    if ([_beginTime isEqualToString:@"年假"]) {
+
+        cell.holNumberStr = _yearHolNumber;
+        
+    }else if ([_beginTime isEqualToString:@"调休"]) {
+        cell.holNumberStr = _wearHolNumber;
+    }
     [cell.textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
         [self initWithTextFile:textField indexTag:indexTag];
     }];
@@ -168,23 +226,37 @@
 #pragma mark ----- TextFiledDelegate Block
 - (void)initWithTextFile:(UITextField *)textFiled indexTag:(NSInteger )indexTag{
     if (indexTag == 3000) {
-        MMLog(@"开始时间");
+        MMLog(@"假期类型");
         _beginTime = textFiled.text;
+        // 根据选择的假期类型 动态匹配对应的时间单位
+        for (NSDictionary *dic in _hoeResultArray) {
+            if ([[dic objectForKey:@"hol_Name"] isEqualToString:textFiled.text]) {
+                NSArray *holUnits = [dic objectForKey:@"hol_Units"];
+                _unitsArray = holUnits;
+            }
+        }
+        // 根据选择的假期类型 动态匹配是否显示剩余假期
+        if ([textFiled.text isEqualToString:@"年假"] || [textFiled.text isEqualToString:@"调休"]) {
+            _isShowOverpluHolNum = YES;
+        }else{
+            _isShowOverpluHolNum = NO;
+        }
+        [self refreshUI];
     }
     if (indexTag == 3001) {
-        MMLog(@"截止时间");
+        MMLog(@"时间单位");
         _endTime = textFiled.text;
     }
     if (indexTag == 3002) {
-        MMLog(@"加班时长");
+        MMLog(@"开始时间");
         _timeDuring = textFiled.text;
     }
     if (indexTag == 3003) {
-        MMLog(@"时长单位");
+        MMLog(@"结束时间");
         _timeUntiy = textFiled.text;
     }
     if (indexTag == 3004) {
-        MMLog(@"加班原因");
+        MMLog(@"休假原因");
         _applyIdea = textFiled.text;
     }
     if (indexTag == 3005) {

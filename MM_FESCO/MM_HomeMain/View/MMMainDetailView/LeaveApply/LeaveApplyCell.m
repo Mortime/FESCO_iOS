@@ -8,6 +8,12 @@
 
 #import "LeaveApplyCell.h"
 
+@interface LeaveApplyCell ()
+
+@property (nonatomic, strong) NSMutableArray *resultUnitArray;
+
+@end
+
 @implementation LeaveApplyCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -17,6 +23,7 @@
     return  self;
 }
 - (void)initUI{
+    self.resultUnitArray = [NSMutableArray array];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.textFile];
@@ -32,19 +39,43 @@
     
     _textFile.tag = _index;
     
+    if (_index == 3000) {
+        _textFile.dataArray = _holTypeArray;
+    }
+    if (_index == 3001) {
+        [_resultUnitArray removeAllObjects];
+        for (NSNumber *unit in _unitsArray) {
+            
+            if ([unit integerValue] == 1) {
+                [_resultUnitArray addObject:@"天"];
+            }
+            if ([unit integerValue] == 2) {
+                [_resultUnitArray addObject:@"小时"];
+            }
+            if ([unit integerValue] == 3) {
+                [_resultUnitArray addObject:@"半天"];
+            }
+        }
+        
+        _textFile.dataArray = _resultUnitArray;
+    }
     // 显示日期PickView
-    if (_index == 3000 || _index == 3001 ) {
+    if (_index == 3002 || _index == 3003 ) {
         _textFile.isShowDataPickView = YES;
     }
-    if (_index == 3003) {
-        _textFile.dataArray = @[@"天",@"小时",@"半天"];
-    }
     // 不显示PickView
-    if (_index == 3002 || _index == 3004) {
+    if (_index == 3004) {
         _textFile.isExist = YES;
     }
     if (_index == 3005) {
         _textFile.dataArray = _pickData;
+    }
+    
+    // 剩余假期
+    if (_index == 3006) {
+        _textFile.isExist = YES;
+        _textFile.userInteractionEnabled = NO;
+        _textFile.rightTextFiled.text = _holNumberStr;
     }
 
 }

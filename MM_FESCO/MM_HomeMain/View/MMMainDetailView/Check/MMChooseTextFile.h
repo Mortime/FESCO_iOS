@@ -15,6 +15,7 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 @interface MMChooseTextFile : UIView
 
 
+@property (nonatomic, strong) UITextField *rightTextFiled;
 
 @property (nonatomic,strong) NSString *leftTitle;
 

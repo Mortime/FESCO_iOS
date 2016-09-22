@@ -22,4 +22,10 @@
 
 @property (nonatomic, strong) NSArray *pickData;
 
+@property (nonatomic, strong) NSArray *holTypeArray;
+
+@property (nonatomic, strong) NSArray *unitsArray;
+
+@property (nonatomic, strong) NSString *holNumberStr; // 剩余假期数
+
 @end
