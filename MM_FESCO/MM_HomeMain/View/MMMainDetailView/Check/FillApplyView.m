@@ -304,7 +304,7 @@
         _signAddress = [[MMChooseTextFile alloc] init];
         _signAddress.leftTitle = @"签到地点";
         _signAddress.placeHold = @"请选择签到地点";
-        NSArray *addressArray = @[@"外企",@"丹棱街5号",@"东方美"];
+        NSArray *addressArray = @[@"外企",@"丹棱街5号微软大厦",@"东方梅地亚中心",@"海淀区公积金",@"上海中心一幢",@"信达资本",@"金凤科技",@"东方广场经贸城西2座",@"FESCO",@"微软",@"东三环北路8号亮马大厦",@"海淀社保",@"上海中国保险大厦",@"海淀区复兴路乙20号",@"中国银行(北京国际贸易中心支行)",@"雨霖大厦",@"新加坡航空",@"北京同仁堂健康药业股份有限公司",@"北京海淘车科技有限公司",@"FESCO西区"];
         _signAddress.dataArray = addressArray;
         _signAddress.tag = 402;
         [_signAddress dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
