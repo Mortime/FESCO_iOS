@@ -7,12 +7,20 @@
 //
 
 #import "MMLoginController.h"
-#import "MMMainController.h"
 #import "NSString+MD5.h"
 #import "UIViewController+HUD.h"
 #import "NSData+AES.h"
 #import "NSString+BASE64.h"
 #import "RegisterController.h"
+#import "DVVTabBarController.h"
+
+#import "MMMainController.h"
+#import "BuffetController.h"
+#import "NewsController.h"
+#import "ToolsController.h"
+#import "MyController.h"
+#import <BaiduMapAPI/BMapKit.h>
+
 
 
 @interface MMLoginController ()
@@ -217,9 +225,22 @@
         
         
         if ([[responseObject  objectForKey:@"SUCCESS"] isEqualToString:@"success"]) {
+            
+            // 环信注册
+            EMError *error = [[EMClient sharedClient] registerWithUsername:_phoneNumTextField.text password:_passwordTextField.text];
+            if (error==nil) {
+                NSLog(@"注册成功");
+            }else{
+                MMLog(@"环信注册 = %@",error);
+            }
+            // 登录环信
+            EMError *loginError = [[EMClient sharedClient] loginWithUsername:_phoneNumTextField.text password:_passwordTextField.text];
+            if (!loginError) {
+                NSLog(@"登录成功");
+            }
+    
+            
             // 登录成功后保存数据
-            
-            
             NSDate *localDate = [NSDate new];
             NSDateFormatter *dateFormatter = [NSDateFormatter new];
             [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm "];
@@ -239,10 +260,8 @@
             [MBProgressHUD hideHUDForView:self.view animated:NO];
             
             UIWindow *window  = [UIApplication sharedApplication].keyWindow;
-            MMMainController *mainVC = [[MMMainController alloc] init];
-            
-         HMNagationController *navigationVC = [[HMNagationController alloc] initWithRootViewController:mainVC];
-            window.rootViewController = navigationVC;
+            DVVTabBarController *mainVC = [self homeTabBarView];
+            window.rootViewController = mainVC;
         }
         else{
             NSString *msgError = [responseObject objectForKey:@"ERROR"];
@@ -426,5 +445,54 @@
     return _bottomLabel;
 }
 
-
+- (DVVTabBarController *)homeTabBarView {
+    
+    NSArray *controllerArray = @[ @"MMMainController",
+                                  @"BuffetController",
+                                  @"NewsController",
+                                  @"ToolsController",
+                                  @"MyController"];
+    
+    NSArray *titleArray = @[ @"工作", @"自助", @"资讯",@"工具",@"我的"];
+    
+    DVVTabBarController *tabBarVC = [DVVTabBarController new];
+    
+    // 循环创建Controller
+    for (NSInteger i = 0; i < controllerArray.count; i++) {
+        
+        Class vcClass = NSClassFromString(controllerArray[i]);
+        UIViewController *viewController = [vcClass new];
+        HMNagationController *naviVC = [[HMNagationController alloc] initWithRootViewController:viewController];
+        viewController.title = titleArray[i];
+        if (0 == i) {
+            MMMainController *homeVC = (MMMainController *)viewController;
+            tabBarVC.homeVC = homeVC;
+        }
+        if (1 == i) {
+            BuffetController *buffetVC = (BuffetController *)viewController;
+            tabBarVC.buffetVC = buffetVC;
+        }
+        if (2 == i) {
+            NewsController *newsVC = (NewsController *)viewController;
+            tabBarVC.newsVC = newsVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        if (3 == i) {
+            ToolsController *toolsVC = (ToolsController *)viewController;
+            tabBarVC.toolsVC = toolsVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        
+        
+        if (4 == i) {
+            MyController *myVC = (MyController *)viewController;
+            tabBarVC.myVC = myVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        
+        
+    }
+    
+    return tabBarVC;
+}
 @end

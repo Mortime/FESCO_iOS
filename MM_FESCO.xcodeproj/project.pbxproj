@@ -147,6 +147,12 @@
 		59FC079F1D95134300C1D0E0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC079E1D95134300C1D0E0 /* libz.tbd */; };
 		59FC07A11D95135400C1D0E0 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A01D95135400C1D0E0 /* libstdc++.6.0.9.tbd */; };
 		59FC07A31D95137600C1D0E0 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A21D95137600C1D0E0 /* libiconv.tbd */; };
+		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
+		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
+		59FC094B1D952B6500C1D0E0 /* BuffetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC094A1D952B6500C1D0E0 /* BuffetController.m */; };
+		59FC094E1D952B8700C1D0E0 /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC094D1D952B8700C1D0E0 /* NewsController.m */; };
+		59FC09511D952B9E00C1D0E0 /* ToolsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09501D952B9E00C1D0E0 /* ToolsController.m */; };
+		59FC09541D952BD700C1D0E0 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09531D952BD700C1D0E0 /* MyController.m */; };
 		59FECE341D7FF3B10094EDD4 /* popOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FECE331D7FF3B10094EDD4 /* popOutView.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
@@ -482,6 +488,18 @@
 		59FC079E1D95134300C1D0E0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		59FC07A01D95135400C1D0E0 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		59FC07A21D95137600C1D0E0 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		59FC09401D952A9A00C1D0E0 /* DVVDockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVDockItem.h; sourceTree = "<group>"; };
+		59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDockItem.m; sourceTree = "<group>"; };
+		59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVTabBarController.h; sourceTree = "<group>"; };
+		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
+		59FC09491D952B6500C1D0E0 /* BuffetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetController.h; sourceTree = "<group>"; };
+		59FC094A1D952B6500C1D0E0 /* BuffetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetController.m; sourceTree = "<group>"; };
+		59FC094C1D952B8700C1D0E0 /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
+		59FC094D1D952B8700C1D0E0 /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
+		59FC094F1D952B9E00C1D0E0 /* ToolsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsController.h; sourceTree = "<group>"; };
+		59FC09501D952B9E00C1D0E0 /* ToolsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsController.m; sourceTree = "<group>"; };
+		59FC09521D952BD700C1D0E0 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
+		59FC09531D952BD700C1D0E0 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
 		59FECE321D7FF3B10094EDD4 /* popOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popOutView.h; sourceTree = "<group>"; };
 		59FECE331D7FF3B10094EDD4 /* popOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popOutView.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
@@ -589,6 +607,7 @@
 		594775F41D7684D80094D354 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				59FC093F1D952A9A00C1D0E0 /* DVVTabBarController */,
 				5901494C1D8FC57900B2BAE2 /* HMNagationController.h */,
 				5901494D1D8FC57900B2BAE2 /* HMNagationController.m */,
 				59614F781D7E90A8004D3AAE /* TTRefreshFooter.h */,
@@ -900,6 +919,14 @@
 			children = (
 				59A59E371D49CADF001F3122 /* MMMainController.h */,
 				59A59E381D49CADF001F3122 /* MMMainController.m */,
+				59FC09491D952B6500C1D0E0 /* BuffetController.h */,
+				59FC094A1D952B6500C1D0E0 /* BuffetController.m */,
+				59FC094C1D952B8700C1D0E0 /* NewsController.h */,
+				59FC094D1D952B8700C1D0E0 /* NewsController.m */,
+				59FC094F1D952B9E00C1D0E0 /* ToolsController.h */,
+				59FC09501D952B9E00C1D0E0 /* ToolsController.m */,
+				59FC09521D952BD700C1D0E0 /* MyController.h */,
+				59FC09531D952BD700C1D0E0 /* MyController.m */,
 				59D3FE901D506CAB002CCCA4 /* MMMainDetailController */,
 			);
 			path = Controller;
@@ -1117,6 +1144,17 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		59FC093F1D952A9A00C1D0E0 /* DVVTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				59FC09401D952A9A00C1D0E0 /* DVVDockItem.h */,
+				59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */,
+				59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */,
+				59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */,
+			);
+			path = DVVTabBarController;
+			sourceTree = "<group>";
+		};
 		D21145FCB92E766519624DFD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1320,6 +1358,7 @@
 				599FECE11D912E6600D381A0 /* OverTimeApplyCell.m in Sources */,
 				59D3FE961D506E7C002CCCA4 /* PersonalMessageDetailCell.m in Sources */,
 				59F650F11D70333D000596A7 /* EasySerachViewController.m in Sources */,
+				59FC094E1D952B8700C1D0E0 /* NewsController.m in Sources */,
 				5991AE2B1D90CC2B0034E23B /* LeaveApplyView.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
@@ -1358,12 +1397,15 @@
 				59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59614F751D7E4626004D3AAE /* SignUpViewModel.m in Sources */,
+				59FC094B1D952B6500C1D0E0 /* BuffetController.m in Sources */,
 				590699B11D88E01000A92A72 /* ApprovalTextFiledView.m in Sources */,
+				59FC09511D952B9E00C1D0E0 /* ToolsController.m in Sources */,
 				5991AE241D90BE450034E23B /* LeaveApplyRecordController.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
+				59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */,
 				594775EB1D7674AC0094D354 /* CheckWorkController.m in Sources */,
 				594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
@@ -1421,6 +1463,7 @@
 				59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
+				59FC09541D952BD700C1D0E0 /* MyController.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,
 				594776131D76CE290094D354 /* MMChooseTextFile.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
@@ -1429,6 +1472,7 @@
 				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
+				59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */,
 				596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */,
 				594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */,
 				59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */,
@@ -1573,6 +1617,7 @@
 			baseConfigurationReference = 0EC1627435845BB3423165EA /* Pods-MM_FESCO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				ENABLE_BITCODE = NO;
@@ -1583,6 +1628,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1595,6 +1642,7 @@
 			baseConfigurationReference = 851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
@@ -1606,6 +1654,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";

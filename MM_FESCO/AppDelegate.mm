@@ -10,8 +10,12 @@
 #import "MMMainController.h"
 #import "MMLoginController.h"
 #import "MMLoginTool.h"
-
-
+#import "DVVTabBarController.h"
+#import "MMMainController.h"
+#import "BuffetController.h"
+#import "NewsController.h"
+#import "ToolsController.h"
+#import "MyController.h"
 #import <BaiduMapAPI/BMapKit.h>
 
 //#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
@@ -42,6 +46,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+     [self sysConfigWithApplication:application LaunchOptions:launchOptions];
+    
     BOOL isGetNewTonkey = [MMLoginTool checkCancelAppointmentWithBeginTime];
     if (isGetNewTonkey) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kTonkenChangeNotifition object:nil];
@@ -51,9 +57,11 @@
     
     if ([UserInfoModel  isLogin]) {
         
-        MMMainController *mainVC = [[MMMainController alloc] init];
-        HMNagationController *NC = [[HMNagationController alloc] initWithRootViewController:mainVC];
-        self.window.rootViewController = NC;
+//        MMMainController *mainVC = [[MMMainController alloc] init];
+//        HMNagationController *NC = [[HMNagationController alloc] initWithRootViewController:mainVC];
+        DVVTabBarController *taBar = [self homeTabBarView];
+        
+        self.window.rootViewController = taBar;
 
     }else{
         
@@ -82,6 +90,14 @@
     }
     
 }
+#pragma mark - 系统配置
+- (void)sysConfigWithApplication:(UIApplication *)application LaunchOptions:(NSDictionary *)launchOptions
+{
+    // 配置环信
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1172160923115122#mm"];
+//    options.apnsCertName = @"istore_dev";
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -89,12 +105,13 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -103,6 +120,56 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+- (DVVTabBarController *)homeTabBarView {
+    
+    NSArray *controllerArray = @[ @"MMMainController",
+                                  @"BuffetController",
+                                  @"NewsController",
+                                  @"ToolsController",
+                                  @"MyController"];
+    
+   NSArray *titleArray = @[ @"工作", @"自助", @"资讯",@"工具",@"我的"];
+    
+    DVVTabBarController *tabBarVC = [DVVTabBarController new];
+    
+    // 循环创建Controller
+    for (NSInteger i = 0; i < controllerArray.count; i++) {
+        
+        Class vcClass = NSClassFromString(controllerArray[i]);
+        UIViewController *viewController = [vcClass new];
+        HMNagationController *naviVC = [[HMNagationController alloc] initWithRootViewController:viewController];
+        viewController.title = titleArray[i];
+        if (0 == i) {
+            MMMainController *homeVC = (MMMainController *)viewController;
+            tabBarVC.homeVC = homeVC;
+        }
+        if (1 == i) {
+            BuffetController *buffetVC = (BuffetController *)viewController;
+            tabBarVC.buffetVC = buffetVC;
+        }
+        if (2 == i) {
+            NewsController *newsVC = (NewsController *)viewController;
+            tabBarVC.newsVC = newsVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        if (3 == i) {
+            ToolsController *toolsVC = (ToolsController *)viewController;
+            tabBarVC.toolsVC = toolsVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        
+
+        if (4 == i) {
+            MyController *myVC = (MyController *)viewController;
+            tabBarVC.myVC = myVC;
+        }
+        [tabBarVC addChildViewController:naviVC];
+        
+
+    }
+    
+    return tabBarVC;
 }
 
 @end

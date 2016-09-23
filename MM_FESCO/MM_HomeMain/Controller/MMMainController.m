@@ -45,15 +45,12 @@ static NSString *kMallID = @"MallID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"审批",@"加班",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
     self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
-    
-    self.view.backgroundColor = [UIColor colorWithHexString:@"d9f5f9"];
-    self.title = @"首页";
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
@@ -125,8 +122,7 @@ static NSString *kMallID = @"MallID";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // 加载积分商城
+
     
     MMMainCollectionCell *mallCell = [collectionView dequeueReusableCellWithReuseIdentifier:kMallID forIndexPath:indexPath];
 //    mallCell.integralMallModel = self.dataArray[indexPath.row];
@@ -141,18 +137,22 @@ static NSString *kMallID = @"MallID";
     if (indexPath.row == 0) {
         // 个人信息
         PersonalMessageController *personalMegVC = [[PersonalMessageController alloc] init];
+         personalMegVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:personalMegVC animated:YES];
         
     }
     if (indexPath.row == 1) {
         // 考勤
-        [self.navigationController pushViewController:[[CheckWorkController alloc] init] animated:YES];
+        CheckWorkController *checkWorkVC = [[CheckWorkController alloc] init];
+        checkWorkVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:checkWorkVC animated:YES];
         
         
     }
     if (indexPath.row == 2) {
         // 休假记录 休假申请
         LeaveApplyRecordController *leaveApplyVC = [[LeaveApplyRecordController alloc] init];
+        leaveApplyVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:leaveApplyVC animated:YES];
         
         
@@ -160,6 +160,7 @@ static NSString *kMallID = @"MallID";
     if (indexPath.row == 3) {
         // 休假审批
         ApprovalController *approvalVC = [[ApprovalController alloc] init];
+        approvalVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:approvalVC animated:YES];
         
     }
@@ -167,12 +168,14 @@ static NSString *kMallID = @"MallID";
         // 加班申请, 加班记录  OverTimeApplyController
         
         OverTimeApplyController *overTimeApplyVC = [[OverTimeApplyController alloc] init];
+        overTimeApplyVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:overTimeApplyVC animated:YES];
         
     }
     if (indexPath.row == 5) {
         // 通讯录
         PhoneListController *phoneListVC = [[PhoneListController alloc] init];
+        phoneListVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:phoneListVC animated:YES];
         
         
@@ -231,8 +234,8 @@ static NSString *kMallID = @"MallID";
         
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - 125 - 64) collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = RGB_Color(208, 243, 248);
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - 125 - 64 - 39) collectionViewLayout:flowLayout];
+        _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
                 // 注册Cell

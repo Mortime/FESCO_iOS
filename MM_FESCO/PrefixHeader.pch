@@ -34,7 +34,7 @@
 #import "NSDate+Category.h"
 #import "YBBaseNavigationController.h"
 #import "HMNagationController.h"
-
+#import "EMSDK.h"
 
 
 #define FESCODATABASE  @"catalog.sqlite"
