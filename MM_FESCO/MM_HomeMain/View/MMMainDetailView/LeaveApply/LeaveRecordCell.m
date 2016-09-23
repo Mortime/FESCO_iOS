@@ -310,7 +310,6 @@
 
 - (void)setListModel:(LeavaRecordListModel *)listModel{
     
-    MMLog(@"=================================*************===========%@",listModel.applyDate);
     _titleName.text = listModel.holName;
     _name.text = listModel.empName;
     _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
