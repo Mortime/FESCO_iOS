@@ -75,13 +75,13 @@
     
     //    self.backgroundImage = [UIImage imageNamed:@"tabBar_background"];
     
-    self.iconNormalArray = @[ @"statistics",
-                              @"nwes",
-                              @"mail" ,
-                              @"",
-                              @""];
+    self.iconNormalArray = @[ @"",
+                              @"Home_Zizhu_Normal",
+                              @"Home_News_Normal" ,
+                              @"Home_Tools_Normal",
+                              @"Home_Zizhu_Normal"];
     
-    self.iconSelectedArray = @[ @"statistics_fill",
+    self.iconSelectedArray = @[ @"Nome_Work_Select",
                                 @"nwes_fill",
                                 @"mail_fill",
                                 @"",

@@ -58,8 +58,8 @@
 #pragma mark 调整内部UILabel的frame
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
     CGFloat titleX = 0;
-    CGFloat titleHeight = 20;//contentRect.size.height * kTitleRatio;
-    CGFloat titleY = contentRect.size.height - titleHeight - 3;
+    CGFloat titleHeight = 17;//contentRect.size.height * kTitleRatio;
+    CGFloat titleY = contentRect.size.height - titleHeight;
     CGFloat titleWidth = contentRect.size.width;
     return CGRectMake(titleX, titleY, titleWidth, titleHeight);
 }
