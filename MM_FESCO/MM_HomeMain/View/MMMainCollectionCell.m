@@ -66,7 +66,7 @@
         make.top.mas_equalTo(self.bgView.mas_bottom).offset(10);
         make.centerX.mas_equalTo (self.bgView.mas_centerX);
         make.width.mas_equalTo(self.width);
-        make.height.mas_equalTo(14);
+        make.height.mas_equalTo(15);
         
     }];
     

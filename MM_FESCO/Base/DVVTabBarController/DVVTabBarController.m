@@ -75,17 +75,17 @@
     
     //    self.backgroundImage = [UIImage imageNamed:@"tabBar_background"];
     
-    self.iconNormalArray = @[ @"",
+    self.iconNormalArray = @[ @"Home_Work_Normal",
                               @"Home_Zizhu_Normal",
                               @"Home_News_Normal" ,
                               @"Home_Tools_Normal",
-                              @"Home_Zizhu_Normal"];
+                              @"Home_My_Normal"];
     
-    self.iconSelectedArray = @[ @"Nome_Work_Select",
-                                @"nwes_fill",
-                                @"mail_fill",
-                                @"",
-                                @""];
+    self.iconSelectedArray = @[ @"Home_Work_Select",
+                                @"Home_Zizhu_Select",
+                                @"Home_News_Select",
+                                @"Home_Tools_Select",
+                                @"Home_My_Select"];
 //
 //    self.itemBackgroundNormalArray = @[ @"",
 //                                        @"",

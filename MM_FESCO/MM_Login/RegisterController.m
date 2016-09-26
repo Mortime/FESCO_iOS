@@ -78,18 +78,18 @@
         make.top.mas_equalTo(self.view.mas_top);
         make.left.mas_equalTo(self.view.mas_left);
         make.right.mas_equalTo(self.view.mas_right);
-        make.height.mas_equalTo(@200);
+        make.height.mas_equalTo(@220);
     }];
     
     [self.iconBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headerImageView.mas_centerX);
-        make.centerY.mas_equalTo(self.headerImageView.mas_centerY);
+        make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(10);
         make.height.mas_equalTo(@168);
         make.width.mas_equalTo(@189);
     }];
     [self.iconTopBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headerImageView.mas_centerX).offset(-10);
-        make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(-10);
+        make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(0);
         make.height.mas_equalTo(@168);
         make.width.mas_equalTo(@189);
     }];

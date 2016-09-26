@@ -33,9 +33,9 @@
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     // 文字大小
-    self.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.titleLabel.font = [UIFont systemFontOfSize:12];
     if (MMIphone6Plus) {
-        self.titleLabel.font = [UIFont systemFontOfSize:14*1.15];
+        self.titleLabel.font = [UIFont systemFontOfSize:12*1.15];
     }
     // 图片的内容模式
     //    self.imageView.contentMode = UIViewContentModeScaleToFill;
@@ -43,15 +43,15 @@
 
 #pragma mark 覆盖父类在highlighted时的所有操作
 - (void)setHighlighted:(BOOL)highlighted {
-    //    [super setHighlighted:highlighted];
+//        [super setHighlighted:highlighted];
 }
 
 #pragma mark 调整内部ImageView的frame
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
-    CGFloat imageWidth = 52/2;
-    CGFloat imageHeight = 52/2;
+    CGFloat imageWidth = 48/2;
+    CGFloat imageHeight = 30/2;
     CGFloat imageX = contentRect.size.width/2-imageWidth/2;
-    CGFloat imageY = 0;
+    CGFloat imageY = 10;
     return CGRectMake(imageX, imageY, imageWidth, imageHeight);
 }
 

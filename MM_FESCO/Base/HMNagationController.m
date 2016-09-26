@@ -9,7 +9,11 @@
 #import "HMNagationController.h"
 
 @interface HMNagationController()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+
+
 @property(nonatomic,assign)BOOL isAnimaiton;
+
+@property(nonatomic,strong) UINavigationBar *bar;
 @end
 
 @implementation HMNagationController
@@ -28,14 +32,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINavigationBar *bar = [UINavigationBar appearance];
+    _bar = [UINavigationBar appearance];
     
-     bar.barTintColor = [UIColor colorWithHexString:@"00b6d8"];
-   [bar setTranslucent:NO];
-
-    [bar setShadowImage:[UIImage new]];
+     _bar.barTintColor = [UIColor colorWithHexString:@"00b6d8"];
+    
+    
+//   [bar setTranslucent:NO];
+//
+//    [bar setShadowImage:[UIImage new]];
+//    
+    
+    
+    
+    
+    
+    
+    
+    
     // 标题字体颜
-    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
+    [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
     
 }
 
@@ -43,6 +58,13 @@
 {
     [super viewWillAppear:animated];
     [self.myNavController setNavigationBarHidden:YES];
+    
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, kMMWidth, 20)];
+    //设置成绿色
+    statusBarView.backgroundColor=[UIColor colorWithHexString:@"00b6d8"];
+    // 添加到 navigationBar上
+    [_bar addSubview:statusBarView];
+
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

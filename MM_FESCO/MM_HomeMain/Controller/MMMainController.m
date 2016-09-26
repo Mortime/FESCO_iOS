@@ -26,6 +26,10 @@ static NSString *kMallID = @"MallID";
 
 @interface MMMainController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
+{
+    UIImageView*navBarHairlineImageView;
+}
+
 
 @property (nonatomic, strong) NSArray *titleArray;
 
@@ -35,12 +39,39 @@ static NSString *kMallID = @"MallID";
 
 @property (nonatomic, strong) UIButton *loginOutButton;
 
+@property (nonatomic, strong)  MMCycleShowImageView *cycleImageView;
 
 
 
 @end
 
 @implementation MMMainController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // 隐藏导航条底部分割线
+    navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+    navBarHairlineImageView.hidden=YES;
+    
+}
+
+
+- (UIImageView*)findHairlineImageViewUnder:(UIView*)view {
+    
+    if([view isKindOfClass:UIImageView.class] && view.bounds.size.height<=1.0) {
+        return(UIImageView*)view;
+    }
+    for(UIView*subview in view.subviews) {
+        UIImageView*imageView = [self findHairlineImageViewUnder:subview];
+        if(imageView) {
+            return imageView;
+        }
+    }
+    return nil;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,16 +80,24 @@ static NSString *kMallID = @"MallID";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    
+    
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.bounds.size.width, 20)];
+    //设置成绿色
+    statusBarView.backgroundColor=[UIColor colorWithHexString:@"00b6d8"];
+    // 添加到 navigationBar 上
+    [self.navigationController.navigationBar addSubview:statusBarView];
+    
     self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"审批",@"加班",@"通讯录",@"迟到排行",@"加班排行",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
     self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Tongxunlv",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
-    MMCycleShowImageView *cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 125)];
-    cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
-    [cycleImageView setPageControlLocation:0 isCycle:YES];
-    cycleImageView.placeImage = img;
-    [self.view addSubview:cycleImageView];
+   _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 125)];
+    _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
+    [_cycleImageView setPageControlLocation:0 isCycle:YES];
+    _cycleImageView.placeImage = img;
+    [self.view addSubview:_cycleImageView];
     
     
     // 添加右上角的搜查按钮
@@ -234,10 +273,11 @@ static NSString *kMallID = @"MallID";
         
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - 125 - 64 - 39) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - self.cycleImageView.height - 64 - 39) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+        _collectionView.alwaysBounceVertical = YES;
                 // 注册Cell
         _collectionView.contentSize = CGSizeMake(self.view.width, self.view.height);
         [_collectionView registerClass:[MMMainCollectionCell class] forCellWithReuseIdentifier:kMallID];
