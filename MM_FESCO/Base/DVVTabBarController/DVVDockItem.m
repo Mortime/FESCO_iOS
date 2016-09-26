@@ -48,10 +48,10 @@
 
 #pragma mark 调整内部ImageView的frame
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
-    CGFloat imageWidth = 48/2;
-    CGFloat imageHeight = 30/2;
+    CGFloat imageWidth = 60/2;
+    CGFloat imageHeight = 38/2;
     CGFloat imageX = contentRect.size.width/2-imageWidth/2;
-    CGFloat imageY = 10;
+    CGFloat imageY = 5;
     return CGRectMake(imageX, imageY, imageWidth, imageHeight);
 }
 
@@ -59,7 +59,7 @@
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
     CGFloat titleX = 0;
     CGFloat titleHeight = 17;//contentRect.size.height * kTitleRatio;
-    CGFloat titleY = contentRect.size.height - titleHeight;
+    CGFloat titleY = contentRect.size.height - titleHeight - 2;
     CGFloat titleWidth = contentRect.size.width;
     return CGRectMake(titleX, titleY, titleWidth, titleHeight);
 }

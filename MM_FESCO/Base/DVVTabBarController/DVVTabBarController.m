@@ -56,6 +56,10 @@
 #pragma mark - 初始化属性 method
 - (void)initialProperty {
     
+    
+    // 去除顶部黑线
+    [UITabBar appearance].clipsToBounds = YES;
+    
     _titleNormalColor = [UIColor blackColor];
     _titleSelectedColor = MM_MAIN_FONTCOLOR_BLUE ;
     
@@ -64,6 +68,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
