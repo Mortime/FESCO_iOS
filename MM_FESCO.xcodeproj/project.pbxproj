@@ -217,6 +217,7 @@
 		59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91C61D98D9AD00E802FA /* PSTGridLayoutRow.m */; };
 		59EC91EF1D98D9AD00E802FA /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91C81D98D9AD00E802FA /* PSTGridLayoutSection.m */; };
 		59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59EC91C91D98D9AD00E802FA /* MWPhotoBrowser.bundle */; };
+		59EC91F31D9904F300E802FA /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91F21D9904F300E802FA /* CollectionFooterView.m */; };
 		59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F4D6381D81387200C56E5D /* JZUserLoginManager.m */; };
 		59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */; };
 		59F650EE1D6FCC41000596A7 /* PhoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F650ED1D6FCC41000596A7 /* PhoneListModel.m */; };
@@ -741,6 +742,8 @@
 		59EC91C71D98D9AD00E802FA /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutSection.h; sourceTree = "<group>"; };
 		59EC91C81D98D9AD00E802FA /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
 		59EC91C91D98D9AD00E802FA /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		59EC91F11D9904F300E802FA /* CollectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionFooterView.h; sourceTree = "<group>"; };
+		59EC91F21D9904F300E802FA /* CollectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFooterView.m; sourceTree = "<group>"; };
 		59F4D6371D81387200C56E5D /* JZUserLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZUserLoginManager.h; sourceTree = "<group>"; };
 		59F4D6381D81387200C56E5D /* JZUserLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZUserLoginManager.m; sourceTree = "<group>"; };
 		59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMShuxin.plist; sourceTree = "<group>"; };
@@ -1227,6 +1230,8 @@
 		59A59E391D49CADF001F3122 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59EC91F11D9904F300E802FA /* CollectionFooterView.h */,
+				59EC91F21D9904F300E802FA /* CollectionFooterView.m */,
 				59C90C3F1D5C627500CE0385 /* MMCycleShowImageView.h */,
 				59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */,
 				595B45B91D502FD30054ED8C /* MMMianCell.h */,
@@ -2164,6 +2169,7 @@
 				59EC91E81D98D9AD00E802FA /* PSTCollectionViewFlowLayout.m in Sources */,
 				59EC91E01D98D9AD00E802FA /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				598EAF381D87F45C00D36889 /* OverTimeDetailController.m in Sources */,
+				59EC91F31D9904F300E802FA /* CollectionFooterView.m in Sources */,
 				59EC91571D98CB5900E802FA /* EaseRefreshTableViewController.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				599FECEA1D91306100D381A0 /* OverTimeRecordListModel.m in Sources */,

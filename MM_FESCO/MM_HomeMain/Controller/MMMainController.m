@@ -21,6 +21,7 @@
 #import "ApprovalController.h"
 #import "LeaveApplyRecordController.h"
 #import "OverTimeApplyController.h"
+#import "CollectionFooterView.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -36,6 +37,8 @@ static NSString *kMallID = @"MallID";
 @property (nonatomic, strong) NSArray *imgArray;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) CollectionFooterView *footerView;
 
 @property (nonatomic, strong) UIButton *loginOutButton;
 
@@ -111,7 +114,6 @@ static NSString *kMallID = @"MallID";
     UIBarButtonItem *bbiPhone = [[UIBarButtonItem alloc] initWithCustomView:_loginOutButton];
     self.navigationItem.rightBarButtonItem = bbiPhone;
 
-    
     [self.view addSubview:self.collectionView];
     
 
@@ -156,6 +158,8 @@ static NSString *kMallID = @"MallID";
     
 }
 #pragma mark - collectionView
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.titleArray.count;
     
@@ -172,7 +176,22 @@ static NSString *kMallID = @"MallID";
     return mallCell;
     
 }
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionFooter) {    //尾视图
+        _footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer" forIndexPath:indexPath];
+//        _footerView.delegate = self;
+        reusableView = _footerView;
+    }
+    return reusableView;
+}
 
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    
+    return CGSizeMake(self.view.width,40);
+    
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         // 个人信息
@@ -282,6 +301,8 @@ static NSString *kMallID = @"MallID";
                 // 注册Cell
         _collectionView.contentSize = CGSizeMake(self.view.width, self.view.height);
         [_collectionView registerClass:[MMMainCollectionCell class] forCellWithReuseIdentifier:kMallID];
+        
+        [_collectionView registerClass:[CollectionFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer"];              //注册尾视图
         
         
     }
