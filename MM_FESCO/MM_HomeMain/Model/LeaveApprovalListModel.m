@@ -10,9 +10,9 @@
 
 @implementation LeaveApprovalListModel
 
-+ (NSDictionary *)modelCustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper { 
     
-    return @{ @"applyDate": @"apply_Date",
+    return @{ @"applyDate":@"appl_Date",
               @"beginTime":@"hol_Begin",
               @"empName":@"emp_Name",
               @"endTime":@"hol_End",
