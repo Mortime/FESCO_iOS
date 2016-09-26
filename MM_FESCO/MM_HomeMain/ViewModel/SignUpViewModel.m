@@ -72,7 +72,7 @@
         
         [NetworkEntity postFillListWithSuccess:^(id responseObject) {
             
-            MMLog(@"fillList ====== responseObject======%@",responseObject);
+//            MMLog(@"fillList ====== responseObject======%@",responseObject);
             
             
             if (responseObject == nil) {
@@ -111,7 +111,7 @@
         
         [NetworkEntity postSignUpListWithPageNum:index pageSize:10 success:^(id responseObject) {
             
-            MMLog(@"signList ====== responseObject%@",responseObject);
+//            MMLog(@"signList ====== responseObject%@",responseObject);
             
             if ([[responseObject objectForKey:@"list"] count] == 0) {
                 [self successLoadMoreBlockAndNoData];

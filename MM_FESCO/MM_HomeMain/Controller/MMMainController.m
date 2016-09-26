@@ -97,6 +97,7 @@ static NSString *kMallID = @"MallID";
     _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
     [_cycleImageView setPageControlLocation:0 isCycle:YES];
     _cycleImageView.placeImage = img;
+
     [self.view addSubview:_cycleImageView];
     
     

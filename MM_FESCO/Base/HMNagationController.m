@@ -37,10 +37,10 @@
      _bar.barTintColor = [UIColor colorWithHexString:@"00b6d8"];
     
     
-//   [bar setTranslucent:NO];
-//
-//    [bar setShadowImage:[UIImage new]];
-//    
+//   [_bar setTranslucent:NO];
+
+//    [_bar setShadowImage:[UIImage new]];
+    
     
     
     

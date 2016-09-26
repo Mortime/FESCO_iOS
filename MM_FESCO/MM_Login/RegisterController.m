@@ -185,6 +185,23 @@
 
 }
 - (void)didClick{
+    
+    if (_mailStr == nil || [_mailStr isEqualToString:@""]) {
+        [self showTotasViewWithMes:@"请输入邮箱"];
+        return;
+    }
+    if (_codeNum == nil || [_codeNum isEqualToString:@""]) {
+        [self showTotasViewWithMes:@"请输入验证码"];
+        return;
+    }if (_userName == nil || [_userName isEqualToString:@""]) {
+        [self showTotasViewWithMes:@"请输入账户"];
+        return;
+    }if (_password == nil || [_password isEqualToString:@""]) {
+        [self showTotasViewWithMes:@"请输入密码"];
+        return;
+    }
+    
+
     [NetworkEntity postRegisterNumberWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
         
         MMLog(@"RegisterNumber ========responseObject ============%@",responseObject);
