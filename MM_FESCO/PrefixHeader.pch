@@ -9,7 +9,7 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-
+#ifdef __OBJC__
 
 #import "UIView+Sizes.h"
 #import "UIViewAdditions.h"
@@ -35,6 +35,25 @@
 #import "YBBaseNavigationController.h"
 #import "HMNagationController.h"
 #import "EMSDK.h"
+#import "MWPhotoBrowser.h"
+#import "UIImageView+EMWebCache.h"
+
+
+#endif
+
+
+
+#ifdef __OBJC__
+
+#import "EaseUI.h"
+
+
+#define DEMO_CALL 1
+
+#endif
+
+
+
 
 
 #define FESCODATABASE  @"catalog.sqlite"
@@ -93,9 +112,9 @@
 #define FERatio 1.15
 #define FESizeRatio 1.5
 
-static const CGFloat viewSlideHorizonRatio = 0.64;
-static const CGFloat viewHeightNarrowRatio = 0.80;
-static const CGFloat menuStartNarrowRatio  = 0.70;
+//static const CGFloat viewSlideHorizonRatio = 0.64;
+//static const CGFloat viewHeightNarrowRatio = 0.80;
+//static const CGFloat menuStartNarrowRatio  = 0.70;
 
 
 #endif /* PrefixHeader_pch */
