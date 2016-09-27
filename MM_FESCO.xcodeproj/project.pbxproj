@@ -44,6 +44,7 @@
 		59614F7D1D7E9911004D3AAE /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F7C1D7E9911004D3AAE /* CheckListModel.m */; };
 		59614F801D7E9A5E004D3AAE /* FillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F7F1D7E9A5E004D3AAE /* FillListModel.m */; };
 		596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */; };
+		596A772B1D9A1265006CD128 /* MMNoDataShowBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
 		5977621D1D489AE000BD8472 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977621C1D489AE000BD8472 /* ViewController.m */; };
@@ -348,6 +349,8 @@
 		59614F7F1D7E9A5E004D3AAE /* FillListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillListModel.m; sourceTree = "<group>"; };
 		596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
 		596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
+		596A77291D9A1265006CD128 /* MMNoDataShowBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNoDataShowBGView.h; sourceTree = "<group>"; };
+		596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNoDataShowBGView.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762161D489AE000BD8472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		597762181D489AE000BD8472 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1246,6 +1249,8 @@
 		59A8D10E1D6EB001002CB709 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				596A77291D9A1265006CD128 /* MMNoDataShowBGView.h */,
+				596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */,
 				59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */,
 				59A8D1101D6EB001002CB709 /* DDChannelLabel.m */,
 				5981AFBA1D73C43D0003166C /* MMDataBase.h */,
@@ -2148,6 +2153,7 @@
 				594775EE1D7678410094D354 /* JZPassRateToolBarView.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
+				596A772B1D9A1265006CD128 /* MMNoDataShowBGView.m in Sources */,
 				59EC915D1D98CB5900E802FA /* EaseMessageCell.m in Sources */,
 				59A8D10A1D6E94E8002CB709 /* PhoneListTableController.m in Sources */,
 				59EC91501D98CB5900E802FA /* EaseEmojiEmoticons.m in Sources */,

@@ -11,11 +11,16 @@
 #import "LeaveApprovalCell.h"
 #import "LeaveApprovalDetailController.h"
 
+#import "MMNoDataShowBGView.h"
+
+
 @interface LeaveApprovalView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) ApprovalViewModel *viewModel;
 
 @property (nonatomic, assign) BOOL successRequest;
+
+@property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
 
 @end
 
@@ -28,7 +33,7 @@
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        
+        [self addSubview:self.noDataShowBGView];
         
         self.viewModel = [ApprovalViewModel new];
         [self.viewModel successRefreshBlock:^{
@@ -77,6 +82,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (self.viewModel.LeaveListArray.count == 0) {
+        _noDataShowBGView.hidden = NO;
+    }else{
+        _noDataShowBGView.hidden = YES;
+        
+    }
+
     return self.viewModel.LeaveListArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -102,4 +114,14 @@
     leaveApprovaVC.listModel = self.viewModel.LeaveListArray[indexPath.row];
     [self.parementVC.navigationController pushViewController:leaveApprovaVC animated:YES];
 }
+
+- (MMNoDataShowBGView *)noDataShowBGView{
+    if (_noDataShowBGView == nil) {
+        _noDataShowBGView = [[MMNoDataShowBGView alloc] initWithFrame:CGRectMake(0, 0,self.width,self.height)];
+        _noDataShowBGView.imgStr = @"MM_NO_Apply";
+        _noDataShowBGView.hidden = YES;
+    }
+    return _noDataShowBGView;
+}
+
 @end

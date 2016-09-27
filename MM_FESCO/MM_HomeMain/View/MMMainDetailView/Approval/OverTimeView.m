@@ -10,12 +10,17 @@
 #import "ApprovalViewModel.h"
 #import "OverTimeCell.h"
 #import "OverTimeDetailController.h"
+#import "MMNoDataShowBGView.h"
 
 @interface OverTimeView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) ApprovalViewModel *viewModel;
 
 @property (nonatomic, assign) BOOL successRequest;
+
+
+
+@property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
 
 @end
 
@@ -28,6 +33,7 @@
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.noDataShowBGView];
         
         
         self.viewModel = [ApprovalViewModel new];
@@ -77,6 +83,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if (self.viewModel.overTimeListArray.count == 0) {
+        _noDataShowBGView.hidden = NO;
+    }else{
+        _noDataShowBGView.hidden = YES;
+        
+    }
     return self.viewModel.overTimeListArray.count;
 //    return 10;
 }
@@ -101,4 +114,14 @@
     overVC.overTimeModel = self.viewModel.overTimeListArray[indexPath.row];
     [self.parementVC.navigationController pushViewController:overVC animated:YES];
 }
+
+- (MMNoDataShowBGView *)noDataShowBGView{
+    if (_noDataShowBGView == nil) {
+        _noDataShowBGView = [[MMNoDataShowBGView alloc] initWithFrame:CGRectMake(0, 0,self.width,self.height)];
+        _noDataShowBGView.imgStr = @"MM_NO_Apply";
+        _noDataShowBGView.hidden = YES;
+    }
+    return _noDataShowBGView;
+}
+
 @end
