@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
+
 @property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
 
 
@@ -73,6 +74,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     
     if (_dataArray.count == 0) {
         _noDataShowBGView.hidden = NO;

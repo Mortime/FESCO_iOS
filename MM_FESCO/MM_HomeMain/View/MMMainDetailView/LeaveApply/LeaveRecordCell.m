@@ -191,7 +191,7 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor  =  [UIColor blackColor];
+        _bgView.backgroundColor  =  [UIColor colorWithHexString:@"323a45"];
         
     }
     return _bgView;
@@ -324,14 +324,14 @@
     
     if (listModel.statusType == 0) {
         // 未通过
-        _flagView.layer.borderColor = [UIColor grayColor].CGColor;
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"d2d2d2"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_no"];
         _flagLabel.text = @"未通过";
         
-        _flagBottomButon.backgroundColor = [UIColor grayColor];
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"d2d2d2"];
         [_flagBottomButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
-        _bgView.backgroundColor = [UIColor grayColor];
+        _bgView.backgroundColor = [UIColor colorWithHexString:@"d2d2d2"];
         _titleName.textColor = [UIColor blackColor];
         
     }
@@ -351,14 +351,14 @@
     }
     if (listModel.statusType == 2) {
         // 正在审批中
-        _flagView.layer.borderColor = [UIColor blackColor].CGColor;
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"323a45"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_ing"];
         _flagLabel.text = @"审批中";
         
-        _flagBottomButon.backgroundColor = [UIColor blackColor];
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"323a45"];
         [_flagBottomButon setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         
-        _bgView.backgroundColor = [UIColor blackColor];
+        _bgView.backgroundColor = [UIColor colorWithHexString:@"323a45"];
         _titleName.textColor = MM_MAIN_FONTCOLOR_BLUE;
         
     }

@@ -283,12 +283,14 @@
     // 1 是通过，2 是正在审批，0 是审批未通过
     
     if (listModel.statusType == 0) {
+        
+    
         // 未通过
-        _flagView.layer.borderColor = [UIColor grayColor].CGColor;
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"d2d2d2"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_no"];
         _flagLabel.text = @"未通过";
         
-        _flagBottomButon.backgroundColor = [UIColor grayColor];
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"d2d2d2"];
         [_flagBottomButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
     }
@@ -304,13 +306,15 @@
 
         }
     if (listModel.statusType == 2) {
-        // 正在审批中
-        _flagView.layer.borderColor = [UIColor blackColor].CGColor;
+        
+        
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"323a45"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_ing"];
         _flagLabel.text = @"审批中";
-        
-        _flagBottomButon.backgroundColor = [UIColor blackColor];
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"323a45"];
         [_flagBottomButon setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        
+    
         
     }
 

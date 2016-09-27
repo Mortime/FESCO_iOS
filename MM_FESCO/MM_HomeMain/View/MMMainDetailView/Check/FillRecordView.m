@@ -9,12 +9,16 @@
 #import "FillRecordView.h"
 #import "FillRecordCell.h"
 #import "SignUpViewModel.h"
+#import "MMNoDataShowBGView.h"
+
 
 @interface FillRecordView () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) SignUpViewModel *viewModel;
 
 @property (nonatomic, assign) BOOL successRequest;
+
+@property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
 
 
 @end
@@ -28,7 +32,7 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
         
-        
+        [self addSubview:self.noDataShowBGView];
         
         self.viewModel = [SignUpViewModel new];
         [self.viewModel successRefreshBlock:^{
@@ -76,6 +80,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if (self.viewModel.fillListArray.count == 0) {
+        _noDataShowBGView.hidden = NO;
+    }else{
+        _noDataShowBGView.hidden = YES;
+        
+    }
+
     return self.viewModel.fillListArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,4 +104,14 @@
     return cell;
     
 }
+
+- (MMNoDataShowBGView *)noDataShowBGView{
+    if (_noDataShowBGView == nil) {
+        _noDataShowBGView = [[MMNoDataShowBGView alloc] initWithFrame:CGRectMake(0, 0,self.width,self.height)];
+        _noDataShowBGView.imgStr = @"MM_NO_Recorder";
+        _noDataShowBGView.hidden = YES;
+    }
+    return _noDataShowBGView;
+}
+
 @end
