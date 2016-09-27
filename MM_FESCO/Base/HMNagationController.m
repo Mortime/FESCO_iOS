@@ -34,10 +34,10 @@
     
     _bar = [UINavigationBar appearance];
     
-     _bar.barTintColor = [UIColor colorWithHexString:@"00b6d8"];
+    _bar.barTintColor = [UIColor colorWithHexString:@"1abddc"];
     
     
-//   [_bar setTranslucent:NO];
+   [_bar setTranslucent:NO];
 
 //    [_bar setShadowImage:[UIImage new]];
     

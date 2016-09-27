@@ -211,15 +211,17 @@
     }
     //下载并缓存图片
 //    NSLog(@"________________imagesUrlArray[center]]%@",_imagesUrlArray[center]);
-//    self.centerImageView.image = [UIImage imageNamed:_imagesUrlArray[center]];
-//    self.leftImageView.image = [UIImage imageNamed:_imagesUrlArray[left]];
-//    self.rightImageView.image = [UIImage imageNamed:_imagesUrlArray[right]];
     
-    
-    [self.centerImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[center]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
+    self.centerImageView.image = [UIImage imageNamed:_imagesUrlArray[center]];
     self.scrollView.contentOffset = CGPointMake(VIEW_WIDTH, 0);
-    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[left]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
-    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[right]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
+    self.leftImageView.image = [UIImage imageNamed:_imagesUrlArray[left]];
+    self.rightImageView.image = [UIImage imageNamed:_imagesUrlArray[right]];
+    
+    
+//    [self.centerImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[center]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
+//    self.scrollView.contentOffset = CGPointMake(VIEW_WIDTH, 0);
+//    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[left]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
+//    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:_imagesUrlArray[right]] placeholderImage:self.placeImage options:SDWebImageLowPriority | SDWebImageRetryFailed];
 }
 
 #pragma mark - 设置pageControl的坐标和大小 method

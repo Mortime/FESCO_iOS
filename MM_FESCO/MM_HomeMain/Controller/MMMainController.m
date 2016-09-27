@@ -97,9 +97,10 @@ static NSString *kMallID = @"MallID";
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
    _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 125)];
+    _cycleImageView.placeImage = img;
     _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
     [_cycleImageView setPageControlLocation:0 isCycle:YES];
-    _cycleImageView.placeImage = img;
+    
 
     [self.view addSubview:_cycleImageView];
     
@@ -109,7 +110,7 @@ static NSString *kMallID = @"MallID";
     [_loginOutButton setTitle:@"退出" forState:UIControlStateNormal];
     _loginOutButton.titleLabel.font = [UIFont systemFontOfSize:16];
     _loginOutButton.bounds = CGRectMake(0, 0, 32, 44);
-    [_loginOutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_loginOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_loginOutButton addTarget:self action:@selector(didSearch:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *bbiPhone = [[UIBarButtonItem alloc] initWithCustomView:_loginOutButton];
     self.navigationItem.rightBarButtonItem = bbiPhone;
