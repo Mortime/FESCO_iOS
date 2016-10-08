@@ -7,6 +7,7 @@
 //
 
 #import "LeaveRecordCell.h"
+#import "BLPFAlertView.h"
 
 
 #define fontSize 12
@@ -36,6 +37,8 @@
 @property (nonatomic ,strong) UILabel *startTime;
 
 @property (nonatomic ,strong) UILabel *endTime;
+
+@property (nonatomic ,assign) NSInteger leaveId;
 
 
 
@@ -71,6 +74,12 @@
     [self.bottomBgView addSubview:self.lineView];
     [self.bottomBgView addSubview:self.startTime];
     [self.bottomBgView addSubview:self.endTime];
+    
+    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
+    longPressGr.minimumPressDuration = 1.0;
+    [self addGestureRecognizer:longPressGr];
+    
+    
     
     
 }
@@ -176,7 +185,29 @@
     
     
 }
+- (void)longPressToDo:(UILongPressGestureRecognizer *)gesture{
+    
+    CGPoint point = [gesture locationInView:self.tableView];
+    NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
+    
+    
+    MMLog(@"_listModel.leaveID 1 = %lu",_leaveId);
+    
+    [BLPFAlertView showAlertWithTitle:@"" message:@"您要删除该记录吗?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] completion:^(NSUInteger selectedOtherButtonIndex) {
+        MMLog(@"index = %lu",selectedOtherButtonIndex+1);
+        NSUInteger indexAlert = selectedOtherButtonIndex + 1;
+        if (indexAlert == 1) {
+            if ([_delegate respondsToSelector:@selector(leaveRecordCellDelegatewithLeaveID:)]) {
+                [_delegate leaveRecordCellDelegatewithLeaveID:indexPath.row];
+            }
+        }else {
+            return ;
+        }
+        
+    }];
 
+    
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -309,6 +340,9 @@
 }
 
 - (void)setListModel:(LeavaRecordListModel *)listModel{
+    
+    
+    _leaveId = listModel.leaveID;
     
     _titleName.text = listModel.holName;
     _name.text = listModel.empName;

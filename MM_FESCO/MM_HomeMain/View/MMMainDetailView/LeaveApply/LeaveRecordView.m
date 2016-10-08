@@ -11,7 +11,7 @@
 #import "LeavaRecordListModel.h"
 #import "MMNoDataShowBGView.h"
 
-@interface LeaveRecordView ()<UITableViewDelegate,UITableViewDataSource>
+@interface LeaveRecordView ()<UITableViewDelegate,UITableViewDataSource,LeaveRecordCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -72,6 +72,27 @@
     }];
     
 }
+- (void)leaveRecordCellDelegatewithLeaveID:(NSInteger )index{
+    MMLog(@"indexindex == %lu",index);
+   
+    LeavaRecordListModel *model = _dataArray[index];
+     MMLog(@"indexindex == %@",[NSDate dateFromSSWithss:model.endTime]);
+    NSString *leaveID = [NSString stringWithFormat:@"%lu",model.leaveID];
+    [NetworkEntity postDelLeaveRecordWithHolEmpExamId:leaveID Success:^(id responseObject) {
+        MMLog(@"DelLeaveRecord ========responseObject=========%@",responseObject);
+        
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
+            [_parementVC showTotasViewWithMes:@"删除失败"];
+        }else{
+            
+        }
+        
+        [self refreshUI];
+    } failure:^(NSError *failure) {
+        MMLog(@"DelLeaveRecord ========failure=========%@",failure);
+    }];
+
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -96,6 +117,8 @@
     }
     
         cell.listModel = _dataArray[indexPat.row];
+    cell.delegate = self;
+    cell.tableView = self.tableView;
     
     return cell;
     

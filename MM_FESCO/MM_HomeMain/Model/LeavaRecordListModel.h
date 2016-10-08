@@ -55,5 +55,7 @@
 @property (nonatomic, strong) NSString *currApprovalMan; // 审批人
 
 
+@property (nonatomic, assign) NSInteger leaveID;
+
 
 @end

@@ -366,6 +366,18 @@
  */
 + (void)postLeaveRecordListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+/**
+ *   休假删除
+ 
+ *  @param holEmpExamId （req） 假期id
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postDelLeaveRecordWithHolEmpExamId:(NSString *)holEmpExamId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
 #pragma ================== 加班申请、记录 =====================
 /**
  *    获取加班申请信息

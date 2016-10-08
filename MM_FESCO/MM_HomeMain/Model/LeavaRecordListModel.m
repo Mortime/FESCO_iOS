@@ -18,7 +18,8 @@
               @"endTime":@"hol_End",
               @"holName":@"hol_Name",
               @"statusType":@"exam_End_Is",
-              @"currApprovalMan":@"currApprovalMan"
+              @"currApprovalMan":@"currApprovalMan",
+              @"leaveID":@"hol_Set_Id"
               };
 }
 
