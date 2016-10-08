@@ -123,6 +123,36 @@
     return cell;
     
 }
+
+-(void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
+    
+    //如果是删除
+    if(editingStyle==UITableViewCellEditingStyleDelete){
+        
+        LeavaRecordListModel *model = _dataArray[indexPath.row];
+        MMLog(@"indexindex == %@",[NSDate dateFromSSWithss:model.endTime]);
+        NSString *leaveID = [NSString stringWithFormat:@"%lu",model.leaveID];
+        [NetworkEntity postDelLeaveRecordWithHolEmpExamId:leaveID Success:^(id responseObject) {
+            MMLog(@"DelLeaveRecord ========responseObject=========%@",responseObject);
+            
+            if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
+                [_parementVC showTotasViewWithMes:@"删除失败"];
+            }else{
+                // 删除数据
+                [_dataArray removeObjectAtIndex:indexPath.row];
+                // 删除UI
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            
+//            [self refreshUI];
+        } failure:^(NSError *failure) {
+            MMLog(@"DelLeaveRecord ========failure=========%@",failure);
+        }];
+
+    }
+    
+    
+}
 #pragma mark ---- Action
 - (void)didClick:(UIButton *)sender{
     

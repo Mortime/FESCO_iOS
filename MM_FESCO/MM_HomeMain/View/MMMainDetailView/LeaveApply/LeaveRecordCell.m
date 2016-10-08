@@ -75,9 +75,9 @@
     [self.bottomBgView addSubview:self.startTime];
     [self.bottomBgView addSubview:self.endTime];
     
-    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
-    longPressGr.minimumPressDuration = 1.0;
-    [self addGestureRecognizer:longPressGr];
+//    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
+//    longPressGr.minimumPressDuration = 1.0;
+//    [self addGestureRecognizer:longPressGr];
     
     
     
