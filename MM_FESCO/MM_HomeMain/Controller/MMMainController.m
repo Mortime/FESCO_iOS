@@ -108,7 +108,7 @@ static NSString *kMallID = @"MallID";
     // 添加右上角的搜查按钮
     _loginOutButton = [UIButton new];
     [_loginOutButton setTitle:@"退出" forState:UIControlStateNormal];
-    _loginOutButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    _loginOutButton.titleLabel.font = [UIFont systemFontOfSize:15];
     _loginOutButton.bounds = CGRectMake(0, 0, 32, 44);
     [_loginOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_loginOutButton addTarget:self action:@selector(didSearch:) forControlEvents:UIControlEventTouchUpInside];

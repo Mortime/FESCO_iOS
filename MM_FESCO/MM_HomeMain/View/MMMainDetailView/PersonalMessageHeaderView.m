@@ -124,14 +124,14 @@
         
         make.left.mas_equalTo(self.nameBG.mas_left).offset(0);
         make.centerY.mas_equalTo(self.nameBG.mas_centerY);
-        make.width.mas_equalTo(@30);
+        make.width.mas_equalTo(@35);
         make.height.mas_equalTo(@15);
         
     }];
     [self.nameTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
         
-        make.left.mas_equalTo(self.nameLabel.mas_right).offset(20);
+        make.left.mas_equalTo(self.nameLabel.mas_right).offset(15);
         make.centerY.mas_equalTo(self.nameBG.mas_centerY);
         make.right.mas_equalTo(self.nameBG.mas_right);
         make.height.mas_equalTo(self.nameBG.mas_height);
@@ -160,14 +160,14 @@
         
         make.left.mas_equalTo(self.sexBG.mas_left).offset(0);
         make.centerY.mas_equalTo(self.sexBG.mas_centerY);
-        make.width.mas_equalTo(@30);
+        make.width.mas_equalTo(@35);
         make.height.mas_equalTo(@15);
         
     }];
     [self.sexTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
         
-        make.left.mas_equalTo(self.sexLabel.mas_right).offset(20);
+        make.left.mas_equalTo(self.sexLabel.mas_right).offset(15);
         make.centerY.mas_equalTo(self.sexBG.mas_centerY);
         make.right.mas_equalTo(self.sexBG.mas_right).offset(-50);
         make.height.mas_equalTo(self.sexBG.mas_height);
