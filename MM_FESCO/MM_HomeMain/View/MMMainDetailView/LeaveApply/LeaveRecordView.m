@@ -10,7 +10,7 @@
 #import "LeaveRecordCell.h"
 #import "LeavaRecordListModel.h"
 #import "MMNoDataShowBGView.h"
-
+#import "NSDate+LSCore.h"
 @interface LeaveRecordView ()<UITableViewDelegate,UITableViewDataSource,LeaveRecordCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -19,9 +19,6 @@
 
 
 @property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
-
-
-
 
 
 @end
@@ -130,14 +127,32 @@
     if(editingStyle==UITableViewCellEditingStyleDelete){
         
         LeavaRecordListModel *model = _dataArray[indexPath.row];
-        MMLog(@"indexindex == %@",[NSDate dateFromSSWithss:model.endTime]);
+        MMLog(@"indexindex == %@",[NSDate dateFromSSWithss:model.applyDate]);
+        
+        // 判断是否为本月数据
+        NSString *applyDate = [NSDate dateFromSSWithss:model.applyDate];
+        BOOL isCurMonth = [self isCurrentMonth:applyDate];
+        
+        if (!isCurMonth) {
+            [_parementVC showTotasViewWithMes:@"只能删除本月数据"];
+//            [self refreshUI];
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            return;
+        }
+        
+        
+        
+        
+        
+        
         NSString *leaveID = [NSString stringWithFormat:@"%lu",model.leaveID];
         [NetworkEntity postDelLeaveRecordWithHolEmpExamId:leaveID Success:^(id responseObject) {
             MMLog(@"DelLeaveRecord ========responseObject=========%@",responseObject);
             
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
                 [_parementVC showTotasViewWithMes:@"删除失败"];
-            }else{
+            }else if([[responseObject objectForKey:@"message"] isEqualToString:@"success"]){
+                 [_parementVC showTotasViewWithMes:@"删除成功"];
                 // 删除数据
                 [_dataArray removeObjectAtIndex:indexPath.row];
                 // 删除UI
@@ -157,6 +172,31 @@
 - (void)didClick:(UIButton *)sender{
     
 }
+ // 判断是否为本月数据
+- (BOOL)isCurrentMonth:(NSString *)dateStr{
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd HH:mm";
+    // 当前时间
+    NSString *nowString = [fmt stringFromDate:[NSDate date]];
+    NSDate *nowDate = [fmt dateFromString:nowString];
+    // 申请时间
+    NSDate *applyDate = [fmt dateFromString:dateStr];
+    
+    
+    MMLog(@"nowString===%@==%@===applyStr===%@ ==%@ ",nowString,nowDate,dateStr,applyDate);
+    
+    NSDate *dat = [[NSDate alloc] init];
+    BOOL Is = [dat isSameMonthAsDate:applyDate];
+    MMLog(@"isSameMonthAsDate = %d",Is);
+   
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 想比较哪些元素
+    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth;
+    NSDateComponents *cmps = [calendar components:unit fromDate:nowDate toDate:applyDate options:0];
+    MMLog(@"cmps.year,cmps.month==%lu==%lu",cmps.year,cmps.month);
+    return Is;
+}
+
 
 - (UITableView *)tableView {
     
