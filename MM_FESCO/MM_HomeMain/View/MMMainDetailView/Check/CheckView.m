@@ -50,7 +50,7 @@
 @property (nonatomic, strong) UIButton *statelliteButton;  // 卫星模式
 
 
-
+@property (nonatomic, strong) NSMutableArray *btnArray;
 
 @property (nonatomic,strong) UIButton *signUpButton; // 签到
 
@@ -79,7 +79,7 @@
 @implementation CheckView
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        
+        _btnArray = [NSMutableArray array];
         [self initUI];
     }
     return self;
@@ -276,6 +276,21 @@
 
 #pragma mark ----- ActionSignStatus
 - (void)didSignButon:(UIButton *)btn{
+    
+    for (UIButton *btn1 in _btnArray) {
+        
+        if (btn1.tag == btn.tag) {
+            
+            btn1.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+            
+        }else{
+             btn1.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+            
+        }
+    
+    }
+    
+    
     if (btn.tag == 500) {
         // 签到
         _signType = 1;
@@ -517,6 +532,7 @@
         _signOutButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signOutButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
         _signOutButton.tag = 501;
+        [_btnArray addObject:_signOutButton];
     }
     return _signOutButton;
     
@@ -528,13 +544,14 @@
     if (_signUpButton == nil) {
         _signUpButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _signUpButton.frame = CGRectMake(CGRectGetMaxX(self.signOutButton.frame), self.signOutButton.frame.origin.y, kButtonW, kButtonH);
-        _signUpButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-        [_signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _signUpButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+        [_signUpButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         
         [_signUpButton setTitle:@"签到" forState:UIControlStateNormal];
         _signUpButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signUpButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
         _signUpButton.tag = 500;
+        [_btnArray addObject:_signUpButton];
     }
     return _signUpButton;
     
@@ -550,6 +567,7 @@
         _outButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_outButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
         _outButton.tag = 502;
+        [_btnArray addObject:_outButton];
     }
     return _outButton;
     
