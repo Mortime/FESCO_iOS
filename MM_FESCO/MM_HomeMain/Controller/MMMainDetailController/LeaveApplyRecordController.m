@@ -10,12 +10,13 @@
 #import "JZPassRateToolBarView.h"
 #import "LeaveApplyView.h"
 #import "LeaveRecordView.h"
+#import "MMScrollView.h"
 
 @interface LeaveApplyRecordController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) JZPassRateToolBarView *toolBarView;
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) MMScrollView *scrollView;
 
 @property (nonatomic, strong) LeaveApplyView *leaveApplyView;
 
@@ -105,16 +106,17 @@
         
     }
 }
-- (UIScrollView *)scrollView{
+- (MMScrollView *)scrollView{
     
     if (_scrollView == nil) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, self.view.height - 40 - 64)];
+        _scrollView = [[MMScrollView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, self.view.height - 40 - 64)];
         _scrollView.contentSize = CGSizeMake(2 * self.view.width, 0);
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.pagingEnabled = YES;
         _scrollView.userInteractionEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.bounces = NO;
         
     }
     return _scrollView;

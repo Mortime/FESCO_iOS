@@ -20,6 +20,7 @@
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
 		592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 592306211DAB8410004D65DD /* NSDate+LSCore.m */; };
+		592306251DAB9110004D65DD /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592306241DAB9110004D65DD /* MMScrollView.m */; };
 		5931CD5F1D8E26CA00950264 /* SignUpApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */; };
 		5931CD621D8E2E3400950264 /* LeaveApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931CD611D8E2E3400950264 /* LeaveApprovalListModel.m */; };
 		59474CF11D6D413D00DC6E50 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF01D6D413D00DC6E50 /* PhoneListController.m */; };
@@ -301,6 +302,8 @@
 		59182B3E1D644D7E00842352 /* NSString+BASE64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BASE64.m"; sourceTree = "<group>"; };
 		592306201DAB8410004D65DD /* NSDate+LSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LSCore.h"; sourceTree = "<group>"; };
 		592306211DAB8410004D65DD /* NSDate+LSCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LSCore.m"; sourceTree = "<group>"; };
+		592306231DAB9110004D65DD /* MMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScrollView.h; sourceTree = "<group>"; };
+		592306241DAB9110004D65DD /* MMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScrollView.m; sourceTree = "<group>"; };
 		5931CD5D1D8E26CA00950264 /* SignUpApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalListModel.h; sourceTree = "<group>"; };
 		5931CD5E1D8E26CA00950264 /* SignUpApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalListModel.m; sourceTree = "<group>"; };
 		5931CD601D8E2E3400950264 /* LeaveApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalListModel.h; sourceTree = "<group>"; };
@@ -1085,6 +1088,8 @@
 				599FECE31D912EA400D381A0 /* OverTimeRecordView.m */,
 				599FECE51D912EC700D381A0 /* OverTimeRecordCell.h */,
 				599FECE61D912EC700D381A0 /* OverTimeRecordCell.m */,
+				592306231DAB9110004D65DD /* MMScrollView.h */,
+				592306241DAB9110004D65DD /* MMScrollView.m */,
 			);
 			path = LeaveApply;
 			sourceTree = "<group>";
@@ -2295,6 +2300,7 @@
 				598EAF321D87DF9E00D36889 /* LeaveApprovalView.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
+				592306251DAB9110004D65DD /* MMScrollView.m in Sources */,
 				59EC915C1D98CB5900E802FA /* EaseCustomMessageCell.m in Sources */,
 				592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */,
 				59EC91521D98CB5900E802FA /* EaseEmotionManager.m in Sources */,

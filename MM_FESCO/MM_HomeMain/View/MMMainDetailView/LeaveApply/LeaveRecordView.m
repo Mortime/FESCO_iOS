@@ -123,8 +123,25 @@
 
 -(void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
     
+    
+    
+//    - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+//        UITableViewRowAction *deleteRoWAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {//title可自已定义
+//            NSLog(@"点击删除");
+//        }];
+//        deleteRoWAction.backgroundColor = RGB(210, 207, 209);
+//        //此处是iOS8.0以后苹果最新推出的api，UITableViewRowAction，Style是划出的标签颜色等状态的定义，这里也可自行定义
+//        UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"关闭" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//            NSLog(@"点击关闭");
+//        }];
+//        editRowAction.backgroundColor = [UIColor redColor];//可以定义RowAction的颜色
+//        return @[editRowAction,deleteRoWAction];//最后返回这俩个RowAction 的数组
+//    }
+
+    
     //如果是删除
     if(editingStyle==UITableViewCellEditingStyleDelete){
+        
         
         LeavaRecordListModel *model = _dataArray[indexPath.row];
         MMLog(@"indexindex == %@",[NSDate dateFromSSWithss:model.applyDate]);
