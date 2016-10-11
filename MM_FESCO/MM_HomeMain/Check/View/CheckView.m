@@ -546,7 +546,6 @@
         _signUpButton.frame = CGRectMake(CGRectGetMaxX(self.signOutButton.frame), self.signOutButton.frame.origin.y, kButtonW, kButtonH);
         _signUpButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
         [_signUpButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        
         [_signUpButton setTitle:@"签到" forState:UIControlStateNormal];
         _signUpButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signUpButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
