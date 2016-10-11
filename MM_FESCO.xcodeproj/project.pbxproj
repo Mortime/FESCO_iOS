@@ -15,15 +15,11 @@
 		592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 592306211DAB8410004D65DD /* NSDate+LSCore.m */; };
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
-		594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775DC1D752B990094D354 /* NSArray+Sort.m */; };
 		594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775F61D7684D80094D354 /* MMBaseViewController.m */; };
 		594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775FA1D7686DB0094D354 /* YiRefreshFooter.m */; };
 		594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775FC1D7686DB0094D354 /* YiRefreshHeader.m */; };
 		594776011D768FEF0094D354 /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594776001D768FEF0094D354 /* RefreshTableView.m */; };
-		595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595B45BA1D502FD30054ED8C /* MMMianCell.m */; };
 		59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */; };
-		596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */; };
-		596A772B1D9A1265006CD128 /* MMNoDataShowBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
 		5977621D1D489AE000BD8472 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977621C1D489AE000BD8472 /* ViewController.m */; };
@@ -33,10 +29,8 @@
 		597762301D489AE000BD8472 /* MM_FESCOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977622F1D489AE000BD8472 /* MM_FESCOTests.m */; };
 		5977623B1D489AE000BD8472 /* MM_FESCOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */; };
 		597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977624F1D48ABCB00BD8472 /* NetworkTool.m */; };
-		5981AFBC1D73C43D0003166C /* MMDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981AFBB1D73C43D0003166C /* MMDataBase.m */; };
 		5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5994C4711D8271FD007660DD /* MMLoginTool.m */; };
 		5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5996FFB21D5876BE0005307C /* NSString+MD5.m */; };
-		599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */; };
 		59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */; };
 		59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF21D499937001F3122 /* ToastAlertView.m */; };
 		59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59DF71D499937001F3122 /* UIView+Sizes.m */; };
@@ -54,8 +48,6 @@
 		59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E161D499EF2001F3122 /* UIImageView+SDWedImage.m */; };
 		59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */; };
 		59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E321D49C6A3001F3122 /* MMLoginController.m */; };
-		59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E381D49CADF001F3122 /* MMMainController.m */; };
-		59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A8D1101D6EB001002CB709 /* DDChannelLabel.m */; };
 		59C005C61D92542300A329CD /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C51D92542300A329CD /* RegisterController.m */; };
 		59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */; };
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
@@ -65,67 +57,82 @@
 		59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C341D5C281700CE0385 /* NSDateFormatter+Category.m */; };
 		59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */; };
 		59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */; };
-		59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */; };
-		59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */; };
-		59CC53801DACDA9B0030D486 /* FDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC537D1DACDA9B0030D486 /* FDCalendar.m */; };
-		59CC53811DACDA9B0030D486 /* FDCalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC537F1DACDA9B0030D486 /* FDCalendarItem.m */; };
-		59CC538F1DACDE540030D486 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53851DACDE540030D486 /* ModifyPasswordViewController.m */; };
-		59CC53901DACDE540030D486 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53871DACDE540030D486 /* PersonalMessageController.m */; };
-		59CC53911DACDE540030D486 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC538C1DACDE540030D486 /* PersonalMessageDetailCell.m */; };
-		59CC53921DACDE540030D486 /* PersonalMessageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC538E1DACDE540030D486 /* PersonalMessageHeaderView.m */; };
-		59CC53B11DACE2000030D486 /* CheckWorkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53961DACE2000030D486 /* CheckWorkController.m */; };
-		59CC53B21DACE2000030D486 /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53991DACE2000030D486 /* CheckListModel.m */; };
-		59CC53B31DACE2000030D486 /* FillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC539B1DACE2000030D486 /* FillListModel.m */; };
-		59CC53B41DACE2000030D486 /* CheckRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC539F1DACE2000030D486 /* CheckRecordCell.m */; };
-		59CC53B51DACE2000030D486 /* CheckRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53A11DACE2000030D486 /* CheckRecordView.m */; };
-		59CC53B61DACE2000030D486 /* CheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53A31DACE2000030D486 /* CheckView.m */; };
-		59CC53B71DACE2000030D486 /* FillApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53A51DACE2000030D486 /* FillApplyView.m */; };
-		59CC53B81DACE2000030D486 /* FillRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53A71DACE2000030D486 /* FillRecordCell.m */; };
-		59CC53B91DACE2000030D486 /* FillRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53A91DACE2000030D486 /* FillRecordView.m */; };
-		59CC53BA1DACE2000030D486 /* MMChooseTextFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53AB1DACE2000030D486 /* MMChooseTextFile.m */; };
-		59CC53BB1DACE2000030D486 /* popOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53AD1DACE2000030D486 /* popOutView.m */; };
-		59CC53BC1DACE2000030D486 /* SignUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53B01DACE2000030D486 /* SignUpViewModel.m */; };
-		59CC53EB1DACE41A0030D486 /* ApprovalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53C01DACE41A0030D486 /* ApprovalController.m */; };
-		59CC53EC1DACE41A0030D486 /* LeaveApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53C21DACE41A0030D486 /* LeaveApprovalDetailController.m */; };
-		59CC53ED1DACE41A0030D486 /* OverTimeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53C41DACE41A0030D486 /* OverTimeDetailController.m */; };
-		59CC53EE1DACE41A0030D486 /* SignUpApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53C61DACE41A0030D486 /* SignUpApprovalDetailController.m */; };
-		59CC53EF1DACE41A0030D486 /* LeaveApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53C91DACE41A0030D486 /* LeaveApprovalListModel.m */; };
-		59CC53F01DACE41A0030D486 /* OverTimeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53CB1DACE41A0030D486 /* OverTimeListModel.m */; };
-		59CC53F11DACE41A0030D486 /* SignUpApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53CD1DACE41A0030D486 /* SignUpApprovalListModel.m */; };
-		59CC53F21DACE41A0030D486 /* ApprovalTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53D11DACE41A0030D486 /* ApprovalTextFiledView.m */; };
-		59CC53F31DACE41A0030D486 /* FileMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53D31DACE41A0030D486 /* FileMainApprovalDetailCell.m */; };
-		59CC53F41DACE41A0030D486 /* LeaveApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53D51DACE41A0030D486 /* LeaveApprovalCell.m */; };
-		59CC53F51DACE41A0030D486 /* LeaveApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53D71DACE41A0030D486 /* LeaveApprovalView.m */; };
-		59CC53F61DACE41A0030D486 /* MMBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53D91DACE41A0030D486 /* MMBottomButton.m */; };
-		59CC53F71DACE41A0030D486 /* MMLeaveTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53DB1DACE41A0030D486 /* MMLeaveTitleView.m */; };
-		59CC53F81DACE41A0030D486 /* MMTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53DD1DACE41A0030D486 /* MMTitleLabel.m */; };
-		59CC53F91DACE41A0030D486 /* OverTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53DF1DACE41A0030D486 /* OverTimeCell.m */; };
-		59CC53FA1DACE41A0030D486 /* OverTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53E11DACE41A0030D486 /* OverTimeView.m */; };
-		59CC53FB1DACE41A0030D486 /* SignUpApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53E31DACE41A0030D486 /* SignUpApprovalCell.m */; };
-		59CC53FC1DACE41A0030D486 /* SignUpApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53E51DACE41A0030D486 /* SignUpApprovalView.m */; };
-		59CC53FD1DACE41A0030D486 /* TextMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53E71DACE41A0030D486 /* TextMainApprovalDetailCell.m */; };
-		59CC53FE1DACE41A0030D486 /* ApprovalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC53EA1DACE41A0030D486 /* ApprovalViewModel.m */; };
-		59CC54011DACE5B90030D486 /* PersonalMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54001DACE5B90030D486 /* PersonalMessageModel.m */; };
-		59CC54141DACE5CC0030D486 /* EasySerachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54051DACE5CC0030D486 /* EasySerachViewController.m */; };
-		59CC54151DACE5CC0030D486 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54071DACE5CC0030D486 /* PhoneListController.m */; };
-		59CC54161DACE5CC0030D486 /* PhoneListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54091DACE5CC0030D486 /* PhoneListTableController.m */; };
-		59CC54171DACE5CC0030D486 /* PhoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC540C1DACE5CC0030D486 /* PhoneListModel.m */; };
-		59CC54181DACE5CC0030D486 /* PhoneListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54101DACE5CC0030D486 /* PhoneListCell.m */; };
-		59CC54191DACE5CC0030D486 /* PhoneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54121DACE5CC0030D486 /* PhoneListTableCell.m */; };
-		59CC542C1DACE7290030D486 /* LeaveApplyRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC541D1DACE7290030D486 /* LeaveApplyRecordController.m */; };
-		59CC542D1DACE7290030D486 /* LeavaRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54201DACE7290030D486 /* LeavaRecordListModel.m */; };
-		59CC542E1DACE7290030D486 /* LeaveApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54241DACE7290030D486 /* LeaveApplyCell.m */; };
-		59CC542F1DACE7290030D486 /* LeaveApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54261DACE7290030D486 /* LeaveApplyView.m */; };
-		59CC54301DACE7290030D486 /* LeaveRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54281DACE7290030D486 /* LeaveRecordCell.m */; };
-		59CC54311DACE7290030D486 /* LeaveRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC542A1DACE7290030D486 /* LeaveRecordView.m */; };
-		59CC54441DACE7340030D486 /* OverTimeApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54351DACE7340030D486 /* OverTimeApplyController.m */; };
-		59CC54451DACE7340030D486 /* OverTimeRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54381DACE7340030D486 /* OverTimeRecordListModel.m */; };
-		59CC54461DACE7340030D486 /* OverTimeApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC543C1DACE7340030D486 /* OverTimeApplyCell.m */; };
-		59CC54471DACE7340030D486 /* OverTimeApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC543E1DACE7340030D486 /* OverTimeApplyView.m */; };
-		59CC54481DACE7340030D486 /* OverTimeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54401DACE7340030D486 /* OverTimeRecordCell.m */; };
-		59CC54491DACE7340030D486 /* OverTimeRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54421DACE7340030D486 /* OverTimeRecordView.m */; };
 		59CC544E1DACE8310030D486 /* JZPassRateToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC544B1DACE8310030D486 /* JZPassRateToolBarView.m */; };
 		59CC544F1DACE8310030D486 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC544D1DACE8310030D486 /* MMScrollView.m */; };
+		59CC550F1DACEA5F0030D486 /* ApprovalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54541DACEA5E0030D486 /* ApprovalController.m */; };
+		59CC55101DACEA5F0030D486 /* LeaveApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54561DACEA5E0030D486 /* LeaveApprovalDetailController.m */; };
+		59CC55111DACEA5F0030D486 /* OverTimeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54581DACEA5E0030D486 /* OverTimeDetailController.m */; };
+		59CC55121DACEA5F0030D486 /* SignUpApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC545A1DACEA5E0030D486 /* SignUpApprovalDetailController.m */; };
+		59CC55131DACEA5F0030D486 /* LeaveApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC545D1DACEA5E0030D486 /* LeaveApprovalListModel.m */; };
+		59CC55141DACEA5F0030D486 /* OverTimeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC545F1DACEA5E0030D486 /* OverTimeListModel.m */; };
+		59CC55151DACEA5F0030D486 /* SignUpApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54611DACEA5E0030D486 /* SignUpApprovalListModel.m */; };
+		59CC55161DACEA5F0030D486 /* ApprovalTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54651DACEA5E0030D486 /* ApprovalTextFiledView.m */; };
+		59CC55171DACEA5F0030D486 /* FileMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54671DACEA5E0030D486 /* FileMainApprovalDetailCell.m */; };
+		59CC55181DACEA5F0030D486 /* LeaveApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54691DACEA5E0030D486 /* LeaveApprovalCell.m */; };
+		59CC55191DACEA5F0030D486 /* LeaveApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC546B1DACEA5E0030D486 /* LeaveApprovalView.m */; };
+		59CC551A1DACEA5F0030D486 /* MMBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC546D1DACEA5E0030D486 /* MMBottomButton.m */; };
+		59CC551B1DACEA5F0030D486 /* MMLeaveTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC546F1DACEA5E0030D486 /* MMLeaveTitleView.m */; };
+		59CC551C1DACEA5F0030D486 /* MMTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54711DACEA5E0030D486 /* MMTitleLabel.m */; };
+		59CC551D1DACEA5F0030D486 /* OverTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54731DACEA5E0030D486 /* OverTimeCell.m */; };
+		59CC551E1DACEA5F0030D486 /* OverTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54751DACEA5E0030D486 /* OverTimeView.m */; };
+		59CC551F1DACEA5F0030D486 /* SignUpApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54771DACEA5E0030D486 /* SignUpApprovalCell.m */; };
+		59CC55201DACEA5F0030D486 /* SignUpApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54791DACEA5E0030D486 /* SignUpApprovalView.m */; };
+		59CC55211DACEA5F0030D486 /* TextMainApprovalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC547B1DACEA5E0030D486 /* TextMainApprovalDetailCell.m */; };
+		59CC55221DACEA5F0030D486 /* ApprovalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC547E1DACEA5E0030D486 /* ApprovalViewModel.m */; };
+		59CC55231DACEA5F0030D486 /* CheckWorkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54821DACEA5E0030D486 /* CheckWorkController.m */; };
+		59CC55241DACEA5F0030D486 /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54851DACEA5E0030D486 /* CheckListModel.m */; };
+		59CC55251DACEA5F0030D486 /* FillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54871DACEA5E0030D486 /* FillListModel.m */; };
+		59CC55261DACEA5F0030D486 /* CheckRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC548B1DACEA5E0030D486 /* CheckRecordCell.m */; };
+		59CC55271DACEA5F0030D486 /* CheckRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC548D1DACEA5E0030D486 /* CheckRecordView.m */; };
+		59CC55281DACEA5F0030D486 /* CheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC548F1DACEA5E0030D486 /* CheckView.m */; };
+		59CC55291DACEA5F0030D486 /* FillApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54911DACEA5E0030D486 /* FillApplyView.m */; };
+		59CC552A1DACEA5F0030D486 /* FillRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54931DACEA5E0030D486 /* FillRecordCell.m */; };
+		59CC552B1DACEA5F0030D486 /* FillRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54951DACEA5E0030D486 /* FillRecordView.m */; };
+		59CC552C1DACEA5F0030D486 /* MMChooseTextFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54971DACEA5E0030D486 /* MMChooseTextFile.m */; };
+		59CC552D1DACEA5F0030D486 /* popOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54991DACEA5E0030D486 /* popOutView.m */; };
+		59CC552E1DACEA5F0030D486 /* SignUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC549C1DACEA5E0030D486 /* SignUpViewModel.m */; };
+		59CC552F1DACEA5F0030D486 /* BuffetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC549F1DACEA5E0030D486 /* BuffetController.m */; };
+		59CC55301DACEA5F0030D486 /* MMCycleShowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54A11DACEA5E0030D486 /* MMCycleShowImageView.m */; };
+		59CC55311DACEA5F0030D486 /* MMMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54A31DACEA5E0030D486 /* MMMainController.m */; };
+		59CC55321DACEA5F0030D486 /* FDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54A71DACEA5E0030D486 /* FDCalendar.m */; };
+		59CC55331DACEA5F0030D486 /* FDCalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54A91DACEA5E0030D486 /* FDCalendarItem.m */; };
+		59CC55341DACEA5F0030D486 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54AB1DACEA5E0030D486 /* MyController.m */; };
+		59CC55351DACEA5F0030D486 /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54AD1DACEA5F0030D486 /* NewsController.m */; };
+		59CC55361DACEA5F0030D486 /* ToolsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54AF1DACEA5F0030D486 /* ToolsController.m */; };
+		59CC55371DACEA5F0030D486 /* LeaveApplyRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54B31DACEA5F0030D486 /* LeaveApplyRecordController.m */; };
+		59CC55381DACEA5F0030D486 /* LeavaRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54B61DACEA5F0030D486 /* LeavaRecordListModel.m */; };
+		59CC55391DACEA5F0030D486 /* LeaveApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54BA1DACEA5F0030D486 /* LeaveApplyCell.m */; };
+		59CC553A1DACEA5F0030D486 /* LeaveApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54BC1DACEA5F0030D486 /* LeaveApplyView.m */; };
+		59CC553B1DACEA5F0030D486 /* LeaveRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54BE1DACEA5F0030D486 /* LeaveRecordCell.m */; };
+		59CC553C1DACEA5F0030D486 /* LeaveRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54C01DACEA5F0030D486 /* LeaveRecordView.m */; };
+		59CC553D1DACEA5F0030D486 /* DDChannelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54C41DACEA5F0030D486 /* DDChannelLabel.m */; };
+		59CC553E1DACEA5F0030D486 /* MMDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54C61DACEA5F0030D486 /* MMDataBase.m */; };
+		59CC553F1DACEA5F0030D486 /* MMNoDataShowBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54C81DACEA5F0030D486 /* MMNoDataShowBGView.m */; };
+		59CC55401DACEA5F0030D486 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54CA1DACEA5F0030D486 /* NSArray+Sort.m */; };
+		59CC55411DACEA5F0030D486 /* OverTimeApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54CE1DACEA5F0030D486 /* OverTimeApplyController.m */; };
+		59CC55421DACEA5F0030D486 /* OverTimeRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54D11DACEA5F0030D486 /* OverTimeRecordListModel.m */; };
+		59CC55431DACEA5F0030D486 /* OverTimeApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54D51DACEA5F0030D486 /* OverTimeApplyCell.m */; };
+		59CC55441DACEA5F0030D486 /* OverTimeApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54D71DACEA5F0030D486 /* OverTimeApplyView.m */; };
+		59CC55451DACEA5F0030D486 /* OverTimeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54D91DACEA5F0030D486 /* OverTimeRecordCell.m */; };
+		59CC55461DACEA5F0030D486 /* OverTimeRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54DB1DACEA5F0030D486 /* OverTimeRecordView.m */; };
+		59CC55471DACEA5F0030D486 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54E01DACEA5F0030D486 /* ModifyPasswordViewController.m */; };
+		59CC55481DACEA5F0030D486 /* PersonalMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54E21DACEA5F0030D486 /* PersonalMessageController.m */; };
+		59CC55491DACEA5F0030D486 /* PersonalMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54E51DACEA5F0030D486 /* PersonalMessageModel.m */; };
+		59CC554A1DACEA5F0030D486 /* PersonalMessageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54E91DACEA5F0030D486 /* PersonalMessageDetailCell.m */; };
+		59CC554B1DACEA5F0030D486 /* PersonalMessageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54EB1DACEA5F0030D486 /* PersonalMessageHeaderView.m */; };
+		59CC554C1DACEA5F0030D486 /* EasySerachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54EF1DACEA5F0030D486 /* EasySerachViewController.m */; };
+		59CC554D1DACEA5F0030D486 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54F11DACEA5F0030D486 /* PhoneListController.m */; };
+		59CC554E1DACEA5F0030D486 /* PhoneListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54F31DACEA5F0030D486 /* PhoneListTableController.m */; };
+		59CC554F1DACEA5F0030D486 /* PhoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54F61DACEA5F0030D486 /* PhoneListModel.m */; };
+		59CC55501DACEA5F0030D486 /* PhoneListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54FA1DACEA5F0030D486 /* PhoneListCell.m */; };
+		59CC55511DACEA5F0030D486 /* PhoneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC54FC1DACEA5F0030D486 /* PhoneListTableCell.m */; };
+		59CC55521DACEA5F0030D486 /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC55001DACEA5F0030D486 /* CollectionFooterView.m */; };
+		59CC55531DACEA5F0030D486 /* MMMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC55021DACEA5F0030D486 /* MMMainCollectionCell.m */; };
+		59CC55541DACEA5F0030D486 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC55051DACEA5F0030D486 /* LeaveApplicationDetailCell.m */; };
+		59CC55551DACEA5F0030D486 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC55071DACEA5F0030D486 /* LeaveApplicationDetailController.m */; };
+		59CC55561DACEA5F0030D486 /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC55091DACEA5F0030D486 /* MMCyeleShowLableTagView.m */; };
+		59CC55571DACEA5F0030D486 /* MMMianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC550B1DACEA5F0030D486 /* MMMianCell.m */; };
+		59CC55581DACEA5F0030D486 /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CC550E1DACEA5F0030D486 /* MMBaseViewModel.m */; };
 		59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D3FE981D507C62002CCCA4 /* NetworkEntity.m */; };
 		59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */; };
 		59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */; };
@@ -225,7 +232,6 @@
 		59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91C61D98D9AD00E802FA /* PSTGridLayoutRow.m */; };
 		59EC91EF1D98D9AD00E802FA /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91C81D98D9AD00E802FA /* PSTGridLayoutSection.m */; };
 		59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59EC91C91D98D9AD00E802FA /* MWPhotoBrowser.bundle */; };
-		59EC91F31D9904F300E802FA /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC91F21D9904F300E802FA /* CollectionFooterView.m */; };
 		59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F4D6381D81387200C56E5D /* JZUserLoginManager.m */; };
 		59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */; };
 		59F651041D70338C000596A7 /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F650F41D70338C000596A7 /* ChineseInclude.m */; };
@@ -237,8 +243,6 @@
 		59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F651001D70338C000596A7 /* PinyinHelper.m */; };
 		59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59F651011D70338C000596A7 /* unicode_to_hanyu_pinyin.txt */; };
 		59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F651031D70338C000596A7 /* ZYPinYinSearch.m */; };
-		59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */; };
-		59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */; };
 		59FC07931D9512BF00C1D0E0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07921D9512BF00C1D0E0 /* CoreMedia.framework */; };
 		59FC07951D9512CD00C1D0E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07941D9512CD00C1D0E0 /* AudioToolbox.framework */; };
 		59FC07971D9512E300C1D0E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07961D9512E300C1D0E0 /* AVFoundation.framework */; };
@@ -250,10 +254,6 @@
 		59FC07A31D95137600C1D0E0 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A21D95137600C1D0E0 /* libiconv.tbd */; };
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
-		59FC094B1D952B6500C1D0E0 /* BuffetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC094A1D952B6500C1D0E0 /* BuffetController.m */; };
-		59FC094E1D952B8700C1D0E0 /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC094D1D952B8700C1D0E0 /* NewsController.m */; };
-		59FC09511D952B9E00C1D0E0 /* ToolsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09501D952B9E00C1D0E0 /* ToolsController.m */; };
-		59FC09541D952BD700C1D0E0 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09531D952BD700C1D0E0 /* MyController.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -293,8 +293,6 @@
 		59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSQManagerTool.h; sourceTree = "<group>"; };
 		59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSQManagerTool.m; sourceTree = "<group>"; };
 		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		594775DB1D752B990094D354 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
-		594775DC1D752B990094D354 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
 		594775F51D7684D80094D354 /* MMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewController.h; sourceTree = "<group>"; };
 		594775F61D7684D80094D354 /* MMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewController.m; sourceTree = "<group>"; };
 		594775F81D7686DB0094D354 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -304,15 +302,9 @@
 		594775FC1D7686DB0094D354 /* YiRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRefreshHeader.m; sourceTree = "<group>"; };
 		594775FF1D768FEF0094D354 /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
 		594776001D768FEF0094D354 /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
-		595B45B91D502FD30054ED8C /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
-		595B45BA1D502FD30054ED8C /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
 		59614F771D7E484D004D3AAE /* MMModelDataMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMModelDataMacro.h; sourceTree = "<group>"; };
 		59614F781D7E90A8004D3AAE /* TTRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTRefreshFooter.h; sourceTree = "<group>"; };
 		59614F791D7E90A8004D3AAE /* TTRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRefreshFooter.m; sourceTree = "<group>"; };
-		596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
-		596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
-		596A77291D9A1265006CD128 /* MMNoDataShowBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNoDataShowBGView.h; sourceTree = "<group>"; };
-		596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNoDataShowBGView.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762161D489AE000BD8472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		597762181D489AE000BD8472 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -331,14 +323,10 @@
 		5977623C1D489AE000BD8472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5977624E1D48ABCB00BD8472 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		5977624F1D48ABCB00BD8472 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
-		5981AFBA1D73C43D0003166C /* MMDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataBase.h; sourceTree = "<group>"; };
-		5981AFBB1D73C43D0003166C /* MMDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataBase.m; sourceTree = "<group>"; };
 		5994C4701D8271FD007660DD /* MMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginTool.h; sourceTree = "<group>"; };
 		5994C4711D8271FD007660DD /* MMLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginTool.m; sourceTree = "<group>"; };
 		5996FFB11D5876BE0005307C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "../SafeDic/NSString+MD5.h"; sourceTree = "<group>"; };
 		5996FFB21D5876BE0005307C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "../SafeDic/NSString+MD5.m"; sourceTree = "<group>"; };
-		599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCyeleShowLableTagView.h; sourceTree = "<group>"; };
-		599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCyeleShowLableTagView.m; sourceTree = "<group>"; };
 		59A59DEE1D499937001F3122 /* NSDictionary+StrDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StrDic.h"; sourceTree = "<group>"; };
 		59A59DEF1D499937001F3122 /* NSDictionary+StrDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StrDic.m"; sourceTree = "<group>"; };
 		59A59DF11D499937001F3122 /* ToastAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastAlertView.h; sourceTree = "<group>"; };
@@ -376,10 +364,6 @@
 		59A59E181D499EF2001F3122 /* UINavigationItem+BackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+BackItem.m"; sourceTree = "<group>"; };
 		59A59E311D49C6A3001F3122 /* MMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLoginController.h; sourceTree = "<group>"; };
 		59A59E321D49C6A3001F3122 /* MMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLoginController.m; sourceTree = "<group>"; };
-		59A59E371D49CADF001F3122 /* MMMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainController.h; sourceTree = "<group>"; };
-		59A59E381D49CADF001F3122 /* MMMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainController.m; sourceTree = "<group>"; };
-		59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChannelLabel.h; sourceTree = "<group>"; };
-		59A8D1101D6EB001002CB709 /* DDChannelLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChannelLabel.m; sourceTree = "<group>"; };
 		59C005C41D92542300A329CD /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		59C005C51D92542300A329CD /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 		59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRegisterTextFiledView.h; sourceTree = "<group>"; };
@@ -398,128 +382,158 @@
 		59C90C361D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+sharedDateFormatter.m"; sourceTree = "<group>"; };
 		59C90C371D5C281700CE0385 /* NSString+CurrentTimeDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CurrentTimeDay.h"; sourceTree = "<group>"; };
 		59C90C381D5C281700CE0385 /* NSString+CurrentTimeDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CurrentTimeDay.m"; sourceTree = "<group>"; };
-		59C90C3F1D5C627500CE0385 /* MMCycleShowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMCycleShowImageView.h; path = ../Controller/MMCycleShowImageView.h; sourceTree = "<group>"; };
-		59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMCycleShowImageView.m; path = ../Controller/MMCycleShowImageView.m; sourceTree = "<group>"; };
-		59C90C421D5C6FE900CE0385 /* MMMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainCollectionCell.h; sourceTree = "<group>"; };
-		59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainCollectionCell.m; sourceTree = "<group>"; };
-		59CC537C1DACDA9B0030D486 /* FDCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendar.h; sourceTree = "<group>"; };
-		59CC537D1DACDA9B0030D486 /* FDCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendar.m; sourceTree = "<group>"; };
-		59CC537E1DACDA9B0030D486 /* FDCalendarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendarItem.h; sourceTree = "<group>"; };
-		59CC537F1DACDA9B0030D486 /* FDCalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendarItem.m; sourceTree = "<group>"; };
-		59CC53841DACDE540030D486 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
-		59CC53851DACDE540030D486 /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
-		59CC53861DACDE540030D486 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
-		59CC53871DACDE540030D486 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
-		59CC538B1DACDE540030D486 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
-		59CC538C1DACDE540030D486 /* PersonalMessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageDetailCell.m; sourceTree = "<group>"; };
-		59CC538D1DACDE540030D486 /* PersonalMessageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageHeaderView.h; sourceTree = "<group>"; };
-		59CC538E1DACDE540030D486 /* PersonalMessageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageHeaderView.m; sourceTree = "<group>"; };
-		59CC53951DACE2000030D486 /* CheckWorkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckWorkController.h; sourceTree = "<group>"; };
-		59CC53961DACE2000030D486 /* CheckWorkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckWorkController.m; sourceTree = "<group>"; };
-		59CC53981DACE2000030D486 /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
-		59CC53991DACE2000030D486 /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
-		59CC539A1DACE2000030D486 /* FillListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillListModel.h; sourceTree = "<group>"; };
-		59CC539B1DACE2000030D486 /* FillListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillListModel.m; sourceTree = "<group>"; };
-		59CC539E1DACE2000030D486 /* CheckRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordCell.h; sourceTree = "<group>"; };
-		59CC539F1DACE2000030D486 /* CheckRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordCell.m; sourceTree = "<group>"; };
-		59CC53A01DACE2000030D486 /* CheckRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordView.h; sourceTree = "<group>"; };
-		59CC53A11DACE2000030D486 /* CheckRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordView.m; sourceTree = "<group>"; };
-		59CC53A21DACE2000030D486 /* CheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckView.h; sourceTree = "<group>"; };
-		59CC53A31DACE2000030D486 /* CheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckView.m; sourceTree = "<group>"; };
-		59CC53A41DACE2000030D486 /* FillApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillApplyView.h; sourceTree = "<group>"; };
-		59CC53A51DACE2000030D486 /* FillApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillApplyView.m; sourceTree = "<group>"; };
-		59CC53A61DACE2000030D486 /* FillRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordCell.h; sourceTree = "<group>"; };
-		59CC53A71DACE2000030D486 /* FillRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordCell.m; sourceTree = "<group>"; };
-		59CC53A81DACE2000030D486 /* FillRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordView.h; sourceTree = "<group>"; };
-		59CC53A91DACE2000030D486 /* FillRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordView.m; sourceTree = "<group>"; };
-		59CC53AA1DACE2000030D486 /* MMChooseTextFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFile.h; sourceTree = "<group>"; };
-		59CC53AB1DACE2000030D486 /* MMChooseTextFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFile.m; sourceTree = "<group>"; };
-		59CC53AC1DACE2000030D486 /* popOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popOutView.h; sourceTree = "<group>"; };
-		59CC53AD1DACE2000030D486 /* popOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popOutView.m; sourceTree = "<group>"; };
-		59CC53AF1DACE2000030D486 /* SignUpViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewModel.h; sourceTree = "<group>"; };
-		59CC53B01DACE2000030D486 /* SignUpViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewModel.m; sourceTree = "<group>"; };
-		59CC53BF1DACE41A0030D486 /* ApprovalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalController.h; sourceTree = "<group>"; };
-		59CC53C01DACE41A0030D486 /* ApprovalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalController.m; sourceTree = "<group>"; };
-		59CC53C11DACE41A0030D486 /* LeaveApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalDetailController.h; sourceTree = "<group>"; };
-		59CC53C21DACE41A0030D486 /* LeaveApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalDetailController.m; sourceTree = "<group>"; };
-		59CC53C31DACE41A0030D486 /* OverTimeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeDetailController.h; sourceTree = "<group>"; };
-		59CC53C41DACE41A0030D486 /* OverTimeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeDetailController.m; sourceTree = "<group>"; };
-		59CC53C51DACE41A0030D486 /* SignUpApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalDetailController.h; sourceTree = "<group>"; };
-		59CC53C61DACE41A0030D486 /* SignUpApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalDetailController.m; sourceTree = "<group>"; };
-		59CC53C81DACE41A0030D486 /* LeaveApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalListModel.h; sourceTree = "<group>"; };
-		59CC53C91DACE41A0030D486 /* LeaveApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalListModel.m; sourceTree = "<group>"; };
-		59CC53CA1DACE41A0030D486 /* OverTimeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeListModel.h; sourceTree = "<group>"; };
-		59CC53CB1DACE41A0030D486 /* OverTimeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeListModel.m; sourceTree = "<group>"; };
-		59CC53CC1DACE41A0030D486 /* SignUpApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalListModel.h; sourceTree = "<group>"; };
-		59CC53CD1DACE41A0030D486 /* SignUpApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalListModel.m; sourceTree = "<group>"; };
-		59CC53D01DACE41A0030D486 /* ApprovalTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTextFiledView.h; sourceTree = "<group>"; };
-		59CC53D11DACE41A0030D486 /* ApprovalTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTextFiledView.m; sourceTree = "<group>"; };
-		59CC53D21DACE41A0030D486 /* FileMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMainApprovalDetailCell.h; sourceTree = "<group>"; };
-		59CC53D31DACE41A0030D486 /* FileMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMainApprovalDetailCell.m; sourceTree = "<group>"; };
-		59CC53D41DACE41A0030D486 /* LeaveApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalCell.h; sourceTree = "<group>"; };
-		59CC53D51DACE41A0030D486 /* LeaveApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalCell.m; sourceTree = "<group>"; };
-		59CC53D61DACE41A0030D486 /* LeaveApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalView.h; sourceTree = "<group>"; };
-		59CC53D71DACE41A0030D486 /* LeaveApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalView.m; sourceTree = "<group>"; };
-		59CC53D81DACE41A0030D486 /* MMBottomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBottomButton.h; sourceTree = "<group>"; };
-		59CC53D91DACE41A0030D486 /* MMBottomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBottomButton.m; sourceTree = "<group>"; };
-		59CC53DA1DACE41A0030D486 /* MMLeaveTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLeaveTitleView.h; sourceTree = "<group>"; };
-		59CC53DB1DACE41A0030D486 /* MMLeaveTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLeaveTitleView.m; sourceTree = "<group>"; };
-		59CC53DC1DACE41A0030D486 /* MMTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTitleLabel.h; sourceTree = "<group>"; };
-		59CC53DD1DACE41A0030D486 /* MMTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTitleLabel.m; sourceTree = "<group>"; };
-		59CC53DE1DACE41A0030D486 /* OverTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeCell.h; sourceTree = "<group>"; };
-		59CC53DF1DACE41A0030D486 /* OverTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeCell.m; sourceTree = "<group>"; };
-		59CC53E01DACE41A0030D486 /* OverTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeView.h; sourceTree = "<group>"; };
-		59CC53E11DACE41A0030D486 /* OverTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeView.m; sourceTree = "<group>"; };
-		59CC53E21DACE41A0030D486 /* SignUpApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalCell.h; sourceTree = "<group>"; };
-		59CC53E31DACE41A0030D486 /* SignUpApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalCell.m; sourceTree = "<group>"; };
-		59CC53E41DACE41A0030D486 /* SignUpApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalView.h; sourceTree = "<group>"; };
-		59CC53E51DACE41A0030D486 /* SignUpApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalView.m; sourceTree = "<group>"; };
-		59CC53E61DACE41A0030D486 /* TextMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMainApprovalDetailCell.h; sourceTree = "<group>"; };
-		59CC53E71DACE41A0030D486 /* TextMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMainApprovalDetailCell.m; sourceTree = "<group>"; };
-		59CC53E91DACE41A0030D486 /* ApprovalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalViewModel.h; sourceTree = "<group>"; };
-		59CC53EA1DACE41A0030D486 /* ApprovalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalViewModel.m; sourceTree = "<group>"; };
-		59CC53FF1DACE5B90030D486 /* PersonalMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageModel.h; sourceTree = "<group>"; };
-		59CC54001DACE5B90030D486 /* PersonalMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageModel.m; sourceTree = "<group>"; };
-		59CC54041DACE5CC0030D486 /* EasySerachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasySerachViewController.h; sourceTree = "<group>"; };
-		59CC54051DACE5CC0030D486 /* EasySerachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasySerachViewController.m; sourceTree = "<group>"; };
-		59CC54061DACE5CC0030D486 /* PhoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListController.h; sourceTree = "<group>"; };
-		59CC54071DACE5CC0030D486 /* PhoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListController.m; sourceTree = "<group>"; };
-		59CC54081DACE5CC0030D486 /* PhoneListTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableController.h; sourceTree = "<group>"; };
-		59CC54091DACE5CC0030D486 /* PhoneListTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableController.m; sourceTree = "<group>"; };
-		59CC540B1DACE5CC0030D486 /* PhoneListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListModel.h; sourceTree = "<group>"; };
-		59CC540C1DACE5CC0030D486 /* PhoneListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListModel.m; sourceTree = "<group>"; };
-		59CC540F1DACE5CC0030D486 /* PhoneListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListCell.h; sourceTree = "<group>"; };
-		59CC54101DACE5CC0030D486 /* PhoneListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListCell.m; sourceTree = "<group>"; };
-		59CC54111DACE5CC0030D486 /* PhoneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableCell.h; sourceTree = "<group>"; };
-		59CC54121DACE5CC0030D486 /* PhoneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableCell.m; sourceTree = "<group>"; };
-		59CC541C1DACE7290030D486 /* LeaveApplyRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyRecordController.h; sourceTree = "<group>"; };
-		59CC541D1DACE7290030D486 /* LeaveApplyRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyRecordController.m; sourceTree = "<group>"; };
-		59CC541F1DACE7290030D486 /* LeavaRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavaRecordListModel.h; sourceTree = "<group>"; };
-		59CC54201DACE7290030D486 /* LeavaRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavaRecordListModel.m; sourceTree = "<group>"; };
-		59CC54231DACE7290030D486 /* LeaveApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyCell.h; sourceTree = "<group>"; };
-		59CC54241DACE7290030D486 /* LeaveApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyCell.m; sourceTree = "<group>"; };
-		59CC54251DACE7290030D486 /* LeaveApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyView.h; sourceTree = "<group>"; };
-		59CC54261DACE7290030D486 /* LeaveApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyView.m; sourceTree = "<group>"; };
-		59CC54271DACE7290030D486 /* LeaveRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordCell.h; sourceTree = "<group>"; };
-		59CC54281DACE7290030D486 /* LeaveRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordCell.m; sourceTree = "<group>"; };
-		59CC54291DACE7290030D486 /* LeaveRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordView.h; sourceTree = "<group>"; };
-		59CC542A1DACE7290030D486 /* LeaveRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordView.m; sourceTree = "<group>"; };
-		59CC54341DACE7340030D486 /* OverTimeApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyController.h; sourceTree = "<group>"; };
-		59CC54351DACE7340030D486 /* OverTimeApplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyController.m; sourceTree = "<group>"; };
-		59CC54371DACE7340030D486 /* OverTimeRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordListModel.h; sourceTree = "<group>"; };
-		59CC54381DACE7340030D486 /* OverTimeRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordListModel.m; sourceTree = "<group>"; };
-		59CC543B1DACE7340030D486 /* OverTimeApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyCell.h; sourceTree = "<group>"; };
-		59CC543C1DACE7340030D486 /* OverTimeApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyCell.m; sourceTree = "<group>"; };
-		59CC543D1DACE7340030D486 /* OverTimeApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyView.h; sourceTree = "<group>"; };
-		59CC543E1DACE7340030D486 /* OverTimeApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyView.m; sourceTree = "<group>"; };
-		59CC543F1DACE7340030D486 /* OverTimeRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordCell.h; sourceTree = "<group>"; };
-		59CC54401DACE7340030D486 /* OverTimeRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordCell.m; sourceTree = "<group>"; };
-		59CC54411DACE7340030D486 /* OverTimeRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordView.h; sourceTree = "<group>"; };
-		59CC54421DACE7340030D486 /* OverTimeRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordView.m; sourceTree = "<group>"; };
 		59CC544A1DACE8310030D486 /* JZPassRateToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZPassRateToolBarView.h; sourceTree = "<group>"; };
 		59CC544B1DACE8310030D486 /* JZPassRateToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZPassRateToolBarView.m; sourceTree = "<group>"; };
 		59CC544C1DACE8310030D486 /* MMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScrollView.h; sourceTree = "<group>"; };
 		59CC544D1DACE8310030D486 /* MMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScrollView.m; sourceTree = "<group>"; };
+		59CC54531DACEA5E0030D486 /* ApprovalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalController.h; sourceTree = "<group>"; };
+		59CC54541DACEA5E0030D486 /* ApprovalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalController.m; sourceTree = "<group>"; };
+		59CC54551DACEA5E0030D486 /* LeaveApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalDetailController.h; sourceTree = "<group>"; };
+		59CC54561DACEA5E0030D486 /* LeaveApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalDetailController.m; sourceTree = "<group>"; };
+		59CC54571DACEA5E0030D486 /* OverTimeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeDetailController.h; sourceTree = "<group>"; };
+		59CC54581DACEA5E0030D486 /* OverTimeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeDetailController.m; sourceTree = "<group>"; };
+		59CC54591DACEA5E0030D486 /* SignUpApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalDetailController.h; sourceTree = "<group>"; };
+		59CC545A1DACEA5E0030D486 /* SignUpApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalDetailController.m; sourceTree = "<group>"; };
+		59CC545C1DACEA5E0030D486 /* LeaveApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalListModel.h; sourceTree = "<group>"; };
+		59CC545D1DACEA5E0030D486 /* LeaveApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalListModel.m; sourceTree = "<group>"; };
+		59CC545E1DACEA5E0030D486 /* OverTimeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeListModel.h; sourceTree = "<group>"; };
+		59CC545F1DACEA5E0030D486 /* OverTimeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeListModel.m; sourceTree = "<group>"; };
+		59CC54601DACEA5E0030D486 /* SignUpApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalListModel.h; sourceTree = "<group>"; };
+		59CC54611DACEA5E0030D486 /* SignUpApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalListModel.m; sourceTree = "<group>"; };
+		59CC54641DACEA5E0030D486 /* ApprovalTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTextFiledView.h; sourceTree = "<group>"; };
+		59CC54651DACEA5E0030D486 /* ApprovalTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTextFiledView.m; sourceTree = "<group>"; };
+		59CC54661DACEA5E0030D486 /* FileMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMainApprovalDetailCell.h; sourceTree = "<group>"; };
+		59CC54671DACEA5E0030D486 /* FileMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMainApprovalDetailCell.m; sourceTree = "<group>"; };
+		59CC54681DACEA5E0030D486 /* LeaveApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalCell.h; sourceTree = "<group>"; };
+		59CC54691DACEA5E0030D486 /* LeaveApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalCell.m; sourceTree = "<group>"; };
+		59CC546A1DACEA5E0030D486 /* LeaveApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApprovalView.h; sourceTree = "<group>"; };
+		59CC546B1DACEA5E0030D486 /* LeaveApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApprovalView.m; sourceTree = "<group>"; };
+		59CC546C1DACEA5E0030D486 /* MMBottomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBottomButton.h; sourceTree = "<group>"; };
+		59CC546D1DACEA5E0030D486 /* MMBottomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBottomButton.m; sourceTree = "<group>"; };
+		59CC546E1DACEA5E0030D486 /* MMLeaveTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLeaveTitleView.h; sourceTree = "<group>"; };
+		59CC546F1DACEA5E0030D486 /* MMLeaveTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLeaveTitleView.m; sourceTree = "<group>"; };
+		59CC54701DACEA5E0030D486 /* MMTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTitleLabel.h; sourceTree = "<group>"; };
+		59CC54711DACEA5E0030D486 /* MMTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTitleLabel.m; sourceTree = "<group>"; };
+		59CC54721DACEA5E0030D486 /* OverTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeCell.h; sourceTree = "<group>"; };
+		59CC54731DACEA5E0030D486 /* OverTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeCell.m; sourceTree = "<group>"; };
+		59CC54741DACEA5E0030D486 /* OverTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeView.h; sourceTree = "<group>"; };
+		59CC54751DACEA5E0030D486 /* OverTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeView.m; sourceTree = "<group>"; };
+		59CC54761DACEA5E0030D486 /* SignUpApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalCell.h; sourceTree = "<group>"; };
+		59CC54771DACEA5E0030D486 /* SignUpApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalCell.m; sourceTree = "<group>"; };
+		59CC54781DACEA5E0030D486 /* SignUpApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpApprovalView.h; sourceTree = "<group>"; };
+		59CC54791DACEA5E0030D486 /* SignUpApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpApprovalView.m; sourceTree = "<group>"; };
+		59CC547A1DACEA5E0030D486 /* TextMainApprovalDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMainApprovalDetailCell.h; sourceTree = "<group>"; };
+		59CC547B1DACEA5E0030D486 /* TextMainApprovalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMainApprovalDetailCell.m; sourceTree = "<group>"; };
+		59CC547D1DACEA5E0030D486 /* ApprovalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalViewModel.h; sourceTree = "<group>"; };
+		59CC547E1DACEA5E0030D486 /* ApprovalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalViewModel.m; sourceTree = "<group>"; };
+		59CC54811DACEA5E0030D486 /* CheckWorkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckWorkController.h; sourceTree = "<group>"; };
+		59CC54821DACEA5E0030D486 /* CheckWorkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckWorkController.m; sourceTree = "<group>"; };
+		59CC54841DACEA5E0030D486 /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
+		59CC54851DACEA5E0030D486 /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
+		59CC54861DACEA5E0030D486 /* FillListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillListModel.h; sourceTree = "<group>"; };
+		59CC54871DACEA5E0030D486 /* FillListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillListModel.m; sourceTree = "<group>"; };
+		59CC548A1DACEA5E0030D486 /* CheckRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordCell.h; sourceTree = "<group>"; };
+		59CC548B1DACEA5E0030D486 /* CheckRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordCell.m; sourceTree = "<group>"; };
+		59CC548C1DACEA5E0030D486 /* CheckRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRecordView.h; sourceTree = "<group>"; };
+		59CC548D1DACEA5E0030D486 /* CheckRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRecordView.m; sourceTree = "<group>"; };
+		59CC548E1DACEA5E0030D486 /* CheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckView.h; sourceTree = "<group>"; };
+		59CC548F1DACEA5E0030D486 /* CheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckView.m; sourceTree = "<group>"; };
+		59CC54901DACEA5E0030D486 /* FillApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillApplyView.h; sourceTree = "<group>"; };
+		59CC54911DACEA5E0030D486 /* FillApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillApplyView.m; sourceTree = "<group>"; };
+		59CC54921DACEA5E0030D486 /* FillRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordCell.h; sourceTree = "<group>"; };
+		59CC54931DACEA5E0030D486 /* FillRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordCell.m; sourceTree = "<group>"; };
+		59CC54941DACEA5E0030D486 /* FillRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillRecordView.h; sourceTree = "<group>"; };
+		59CC54951DACEA5E0030D486 /* FillRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillRecordView.m; sourceTree = "<group>"; };
+		59CC54961DACEA5E0030D486 /* MMChooseTextFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFile.h; sourceTree = "<group>"; };
+		59CC54971DACEA5E0030D486 /* MMChooseTextFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFile.m; sourceTree = "<group>"; };
+		59CC54981DACEA5E0030D486 /* popOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popOutView.h; sourceTree = "<group>"; };
+		59CC54991DACEA5E0030D486 /* popOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popOutView.m; sourceTree = "<group>"; };
+		59CC549B1DACEA5E0030D486 /* SignUpViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewModel.h; sourceTree = "<group>"; };
+		59CC549C1DACEA5E0030D486 /* SignUpViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewModel.m; sourceTree = "<group>"; };
+		59CC549E1DACEA5E0030D486 /* BuffetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetController.h; sourceTree = "<group>"; };
+		59CC549F1DACEA5E0030D486 /* BuffetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetController.m; sourceTree = "<group>"; };
+		59CC54A01DACEA5E0030D486 /* MMCycleShowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCycleShowImageView.h; sourceTree = "<group>"; };
+		59CC54A11DACEA5E0030D486 /* MMCycleShowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCycleShowImageView.m; sourceTree = "<group>"; };
+		59CC54A21DACEA5E0030D486 /* MMMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainController.h; sourceTree = "<group>"; };
+		59CC54A31DACEA5E0030D486 /* MMMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainController.m; sourceTree = "<group>"; };
+		59CC54A61DACEA5E0030D486 /* FDCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendar.h; sourceTree = "<group>"; };
+		59CC54A71DACEA5E0030D486 /* FDCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendar.m; sourceTree = "<group>"; };
+		59CC54A81DACEA5E0030D486 /* FDCalendarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendarItem.h; sourceTree = "<group>"; };
+		59CC54A91DACEA5E0030D486 /* FDCalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendarItem.m; sourceTree = "<group>"; };
+		59CC54AA1DACEA5E0030D486 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
+		59CC54AB1DACEA5E0030D486 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
+		59CC54AC1DACEA5E0030D486 /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
+		59CC54AD1DACEA5F0030D486 /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
+		59CC54AE1DACEA5F0030D486 /* ToolsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsController.h; sourceTree = "<group>"; };
+		59CC54AF1DACEA5F0030D486 /* ToolsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsController.m; sourceTree = "<group>"; };
+		59CC54B21DACEA5F0030D486 /* LeaveApplyRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyRecordController.h; sourceTree = "<group>"; };
+		59CC54B31DACEA5F0030D486 /* LeaveApplyRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyRecordController.m; sourceTree = "<group>"; };
+		59CC54B51DACEA5F0030D486 /* LeavaRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavaRecordListModel.h; sourceTree = "<group>"; };
+		59CC54B61DACEA5F0030D486 /* LeavaRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavaRecordListModel.m; sourceTree = "<group>"; };
+		59CC54B91DACEA5F0030D486 /* LeaveApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyCell.h; sourceTree = "<group>"; };
+		59CC54BA1DACEA5F0030D486 /* LeaveApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyCell.m; sourceTree = "<group>"; };
+		59CC54BB1DACEA5F0030D486 /* LeaveApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplyView.h; sourceTree = "<group>"; };
+		59CC54BC1DACEA5F0030D486 /* LeaveApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplyView.m; sourceTree = "<group>"; };
+		59CC54BD1DACEA5F0030D486 /* LeaveRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordCell.h; sourceTree = "<group>"; };
+		59CC54BE1DACEA5F0030D486 /* LeaveRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordCell.m; sourceTree = "<group>"; };
+		59CC54BF1DACEA5F0030D486 /* LeaveRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRecordView.h; sourceTree = "<group>"; };
+		59CC54C01DACEA5F0030D486 /* LeaveRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRecordView.m; sourceTree = "<group>"; };
+		59CC54C31DACEA5F0030D486 /* DDChannelLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChannelLabel.h; sourceTree = "<group>"; };
+		59CC54C41DACEA5F0030D486 /* DDChannelLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChannelLabel.m; sourceTree = "<group>"; };
+		59CC54C51DACEA5F0030D486 /* MMDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataBase.h; sourceTree = "<group>"; };
+		59CC54C61DACEA5F0030D486 /* MMDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataBase.m; sourceTree = "<group>"; };
+		59CC54C71DACEA5F0030D486 /* MMNoDataShowBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNoDataShowBGView.h; sourceTree = "<group>"; };
+		59CC54C81DACEA5F0030D486 /* MMNoDataShowBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNoDataShowBGView.m; sourceTree = "<group>"; };
+		59CC54C91DACEA5F0030D486 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
+		59CC54CA1DACEA5F0030D486 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		59CC54CD1DACEA5F0030D486 /* OverTimeApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyController.h; sourceTree = "<group>"; };
+		59CC54CE1DACEA5F0030D486 /* OverTimeApplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyController.m; sourceTree = "<group>"; };
+		59CC54D01DACEA5F0030D486 /* OverTimeRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordListModel.h; sourceTree = "<group>"; };
+		59CC54D11DACEA5F0030D486 /* OverTimeRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordListModel.m; sourceTree = "<group>"; };
+		59CC54D41DACEA5F0030D486 /* OverTimeApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyCell.h; sourceTree = "<group>"; };
+		59CC54D51DACEA5F0030D486 /* OverTimeApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyCell.m; sourceTree = "<group>"; };
+		59CC54D61DACEA5F0030D486 /* OverTimeApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplyView.h; sourceTree = "<group>"; };
+		59CC54D71DACEA5F0030D486 /* OverTimeApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplyView.m; sourceTree = "<group>"; };
+		59CC54D81DACEA5F0030D486 /* OverTimeRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordCell.h; sourceTree = "<group>"; };
+		59CC54D91DACEA5F0030D486 /* OverTimeRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordCell.m; sourceTree = "<group>"; };
+		59CC54DA1DACEA5F0030D486 /* OverTimeRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeRecordView.h; sourceTree = "<group>"; };
+		59CC54DB1DACEA5F0030D486 /* OverTimeRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeRecordView.m; sourceTree = "<group>"; };
+		59CC54DF1DACEA5F0030D486 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		59CC54E01DACEA5F0030D486 /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		59CC54E11DACEA5F0030D486 /* PersonalMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageController.h; sourceTree = "<group>"; };
+		59CC54E21DACEA5F0030D486 /* PersonalMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageController.m; sourceTree = "<group>"; };
+		59CC54E41DACEA5F0030D486 /* PersonalMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageModel.h; sourceTree = "<group>"; };
+		59CC54E51DACEA5F0030D486 /* PersonalMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageModel.m; sourceTree = "<group>"; };
+		59CC54E81DACEA5F0030D486 /* PersonalMessageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageDetailCell.h; sourceTree = "<group>"; };
+		59CC54E91DACEA5F0030D486 /* PersonalMessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageDetailCell.m; sourceTree = "<group>"; };
+		59CC54EA1DACEA5F0030D486 /* PersonalMessageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalMessageHeaderView.h; sourceTree = "<group>"; };
+		59CC54EB1DACEA5F0030D486 /* PersonalMessageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalMessageHeaderView.m; sourceTree = "<group>"; };
+		59CC54EE1DACEA5F0030D486 /* EasySerachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasySerachViewController.h; sourceTree = "<group>"; };
+		59CC54EF1DACEA5F0030D486 /* EasySerachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasySerachViewController.m; sourceTree = "<group>"; };
+		59CC54F01DACEA5F0030D486 /* PhoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListController.h; sourceTree = "<group>"; };
+		59CC54F11DACEA5F0030D486 /* PhoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListController.m; sourceTree = "<group>"; };
+		59CC54F21DACEA5F0030D486 /* PhoneListTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableController.h; sourceTree = "<group>"; };
+		59CC54F31DACEA5F0030D486 /* PhoneListTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableController.m; sourceTree = "<group>"; };
+		59CC54F51DACEA5F0030D486 /* PhoneListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListModel.h; sourceTree = "<group>"; };
+		59CC54F61DACEA5F0030D486 /* PhoneListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListModel.m; sourceTree = "<group>"; };
+		59CC54F91DACEA5F0030D486 /* PhoneListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListCell.h; sourceTree = "<group>"; };
+		59CC54FA1DACEA5F0030D486 /* PhoneListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListCell.m; sourceTree = "<group>"; };
+		59CC54FB1DACEA5F0030D486 /* PhoneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableCell.h; sourceTree = "<group>"; };
+		59CC54FC1DACEA5F0030D486 /* PhoneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableCell.m; sourceTree = "<group>"; };
+		59CC54FF1DACEA5F0030D486 /* CollectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionFooterView.h; sourceTree = "<group>"; };
+		59CC55001DACEA5F0030D486 /* CollectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFooterView.m; sourceTree = "<group>"; };
+		59CC55011DACEA5F0030D486 /* MMMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMainCollectionCell.h; sourceTree = "<group>"; };
+		59CC55021DACEA5F0030D486 /* MMMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMainCollectionCell.m; sourceTree = "<group>"; };
+		59CC55041DACEA5F0030D486 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
+		59CC55051DACEA5F0030D486 /* LeaveApplicationDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplicationDetailCell.m; sourceTree = "<group>"; };
+		59CC55061DACEA5F0030D486 /* LeaveApplicationDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailController.h; sourceTree = "<group>"; };
+		59CC55071DACEA5F0030D486 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplicationDetailController.m; sourceTree = "<group>"; };
+		59CC55081DACEA5F0030D486 /* MMCyeleShowLableTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCyeleShowLableTagView.h; sourceTree = "<group>"; };
+		59CC55091DACEA5F0030D486 /* MMCyeleShowLableTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCyeleShowLableTagView.m; sourceTree = "<group>"; };
+		59CC550A1DACEA5F0030D486 /* MMMianCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMianCell.h; sourceTree = "<group>"; };
+		59CC550B1DACEA5F0030D486 /* MMMianCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMianCell.m; sourceTree = "<group>"; };
+		59CC550D1DACEA5F0030D486 /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
+		59CC550E1DACEA5F0030D486 /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
 		59D3FE971D507C62002CCCA4 /* NetworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEntity.h; sourceTree = "<group>"; };
 		59D3FE981D507C62002CCCA4 /* NetworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEntity.m; sourceTree = "<group>"; };
 		59E729EA1D6A8AD700920CC1 /* DVVImagePickerControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVImagePickerControllerManager.h; sourceTree = "<group>"; };
@@ -763,8 +777,6 @@
 		59EC91C71D98D9AD00E802FA /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutSection.h; sourceTree = "<group>"; };
 		59EC91C81D98D9AD00E802FA /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
 		59EC91C91D98D9AD00E802FA /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MWPhotoBrowser.bundle; sourceTree = "<group>"; };
-		59EC91F11D9904F300E802FA /* CollectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionFooterView.h; sourceTree = "<group>"; };
-		59EC91F21D9904F300E802FA /* CollectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFooterView.m; sourceTree = "<group>"; };
 		59F4D6371D81387200C56E5D /* JZUserLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZUserLoginManager.h; sourceTree = "<group>"; };
 		59F4D6381D81387200C56E5D /* JZUserLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZUserLoginManager.m; sourceTree = "<group>"; };
 		59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMShuxin.plist; sourceTree = "<group>"; };
@@ -785,10 +797,6 @@
 		59F651011D70338C000596A7 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		59F651021D70338C000596A7 /* ZYPinYinSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPinYinSearch.h; sourceTree = "<group>"; };
 		59F651031D70338C000596A7 /* ZYPinYinSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYPinYinSearch.m; sourceTree = "<group>"; };
-		59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaveApplicationDetailController.h; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.h; sourceTree = "<group>"; };
-		59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveApplicationDetailController.m; path = ../../View/MMMainDetailView/LeaveApplicationDetailController.m; sourceTree = "<group>"; };
-		59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveApplicationDetailCell.h; sourceTree = "<group>"; };
-		59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveApplicationDetailCell.m; sourceTree = "<group>"; };
 		59FC07921D9512BF00C1D0E0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		59FC07941D9512CD00C1D0E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		59FC07961D9512E300C1D0E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -802,14 +810,6 @@
 		59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDockItem.m; sourceTree = "<group>"; };
 		59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVTabBarController.h; sourceTree = "<group>"; };
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
-		59FC09491D952B6500C1D0E0 /* BuffetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetController.h; sourceTree = "<group>"; };
-		59FC094A1D952B6500C1D0E0 /* BuffetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetController.m; sourceTree = "<group>"; };
-		59FC094C1D952B8700C1D0E0 /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
-		59FC094D1D952B8700C1D0E0 /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
-		59FC094F1D952B9E00C1D0E0 /* ToolsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsController.h; sourceTree = "<group>"; };
-		59FC09501D952B9E00C1D0E0 /* ToolsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsController.m; sourceTree = "<group>"; };
-		59FC09521D952BD700C1D0E0 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
-		59FC09531D952BD700C1D0E0 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -918,15 +918,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		596606C11D7D74C30020CAB0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				596606C51D7D751E0020CAB0 /* MMBaseViewModel.h */,
-				596606C61D7D751E0020CAB0 /* MMBaseViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		597762091D489AE000BD8472 = {
 			isa = PBXGroup;
 			children = (
@@ -956,9 +947,9 @@
 				597762191D489AE000BD8472 /* AppDelegate.mm */,
 				5977621B1D489AE000BD8472 /* ViewController.h */,
 				5977621C1D489AE000BD8472 /* ViewController.m */,
+				59CC54501DACEA5E0030D486 /* Module */,
 				59FC07661D9509F100C1D0E0 /* Lib */,
 				594775F41D7684D80094D354 /* Base */,
-				59A59E351D49CADF001F3122 /* MM_HomeMain */,
 				59A59E301D49C6A3001F3122 /* MM_Login */,
 				59A59DEC1D499937001F3122 /* ThirdPary */,
 				5977624C1D48AB8100BD8472 /* Tool */,
@@ -1019,13 +1010,6 @@
 				59D3FE981D507C62002CCCA4 /* NetworkEntity.m */,
 			);
 			path = "网络";
-			sourceTree = "<group>";
-		};
-		5991AE281D90CBF40034E23B /* LeaveApply */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LeaveApply;
 			sourceTree = "<group>";
 		};
 		59A59DEC1D499937001F3122 /* ThirdPary */ = {
@@ -1144,72 +1128,6 @@
 			path = MM_Login;
 			sourceTree = "<group>";
 		};
-		59A59E351D49CADF001F3122 /* MM_HomeMain */ = {
-			isa = PBXGroup;
-			children = (
-				59CC54321DACE7340030D486 /* OverTime */,
-				59CC541A1DACE7290030D486 /* Leave */,
-				59CC54021DACE5CC0030D486 /* PhoneList */,
-				59CC53BD1DACE41A0030D486 /* Approval */,
-				59CC53931DACE2000030D486 /* Check */,
-				59CC53821DACDE540030D486 /* PersonalMessage */,
-				596606C11D7D74C30020CAB0 /* ViewModel */,
-				59A8D10E1D6EB001002CB709 /* Other */,
-				59A59E361D49CADF001F3122 /* Controller */,
-				59A59E391D49CADF001F3122 /* View */,
-			);
-			path = MM_HomeMain;
-			sourceTree = "<group>";
-		};
-		59A59E361D49CADF001F3122 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				59A59E371D49CADF001F3122 /* MMMainController.h */,
-				59A59E381D49CADF001F3122 /* MMMainController.m */,
-				59FC09491D952B6500C1D0E0 /* BuffetController.h */,
-				59FC094A1D952B6500C1D0E0 /* BuffetController.m */,
-				59FC094C1D952B8700C1D0E0 /* NewsController.h */,
-				59FC094D1D952B8700C1D0E0 /* NewsController.m */,
-				59FC094F1D952B9E00C1D0E0 /* ToolsController.h */,
-				59FC09501D952B9E00C1D0E0 /* ToolsController.m */,
-				59FC09521D952BD700C1D0E0 /* MyController.h */,
-				59FC09531D952BD700C1D0E0 /* MyController.m */,
-				59D3FE901D506CAB002CCCA4 /* MMMainDetailController */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		59A59E391D49CADF001F3122 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				59EC91F11D9904F300E802FA /* CollectionFooterView.h */,
-				59EC91F21D9904F300E802FA /* CollectionFooterView.m */,
-				59C90C3F1D5C627500CE0385 /* MMCycleShowImageView.h */,
-				59C90C401D5C627500CE0385 /* MMCycleShowImageView.m */,
-				595B45B91D502FD30054ED8C /* MMMianCell.h */,
-				595B45BA1D502FD30054ED8C /* MMMianCell.m */,
-				59C90C421D5C6FE900CE0385 /* MMMainCollectionCell.h */,
-				59C90C431D5C6FE900CE0385 /* MMMainCollectionCell.m */,
-				59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		59A8D10E1D6EB001002CB709 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				596A77291D9A1265006CD128 /* MMNoDataShowBGView.h */,
-				596A772A1D9A1265006CD128 /* MMNoDataShowBGView.m */,
-				59A8D10F1D6EB001002CB709 /* DDChannelLabel.h */,
-				59A8D1101D6EB001002CB709 /* DDChannelLabel.m */,
-				5981AFBA1D73C43D0003166C /* MMDataBase.h */,
-				5981AFBB1D73C43D0003166C /* MMDataBase.m */,
-				594775DB1D752B990094D354 /* NSArray+Sort.h */,
-				594775DC1D752B990094D354 /* NSArray+Sort.m */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
 		59C197C21D5ABF8D00C7F593 /* UserInfoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,421 +1137,495 @@
 			path = UserInfoModel;
 			sourceTree = "<group>";
 		};
-		59CC537B1DACDA9B0030D486 /* FDCalendar */ = {
+		59CC54501DACEA5E0030D486 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				59CC537C1DACDA9B0030D486 /* FDCalendar.h */,
-				59CC537D1DACDA9B0030D486 /* FDCalendar.m */,
-				59CC537E1DACDA9B0030D486 /* FDCalendarItem.h */,
-				59CC537F1DACDA9B0030D486 /* FDCalendarItem.m */,
+				59CC54511DACEA5E0030D486 /* Approval */,
+				59CC547F1DACEA5E0030D486 /* Check */,
+				59CC549D1DACEA5E0030D486 /* Controller */,
+				59CC54B01DACEA5F0030D486 /* Leave */,
+				59CC54C21DACEA5F0030D486 /* Other */,
+				59CC54CB1DACEA5F0030D486 /* OverTime */,
+				59CC54DD1DACEA5F0030D486 /* PersonalMessage */,
+				59CC54EC1DACEA5F0030D486 /* PhoneList */,
+				59CC54FE1DACEA5F0030D486 /* View */,
+				59CC550C1DACEA5F0030D486 /* ViewModel */,
 			);
-			path = FDCalendar;
+			path = Module;
 			sourceTree = "<group>";
 		};
-		59CC53821DACDE540030D486 /* PersonalMessage */ = {
+		59CC54511DACEA5E0030D486 /* Approval */ = {
 			isa = PBXGroup;
 			children = (
-				59CC53831DACDE540030D486 /* Controller */,
-				59CC53881DACDE540030D486 /* Model */,
-				59CC53891DACDE540030D486 /* Other */,
-				59CC538A1DACDE540030D486 /* View */,
-			);
-			path = PersonalMessage;
-			sourceTree = "<group>";
-		};
-		59CC53831DACDE540030D486 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53841DACDE540030D486 /* ModifyPasswordViewController.h */,
-				59CC53851DACDE540030D486 /* ModifyPasswordViewController.m */,
-				59CC53861DACDE540030D486 /* PersonalMessageController.h */,
-				59CC53871DACDE540030D486 /* PersonalMessageController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		59CC53881DACDE540030D486 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53FF1DACE5B90030D486 /* PersonalMessageModel.h */,
-				59CC54001DACE5B90030D486 /* PersonalMessageModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		59CC53891DACDE540030D486 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		59CC538A1DACDE540030D486 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				59CC538B1DACDE540030D486 /* PersonalMessageDetailCell.h */,
-				59CC538C1DACDE540030D486 /* PersonalMessageDetailCell.m */,
-				59CC538D1DACDE540030D486 /* PersonalMessageHeaderView.h */,
-				59CC538E1DACDE540030D486 /* PersonalMessageHeaderView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		59CC53931DACE2000030D486 /* Check */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53941DACE2000030D486 /* Controller */,
-				59CC53971DACE2000030D486 /* Model */,
-				59CC539C1DACE2000030D486 /* Other */,
-				59CC539D1DACE2000030D486 /* View */,
-				59CC53AE1DACE2000030D486 /* ViewModel */,
-			);
-			path = Check;
-			sourceTree = "<group>";
-		};
-		59CC53941DACE2000030D486 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53951DACE2000030D486 /* CheckWorkController.h */,
-				59CC53961DACE2000030D486 /* CheckWorkController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		59CC53971DACE2000030D486 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53981DACE2000030D486 /* CheckListModel.h */,
-				59CC53991DACE2000030D486 /* CheckListModel.m */,
-				59CC539A1DACE2000030D486 /* FillListModel.h */,
-				59CC539B1DACE2000030D486 /* FillListModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		59CC539C1DACE2000030D486 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		59CC539D1DACE2000030D486 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				59CC539E1DACE2000030D486 /* CheckRecordCell.h */,
-				59CC539F1DACE2000030D486 /* CheckRecordCell.m */,
-				59CC53A01DACE2000030D486 /* CheckRecordView.h */,
-				59CC53A11DACE2000030D486 /* CheckRecordView.m */,
-				59CC53A21DACE2000030D486 /* CheckView.h */,
-				59CC53A31DACE2000030D486 /* CheckView.m */,
-				59CC53A41DACE2000030D486 /* FillApplyView.h */,
-				59CC53A51DACE2000030D486 /* FillApplyView.m */,
-				59CC53A61DACE2000030D486 /* FillRecordCell.h */,
-				59CC53A71DACE2000030D486 /* FillRecordCell.m */,
-				59CC53A81DACE2000030D486 /* FillRecordView.h */,
-				59CC53A91DACE2000030D486 /* FillRecordView.m */,
-				59CC53AA1DACE2000030D486 /* MMChooseTextFile.h */,
-				59CC53AB1DACE2000030D486 /* MMChooseTextFile.m */,
-				59CC53AC1DACE2000030D486 /* popOutView.h */,
-				59CC53AD1DACE2000030D486 /* popOutView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		59CC53AE1DACE2000030D486 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53AF1DACE2000030D486 /* SignUpViewModel.h */,
-				59CC53B01DACE2000030D486 /* SignUpViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		59CC53BD1DACE41A0030D486 /* Approval */ = {
-			isa = PBXGroup;
-			children = (
-				59CC53BE1DACE41A0030D486 /* Controller */,
-				59CC53C71DACE41A0030D486 /* Model */,
-				59CC53CE1DACE41A0030D486 /* Other */,
-				59CC53CF1DACE41A0030D486 /* View */,
-				59CC53E81DACE41A0030D486 /* ViewModel */,
+				59CC54521DACEA5E0030D486 /* Controller */,
+				59CC545B1DACEA5E0030D486 /* Model */,
+				59CC54621DACEA5E0030D486 /* Other */,
+				59CC54631DACEA5E0030D486 /* View */,
+				59CC547C1DACEA5E0030D486 /* ViewModel */,
 			);
 			path = Approval;
 			sourceTree = "<group>";
 		};
-		59CC53BE1DACE41A0030D486 /* Controller */ = {
+		59CC54521DACEA5E0030D486 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				59CC53BF1DACE41A0030D486 /* ApprovalController.h */,
-				59CC53C01DACE41A0030D486 /* ApprovalController.m */,
-				59CC53C11DACE41A0030D486 /* LeaveApprovalDetailController.h */,
-				59CC53C21DACE41A0030D486 /* LeaveApprovalDetailController.m */,
-				59CC53C31DACE41A0030D486 /* OverTimeDetailController.h */,
-				59CC53C41DACE41A0030D486 /* OverTimeDetailController.m */,
-				59CC53C51DACE41A0030D486 /* SignUpApprovalDetailController.h */,
-				59CC53C61DACE41A0030D486 /* SignUpApprovalDetailController.m */,
+				59CC54531DACEA5E0030D486 /* ApprovalController.h */,
+				59CC54541DACEA5E0030D486 /* ApprovalController.m */,
+				59CC54551DACEA5E0030D486 /* LeaveApprovalDetailController.h */,
+				59CC54561DACEA5E0030D486 /* LeaveApprovalDetailController.m */,
+				59CC54571DACEA5E0030D486 /* OverTimeDetailController.h */,
+				59CC54581DACEA5E0030D486 /* OverTimeDetailController.m */,
+				59CC54591DACEA5E0030D486 /* SignUpApprovalDetailController.h */,
+				59CC545A1DACEA5E0030D486 /* SignUpApprovalDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		59CC53C71DACE41A0030D486 /* Model */ = {
+		59CC545B1DACEA5E0030D486 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59CC53C81DACE41A0030D486 /* LeaveApprovalListModel.h */,
-				59CC53C91DACE41A0030D486 /* LeaveApprovalListModel.m */,
-				59CC53CA1DACE41A0030D486 /* OverTimeListModel.h */,
-				59CC53CB1DACE41A0030D486 /* OverTimeListModel.m */,
-				59CC53CC1DACE41A0030D486 /* SignUpApprovalListModel.h */,
-				59CC53CD1DACE41A0030D486 /* SignUpApprovalListModel.m */,
+				59CC545C1DACEA5E0030D486 /* LeaveApprovalListModel.h */,
+				59CC545D1DACEA5E0030D486 /* LeaveApprovalListModel.m */,
+				59CC545E1DACEA5E0030D486 /* OverTimeListModel.h */,
+				59CC545F1DACEA5E0030D486 /* OverTimeListModel.m */,
+				59CC54601DACEA5E0030D486 /* SignUpApprovalListModel.h */,
+				59CC54611DACEA5E0030D486 /* SignUpApprovalListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		59CC53CE1DACE41A0030D486 /* Other */ = {
+		59CC54621DACEA5E0030D486 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		59CC53CF1DACE41A0030D486 /* View */ = {
+		59CC54631DACEA5E0030D486 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				59CC53D01DACE41A0030D486 /* ApprovalTextFiledView.h */,
-				59CC53D11DACE41A0030D486 /* ApprovalTextFiledView.m */,
-				59CC53D21DACE41A0030D486 /* FileMainApprovalDetailCell.h */,
-				59CC53D31DACE41A0030D486 /* FileMainApprovalDetailCell.m */,
-				59CC53D41DACE41A0030D486 /* LeaveApprovalCell.h */,
-				59CC53D51DACE41A0030D486 /* LeaveApprovalCell.m */,
-				59CC53D61DACE41A0030D486 /* LeaveApprovalView.h */,
-				59CC53D71DACE41A0030D486 /* LeaveApprovalView.m */,
-				59CC53D81DACE41A0030D486 /* MMBottomButton.h */,
-				59CC53D91DACE41A0030D486 /* MMBottomButton.m */,
-				59CC53DA1DACE41A0030D486 /* MMLeaveTitleView.h */,
-				59CC53DB1DACE41A0030D486 /* MMLeaveTitleView.m */,
-				59CC53DC1DACE41A0030D486 /* MMTitleLabel.h */,
-				59CC53DD1DACE41A0030D486 /* MMTitleLabel.m */,
-				59CC53DE1DACE41A0030D486 /* OverTimeCell.h */,
-				59CC53DF1DACE41A0030D486 /* OverTimeCell.m */,
-				59CC53E01DACE41A0030D486 /* OverTimeView.h */,
-				59CC53E11DACE41A0030D486 /* OverTimeView.m */,
-				59CC53E21DACE41A0030D486 /* SignUpApprovalCell.h */,
-				59CC53E31DACE41A0030D486 /* SignUpApprovalCell.m */,
-				59CC53E41DACE41A0030D486 /* SignUpApprovalView.h */,
-				59CC53E51DACE41A0030D486 /* SignUpApprovalView.m */,
-				59CC53E61DACE41A0030D486 /* TextMainApprovalDetailCell.h */,
-				59CC53E71DACE41A0030D486 /* TextMainApprovalDetailCell.m */,
+				59CC54641DACEA5E0030D486 /* ApprovalTextFiledView.h */,
+				59CC54651DACEA5E0030D486 /* ApprovalTextFiledView.m */,
+				59CC54661DACEA5E0030D486 /* FileMainApprovalDetailCell.h */,
+				59CC54671DACEA5E0030D486 /* FileMainApprovalDetailCell.m */,
+				59CC54681DACEA5E0030D486 /* LeaveApprovalCell.h */,
+				59CC54691DACEA5E0030D486 /* LeaveApprovalCell.m */,
+				59CC546A1DACEA5E0030D486 /* LeaveApprovalView.h */,
+				59CC546B1DACEA5E0030D486 /* LeaveApprovalView.m */,
+				59CC546C1DACEA5E0030D486 /* MMBottomButton.h */,
+				59CC546D1DACEA5E0030D486 /* MMBottomButton.m */,
+				59CC546E1DACEA5E0030D486 /* MMLeaveTitleView.h */,
+				59CC546F1DACEA5E0030D486 /* MMLeaveTitleView.m */,
+				59CC54701DACEA5E0030D486 /* MMTitleLabel.h */,
+				59CC54711DACEA5E0030D486 /* MMTitleLabel.m */,
+				59CC54721DACEA5E0030D486 /* OverTimeCell.h */,
+				59CC54731DACEA5E0030D486 /* OverTimeCell.m */,
+				59CC54741DACEA5E0030D486 /* OverTimeView.h */,
+				59CC54751DACEA5E0030D486 /* OverTimeView.m */,
+				59CC54761DACEA5E0030D486 /* SignUpApprovalCell.h */,
+				59CC54771DACEA5E0030D486 /* SignUpApprovalCell.m */,
+				59CC54781DACEA5E0030D486 /* SignUpApprovalView.h */,
+				59CC54791DACEA5E0030D486 /* SignUpApprovalView.m */,
+				59CC547A1DACEA5E0030D486 /* TextMainApprovalDetailCell.h */,
+				59CC547B1DACEA5E0030D486 /* TextMainApprovalDetailCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		59CC53E81DACE41A0030D486 /* ViewModel */ = {
+		59CC547C1DACEA5E0030D486 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				59CC53E91DACE41A0030D486 /* ApprovalViewModel.h */,
-				59CC53EA1DACE41A0030D486 /* ApprovalViewModel.m */,
+				59CC547D1DACEA5E0030D486 /* ApprovalViewModel.h */,
+				59CC547E1DACEA5E0030D486 /* ApprovalViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		59CC54021DACE5CC0030D486 /* PhoneList */ = {
+		59CC547F1DACEA5E0030D486 /* Check */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54031DACE5CC0030D486 /* Controller */,
-				59CC540A1DACE5CC0030D486 /* Model */,
-				59CC540D1DACE5CC0030D486 /* Other */,
-				59CC540E1DACE5CC0030D486 /* View */,
-				59CC54131DACE5CC0030D486 /* ViewModel */,
+				59CC54801DACEA5E0030D486 /* Controller */,
+				59CC54831DACEA5E0030D486 /* Model */,
+				59CC54881DACEA5E0030D486 /* Other */,
+				59CC54891DACEA5E0030D486 /* View */,
+				59CC549A1DACEA5E0030D486 /* ViewModel */,
 			);
-			path = PhoneList;
+			path = Check;
 			sourceTree = "<group>";
 		};
-		59CC54031DACE5CC0030D486 /* Controller */ = {
+		59CC54801DACEA5E0030D486 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54041DACE5CC0030D486 /* EasySerachViewController.h */,
-				59CC54051DACE5CC0030D486 /* EasySerachViewController.m */,
-				59CC54061DACE5CC0030D486 /* PhoneListController.h */,
-				59CC54071DACE5CC0030D486 /* PhoneListController.m */,
-				59CC54081DACE5CC0030D486 /* PhoneListTableController.h */,
-				59CC54091DACE5CC0030D486 /* PhoneListTableController.m */,
+				59CC54811DACEA5E0030D486 /* CheckWorkController.h */,
+				59CC54821DACEA5E0030D486 /* CheckWorkController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		59CC540A1DACE5CC0030D486 /* Model */ = {
+		59CC54831DACEA5E0030D486 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59CC540B1DACE5CC0030D486 /* PhoneListModel.h */,
-				59CC540C1DACE5CC0030D486 /* PhoneListModel.m */,
+				59CC54841DACEA5E0030D486 /* CheckListModel.h */,
+				59CC54851DACEA5E0030D486 /* CheckListModel.m */,
+				59CC54861DACEA5E0030D486 /* FillListModel.h */,
+				59CC54871DACEA5E0030D486 /* FillListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		59CC540D1DACE5CC0030D486 /* Other */ = {
+		59CC54881DACEA5E0030D486 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		59CC540E1DACE5CC0030D486 /* View */ = {
+		59CC54891DACEA5E0030D486 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				59CC540F1DACE5CC0030D486 /* PhoneListCell.h */,
-				59CC54101DACE5CC0030D486 /* PhoneListCell.m */,
-				59CC54111DACE5CC0030D486 /* PhoneListTableCell.h */,
-				59CC54121DACE5CC0030D486 /* PhoneListTableCell.m */,
+				59CC548A1DACEA5E0030D486 /* CheckRecordCell.h */,
+				59CC548B1DACEA5E0030D486 /* CheckRecordCell.m */,
+				59CC548C1DACEA5E0030D486 /* CheckRecordView.h */,
+				59CC548D1DACEA5E0030D486 /* CheckRecordView.m */,
+				59CC548E1DACEA5E0030D486 /* CheckView.h */,
+				59CC548F1DACEA5E0030D486 /* CheckView.m */,
+				59CC54901DACEA5E0030D486 /* FillApplyView.h */,
+				59CC54911DACEA5E0030D486 /* FillApplyView.m */,
+				59CC54921DACEA5E0030D486 /* FillRecordCell.h */,
+				59CC54931DACEA5E0030D486 /* FillRecordCell.m */,
+				59CC54941DACEA5E0030D486 /* FillRecordView.h */,
+				59CC54951DACEA5E0030D486 /* FillRecordView.m */,
+				59CC54961DACEA5E0030D486 /* MMChooseTextFile.h */,
+				59CC54971DACEA5E0030D486 /* MMChooseTextFile.m */,
+				59CC54981DACEA5E0030D486 /* popOutView.h */,
+				59CC54991DACEA5E0030D486 /* popOutView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		59CC54131DACE5CC0030D486 /* ViewModel */ = {
+		59CC549A1DACEA5E0030D486 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				59CC549B1DACEA5E0030D486 /* SignUpViewModel.h */,
+				59CC549C1DACEA5E0030D486 /* SignUpViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		59CC541A1DACE7290030D486 /* Leave */ = {
+		59CC549D1DACEA5E0030D486 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				59CC541B1DACE7290030D486 /* Controller */,
-				59CC541E1DACE7290030D486 /* Model */,
-				59CC54211DACE7290030D486 /* Other */,
-				59CC54221DACE7290030D486 /* View */,
-				59CC542B1DACE7290030D486 /* ViewModel */,
+				59CC549E1DACEA5E0030D486 /* BuffetController.h */,
+				59CC549F1DACEA5E0030D486 /* BuffetController.m */,
+				59CC54A01DACEA5E0030D486 /* MMCycleShowImageView.h */,
+				59CC54A11DACEA5E0030D486 /* MMCycleShowImageView.m */,
+				59CC54A21DACEA5E0030D486 /* MMMainController.h */,
+				59CC54A31DACEA5E0030D486 /* MMMainController.m */,
+				59CC54A41DACEA5E0030D486 /* MMMainDetailController */,
+				59CC54AA1DACEA5E0030D486 /* MyController.h */,
+				59CC54AB1DACEA5E0030D486 /* MyController.m */,
+				59CC54AC1DACEA5E0030D486 /* NewsController.h */,
+				59CC54AD1DACEA5F0030D486 /* NewsController.m */,
+				59CC54AE1DACEA5F0030D486 /* ToolsController.h */,
+				59CC54AF1DACEA5F0030D486 /* ToolsController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		59CC54A41DACEA5E0030D486 /* MMMainDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54A51DACEA5E0030D486 /* FDCalendar */,
+			);
+			path = MMMainDetailController;
+			sourceTree = "<group>";
+		};
+		59CC54A51DACEA5E0030D486 /* FDCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54A61DACEA5E0030D486 /* FDCalendar.h */,
+				59CC54A71DACEA5E0030D486 /* FDCalendar.m */,
+				59CC54A81DACEA5E0030D486 /* FDCalendarItem.h */,
+				59CC54A91DACEA5E0030D486 /* FDCalendarItem.m */,
+			);
+			path = FDCalendar;
+			sourceTree = "<group>";
+		};
+		59CC54B01DACEA5F0030D486 /* Leave */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54B11DACEA5F0030D486 /* Controller */,
+				59CC54B41DACEA5F0030D486 /* Model */,
+				59CC54B71DACEA5F0030D486 /* Other */,
+				59CC54B81DACEA5F0030D486 /* View */,
+				59CC54C11DACEA5F0030D486 /* ViewModel */,
 			);
 			path = Leave;
 			sourceTree = "<group>";
 		};
-		59CC541B1DACE7290030D486 /* Controller */ = {
+		59CC54B11DACEA5F0030D486 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				59CC541C1DACE7290030D486 /* LeaveApplyRecordController.h */,
-				59CC541D1DACE7290030D486 /* LeaveApplyRecordController.m */,
+				59CC54B21DACEA5F0030D486 /* LeaveApplyRecordController.h */,
+				59CC54B31DACEA5F0030D486 /* LeaveApplyRecordController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		59CC541E1DACE7290030D486 /* Model */ = {
+		59CC54B41DACEA5F0030D486 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59CC541F1DACE7290030D486 /* LeavaRecordListModel.h */,
-				59CC54201DACE7290030D486 /* LeavaRecordListModel.m */,
+				59CC54B51DACEA5F0030D486 /* LeavaRecordListModel.h */,
+				59CC54B61DACEA5F0030D486 /* LeavaRecordListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		59CC54211DACE7290030D486 /* Other */ = {
+		59CC54B71DACEA5F0030D486 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		59CC54221DACE7290030D486 /* View */ = {
+		59CC54B81DACEA5F0030D486 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54231DACE7290030D486 /* LeaveApplyCell.h */,
-				59CC54241DACE7290030D486 /* LeaveApplyCell.m */,
-				59CC54251DACE7290030D486 /* LeaveApplyView.h */,
-				59CC54261DACE7290030D486 /* LeaveApplyView.m */,
-				59CC54271DACE7290030D486 /* LeaveRecordCell.h */,
-				59CC54281DACE7290030D486 /* LeaveRecordCell.m */,
-				59CC54291DACE7290030D486 /* LeaveRecordView.h */,
-				59CC542A1DACE7290030D486 /* LeaveRecordView.m */,
+				59CC54B91DACEA5F0030D486 /* LeaveApplyCell.h */,
+				59CC54BA1DACEA5F0030D486 /* LeaveApplyCell.m */,
+				59CC54BB1DACEA5F0030D486 /* LeaveApplyView.h */,
+				59CC54BC1DACEA5F0030D486 /* LeaveApplyView.m */,
+				59CC54BD1DACEA5F0030D486 /* LeaveRecordCell.h */,
+				59CC54BE1DACEA5F0030D486 /* LeaveRecordCell.m */,
+				59CC54BF1DACEA5F0030D486 /* LeaveRecordView.h */,
+				59CC54C01DACEA5F0030D486 /* LeaveRecordView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		59CC542B1DACE7290030D486 /* ViewModel */ = {
+		59CC54C11DACEA5F0030D486 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		59CC54321DACE7340030D486 /* OverTime */ = {
+		59CC54C21DACEA5F0030D486 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54331DACE7340030D486 /* Controller */,
-				59CC54361DACE7340030D486 /* Model */,
-				59CC54391DACE7340030D486 /* Other */,
-				59CC543A1DACE7340030D486 /* View */,
-				59CC54431DACE7340030D486 /* ViewModel */,
+				59CC54C31DACEA5F0030D486 /* DDChannelLabel.h */,
+				59CC54C41DACEA5F0030D486 /* DDChannelLabel.m */,
+				59CC54C51DACEA5F0030D486 /* MMDataBase.h */,
+				59CC54C61DACEA5F0030D486 /* MMDataBase.m */,
+				59CC54C71DACEA5F0030D486 /* MMNoDataShowBGView.h */,
+				59CC54C81DACEA5F0030D486 /* MMNoDataShowBGView.m */,
+				59CC54C91DACEA5F0030D486 /* NSArray+Sort.h */,
+				59CC54CA1DACEA5F0030D486 /* NSArray+Sort.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		59CC54CB1DACEA5F0030D486 /* OverTime */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54CC1DACEA5F0030D486 /* Controller */,
+				59CC54CF1DACEA5F0030D486 /* Model */,
+				59CC54D21DACEA5F0030D486 /* Other */,
+				59CC54D31DACEA5F0030D486 /* View */,
+				59CC54DC1DACEA5F0030D486 /* ViewModel */,
 			);
 			path = OverTime;
 			sourceTree = "<group>";
 		};
-		59CC54331DACE7340030D486 /* Controller */ = {
+		59CC54CC1DACEA5F0030D486 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54341DACE7340030D486 /* OverTimeApplyController.h */,
-				59CC54351DACE7340030D486 /* OverTimeApplyController.m */,
+				59CC54CD1DACEA5F0030D486 /* OverTimeApplyController.h */,
+				59CC54CE1DACEA5F0030D486 /* OverTimeApplyController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		59CC54361DACE7340030D486 /* Model */ = {
+		59CC54CF1DACEA5F0030D486 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59CC54371DACE7340030D486 /* OverTimeRecordListModel.h */,
-				59CC54381DACE7340030D486 /* OverTimeRecordListModel.m */,
+				59CC54D01DACEA5F0030D486 /* OverTimeRecordListModel.h */,
+				59CC54D11DACEA5F0030D486 /* OverTimeRecordListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		59CC54391DACE7340030D486 /* Other */ = {
+		59CC54D21DACEA5F0030D486 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		59CC543A1DACE7340030D486 /* View */ = {
+		59CC54D31DACEA5F0030D486 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				59CC543B1DACE7340030D486 /* OverTimeApplyCell.h */,
-				59CC543C1DACE7340030D486 /* OverTimeApplyCell.m */,
-				59CC543D1DACE7340030D486 /* OverTimeApplyView.h */,
-				59CC543E1DACE7340030D486 /* OverTimeApplyView.m */,
-				59CC543F1DACE7340030D486 /* OverTimeRecordCell.h */,
-				59CC54401DACE7340030D486 /* OverTimeRecordCell.m */,
-				59CC54411DACE7340030D486 /* OverTimeRecordView.h */,
-				59CC54421DACE7340030D486 /* OverTimeRecordView.m */,
+				59CC54D41DACEA5F0030D486 /* OverTimeApplyCell.h */,
+				59CC54D51DACEA5F0030D486 /* OverTimeApplyCell.m */,
+				59CC54D61DACEA5F0030D486 /* OverTimeApplyView.h */,
+				59CC54D71DACEA5F0030D486 /* OverTimeApplyView.m */,
+				59CC54D81DACEA5F0030D486 /* OverTimeRecordCell.h */,
+				59CC54D91DACEA5F0030D486 /* OverTimeRecordCell.m */,
+				59CC54DA1DACEA5F0030D486 /* OverTimeRecordView.h */,
+				59CC54DB1DACEA5F0030D486 /* OverTimeRecordView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		59CC54431DACE7340030D486 /* ViewModel */ = {
+		59CC54DC1DACEA5F0030D486 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		59D3FE8F1D506C97002CCCA4 /* MMMainDetailView */ = {
+		59CC54DD1DACEA5F0030D486 /* PersonalMessage */ = {
 			isa = PBXGroup;
 			children = (
-				5991AE281D90CBF40034E23B /* LeaveApply */,
-				59FA657F1D51EAA70013D490 /* LeaveApplicationDetailCell.h */,
-				59FA65801D51EAA70013D490 /* LeaveApplicationDetailCell.m */,
-				599A25391D6F374800EF27F4 /* MMCyeleShowLableTagView.h */,
-				599A253A1D6F374800EF27F4 /* MMCyeleShowLableTagView.m */,
+				59CC54DE1DACEA5F0030D486 /* Controller */,
+				59CC54E31DACEA5F0030D486 /* Model */,
+				59CC54E61DACEA5F0030D486 /* Other */,
+				59CC54E71DACEA5F0030D486 /* View */,
+			);
+			path = PersonalMessage;
+			sourceTree = "<group>";
+		};
+		59CC54DE1DACEA5F0030D486 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54DF1DACEA5F0030D486 /* ModifyPasswordViewController.h */,
+				59CC54E01DACEA5F0030D486 /* ModifyPasswordViewController.m */,
+				59CC54E11DACEA5F0030D486 /* PersonalMessageController.h */,
+				59CC54E21DACEA5F0030D486 /* PersonalMessageController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		59CC54E31DACEA5F0030D486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54E41DACEA5F0030D486 /* PersonalMessageModel.h */,
+				59CC54E51DACEA5F0030D486 /* PersonalMessageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59CC54E61DACEA5F0030D486 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		59CC54E71DACEA5F0030D486 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54E81DACEA5F0030D486 /* PersonalMessageDetailCell.h */,
+				59CC54E91DACEA5F0030D486 /* PersonalMessageDetailCell.m */,
+				59CC54EA1DACEA5F0030D486 /* PersonalMessageHeaderView.h */,
+				59CC54EB1DACEA5F0030D486 /* PersonalMessageHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59CC54EC1DACEA5F0030D486 /* PhoneList */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54ED1DACEA5F0030D486 /* Controller */,
+				59CC54F41DACEA5F0030D486 /* Model */,
+				59CC54F71DACEA5F0030D486 /* Other */,
+				59CC54F81DACEA5F0030D486 /* View */,
+				59CC54FD1DACEA5F0030D486 /* ViewModel */,
+			);
+			path = PhoneList;
+			sourceTree = "<group>";
+		};
+		59CC54ED1DACEA5F0030D486 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54EE1DACEA5F0030D486 /* EasySerachViewController.h */,
+				59CC54EF1DACEA5F0030D486 /* EasySerachViewController.m */,
+				59CC54F01DACEA5F0030D486 /* PhoneListController.h */,
+				59CC54F11DACEA5F0030D486 /* PhoneListController.m */,
+				59CC54F21DACEA5F0030D486 /* PhoneListTableController.h */,
+				59CC54F31DACEA5F0030D486 /* PhoneListTableController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		59CC54F41DACEA5F0030D486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54F51DACEA5F0030D486 /* PhoneListModel.h */,
+				59CC54F61DACEA5F0030D486 /* PhoneListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59CC54F71DACEA5F0030D486 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		59CC54F81DACEA5F0030D486 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54F91DACEA5F0030D486 /* PhoneListCell.h */,
+				59CC54FA1DACEA5F0030D486 /* PhoneListCell.m */,
+				59CC54FB1DACEA5F0030D486 /* PhoneListTableCell.h */,
+				59CC54FC1DACEA5F0030D486 /* PhoneListTableCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59CC54FD1DACEA5F0030D486 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		59CC54FE1DACEA5F0030D486 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59CC54FF1DACEA5F0030D486 /* CollectionFooterView.h */,
+				59CC55001DACEA5F0030D486 /* CollectionFooterView.m */,
+				59CC55011DACEA5F0030D486 /* MMMainCollectionCell.h */,
+				59CC55021DACEA5F0030D486 /* MMMainCollectionCell.m */,
+				59CC55031DACEA5F0030D486 /* MMMainDetailView */,
+				59CC550A1DACEA5F0030D486 /* MMMianCell.h */,
+				59CC550B1DACEA5F0030D486 /* MMMianCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59CC55031DACEA5F0030D486 /* MMMainDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				59CC55041DACEA5F0030D486 /* LeaveApplicationDetailCell.h */,
+				59CC55051DACEA5F0030D486 /* LeaveApplicationDetailCell.m */,
+				59CC55061DACEA5F0030D486 /* LeaveApplicationDetailController.h */,
+				59CC55071DACEA5F0030D486 /* LeaveApplicationDetailController.m */,
+				59CC55081DACEA5F0030D486 /* MMCyeleShowLableTagView.h */,
+				59CC55091DACEA5F0030D486 /* MMCyeleShowLableTagView.m */,
 			);
 			path = MMMainDetailView;
 			sourceTree = "<group>";
 		};
-		59D3FE901D506CAB002CCCA4 /* MMMainDetailController */ = {
+		59CC550C1DACEA5F0030D486 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				59CC537B1DACDA9B0030D486 /* FDCalendar */,
-				59FA657C1D51E5E50013D490 /* LeaveApplicationDetailController.h */,
-				59FA657D1D51E5E50013D490 /* LeaveApplicationDetailController.m */,
+				59CC550D1DACEA5F0030D486 /* MMBaseViewModel.h */,
+				59CC550E1DACEA5F0030D486 /* MMBaseViewModel.m */,
 			);
-			path = MMMainDetailController;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		59EC8E671D98BE1A00E802FA /* EaseMob */ = {
@@ -2403,139 +2395,137 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59CC55421DACEA5F0030D486 /* OverTimeRecordListModel.m in Sources */,
 				5901494E1D8FC57900B2BAE2 /* HMNagationController.m in Sources */,
 				59EC915F1D98CB5900E802FA /* EaseBubbleView+File.m in Sources */,
 				59EC91CF1D98D9AD00E802FA /* MWTapDetectingImageView.m in Sources */,
 				59EC91D31D98D9AD00E802FA /* EMSDImageCache.m in Sources */,
-				59CC53F61DACE41A0030D486 /* MMBottomButton.m in Sources */,
-				59CC54191DACE5CC0030D486 /* PhoneListTableCell.m in Sources */,
+				59CC551A1DACEA5F0030D486 /* MMBottomButton.m in Sources */,
+				59CC55261DACEA5F0030D486 /* CheckRecordCell.m in Sources */,
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				59C005C61D92542300A329CD /* RegisterController.m in Sources */,
 				59EC91591D98CB5900E802FA /* EaseViewController.m in Sources */,
 				59EC91641D98CB5900E802FA /* EaseBubbleView+Video.m in Sources */,
 				59EC91581D98CB5900E802FA /* EaseUsersListViewController.m in Sources */,
-				59FA657E1D51E5E50013D490 /* LeaveApplicationDetailController.m in Sources */,
+				59CC553E1DACEA5F0030D486 /* MMDataBase.m in Sources */,
 				59EC91471D98CB5900E802FA /* EaseConversationModel.m in Sources */,
-				59CC54141DACE5CC0030D486 /* EasySerachViewController.m in Sources */,
-				59FC094E1D952B8700C1D0E0 /* NewsController.m in Sources */,
-				59CC54301DACE7290030D486 /* LeaveRecordCell.m in Sources */,
+				59CC554B1DACEA5F0030D486 /* PersonalMessageHeaderView.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
-				59CC53F91DACE41A0030D486 /* OverTimeCell.m in Sources */,
 				59EC91671D98CB5900E802FA /* EaseChatToolbar.m in Sources */,
-				59CC53BB1DACE2000030D486 /* popOutView.m in Sources */,
+				59CC55381DACEA5F0030D486 /* LeavaRecordListModel.m in Sources */,
+				59CC551D1DACEA5F0030D486 /* OverTimeCell.m in Sources */,
 				59F651061D70338C000596A7 /* HanyuPinyinOutputFormat.m in Sources */,
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				59EC91191D98CB5900E802FA /* EMCDDeviceManagerBase.m in Sources */,
+				59CC553C1DACEA5F0030D486 /* LeaveRecordView.m in Sources */,
 				59EC916D1D98CB5900E802FA /* EaseChatBarMoreView.m in Sources */,
 				59EC91E11D98D9AD00E802FA /* UIImageView+EMWebCache.m in Sources */,
 				59EC91DB1D98D9AD00E802FA /* NSData+EMImageContentType.m in Sources */,
+				59CC55391DACEA5F0030D486 /* LeaveApplyCell.m in Sources */,
 				59EC91CD1D98D9AD00E802FA /* MWPhoto.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
-				59CC54161DACE5CC0030D486 /* PhoneListTableController.m in Sources */,
-				59CC54481DACE7340030D486 /* OverTimeRecordCell.m in Sources */,
-				596A772B1D9A1265006CD128 /* MMNoDataShowBGView.m in Sources */,
+				59CC55301DACEA5F0030D486 /* MMCycleShowImageView.m in Sources */,
 				59EC915D1D98CB5900E802FA /* EaseMessageCell.m in Sources */,
-				59CC53FB1DACE41A0030D486 /* SignUpApprovalCell.m in Sources */,
+				59CC551F1DACEA5F0030D486 /* SignUpApprovalCell.m in Sources */,
 				59EC91501D98CB5900E802FA /* EaseEmojiEmoticons.m in Sources */,
-				59CC53B11DACE2000030D486 /* CheckWorkController.m in Sources */,
+				59CC554C1DACEA5F0030D486 /* EasySerachViewController.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,
 				59EC911A1D98CB5900E802FA /* amrFileCodec.mm in Sources */,
 				59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */,
 				59EC91E21D98D9AD00E802FA /* UIView+EMWebCacheOperation.m in Sources */,
 				59EC91661D98CB5900E802FA /* EaseBubbleView.m in Sources */,
-				59CC53B61DACE2000030D486 /* CheckView.m in Sources */,
+				59CC554A1DACEA5F0030D486 /* PersonalMessageDetailCell.m in Sources */,
 				59EC911C1D98CB5900E802FA /* EMVoiceConverter.mm in Sources */,
-				59A8D1111D6EB001002CB709 /* DDChannelLabel.m in Sources */,
-				59CC54171DACE5CC0030D486 /* PhoneListModel.m in Sources */,
+				59CC55431DACEA5F0030D486 /* OverTimeApplyCell.m in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
-				59CC53B71DACE2000030D486 /* FillApplyView.m in Sources */,
+				59CC55521DACEA5F0030D486 /* CollectionFooterView.m in Sources */,
+				59CC55541DACEA5F0030D486 /* LeaveApplicationDetailCell.m in Sources */,
+				59CC55311DACEA5F0030D486 /* MMMainController.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
-				59CC53FC1DACE41A0030D486 /* SignUpApprovalView.m in Sources */,
 				59EC91E81D98D9AD00E802FA /* PSTCollectionViewFlowLayout.m in Sources */,
+				59CC55511DACEA5F0030D486 /* PhoneListTableCell.m in Sources */,
+				59CC55201DACEA5F0030D486 /* SignUpApprovalView.m in Sources */,
 				59EC91E01D98D9AD00E802FA /* UIImageView+EMHighlightedWebCache.m in Sources */,
-				59CC542C1DACE7290030D486 /* LeaveApplyRecordController.m in Sources */,
-				59CC53B31DACE2000030D486 /* FillListModel.m in Sources */,
-				59EC91F31D9904F300E802FA /* CollectionFooterView.m in Sources */,
-				59CC54181DACE5CC0030D486 /* PhoneListCell.m in Sources */,
+				59CC55451DACEA5F0030D486 /* OverTimeRecordCell.m in Sources */,
 				59EC91571D98CB5900E802FA /* EaseRefreshTableViewController.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
+				59CC55251DACEA5F0030D486 /* FillListModel.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
 				59EC91161D98CB5900E802FA /* EMCDDeviceManager+Microphone.m in Sources */,
 				59EC91EB1D98D9AD00E802FA /* PSTCollectionViewUpdateItem.m in Sources */,
 				59EC91E71D98D9AD00E802FA /* PSTCollectionViewData.m in Sources */,
-				59A59E3A1D49CADF001F3122 /* MMMainController.m in Sources */,
 				594776011D768FEF0094D354 /* RefreshTableView.m in Sources */,
+				59CC55321DACEA5F0030D486 /* FDCalendar.m in Sources */,
 				59EC91D41D98D9AD00E802FA /* EMSDWebImageCompat.m in Sources */,
 				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
 				594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */,
 				59EC91D71D98D9AD00E802FA /* EMSDWebImageDownloaderOperation.m in Sources */,
+				59CC55561DACEA5F0030D486 /* MMCyeleShowLableTagView.m in Sources */,
+				59CC55401DACEA5F0030D486 /* NSArray+Sort.m in Sources */,
 				59EC91DA1D98D9AD00E802FA /* MKAnnotationView+EMWebCache.m in Sources */,
 				59EC91481D98CB5900E802FA /* EaseMessageModel.m in Sources */,
 				59EC91CE1D98D9AD00E802FA /* MWPhotoBrowser.m in Sources */,
 				59EC915B1D98CB5900E802FA /* EaseBaseMessageCell.m in Sources */,
 				59EC91ED1D98D9AD00E802FA /* PSTGridLayoutItem.m in Sources */,
 				59EC91E31D98D9AD00E802FA /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
-				59CC53F31DACE41A0030D486 /* FileMainApprovalDetailCell.m in Sources */,
 				59EC91D61D98D9AD00E802FA /* EMSDWebImageDownloader.m in Sources */,
 				59EC914F1D98CB5900E802FA /* EaseEmoji.m in Sources */,
 				5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */,
-				59CC54151DACE5CC0030D486 /* PhoneListController.m in Sources */,
 				59EC91CC1D98D9AD00E802FA /* MWGridViewController.m in Sources */,
+				59CC55291DACEA5F0030D486 /* FillApplyView.m in Sources */,
+				59CC55481DACEA5F0030D486 /* PersonalMessageController.m in Sources */,
+				59CC55171DACEA5F0030D486 /* FileMainApprovalDetailCell.m in Sources */,
 				59EC91491D98CB5900E802FA /* EaseUserModel.m in Sources */,
 				59EC91541D98CB5900E802FA /* EaseConversationListViewController.m in Sources */,
+				59CC55371DACEA5F0030D486 /* LeaveApplyRecordController.m in Sources */,
 				59EC916A1D98CB5900E802FA /* EaseTextView.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59EC914D1D98CB5900E802FA /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				59EC91DC1D98D9AD00E802FA /* UIButton+EMWebCache.m in Sources */,
-				59CC53EE1DACE41A0030D486 /* SignUpApprovalDetailController.m in Sources */,
-				59CC538F1DACDE540030D486 /* ModifyPasswordViewController.m in Sources */,
-				59FC094B1D952B6500C1D0E0 /* BuffetController.m in Sources */,
-				59CC53FE1DACE41A0030D486 /* ApprovalViewModel.m in Sources */,
-				59FC09511D952B9E00C1D0E0 /* ToolsController.m in Sources */,
-				59CC53FD1DACE41A0030D486 /* TextMainApprovalDetailCell.m in Sources */,
-				59CC53811DACDA9B0030D486 /* FDCalendarItem.m in Sources */,
-				59CC542D1DACE7290030D486 /* LeavaRecordListModel.m in Sources */,
-				59CC542F1DACE7290030D486 /* LeaveApplyView.m in Sources */,
+				59CC55121DACEA5F0030D486 /* SignUpApprovalDetailController.m in Sources */,
+				59CC55221DACEA5F0030D486 /* ApprovalViewModel.m in Sources */,
+				59CC55211DACEA5F0030D486 /* TextMainApprovalDetailCell.m in Sources */,
 				59EC91651D98CB5900E802FA /* EaseBubbleView+Voice.m in Sources */,
-				59CC53BC1DACE2000030D486 /* SignUpViewModel.m in Sources */,
-				59CC53B91DACE2000030D486 /* FillRecordView.m in Sources */,
+				59CC55361DACEA5F0030D486 /* ToolsController.m in Sources */,
 				59EC91E41D98D9AD00E802FA /* PSTCollectionView.m in Sources */,
+				59CC55471DACEA5F0030D486 /* ModifyPasswordViewController.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				59EC91DD1D98D9AD00E802FA /* UIImage+EMGIF.m in Sources */,
 				59EC914A1D98CB5900E802FA /* NSString+Valid.m in Sources */,
 				59EC916E1D98CB5900E802FA /* EaseRecordView.m in Sources */,
+				59CC55281DACEA5F0030D486 /* CheckView.m in Sources */,
 				59CC544F1DACE8310030D486 /* MMScrollView.m in Sources */,
 				59CC544E1DACE8310030D486 /* JZPassRateToolBarView.m in Sources */,
-				59CC53B51DACE2000030D486 /* CheckRecordView.m in Sources */,
-				59CC53BA1DACE2000030D486 /* MMChooseTextFile.m in Sources */,
-				59CC54461DACE7340030D486 /* OverTimeApplyCell.m in Sources */,
-				59CC53921DACDE540030D486 /* PersonalMessageHeaderView.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59EC916B1D98CB5900E802FA /* EaseFaceView.m in Sources */,
+				59CC552A1DACEA5F0030D486 /* FillRecordCell.m in Sources */,
+				59CC550F1DACEA5F0030D486 /* ApprovalController.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
-				59CC53EB1DACE41A0030D486 /* ApprovalController.m in Sources */,
 				59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */,
 				59EC91D01D98D9AD00E802FA /* MWTapDetectingView.m in Sources */,
 				594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */,
 				597762171D489AE000BD8472 /* main.m in Sources */,
+				59CC55111DACEA5F0030D486 /* OverTimeDetailController.m in Sources */,
 				59EC914B1D98CB5900E802FA /* UIViewController+DismissKeyboard.m in Sources */,
-				59CC53ED1DACE41A0030D486 /* OverTimeDetailController.m in Sources */,
-				59CC54451DACE7340030D486 /* OverTimeRecordListModel.m in Sources */,
 				59EC91DF1D98D9AD00E802FA /* UIImage+EMWebP.m in Sources */,
+				59CC55441DACEA5F0030D486 /* OverTimeApplyView.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
 				59EC91461D98CB5900E802FA /* EaseSDKHelper.m in Sources */,
+				59CC553B1DACEA5F0030D486 /* LeaveRecordCell.m in Sources */,
 				59C90C391D5C281700CE0385 /* NSDateFormatter+Category.m in Sources */,
-				59CC54491DACE7340030D486 /* OverTimeRecordView.m in Sources */,
-				59C90C441D5C6FE900CE0385 /* MMMainCollectionCell.m in Sources */,
+				59CC554E1DACEA5F0030D486 /* PhoneListTableController.m in Sources */,
 				59EC91EC1D98D9AD00E802FA /* PSTGridLayoutInfo.m in Sources */,
+				59CC55141DACEA5F0030D486 /* OverTimeListModel.m in Sources */,
 				59D3FE991D507C62002CCCA4 /* NetworkEntity.m in Sources */,
+				59CC55571DACEA5F0030D486 /* MMMianCell.m in Sources */,
+				59CC553F1DACEA5F0030D486 /* MMNoDataShowBGView.m in Sources */,
 				59F651051D70338C000596A7 /* ChineseToPinyinResource.m in Sources */,
-				59CC53F01DACE41A0030D486 /* OverTimeListModel.m in Sources */,
 				59EC91181D98CB5900E802FA /* EMCDDeviceManager+Remind.m in Sources */,
 				59EC91511D98CB5900E802FA /* EaseEmotionEscape.m in Sources */,
+				59CC552F1DACEA5F0030D486 /* BuffetController.m in Sources */,
 				59EC91681D98CB5900E802FA /* EaseChatToolbarItem.m in Sources */,
 				59EC91D51D98D9AD00E802FA /* EMSDWebImageDecoder.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
@@ -2544,89 +2534,91 @@
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59EC91601D98CB5900E802FA /* EaseBubbleView+Gif.m in Sources */,
 				59EC91171D98CB5900E802FA /* EMCDDeviceManager+ProximitySensor.m in Sources */,
-				59CC53B41DACE2000030D486 /* CheckRecordCell.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
+				59CC55271DACEA5F0030D486 /* CheckRecordView.m in Sources */,
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
+				59CC55581DACEA5F0030D486 /* MMBaseViewModel.m in Sources */,
+				59CC55241DACEA5F0030D486 /* CheckListModel.m in Sources */,
 				59EC916F1D98CB5900E802FA /* EaseConversationCell.m in Sources */,
 				59EC91EA1D98D9AD00E802FA /* PSTCollectionViewLayout.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
+				59CC554F1DACEA5F0030D486 /* PhoneListModel.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
-				599A253B1D6F374800EF27F4 /* MMCyeleShowLableTagView.m in Sources */,
-				59CC53F21DACE41A0030D486 /* ApprovalTextFiledView.m in Sources */,
+				59CC55161DACEA5F0030D486 /* ApprovalTextFiledView.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
-				59CC53901DACDE540030D486 /* PersonalMessageController.m in Sources */,
-				59C90C411D5C627500CE0385 /* MMCycleShowImageView.m in Sources */,
+				59CC55491DACEA5F0030D486 /* PersonalMessageModel.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
 				59EC91611D98CB5900E802FA /* EaseBubbleView+Image.m in Sources */,
-				59CC53F41DACE41A0030D486 /* LeaveApprovalCell.m in Sources */,
+				59CC55181DACEA5F0030D486 /* LeaveApprovalCell.m in Sources */,
 				59EC915A1D98CB5900E802FA /* EaseUserCell.m in Sources */,
-				594775DD1D752B990094D354 /* NSArray+Sort.m in Sources */,
+				59CC553D1DACEA5F0030D486 /* DDChannelLabel.m in Sources */,
+				59CC554D1DACEA5F0030D486 /* PhoneListController.m in Sources */,
+				59CC55331DACEA5F0030D486 /* FDCalendarItem.m in Sources */,
 				59EC91CB1D98D9AD00E802FA /* MWGridCell.m in Sources */,
 				59EC91631D98CB5900E802FA /* EaseBubbleView+Text.m in Sources */,
-				59CC53B21DACE2000030D486 /* CheckListModel.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
+				59CC55341DACEA5F0030D486 /* MyController.m in Sources */,
 				59EC91151D98CB5900E802FA /* EMCDDeviceManager+Media.m in Sources */,
+				59CC55231DACEA5F0030D486 /* CheckWorkController.m in Sources */,
 				59EC91D91D98D9AD00E802FA /* EMSDWebImagePrefetcher.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
+				59CC553A1DACEA5F0030D486 /* LeaveApplyView.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
-				59CC53801DACDA9B0030D486 /* FDCalendar.m in Sources */,
+				59CC55351DACEA5F0030D486 /* NewsController.m in Sources */,
 				59EC915C1D98CB5900E802FA /* EaseCustomMessageCell.m in Sources */,
 				592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */,
-				59CC53F51DACE41A0030D486 /* LeaveApprovalView.m in Sources */,
 				59EC91521D98CB5900E802FA /* EaseEmotionManager.m in Sources */,
 				59EC91E61D98D9AD00E802FA /* PSTCollectionViewController.m in Sources */,
 				59F651041D70338C000596A7 /* ChineseInclude.m in Sources */,
+				59CC55191DACEA5F0030D486 /* LeaveApprovalView.m in Sources */,
 				59EC91141D98CB5900E802FA /* EMAudioRecorderUtil.m in Sources */,
-				5981AFBC1D73C43D0003166C /* MMDataBase.m in Sources */,
-				59CC54311DACE7290030D486 /* LeaveRecordView.m in Sources */,
+				59CC55551DACEA5F0030D486 /* LeaveApplicationDetailController.m in Sources */,
+				59CC552C1DACEA5F0030D486 /* MMChooseTextFile.m in Sources */,
+				59CC552D1DACEA5F0030D486 /* popOutView.m in Sources */,
 				59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */,
 				59EC91CA1D98D9AD00E802FA /* MWCaptionView.m in Sources */,
-				59CC53EC1DACE41A0030D486 /* LeaveApprovalDetailController.m in Sources */,
-				595B45BB1D502FD30054ED8C /* MMMianCell.m in Sources */,
+				59CC55531DACEA5F0030D486 /* MMMainCollectionCell.m in Sources */,
 				59EC91561D98CB5900E802FA /* EaseMessageViewController.m in Sources */,
 				59EC91531D98CB5900E802FA /* FixFopen.c in Sources */,
+				59CC55501DACEA5F0030D486 /* PhoneListCell.m in Sources */,
 				59A59DFC1D499937001F3122 /* NSDictionary+StrDic.m in Sources */,
+				59CC55101DACEA5F0030D486 /* LeaveApprovalDetailController.m in Sources */,
 				59EC911B1D98CB5900E802FA /* wav.mm in Sources */,
 				59EC91EF1D98D9AD00E802FA /* PSTGridLayoutSection.m in Sources */,
-				59CC53F81DACE41A0030D486 /* MMTitleLabel.m in Sources */,
 				59EC91551D98CB5900E802FA /* EaseLocationViewController.m in Sources */,
 				59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59EC91131D98CB5900E802FA /* EMAudioPlayerUtil.m in Sources */,
-				59CC542E1DACE7290030D486 /* LeaveApplyCell.m in Sources */,
 				59EC91621D98CB5900E802FA /* EaseBubbleView+Location.m in Sources */,
+				59CC551C1DACEA5F0030D486 /* MMTitleLabel.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
-				59CC54011DACE5B90030D486 /* PersonalMessageModel.m in Sources */,
 				59EC91691D98CB5900E802FA /* EaseImageView.m in Sources */,
-				59FC09541D952BD700C1D0E0 /* MyController.m in Sources */,
-				59CC53EF1DACE41A0030D486 /* LeaveApprovalListModel.m in Sources */,
 				59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */,
 				59EC91D21D98D9AD00E802FA /* DACircularProgressView.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
-				59CC53B81DACE2000030D486 /* FillRecordCell.m in Sources */,
+				59CC55131DACEA5F0030D486 /* LeaveApprovalListModel.m in Sources */,
+				59CC55411DACEA5F0030D486 /* OverTimeApplyController.m in Sources */,
 				59EC916C1D98CB5900E802FA /* EaseFacialView.m in Sources */,
-				59CC53FA1DACE41A0030D486 /* OverTimeView.m in Sources */,
 				59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */,
 				59EC91D81D98D9AD00E802FA /* EMSDWebImageManager.m in Sources */,
 				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
-				59CC54441DACE7340030D486 /* OverTimeApplyController.m in Sources */,
+				59CC55461DACEA5F0030D486 /* OverTimeRecordView.m in Sources */,
+				59CC551E1DACEA5F0030D486 /* OverTimeView.m in Sources */,
 				59EC914E1D98CB5900E802FA /* EaseMessageReadManager.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
+				59CC552E1DACEA5F0030D486 /* SignUpViewModel.m in Sources */,
 				59EC91E51D98D9AD00E802FA /* PSTCollectionViewCell.m in Sources */,
 				59EC91D11D98D9AD00E802FA /* MWZoomingScrollView.m in Sources */,
 				59EC91E91D98D9AD00E802FA /* PSTCollectionViewItemKey.m in Sources */,
-				59CC53911DACDE540030D486 /* PersonalMessageDetailCell.m in Sources */,
 				59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */,
-				59CC54471DACE7340030D486 /* OverTimeApplyView.m in Sources */,
-				596606C71D7D751E0020CAB0 /* MMBaseViewModel.m in Sources */,
-				59CC53F71DACE41A0030D486 /* MMLeaveTitleView.m in Sources */,
-				59CC53F11DACE41A0030D486 /* SignUpApprovalListModel.m in Sources */,
+				59CC552B1DACEA5F0030D486 /* FillRecordView.m in Sources */,
+				59CC551B1DACEA5F0030D486 /* MMLeaveTitleView.m in Sources */,
+				59CC55151DACEA5F0030D486 /* SignUpApprovalListModel.m in Sources */,
 				594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */,
-				59FA65811D51EAA70013D490 /* LeaveApplicationDetailCell.m in Sources */,
 				59EC914C1D98CB5900E802FA /* EaseChineseToPinyin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
