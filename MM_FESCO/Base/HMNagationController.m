@@ -34,19 +34,14 @@
     
     _bar = [UINavigationBar appearance];
     
-    _bar.barTintColor = [UIColor colorWithHexString:@"1abddc"];
+//    _bar.barTintColor = [UIColor colorWithHexString:@"1abddc"];  00b6d8
+    
+        _bar.barTintColor = [UIColor colorWithHexString:@"00b6d8"];
     
     
    [_bar setTranslucent:NO];
 
 //    [_bar setShadowImage:[UIImage new]];
-    
-    
-    
-    
-    
-    
-    
     
     
     // 标题字体颜
@@ -59,11 +54,11 @@
     [super viewWillAppear:animated];
     [self.myNavController setNavigationBarHidden:YES];
     
-    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, kMMWidth, 20)];
-    //设置成绿色
-    statusBarView.backgroundColor=[UIColor colorWithHexString:@"00b6d8"];
-    // 添加到 navigationBar上
-    [_bar addSubview:statusBarView];
+//    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, kMMWidth, 20)];
+//    //设置成绿色
+//    statusBarView.backgroundColor=[UIColor colorWithHexString:@"00b6d8"];
+//    // 添加到 navigationBar上
+//    [_bar addSubview:statusBarView];
 
 }
 

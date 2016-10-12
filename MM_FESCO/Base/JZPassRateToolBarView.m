@@ -67,6 +67,8 @@
 #pragma mark - 按钮的点击事件
 - (void)btnClickAction:(UIButton *)sender {
     
+     CGSize buttonSize = CGSizeMake(WIDTH/_titleArray.count, HEIGHT);
+    
     //加此判断，避免重复按一个按钮，重复触发事件
     if(sender.tag != _selectButtonInteger){
         
@@ -77,7 +79,7 @@
                 //获取frame
                 CGRect rect=button.frame;
                 //现在要移动到的minX坐标
-                CGFloat  newMinX=(sender.tag)*rect.size.width;
+                CGFloat  newMinX=(sender.tag)*buttonSize.width + buttonSize.width/4;
                 
                 rect.origin.x=newMinX;
                 //动画
@@ -157,11 +159,12 @@
     
     _followBarLabel = [UILabel new];
     //添加跟随的按钮
-    CGFloat locationFloat = _selectButtonInteger * buttonSize.width;
+    CGFloat marginX = buttonSize.width / 4;
+    CGFloat locationFloat = (_selectButtonInteger * buttonSize.width) +  marginX;
     if (_followBarLocation) {
-        _followBarLabel.frame = CGRectMake(locationFloat, 0, buttonSize.width, _followBarHeight);
+        _followBarLabel.frame = CGRectMake(locationFloat , 0, buttonSize.width/2, _followBarHeight);
     }else{
-        _followBarLabel.frame = CGRectMake(locationFloat, buttonSize.height-_followBarHeight, buttonSize.width, _followBarHeight);
+        _followBarLabel.frame = CGRectMake(locationFloat, buttonSize.height-_followBarHeight, buttonSize.width/2, _followBarHeight);
     }
     //颜色
     _followBarLabel.backgroundColor = [UIColor yellowColor];

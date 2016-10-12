@@ -96,7 +96,7 @@ static NSString *kMallID = @"MallID";
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
-   _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 125)];
+   _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 150)];
     _cycleImageView.placeImage = img;
     _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
     [_cycleImageView setPageControlLocation:0 isCycle:YES];
@@ -294,7 +294,7 @@ static NSString *kMallID = @"MallID";
         
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 125, self.view.width, self.view.height - self.cycleImageView.height - 64 - 39) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.cycleImageView.height, self.view.width, self.view.height - self.cycleImageView.height - 64 - 39) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

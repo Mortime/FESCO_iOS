@@ -159,14 +159,14 @@
         make.width.mas_equalTo(@65);
     }];
     [self.signResultLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgTopView.mas_top).offset(35);
+        make.top.mas_equalTo(self.bgTopView.mas_top).offset(25);
         make.right.mas_equalTo(self.bgTopView.mas_right).offset(-40);
         make.height.mas_equalTo(@14);
     }];
     [self.bigSignLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.signResultLable.mas_bottom).offset(10);
         make.right.mas_equalTo(self.bgTopView.mas_right).offset(-60);
-        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(-34);
+        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(-44);
     }];
 
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {

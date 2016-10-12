@@ -278,8 +278,8 @@
     if (!_pageControl) {
         
         _pageControl = [UIPageControl new];
-        _pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-        _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+        _pageControl.pageIndicatorTintColor = [UIColor colorWithHexString:@"323a45"];
+        _pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"00b6d8"];
     }
     return _pageControl;
 }
