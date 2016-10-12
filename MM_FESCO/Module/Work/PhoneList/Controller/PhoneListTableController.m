@@ -58,9 +58,16 @@
     }
     NSDictionary *dic = _allPersonListArray[indexPath.row];
     
-    cell.nameLabel.text = [dic objectForKey:@"emp_Name"];
     
-    cell.mobileLabel.text = [dic objectForKey:@"mobile"];
+    if (![[dic objectForKey:@"emp_Name"] isKindOfClass:[NSNull class]]){
+       cell.nameLabel.text = [dic objectForKey:@"emp_Name"];
+    }
+    
+    if (![[dic objectForKey:@"mobile"] isKindOfClass:[NSNull class]]) {
+        cell.mobileLabel.text = [dic objectForKey:@"mobile"];
+    }
+    
+    
     
     cell.parantVC = nil;
     cell.parantVC  = self;

@@ -19,7 +19,7 @@
 @implementation MMMainCollectionCell
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame

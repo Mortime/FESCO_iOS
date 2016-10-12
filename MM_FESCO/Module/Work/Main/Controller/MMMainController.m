@@ -21,6 +21,7 @@
 #import "LeaveApplyRecordController.h"
 #import "OverTimeApplyController.h"
 #import "CollectionFooterView.h"
+#import "MMPageControl.h"
 
 static NSString *kMallID = @"MallID";
 

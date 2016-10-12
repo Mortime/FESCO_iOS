@@ -92,6 +92,8 @@
 		597223E31DADE05400D01A7A /* PhoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972239D1DADE05400D01A7A /* PhoneListModel.m */; };
 		597223E41DADE05400D01A7A /* PhoneListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 597223A11DADE05400D01A7A /* PhoneListCell.m */; };
 		597223E51DADE05400D01A7A /* PhoneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 597223A31DADE05400D01A7A /* PhoneListTableCell.m */; };
+		597223E81DAE08B400D01A7A /* MMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 597223E71DAE08B400D01A7A /* MMPageControl.m */; };
+		597223EB1DAE0CA600D01A7A /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 597223EA1DAE0CA600D01A7A /* SMPageControl.m */; };
 		597762171D489AE000BD8472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 597762161D489AE000BD8472 /* main.m */; };
 		5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 597762191D489AE000BD8472 /* AppDelegate.mm */; };
 		5977621D1D489AE000BD8472 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977621C1D489AE000BD8472 /* ViewController.m */; };
@@ -447,6 +449,10 @@
 		597223A11DADE05400D01A7A /* PhoneListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListCell.m; sourceTree = "<group>"; };
 		597223A21DADE05400D01A7A /* PhoneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListTableCell.h; sourceTree = "<group>"; };
 		597223A31DADE05400D01A7A /* PhoneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListTableCell.m; sourceTree = "<group>"; };
+		597223E61DAE08B400D01A7A /* MMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPageControl.h; sourceTree = "<group>"; };
+		597223E71DAE08B400D01A7A /* MMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPageControl.m; sourceTree = "<group>"; };
+		597223E91DAE0CA600D01A7A /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		597223EA1DAE0CA600D01A7A /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		597762121D489AE000BD8472 /* MM_FESCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM_FESCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597762161D489AE000BD8472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		597762181D489AE000BD8472 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -920,6 +926,10 @@
 				597222F01DADDFDA00D01A7A /* MMCyeleShowLableTagView.m */,
 				597222F21DADE00A00D01A7A /* MMBaseViewModel.h */,
 				597222F31DADE00A00D01A7A /* MMBaseViewModel.m */,
+				597223E61DAE08B400D01A7A /* MMPageControl.h */,
+				597223E71DAE08B400D01A7A /* MMPageControl.m */,
+				597223E91DAE0CA600D01A7A /* SMPageControl.h */,
+				597223EA1DAE0CA600D01A7A /* SMPageControl.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1448,8 +1458,6 @@
 			children = (
 				597762181D489AE000BD8472 /* AppDelegate.h */,
 				597762191D489AE000BD8472 /* AppDelegate.mm */,
-				5977621B1D489AE000BD8472 /* ViewController.h */,
-				5977621C1D489AE000BD8472 /* ViewController.m */,
 				597222F51DADE05400D01A7A /* Module */,
 				59FC07661D9509F100C1D0E0 /* Lib */,
 				594775F41D7684D80094D354 /* Base */,
@@ -1472,6 +1480,8 @@
 				597762261D489AE000BD8472 /* Info.plist */,
 				59A59E011D499BDC001F3122 /* PrefixHeader.pch */,
 				59614F771D7E484D004D3AAE /* MMModelDataMacro.h */,
+				5977621B1D489AE000BD8472 /* ViewController.h */,
+				5977621C1D489AE000BD8472 /* ViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2443,6 +2453,7 @@
 				59EC911A1D98CB5900E802FA /* amrFileCodec.mm in Sources */,
 				59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */,
 				59EC91E21D98D9AD00E802FA /* UIView+EMWebCacheOperation.m in Sources */,
+				597223E81DAE08B400D01A7A /* MMPageControl.m in Sources */,
 				59EC91661D98CB5900E802FA /* EaseBubbleView.m in Sources */,
 				597223C81DADE05400D01A7A /* SignUpViewModel.m in Sources */,
 				597223AD1DADE05400D01A7A /* LeaveApprovalListModel.m in Sources */,
@@ -2467,6 +2478,7 @@
 				59EC91EB1D98D9AD00E802FA /* PSTCollectionViewUpdateItem.m in Sources */,
 				597222E51DADDDEC00D01A7A /* NSArray+Sort.m in Sources */,
 				59EC91E71D98D9AD00E802FA /* PSTCollectionViewData.m in Sources */,
+				597223EB1DAE0CA600D01A7A /* SMPageControl.m in Sources */,
 				594776011D768FEF0094D354 /* RefreshTableView.m in Sources */,
 				59EC91D41D98D9AD00E802FA /* EMSDWebImageCompat.m in Sources */,
 				597223B41DADE05400D01A7A /* MMBottomButton.m in Sources */,
@@ -2775,7 +2787,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -2792,7 +2805,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
 			};
 			name = Debug;
 		};
@@ -2803,8 +2816,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -2821,7 +2834,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
 			};
 			name = Release;
 		};
