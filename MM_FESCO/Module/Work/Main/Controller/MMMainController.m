@@ -10,7 +10,6 @@
 #import "MMMianCell.h"
 #import "PersonalMessageController.h"
 #import "NetworkEntity.h"
-#import "LeaveApplicationDetailController.h"
 #import "MMCycleShowImageView.h"
 #import "MMMainCollectionCell.h"
 #import "NSString+MD5.h"
