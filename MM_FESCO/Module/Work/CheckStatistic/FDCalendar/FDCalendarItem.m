@@ -40,14 +40,14 @@
         CGPoint point = _dayLabel.center;
         point.y += 15;
         _chineseDayLabel.center = point;
-        [self addSubview:_chineseDayLabel];
+//        [self addSubview:_chineseDayLabel];
     }
     return _chineseDayLabel;
 }
 
 @end
 
-#define CollectionViewHorizonMargin 5
+#define CollectionViewHorizonMargin 0
 #define CollectionViewVerticalMargin 5
 
 #define ChineseMonths @[@"正月", @"二月", @"三月", @"四月", @"五月", @"六月", @"七月", @"八月",@"九月", @"十月", @"冬月", @"腊月"]
@@ -105,16 +105,16 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 
 // collectionView显示日期单元，设置其属性
 - (void)setupCollectionView {
-    CGFloat itemWidth = (DeviceWidth - CollectionViewHorizonMargin * 2) / 7;
+    CGFloat itemWidth = (DeviceWidth - CollectionViewHorizonMargin * 2 - 6) / 7;
     CGFloat itemHeight = itemWidth;
     
     UICollectionViewFlowLayout *flowLayot = [[UICollectionViewFlowLayout alloc] init];
     flowLayot.sectionInset = UIEdgeInsetsZero;
     flowLayot.itemSize = CGSizeMake(itemWidth, itemHeight);
-    flowLayot.minimumLineSpacing = 0;
-    flowLayot.minimumInteritemSpacing = 0;
+    flowLayot.minimumLineSpacing = 1;
+    flowLayot.minimumInteritemSpacing = 1;
     
-    CGRect collectionViewFrame = CGRectMake(CollectionViewHorizonMargin, CollectionViewVerticalMargin, DeviceWidth - CollectionViewHorizonMargin * 2, itemHeight * 6);
+    CGRect collectionViewFrame = CGRectMake(CollectionViewHorizonMargin, CollectionViewVerticalMargin, DeviceWidth - CollectionViewHorizonMargin * 2, itemHeight * 6 + 5);
     self.collectionView = [[UICollectionView alloc] initWithFrame:collectionViewFrame collectionViewLayout:flowLayot];
     [self addSubview:self.collectionView];
     self.collectionView.dataSource = self;
@@ -190,7 +190,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"CalendarCell";
     FDCalendarCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor whiteColor];
     cell.dayLabel.textColor = [UIColor blackColor];
     cell.chineseDayLabel.textColor = [UIColor grayColor];
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];

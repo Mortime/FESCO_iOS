@@ -22,6 +22,7 @@
 #import "OverTimeApplyController.h"
 #import "CollectionFooterView.h"
 #import "MMPageControl.h"
+#import "CheckStatisticController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -242,6 +243,12 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 6) {
         //  迟到排行
+        
+        CheckStatisticController *checkStatVC = [[CheckStatisticController alloc] init];
+        checkStatVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:checkStatVC animated:YES];
+
+        
         
     }
     

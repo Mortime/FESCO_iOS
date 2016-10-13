@@ -169,6 +169,21 @@
  */
 + (void)postCommitApplyWithCheckType:(NSInteger)checkType  address:(NSString *)address time:(NSString *)time memo:(NSString *)memo  applyPeople:(NSString *)applyPeople Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+/**
+ *    签到统计
+ 
+ *  @param cust_Id （req）  公司id
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param year （req）
+ 
+ *  @param month （req）
+ 
+ */
+
++ (void)postCheckStatisticWithYear:(NSInteger)year month:(NSInteger)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 #pragma ================== 密码 =====================
 /**
  *    验证旧密码  emp_Id, oldPswd
@@ -196,7 +211,6 @@
  
  */
 + (void)postGetNewTokenkey:(NSString *)tokenkey   Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
-
 
 #pragma ================== 加班审批 =====================
 /**

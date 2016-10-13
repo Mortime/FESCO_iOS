@@ -70,14 +70,14 @@ static NSDateFormatter *dateFormattor;
         _datePickerView.clipsToBounds = YES;
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, 32, 20)];
-        cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [cancelButton addTarget:self action:@selector(cancelSelectCurrentDate) forControlEvents:UIControlEventTouchUpInside];
         [_datePickerView addSubview:cancelButton];
         
         UIButton *okButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 52, 10, 32, 20)];
-        okButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        okButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [okButton setTitle:@"确定" forState:UIControlStateNormal];
         [okButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [okButton addTarget:self action:@selector(selectCurrentDate) forControlEvents:UIControlEventTouchUpInside];
@@ -109,7 +109,7 @@ static NSDateFormatter *dateFormattor;
 - (NSString *)stringFromDate:(NSDate *)date {
     if (!dateFormattor) {
         dateFormattor = [[NSDateFormatter alloc] init];
-        [dateFormattor setDateFormat:@"MM-yyyy"];
+        [dateFormattor setDateFormat:@"MM月  yyyy"];
     }
     return [dateFormattor stringFromDate:date];
 }
@@ -117,22 +117,22 @@ static NSDateFormatter *dateFormattor;
 // 设置上层的titleBar
 - (void)setupTitleBar {
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceWidth, 44)];
-    titleView.backgroundColor = [UIColor redColor];
+    titleView.backgroundColor = [UIColor whiteColor];
     [self addSubview:titleView];
     
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 10, 32, 24)];
-    [leftButton setImage:[UIImage imageNamed:@"icon_previous"] forState:UIControlStateNormal];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 10, 32, 24)];
+    [leftButton setImage:[UIImage imageNamed:@"arrow_previous"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(setPreviousMonthDate) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:leftButton];
     
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(titleView.frame.size.width - 37, 10, 32, 24)];
-    [rightButton setImage:[UIImage imageNamed:@"icon_next"] forState:UIControlStateNormal];
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(titleView.frame.size.width - 37-10, 10, 32, 24)];
+    [rightButton setImage:[UIImage imageNamed:@"arrow_next"] forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(setNextMonthDate) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:rightButton];
     
     UIButton *titleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    titleButton.titleLabel.textColor = [UIColor whiteColor];
-    titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleButton.titleLabel.textColor = [UIColor greenColor];
+    titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleButton.center = titleView.center;
     [titleButton addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:titleButton];
@@ -148,19 +148,21 @@ static NSDateFormatter *dateFormattor;
         UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 50, (DeviceWidth - 10) / count, 20)];
         weekdayLabel.textAlignment = NSTextAlignmentCenter;
         weekdayLabel.text = Weekdays[i];
+        weekdayLabel.font = [UIFont systemFontOfSize:14];
+        weekdayLabel.backgroundColor = [UIColor clearColor];
         
         if (i == 0 || i == count - 1) {
-            weekdayLabel.textColor = [UIColor redColor];
+            weekdayLabel.textColor = [UIColor blackColor]; // 周六 日
         } else {
-            weekdayLabel.textColor = [UIColor grayColor];
+            weekdayLabel.textColor = [UIColor blackColor];
         }
         
         [self addSubview:weekdayLabel];
         offsetX += weekdayLabel.frame.size.width;
     }
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 74, DeviceWidth - 30, 1)];
-    lineView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:lineView];
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 74, DeviceWidth - 30, 1)];
+//    lineView.backgroundColor = [UIColor lightGrayColor];
+//    [self addSubview:lineView];
 }
 
 // 设置包含日历的item的scrollView
@@ -169,6 +171,7 @@ static NSDateFormatter *dateFormattor;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.backgroundColor = [UIColor clearColor];
     [self.scrollView setFrame:CGRectMake(0, 75, DeviceWidth, self.centerCalendarItem.frame.size.height)];
     self.scrollView.contentSize = CGSizeMake(3 * self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);
@@ -202,6 +205,7 @@ static NSDateFormatter *dateFormattor;
     self.rightCalendarItem.date = [self.centerCalendarItem nextMonthDate];
     
     [self.titleButton setTitle:[self stringFromDate:self.centerCalendarItem.date] forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 // 重新加载日历items的数据

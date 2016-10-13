@@ -421,6 +421,38 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 
+
+
++ (void)postCheckStatisticWithYear:(NSInteger)year month:(NSInteger)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"year":[NSString stringWithFormat:@"%lu",year],
+                          @"month":[NSString stringWithFormat:@"%lu",month],
+                          @"methodname":@"kq/getCheckListForEmp.json"}; 
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getCheckListForEmp.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
 /**
  *   验证旧密码
  */
