@@ -224,11 +224,14 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthPrevious WithDay:day]];
+        cell.backgroundColor = [UIColor colorWithHexString:@"ededed"];
+
     } else if (indexPath.row >= totalDaysOfMonth + firstWeekday) {    // 大于这个月的最后一天
         NSInteger day = indexPath.row - totalDaysOfMonth - firstWeekday + 1;
         cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthNext WithDay:day]];
+        cell.backgroundColor = [UIColor colorWithHexString:@"ededed"];
     } else {    // 属于这个月
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
