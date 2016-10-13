@@ -27,7 +27,7 @@
         _dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         _dayLabel.textAlignment = NSTextAlignmentCenter;
         _dayLabel.font = [UIFont systemFontOfSize:15];
-        _dayLabel.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2 - 3);
+        _dayLabel.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2 );
         [self addSubview:_dayLabel];
     }
     return _dayLabel;
