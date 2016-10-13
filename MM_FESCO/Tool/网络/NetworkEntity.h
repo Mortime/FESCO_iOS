@@ -182,7 +182,7 @@
  
  */
 
-+ (void)postCheckStatisticWithYear:(NSInteger)year month:(NSInteger)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCheckStatisticWithYear:(NSString *)year month:(NSString *)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 #pragma ================== 密码 =====================
 /**

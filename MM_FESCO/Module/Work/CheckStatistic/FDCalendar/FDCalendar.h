@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FDCalendarDelegate <NSObject>
+
+
+
+@end
+
 @interface FDCalendar : UIView
+@property (nonatomic, strong) UIViewController *paramentVC;
 
 - (instancetype)initWithCurrentDate:(NSDate *)date;
 

@@ -42,10 +42,17 @@ static NSDateFormatter *dateFormattor;
         [self setFrame:CGRectMake(0, 0, DeviceWidth, CGRectGetMaxY(self.scrollView.frame))];
         
         [self setCurrentDate:self.date];
+        
+        
     }
     return self;
 }
+- (void)layoutSubviews{
+    // 这里移除数组中的数据,为了防止数据数组复用
+    [self.centerCalendarItem.dataArray removeAllObjects];
+    [self getData:self.date];
 
+}
 #pragma mark - Custom Accessors
 
 - (UIView *)backgroundView {
@@ -70,16 +77,16 @@ static NSDateFormatter *dateFormattor;
         _datePickerView.clipsToBounds = YES;
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, 32, 20)];
-        cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-        [cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [cancelButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         [cancelButton addTarget:self action:@selector(cancelSelectCurrentDate) forControlEvents:UIControlEventTouchUpInside];
         [_datePickerView addSubview:cancelButton];
         
         UIButton *okButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 52, 10, 32, 20)];
-        okButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        okButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [okButton setTitle:@"确定" forState:UIControlStateNormal];
-        [okButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [okButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         [okButton addTarget:self action:@selector(selectCurrentDate) forControlEvents:UIControlEventTouchUpInside];
         [_datePickerView addSubview:okButton];
         
@@ -246,12 +253,22 @@ static NSDateFormatter *dateFormattor;
 
 // 跳到上一个月
 - (void)setPreviousMonthDate {
-    [self setCurrentDate:[self.centerCalendarItem previousMonthDate]];
+    NSDate *date = [self.centerCalendarItem previousMonthDate];
+    [self setCurrentDate:date];
+    
+    // 这里移除数组中的数据,为了防止数据数组复用
+    [self.centerCalendarItem.dataArray removeAllObjects];
+    [self getData:date];
 }
 
 // 跳到下一个月
 - (void)setNextMonthDate {
-    [self setCurrentDate:[self.centerCalendarItem nextMonthDate]];
+     NSDate *date = [self.centerCalendarItem nextMonthDate];
+    [self setCurrentDate:date];
+    
+    // 这里移除数组中的数据,为了防止数据数组复用
+    [self.centerCalendarItem.dataArray removeAllObjects];
+    [self getData:date];
 }
 
 - (void)showDatePicker {
@@ -279,6 +296,38 @@ static NSDateFormatter *dateFormattor;
 - (void)calendarItem:(FDCalendarItem *)item didSelectedDate:(NSDate *)date {
     self.date = date;
     [self setCurrentDate:self.date];
-}
+    
+    // 这里移除数组中的数据,为了防止数据数组复用
+    [self.centerCalendarItem.dataArray removeAllObjects];
+    [self getData:date];
 
+}
+#pragma mark --- 数据请求
+- (void)getData:(NSDate *)date{
+    [self.paramentVC showHudInView:self.paramentVC.view hint:NSLocalizedString(@"加载中...", @"加载中...")];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy"];
+    NSString *year = [dateFormat stringFromDate:date];
+    
+     NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+    [dateFormat1 setDateFormat:@"MM"];
+    NSString *month = [dateFormat1 stringFromDate:date];
+
+    MMLog(@"CheckStatistic ==year===%@======mouth=== %@",year,month);
+    [NetworkEntity postCheckStatisticWithYear:year month:month success:^(id responseObject) {
+        MMLog(@"CheckStatistic ===responseObject=========%@",responseObject);
+        [MBProgressHUD hideHUDForView:self.paramentVC.view animated:NO];
+        if ([[responseObject objectForKey:@"res"] count]) {
+//            self.centerCalendarItem.dataArray = nil;
+            
+            self.centerCalendarItem.dataArray = ((NSArray *)[responseObject objectForKey:@"res"]).mutableCopy;
+            [self.centerCalendarItem initRefreshUI];
+        }
+        
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"CheckStatistic ===failure=========%@",failure);
+    }];
+
+}
 @end

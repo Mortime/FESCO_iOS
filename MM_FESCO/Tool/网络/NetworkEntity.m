@@ -423,13 +423,13 @@
 
 
 
-+ (void)postCheckStatisticWithYear:(NSInteger)year month:(NSInteger)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCheckStatisticWithYear:(NSString *)year month:(NSString *)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"year":[NSString stringWithFormat:@"%lu",year],
-                          @"month":[NSString stringWithFormat:@"%lu",month],
+                          @"year":year,
+                          @"month":month,
                           @"methodname":@"kq/getCheckListForEmp.json"}; 
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];

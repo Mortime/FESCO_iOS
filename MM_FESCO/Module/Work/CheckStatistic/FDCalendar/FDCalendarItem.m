@@ -12,12 +12,14 @@
 
 - (UILabel *)dayLabel;
 - (UILabel *)chineseDayLabel;
+- (UIView *)flagView;
 
 @end
 
 @implementation FDCalendarCell {
     UILabel *_dayLabel;
     UILabel *_chineseDayLabel;
+    UIView *_flagView; // 当签到状态有两种时,这时显示
 }
 
 - (UILabel *)dayLabel {
@@ -44,6 +46,18 @@
     }
     return _chineseDayLabel;
 }
+
+- (UIView *)flagView {
+    if (!_flagView) {
+        _flagView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width - 15, self.bounds.size.height - 15)];
+        _flagView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+        _flagView.backgroundColor = [UIColor redColor];
+        _flagView.hidden = YES;
+        [self addSubview:_flagView];
+    }
+    return _flagView;
+}
+
 
 @end
 
@@ -74,6 +88,10 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         [self setFrame:CGRectMake(0, 0, DeviceWidth, self.collectionView.frame.size.height + CollectionViewVerticalMargin * 2)];
     }
     return self;
+}
+#pragma mark --- 刷新UI
+- (void) initRefreshUI{
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Custom Accessors
@@ -190,9 +208,13 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"CalendarCell";
     FDCalendarCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
     cell.backgroundColor = [UIColor whiteColor];
+    cell.flagView.backgroundColor = [UIColor redColor];
+
     cell.dayLabel.textColor = [UIColor blackColor];
     cell.chineseDayLabel.textColor = [UIColor grayColor];
+    
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     NSInteger totalDaysOfMonth = [self totalDaysInMonthOfDate:self.date];
     NSInteger totalDaysOfLastMonth = [self totalDaysInMonthOfDate:[self previousMonthDate]];
@@ -211,9 +233,68 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
         
+//        MMLog(@"testArray = %lu",_dataArray.count);
+        
+        // 显示签到类型的背景色值
+        if (_dataArray.count) {
+            NSArray *array = _dataArray[day - 1];
+            cell.flagView.hidden = YES;
+            if (array.count) {
+                if ([array[0] isEqualToString:@"normal"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                }
+                if ([array[0] isEqualToString:@"lateArrive"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                }
+                if ([array[0] isEqualToString:@"earlyLeave"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                }
+                if ([array[0] isEqualToString:@"offWork"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                }
+                if ([array[0] isEqualToString:@"holiday"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                }
+                if ([array[0] isEqualToString:@"extraWork"]) {
+                    cell.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                }
+            }
+            if (array.count == 2) {
+                cell.flagView.hidden = NO;
+                cell.dayLabel.textColor = [UIColor whiteColor];
+
+                if ([array[1] isEqualToString:@"normal"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                }
+                if ([array[1] isEqualToString:@"lateArrive"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                    
+                }
+                if ([array[1] isEqualToString:@"earlyLeave"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                }
+                if ([array[1] isEqualToString:@"offWork"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                }
+                if ([array[1] isEqualToString:@"holiday"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                }
+                if ([array[1] isEqualToString:@"extraWork"]) {
+                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                }
+
+            }
+        }
+        
+        
         if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:self.date]) {
-            cell.backgroundColor = [UIColor redColor];
-            cell.layer.cornerRadius = cell.frame.size.height / 2;
+            cell.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+//            cell.layer.cornerRadius = cell.frame.size.height / 2;
             cell.dayLabel.textColor = [UIColor whiteColor];
             cell.chineseDayLabel.textColor = [UIColor whiteColor];
         }

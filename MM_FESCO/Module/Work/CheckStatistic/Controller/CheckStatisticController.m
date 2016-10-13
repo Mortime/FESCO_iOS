@@ -23,9 +23,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"签到统计";
-    self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"ededed"];
     FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
     calendar.backgroundColor = [UIColor clearColor];
+    calendar.paramentVC = self;
 
     FlagView *flagView = [[FlagView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 60)];
     flagView.backgroundColor = [UIColor clearColor];
@@ -34,14 +35,14 @@
     self.tableView.tableFooterView = flagView;
      [self.view addSubview:self.tableView];
     
-    [self initData];
+//    [self initData];
 }
 - (void)initData{
-    [NetworkEntity postCheckStatisticWithYear:2016 month:10 success:^(id responseObject) {
-        MMLog(@"CheckStatistic ===responseObject=========%@",responseObject);
-    } failure:^(NSError *failure) {
-        MMLog(@"CheckStatistic ===failure=========%@",failure);
-    }];
+//    [NetworkEntity postCheckStatisticWithYear:2016 month:10 success:^(id responseObject) {
+//        MMLog(@"CheckStatistic ===responseObject=========%@",responseObject);
+//    } failure:^(NSError *failure) {
+//        MMLog(@"CheckStatistic ===failure=========%@",failure);
+//    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

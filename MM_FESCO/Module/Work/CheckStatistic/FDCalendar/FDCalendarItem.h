@@ -17,8 +17,12 @@
 @property (strong, nonatomic) NSDate *date;
 @property (weak, nonatomic) id<FDCalendarItemDelegate> delegate;
 
+@property (nonatomic, strong) NSMutableArray *dataArray;  // 签到类型的数据
+
 - (NSDate *)nextMonthDate;
 - (NSDate *)previousMonthDate;
+
+- (void)initRefreshUI;
 
 @end
 
