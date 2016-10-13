@@ -297,9 +297,22 @@ static NSDateFormatter *dateFormattor;
     self.date = date;
     [self setCurrentDate:self.date];
     
-    // 这里移除数组中的数据,为了防止数据数组复用
-    [self.centerCalendarItem.dataArray removeAllObjects];
-    [self getData:date];
+    
+    // 当点击的不是本月的数据时, 进行数据刷新
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM"];
+    NSString *month = [dateFormat stringFromDate:date];
+    
+    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+    [dateFormat1 setDateFormat:@"MM"];
+    NSString *month1 = [dateFormat1 stringFromDate:[NSDate date]];
+    
+    if (![month isEqualToString:month1]) {
+        // 这里移除数组中的数据,为了防止数据数组复用
+        [self.centerCalendarItem.dataArray removeAllObjects];
+        [self getData:date];
+    }
+    
 
 }
 #pragma mark --- 数据请求
