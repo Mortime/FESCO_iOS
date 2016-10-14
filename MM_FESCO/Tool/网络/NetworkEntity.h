@@ -183,6 +183,28 @@
  */
 
 + (void)postCheckStatisticWithYear:(NSString *)year month:(NSString *)month  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *    打卡记录  
+ 
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param dateStr （req）   日期
+ 
+ */
+
++ (void)postCheckCheckWithDate:(NSString *)dateStr success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *    剩余假期  
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ */
+
++ (void)postHolidayNumberSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
 
 #pragma ================== 密码 =====================
 /**

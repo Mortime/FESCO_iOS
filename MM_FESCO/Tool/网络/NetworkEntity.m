@@ -454,6 +454,65 @@
 
 }
 /**
+ *   打卡记录
+ */
+
++ (void)postCheckCheckWithDate:(NSString *)dateStr success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"dateStr":dateStr,
+                          @"methodname":@"kq/getCheckDetailForEmp.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getCheckDetailForEmp.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
+/**
+ *   剩余假期
+ */
+
++ (void)postHolidayNumberSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                         @"methodname":@"kq/getRestHolidays.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"kq/getRestHolidays.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
+/**
  *   验证旧密码
  */
 

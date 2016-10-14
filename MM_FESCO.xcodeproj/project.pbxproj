@@ -125,6 +125,7 @@
 		59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A59E321D49C6A3001F3122 /* MMLoginController.m */; };
 		59AF3AFA1DAF361600BE46BE /* FlagBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AF3AF91DAF361600BE46BE /* FlagBaseView.m */; };
 		59AF3AFD1DAF452E00BE46BE /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AF3AFC1DAF452E00BE46BE /* FlagView.m */; };
+		59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AF3AFF1DAF8C5900BE46BE /* CheckStatisticFooterView.m */; };
 		59C005C61D92542300A329CD /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C51D92542300A329CD /* RegisterController.m */; };
 		59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */; };
 		59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C197C41D5ABFB100C7F593 /* UserInfoModel.m */; };
@@ -521,6 +522,8 @@
 		59AF3AF91DAF361600BE46BE /* FlagBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagBaseView.m; sourceTree = "<group>"; };
 		59AF3AFB1DAF452E00BE46BE /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
 		59AF3AFC1DAF452E00BE46BE /* FlagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagView.m; sourceTree = "<group>"; };
+		59AF3AFE1DAF8C5900BE46BE /* CheckStatisticFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStatisticFooterView.h; sourceTree = "<group>"; };
+		59AF3AFF1DAF8C5900BE46BE /* CheckStatisticFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStatisticFooterView.m; sourceTree = "<group>"; };
 		59C005C41D92542300A329CD /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		59C005C51D92542300A329CD /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 		59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRegisterTextFiledView.h; sourceTree = "<group>"; };
@@ -1670,6 +1673,8 @@
 				59AF3AF91DAF361600BE46BE /* FlagBaseView.m */,
 				59AF3AFB1DAF452E00BE46BE /* FlagView.h */,
 				59AF3AFC1DAF452E00BE46BE /* FlagView.m */,
+				59AF3AFE1DAF8C5900BE46BE /* CheckStatisticFooterView.h */,
+				59AF3AFF1DAF8C5900BE46BE /* CheckStatisticFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2666,6 +2671,7 @@
 				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
 				597223A51DADE05400D01A7A /* BuffetController.m in Sources */,
 				59EC914E1D98CB5900E802FA /* EaseMessageReadManager.m in Sources */,
+				59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */,
 				597223AA1DADE05400D01A7A /* LeaveApprovalDetailController.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
