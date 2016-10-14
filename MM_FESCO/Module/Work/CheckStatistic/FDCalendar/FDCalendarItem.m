@@ -326,6 +326,19 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     [components setDay:indexPath.row - firstWeekday + 1];
     NSDate *selectedDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+    
+    // 把选中的日期转化为字符串
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyyMMdd"];
+    NSString *dateStr = [dateFormat stringFromDate:selectedDate];
+
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:dateStr forKey:@"kDate"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDateChangeNotifition object:self];
+    
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(calendarItem:didSelectedDate:)]) {
         [self.delegate calendarItem:self didSelectedDate:selectedDate];
     }

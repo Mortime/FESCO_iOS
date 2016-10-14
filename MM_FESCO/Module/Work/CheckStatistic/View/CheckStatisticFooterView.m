@@ -11,7 +11,7 @@
 @interface CheckStatisticFooterView ()
 
 @property (nonatomic, strong) UILabel *checkTitleLabel;
-@property (nonatomic, strong) UILabel *checkContentLabel;
+@property (nonatomic, strong) UITextView *checkContentView;
 @property (nonatomic, strong) UILabel *holidayTitelLabel;
 @property (nonatomic, strong) UILabel *holidayContentLabel;
 
@@ -25,7 +25,7 @@
 }
 - (void)initUI{
     [self addSubview:self.checkTitleLabel];
-    [self addSubview:self.checkContentLabel];
+    [self addSubview:self.checkContentView];
     [self addSubview:self.holidayTitelLabel];
     [self addSubview:self.holidayContentLabel];
 }
@@ -39,16 +39,16 @@
         
         
     }];
-    [self.checkContentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.checkContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.checkTitleLabel.mas_bottom);
         make.left.mas_equalTo(self.checkTitleLabel.mas_left);
         make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-        
+        make.height.mas_equalTo(@50);
         
         
     }];
     [self.holidayTitelLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.checkContentLabel.mas_bottom);
+        make.top.mas_equalTo(self.checkContentView.mas_bottom);
         make.left.mas_equalTo(self.checkTitleLabel.mas_left);
         make.right.mas_equalTo(self.checkTitleLabel.mas_right);
         make.height.mas_equalTo(@16);
@@ -78,14 +78,15 @@
     }
     return _checkTitleLabel;
 }
-- (UILabel *)checkContentLabel{
-    if (_checkContentLabel == nil) {
-        _checkContentLabel = [[UILabel alloc] init];
-        _checkContentLabel.font = [UIFont systemFontOfSize:12];
-        _checkContentLabel.textColor = [UIColor grayColor];
+- (UITextView *)checkContentView{
+    if (_checkContentView == nil) {
+        _checkContentView = [[UITextView alloc] init];
+        _checkContentView.font = [UIFont systemFontOfSize:12];
+        _checkContentView.textColor = [UIColor grayColor];
 //        _checkContentLabel.text = @"2018-89--8888";
+        _checkContentView.backgroundColor = [UIColor clearColor];
     }
-    return _checkContentLabel;
+    return _checkContentView;
 }
 - (UILabel *)holidayTitelLabel{
     if (_holidayTitelLabel == nil) {
@@ -109,14 +110,15 @@
 }
 - (void)setRecodeStr:(NSString *)recodeStr{
     
-//    NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:@"chhehshi"]];
-    [self.checkContentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:recodeStr]];
+    [self.checkContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.checkTitleLabel.mas_bottom);
         make.left.mas_equalTo(self.checkTitleLabel.mas_left);
         make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-        make.height.mas_equalTo(@16);
+        make.height.mas_equalTo(50);
     }];
-    _checkContentLabel.text = @"chhehshi";
+     MMLog(@"recodeStr  ==%@",recodeStr);
+    _checkContentView.text = recodeStr;
 
 }
 - (void)setHolidayStr:(NSString *)holidayStr{

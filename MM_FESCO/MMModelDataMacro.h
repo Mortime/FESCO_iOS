@@ -16,7 +16,7 @@
 
 #define kTonkenChangeNotifition  @"TonkenChangeNotifition" // tonkey改变的通知
 
-
+#define kDateChangeNotifition @"DateChangeNotifition"  // 日期改变的通知
 
 
 typedef NS_ENUM(NSUInteger,RecodeType){
