@@ -210,7 +210,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     FDCalendarCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor whiteColor];
-    cell.flagView.backgroundColor = [UIColor redColor];
+    cell.flagView.backgroundColor = [UIColor colorWithHexString:@"ededed"];
 
     cell.dayLabel.textColor = [UIColor blackColor];
     cell.chineseDayLabel.textColor = [UIColor grayColor];
@@ -267,6 +267,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
                     cell.dayLabel.textColor = [UIColor whiteColor];
                 }
             }
+            // 当有两张状态时 色块重叠
             if (array.count == 2) {
                 cell.flagView.hidden = NO;
                 cell.dayLabel.textColor = [UIColor whiteColor];
