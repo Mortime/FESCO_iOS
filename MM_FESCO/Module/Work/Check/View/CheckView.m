@@ -244,7 +244,21 @@
         
         if ([msg isEqualToString:@"success"]) {
             NSString *showMsg = @"";
+            if (_signType == 1 || _signType == 3) {
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:[NSDate date] forKey:@"kDate"];
+                
+                NSString *numberStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"kSignNumber"];
+                NSInteger number = [numberStr integerValue];
+                number = number + 1;
+                //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:[NSString stringWithFormat:@"%lu",number] forKey:@"kSignNumber"];
+                _bigSignLable.text = [NSString stringWithFormat:@"%lu",number];
+ 
+            }
             if (_signType == 1) {
+                
                 showMsg = @"签到成功";
             }else if (_signType == 2){
                 showMsg = @"签退成功";
@@ -428,6 +442,8 @@
         _bigSignLable.font = [UIFont boldSystemFontOfSize:80];
         _bigSignLable.textColor = [UIColor whiteColor];
         _bigSignLable.textAlignment = NSTextAlignmentRight;
+        NSString *number = [[NSUserDefaults standardUserDefaults] objectForKey:@"kSignNumber"];
+        _bigSignLable.text = number;
     }
     return _bigSignLable;
 }
