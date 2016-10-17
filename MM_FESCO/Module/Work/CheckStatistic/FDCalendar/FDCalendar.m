@@ -93,7 +93,7 @@ static NSDateFormatter *dateFormattor;
         [_datePickerView addSubview:self.datePicker];
     }
     
-    [self addSubview:_datePickerView];
+//    [self addSubview:_datePickerView];
     
     return _datePickerView;
 }
@@ -141,7 +141,7 @@ static NSDateFormatter *dateFormattor;
     titleButton.titleLabel.textColor = [UIColor greenColor];
     titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleButton.center = titleView.center;
-    [titleButton addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
+//    [titleButton addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:titleButton];
     
     self.titleButton = titleButton;
@@ -305,7 +305,9 @@ static NSDateFormatter *dateFormattor;
     
     NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
     [dateFormat1 setDateFormat:@"MM"];
-    NSString *month1 = [dateFormat1 stringFromDate:[NSDate date]];
+    NSString *month1 = [dateFormat1 stringFromDate: [NSDate date]];
+    
+    NSLog(@"month=%@ ==== month1===%@",month,month1);
     
     if (![month isEqualToString:month1]) {
         // 这里移除数组中的数据,为了防止数据数组复用
