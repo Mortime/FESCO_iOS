@@ -459,7 +459,7 @@
 - (UILabel *)timeLable{
     if (_timeLable == nil) {
         _timeLable = [[UILabel alloc]init];
-        _timeLable.text = @"当前时间: 8********8";
+        _timeLable.text = @" ";
         _timeLable.font = [UIFont systemFontOfSize:14];
         _timeLable.textColor = [UIColor whiteColor];
     }
