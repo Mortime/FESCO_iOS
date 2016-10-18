@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) NSArray *topDataArray;
 
-@property (nonatomic, strong) NSArray *bottomDataArray;
+@property (nonatomic, strong) NSMutableArray *bottomDataArray;
 
 @property (nonatomic, strong) NSArray *mightDataArray;
 
@@ -75,7 +75,7 @@
     self.mightDataArray = @[@"请输入审批意见",@"请选择再次审批人"];
     
     self.bottomArray = @[@"前次审批",@"审批结果",@"审批意见"];
-    self.bottomDataArray = @[@"2016年8月29",@"2016年8月90日",@"dlllll"];
+    self.bottomDataArray = [NSMutableArray array];
     
     self.pickDataArray = [NSMutableArray array];
     
@@ -94,14 +94,66 @@
 - (void)initData{
     [NetworkEntity postSignUpApproalMessageWithApply:_listModel.applyid Success:^(id responseObject) {
         
+        /*
+         
+         lastApprovalStep =     {
+         "apply_Id" = 31;
+         "approval_Man" = 163;
+         "approval_Man_Str" = "\U80e1\U677e";
+         "approval_Time" = 1476691856000;
+         "is_Over" = 1;
+         "is_Pass" = 1;
+         "is_Pass_Str" = "\U901a\U8fc7\U5ba1\U6279";
+         memo = "<null>";
+         "next_Approval_Man" = 163;
+         "step_Id" = 220;
+         };
+
+         */
+        
+        
+        
         MMLog(@"SignUpApproalMessage ====== responseObject====%@",responseObject);
         NSArray *allKey = [responseObject allKeys];
-        if (allKey.count == 2) {
+        
+        
+        
+        for (NSString *keyStr in allKey) {
+            if ([keyStr isEqualToString:@"lastApprovalStep"]) {
+                 _isShowLaterMessage = YES;
+                NSDictionary *dic = [responseObject objectForKey:keyStr];
+                
+                MMLog(@"lastApprovalStep == %@",dic);
+                
+                
+                
+                NSString *lastDate = [NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]];
+                [_bottomDataArray addObject:lastDate];
+                NSString *lastRelutt = @"";
+                NSInteger result = [[dic objectForKey:@"is_Pass"] integerValue];
+                if (result == 0) {
+                    lastRelutt = @"不通过";
+                }
+                if (result == 1) {
+                    lastRelutt = @"通过";
+                }
+                
+                [_bottomDataArray addObject:lastRelutt];
+
+            
+                NSString *lastMemo = [dic objectForKey:@"memo"];
+                if (lastMemo == nil  || [lastMemo isKindOfClass:[NSNull class]]) {
+                    lastMemo = @"暂无";
+                }
+                [_bottomDataArray addObject:lastMemo];
+                
+              
+            }
+        }
+        if (!_isShowLaterMessage) {
             _isShowLaterMessage = NO;
         }
-        if (allKey.count == 3) {
-            _isShowLaterMessage = YES;
-        }
+        
         
         NSDictionary *applyMessage = [responseObject objectForKey:@"apply"];
         // 基本信息展示
