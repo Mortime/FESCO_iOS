@@ -235,10 +235,10 @@
         if (responseObject) {
             NSArray *allkey = [responseObject allKeys];
             if ([allkey[0] isEqualToString:@"ValidateCode"]) {
-                [self showTotasViewWithMes:@"验证码发送成功"];
+                [self showTotasViewWithMes:@"验证码发送成功"];  // invalid email address
                 return ;
             }
-            if ([allkey[0] isEqualToString:@"invalid email address"]) {
+            if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
                 return;
             }

@@ -23,11 +23,11 @@
     NSLog(@"mainHomeUrlstr  %@",urlStr);
     
     
-    
     NSDictionary * dic = @{@"email":mail
                            
                            };
-    
+
+        
     
     NSLog(@"mainHomeUrlstrdic  %@",dic);
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
