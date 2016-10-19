@@ -13,7 +13,7 @@
 
 #define kMarginH   15
 
-#define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *100/667
+#define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *200/667
 
 //#define h_iconViewTOP [UIScreen mainScreen].bounds.size.height *104/667
 
@@ -80,7 +80,7 @@
     
     [self.view addSubview:self.bgTextFiled];
     [self.bgTextFiled addSubview:self.codeNumTextFiled];
-    [self.view addSubview:self.codeNumButton];
+    [self.codeNumTextFiled addSubview:self.codeNumButton];
     [self.bgTextFiled addSubview:self.mailTextFiled];
     [self.bgTextFiled addSubview:self.userNameTextFiled];
     [self.bgTextFiled addSubview:self.passwordTextFiled];
@@ -239,7 +239,7 @@
 }
 - (void)didClickCodeNum{
     MMLog(@"点击了发送验证吗");
-    
+    _codeTime = 60;
     [self.mailTextFiled.rightTextFiled resignFirstResponder];
     
     
@@ -247,7 +247,8 @@
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
     }
-    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
+//    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
+    
     self.codeNumButton.userInteractionEnabled = NO;
     
     
