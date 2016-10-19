@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UILabel *leftLabel;
 
-@property (nonatomic, strong) UITextField *rightTextFiled;
+
 
 @property (nonatomic, strong) MMRegisterTextFiledViewDelegateBlock didEndEditingBlock;
 
@@ -122,4 +122,6 @@
     }
     return _rightTextFiled;
 }
+
+
 @end

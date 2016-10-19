@@ -2,8 +2,8 @@
 //  BaseTableController.m
 //  Principal
 //
-//  Created by dawei on 15/11/25.
-//  Copyright © 2015年 DaWei. All rights reserved.
+//  Created by Mortimey on 16/8/01.
+//  Copyright © 2016年 Mortimey. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

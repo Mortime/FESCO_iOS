@@ -13,6 +13,10 @@
 
 #define kMarginH   15
 
+#define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *100/667
+
+//#define h_iconViewTOP [UIScreen mainScreen].bounds.size.height *104/667
+
 @interface RegisterController ()
 
 @property (nonatomic, strong) UIImageView *headerImageView;
@@ -45,6 +49,13 @@
 @property (nonatomic ,strong) NSString *codeNum;
 
 
+@property (nonatomic, strong) NSTimer *timer;
+
+
+@property (nonatomic, assign) int codeTime;
+
+
+
 
 
 
@@ -54,7 +65,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+    _codeTime = 60;
     [self initUI];
+    [self addNotify];
 }
 - (void)initUI{
     
@@ -71,7 +84,7 @@
     [self.bgTextFiled addSubview:self.mailTextFiled];
     [self.bgTextFiled addSubview:self.userNameTextFiled];
     [self.bgTextFiled addSubview:self.passwordTextFiled];
-    [self.view addSubview:self.registButton];
+    [self.bgTextFiled addSubview:self.registButton];
 }
 - (void)viewWillLayoutSubviews{
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,7 +117,7 @@
         make.top.mas_equalTo(self.headerImageView.mas_bottom).offset(40);
         make.left.mas_equalTo(self.view.mas_left).offset(20);
         make.right.mas_equalTo(self.view.mas_right).offset(-20);
-        make.height.mas_equalTo(@300);
+        make.height.mas_equalTo(@384);
         
     }];
     [self.mailTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -185,7 +198,7 @@
 
 }
 - (void)didClick{
-    
+    [_passwordTextFiled.rightTextFiled resignFirstResponder];
     if (_mailStr == nil || [_mailStr isEqualToString:@""]) {
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
@@ -226,15 +239,24 @@
 }
 - (void)didClickCodeNum{
     MMLog(@"点击了发送验证吗");
+    
+    [self.mailTextFiled.rightTextFiled resignFirstResponder];
+    
+    
     if (_mailStr == nil || [_mailStr isEqualToString:@""]) {
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
     }
+    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
+    self.codeNumButton.userInteractionEnabled = NO;
+    
+    
     [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
         MMLog(@"RegisterCodeNumber ========responseObject ============%@",responseObject);
         if (responseObject) {
             NSArray *allkey = [responseObject allKeys];
             if ([allkey[0] isEqualToString:@"ValidateCode"]) {
+                [self startPainting];
                 [self showTotasViewWithMes:@"验证码发送成功"];  // invalid email address
                 return ;
             }
@@ -365,7 +387,7 @@
 - (UIButton *)codeNumButton{
     if (_codeNumButton == nil) {
         _codeNumButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_codeNumButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+        [_codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         _codeNumButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_codeNumButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_codeNumButton addTarget:self action:@selector(didClickCodeNum) forControlEvents:UIControlEventTouchUpInside];
@@ -391,8 +413,78 @@
     return _backButton;
 }
 
+// 定时器执行的方法
+- (void)function:(NSTimer *)paramTimer{
+    
+    NSLog(@"定时器执行的方法");
+    if (_codeTime < 0) {
+        [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        self.codeNumButton.userInteractionEnabled = YES;
+        [self stopPainting];
+        
+    }else {
+        NSString *str = [NSString stringWithFormat:@"%ds",_codeTime];
+        [self.codeNumButton setTitle:str forState:UIControlStateNormal];
+        _codeTime--;
+    }
+    
+}
+
+// 开始定时器
+- (void) startPainting{
+    
+    // 定义一个NSTimer
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(function:)  userInfo:nil
+                                                 repeats:YES];
+}
+
+// 停止定时器
+- (void) stopPainting{
+    if (self.timer != nil){
+        // 定时器调用invalidate后，就会自动执行release方法。不需要在显示的调用release方法
+        [self.timer invalidate];
+    }
+}
+
+
+
+
 - (void)showTotasViewWithMes:(NSString *)message{
     ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:message];
     [toastView show];
+}
+
+#pragma mark - notify
+
+- (void)addNotify {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(keybardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [nc addObserver:self selector:@selector(keyboardWillHidden) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keybardWillShow:(NSNotification *)notify
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.bounds = CGRectMake(0,  h_iconViewHeight , self.view.bounds.size.width, self.view.bounds.size.height);
+    }];
+    CGRect frame = self.view.bounds;
+    frame.origin.y = h_iconViewHeight ;
+    _headerImageView.frame = frame;
+}
+
+-(void)keyboardWillHidden
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect bounds = self.view.bounds;
+        bounds.origin = CGPointZero;
+        self.view.bounds = bounds;
+    }];
+    CGRect frame = self.view.bounds;
+    _headerImageView.frame = frame;
+}
+- (void)dealloc{
+    [self  stopPainting];
 }
 @end

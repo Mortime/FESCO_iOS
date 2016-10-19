@@ -12,6 +12,7 @@ typedef void(^MMRegisterTextFiledViewDelegateBlock)(UITextField *textField,NSInt
 
 @interface MMRegisterTextFiledView : UIView
 
+@property (nonatomic, strong) UITextField *rightTextFiled;
 
 @property (nonatomic,strong) NSString *leftTitle;
 

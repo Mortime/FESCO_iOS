@@ -72,7 +72,7 @@
         
         [NetworkEntity postFillListWithSuccess:^(id responseObject) {
             
-//            MMLog(@"fillList ====== responseObject======%@",responseObject);
+            MMLog(@"fillList ====== responseObject======%@",responseObject);
             
             
             if (responseObject == nil) {
