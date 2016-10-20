@@ -249,7 +249,7 @@
     }
 //    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
     
-    self.codeNumButton.userInteractionEnabled = NO;
+    
     
     
     [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
@@ -257,6 +257,7 @@
         if (responseObject) {
             NSArray *allkey = [responseObject allKeys];
             if ([allkey[0] isEqualToString:@"ValidateCode"]) {
+                self.codeNumButton.userInteractionEnabled = NO;
                 [self startPainting];
                 [self showTotasViewWithMes:@"验证码发送成功"];  // invalid email address
                 return ;

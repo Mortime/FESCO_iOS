@@ -141,6 +141,7 @@
 		59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EB1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m */; };
 		59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */; };
 		59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */; };
+		59E99B641DB866C2002D0486 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E99B631DB866C2002D0486 /* Images.xcassets */; };
 		59EC8E8A1D98BE1A00E802FA /* libHyphenateSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EC8E891D98BE1A00E802FA /* libHyphenateSDK.a */; };
 		59EC91131D98CB5900E802FA /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC90311D98CB5800E802FA /* EMAudioPlayerUtil.m */; };
 		59EC91141D98CB5900E802FA /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC90331D98CB5800E802FA /* EMAudioRecorderUtil.m */; };
@@ -554,6 +555,7 @@
 		59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFActionSheetView.m; sourceTree = "<group>"; };
 		59E729F01D6A8C0300920CC1 /* BLPFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPFAlertView.h; sourceTree = "<group>"; };
 		59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPFAlertView.m; sourceTree = "<group>"; };
+		59E99B631DB866C2002D0486 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		59EC8E6A1D98BE1A00E802FA /* EMChatManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatManagerDelegate.h; sourceTree = "<group>"; };
 		59EC8E6B1D98BE1A00E802FA /* EMChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroom.h; sourceTree = "<group>"; };
 		59EC8E6C1D98BE1A00E802FA /* EMChatroomManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroomManagerDelegate.h; sourceTree = "<group>"; };
@@ -1487,6 +1489,7 @@
 				59A59E301D49C6A3001F3122 /* MM_Login */,
 				59A59DEC1D499937001F3122 /* ThirdPary */,
 				5977624C1D48AB8100BD8472 /* Tool */,
+				59E99B631DB866C2002D0486 /* Images.xcassets */,
 				597762151D489AE000BD8472 /* Supporting Files */,
 			);
 			path = MM_FESCO;
@@ -2380,6 +2383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
+				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */,
