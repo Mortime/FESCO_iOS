@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIView *flagView;
 
-@property (nonatomic, strong) UIImageView *flagImageView;
+@property (nonatomic, strong) UIButton *flagImageView;
 
 @end
 
@@ -36,7 +36,7 @@
 }
 - (void)layoutSubviews{
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.mas_left).offset(50);
+        make.left.mas_equalTo(self.mas_left).offset(20);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(self.height);
         make.width.mas_equalTo(@60);
@@ -44,7 +44,7 @@
    
     [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameLabel.mas_right);
-        make.right.mas_equalTo(self.mas_right).offset(-50);
+        make.right.mas_equalTo(self.mas_right).offset(-20);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(@2);
         
@@ -52,8 +52,8 @@
     [self.flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.flagView.mas_left);
         make.centerY.mas_equalTo(self.flagView.mas_centerY);
-        make.height.mas_equalTo(@10);
-        make.width.mas_equalTo(@9);
+        make.height.mas_equalTo(@20);
+        make.width.mas_equalTo(@20);
         
         
     }];
@@ -85,11 +85,16 @@
     }
     return _flagView;
 }
-- (UIImageView *)flagImageView{
+- (UIButton *)flagImageView{
     if (_flagImageView == nil) {
-        _flagImageView = [[UIImageView alloc] init];
-        _flagImageView.backgroundColor = [UIColor clearColor];
-        _flagImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
+        _flagImageView = [[UIButton alloc] init];
+        _flagImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_flagImageView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _flagImageView.userInteractionEnabled = NO;
+        _flagImageView.layer.masksToBounds = YES;
+        _flagImageView.layer.cornerRadius = 10;
+        _flagImageView.titleLabel.font = [UIFont systemFontOfSize:12];
+//        _flagImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
         
     }
     return _flagImageView;
@@ -97,17 +102,18 @@
 - (void)setModel:(LaterTimeStatisticModel *)model{
     _nameLabel.text = model.name;
     
-    CGFloat baseW = kMMWidth - 50 - 50 - 60;
-    CGFloat flageW = (baseW * model.timeNumber)/10;
-    NSLog(@"flageW = %f  flagView.width=%f flagView.width * model.timeNumber=%f ",flageW,_flagView.width,_flagView.width * model.timeNumber);
+    
+    CGFloat baseW = kMMWidth - 20 - 20 - 60;  //  20 表示距离屏幕左右的距离;
+    CGFloat flageW = (baseW * model.timeNumber)/20;  //  20 表示这个线条总的迟到次数;
+//    NSLog(@"flageW = %f  flagView.width=%f flagView.width * model.timeNumber=%f ",flageW,_flagView.width,_flagView.width * model.timeNumber);
     
     [_flagImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.mas_left).offset(110 + flageW);
+        make.left.mas_equalTo(self.mas_left).offset(80 + flageW);
         make.centerY.mas_equalTo(@22);
-        make.height.mas_equalTo(@10);
-        make.width.mas_equalTo(@9);
+        make.height.mas_equalTo(@20);
+        make.width.mas_equalTo(@20);
     }];
-  
+    [_flagImageView setTitle:[NSString stringWithFormat:@"%lu",model.timeNumber] forState:UIControlStateNormal];
     
     
 }

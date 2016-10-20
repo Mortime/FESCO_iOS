@@ -27,6 +27,7 @@
     self.title = @"迟到排行";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
+    self.tableView.tableHeaderView = [self tableHearderView];
     [self.view addSubview:self.tableView];
     [self initData];
     
@@ -88,7 +89,87 @@
     }
     return _tableView;
 }
+- (UIView *)tableHearderView{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont systemFontOfSize:14];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = MM_MAIN_FONTCOLOR_BLUE;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy"];
+    NSString *dateStr = [dateFormat stringFromDate:[NSDate date]];
+    
+    
+    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+    [dateFormat1 setDateFormat:@"MM"];
+    NSString *dateStr1 = [dateFormat1 stringFromDate:[NSDate date]];
+   
+    NSString *enlishMouth = [self headerLaberText:[dateStr1 integerValue]];
+    
+    NSString *result  = [NSString stringWithFormat:@"%@ %@",enlishMouth,dateStr];
+    
+    label.text = result;
+    
+    
+    [view addSubview:label];
+    return view;
+    
+}
 
+- (NSString *)headerLaberText:(NSInteger)mouthNubmer{
+    /*
+     一月 January Jan.
+     二月 February Feb.
+     三月 March Mar.
+     四月 April Apr.
+     五月 May May
+     六月 June Jun.
+     七月 July Jul.
+     八月 August Aug.
+     九月September Sep.
+     十月 October Oct.
+     十一月November Nov. 
+     十二月December Dec.
+     
+     */
+    
+    
+    
+   NSString *mouthElish = @"";
+    if (mouthNubmer == 1) {
+        mouthElish = @"In January,";
+    }
+    if (mouthNubmer == 2) {
+        mouthElish = @"In February,";
+    }
+    if (mouthNubmer == 3) {
+        mouthElish = @"In March,";
+    }if (mouthNubmer == 4) {
+        mouthElish = @"In April,";
+    }
+    if (mouthNubmer == 5) {
+        mouthElish = @"In May,";
+    }if (mouthNubmer == 6) {
+        mouthElish = @"In June,";
+    }if (mouthNubmer == 7) {
+        mouthElish = @"In July,";
+    }if (mouthNubmer == 8) {
+        mouthElish = @"In August,";
+    }if (mouthNubmer == 9) {
+        mouthElish = @"In September,";
+    }if (mouthNubmer == 10) {
+        mouthElish = @"In October,";
+    }if (mouthNubmer == 11) {
+        mouthElish = @"In November,";
+    }if (mouthNubmer == 12) {
+        mouthElish = @"In December,";
+    }
+    return mouthElish;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
