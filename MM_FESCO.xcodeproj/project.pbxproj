@@ -142,6 +142,9 @@
 		59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729EE1D6A8B6200920CC1 /* PFActionSheetView.m */; };
 		59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */; };
 		59E99B641DB866C2002D0486 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E99B631DB866C2002D0486 /* Images.xcassets */; };
+		59E99B671DB8923C002D0486 /* LaterTimeStatisticController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E99B661DB8923C002D0486 /* LaterTimeStatisticController.m */; };
+		59E99B6A1DB89C1D002D0486 /* LaterTimeStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E99B691DB89C1D002D0486 /* LaterTimeStatisticCell.m */; };
+		59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E99B6D1DB89D22002D0486 /* LaterTimeStatisticModel.m */; };
 		59EC8E8A1D98BE1A00E802FA /* libHyphenateSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EC8E891D98BE1A00E802FA /* libHyphenateSDK.a */; };
 		59EC91131D98CB5900E802FA /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC90311D98CB5800E802FA /* EMAudioPlayerUtil.m */; };
 		59EC91141D98CB5900E802FA /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC90331D98CB5800E802FA /* EMAudioRecorderUtil.m */; };
@@ -556,6 +559,12 @@
 		59E729F01D6A8C0300920CC1 /* BLPFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPFAlertView.h; sourceTree = "<group>"; };
 		59E729F11D6A8C0300920CC1 /* BLPFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPFAlertView.m; sourceTree = "<group>"; };
 		59E99B631DB866C2002D0486 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		59E99B651DB8923C002D0486 /* LaterTimeStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaterTimeStatisticController.h; sourceTree = "<group>"; };
+		59E99B661DB8923C002D0486 /* LaterTimeStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaterTimeStatisticController.m; sourceTree = "<group>"; };
+		59E99B681DB89C1D002D0486 /* LaterTimeStatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaterTimeStatisticCell.h; sourceTree = "<group>"; };
+		59E99B691DB89C1D002D0486 /* LaterTimeStatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaterTimeStatisticCell.m; sourceTree = "<group>"; };
+		59E99B6C1DB89D22002D0486 /* LaterTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaterTimeStatisticModel.h; sourceTree = "<group>"; };
+		59E99B6D1DB89D22002D0486 /* LaterTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaterTimeStatisticModel.m; sourceTree = "<group>"; };
 		59EC8E6A1D98BE1A00E802FA /* EMChatManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatManagerDelegate.h; sourceTree = "<group>"; };
 		59EC8E6B1D98BE1A00E802FA /* EMChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroom.h; sourceTree = "<group>"; };
 		59EC8E6C1D98BE1A00E802FA /* EMChatroomManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroomManagerDelegate.h; sourceTree = "<group>"; };
@@ -1172,6 +1181,7 @@
 		5972234F1DADE05400D01A7A /* CheckStatistic */ = {
 			isa = PBXGroup;
 			children = (
+				59E99B6B1DB89D08002D0486 /* Model */,
 				59AF3AF71DAF35CF00BE46BE /* View */,
 				597223EC1DAE2F3500D01A7A /* Controller */,
 				597223501DADE05400D01A7A /* FDCalendar */,
@@ -1452,6 +1462,8 @@
 			children = (
 				597223ED1DAE2F6400D01A7A /* CheckStatisticController.h */,
 				597223EE1DAE2F6400D01A7A /* CheckStatisticController.m */,
+				59E99B651DB8923C002D0486 /* LaterTimeStatisticController.h */,
+				59E99B661DB8923C002D0486 /* LaterTimeStatisticController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1678,6 +1690,8 @@
 				59AF3AFC1DAF452E00BE46BE /* FlagView.m */,
 				59AF3AFE1DAF8C5900BE46BE /* CheckStatisticFooterView.h */,
 				59AF3AFF1DAF8C5900BE46BE /* CheckStatisticFooterView.m */,
+				59E99B681DB89C1D002D0486 /* LaterTimeStatisticCell.h */,
+				59E99B691DB89C1D002D0486 /* LaterTimeStatisticCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1689,6 +1703,15 @@
 				59C197C41D5ABFB100C7F593 /* UserInfoModel.m */,
 			);
 			path = UserInfoModel;
+			sourceTree = "<group>";
+		};
+		59E99B6B1DB89D08002D0486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E99B6C1DB89D22002D0486 /* LaterTimeStatisticModel.h */,
+				59E99B6D1DB89D22002D0486 /* LaterTimeStatisticModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		59EC8E671D98BE1A00E802FA /* EaseMob */ = {
@@ -2474,6 +2497,7 @@
 				59C005C61D92542300A329CD /* RegisterController.m in Sources */,
 				59EC91591D98CB5900E802FA /* EaseViewController.m in Sources */,
 				597223D41DADE05400D01A7A /* MMMianCell.m in Sources */,
+				59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */,
 				59EC91641D98CB5900E802FA /* EaseBubbleView+Video.m in Sources */,
 				59EC91581D98CB5900E802FA /* EaseUsersListViewController.m in Sources */,
 				597223DC1DADE05400D01A7A /* PersonalMessageController.m in Sources */,
@@ -2504,6 +2528,7 @@
 				597223D91DADE05400D01A7A /* OverTimeRecordCell.m in Sources */,
 				59EC911C1D98CB5900E802FA /* EMVoiceConverter.mm in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
+				59E99B671DB8923C002D0486 /* LaterTimeStatisticController.m in Sources */,
 				597223D81DADE05400D01A7A /* OverTimeApplyView.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
 				597223B31DADE05400D01A7A /* LeaveApprovalView.m in Sources */,
@@ -2672,6 +2697,7 @@
 				59EC916C1D98CB5900E802FA /* EaseFacialView.m in Sources */,
 				59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */,
 				597223A61DADE05400D01A7A /* MyController.m in Sources */,
+				59E99B6A1DB89C1D002D0486 /* LaterTimeStatisticCell.m in Sources */,
 				59EC91D81D98D9AD00E802FA /* EMSDWebImageManager.m in Sources */,
 				597223DA1DADE05400D01A7A /* OverTimeRecordView.m in Sources */,
 				597223E01DADE05400D01A7A /* EasySerachViewController.m in Sources */,

@@ -23,6 +23,7 @@
 #import "CollectionFooterView.h"
 #import "MMPageControl.h"
 #import "CheckStatisticController.h"
+#import "LaterTimeStatisticController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -242,7 +243,7 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 6) {
-        //  迟到排行
+        //  签到排行
         
         CheckStatisticController *checkStatVC = [[CheckStatisticController alloc] init];
         checkStatVC.hidesBottomBarWhenPushed = YES;
@@ -253,18 +254,26 @@ static NSString *kMallID = @"MallID";
     }
     
     if (indexPath.row == 7) {
-        // 加班排行
+           //  迟到排行
+        
+        LaterTimeStatisticController *laterTimeStatVC = [[LaterTimeStatisticController alloc] init];
+        laterTimeStatVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:laterTimeStatVC animated:YES];
         
     }
     if (indexPath.row == 8) {
-        //  薪酬列表
+         // 加班排行
         
     }
     if (indexPath.row == 9) {
-        // HRS数据录入
+         //  薪酬列表
         
     }if (indexPath.row == 10) {
-        //  HRS数据勘查
+          // HRS数据录入
+        
+    }
+    if (indexPath.row == 10) {
+          //  HRS数据勘查
         
     }
     
