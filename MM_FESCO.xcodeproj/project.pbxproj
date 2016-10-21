@@ -264,6 +264,7 @@
 		59FC07A31D95137600C1D0E0 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A21D95137600C1D0E0 /* libiconv.tbd */; };
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
+		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
 
@@ -839,6 +840,8 @@
 		59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDockItem.m; sourceTree = "<group>"; };
 		59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVTabBarController.h; sourceTree = "<group>"; };
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
+		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
+		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1720,6 +1723,8 @@
 			children = (
 				59E99B6C1DB89D22002D0486 /* LaterTimeStatisticModel.h */,
 				59E99B6D1DB89D22002D0486 /* LaterTimeStatisticModel.m */,
+				760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */,
+				760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2637,6 +2642,7 @@
 				597223B61DADE05400D01A7A /* MMTitleLabel.m in Sources */,
 				59EC91181D98CB5900E802FA /* EMCDDeviceManager+Remind.m in Sources */,
 				597223B11DADE05400D01A7A /* FileMainApprovalDetailCell.m in Sources */,
+				760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */,
 				59EC91511D98CB5900E802FA /* EaseEmotionEscape.m in Sources */,
 				59EC91681D98CB5900E802FA /* EaseChatToolbarItem.m in Sources */,
 				597223C41DADE05400D01A7A /* FillRecordCell.m in Sources */,

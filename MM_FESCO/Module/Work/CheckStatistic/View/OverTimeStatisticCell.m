@@ -65,8 +65,8 @@
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.numberLabel.mas_right);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
-        make.width.mas_equalTo(@18);
-        make.height.mas_equalTo(@18);
+        make.width.mas_equalTo(@25);
+        make.height.mas_equalTo(@25);
     }];
 
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,11 +76,19 @@
         
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgView.mas_top);
-        make.left.mas_equalTo(self.iconImageView.mas_right).offset(5);
-        make.bottom.mas_equalTo(self.bgView.mas_bottom);
+        make.top.mas_equalTo(self.bgView.mas_top).offset(10);
+        make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
+        make.height.mas_equalTo(@13);
         
     }];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(5);
+        make.right.mas_equalTo(self.titleLabel.mas_right);
+        make.width.mas_equalTo(self.titleLabel.mas_width);
+        make.height.mas_equalTo(@15);
+        
+    }];
+
     
 }
 - (void)awakeFromNib {
@@ -118,7 +126,8 @@
         _iconImageView.userInteractionEnabled = NO;
         _iconImageView.layer.masksToBounds = YES;
         _iconImageView.layer.cornerRadius = 5;
-        _iconImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
+        _iconImageView.backgroundColor = [UIColor grayColor];
+//        _iconImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
     }
     return _iconImageView;
 }
@@ -137,6 +146,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.font = [UIFont systemFontOfSize:12];
+        _titleLabel.text = @"累计加班";
         
     }
     return _titleLabel;
@@ -146,9 +156,18 @@
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _timeLabel.font = [UIFont systemFontOfSize:14];
+        _timeLabel.textAlignment = NSTextAlignmentCenter;
         
     }
     return _timeLabel;
 }
-
+- (void)setModel:(OverTimeStatisticModel *)model{
+    if (model.name) {
+        _nameLabel.text = model.name;
+    }
+    if (model.timeNumber) {
+        _timeLabel.text = [NSString stringWithFormat:@"%.1fH",model.timeNumber];
+    }
+    
+}
 @end

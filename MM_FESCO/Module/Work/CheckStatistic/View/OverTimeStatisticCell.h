@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OverTimeStatisticModel.h"
 
 @interface OverTimeStatisticCell : UITableViewCell
+
+@property (nonatomic, strong) OverTimeStatisticModel *model;
 
 @end
