@@ -462,14 +462,22 @@
 
 #pragma ================== 迟到排行 加班排行 =====================
 /**
- *   迟到排行  
- 
- *  @param emp_Id （req）  员工id
+ *   迟到排行
  
  *  @param cust_Id （req） 公司id
  
  
  */
 + (void)postLaterTimeStatisticSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *   加班排行
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ 
+ */
++ (void)postOverTimeStatisticSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 
 @end

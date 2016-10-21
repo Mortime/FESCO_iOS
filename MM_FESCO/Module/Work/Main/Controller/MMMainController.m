@@ -24,6 +24,7 @@
 #import "MMPageControl.h"
 #import "CheckStatisticController.h"
 #import "LaterTimeStatisticController.h"
+#import "OverTimeStatistiscController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -263,6 +264,10 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 8) {
          // 加班排行
+        OverTimeStatistiscController *overTimeStatVC = [[OverTimeStatistiscController alloc] init];
+        overTimeStatVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:overTimeStatVC animated:YES];
+
         
     }
     if (indexPath.row == 9) {

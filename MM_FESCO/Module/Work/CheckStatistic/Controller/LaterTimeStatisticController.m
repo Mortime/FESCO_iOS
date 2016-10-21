@@ -31,7 +31,7 @@
     [self.view addSubview:self.tableView];
     [self initData];
     
-}
+}   
 - (void)initData{
     [NetworkEntity postLaterTimeStatisticSuccess:^(id responseObject) {
         MMLog(@"laterTimeStatistic  =======responseObject=====%@",responseObject);

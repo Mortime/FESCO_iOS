@@ -13,6 +13,8 @@
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
 		592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 592306211DAB8410004D65DD /* NSDate+LSCore.m */; };
+		5942A68A1DB9A18C008FAFA8 /* OverTimeStatistiscController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5942A6891DB9A18C008FAFA8 /* OverTimeStatistiscController.m */; };
+		5942A68D1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5942A68C1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m */; };
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
 		59474CF81D6D956000DC6E50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59474CF71D6D956000DC6E50 /* libsqlite3.tbd */; };
 		594775F71D7684D80094D354 /* MMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594775F61D7684D80094D354 /* MMBaseViewController.m */; };
@@ -298,6 +300,10 @@
 		59182B3E1D644D7E00842352 /* NSString+BASE64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BASE64.m"; sourceTree = "<group>"; };
 		592306201DAB8410004D65DD /* NSDate+LSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LSCore.h"; sourceTree = "<group>"; };
 		592306211DAB8410004D65DD /* NSDate+LSCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LSCore.m"; sourceTree = "<group>"; };
+		5942A6881DB9A18C008FAFA8 /* OverTimeStatistiscController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatistiscController.h; sourceTree = "<group>"; };
+		5942A6891DB9A18C008FAFA8 /* OverTimeStatistiscController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatistiscController.m; sourceTree = "<group>"; };
+		5942A68B1DB9A6B1008FAFA8 /* OverTimeStatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticCell.h; sourceTree = "<group>"; };
+		5942A68C1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticCell.m; sourceTree = "<group>"; };
 		59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSQManagerTool.h; sourceTree = "<group>"; };
 		59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSQManagerTool.m; sourceTree = "<group>"; };
 		59474CF71D6D956000DC6E50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -1464,6 +1470,8 @@
 				597223EE1DAE2F6400D01A7A /* CheckStatisticController.m */,
 				59E99B651DB8923C002D0486 /* LaterTimeStatisticController.h */,
 				59E99B661DB8923C002D0486 /* LaterTimeStatisticController.m */,
+				5942A6881DB9A18C008FAFA8 /* OverTimeStatistiscController.h */,
+				5942A6891DB9A18C008FAFA8 /* OverTimeStatistiscController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1692,6 +1700,8 @@
 				59AF3AFF1DAF8C5900BE46BE /* CheckStatisticFooterView.m */,
 				59E99B681DB89C1D002D0486 /* LaterTimeStatisticCell.h */,
 				59E99B691DB89C1D002D0486 /* LaterTimeStatisticCell.m */,
+				5942A68B1DB9A6B1008FAFA8 /* OverTimeStatisticCell.h */,
+				5942A68C1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2648,6 +2658,7 @@
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
 				597223AB1DADE05400D01A7A /* OverTimeDetailController.m in Sources */,
+				5942A68D1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m in Sources */,
 				597223CC1DADE05400D01A7A /* LeavaRecordListModel.m in Sources */,
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
@@ -2717,6 +2728,7 @@
 				597223CD1DADE05400D01A7A /* LeaveApplyCell.m in Sources */,
 				594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */,
 				59EC914C1D98CB5900E802FA /* EaseChineseToPinyin.m in Sources */,
+				5942A68A1DB9A18C008FAFA8 /* OverTimeStatistiscController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2866,11 +2878,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2885,7 +2897,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
+				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
 			};
 			name = Debug;
 		};
@@ -2896,11 +2909,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = /Users/fesco/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2915,7 +2928,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
+				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
 			};
 			name = Release;
 		};
