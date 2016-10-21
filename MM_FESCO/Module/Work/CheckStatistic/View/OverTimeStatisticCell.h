@@ -13,4 +13,5 @@
 
 @property (nonatomic, strong) OverTimeStatisticModel *model;
 
+@property (nonatomic, assign) NSInteger index;
 @end

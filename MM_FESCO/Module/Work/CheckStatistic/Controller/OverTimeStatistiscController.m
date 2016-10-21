@@ -61,7 +61,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,6 +75,7 @@
 //    // 从数组最后倒序取值
     NSInteger arrayCount = _dataArray.count - 3 - indexPath.row - 1;
     cell.model = _dataArray[arrayCount];
+    cell.index = indexPath.row + 3;
     
     return cell;
     

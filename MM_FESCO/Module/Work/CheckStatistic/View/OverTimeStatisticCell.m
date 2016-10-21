@@ -60,13 +60,13 @@
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.bgView.mas_left);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
-        make.width.mas_equalTo(@20);
+        make.width.mas_equalTo(@30);
     }];
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.numberLabel.mas_right);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
-        make.width.mas_equalTo(@25);
-        make.height.mas_equalTo(@25);
+        make.width.mas_equalTo(@40);
+        make.height.mas_equalTo(@40);
     }];
 
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,7 +76,7 @@
         
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgView.mas_top).offset(10);
+        make.top.mas_equalTo(self.bgView.mas_top).offset(15);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
         make.height.mas_equalTo(@13);
         
@@ -114,7 +114,7 @@
         _numberLabel = [[UILabel alloc] init];
         _numberLabel.textColor = [UIColor blackColor];
         _numberLabel.font = [UIFont systemFontOfSize:12];
-        _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _numberLabel.textAlignment = NSTextAlignmentCenter;
         
     }
     return _numberLabel;
@@ -169,5 +169,8 @@
         _timeLabel.text = [NSString stringWithFormat:@"%.1fH",model.timeNumber];
     }
     
+}
+- (void)setIndex:(NSInteger)index{
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",index + 1];
 }
 @end
