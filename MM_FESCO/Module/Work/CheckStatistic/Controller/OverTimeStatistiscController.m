@@ -9,6 +9,19 @@
 #import "OverTimeStatistiscController.h"
 #import "OverTimeStatisticCell.h"
 #import "OverTimeStatisticModel.h"
+#import "OverTimeStatisticHeaderView.h"
+
+#define kLeftW  88
+
+#define kLeftH  (88 + 48)
+
+#define kMightW 112
+
+#define kMightH  (112 + 48)
+
+#define kMarginW (((kMMWidth) - ((kLeftW * 2)) - (kMightW)) / 4)
+
+
 
 @interface OverTimeStatistiscController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -16,6 +29,13 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong)  NSMutableArray *dataArray;
+
+@property (nonatomic,strong) OverTimeStatisticHeaderView *leftView;
+
+@property (nonatomic,strong) OverTimeStatisticHeaderView *mightView;
+
+@property (nonatomic,strong) OverTimeStatisticHeaderView *rightView;
+
 
 @end
 
@@ -29,6 +49,19 @@
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
 //    self.tableView.tableHeaderView = [self tableHearderView];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kMightH + 20 + 9 + 20 - 50)];
+    view.backgroundColor = [UIColor clearColor];
+
+    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.view.width, kMightH + 20 + 9 - 50 )];
+    view1.backgroundColor = [UIColor whiteColor];
+    
+    [view addSubview:view1];
+    [view1 addSubview:self.leftView];
+    [view1 addSubview:self.mightView];
+    [view1 addSubview:self.rightView];
+    
+    self.tableView.tableHeaderView = view;
     [self.view addSubview:self.tableView];  
     [self initData];
     
@@ -48,6 +81,7 @@
             }
 
         }
+        
         [_tableView reloadData];
     } failure:^(NSError *failure) {
         MMLog(@"OverTimeStatistic  =======failure=====%@",failure);
@@ -77,6 +111,12 @@
     cell.model = _dataArray[arrayCount];
     cell.index = indexPath.row + 3;
     
+    
+    NSInteger countNumber = _dataArray.count;
+    self.leftView.model = _dataArray[countNumber - 2];
+    self.mightView.model = _dataArray[countNumber - 1];
+    self.rightView.model = _dataArray[countNumber - 3];
+    
     return cell;
     
     
@@ -90,7 +130,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height- 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -122,4 +162,29 @@
     MMLog(@"array排序后  ==  %@",array);
     return array;
 }
+- (OverTimeStatisticHeaderView *)leftView{
+    if (_leftView == nil) {
+        _leftView = [[OverTimeStatisticHeaderView alloc] initWithFrame:CGRectMake(kMarginW, 19, kLeftW, kLeftH)];
+//        _leftView.backgroundColor = [UIColor orangeColor];
+        
+    }
+    return _leftView;
+}
+- (OverTimeStatisticHeaderView *)mightView{
+    if (_mightView == nil) {
+        _mightView = [[OverTimeStatisticHeaderView alloc] initWithFrame:CGRectMake((kMarginW * 2) + kLeftW , 9, kMightW, kMightH)];
+//        _mightView.backgroundColor = [UIColor redColor];
+        
+    }
+    return _mightView;
+}
+- (OverTimeStatisticHeaderView *)rightView{
+    if (_rightView == nil) {
+        _rightView = [[OverTimeStatisticHeaderView alloc] initWithFrame:CGRectMake((kMarginW * 3) + kLeftW + kMightW, 19, kLeftW, kLeftH)];
+//        _rightView.backgroundColor = [UIColor cyanColor];
+        
+    }
+    return _rightView;
+}
+
 @end

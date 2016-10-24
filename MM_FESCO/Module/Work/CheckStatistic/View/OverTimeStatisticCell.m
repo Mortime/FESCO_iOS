@@ -71,7 +71,7 @@
 
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top);
-        make.left.mas_equalTo(self.iconImageView.mas_right).offset(5);
+        make.left.mas_equalTo(self.iconImageView.mas_right).offset(10);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
         
     }];
