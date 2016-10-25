@@ -236,9 +236,8 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
         
-        MMLog(@"testArraytestArray  ========== %lu",_dataArray.count + firstWeekday);
         
-        // 显示签到类型的背景色值
+        // 显示签到类型的背景色值  (_dataArray.count + firstWeekday 本月数据数据越界问题 )
         if (indexPath.row < _dataArray.count + firstWeekday) {
             if (_dataArray.count) {
                 NSArray *array = _dataArray[day - 1];

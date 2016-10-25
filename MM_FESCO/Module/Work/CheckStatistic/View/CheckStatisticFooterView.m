@@ -58,7 +58,7 @@
         make.top.mas_equalTo(self.holidayTitelLabel.mas_bottom);
         make.left.mas_equalTo(self.checkTitleLabel.mas_left);
         make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-//        make.height.mas_equalTo(@16);
+        make.height.mas_equalTo(@16);
         
         
         
@@ -111,13 +111,14 @@
 - (void)setRecodeStr:(NSString *)recodeStr{
     
     NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:recodeStr]];
-    [self.checkContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.checkTitleLabel.mas_bottom);
-        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
-        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-        make.height.mas_equalTo(50);
-    }];
-     MMLog(@"recodeStr  ==%@",recodeStr);
+//    [self.checkContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.checkTitleLabel.mas_bottom);
+//        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
+//        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
+//        make.height.mas_equalTo(50);
+//    }];
+    
+//     MMLog(@"recodeStr  ==%@",recodeStr);
     _checkContentView.text = recodeStr;
 
 }
@@ -125,12 +126,12 @@
     MMLog(@"holidayStr  ==%@%@",holidayStr,_holidayContentLabel);
     
     NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:holidayStr]];
-    [self.holidayContentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.holidayTitelLabel.mas_bottom);
-        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
-        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-        make.height.mas_equalTo(H);
-    }];
+//    [self.holidayContentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.holidayTitelLabel.mas_bottom);
+//        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
+//        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
+//        make.height.mas_equalTo(H);
+//    }];
     
     MMLog(@"holidayStr  ==%@%@",holidayStr,_holidayContentLabel);
     _holidayContentLabel.text = holidayStr;

@@ -43,7 +43,7 @@
     calendar.paramentVC = self;
     
     
-    self.footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 160)];
+    self.footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 200)];
     _footView.backgroundColor = [UIColor clearColor];
 
 
@@ -51,7 +51,7 @@
     flagView.backgroundColor = [UIColor clearColor];
     [self.footView addSubview:flagView];
     
-    _checkStatisticView = [[CheckStatisticFooterView alloc] initWithFrame:CGRectMake(20, flagView.height + 20, self.view.width, 80)];
+    _checkStatisticView = [[CheckStatisticFooterView alloc] initWithFrame:CGRectMake(20, flagView.height + 20, self.view.width, 120)];
     _checkStatisticView.backgroundColor = [UIColor clearColor];
     [self.footView addSubview:_checkStatisticView];
     
@@ -161,7 +161,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //        _tableView.dataSource = self;
