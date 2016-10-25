@@ -126,8 +126,8 @@
         _iconImageView.userInteractionEnabled = NO;
         _iconImageView.layer.masksToBounds = YES;
         _iconImageView.layer.cornerRadius = 5;
-        _iconImageView.backgroundColor = [UIColor grayColor];
-//        _iconImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
+        _iconImageView.backgroundColor = [UIColor clearColor];
+        _iconImageView.image = [UIImage imageNamed:@"People_Place_Icon"];
     }
     return _iconImageView;
 }
@@ -173,4 +173,5 @@
 - (void)setIndex:(NSInteger)index{
     _numberLabel.text = [NSString stringWithFormat:@"%lu",index + 1];
 }
+
 @end

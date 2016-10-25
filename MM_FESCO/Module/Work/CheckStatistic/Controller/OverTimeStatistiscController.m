@@ -115,7 +115,9 @@
     NSInteger countNumber = _dataArray.count;
     self.leftView.model = _dataArray[countNumber - 2];
     self.mightView.model = _dataArray[countNumber - 1];
+    self.mightView.isShowFlage = YES;
     self.rightView.model = _dataArray[countNumber - 3];
+    
     
     return cell;
     

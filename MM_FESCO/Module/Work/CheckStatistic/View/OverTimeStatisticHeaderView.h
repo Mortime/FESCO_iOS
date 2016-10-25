@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) OverTimeStatisticModel *model;
 
+@property (nonatomic,assign) BOOL isShowFlage; // 默认是显示的
+
 @end

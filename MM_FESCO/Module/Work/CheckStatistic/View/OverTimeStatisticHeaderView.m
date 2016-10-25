@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) UILabel *bottomLabel;
 
+@property (nonatomic , strong) UIImageView *flageImageView;
+
 @end
 
 @implementation OverTimeStatisticHeaderView
@@ -27,11 +29,14 @@
     return self;
 }
 - (void)layoutSubviews{
+    
+    
+    CGFloat floatH =  self.width - 50;
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top);
         make.left.mas_equalTo(self.mas_left).offset(25);
         make.right.mas_equalTo(self.mas_right).offset(-25);
-        make.height.mas_equalTo(@(self.width - 50));
+        make.height.mas_equalTo(@(floatH));
         
     }];
     [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -48,22 +53,31 @@
         make.height.mas_equalTo(@13);
         
     }];
+    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.mas_equalTo(self.imageView.mas_centerX).offset(floatH / 2);
+        make.centerY.mas_equalTo(self.imageView.mas_centerY).offset(floatH / 2);
+        make.height.mas_equalTo(@22);
+        make.height.mas_equalTo(@23);
+        
+    }];
+    
+
 
 }
 - (void)initUI{
     [self addSubview:self.imageView];
     [self addSubview:self.topLabel];
     [self addSubview:self.bottomLabel];
+    [self addSubview:self.flageImageView];
 }
 - (UIImageView *)imageView{
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor clearColor];
         _imageView.userInteractionEnabled = NO;
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.cornerRadius = 5;
-        _imageView.backgroundColor = [UIColor grayColor];
-        //        _iconImageView.image = [UIImage imageNamed:@"LaterTime_Flage"];
+        _imageView.image = [UIImage imageNamed:@"People_Place_Icon"];
     }
     return _imageView;
 }
@@ -89,10 +103,23 @@
     }
     return _bottomLabel;
 }
+- (UIImageView *)flageImageView{
+    if (_flageImageView == nil) {
+        _flageImageView = [[UIImageView alloc] init];
+        _flageImageView.backgroundColor = [UIColor clearColor];
+        _flageImageView.image = [UIImage imageNamed:@"OverTimeStatistic_Trophy"];
+        _flageImageView.hidden = YES;
+    }
+    return _flageImageView;
+}
 
 - (void)setModel:(OverTimeStatisticModel *)model{
     _topLabel.text = model.name;
     _bottomLabel.text = [NSString stringWithFormat:@"累计加班: %.1fH",model.timeNumber];
 }
-
+- (void)setIsShowFlage:(BOOL)isShowFlage{
+    if (isShowFlage) {
+        self.flageImageView.hidden = NO;
+    }
+}
 @end
