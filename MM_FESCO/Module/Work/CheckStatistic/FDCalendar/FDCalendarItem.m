@@ -236,63 +236,66 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
         
-//        MMLog(@"testArray = %lu",_dataArray.count);
+        MMLog(@"testArraytestArray  ========== %lu",_dataArray.count + firstWeekday);
         
         // 显示签到类型的背景色值
-        if (_dataArray.count) {
-            NSArray *array = _dataArray[day - 1];
-            cell.flagView.hidden = YES;
-            if (array.count) {
-                if ([array[0] isEqualToString:@"normal"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+        if (indexPath.row < _dataArray.count + firstWeekday) {
+            if (_dataArray.count) {
+                NSArray *array = _dataArray[day - 1];
+                cell.flagView.hidden = YES;
+                if (array.count) {
+                    if ([array[0] isEqualToString:@"normal"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                    }
+                    if ([array[0] isEqualToString:@"lateArrive"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                    }
+                    if ([array[0] isEqualToString:@"earlyLeave"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                    }
+                    if ([array[0] isEqualToString:@"offWork"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                    }
+                    if ([array[0] isEqualToString:@"holiday"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                    }
+                    if ([array[0] isEqualToString:@"extraWork"]) {
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                    }
                 }
-                if ([array[0] isEqualToString:@"lateArrive"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                // 当有两张状态时 色块重叠
+                if (array.count == 2) {
+                    cell.flagView.hidden = NO;
                     cell.dayLabel.textColor = [UIColor whiteColor];
-                }
-                if ([array[0] isEqualToString:@"earlyLeave"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
-                    cell.dayLabel.textColor = [UIColor whiteColor];
-                }
-                if ([array[0] isEqualToString:@"offWork"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
-                    cell.dayLabel.textColor = [UIColor whiteColor];
-                }
-                if ([array[0] isEqualToString:@"holiday"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
-                    cell.dayLabel.textColor = [UIColor whiteColor];
-                }
-                if ([array[0] isEqualToString:@"extraWork"]) {
-                    cell.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
-                    cell.dayLabel.textColor = [UIColor whiteColor];
-                }
-            }
-            // 当有两张状态时 色块重叠
-            if (array.count == 2) {
-                cell.flagView.hidden = NO;
-                cell.dayLabel.textColor = [UIColor whiteColor];
-
-                if ([array[1] isEqualToString:@"normal"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
-                }
-                if ([array[1] isEqualToString:@"lateArrive"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                    
+                    if ([array[1] isEqualToString:@"normal"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                    }
+                    if ([array[1] isEqualToString:@"lateArrive"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                        
+                    }
+                    if ([array[1] isEqualToString:@"earlyLeave"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                    }
+                    if ([array[1] isEqualToString:@"offWork"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                    }
+                    if ([array[1] isEqualToString:@"holiday"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                    }
+                    if ([array[1] isEqualToString:@"extraWork"]) {
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                    }
                     
                 }
-                if ([array[1] isEqualToString:@"earlyLeave"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
-                }
-                if ([array[1] isEqualToString:@"offWork"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
-                }
-                if ([array[1] isEqualToString:@"holiday"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
-                }
-                if ([array[1] isEqualToString:@"extraWork"]) {
-                    cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
-                }
-
             }
+
         }
         
         
