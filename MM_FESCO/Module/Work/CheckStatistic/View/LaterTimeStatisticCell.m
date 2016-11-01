@@ -50,7 +50,7 @@
         
     }];
     [self.flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.flagView.mas_left);
+//        make.left.mas_equalTo(self.flagView.mas_left);
         make.centerY.mas_equalTo(self.flagView.mas_centerY);
         make.height.mas_equalTo(@20);
         make.width.mas_equalTo(@20);
@@ -108,8 +108,8 @@
 //    NSLog(@"flageW = %f  flagView.width=%f flagView.width * model.timeNumber=%f ",flageW,_flagView.width,_flagView.width * model.timeNumber);
     
     [_flagImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.mas_left).offset(80 + flageW);
-        make.centerY.mas_equalTo(@22);
+        make.left.mas_equalTo(self.flagView.mas_left).offset(flageW);
+        make.centerY.mas_equalTo(self.flagView.mas_centerY);
         make.height.mas_equalTo(@20);
         make.width.mas_equalTo(@20);
     }];

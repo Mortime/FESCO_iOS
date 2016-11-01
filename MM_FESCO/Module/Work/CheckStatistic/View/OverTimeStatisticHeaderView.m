@@ -57,7 +57,7 @@
         
         make.centerX.mas_equalTo(self.imageView.mas_centerX).offset(floatH / 2);
         make.centerY.mas_equalTo(self.imageView.mas_centerY).offset(floatH / 2);
-        make.height.mas_equalTo(@22);
+        make.width.mas_equalTo(@22);
         make.height.mas_equalTo(@23);
         
     }];
