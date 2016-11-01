@@ -10,6 +10,7 @@
 #import "OverTimeStatisticCell.h"
 #import "OverTimeStatisticModel.h"
 #import "OverTimeStatisticHeaderView.h"
+#import "MMNoDataShowBGView.h"
 
 #define kLeftW  88
 
@@ -35,6 +36,8 @@
 @property (nonatomic,strong) OverTimeStatisticHeaderView *mightView;
 
 @property (nonatomic,strong) OverTimeStatisticHeaderView *rightView;
+
+@property (nonatomic, strong) MMNoDataShowBGView *noDataShowBGView;
 
 
 @end
@@ -62,7 +65,8 @@
     [view1 addSubview:self.rightView];
     
     self.tableView.tableHeaderView = view;
-    [self.view addSubview:self.tableView];  
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.noDataShowBGView];
     [self initData];
     
 }
@@ -72,7 +76,7 @@
         
         MMLog(@"OverTimeStatistic  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"rankList"] count]) {
-            
+            _noDataShowBGView.hidden = YES;
             NSArray *array = [self sortDurationWith:[responseObject objectForKey:@"rankList"]];
             for (NSDictionary *dic in array) {
                 OverTimeStatisticModel *model = [OverTimeStatisticModel yy_modelWithDictionary:dic];
@@ -80,6 +84,9 @@
                 
             }
 
+        }else{
+            self.tableView.tableHeaderView = nil;
+            _noDataShowBGView.hidden = NO;
         }
         
         [_tableView reloadData];
@@ -187,6 +194,14 @@
         
     }
     return _rightView;
+}
+- (MMNoDataShowBGView *)noDataShowBGView{
+    if (_noDataShowBGView == nil) {
+        _noDataShowBGView = [[MMNoDataShowBGView alloc] initWithFrame:CGRectMake(0, 0,self.view.width,self.view.height)];
+        _noDataShowBGView.imgStr = @"MM_NO_Recorder";
+        _noDataShowBGView.hidden = YES;
+    }
+    return _noDataShowBGView;
 }
 
 @end
