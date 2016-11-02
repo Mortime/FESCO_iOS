@@ -77,7 +77,8 @@
         _imageView.userInteractionEnabled = NO;
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.cornerRadius = 5;
-        _imageView.image = [UIImage imageNamed:@"People_Place_Icon"];
+        _imageView.backgroundColor = [UIColor grayColor];
+        
     }
     return _imageView;
 }
@@ -88,7 +89,7 @@
         _topLabel.textColor = [UIColor blackColor];
         _topLabel.font = [UIFont systemFontOfSize:14];
         _topLabel.textAlignment = NSTextAlignmentCenter;
-        _topLabel.text = @"张三";
+        
         
     }
     return _topLabel;
@@ -99,7 +100,7 @@
         _bottomLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _bottomLabel.font = [UIFont systemFontOfSize:11];
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
-        _bottomLabel.text = @"累计加班";
+        
     }
     return _bottomLabel;
 }
@@ -114,8 +115,12 @@
 }
 
 - (void)setModel:(OverTimeStatisticModel *)model{
+    
     _topLabel.text = model.name;
+    _bottomLabel.text = @"累计加班";
+    _imageView.image = [UIImage imageNamed:@"People_Place_Icon"];
     _bottomLabel.text = [NSString stringWithFormat:@"累计加班: %.1fH",model.timeNumber];
+    
 }
 - (void)setIsShowFlage:(BOOL)isShowFlage{
     if (isShowFlage) {

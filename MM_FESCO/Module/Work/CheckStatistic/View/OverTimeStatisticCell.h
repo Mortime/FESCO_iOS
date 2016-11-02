@@ -14,4 +14,7 @@
 @property (nonatomic, strong) OverTimeStatisticModel *model;
 
 @property (nonatomic, assign) NSInteger index;
+
+@property (nonatomic, strong) UIImageView *flageImageView;
+
 @end

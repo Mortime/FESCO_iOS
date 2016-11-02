@@ -51,20 +51,7 @@
     self.title = @"加班排行";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
-//    self.tableView.tableHeaderView = [self tableHearderView];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kMightH + 20 + 9 + 20 - 50)];
-    view.backgroundColor = [UIColor clearColor];
 
-    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.view.width, kMightH + 20 + 9 - 50 )];
-    view1.backgroundColor = [UIColor whiteColor];
-    
-    [view addSubview:view1];
-    [view1 addSubview:self.leftView];
-    [view1 addSubview:self.mightView];
-    [view1 addSubview:self.rightView];
-    
-    self.tableView.tableHeaderView = view;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.noDataShowBGView];
     [self initData];
@@ -85,7 +72,6 @@
             }
 
         }else{
-            self.tableView.tableHeaderView = nil;
             _noDataShowBGView.hidden = NO;
         }
         
@@ -98,7 +84,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return (_dataArray.count - 3);
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,17 +100,28 @@
         cell = [[OverTimeStatisticCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
 //    // 从数组最后倒序取值
-    NSInteger arrayCount = _dataArray.count - 3 - indexPath.row - 1;
+    NSInteger arrayCount = _dataArray.count - indexPath.row - 1;
     cell.model = _dataArray[arrayCount];
-    cell.index = indexPath.row + 3;
+    cell.index = indexPath.row  + 1;
     
-    
-    NSInteger countNumber = _dataArray.count;
-    self.leftView.model = _dataArray[countNumber - 2];
-    self.mightView.model = _dataArray[countNumber - 1];
-    self.mightView.isShowFlage = YES;
-    self.rightView.model = _dataArray[countNumber - 3];
-    
+    if (_dataArray.count) {
+        
+        if (indexPath.row == 0) {
+            cell.flageImageView.hidden = NO;
+            cell.flageImageView.image = [UIImage imageNamed:@"OverTimeStatistic_Trophy"];
+        }
+        if (indexPath.row == 1) {
+            cell.flageImageView.hidden = NO;
+            cell.flageImageView.image = [UIImage imageNamed:@"OverTimeStatistic_Yin"];
+        }
+        if (indexPath.row == 2) {
+            cell.flageImageView.hidden = NO;
+            cell.flageImageView.image = [UIImage imageNamed:@"OverTimeStatistic_Tong"];
+            
+        }
+        
+    }
+
     
     return cell;
     

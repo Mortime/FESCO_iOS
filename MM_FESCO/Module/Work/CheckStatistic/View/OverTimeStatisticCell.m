@@ -26,6 +26,8 @@
 
 
 
+
+
 @end
 
 @implementation OverTimeStatisticCell
@@ -44,8 +46,9 @@
     [self.bgView addSubview:self.numberLabel];
     [self.bgView addSubview:self.iconImageView];
     [self.bgView addSubview:self.nameLabel];
-    [self.bgView addSubview:self.titleLabel];
+    [self.bgView addSubview:self.flageImageView];
     [self.bgView addSubview:self.timeLabel];
+    [self.bgView addSubview:self.titleLabel];
     
 }
 - (void)layoutSubviews{
@@ -68,27 +71,38 @@
         make.width.mas_equalTo(@40);
         make.height.mas_equalTo(@40);
     }];
+    
+   
 
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.iconImageView.mas_right).offset(10);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
+        make.width.mas_equalTo(@80);
         
     }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgView.mas_top).offset(15);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
-        make.height.mas_equalTo(@13);
-        
+    
+    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.nameLabel.mas_right);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.width.mas_equalTo(@22);
+        make.height.mas_equalTo(@23);
     }];
+    
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(5);
-        make.right.mas_equalTo(self.titleLabel.mas_right);
-        make.width.mas_equalTo(self.titleLabel.mas_width);
+        make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
+         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.height.mas_equalTo(@15);
         
     }];
 
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.timeLabel.mas_left).offset(-5);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.height.mas_equalTo(@13);
+        
+    }];
+   
     
 }
 - (void)awakeFromNib {
@@ -141,12 +155,22 @@
     }
     return _nameLabel;
 }
+- (UIImageView *)flageImageView{
+    if (_flageImageView == nil) {
+        _flageImageView = [[UIImageView alloc] init];
+        _flageImageView.backgroundColor = [UIColor clearColor];
+        _flageImageView.hidden = YES;
+    }
+    return _flageImageView;
+}
+
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.font = [UIFont systemFontOfSize:12];
-        _titleLabel.text = @"累计加班";
+        _timeLabel.textAlignment = NSTextAlignmentRight;
+        _titleLabel.text = @"累计加班:";
         
     }
     return _titleLabel;
@@ -156,7 +180,7 @@
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _timeLabel.font = [UIFont systemFontOfSize:14];
-        _timeLabel.textAlignment = NSTextAlignmentCenter;
+        _timeLabel.textAlignment = NSTextAlignmentRight;
         
     }
     return _timeLabel;
@@ -171,7 +195,7 @@
     
 }
 - (void)setIndex:(NSInteger)index{
-    _numberLabel.text = [NSString stringWithFormat:@"%lu",index + 1];
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",index];
 }
 
 @end
