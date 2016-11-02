@@ -61,9 +61,10 @@
     
     [NetworkEntity postOverTimeStatisticSuccess:^(id responseObject) {
         
-        MMLog(@"OverTimeStatistic  =======responseObject=====%@",responseObject);
+//        MMLog(@"OverTimeStatistic  =======responseObject=====%@",responseObject);
+        
         if ([[responseObject objectForKey:@"rankList"] count]) {
-            _noDataShowBGView.hidden = YES;
+
             NSArray *array = [self sortDurationWith:[responseObject objectForKey:@"rankList"]];
             for (NSDictionary *dic in array) {
                 OverTimeStatisticModel *model = [OverTimeStatisticModel yy_modelWithDictionary:dic];
@@ -71,20 +72,28 @@
                 
             }
 
-        }else{
-            _noDataShowBGView.hidden = NO;
         }
         
         [_tableView reloadData];
     } failure:^(NSError *failure) {
-        MMLog(@"OverTimeStatistic  =======failure=====%@",failure);
+        
+//        MMLog(@"OverTimeStatistic  =======failure=====%@",failure);
     }];
     
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _dataArray.count;
+    if (_dataArray.count == 0) {
+        // 显示无数据占位图片
+        _noDataShowBGView.hidden = NO;
+        return 0;
+    }else{
+         // 不显示无数据占位图片
+        _noDataShowBGView.hidden = YES;
+        return _dataArray.count;
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,7 +108,7 @@
     if (!cell) {
         cell = [[OverTimeStatisticCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-//    // 从数组最后倒序取值
+    // 从数组最后倒序取值
     NSInteger arrayCount = _dataArray.count - indexPath.row - 1;
     cell.model = _dataArray[arrayCount];
     cell.index = indexPath.row  + 1;
