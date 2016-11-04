@@ -1512,7 +1512,6 @@
 				597222F51DADE05400D01A7A /* Module */,
 				59FC07661D9509F100C1D0E0 /* Lib */,
 				594775F41D7684D80094D354 /* Base */,
-				59A59E301D49C6A3001F3122 /* MM_Login */,
 				59A59DEC1D499937001F3122 /* ThirdPary */,
 				5977624C1D48AB8100BD8472 /* Tool */,
 				59E99B631DB866C2002D0486 /* Images.xcassets */,
@@ -1550,6 +1549,7 @@
 		597762391D489AE000BD8472 /* MM_FESCOUITests */ = {
 			isa = PBXGroup;
 			children = (
+				59A59E301D49C6A3001F3122 /* MM_Login */,
 				5977623A1D489AE000BD8472 /* MM_FESCOUITests.m */,
 				5977623C1D489AE000BD8472 /* Info.plist */,
 			);
@@ -1692,7 +1692,8 @@
 				59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */,
 				59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */,
 			);
-			path = MM_Login;
+			name = MM_Login;
+			path = ../MM_FESCO/MM_Login;
 			sourceTree = "<group>";
 		};
 		59AF3AF71DAF35CF00BE46BE /* View */ = {
@@ -2890,8 +2891,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
@@ -2909,8 +2910,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
+				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
 			};
 			name = Debug;
 		};
@@ -2921,8 +2922,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
@@ -2940,8 +2941,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
+				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
 			};
 			name = Release;
 		};

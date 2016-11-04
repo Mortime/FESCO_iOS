@@ -51,6 +51,8 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
+@property (nonatomic, assign)  NSInteger ValidateCode;
+
 
 @property (nonatomic, assign) int codeTime;
 
@@ -213,7 +215,12 @@
         [self showTotasViewWithMes:@"请输入密码"];
         return;
     }
-    
+    // 本地判断验证码是否正确
+    if (_ValidateCode != [_codeNum integerValue]) {
+        [self showTotasViewWithMes:@"请输入正确验证码"];
+        return;
+
+    }
 
     [NetworkEntity postRegisterNumberWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
         
@@ -256,12 +263,19 @@
         MMLog(@"RegisterCodeNumber ========responseObject ============%@",responseObject);
         if (responseObject) {
             NSArray *allkey = [responseObject allKeys];
-            if ([allkey[0] isEqualToString:@"ValidateCode"]) {
-                self.codeNumButton.userInteractionEnabled = NO;
-                [self startPainting];
-                [self showTotasViewWithMes:@"验证码发送成功"];  // invalid email address
-                return ;
+            
+            for (NSString *str in allkey) {
+                if ([str isEqualToString:@"ValidateCode"]) {
+                    self.codeNumButton.userInteractionEnabled = NO;
+                     [self showTotasViewWithMes:@"验证码发送成功"];
+                    _ValidateCode = [[responseObject objectForKey:@"ValidateCode"] integerValue];
+                    [self startPainting];
+                    
+                    return ;
+
+                }
             }
+
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
                 return;
