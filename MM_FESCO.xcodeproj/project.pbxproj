@@ -268,6 +268,9 @@
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
+		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
+		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
+		76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
 /* End PBXBuildFile section */
@@ -852,6 +855,12 @@
 		764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseRecordHeaderView.m; sourceTree = "<group>"; };
 		764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseWorkHeaderView.h; sourceTree = "<group>"; };
 		764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseWorkHeaderView.m; sourceTree = "<group>"; };
+		76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseCell.h; sourceTree = "<group>"; };
+		76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseCell.m; sourceTree = "<group>"; };
+		76BB955F1DD058A3000E6EF1 /* NewReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseController.h; sourceTree = "<group>"; };
+		76BB95601DD058A3000E6EF1 /* NewReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseController.m; sourceTree = "<group>"; };
+		76BB95621DD05F14000E6EF1 /* NewReimburseTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseTemplateCell.h; sourceTree = "<group>"; };
+		76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseTemplateCell.m; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
 		851A1D3507C23C93B738EF89 /* Pods-MM_FESCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MM_FESCO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MM_FESCO/Pods-MM_FESCO.release.xcconfig"; sourceTree = "<group>"; };
@@ -2332,6 +2341,8 @@
 			children = (
 				764499D31DCC7DBA00A6404F /* ReimburseController.h */,
 				764499D41DCC7DBA00A6404F /* ReimburseController.m */,
+				76BB955F1DD058A3000E6EF1 /* NewReimburseController.h */,
+				76BB95601DD058A3000E6EF1 /* NewReimburseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2343,6 +2354,10 @@
 				764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */,
 				764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */,
 				764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */,
+				76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */,
+				76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */,
+				76BB95621DD05F14000E6EF1 /* NewReimburseTemplateCell.h */,
+				76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2628,6 +2643,7 @@
 				59EC91CE1D98D9AD00E802FA /* MWPhotoBrowser.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
 				59EC915B1D98CB5900E802FA /* EaseBaseMessageCell.m in Sources */,
+				76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */,
 				59EC91ED1D98D9AD00E802FA /* PSTGridLayoutItem.m in Sources */,
 				597223D21DADE05400D01A7A /* CollectionFooterView.m in Sources */,
 				597223D11DADE05400D01A7A /* MMMainController.m in Sources */,
@@ -2649,6 +2665,7 @@
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59EC914D1D98CB5900E802FA /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				597223E41DADE05400D01A7A /* PhoneListCell.m in Sources */,
+				76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */,
 				597223D01DADE05400D01A7A /* LeaveRecordView.m in Sources */,
 				59EC91DC1D98D9AD00E802FA /* UIButton+EMWebCache.m in Sources */,
 				59EC91651D98CB5900E802FA /* EaseBubbleView+Voice.m in Sources */,
@@ -2711,6 +2728,7 @@
 				597223AE1DADE05400D01A7A /* OverTimeListModel.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
+				76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */,
 				597223AB1DADE05400D01A7A /* OverTimeDetailController.m in Sources */,
 				5942A68D1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m in Sources */,
 				597223CC1DADE05400D01A7A /* LeavaRecordListModel.m in Sources */,

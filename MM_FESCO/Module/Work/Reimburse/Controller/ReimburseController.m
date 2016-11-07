@@ -7,8 +7,10 @@
 //
 
 #import "ReimburseController.h"
-
+#import "ReimburseCell.h"
 #import "ReimburseRecordHeaderView.h"
+#import "NewReimburseController.h"
+
 
 #define kHeaderH  130
 
@@ -16,14 +18,14 @@
 
 #define kBottomH  114
 
-@interface ReimburseController ()
-//<UITableViewDelegate,UITableViewDataSource>
+@interface ReimburseController () <UITableViewDelegate,UITableViewDataSource>
 
 
-//@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong)  NSMutableArray *dataArray;
 
+//  未制单消费  我的借款  差旅行程
 @property (nonatomic, strong) UIView *recodeBgView;
 
 @property (nonatomic, strong) ReimburseRecordHeaderView *leftRecordView;
@@ -32,6 +34,7 @@
 
 @property (nonatomic, strong) ReimburseRecordHeaderView *rightRecordView;
 
+// 报销  添加报销单  列表
 @property (nonatomic, strong) UIView *bottomView;
 
 @property (nonatomic, strong) UIButton *reportChartBtn;
@@ -39,6 +42,13 @@
 @property (nonatomic, strong) UIButton *addReportBtn;
 
 @property (nonatomic, strong) UIButton *listBtn;
+
+// tablbeFooterView
+@property (nonatomic, strong) UIView *tableBottomView;
+@property (nonatomic, strong)  UIButton *tabaleBottomBtn;
+
+
+@property (nonatomic, strong) NSMutableArray *seletButtonArray;
 
 
 @end
@@ -50,6 +60,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.seletButtonArray = [NSMutableArray array];
     self.title = @"报销";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
@@ -63,6 +74,10 @@
     [self.bottomView addSubview:self.addReportBtn];
     [self.bottomView addSubview:self.listBtn];
     [self.view addSubview:self.bottomView];
+    
+    [self.tableBottomView addSubview:self.tabaleBottomBtn];
+    self.tableView.tableFooterView = self.tableBottomView;
+    [self.view addSubview:self.tableView];
     
     [self initData];
     
@@ -86,46 +101,69 @@
 //    }];
     
 }
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    
-//    return _dataArray.count;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-////    static NSString *cellID = @"cellID";
-////    LaterTimeStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-////    
-////    if (!cell) {
-////        cell = [[LaterTimeStatisticCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-////    }
-////    // 从数组最后倒序取值
-////    NSInteger arrayCount = _dataArray.count - indexPath.row - 1;
-////    cell.model = _dataArray[arrayCount];
-//    
-//    return ;
-//    
-//    
-//    
-//}
-//
-//- (UITableView *)tableView {
-//    
-//    if (_tableView == nil) {
-//        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
-//        _tableView.backgroundColor = [UIColor clearColor];
-//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        _tableView.dataSource = self;
-//        _tableView.delegate = self;
-//        
-//        
-//    }
-//    return _tableView;
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 75;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellID = @"cellID";
+    ReimburseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (!cell) {
+        cell = [[ReimburseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    return cell;
+    
+    
+    
+}
+
+#pragma mark --- Action 
+- (void)didClickWorkHeaderView:(UIButton *)sender{
+    for (UIButton *btn in _seletButtonArray) {
+        if (btn.tag == sender.tag) {
+            btn.selected = YES;
+        }else{
+            btn.selected = NO;
+        }
+    }
+    
+    if (sender.tag == 500) {
+        // 报表
+        MMLog(@"点击了报表");
+    }
+    if (sender.tag == 501) {
+        // 报表
+        MMLog(@"点击了添加报销单");
+        NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+        [self.navigationController pushViewController:newReimburseVC animated:YES];
+    }
+    if (sender.tag == 502) {
+        // 报表
+        MMLog(@"点击了列表");
+    }
+}
+
+- (UITableView *)tableView {
+    
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,kHeaderH + kBottomH , self.view.width, self.view.height - (kHeaderH + kBottomH) - 64) style:UITableViewStylePlain];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        
+        
+    }
+    return _tableView;
+}
 
 //  未制单消费  我的借款  差旅行程
 - (UIView *)recodeBgView{
@@ -182,6 +220,7 @@
         _reportChartBtn.backgroundColor = [UIColor clearColor];
         [_reportChartBtn setTitle:@"报表" forState:UIControlStateNormal];
         [_reportChartBtn setImage:[UIImage imageNamed:@"Reimburse_baobiao_Normal"] forState:UIControlStateNormal];
+        [_reportChartBtn setImage:[UIImage imageNamed:@"Reimburse_baobiao_Select"] forState:UIControlStateSelected];
         _reportChartBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_reportChartBtn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         [_reportChartBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (kWight - 48)/2, 51, (kWight - 48)/2)];
@@ -192,8 +231,9 @@
             [_reportChartBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -10, 31, (kWight - 48)/2)];
         }
         
-        
-        
+        _reportChartBtn.tag = 500;
+        [self.seletButtonArray addObject:_reportChartBtn];
+       [_reportChartBtn addTarget:self action:@selector(didClickWorkHeaderView:) forControlEvents:UIControlEventTouchUpInside];
         
         
     }
@@ -206,11 +246,19 @@
         _addReportBtn.backgroundColor = [UIColor clearColor];
         [_addReportBtn setTitle:@"添加报销单" forState:UIControlStateNormal];
         [_addReportBtn setImage:[UIImage imageNamed:@"Reimburse_Tianjiabaoxiaodan_Normal"] forState:UIControlStateNormal];
+        [_addReportBtn setImage:[UIImage imageNamed:@"Reimburse_Tianjiabaoxiaodan_Select"] forState:UIControlStateSelected];
         _addReportBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_addReportBtn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         
         [_addReportBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (kWight - 48)/2, 51, (kWight - 48)/2)];
         [_addReportBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -40, 31, 0)];
+        
+        
+        
+        _addReportBtn.tag = 501;
+        [self.seletButtonArray addObject:_addReportBtn];
+        [_addReportBtn addTarget:self action:@selector(didClickWorkHeaderView:) forControlEvents:UIControlEventTouchUpInside];
+
     }
     return _addReportBtn;
 }
@@ -221,6 +269,7 @@
         _listBtn.backgroundColor = [UIColor clearColor];
         [_listBtn setTitle:@"列表" forState:UIControlStateNormal];
         [_listBtn setImage:[UIImage imageNamed:@"Reimburse_Liebiao_Normal"] forState:UIControlStateNormal];
+        [_listBtn setImage:[UIImage imageNamed:@"Reimburse_Liebiao_Select"] forState:UIControlStateSelected];
         _listBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_listBtn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         
@@ -231,10 +280,36 @@
         if (MMIphone6Plus) {
             [_listBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -10, 31, (kWight - 48)/2)];
         }
+        
+        _listBtn.tag = 502;
+        [self.seletButtonArray addObject:_listBtn];
+        [_listBtn addTarget:self action:@selector(didClickWorkHeaderView:) forControlEvents:UIControlEventTouchUpInside];
+
 
         
     }
     return _listBtn;
+}
+// tablbeFooterView
+- (UIView *)tableBottomView{
+    if (_tableBottomView == nil) {
+        _tableBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+        _tableBottomView.backgroundColor = [UIColor clearColor];
+    }
+    return _tableBottomView;
+}
+- (UIButton *)tabaleBottomBtn{
+    if (_tabaleBottomBtn == nil) {
+        _tabaleBottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _tabaleBottomBtn.frame = CGRectMake(0, 10, self.view.width, 30);
+        _tabaleBottomBtn.backgroundColor = RGB_Color(219, 218, 223);
+        [_tabaleBottomBtn setTitle:@"查看已完成报销单" forState:UIControlStateNormal];
+        _tabaleBottomBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_tabaleBottomBtn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        
+        
+    }
+    return _tabaleBottomBtn;
 }
 
 @end
