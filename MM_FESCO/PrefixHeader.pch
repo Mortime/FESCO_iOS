@@ -104,7 +104,7 @@
 
 
 #define MMIphone6Plus [UIScreen mainScreen].bounds.size.height==736
-#define MMIphone6 [UIScreen mainScreen].bounds.size.height==667
+#define MMIphone6 [UIScreen mainScreen].bounds.size.height==568
 #define MMIphone5 [UIScreen mainScreen].bounds.size.height==568
 #define MMIphone4 [UIScreen mainScreen].bounds.size.height==480
 

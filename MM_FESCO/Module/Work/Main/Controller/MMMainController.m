@@ -25,6 +25,7 @@
 #import "CheckStatisticController.h"
 #import "LaterTimeStatisticController.h"
 #import "OverTimeStatistiscController.h"
+#import "ReimburseController.h"
 
 static NSString *kMallID = @"MallID";
 
@@ -271,7 +272,12 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 9) {
-         //  薪酬列表
+         //  薪酬列表 
+        
+        ReimburseController *reimburseVC = [[ReimburseController alloc] init];
+        reimburseVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:reimburseVC animated:YES];
+
         
     }if (indexPath.row == 10) {
           // HRS数据录入
