@@ -267,6 +267,9 @@
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
+		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
+		761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */; };
+		761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */; };
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
@@ -855,6 +858,12 @@
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
 		761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopViewCell.m; sourceTree = "<group>"; };
+		761C0E961DD1C66500886083 /* NewReimburseConsumePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseConsumePopViewCell.h; sourceTree = "<group>"; };
+		761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseConsumePopViewCell.m; sourceTree = "<group>"; };
+		761C0E991DD1C67700886083 /* NewReimburseConsumePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseConsumePopView.h; sourceTree = "<group>"; };
+		761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseConsumePopView.m; sourceTree = "<group>"; };
+		761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseRecordController.h; sourceTree = "<group>"; };
+		761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordController.m; sourceTree = "<group>"; };
 		764499D31DCC7DBA00A6404F /* ReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseController.h; sourceTree = "<group>"; };
 		764499D41DCC7DBA00A6404F /* ReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseController.m; sourceTree = "<group>"; };
 		764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseRecordHeaderView.h; sourceTree = "<group>"; };
@@ -2349,6 +2358,8 @@
 				764499D41DCC7DBA00A6404F /* ReimburseController.m */,
 				76BB955F1DD058A3000E6EF1 /* NewReimburseController.h */,
 				76BB95601DD058A3000E6EF1 /* NewReimburseController.m */,
+				761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */,
+				761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2368,6 +2379,10 @@
 				761C0E911DD16D4500886083 /* NewReimbursePopView.m */,
 				761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */,
 				761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */,
+				761C0E991DD1C67700886083 /* NewReimburseConsumePopView.h */,
+				761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */,
+				761C0E961DD1C66500886083 /* NewReimburseConsumePopViewCell.h */,
+				761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2734,7 +2749,9 @@
 				764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */,
 				761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */,
 				59EC91EA1D98D9AD00E802FA /* PSTCollectionViewLayout.m in Sources */,
+				761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
+				761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */,
 				597223E21DADE05400D01A7A /* PhoneListTableController.m in Sources */,
 				597223BC1DADE05400D01A7A /* ApprovalViewModel.m in Sources */,
 				597223AE1DADE05400D01A7A /* OverTimeListModel.m in Sources */,
@@ -2761,6 +2778,7 @@
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
 				59EC915C1D98CB5900E802FA /* EaseCustomMessageCell.m in Sources */,
+				761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */,
 				592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */,
 				59EC91521D98CB5900E802FA /* EaseEmotionManager.m in Sources */,
 				59EC91E61D98D9AD00E802FA /* PSTCollectionViewController.m in Sources */,
@@ -2963,8 +2981,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
@@ -2982,8 +3000,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
+				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
 			};
 			name = Debug;
 		};
@@ -2994,8 +3012,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
 				DEVELOPMENT_TEAM = 4VRC5XFR8F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
@@ -3013,8 +3031,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
+				PROVISIONING_PROFILE = "75a349a0-da3c-4f38-8a94-57c8729c37bc";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS-shuxin-inHouseDis";
 			};
 			name = Release;
 		};

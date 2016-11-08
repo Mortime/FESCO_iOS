@@ -9,9 +9,12 @@
 #import "NewReimburseController.h"
 #import "NewReimburseTemplateCell.h"
 #import "NewReimbursePopView.h"
+#import "NewReimburseConsumePopView.h"
+#import "NewPurchaseRecordController.h"
+
 #define kBottomH  50
 
-@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate>
+@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -29,6 +32,9 @@
 @property (nonatomic, strong) UIButton *rightButton;
 
 @property (nonatomic, strong) NewReimbursePopView *popView;
+
+@property (nonatomic, strong) NewReimburseConsumePopView *consumePopView;
+
 
 
 @property (nonatomic, strong) NSString *oneStr;
@@ -56,7 +62,7 @@
     [self.view addSubview:self.tableView];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -68,11 +74,13 @@
     return 0;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //  一区头部视图
     if (section == 0) {
         UIView *sectionOne = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
         sectionOne.backgroundColor = [UIColor clearColor];
         return sectionOne;
     }
+    // 二区头部视图
     if (section == 1) {
         UIView *sectionTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 45)];
         sectionTwo.backgroundColor = [UIColor clearColor];
@@ -85,6 +93,30 @@
         [sectionTwo addSubview:label];
         return sectionTwo;
     }
+    // 三区头部视图
+    if (section == 2) {
+        UIView *sectionThree = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 45)];
+        sectionThree.backgroundColor = [UIColor clearColor];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0,100 , 45)];
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = [UIColor grayColor];
+        label.text = @"消费细节";
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGFloat btnW = 70;
+        button.frame = CGRectMake(kMMWidth - btnW - 10, 0, btnW, 45);
+        button.backgroundColor =[UIColor clearColor] ;
+        [button setTitle:@"+添加消费" forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(popConsumePopView) forControlEvents:UIControlEventTouchUpInside];
+        
+        [sectionThree addSubview:label];
+        [sectionThree addSubview:button];
+        return sectionThree;
+    }
+
     return nil;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -169,6 +201,26 @@
 //    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
 //    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
+#pragma mark --  NewReimburseConsumePopViewDelegate  方法
+- (void)newReimburseConsumePopViewDelegatWithRow:(NSInteger)row{
+    if (row == 0) {
+        // 新建消费记录
+         [self.consumePopView removeFromSuperview];
+        NewPurchaseRecordController *puschaseVC = [[NewPurchaseRecordController alloc] init];
+        [self.navigationController pushViewController:puschaseVC animated:YES];
+    }
+    if (row == 1) {
+        // 导入已有消费
+    }
+    if (row == 2) {
+        // 取消
+        [self.consumePopView removeFromSuperview];
+    }
+}
+#pragma mark --- Action 
+- (void)popConsumePopView{
+     [self.view addSubview:self.consumePopView];
+}
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
@@ -229,4 +281,13 @@
     }
     return _popView;
 }
+- (NewReimburseConsumePopView *)consumePopView{
+    if (_consumePopView == nil) {
+        _consumePopView = [[NewReimburseConsumePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+        _consumePopView.backgroundColor = [UIColor clearColor];
+        _consumePopView.delegate = self;
+    }
+    return _consumePopView;
+}
+
 @end
