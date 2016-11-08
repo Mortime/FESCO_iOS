@@ -11,7 +11,7 @@
 #import "NewReimbursePopView.h"
 #define kBottomH  50
 
-@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource>
+@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -29,6 +29,9 @@
 @property (nonatomic, strong) UIButton *rightButton;
 
 @property (nonatomic, strong) NewReimbursePopView *popView;
+
+
+@property (nonatomic, strong) NSString *oneStr;
 
 
 @end
@@ -133,6 +136,7 @@
     if (indexPath.section == 0) {
         cell.titleStr = _titleArray[indexPath.row];
         cell.placeHold = _placeTitleArray[indexPath.row];
+        cell.detailStr = _oneStr;
     }
     if (indexPath.section == 1) {
         cell.titleStr = _titleArray[indexPath.row + 1];
@@ -148,6 +152,21 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self.view addSubview:self.popView];
     }
+}
+#pragma mark --  NewReimbursePopViewDelegate  方法
+// 点击取消
+- (void)newReimbursePopViewDelegate{
+    [self.popView removeFromSuperview];
+}
+// 点击确定
+- (void)newReimbursePopViewDelegateWithType:(NSString *)type{
+    MMLog(@"type = %@",type);
+    _oneStr = type;
+     [self.popView removeFromSuperview];
+    //一个cell刷新
+    [self.tableView reloadData];
+//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 - (UITableView *)tableView {
     
@@ -205,6 +224,7 @@
     if (_popView == nil) {
         _popView = [[NewReimbursePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
         _popView.backgroundColor = [UIColor clearColor];
+        _popView.delegate = self;
     }
     return _popView;
 }

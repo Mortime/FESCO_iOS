@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol NewReimbursePopViewDelegate <NSObject>
+
+- (void)newReimbursePopViewDelegateWithType:(NSString *)type;
+
+- (void)newReimbursePopViewDelegate;
+
+@end
 @interface NewReimbursePopView : UIView
+
+@property (nonatomic,weak) id <NewReimbursePopViewDelegate> delegate;
 
 @end

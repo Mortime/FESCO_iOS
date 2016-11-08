@@ -10,5 +10,8 @@
 
 @interface NewReimbursePopViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *leftimagView;
+
 @property (nonatomic, strong) NSString *titleStr;
+
 @end

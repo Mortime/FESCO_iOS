@@ -37,6 +37,8 @@
 
 @property (nonatomic, strong) UIView *lineView;
 
+@property (nonatomic, assign) NSInteger index;
+
 
 
 @end
@@ -85,6 +87,30 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MMLog(@"SelectRowAtIndexPath = %lu",indexPath.row);
+    _index = indexPath.row;
+    
+    for ( NewReimbursePopViewCell *cell in [tableView visibleCells]) {
+        cell.leftimagView.image = [UIImage imageNamed:@"NewReimbursePopView_Normal"];
+    }
+    
+    NewReimbursePopViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.leftimagView.image = [UIImage imageNamed:@"NewReimbursePopView_Select"];
+    
+}
+# pragma mark --- Action
+- (void)didClick:(UIButton *)sender{
+    if (sender.tag == 20000) {
+        // 取消;
+        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegate)]) {
+            [_delegate newReimbursePopViewDelegate];
+        }
+    }
+    if (sender.tag == 20001) {
+        // 确定;
+        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType:)]) {
+            [_delegate newReimbursePopViewDelegateWithType:_typeArray[_index]];
+        }
+    }
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -151,6 +177,8 @@
         [_cancleButton setTitle:@"取消" forState:UIControlStateNormal];
         _cancleButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_cancleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_cancleButton addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
+        _cancleButton.tag = 20000;
         
         
     }
@@ -171,7 +199,8 @@
         [_commitButton setTitle:@"确定" forState:UIControlStateNormal];
         _commitButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_commitButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
-        
+        [_commitButton addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
+        _commitButton.tag = 20001;
         
     }
     return _commitButton;

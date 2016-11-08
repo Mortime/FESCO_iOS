@@ -93,7 +93,6 @@
     }];
     
     self.detailTextField.placeholder = self.placeHold;
-//    self.detailTextField.text = self.textFileStr;
     
     if (_isShowDataPickView) {
         // 显示日期选择器

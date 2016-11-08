@@ -17,16 +17,14 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 
 @property (nonatomic, strong) NSString *detailStr;
 
+@property (nonatomic,strong) NSString *placeHold;
+
+@property (nonatomic, strong) UIImageView *arrowImageView;
+
+
 @property (nonatomic, assign) BOOL isShowDataPickView; // 默认是不显示的
 
 @property (nonatomic,assign) BOOL isExist; // 是否可输入 , 默认不可输入
-
-
-@property (nonatomic,strong) NSString *placeHold;
-
-@property (nonatomic,strong) NSString *textFileStr;
-
-@property (nonatomic, strong) UIImageView *arrowImageView;
 
 
 /**
