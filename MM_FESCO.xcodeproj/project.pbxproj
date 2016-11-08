@@ -265,6 +265,8 @@
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
+		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
+		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
@@ -849,6 +851,10 @@
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
+		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
+		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
+		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
+		761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopViewCell.m; sourceTree = "<group>"; };
 		764499D31DCC7DBA00A6404F /* ReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseController.h; sourceTree = "<group>"; };
 		764499D41DCC7DBA00A6404F /* ReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseController.m; sourceTree = "<group>"; };
 		764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseRecordHeaderView.h; sourceTree = "<group>"; };
@@ -2358,6 +2364,10 @@
 				76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */,
 				76BB95621DD05F14000E6EF1 /* NewReimburseTemplateCell.h */,
 				76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */,
+				761C0E901DD16D4500886083 /* NewReimbursePopView.h */,
+				761C0E911DD16D4500886083 /* NewReimbursePopView.m */,
+				761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */,
+				761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2637,6 +2647,7 @@
 				59EC91DA1D98D9AD00E802FA /* MKAnnotationView+EMWebCache.m in Sources */,
 				597223A71DADE05400D01A7A /* NewsController.m in Sources */,
 				597222E21DADDD1500D01A7A /* MMCycleShowImageView.m in Sources */,
+				761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */,
 				59EC91481D98CB5900E802FA /* EaseMessageModel.m in Sources */,
 				597223C11DADE05400D01A7A /* CheckRecordView.m in Sources */,
 				597223CB1DADE05400D01A7A /* LeaveApplyRecordController.m in Sources */,
@@ -2721,6 +2732,7 @@
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
 				59EC916F1D98CB5900E802FA /* EaseConversationCell.m in Sources */,
 				764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */,
+				761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */,
 				59EC91EA1D98D9AD00E802FA /* PSTCollectionViewLayout.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
 				597223E21DADE05400D01A7A /* PhoneListTableController.m in Sources */,

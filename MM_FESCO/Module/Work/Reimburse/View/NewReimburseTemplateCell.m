@@ -8,16 +8,19 @@
 
 #import "NewReimburseTemplateCell.h"
 
-@interface NewReimburseTemplateCell ()
+@interface NewReimburseTemplateCell () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UIView *bgView;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
-@property (nonatomic ,strong) UILabel *detailLabel;
+@property (nonatomic ,strong) UITextField *detailTextField;
 
-@property (nonatomic, strong) UIImageView *arrowImageView;
 
+
+@property (strong, nonatomic) UIDatePicker *dateView;
+
+@property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
 
 
 @end
@@ -29,22 +32,26 @@
         [self initUI];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        
+        self.isShowDataPickView = NO;
+        self.isExist = NO;
     }
     return self;
 }
 
 - (void)initUI{
+    
+    self.detailTextField.delegate = self;
+
     [self addSubview:self.bgView];
 
     [self.bgView addSubview:self.titleLabel];
     
-    [self.bgView addSubview:self.detailLabel];
+    [self.bgView addSubview:self.detailTextField];
     
     [self.bgView addSubview:self.arrowImageView];
     
     
-    
+       
     
 }
 - (void)layoutSubviews{
@@ -64,10 +71,10 @@
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
-        make.width.mas_offset(@150);
+        make.width.mas_offset(@100);
     
     }];
-    [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.detailTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.titleLabel.mas_right);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
@@ -85,6 +92,51 @@
         
     }];
     
+    self.detailTextField.placeholder = self.placeHold;
+//    self.detailTextField.text = self.textFileStr;
+    
+    if (_isShowDataPickView) {
+        // 显示日期选择器
+        self.detailTextField.inputView = self.dateView;
+        
+    }
+    if (!_isExist) {
+        // textFile  不可输入
+        self.detailTextField.enabled = NO;
+    }
+
+    
+    
+}
+#pragma mark ----- UIDataView
+- (void)valueChange:(UIDatePicker *)datePicker{
+    //创建一个日期格式
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    //设置日期的显示格式
+    fmt.dateFormat = @"yyyy-MM-dd";
+    //将日期转为指定格式显示
+    NSString *dateStr = [fmt stringFromDate:datePicker.date];
+    _detailTextField.text = dateStr;
+    
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(self.detailTextField,self.tag);
+    }
+    
+}
+
+- (void)dvv_setTextFieldDidEndEditingBlock:(DVVSearchViewUITextFieldDelegateBlock)handle {
+    _didEndEditingBlock = handle;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if (_isShowDataPickView) {
+        [self valueChange:_dateView];
+    }
+    
+    
+    if (_didEndEditingBlock) {
+        _didEndEditingBlock(self.detailTextField,self.tag);
+    }
     
 }
 
@@ -118,15 +170,19 @@
     return _titleLabel;
 }
 
-- (UILabel *)detailLabel{
-    if (_detailLabel == nil) {
-        _detailLabel = [[UILabel alloc] init];
-        _detailLabel.font = [UIFont systemFontOfSize:14];
-        _detailLabel.textColor = [UIColor blackColor];
+- (UITextField *)detailTextField{
+    if (_detailTextField == nil) {
+        _detailTextField = [[UITextField alloc] init];
+        _detailTextField.font = [UIFont systemFontOfSize:14];
+        _detailTextField.textColor = [UIColor blackColor];
+        [_detailTextField setValue:[UIColor  grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+        [_detailTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
+    
+        
     
         
     }
-    return _detailLabel;
+    return _detailTextField;
 }
 
 - (UIImageView *)arrowImageView{
@@ -141,6 +197,20 @@
     _titleLabel.text = titleStr;
 }
 - (void)setDetailStr:(NSString *)detailStr{
-    _detailLabel.text = detailStr;
+    _detailTextField.text = detailStr;
 }
+- (UIDatePicker *)dateView{
+    if (_dateView == nil) {
+        _dateView = [[UIDatePicker alloc] init];
+        //设置本地语言
+        _dateView.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
+        //设置日期显示的格式
+        _dateView.datePickerMode = UIDatePickerModeDate;
+        //监听datePicker的ValueChanged事件
+        [_dateView addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
+        
+    }
+    return _dateView;
+}
+
 @end

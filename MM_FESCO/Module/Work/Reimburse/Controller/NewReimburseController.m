@@ -8,7 +8,7 @@
 
 #import "NewReimburseController.h"
 #import "NewReimburseTemplateCell.h"
-
+#import "NewReimbursePopView.h"
 #define kBottomH  50
 
 @interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource>
@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) NSArray *titleArray;
 
+@property (nonatomic, strong) NSArray *placeTitleArray;
+
 @property (nonatomic, strong) NSArray *detailArray;
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -25,6 +27,8 @@
 @property (nonatomic, strong) UIButton *leftButton;
 
 @property (nonatomic, strong) UIButton *rightButton;
+
+@property (nonatomic, strong) NewReimbursePopView *popView;
 
 
 @end
@@ -37,6 +41,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"新建报销单";
     self.titleArray = @[@"模板",@"标题",@"报销部门",@"报销日期",@"收款人",@"备注",@"敏感字段"];
+    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销部门",@"请选择报销日期",@"请选择收款人",@"(选填)",@"(选填)改信息不会被打印"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     
     
@@ -97,16 +102,52 @@
     if (!cell) {
         cell = [[NewReimburseTemplateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+    
+    
+    
+    
+    // 标题隐藏箭头
+    if (indexPath.section == 1) {
+        // 标题
+        if (indexPath.row == 0) {
+            cell.arrowImageView.hidden = YES;
+             cell.isExist = YES;
+        }
+        // 报销日期
+        if (indexPath.row == 2) {
+            cell.isShowDataPickView = YES;
+        }
+        // 备注
+        if (indexPath.row == 4) {
+            cell.isExist = YES;
+        }
+        //
+        if (indexPath.row == 5) {
+            cell.isExist = YES;
+        }
+    }
+    
+    
+    
+    
     if (indexPath.section == 0) {
         cell.titleStr = _titleArray[indexPath.row];
+        cell.placeHold = _placeTitleArray[indexPath.row];
     }
     if (indexPath.section == 1) {
         cell.titleStr = _titleArray[indexPath.row + 1];
+         cell.placeHold = _placeTitleArray[indexPath.row + 1];
     }
     return cell;
     
     
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MMLog(@"SelectRowAtIndexPath = %lu",indexPath.row);
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self.view addSubview:self.popView];
+    }
 }
 - (UITableView *)tableView {
     
@@ -134,7 +175,7 @@
         _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftButton.frame = CGRectMake(0, 0, kMMWidth/2, kBottomH);
         _leftButton.backgroundColor = [UIColor whiteColor];
-        [_leftButton setTitle:@"¥ 8894" forState:UIControlStateNormal];
+        [_leftButton setTitle:@"¥ 0.00" forState:UIControlStateNormal];
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_leftButton setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         
@@ -160,5 +201,11 @@
     [super didReceiveMemoryWarning];
     
 }
-
+- (NewReimbursePopView *)popView{
+    if (_popView == nil) {
+        _popView = [[NewReimbursePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+        _popView.backgroundColor = [UIColor clearColor];
+    }
+    return _popView;
+}
 @end
