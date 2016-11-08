@@ -43,8 +43,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"新建报销单";
-    self.titleArray = @[@"模板",@"标题",@"报销部门",@"报销日期",@"收款人",@"备注",@"敏感字段"];
-    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销部门",@"请选择报销日期",@"请选择收款人",@"(选填)",@"(选填)改信息不会被打印"];
+    self.titleArray = @[@"模板",@"标题",@"报销日期",@"收款人",@"备注",@"敏感字段"];
+    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择收款人",@"(选填)",@"(选填)改信息不会被打印"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     
     
@@ -63,7 +63,7 @@
         return 1;
     }
     if (section == 1) {
-        return 6 ;
+        return 5 ;
     }
     return 0;
 }
@@ -117,15 +117,16 @@
              cell.isExist = YES;
         }
         // 报销日期
-        if (indexPath.row == 2) {
+        if (indexPath.row == 1) {
             cell.isShowDataPickView = YES;
+            cell.isExist = YES;
         }
         // 备注
-        if (indexPath.row == 4) {
+        if (indexPath.row == 3) {
             cell.isExist = YES;
         }
         //
-        if (indexPath.row == 5) {
+        if (indexPath.row == 4) {
             cell.isExist = YES;
         }
     }

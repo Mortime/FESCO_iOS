@@ -274,9 +274,9 @@ static NSString *kMallID = @"MallID";
     if (indexPath.row == 9) {
          //  薪酬列表 
         
-        ReimburseController *reimburseVC = [[ReimburseController alloc] init];
-        reimburseVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:reimburseVC animated:YES];
+//        ReimburseController *reimburseVC = [[ReimburseController alloc] init];
+//        reimburseVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:reimburseVC animated:YES];
 
         
     }if (indexPath.row == 10) {
