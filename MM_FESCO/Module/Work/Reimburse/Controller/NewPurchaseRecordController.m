@@ -20,7 +20,16 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"新建消费记录";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
-
+    [self initData];
+}
+- (void)initData{
+    
+    [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
+                MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+    } failure:^(NSError *failure) {
+                MMLog(@"EditReimburseBook  =======failure=====%@",failure);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

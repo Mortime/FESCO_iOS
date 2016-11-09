@@ -479,5 +479,26 @@
  */
 + (void)postOverTimeStatisticSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+#pragma ================== 报销 =====================
+
+
+/**
+ *  加载消费记录
+ 
+  *  @param emp_Id （req）  员工id
+ 
+ */
++ (void)postPurchaseRecordSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+/**
+ *  加载编辑报销单
+ 
+ *  @param cust_Id （req） 公司id
+ 
+  *  @param emp_Id （req）  员工id
+ 
+ */
++ (void)postEditReimburseBookSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 @end
