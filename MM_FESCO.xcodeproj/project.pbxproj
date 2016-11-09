@@ -270,6 +270,18 @@
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
 		761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */; };
 		761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */; };
+		763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763256CD1DD2B63900C9C903 /* FontAwesome.ttf */; };
+		763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */; };
+		763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */; };
+		763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */; };
+		763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */; };
+		763256DE1DD3025000C9C903 /* NewPurchaseSubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256DD1DD3025000C9C903 /* NewPurchaseSubController.m */; };
+		763256E11DD302D200C9C903 /* PurchaseSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256E01DD302D200C9C903 /* PurchaseSubCell.m */; };
+		763256E51DD318DE00C9C903 /* NewPurchaseSubTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256E41DD318DE00C9C903 /* NewPurchaseSubTitleCell.m */; };
+		763256E81DD3190700C9C903 /* NewPurchaseSubContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256E71DD3190700C9C903 /* NewPurchaseSubContentCell.m */; };
+		763256EB1DD3191A00C9C903 /* NewPurchaseSubBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256EA1DD3191A00C9C903 /* NewPurchaseSubBookCell.m */; };
+		763256EE1DD3198700C9C903 /* NewPurchaseSubPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256ED1DD3198700C9C903 /* NewPurchaseSubPhoneCell.m */; };
+		763256F11DD319D900C9C903 /* NewPurchaseBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256F01DD319D900C9C903 /* NewPurchaseBookController.m */; };
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
@@ -864,6 +876,29 @@
 		761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseConsumePopView.m; sourceTree = "<group>"; };
 		761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseRecordController.h; sourceTree = "<group>"; };
 		761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordController.m; sourceTree = "<group>"; };
+		763256CD1DD2B63900C9C903 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		763256CE1DD2B63900C9C903 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		763256D31DD2B9C900C9C903 /* PurchaseRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordModel.h; sourceTree = "<group>"; };
+		763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordModel.m; sourceTree = "<group>"; };
+		763256D61DD2BF4C00C9C903 /* PurchaseRecordSubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordSubModel.h; sourceTree = "<group>"; };
+		763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordSubModel.m; sourceTree = "<group>"; };
+		763256D91DD2C27500C9C903 /* PurchaseRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordCell.h; sourceTree = "<group>"; };
+		763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordCell.m; sourceTree = "<group>"; };
+		763256DC1DD3025000C9C903 /* NewPurchaseSubController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseSubController.h; sourceTree = "<group>"; };
+		763256DD1DD3025000C9C903 /* NewPurchaseSubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseSubController.m; sourceTree = "<group>"; };
+		763256DF1DD302D200C9C903 /* PurchaseSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseSubCell.h; sourceTree = "<group>"; };
+		763256E01DD302D200C9C903 /* PurchaseSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseSubCell.m; sourceTree = "<group>"; };
+		763256E31DD318DE00C9C903 /* NewPurchaseSubTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseSubTitleCell.h; sourceTree = "<group>"; };
+		763256E41DD318DE00C9C903 /* NewPurchaseSubTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseSubTitleCell.m; sourceTree = "<group>"; };
+		763256E61DD3190700C9C903 /* NewPurchaseSubContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseSubContentCell.h; sourceTree = "<group>"; };
+		763256E71DD3190700C9C903 /* NewPurchaseSubContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseSubContentCell.m; sourceTree = "<group>"; };
+		763256E91DD3191A00C9C903 /* NewPurchaseSubBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseSubBookCell.h; sourceTree = "<group>"; };
+		763256EA1DD3191A00C9C903 /* NewPurchaseSubBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseSubBookCell.m; sourceTree = "<group>"; };
+		763256EC1DD3198700C9C903 /* NewPurchaseSubPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseSubPhoneCell.h; sourceTree = "<group>"; };
+		763256ED1DD3198700C9C903 /* NewPurchaseSubPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseSubPhoneCell.m; sourceTree = "<group>"; };
+		763256EF1DD319D900C9C903 /* NewPurchaseBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseBookController.h; sourceTree = "<group>"; };
+		763256F01DD319D900C9C903 /* NewPurchaseBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseBookController.m; sourceTree = "<group>"; };
 		764499D31DCC7DBA00A6404F /* ReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseController.h; sourceTree = "<group>"; };
 		764499D41DCC7DBA00A6404F /* ReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseController.m; sourceTree = "<group>"; };
 		764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseRecordHeaderView.h; sourceTree = "<group>"; };
@@ -2342,9 +2377,47 @@
 			path = DVVTabBarController;
 			sourceTree = "<group>";
 		};
+		763256CC1DD2B63900C9C903 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				763256CD1DD2B63900C9C903 /* FontAwesome.ttf */,
+				763256CE1DD2B63900C9C903 /* NSString+FontAwesome.h */,
+				763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		763256D21DD2B8B700C9C903 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				763256D31DD2B9C900C9C903 /* PurchaseRecordModel.h */,
+				763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */,
+				763256D61DD2BF4C00C9C903 /* PurchaseRecordSubModel.h */,
+				763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		763256E21DD3188F00C9C903 /* BookCell */ = {
+			isa = PBXGroup;
+			children = (
+				763256E31DD318DE00C9C903 /* NewPurchaseSubTitleCell.h */,
+				763256E41DD318DE00C9C903 /* NewPurchaseSubTitleCell.m */,
+				763256E61DD3190700C9C903 /* NewPurchaseSubContentCell.h */,
+				763256E71DD3190700C9C903 /* NewPurchaseSubContentCell.m */,
+				763256E91DD3191A00C9C903 /* NewPurchaseSubBookCell.h */,
+				763256EA1DD3191A00C9C903 /* NewPurchaseSubBookCell.m */,
+				763256EC1DD3198700C9C903 /* NewPurchaseSubPhoneCell.h */,
+				763256ED1DD3198700C9C903 /* NewPurchaseSubPhoneCell.m */,
+			);
+			path = BookCell;
+			sourceTree = "<group>";
+		};
 		764499CE1DCC7D5A00A6404F /* Reimburse */ = {
 			isa = PBXGroup;
 			children = (
+				763256D21DD2B8B700C9C903 /* Model */,
+				763256CC1DD2B63900C9C903 /* Other */,
 				764499D91DCC818600A6404F /* View */,
 				764499D21DCC7DBA00A6404F /* Controller */,
 			);
@@ -2360,6 +2433,10 @@
 				76BB95601DD058A3000E6EF1 /* NewReimburseController.m */,
 				761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */,
 				761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */,
+				763256DC1DD3025000C9C903 /* NewPurchaseSubController.h */,
+				763256DD1DD3025000C9C903 /* NewPurchaseSubController.m */,
+				763256EF1DD319D900C9C903 /* NewPurchaseBookController.h */,
+				763256F01DD319D900C9C903 /* NewPurchaseBookController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2367,6 +2444,7 @@
 		764499D91DCC818600A6404F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				763256E21DD3188F00C9C903 /* BookCell */,
 				764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */,
 				764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */,
 				764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */,
@@ -2383,6 +2461,10 @@
 				761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */,
 				761C0E961DD1C66500886083 /* NewReimburseConsumePopViewCell.h */,
 				761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */,
+				763256D91DD2C27500C9C903 /* PurchaseRecordCell.h */,
+				763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */,
+				763256DF1DD302D200C9C903 /* PurchaseSubCell.h */,
+				763256E01DD302D200C9C903 /* PurchaseSubCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2510,6 +2592,7 @@
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */,
+				763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */,
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
 				597762201D489AE000BD8472 /* Main.storyboard in Resources */,
@@ -2613,17 +2696,20 @@
 				764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */,
 				597222ED1DADDE5900D01A7A /* MMDataBase.m in Sources */,
 				59EC91DB1D98D9AD00E802FA /* NSData+EMImageContentType.m in Sources */,
+				763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */,
 				59EC91CD1D98D9AD00E802FA /* MWPhoto.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59EC915D1D98CB5900E802FA /* EaseMessageCell.m in Sources */,
 				59EC91501D98CB5900E802FA /* EaseEmojiEmoticons.m in Sources */,
+				763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,
 				59EC911A1D98CB5900E802FA /* amrFileCodec.mm in Sources */,
 				59F6510C1D70338C000596A7 /* ZYPinYinSearch.m in Sources */,
 				59EC91E21D98D9AD00E802FA /* UIView+EMWebCacheOperation.m in Sources */,
 				597223E81DAE08B400D01A7A /* MMPageControl.m in Sources */,
 				59EC91661D98CB5900E802FA /* EaseBubbleView.m in Sources */,
+				763256E51DD318DE00C9C903 /* NewPurchaseSubTitleCell.m in Sources */,
 				597223C81DADE05400D01A7A /* SignUpViewModel.m in Sources */,
 				597223AD1DADE05400D01A7A /* LeaveApprovalListModel.m in Sources */,
 				597223D91DADE05400D01A7A /* OverTimeRecordCell.m in Sources */,
@@ -2656,6 +2742,8 @@
 				597223AF1DADE05400D01A7A /* SignUpApprovalListModel.m in Sources */,
 				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
 				597223CE1DADE05400D01A7A /* LeaveApplyView.m in Sources */,
+				763256EE1DD3198700C9C903 /* NewPurchaseSubPhoneCell.m in Sources */,
+				763256E11DD302D200C9C903 /* PurchaseSubCell.m in Sources */,
 				597223BA1DADE05400D01A7A /* SignUpApprovalView.m in Sources */,
 				594775FD1D7686DB0094D354 /* YiRefreshFooter.m in Sources */,
 				59EC91D71D98D9AD00E802FA /* EMSDWebImageDownloaderOperation.m in Sources */,
@@ -2694,6 +2782,7 @@
 				76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */,
 				597223D01DADE05400D01A7A /* LeaveRecordView.m in Sources */,
 				59EC91DC1D98D9AD00E802FA /* UIButton+EMWebCache.m in Sources */,
+				763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */,
 				59EC91651D98CB5900E802FA /* EaseBubbleView+Voice.m in Sources */,
 				59EC91E41D98D9AD00E802FA /* PSTCollectionView.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
@@ -2775,6 +2864,7 @@
 				59C90C3B1D5C281700CE0385 /* NSString+CurrentTimeDay.m in Sources */,
 				59EC91151D98CB5900E802FA /* EMCDDeviceManager+Media.m in Sources */,
 				59EC91D91D98D9AD00E802FA /* EMSDWebImagePrefetcher.m in Sources */,
+				763256F11DD319D900C9C903 /* NewPurchaseBookController.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
 				59EC915C1D98CB5900E802FA /* EaseCustomMessageCell.m in Sources */,
@@ -2783,6 +2873,7 @@
 				59EC91521D98CB5900E802FA /* EaseEmotionManager.m in Sources */,
 				59EC91E61D98D9AD00E802FA /* PSTCollectionViewController.m in Sources */,
 				59F651041D70338C000596A7 /* ChineseInclude.m in Sources */,
+				763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */,
 				59EC91141D98CB5900E802FA /* EMAudioRecorderUtil.m in Sources */,
 				59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */,
 				59EC91CA1D98D9AD00E802FA /* MWCaptionView.m in Sources */,
@@ -2797,6 +2888,7 @@
 				59C005C91D92724700A329CD /* MMRegisterTextFiledView.m in Sources */,
 				59A59E231D499EF2001F3122 /* UIImage+Helper.m in Sources */,
 				59EC91131D98CB5900E802FA /* EMAudioPlayerUtil.m in Sources */,
+				763256DE1DD3025000C9C903 /* NewPurchaseSubController.m in Sources */,
 				59EC91621D98CB5900E802FA /* EaseBubbleView+Location.m in Sources */,
 				59E729EF1D6A8B6200920CC1 /* PFActionSheetView.m in Sources */,
 				597223C01DADE05400D01A7A /* CheckRecordCell.m in Sources */,
@@ -2832,6 +2924,8 @@
 				594775FE1D7686DB0094D354 /* YiRefreshHeader.m in Sources */,
 				59EC914C1D98CB5900E802FA /* EaseChineseToPinyin.m in Sources */,
 				5942A68A1DB9A18C008FAFA8 /* OverTimeStatistiscController.m in Sources */,
+				763256EB1DD3191A00C9C903 /* NewPurchaseSubBookCell.m in Sources */,
+				763256E81DD3190700C9C903 /* NewPurchaseSubContentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

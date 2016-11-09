@@ -91,6 +91,10 @@
         // 不显示选择器,让用户输入内容
         self.rightTextFiled.inputView = nil;
     }
+    
+    if (_timeType) {
+        _dateView.datePickerMode = UIDatePickerModeDate;
+    }
 }
 #pragma mark ----- UIScrollerDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
