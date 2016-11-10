@@ -8,6 +8,11 @@
 
 #import "MMBaseViewController.h"
 
+#import "QBImagePickerController.h"
+#import "cameraHelper.h"
+#import "MPUploadImageHelper.h"
+#import "MPImageItemModel.h"
+#import "MPImageUploadCell.h"
 @interface NewPurchaseBookController : MMBaseViewController
 
 @end

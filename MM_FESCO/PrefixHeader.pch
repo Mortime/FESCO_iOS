@@ -116,5 +116,19 @@
 //static const CGFloat viewHeightNarrowRatio = 0.80;
 //static const CGFloat menuStartNarrowRatio  = 0.70;
 
+//上传图片相关
+#define kImageCollectionCell_Width floorf((kMMWidth - 10*2- 10*3)/3)
+//最大的上传图片张数
+#define kupdateMaximumNumberOfImage 12
+
+#define MPWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define MPStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+//不同屏幕尺寸字体适配（320，568是因为效果图为IPHONE5 如果不是则根据实际情况修改）
+#define kScreenWidthRatio  (kMMWidth / 320.0)
+#define kScreenHeightRatio (kMMHeight / 568.0)
+#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
+#define AdaptedFontSize(R)     CHINESE_SYSTEM(AdaptedWidth(R))
 
 #endif /* PrefixHeader_pch */
