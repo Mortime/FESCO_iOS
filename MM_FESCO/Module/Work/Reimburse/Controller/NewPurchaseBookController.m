@@ -9,6 +9,9 @@
 #import "NewPurchaseBookController.h"
 #import "NewPurchaseSubTitleCell.h"
 #import "NewPurchaseSubContentCell.h"
+#import "NewPurchaseSubBookCell.h"
+
+
 @interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -28,7 +31,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,6 +77,18 @@
         
         return cell;
     }
+    
+    if (indexPath.row == 3) {
+        static NSString *cellID = @"SubBook";
+        NewPurchaseSubBookCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[NewPurchaseSubBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+                
+        return cell;
+    }
+
     
     
     return nil;
