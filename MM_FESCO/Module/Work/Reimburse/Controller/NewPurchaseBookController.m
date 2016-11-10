@@ -11,13 +11,18 @@
 #import "NewPurchaseSubContentCell.h"
 #import "NewPurchaseSubBookCell.h"
 
-
+#define kBottomButtonW    ((kMMWidth) / 2)
 @interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (strong, nonatomic) MPUploadImageHelper *curUploadImageHelper;
+
+@property (nonatomic, strong) UIButton *preservationButton;
+
+@property (nonatomic, strong) UIButton *cancelButton;
+
 
 @end
 
@@ -40,7 +45,8 @@
 //    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
 //    self.navigationItem.rightBarButtonItem= rightItem;
 //
-
+    [self.view addSubview:self.cancelButton];
+    [self.view addSubview:self.preservationButton];
     [self.view addSubview:self.tableView];
     
 }
@@ -273,11 +279,19 @@
     
     
 }
-
+#pragma mark -- Action 
+// 在记一笔
+- (void)didPreservationButton{
+    
+}
+// 保存
+- (void)didCancelButton{
+    
+}
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , self.view.width, self.view.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , self.view.width, self.view.height - 50) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -292,4 +306,31 @@
     [super didReceiveMemoryWarning];
     
 }
+- (UIButton *)preservationButton{
+    if (_preservationButton == nil) {
+        _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kBottomButtonW, 50);
+        [_preservationButton setTitle:@"在记一笔" forState:UIControlStateNormal];
+        [_preservationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_preservationButton addTarget:self action:@selector(didPreservationButton) forControlEvents:UIControlEventTouchUpInside];
+        [_preservationButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        _preservationButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+    }
+    return _preservationButton;
+}
+- (UIButton *)cancelButton{
+    if (_cancelButton == nil) {
+        _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame), self.view.height - 50 - 64, kBottomButtonW, 50);
+        [_cancelButton setTitle:@"保存" forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        [_cancelButton addTarget:self action:@selector(didCancelButton) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton setBackgroundColor:[UIColor whiteColor]];
+        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+    }
+    return _cancelButton;
+}
+
 @end
