@@ -46,7 +46,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -126,7 +126,22 @@
     }
 
 
-    
+    if (indexPath.row == 5) {
+        static NSString *cellID = @"ID";
+        NewPurchaseSubContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+            cell.textFiled.leftTitle = @"描述";
+            cell.textFiled.placeHold = @"我的描述";
+        
+        
+        
+        
+        return cell;
+    }
+
     
     return nil;
     
@@ -255,6 +270,8 @@
 -(void)partialTableViewRefresh
 {
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    
+    
 }
 
 - (UITableView *)tableView {
