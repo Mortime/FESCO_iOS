@@ -46,7 +46,7 @@
     _curImageItem=curImageItem;
     if (_curImageItem) {
         
-//        RAC(self.imgView, image) = [RACObserve(self.curImageItem, thumbnailImage) takeUntil:self.rac_prepareForReuseSignal];
+        RAC(self.imgView, image) = [RACObserve(self.curImageItem, thumbnailImage) takeUntil:self.rac_prepareForReuseSignal];
         _deleteBtn.hidden = NO;
     }
     else

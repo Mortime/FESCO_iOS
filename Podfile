@@ -22,6 +22,7 @@ pod 'JSONKit'
 pod 'MJExtension'
 pod 'FMDB'
 pod 'MBProgressHUD', '~> 0.9.2'
+pod 'ReactiveCocoa', '~> 2.5'
 pod 'YYModel'
 pod 'ZipArchive'
 end

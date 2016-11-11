@@ -37,6 +37,8 @@
 #import "EMSDK.h"
 #import "MWPhotoBrowser.h"
 #import "UIImageView+EMWebCache.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
 
 
 #endif
