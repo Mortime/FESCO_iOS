@@ -10,6 +10,7 @@
 #import "PurchaseRecordModel.h"
 #import "PurchaseRecordCell.h"
 #import "NewPurchaseSubController.h"
+#import "NewPurchaseBookController.h"
 
 @interface NewPurchaseRecordController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -69,7 +70,14 @@
     NewPurchaseSubController *subVC = [[NewPurchaseSubController alloc] init];
     subVC.title = modle.typeName;
     subVC.dataArray = modle.subTypes;
-    [self.navigationController pushViewController:subVC animated:YES];
+    if (subVC.dataArray) {
+        [self.navigationController pushViewController:subVC animated:YES];
+    }else{
+        NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+        bookVC.title = modle.typeName;
+        [self.navigationController pushViewController:bookVC animated:YES];
+    }
+    
 }
 - (UITableView *)tableView {
     

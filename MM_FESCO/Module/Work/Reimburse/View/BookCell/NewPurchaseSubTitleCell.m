@@ -12,10 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIImageView *iconImageView;
 
-
-@property (nonatomic ,strong) UILabel *titleLabel;
 
 
 
@@ -66,10 +63,10 @@
         make.height.mas_equalTo(@30);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(0);
-        make.left.mas_equalTo(self.iconImageView.mas_right).offset(30);
+        make.top.mas_equalTo(self.bgView.mas_top).offset(0);
+        make.left.mas_equalTo(self.iconImageView.mas_right).offset(20);
         make.right.mas_equalTo(self.bgView.mas_right);
-        make.bottom.mas_equalTo(self.mas_bottom);
+        make.bottom.mas_equalTo(self.bgView.mas_bottom);
         
         
     }];

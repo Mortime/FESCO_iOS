@@ -196,7 +196,10 @@
         cell = [[NewReimburseTemplateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     
-    
+    cell.tag = 60000 + indexPath.row;
+    [cell dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+        [self blockBackWithTextField:textField tag:indexTag];
+    }];
     
     
     // 标题隐藏箭头
@@ -295,6 +298,9 @@
 #pragma mark --- Action 
 - (void)popConsumePopView{
      [self.view addSubview:self.consumePopView];
+}
+- (void)blockBackWithTextField:(UITextField *)textField  tag:(NSUInteger)tag{
+    MMLog(@"textField.text = %@",textField.text);
 }
 - (UITableView *)tableView {
     

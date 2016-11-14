@@ -51,7 +51,7 @@
     }
     else
     {
-        _imgView.image = [UIImage imageNamed:@"btn_addPicture_BgImage"];
+        _imgView.image = [UIImage imageNamed:@"Photo"];
         if (_deleteBtn) {
             _deleteBtn.hidden = YES;
         }

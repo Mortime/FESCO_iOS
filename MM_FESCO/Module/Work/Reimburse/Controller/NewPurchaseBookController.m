@@ -37,14 +37,17 @@
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
     
-//    //设置右边
-//    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,70,30)];
-//    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
-//    [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-//    self.navigationItem.rightBarButtonItem= rightItem;
-//
+    //设置右边
+    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
+    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem= rightItem;
+
+
     [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.preservationButton];
     [self.view addSubview:self.tableView];
@@ -72,6 +75,7 @@
         if (!cell) {
             cell = [[NewPurchaseSubTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
+        cell.titleLabel.text = self.title;
         return cell;
 
     }

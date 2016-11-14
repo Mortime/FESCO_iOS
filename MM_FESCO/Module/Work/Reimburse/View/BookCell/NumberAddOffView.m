@@ -87,11 +87,13 @@
 - (UIButton *)reduceButton{
     if (_reduceButton == nil) {
         _reduceButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_reduceButton setBackgroundImage:[UIImage imageNamed:@"quantity_subtract_off"] forState:UIControlStateNormal];
+//        [_reduceButton setBackgroundImage:[UIImage imageNamed:@"quantity_subtract_off"] forState:UIControlStateNormal];
+        [_reduceButton setTitle:@"-" forState:UIControlStateNormal];
+        [_reduceButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_reduceButton addTarget:self action:@selector(numberChanage:) forControlEvents:UIControlEventTouchUpInside];
         _reduceButton.tag = 30000;
         _reduceButton.userInteractionEnabled = YES;
-        _reduceButton.backgroundColor = [UIColor redColor];
+        _reduceButton.backgroundColor = [UIColor clearColor];
         
     }
     return _reduceButton;
@@ -122,11 +124,13 @@
 - (UIButton *)addButton{
     if (_addButton == nil) {
         _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_addButton setBackgroundImage:[UIImage imageNamed:@"quantity_add_on"] forState:UIControlStateNormal];
+//        [_addButton setBackgroundImage:[UIImage imageNamed:@"quantity_add_on"] forState:UIControlStateNormal];
+        [_addButton setTitle:@"+" forState:UIControlStateNormal];
+        [_addButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_addButton addTarget:self action:@selector(numberChanage:) forControlEvents:UIControlEventTouchUpInside];
         _addButton.tag = 30001;
         _addButton.userInteractionEnabled = YES;
-        _addButton.backgroundColor = [UIColor cyanColor];
+        _addButton.backgroundColor = [UIColor clearColor];
         
     }
     return _addButton;
