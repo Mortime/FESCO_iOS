@@ -33,21 +33,12 @@
 }
 - (void)initData{
     
-    [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
-                MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
-        if (responseObject) {
-            NSArray *array = [responseObject objectForKey:@"spendTypes"];
+    NSArray *array = [_dic objectForKey:@"spendTypes"];
             for (NSDictionary *dic in array) {
                 PurchaseRecordModel *modle = [PurchaseRecordModel yy_modelWithDictionary:dic];
                 [_dataArray addObject:modle];
             }
             [self.tableView reloadData];
-        }
-        
-    } failure:^(NSError *failure) {
-                MMLog(@"EditReimburseBook  =======failure=====%@",failure);
-    }];
-    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     

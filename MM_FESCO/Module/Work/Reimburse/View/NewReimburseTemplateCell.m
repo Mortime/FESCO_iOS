@@ -7,8 +7,9 @@
 //
 
 #import "NewReimburseTemplateCell.h"
+#import "BankInfoModel.h"
 
-@interface NewReimburseTemplateCell () <UITextFieldDelegate>
+@interface NewReimburseTemplateCell () <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -16,7 +17,7 @@
 
 @property (nonatomic ,strong) UITextField *detailTextField;
 
-
+@property (strong, nonatomic) UIPickerView *pickerView;
 
 @property (strong, nonatomic) UIDatePicker *dateView;
 
@@ -34,6 +35,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.isShowDataPickView = NO;
         self.isExist = NO;
+        self.isShowPickView = NO;
     }
     return self;
 }
@@ -41,6 +43,11 @@
 - (void)initUI{
     
     self.detailTextField.delegate = self;
+    
+    self.pickerView.delegate = self;
+    
+    self.pickerView.dataSource = self;
+
 
     [self addSubview:self.bgView];
 
@@ -49,6 +56,7 @@
     [self.bgView addSubview:self.detailTextField];
     
     [self.bgView addSubview:self.arrowImageView];
+    
     
     
        
@@ -103,10 +111,45 @@
         // textFile  不可输入
         self.detailTextField.enabled = NO;
     }
+    if (_isShowPickView) {
+        
+        self.detailTextField.inputView = self.pickerView;
+    }
 
     
+}
+#pragma mark ------ UIPickViewDelegate
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.dataArray.count;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+     BankInfoModel *model =  self.dataArray[row];
+    
+    NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+    return result;
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    
+    BankInfoModel *model =  self.dataArray[row];
+    
+    NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+    
+    self.detailTextField.text = result;
+    
+    //    if (_didEndEditingBlock) {
+    //        _didEndEditingBlock(self.rightTextFiled,self.tag);
+    //    }
     
 }
+
 #pragma mark ----- UIDataView
 - (void)valueChange:(UIDatePicker *)datePicker{
     //创建一个日期格式
@@ -192,12 +235,6 @@
     }
     return _arrowImageView;
 }
-- (void)setTitleStr:(NSString *)titleStr{
-    _titleLabel.text = titleStr;
-}
-- (void)setDetailStr:(NSString *)detailStr{
-    _detailTextField.text = detailStr;
-}
 - (UIDatePicker *)dateView{
     if (_dateView == nil) {
         _dateView = [[UIDatePicker alloc] init];
@@ -211,5 +248,20 @@
     }
     return _dateView;
 }
+- (UIPickerView *)pickerView {
+    if (_pickerView == nil) {
+        _pickerView = [[UIPickerView alloc] init];
+        _pickerView.delegate = self;
+        _pickerView.dataSource = self;
+        //        _pickerView.backgroundColor = [UIColor whiteColor];
+    }
+    return _pickerView;
+}
 
+- (void)setTitleStr:(NSString *)titleStr{
+    _titleLabel.text = titleStr;
+}
+- (void)setDetailStr:(NSString *)detailStr{
+    _detailTextField.text = detailStr;
+}
 @end

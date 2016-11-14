@@ -8,7 +8,7 @@
 
 #import "NewReimbursePopView.h"
 #import "NewReimbursePopViewCell.h"
-
+#import "TemplateInfoModel.h"
 #define kBottomH  50
 
 #define kButtonW  ((kMMWidth - 40 - 1) / 2)
@@ -41,6 +41,7 @@
 
 
 
+
 @end
 @implementation NewReimbursePopView
 
@@ -61,10 +62,10 @@
      [self.topView addSubview:self.lineView];
      [self.topView addSubview:self.commitButton];
     
-    self.typeArray = @[@"差旅报销单",@"付款申请单",@"日常报销单"];
+//    self.typeArray = @[@"差旅报销单",@"付款申请单",@"日常报销单"];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,7 +80,8 @@
     if (!cell) {
         cell = [[NewReimbursePopViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    cell.titleStr = _typeArray[indexPath.row];
+    TemplateInfoModel *model = _dataArray[indexPath.row];
+    cell.titleStr = model.typeName;
     return cell;
     
     
@@ -108,7 +110,10 @@
     if (sender.tag == 20001) {
         // 确定;
         if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType:)]) {
-            [_delegate newReimbursePopViewDelegateWithType:_typeArray[_index]];
+            
+            TemplateInfoModel *model = _dataArray[_index];
+            
+            [_delegate newReimbursePopViewDelegateWithType:model.typeName];
         }
     }
 }

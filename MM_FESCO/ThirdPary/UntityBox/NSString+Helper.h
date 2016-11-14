@@ -90,4 +90,17 @@
  *
  */
 + (NSString *)jsonToJsonStingWith:(NSDictionary *)dic;
+
+
+/**
+ *  将  title  content  组合成  tittel(123...456)形式
+ *
+ *  @param  title 
+ 
+ *  @param  content
+ *
+ */
+
++ (NSString *)stringWithTitle:(NSString *)title content:(NSInteger)content;
+
 @end

@@ -119,7 +119,8 @@
 //static const CGFloat menuStartNarrowRatio  = 0.70;
 
 //上传图片相关
-#define kImageCollectionCell_Width floorf((kMMWidth - 10*2- 10*3 - 80)/3)
+//#define kImageCollectionCell_Width floorf((kMMWidth - 10*2- 10*3 - 80)/3)
+#define kImageCollectionCell_Width floorf(40)
 //最大的上传图片张数
 #define kupdateMaximumNumberOfImage 12
 

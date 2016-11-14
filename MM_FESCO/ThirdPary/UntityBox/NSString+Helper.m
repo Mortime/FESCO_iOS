@@ -176,7 +176,17 @@
     resultStr = [NSString stringWithFormat:@"{%@}",resultStr];
     return resultStr;
 }
-
-
+#pragma mark ----  组合成  tittel(123...456)形式
++ (NSString *)stringWithTitle:(NSString *)title content:(NSInteger)content{
+    
+    NSString *mightStr = [NSString stringWithFormat:@"%lu",content];
+    
+    NSString *oneStr = [mightStr substringToIndex:3];
+    
+    NSInteger  length = mightStr.length;
+    NSString *twoStr = [mightStr substringFromIndex:length - 3];
+    
+    return [NSString stringWithFormat:@"%@(%@...%@)",title,oneStr,twoStr];
+}
 
 @end

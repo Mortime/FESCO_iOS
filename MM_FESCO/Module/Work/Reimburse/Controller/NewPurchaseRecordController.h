@@ -10,4 +10,5 @@
 
 @interface NewPurchaseRecordController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *dic;
 @end

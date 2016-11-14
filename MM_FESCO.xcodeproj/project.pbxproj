@@ -288,6 +288,8 @@
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
 		76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */; };
+		76D12A861DD95C4800249133 /* TemplateInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A851DD95C4800249133 /* TemplateInfoModel.m */; };
+		76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A881DD95C5600249133 /* BankInfoModel.m */; };
 		76EBA2E41DD4027700DB67B1 /* NumberAddOffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */; };
 		76F02FC21DD4531B00D32771 /* MPImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA41DD4531B00D32771 /* MPImageCollectionCell.m */; };
 		76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA61DD4531B00D32771 /* MPImageItemModel.m */; };
@@ -937,6 +939,10 @@
 		76BB95601DD058A3000E6EF1 /* NewReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseController.m; sourceTree = "<group>"; };
 		76BB95621DD05F14000E6EF1 /* NewReimburseTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseTemplateCell.h; sourceTree = "<group>"; };
 		76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseTemplateCell.m; sourceTree = "<group>"; };
+		76D12A841DD95C4800249133 /* TemplateInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateInfoModel.h; sourceTree = "<group>"; };
+		76D12A851DD95C4800249133 /* TemplateInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateInfoModel.m; sourceTree = "<group>"; };
+		76D12A871DD95C5600249133 /* BankInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankInfoModel.h; sourceTree = "<group>"; };
+		76D12A881DD95C5600249133 /* BankInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankInfoModel.m; sourceTree = "<group>"; };
 		76EBA2E21DD4027700DB67B1 /* NumberAddOffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberAddOffView.h; sourceTree = "<group>"; };
 		76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberAddOffView.m; sourceTree = "<group>"; };
 		76F02FA31DD4531B00D32771 /* MPImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageCollectionCell.h; sourceTree = "<group>"; };
@@ -2471,6 +2477,10 @@
 				763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */,
 				763256D61DD2BF4C00C9C903 /* PurchaseRecordSubModel.h */,
 				763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */,
+				76D12A841DD95C4800249133 /* TemplateInfoModel.h */,
+				76D12A851DD95C4800249133 /* TemplateInfoModel.m */,
+				76D12A871DD95C5600249133 /* BankInfoModel.h */,
+				76D12A881DD95C5600249133 /* BankInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2835,6 +2845,7 @@
 				597223D41DADE05400D01A7A /* MMMianCell.m in Sources */,
 				59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */,
 				59EC91641D98CB5900E802FA /* EaseBubbleView+Video.m in Sources */,
+				76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */,
 				59EC91581D98CB5900E802FA /* EaseUsersListViewController.m in Sources */,
 				597223DC1DADE05400D01A7A /* PersonalMessageController.m in Sources */,
 				59EC91471D98CB5900E802FA /* EaseConversationModel.m in Sources */,
@@ -2856,6 +2867,7 @@
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59EC915D1D98CB5900E802FA /* EaseMessageCell.m in Sources */,
 				76F02FC91DD4531B00D32771 /* QBAssetsCollectionVideoIndicatorView.m in Sources */,
+				76D12A861DD95C4800249133 /* TemplateInfoModel.m in Sources */,
 				59EC91501D98CB5900E802FA /* EaseEmojiEmoticons.m in Sources */,
 				763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */,
 				59F651081D70338C000596A7 /* PinyinFormatter.m in Sources */,

@@ -19,5 +19,6 @@
 @interface NewReimbursePopView : UIView
 
 @property (nonatomic,weak) id <NewReimbursePopViewDelegate> delegate;
+@property (nonatomic,strong) NSArray *dataArray;
 
 @end

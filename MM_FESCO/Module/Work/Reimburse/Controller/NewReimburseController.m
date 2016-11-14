@@ -12,6 +12,9 @@
 #import "NewReimburseConsumePopView.h"
 #import "NewPurchaseRecordController.h"
 
+#import "BankInfoModel.h"
+#import "TemplateInfoModel.h"
+
 #define kBottomH  50
 
 @interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate>
@@ -31,13 +34,25 @@
 
 @property (nonatomic, strong) UIButton *rightButton;
 
-@property (nonatomic, strong) NewReimbursePopView *popView;
+@property (nonatomic, strong) NewReimbursePopView *popView;  // 模板
 
-@property (nonatomic, strong) NewReimburseConsumePopView *consumePopView;
+@property (nonatomic, strong) NewReimburseConsumePopView *consumePopView;  // 添加消费
+
+
+@property (nonatomic, strong) NSMutableArray *mobanArray;  // 模板数字
+
+@property (nonatomic, strong) NSMutableArray *bankArray;   // 银行信息数组
+
+
 
 
 
 @property (nonatomic, strong) NSString *oneStr;
+
+@property (nonatomic, strong) NSDictionary  *dic;
+
+
+
 
 
 @end
@@ -49,6 +64,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"新建报销单";
+    self.mobanArray = [NSMutableArray array];
+    self.bankArray = [NSMutableArray array];
     self.titleArray = @[@"模板",@"标题",@"报销日期",@"收款人",@"备注",@"敏感字段"];
     self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择收款人",@"(选填)",@"(选填)改信息不会被打印"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
@@ -62,16 +79,46 @@
     [self.view addSubview:self.tableView];
     
         //设置右边
-        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,70,30)];
+        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
         [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
         self.navigationItem.rightBarButtonItem= rightItem;
-    
+    [self initData];
 
 }
+- (void)initData{
+    
+    [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
+        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+        if (responseObject) {
+            _dic = responseObject;
+            // 模板信息
+            NSArray *mobanArray = [responseObject objectForKey:@"applyTypes"];
+            for (NSDictionary *dic in mobanArray) {
+                TemplateInfoModel *modle = [TemplateInfoModel yy_modelWithDictionary:dic];
+                [_mobanArray addObject:modle];
+            }
+            
+            // 银行信息
+            NSArray *bankArray = [responseObject objectForKey:@"bankAccounts"];
+            for (NSDictionary *dic in bankArray) {
+                BankInfoModel *modle = [BankInfoModel yy_modelWithDictionary:dic];
+                [_bankArray addObject:modle];
+            }
+
+            [self.tableView reloadData];
+        }
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"EditReimburseBook  =======failure=====%@",failure);
+    }];
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
 }
@@ -159,6 +206,17 @@
             cell.arrowImageView.hidden = YES;
              cell.isExist = YES;
         }
+        // 收款人
+        if (indexPath.row == 2) {
+//            cell.arrowImageView.hidden = YES;
+//            cell.isExist = YES;
+//            cell.detailStr = [UserInfoModel defaultUserInfo].empName;
+            cell.dataArray = _bankArray;
+            cell.isShowPickView = YES;
+            cell.isExist = YES;
+            
+        }
+
         // 报销日期
         if (indexPath.row == 1) {
             cell.isShowDataPickView = YES;
@@ -195,8 +253,10 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MMLog(@"SelectRowAtIndexPath = %lu",indexPath.row);
+    
     if (indexPath.section == 0 && indexPath.row == 0) {
+        self.popView.dataArray = self.mobanArray;
+        
         [self.view addSubview:self.popView];
     }
 }
@@ -221,6 +281,7 @@
         // 新建消费记录
          [self.consumePopView removeFromSuperview];
         NewPurchaseRecordController *puschaseVC = [[NewPurchaseRecordController alloc] init];
+        puschaseVC.dic = _dic;
         [self.navigationController pushViewController:puschaseVC animated:YES];
     }
     if (row == 1) {

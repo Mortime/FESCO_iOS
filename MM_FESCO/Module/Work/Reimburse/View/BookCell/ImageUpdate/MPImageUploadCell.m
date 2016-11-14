@@ -10,7 +10,12 @@
 
 @interface MPImageUploadCell()
 @property (strong, nonatomic) UICollectionView *myImagesCollectionView;
+
 @property (strong, nonatomic) NSMutableArray *imageViewsDict;
+
+@property (nonatomic, strong) UIView *bgView;
+
+@property (nonatomic, strong) UILabel *titleLabel;
 @end
 
 @implementation MPImageUploadCell
@@ -25,14 +30,17 @@
         self.backgroundColor = [UIColor clearColor];
         if (!self.myImagesCollectionView) {
             UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-            self.myImagesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(10, 10, kMMWidth-2*15, 80) collectionViewLayout:layout];
+            self.myImagesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(80, 10, kMMWidth-80 - 20, 80) collectionViewLayout:layout];
             self.myImagesCollectionView.scrollEnabled = NO;
             [self.myImagesCollectionView setBackgroundView:nil];
             [self.myImagesCollectionView setBackgroundColor:[UIColor clearColor]];
             [self.myImagesCollectionView registerClass:[MPImageCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([MPImageCollectionCell class])];
             self.myImagesCollectionView.dataSource = self;
             self.myImagesCollectionView.delegate = self;
-            [self.contentView addSubview:self.myImagesCollectionView];
+            [self.contentView addSubview:self.bgView];
+            [self.bgView addSubview:self.titleLabel];
+            [self.bgView addSubview:self.myImagesCollectionView];
+            
         }
         if (!_imageViewsDict) {
             _imageViewsDict = [[NSMutableArray alloc] init];
@@ -96,6 +104,7 @@
     {
         cellHeight+=kImageCollectionCell_Width;
     }
+   
     return cellHeight;
 }
 
@@ -179,5 +188,20 @@
     }
     return nil;
 }
-
+- (UIView *)bgView{
+    if (_bgView == nil) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.width - 20, 60)];
+        _bgView.backgroundColor = [UIColor whiteColor];
+    }
+    return _bgView;
+}
+- (UILabel *)titleLabel{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 16)];
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.textColor = [UIColor grayColor];
+        _titleLabel.text = @"附件";
+    }
+    return _titleLabel;
+}
 @end
