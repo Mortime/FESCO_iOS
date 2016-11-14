@@ -481,6 +481,15 @@
 
 #pragma ================== 报销 =====================
 
+/**
+ *   加载报销列表
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ */
++ (void)postReimburseListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
 
 /**
  *  加载消费记录
@@ -501,4 +510,18 @@
  */
 + (void)postEditReimburseBookSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+/**
+ *  保存报销申请
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param apply （req）
+ 
+ *  @param details （req）
+ 
+ */
++ (void)postPreserveReimburseApplyWithApply:(NSString *)apply details:(NSString *)details Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

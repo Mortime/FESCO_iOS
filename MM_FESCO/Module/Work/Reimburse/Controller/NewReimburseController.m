@@ -60,6 +60,17 @@
     
     
     [self.view addSubview:self.tableView];
+    
+        //设置右边
+        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,70,30)];
+        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+        self.navigationItem.rightBarButtonItem= rightItem;
+    
+
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -178,6 +189,9 @@
     return cell;
     
     
+}
+#pragma mark --- Action
+- (void)myAction{
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -85,20 +85,12 @@
     
 }
 - (void)initData{
-//    [NetworkEntity postLaterTimeStatisticSuccess:^(id responseObject) {
-//        MMLog(@"laterTimeStatistic  =======responseObject=====%@",responseObject);
-//        if ([[responseObject objectForKey:@"rankList"] count]) {
-//            NSArray *array =  [responseObject objectForKey:@"rankList"];
-//            for (NSDictionary *dic in array) {
-//                LaterTimeStatisticModel *model = [LaterTimeStatisticModel yy_modelWithDictionary:dic];
-//                [self.dataArray addObject:model];
-//                
-//            }
-//            [_tableView reloadData];
-//        }
-//    } failure:^(NSError *failure) {
-//        MMLog(@"laterTimeStatistic  =======failure=====%@",failure);
-//    }];
+    [NetworkEntity postReimburseListSuccess:^(id responseObject) {
+        
+        MMLog(@"ReimburseList  =======responseObject=====%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"ReimburseList  =======failure=====%@",failure);
+    }];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
