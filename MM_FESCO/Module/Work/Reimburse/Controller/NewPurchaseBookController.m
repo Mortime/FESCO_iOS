@@ -10,6 +10,8 @@
 #import "NewPurchaseSubTitleCell.h"
 #import "NewPurchaseSubContentCell.h"
 #import "NewPurchaseSubBookCell.h"
+#import "UploadFile.h"
+#import "PurchaseCityCell.h"
 
 #define kBottomButtonW    ((kMMWidth) / 2)
 @interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate>
@@ -47,20 +49,26 @@
     UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem= rightItem;
 
-
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.preservationButton];
-    [self.view addSubview:self.tableView];
+   
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 6;
+    //  _dateType == 2 显示  结束时间 ,  _needCity == 1  显示 消费城市
+    if (_dateType == 2 && _needCity == 1 ) {
+        return 8;
+    }
+    if (_dateType != 2 && _needCity != 1 ) {
+        return 6;
+    }
+    return 7;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 4) {
+    if ((_dateType == 1) ? (indexPath.row == 4):(indexPath.row == 5)) {
     return [MPImageUploadCell cellHeightWithObj:self.curUploadImageHelper];
     }
     return 54;
@@ -68,6 +76,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // 住宿
     if (indexPath.row == 0) {
         static NSString *cellID = @"SubTitleID";
         NewPurchaseSubTitleCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
@@ -79,31 +88,59 @@
         return cell;
 
     }
-    if (indexPath.row == 1 || indexPath.row == 2) {
+    // 金额
+    if (indexPath.row == 1) {
         static NSString *cellID = @"SubContentID";
          NewPurchaseSubContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
         if (!cell) {
             cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        if (indexPath.row == 1) {
             cell.textFiled.leftTitle = @"金额";
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
+        return cell;
         }
-        if (indexPath.row == 2) {
+    
+    if (indexPath.row == 2) {
+        static NSString *cellID = @"StartTimeID";
+        NewPurchaseSubContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        if (self.dateType == 1) {
             cell.textFiled.leftTitle = @"日期";
             cell.textFiled.placeHold = @"请选择日期";
             cell.textFiled.isShowDataPickView = YES;
             cell.textFiled.timeType = @"yyyy-mm-dd";
+        }else{
+            cell.textFiled.leftTitle = @"开始日期";
+            cell.textFiled.placeHold = @"请选择开始日期";
+            cell.textFiled.isShowDataPickView = YES;
+            cell.textFiled.timeType = @"yyyy-mm-dd";
         }
-
-        
-        
+       
         return cell;
     }
-    
-    if (indexPath.row == 3) {
+    if (_dateType == 2) {
+        if (indexPath.row == 3) {
+            static NSString *cellID = @"EndTimeID";
+            NewPurchaseSubContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            
+            if (!cell) {
+                cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.textFiled.leftTitle = @"结束日期";
+            cell.textFiled.placeHold = @"请选择结束日期";
+            cell.textFiled.isShowDataPickView = YES;
+            cell.textFiled.timeType = @"yyyy-mm-dd";
+            return cell;
+        }
+
+    }
+
+    if ((_dateType == 1) ? (indexPath.row == 3):(indexPath.row == 4)) {
         static NSString *cellID = @"SubBook";
         NewPurchaseSubBookCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -113,7 +150,7 @@
                 
         return cell;
     }
-    if (indexPath.row == 4) {
+    if ((_dateType == 1) ? (indexPath.row == 4):(indexPath.row == 5)) {
         static NSString *cellID = @"UploadCell";
         MPImageUploadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -136,7 +173,7 @@
     }
 
 
-    if (indexPath.row == 5) {
+    if ((_dateType == 1) ? (indexPath.row == 5):(indexPath.row == 6)) {
         static NSString *cellID = @"ID";
         NewPurchaseSubContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -145,17 +182,35 @@
         }
             cell.textFiled.leftTitle = @"描述";
             cell.textFiled.placeHold = @"我的描述";
+            cell.textFiled.isExist = YES;
+            
         
+        return cell;
+    }
+    
+    if ((_dateType == 1) ? (indexPath.row == 6):(indexPath.row == 7)) {
+        static NSString *cellID = @"CityID";
+        PurchaseCityCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
+        if (!cell) {
+            cell = [[PurchaseCityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
         
         
         return cell;
+
     }
 
     
     return nil;
     
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ((_dateType == 1) ? (indexPath.row == 6):(indexPath.row == 7)) {
+        // 城市选择
+    }
 }
 
 #pragma mark 自定义代码
@@ -274,12 +329,39 @@
 //        
 //        
 //    };
+    UploadFile *upload = [[UploadFile alloc] init];
+    
+    
+    // 这里如果是在同一部电脑上开启的web服务的话,要用localhost,如果用ip的话有时候会出错
+    
+     NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
+//    NSString *urlString = @"http://localhost:8080/UploadFile/servlet/UploadHandleServlet";
+    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"1.jpg" ofType:nil];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+ MPImageItemModel *imageItem =    self.curUploadImageHelper.imagesArray[0];
+    NSData *data = UIImageJPEGRepresentation(imageItem.image, 0.9);
+    
+    NSMutableDictionary *imageDic = [NSMutableDictionary dictionary];
+    [imageDic setValue:data forKey:@"1.jpg"];
+    
+    
+    NSMutableDictionary *pramDic = [NSMutableDictionary dictionary];
+    [pramDic setValue:@"测试文章标题" forKey:@"title"];
+    
+    
+    [upload uploadFileWithURL:[NSURL URLWithString:urlString] imageDic:imageDic pramDic:pramDic];
+    
+    
 }
 
 //上传图后局部刷新图片行 根据布局相应调整
 -(void)partialTableViewRefresh
 {
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    NSUInteger row = (_dateType == 1) ? 4 :  5;
+    
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     
     
 }

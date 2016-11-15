@@ -12,10 +12,13 @@
 
 @property (nonatomic, strong) NSString *icon;
 
-
 @property (nonatomic, strong) NSString *typeName;
 
-@property (nonatomic, strong) NSArray *subTypes; // 申请时间
+@property (nonatomic, strong) NSArray *subTypes;
+
+@property (nonatomic, assign) NSInteger dateType;
+
+@property (nonatomic, assign) NSInteger needCity;
 
 
 @end

@@ -15,4 +15,8 @@
 #import "MPImageUploadCell.h"
 @interface NewPurchaseBookController : MMBaseViewController
 
+@property (nonatomic, assign) NSInteger dateType;
+
+@property (nonatomic, assign) NSInteger needCity;
+
 @end

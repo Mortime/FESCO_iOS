@@ -12,4 +12,9 @@
 
 @property (nonatomic,strong) NSArray *dataArray;
 
+@property (nonatomic, assign) NSInteger dateType;
+
+@property (nonatomic, assign) NSInteger needCity;
+
+
 @end

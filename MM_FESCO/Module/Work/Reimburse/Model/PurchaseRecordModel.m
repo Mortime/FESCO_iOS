@@ -13,7 +13,9 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     
     return @{ @"typeName":@"type_Name",
-              @"subTypes":@"sub_Types" 
+              @"subTypes":@"sub_Types",
+              @"dateType":@"date_Type",
+              @"needCity":@"need_City"
             };
 }
 

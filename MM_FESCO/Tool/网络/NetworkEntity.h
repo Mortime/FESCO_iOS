@@ -524,4 +524,32 @@
  
  */
 + (void)postPreserveReimburseApplyWithApply:(NSString *)apply details:(NSString *)details Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+/**
+ *  保存消费记录
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param spend_Type （req） 消费类型
+ 
+ *  @param money_Amount （req） 金额
+ 
+ *  @param bill_Num （req）   发票数量
+ 
+ *  @param detail_Memo （req）
+ 
+ *  @param pic_Url （req）
+ 
+ *  @param pic_Desc （req）
+ 
+ *  @param spend_Begin （req） 1=年月日 2=年月日-年月日
+ 
+ *  @param spend_End （req）
+ 
+ *  @param spend_City （req）  spendType 下的  need_City  0为空 , 1选择消费城市
+ 
+ */
++ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spend_City  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 @end

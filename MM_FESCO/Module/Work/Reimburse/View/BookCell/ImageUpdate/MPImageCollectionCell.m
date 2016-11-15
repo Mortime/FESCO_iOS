@@ -43,6 +43,11 @@
 
 -(void)setCurImageItem:(MPImageItemModel *)curImageItem
 {
+    MMLog(@"curImageItem.assetURL = %@",curImageItem.assetURL);
+    MMLog(@"photoName = %@",curImageItem.photoName);
+    MMLog(@"photoTime = %@",curImageItem.photoTime);
+    MMLog(@"photoLatitude = %@",curImageItem.photoLatitude);
+    
     _curImageItem=curImageItem;
     if (_curImageItem) {
         

@@ -1299,4 +1299,42 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
+// 保存消费记录
++ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"spend_Type":[NSString stringWithFormat:@"%lu",spendType],
+                          @"money_Amount":moneyAmount,
+                          @"bill_Num":billNum,
+                          @"detail_Memo":detailMemo,
+                          @"pic_Url":picUrl,
+                          @"pic_Desc":picDesc,
+                          @"spend_Begin":spendBegin,
+                          @"spend_End":spendEnd,
+                          @"spend_City":spendCity,
+                          @"methodname":@"expense/saveExpenseRecord.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/saveExpenseRecord.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
 @end

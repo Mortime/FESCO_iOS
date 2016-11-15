@@ -69,12 +69,20 @@
     PurchaseRecordModel *modle = _dataArray[indexPath.row];
     NewPurchaseSubController *subVC = [[NewPurchaseSubController alloc] init];
     subVC.title = modle.typeName;
+    
     subVC.dataArray = modle.subTypes;
+    subVC.dateType = modle.dateType;
+    subVC.needCity = modle.needCity;
+    
     if (subVC.dataArray) {
         [self.navigationController pushViewController:subVC animated:YES];
     }else{
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+        
         bookVC.title = modle.typeName;
+        bookVC.dateType = modle.dateType;
+        bookVC.needCity = modle.needCity;
+
         [self.navigationController pushViewController:bookVC animated:YES];
     }
     

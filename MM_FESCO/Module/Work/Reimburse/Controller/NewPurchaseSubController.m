@@ -55,7 +55,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+    
     bookVC.title  = self.title;
+    bookVC.dateType = self.dateType;
+    bookVC.needCity = self.needCity;
+    
     [self.navigationController pushViewController:bookVC animated:YES];
 }
 - (UITableView *)tableView {
