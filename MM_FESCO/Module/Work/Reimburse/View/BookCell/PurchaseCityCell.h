@@ -10,4 +10,5 @@
 
 @interface PurchaseCityCell : UITableViewCell
 
+@property (nonatomic ,strong) UILabel *resultLabel;
 @end

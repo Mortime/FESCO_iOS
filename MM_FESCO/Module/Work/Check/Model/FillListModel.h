@@ -37,7 +37,7 @@
 
 @property (nonatomic, strong) NSString *custAddress;
 
-@property (nonatomic, assign) NSInteger applyResult; // 1 通过, 2 正在审批 , 3 审批未通过
+@property (nonatomic, assign) NSInteger applyResult; // 0 审批未通过, 1 通过, 2 正在审批 , 
 
 @property (nonatomic, assign) NSInteger stepOver;  // 0 未结束 , 1 结束
 

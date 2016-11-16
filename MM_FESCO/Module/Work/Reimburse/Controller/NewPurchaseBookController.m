@@ -12,9 +12,10 @@
 #import "NewPurchaseSubBookCell.h"
 #import "UploadFile.h"
 #import "PurchaseCityCell.h"
+#import "CityListViewController.h"
 
 #define kBottomButtonW    ((kMMWidth) / 2)
-@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate>
+@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,6 +25,10 @@
 @property (nonatomic, strong) UIButton *preservationButton;
 
 @property (nonatomic, strong) UIButton *cancelButton;
+
+@property (nonatomic, strong)  PurchaseCityCell *cityCell;
+
+@property (nonatomic, strong) NSString *cityName;
 
 
 @end
@@ -35,6 +40,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor colorWithHexString:@"f0eff5"];
+
     
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
@@ -195,7 +201,7 @@
         if (!cell) {
             cell = [[PurchaseCityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        
+        _cityCell = cell;
         
         return cell;
 
@@ -210,6 +216,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ((_dateType == 1) ? (indexPath.row == 6):(indexPath.row == 7)) {
         // 城市选择
+        CityListViewController *cityVC = [[CityListViewController alloc]init];
+        cityVC.delegate = self;
+        [self.navigationController pushViewController:cityVC animated:YES];
     }
 }
 
@@ -374,6 +383,14 @@
 - (void)didCancelButton{
     
 }
+- (void)didClickedWithCityName:(NSString *)cityName{
+    _cityName = cityName;
+    _cityCell.resultLabel.textColor = [UIColor blackColor];
+    _cityCell.resultLabel.text =  cityName;
+}
+
+
+
 - (UITableView *)tableView {
     
     if (_tableView == nil) {

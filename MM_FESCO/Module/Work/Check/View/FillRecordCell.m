@@ -208,8 +208,8 @@
     if (_statusButton == nil) {
         _statusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_statusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_statusButton setTitle:@"同意" forState:UIControlStateNormal];
-        _statusButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+//        [_statusButton setTitle:@"同意" forState:UIControlStateNormal];
+//        _statusButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         
     }
     return _statusButton;
@@ -258,10 +258,19 @@
     }
     
     // 审批状态
+    
+    if (listModel.applyResult == 0) {
+        //  未通过
+        [_statusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_statusButton setTitle:@"未同意" forState:UIControlStateNormal];
+        _statusButton.backgroundColor = [UIColor grayColor];
+        
+        
+    }
     if (listModel.applyResult == 1) {
         //  通过
         [_statusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_statusButton setTitle:@"同意" forState:UIControlStateNormal];
+        [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
         _statusButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
 
         

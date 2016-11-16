@@ -289,6 +289,15 @@
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
 		76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */; };
+		76CBDCE71DDB064700272D91 /* ButtonGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCD71DDB064700272D91 /* ButtonGroupView.m */; };
+		76CBDCE81DDB064700272D91 /* CityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCD91DDB064700272D91 /* CityButton.m */; };
+		76CBDCE91DDB064700272D91 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CBDCDA1DDB064700272D91 /* citydict.plist */; };
+		76CBDCEA1DDB064700272D91 /* CityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCDC1DDB064700272D91 /* CityItem.m */; };
+		76CBDCEB1DDB064800272D91 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCDE1DDB064700272D91 /* CityListViewController.m */; };
+		76CBDCEE1DDB064800272D91 /* DVVSubCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCE41DDB064700272D91 /* DVVSubCityCell.m */; };
+		76CBDCEF1DDB064800272D91 /* DVVSubCityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCE61DDB064700272D91 /* DVVSubCityView.m */; };
+		76CBDCF21DDB06C100272D91 /* DVVSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCF11DDB06C100272D91 /* DVVSearchView.m */; };
+		76CBDCF81DDB0A5E00272D91 /* DVVCityListDMData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CBDCF71DDB0A5E00272D91 /* DVVCityListDMData.m */; };
 		76D12A861DD95C4800249133 /* TemplateInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A851DD95C4800249133 /* TemplateInfoModel.m */; };
 		76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A881DD95C5600249133 /* BankInfoModel.m */; };
 		76D12A8C1DD9AA9300249133 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A8B1DD9AA9300249133 /* UploadFile.m */; };
@@ -943,6 +952,23 @@
 		76BB95601DD058A3000E6EF1 /* NewReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseController.m; sourceTree = "<group>"; };
 		76BB95621DD05F14000E6EF1 /* NewReimburseTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseTemplateCell.h; sourceTree = "<group>"; };
 		76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseTemplateCell.m; sourceTree = "<group>"; };
+		76CBDCD61DDB064700272D91 /* ButtonGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGroupView.h; sourceTree = "<group>"; };
+		76CBDCD71DDB064700272D91 /* ButtonGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonGroupView.m; sourceTree = "<group>"; };
+		76CBDCD81DDB064700272D91 /* CityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityButton.h; sourceTree = "<group>"; };
+		76CBDCD91DDB064700272D91 /* CityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityButton.m; sourceTree = "<group>"; };
+		76CBDCDA1DDB064700272D91 /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
+		76CBDCDB1DDB064700272D91 /* CityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityItem.h; sourceTree = "<group>"; };
+		76CBDCDC1DDB064700272D91 /* CityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityItem.m; sourceTree = "<group>"; };
+		76CBDCDD1DDB064700272D91 /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListViewController.h; sourceTree = "<group>"; };
+		76CBDCDE1DDB064700272D91 /* CityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListViewController.m; sourceTree = "<group>"; };
+		76CBDCE31DDB064700272D91 /* DVVSubCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVSubCityCell.h; sourceTree = "<group>"; };
+		76CBDCE41DDB064700272D91 /* DVVSubCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVSubCityCell.m; sourceTree = "<group>"; };
+		76CBDCE51DDB064700272D91 /* DVVSubCityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVSubCityView.h; sourceTree = "<group>"; };
+		76CBDCE61DDB064700272D91 /* DVVSubCityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVSubCityView.m; sourceTree = "<group>"; };
+		76CBDCF01DDB06C100272D91 /* DVVSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVSearchView.h; sourceTree = "<group>"; };
+		76CBDCF11DDB06C100272D91 /* DVVSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVSearchView.m; sourceTree = "<group>"; };
+		76CBDCF61DDB0A5E00272D91 /* DVVCityListDMData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVCityListDMData.h; sourceTree = "<group>"; };
+		76CBDCF71DDB0A5E00272D91 /* DVVCityListDMData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVCityListDMData.m; sourceTree = "<group>"; };
 		76D12A841DD95C4800249133 /* TemplateInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateInfoModel.h; sourceTree = "<group>"; };
 		76D12A851DD95C4800249133 /* TemplateInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateInfoModel.m; sourceTree = "<group>"; };
 		76D12A871DD95C5600249133 /* BankInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankInfoModel.h; sourceTree = "<group>"; };
@@ -2516,6 +2542,7 @@
 		764499CE1DCC7D5A00A6404F /* Reimburse */ = {
 			isa = PBXGroup;
 			children = (
+				76CBDCD51DDB064700272D91 /* ChinaCityList */,
 				763256D21DD2B8B700C9C903 /* Model */,
 				763256CC1DD2B63900C9C903 /* Other */,
 				764499D91DCC818600A6404F /* View */,
@@ -2567,6 +2594,30 @@
 				763256E01DD302D200C9C903 /* PurchaseSubCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		76CBDCD51DDB064700272D91 /* ChinaCityList */ = {
+			isa = PBXGroup;
+			children = (
+				76CBDCF61DDB0A5E00272D91 /* DVVCityListDMData.h */,
+				76CBDCF71DDB0A5E00272D91 /* DVVCityListDMData.m */,
+				76CBDCD61DDB064700272D91 /* ButtonGroupView.h */,
+				76CBDCD71DDB064700272D91 /* ButtonGroupView.m */,
+				76CBDCD81DDB064700272D91 /* CityButton.h */,
+				76CBDCD91DDB064700272D91 /* CityButton.m */,
+				76CBDCDA1DDB064700272D91 /* citydict.plist */,
+				76CBDCDB1DDB064700272D91 /* CityItem.h */,
+				76CBDCDC1DDB064700272D91 /* CityItem.m */,
+				76CBDCDD1DDB064700272D91 /* CityListViewController.h */,
+				76CBDCDE1DDB064700272D91 /* CityListViewController.m */,
+				76CBDCE31DDB064700272D91 /* DVVSubCityCell.h */,
+				76CBDCE41DDB064700272D91 /* DVVSubCityCell.m */,
+				76CBDCE51DDB064700272D91 /* DVVSubCityView.h */,
+				76CBDCE61DDB064700272D91 /* DVVSubCityView.m */,
+				76CBDCF01DDB06C100272D91 /* DVVSearchView.h */,
+				76CBDCF11DDB06C100272D91 /* DVVSearchView.m */,
+			);
+			path = ChinaCityList;
 			sourceTree = "<group>";
 		};
 		76F02FA21DD4531B00D32771 /* ImageUpdate */ = {
@@ -2764,6 +2815,7 @@
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */,
+				76CBDCE91DDB064700272D91 /* citydict.plist in Resources */,
 				763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */,
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
 				76F02FCE1DD4531B00D32771 /* QBImagePickerController.strings in Resources */,
@@ -2857,6 +2909,7 @@
 				59EC91641D98CB5900E802FA /* EaseBubbleView+Video.m in Sources */,
 				76D12A8C1DD9AA9300249133 /* UploadFile.m in Sources */,
 				76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */,
+				76CBDCE71DDB064700272D91 /* ButtonGroupView.m in Sources */,
 				59EC91581D98CB5900E802FA /* EaseUsersListViewController.m in Sources */,
 				597223DC1DADE05400D01A7A /* PersonalMessageController.m in Sources */,
 				59EC91471D98CB5900E802FA /* EaseConversationModel.m in Sources */,
@@ -2911,6 +2964,7 @@
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
 				59EC91161D98CB5900E802FA /* EMCDDeviceManager+Microphone.m in Sources */,
 				59EC91EB1D98D9AD00E802FA /* PSTCollectionViewUpdateItem.m in Sources */,
+				76CBDCEA1DDB064700272D91 /* CityItem.m in Sources */,
 				76F02FD01DD4531B00D32771 /* QBImagePickerThumbnailView.m in Sources */,
 				597222E51DADDDEC00D01A7A /* NSArray+Sort.m in Sources */,
 				59EC91E71D98D9AD00E802FA /* PSTCollectionViewData.m in Sources */,
@@ -2932,6 +2986,7 @@
 				76F02FC61DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m in Sources */,
 				59EC91D71D98D9AD00E802FA /* EMSDWebImageDownloaderOperation.m in Sources */,
 				59EC91DA1D98D9AD00E802FA /* MKAnnotationView+EMWebCache.m in Sources */,
+				76CBDCF81DDB0A5E00272D91 /* DVVCityListDMData.m in Sources */,
 				597223A71DADE05400D01A7A /* NewsController.m in Sources */,
 				597222E21DADDD1500D01A7A /* MMCycleShowImageView.m in Sources */,
 				76F02FCD1DD4531B00D32771 /* QBImagePickerController.m in Sources */,
@@ -2942,6 +2997,7 @@
 				76F02FCC1DD4531B00D32771 /* QBAssetsCollectionViewLayout.m in Sources */,
 				59EC91CE1D98D9AD00E802FA /* MWPhotoBrowser.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
+				76CBDCEB1DDB064800272D91 /* CityListViewController.m in Sources */,
 				59EC915B1D98CB5900E802FA /* EaseBaseMessageCell.m in Sources */,
 				76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */,
 				59EC91ED1D98D9AD00E802FA /* PSTGridLayoutItem.m in Sources */,
@@ -2955,6 +3011,7 @@
 				5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */,
 				76F02FC41DD4531B00D32771 /* MPImageUploadCell.m in Sources */,
 				597223E31DADE05400D01A7A /* PhoneListModel.m in Sources */,
+				76CBDCE81DDB064700272D91 /* CityButton.m in Sources */,
 				59EC91CC1D98D9AD00E802FA /* MWGridViewController.m in Sources */,
 				597222EE1DADDE5900D01A7A /* MMNoDataShowBGView.m in Sources */,
 				59EC91491D98CB5900E802FA /* EaseUserModel.m in Sources */,
@@ -2975,6 +3032,7 @@
 				59EC91E41D98D9AD00E802FA /* PSTCollectionView.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
+				76CBDCF21DDB06C100272D91 /* DVVSearchView.m in Sources */,
 				59EC91DD1D98D9AD00E802FA /* UIImage+EMGIF.m in Sources */,
 				59EC914A1D98CB5900E802FA /* NSString+Valid.m in Sources */,
 				597223C31DADE05400D01A7A /* FillApplyView.m in Sources */,
@@ -3051,6 +3109,7 @@
 				59EC91CB1D98D9AD00E802FA /* MWGridCell.m in Sources */,
 				59EC91631D98CB5900E802FA /* EaseBubbleView+Text.m in Sources */,
 				59182B351D6448CE00842352 /* NSData+AES.m in Sources */,
+				76CBDCEF1DDB064800272D91 /* DVVSubCityView.m in Sources */,
 				597223DF1DADE05400D01A7A /* PersonalMessageHeaderView.m in Sources */,
 				59A59E241D499EF2001F3122 /* UIImageView+SDWedImage.m in Sources */,
 				597223E11DADE05400D01A7A /* PhoneListController.m in Sources */,
@@ -3111,6 +3170,7 @@
 				59EC914E1D98CB5900E802FA /* EaseMessageReadManager.m in Sources */,
 				764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */,
 				59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */,
+				76CBDCEE1DDB064800272D91 /* DVVSubCityCell.m in Sources */,
 				597223AA1DADE05400D01A7A /* LeaveApprovalDetailController.m in Sources */,
 				76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
