@@ -15,7 +15,7 @@
 #import "CityListViewController.h"
 
 #define kBottomButtonW    ((kMMWidth) / 2)
-@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate>
+@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate,NewPurchaseSubContentCellDelegate,NewPurchaseSubBookCellDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -28,7 +28,25 @@
 
 @property (nonatomic, strong)  PurchaseCityCell *cityCell;
 
-@property (nonatomic, strong) NSString *cityName;
+
+
+
+// 保存时提交服务器数据
+@property (nonatomic, strong) NSString *moneyNumber;  // 金额
+
+@property (nonatomic, strong) NSString *startTime; // 开始时间
+
+@property (nonatomic, strong) NSString *endTime; // 结束时间
+
+@property (nonatomic, strong) NSString *billNumber; // 发票
+
+@property (nonatomic, strong) NSString *picUrl; // 照片链接
+
+@property (nonatomic, strong) NSString *picStr; // 照片描述
+
+@property (nonatomic, strong) NSString *memo; // 我的描述
+
+@property (nonatomic, strong) NSString *cityName; // 选择的城市
 
 
 @end
@@ -44,6 +62,7 @@
     
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
+    _billNumber = @"1";
     
     //设置右边
     UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
@@ -105,6 +124,8 @@
             cell.textFiled.leftTitle = @"金额";
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
+        cell.delegate = self;
+        cell.tag = 8000;
         return cell;
         }
     
@@ -126,6 +147,8 @@
             cell.textFiled.isShowDataPickView = YES;
             cell.textFiled.timeType = @"yyyy-mm-dd";
         }
+        cell.tag = 8001;
+        cell.delegate = self;
        
         return cell;
     }
@@ -141,6 +164,8 @@
             cell.textFiled.placeHold = @"请选择结束日期";
             cell.textFiled.isShowDataPickView = YES;
             cell.textFiled.timeType = @"yyyy-mm-dd";
+            cell.tag = 8002;
+            cell.delegate = self;
             return cell;
         }
 
@@ -153,6 +178,7 @@
         if (!cell) {
             cell = [[NewPurchaseSubBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
+        cell.delegate = self;
                 
         return cell;
     }
@@ -189,6 +215,8 @@
             cell.textFiled.leftTitle = @"描述";
             cell.textFiled.placeHold = @"我的描述";
             cell.textFiled.isExist = YES;
+        cell.delegate = self;
+        cell.tag = 8003;
             
         
         return cell;
@@ -305,6 +333,32 @@
 - (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+#pragma mark  -----NewPurchaseSubContentCellDelegate
+- (void)newPurchaseSubContentCellDelegateWithTextField:(UITextField *)textField indexTag:(NSInteger)indexTag{
+    MMLog(@"newPurchaseSubContentCellDelegateWithTextField = %@%lu",textField.text,indexTag);
+    if (indexTag == 8000) {
+        // 金额
+        _moneyNumber = textField.text;
+    }
+    if (indexTag == 8001) {
+        // 开始日期
+        _startTime = textField.text;
+    }
+    if (indexTag == 8002) {
+        // 结束日期
+        _endTime = textField.text;
+    }
+    if (indexTag == 8003) {
+        // 我的描述
+        _memo = textField.text;
+    }
+
+}
+#pragma mark  -----NewPurchaseSubBookCellDelegate
+- (void)newPurchaseSubBookCellDelegateWithBillNumber:(NSString *)billNumber{
+    // 发票数量
+    _billNumber = billNumber;
+}
 
 //上传图片
 -(void)myAction
@@ -381,7 +435,11 @@
 }
 // 保存
 - (void)didCancelButton{
-    
+    [NetworkEntity postPreservePurchaseRecordWithSpendType:_typeCode moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:@"" picDesc:@"" spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
+        MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+    }];
 }
 - (void)didClickedWithCityName:(NSString *)cityName{
     _cityName = cityName;

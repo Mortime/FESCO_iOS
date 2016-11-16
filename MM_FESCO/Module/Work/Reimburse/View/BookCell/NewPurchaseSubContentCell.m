@@ -40,7 +40,11 @@
 //    [self addSubview:self.bgView];
     [self addSubview:self.textFiled];
     
-    
+    [_textFiled dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+        if ([_delegate respondsToSelector:@selector(newPurchaseSubContentCellDelegateWithTextField:indexTag:)]) {
+            [_delegate newPurchaseSubContentCellDelegateWithTextField:textField indexTag:indexTag];
+        }
+    }];
 }
 - (void)layoutSubviews{
     [self.textFiled mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -52,6 +56,7 @@
         
         
     }];
+    _textFiled.tag = self.tag;
 
 }
 - (UIView *)bgView{
@@ -65,6 +70,8 @@
     if (_textFiled == nil) {
         _textFiled = [[MMChooseTextFile alloc] init];
         _textFiled.backgroundColor = [UIColor whiteColor];
+        
+       
     }
     return _textFiled;
 }

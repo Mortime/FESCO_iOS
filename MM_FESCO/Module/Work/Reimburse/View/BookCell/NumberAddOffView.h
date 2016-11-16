@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NumberAddOffViewDelegate <NSObject>
+
+- (void)numberAddOffViewDelegateWihtBillNumber:(NSString *)billNumber;
+
+@end
+
 @interface NumberAddOffView : UIView
+
+@property (nonatomic, weak) id <NumberAddOffViewDelegate> delegate;
 
 @end

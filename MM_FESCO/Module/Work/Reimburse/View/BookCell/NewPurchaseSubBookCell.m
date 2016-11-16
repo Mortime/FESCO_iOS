@@ -9,7 +9,7 @@
 #import "NewPurchaseSubBookCell.h"
 #import "NumberAddOffView.h"
 
-@interface NewPurchaseSubBookCell ()
+@interface NewPurchaseSubBookCell ()<NumberAddOffViewDelegate>
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -78,6 +78,13 @@
     }];
     
 }
+#pragma mark ---  NumberAddOffViewDelegate
+- (void)numberAddOffViewDelegateWihtBillNumber:(NSString *)billNumber{
+    if ([_delegate respondsToSelector:@selector(newPurchaseSubBookCellDelegateWithBillNumber:)]) {
+        [_delegate newPurchaseSubBookCellDelegateWithBillNumber:billNumber];
+    }
+}
+
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
@@ -97,7 +104,7 @@
 - (NumberAddOffView *)addOffView{
     if (_addOffView == nil) {
         _addOffView = [[NumberAddOffView alloc] init];
-        
+        _addOffView.delegate = self;
     }
     return _addOffView;
 }

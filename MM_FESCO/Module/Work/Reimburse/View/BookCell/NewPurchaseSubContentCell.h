@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MMChooseTextFile.h"
 
+@protocol NewPurchaseSubContentCellDelegate <NSObject>
+
+- (void)newPurchaseSubContentCellDelegateWithTextField:(UITextField *)textField indexTag:(NSInteger)indexTag;
+
+@end
+
 @interface NewPurchaseSubContentCell : UITableViewCell
 
 @property (nonatomic, strong) MMChooseTextFile *textFiled;
+
+@property (nonatomic, weak) id <NewPurchaseSubContentCellDelegate> delegate;
 @end

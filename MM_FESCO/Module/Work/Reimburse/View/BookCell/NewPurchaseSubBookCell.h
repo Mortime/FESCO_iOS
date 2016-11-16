@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol NewPurchaseSubBookCellDelegate <NSObject>
+
+- (void)newPurchaseSubBookCellDelegateWithBillNumber:(NSString *)billNumber;
+
+@end
 @interface NewPurchaseSubBookCell : UITableViewCell
+
+@property (nonatomic, weak) id <NewPurchaseSubBookCellDelegate> delegate;
 
 @end

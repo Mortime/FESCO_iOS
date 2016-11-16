@@ -15,7 +15,8 @@
     return @{ @"typeName":@"type_Name",
               @"subTypes":@"sub_Types",
               @"dateType":@"date_Type",
-              @"needCity":@"need_City"
+              @"needCity":@"need_City",
+              @"typeCode":@"type_Code"
             };
 }
 

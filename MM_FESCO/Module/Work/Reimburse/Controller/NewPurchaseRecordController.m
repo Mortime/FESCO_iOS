@@ -73,6 +73,7 @@
     subVC.dataArray = modle.subTypes;
     subVC.dateType = modle.dateType;
     subVC.needCity = modle.needCity;
+    subVC.typeCode = modle.typeCode;
     
     if (subVC.dataArray) {
         [self.navigationController pushViewController:subVC animated:YES];
@@ -82,6 +83,7 @@
         bookVC.title = modle.typeName;
         bookVC.dateType = modle.dateType;
         bookVC.needCity = modle.needCity;
+        bookVC.typeCode = modle.typeCode;
 
         [self.navigationController pushViewController:bookVC animated:YES];
     }

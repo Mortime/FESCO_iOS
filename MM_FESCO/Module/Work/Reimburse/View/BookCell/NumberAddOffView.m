@@ -82,6 +82,9 @@
             --number;
             _resultLabel.text = [NSString stringWithFormat:@"%lu",number];
         }
+        if ([_delegate respondsToSelector:@selector(numberAddOffViewDelegateWihtBillNumber:)]) {
+            [_delegate numberAddOffViewDelegateWihtBillNumber:_resultLabel.text];
+        }
 }
 }
 - (UIButton *)reduceButton{

@@ -59,6 +59,7 @@
     bookVC.title  = self.title;
     bookVC.dateType = self.dateType;
     bookVC.needCity = self.needCity;
+    bookVC.typeCode = self.typeCode;
     
     [self.navigationController pushViewController:bookVC animated:YES];
 }
