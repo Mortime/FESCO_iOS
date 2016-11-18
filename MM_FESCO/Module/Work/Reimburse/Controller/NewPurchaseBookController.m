@@ -413,10 +413,72 @@
 }
 // 保存
 - (void)didCancelButton{
-    [NetworkEntity postPreservePurchaseRecordWithSpendType:_typeCode moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:@"" picDesc:@"" spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
+    
+    if (!_moneyNumber) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
+        [toastView show];
+        return;
+    }
+    if (_dateType  == 1) {
+        if (!_startTime) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入日期"];
+            [toastView show];
+            return;
+        }
+        
+    }
+    if (_dateType == 2) {
+        if (!_startTime) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入开始日期"];
+            [toastView show];
+            return;
+        }
+        if (!_endTime) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入结束日期"];
+            [toastView show];
+            return;
+        }
+
+
+    }
+    if (_needCity == 1) {
+        if (!_cityName) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入城市名称"];
+            [toastView show];
+            return;
+        }
+
+    }
+   
+    
+    
+    
+    if (_dateType == 1) {
+        _endTime = @"";
+    }
+    if (_needCity == 0) {
+        _cityName = @"";
+    }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"imgUrl"]) {
+        _picUrl= [[NSUserDefaults standardUserDefaults] objectForKey:@"imgUrl"];
+        _picStr =  [[NSUserDefaults standardUserDefaults] objectForKey:@"imgDes"];
+    }else{
+        _picUrl = @"";
+    }
+    [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
         MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            // 提交成功
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
+            [toastView show];
+            NSArray * ctrlArray = self.navigationController.viewControllers;
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+            
+        }
     } failure:^(NSError *failure) {
         MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [toastView show];
     }];
 }
 - (void)didClickedWithCityName:(NSString *)cityName{

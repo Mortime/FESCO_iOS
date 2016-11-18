@@ -1218,7 +1218,7 @@
 + (void)postPurchaseRecordSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-                          @"methodname":@"expense/getExpenseRecords.json"};
+                          @"methodname":@"expense/getExpenseRecords.json"};  
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
     
@@ -1336,5 +1336,31 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
+}
++ (void)postDeleReimburseRecordWithDetailId:(NSInteger )detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"detail_Id":[NSString stringWithFormat:@"%lu",detailId],
+                           @"methodname":@"expense/deleteRecord.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/deleteRecord.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 @end

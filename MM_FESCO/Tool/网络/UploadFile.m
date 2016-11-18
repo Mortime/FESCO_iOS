@@ -7,6 +7,7 @@
 //
 
 #import "UploadFile.h"
+#import <JSONKit.h>
 
 
 @interface UploadFile ()<NSURLSessionTaskDelegate>
@@ -78,6 +79,9 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
     [dataM appendData:dataImage];
     
     NSString *bottomStr = [self bottomString:[NSString stringWithFormat:@"上传图片%lu",imgIndex] value:[NSString stringWithFormat:@"图片%lu",imgIndex]];
+     // 保存图片描述
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"图片%lu",imgIndex] forKey:@"imgDes"];
+
     [dataM appendData:[bottomStr dataUsingEncoding:NSUTF8StringEncoding]];
     
     
@@ -127,6 +131,18 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
         
         NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"result= %@", result);
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        
+        NSLog(@"myDictionary= %@", dic);
+        if ([[dic objectForKey:@"errcode"] integerValue] == 0) {
+            // 上传成功
+            // 保存服务器返回的图片地址
+            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"path"] forKey:@"imgUrl"];
+           
+            
+        }
+        
     }];
 }
 #pragma mark - 检测上传进度

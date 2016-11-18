@@ -22,6 +22,7 @@
 
 @property (nonatomic, assign) NSInteger  typeCode;
 
+@property (nonatomic, assign) NSInteger ID;
 
 
 

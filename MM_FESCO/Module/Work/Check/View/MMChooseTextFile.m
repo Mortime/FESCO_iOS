@@ -148,7 +148,10 @@
     //创建一个日期格式
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     //设置日期的显示格式
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm";
+     fmt.dateFormat = @"yyyy-MM-dd HH:mm";
+    if (_timeType) {
+        fmt.dateFormat = @"yyyy-MM-dd";
+    }
     //将日期转为指定格式显示
     NSString *dateStr = [fmt stringFromDate:datePicker.date];
     _rightTextFiled.text = dateStr;

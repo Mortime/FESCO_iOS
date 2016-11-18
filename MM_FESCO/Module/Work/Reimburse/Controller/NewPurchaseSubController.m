@@ -59,7 +59,10 @@
     bookVC.title  = self.title;
     bookVC.dateType = self.dateType;
     bookVC.needCity = self.needCity;
-    bookVC.typeCode = self.typeCode;
+    
+    NSDictionary *dic = _dataArray[indexPath.row];
+    bookVC.ID = [[dic objectForKey:@"id"] integerValue];
+    
     
     [self.navigationController pushViewController:bookVC animated:YES];
 }

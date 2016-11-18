@@ -28,4 +28,6 @@
 
 @property (nonatomic, strong) NSString *typeName;
 
+@property (nonatomic, assign) NSInteger ID;
+
 @end

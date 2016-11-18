@@ -16,7 +16,7 @@
 
 @property (nonatomic, assign) NSInteger needCity;
 
-@property (nonatomic, assign) NSInteger typeCode;
+@property (nonatomic, assign) NSInteger ID;
 
 
 @end
