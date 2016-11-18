@@ -1,16 +1,15 @@
 //
-//  MPImageUploadCell.m
+//  MPImageUploadProgressCell.m
 //  MobileProject
 //
-//  Created by wujunyang on 16/7/20.
+//  Created by wujunyang on 16/7/22.
 //  Copyright © 2016年 wujunyang. All rights reserved.
 //
 
-#import "MPImageUploadCell.h"
+#import "MPImageUploadProgressCell.h"
 
-@interface MPImageUploadCell()
+@interface MPImageUploadProgressCell()
 @property (strong, nonatomic) UICollectionView *myImagesCollectionView;
-
 @property (strong, nonatomic) NSMutableArray *imageViewsDict;
 
 @property (nonatomic, strong) UIView *bgView;
@@ -18,8 +17,8 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @end
 
-@implementation MPImageUploadCell
 
+@implementation MPImageUploadProgressCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,13 +33,12 @@
             self.myImagesCollectionView.scrollEnabled = NO;
             [self.myImagesCollectionView setBackgroundView:nil];
             [self.myImagesCollectionView setBackgroundColor:[UIColor clearColor]];
-            [self.myImagesCollectionView registerClass:[MPImageCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([MPImageCollectionCell class])];
+            [self.myImagesCollectionView registerClass:[MPImageProgressCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([MPImageProgressCollectionCell class])];
             self.myImagesCollectionView.dataSource = self;
             self.myImagesCollectionView.delegate = self;
             [self.contentView addSubview:self.bgView];
             [self.bgView addSubview:self.titleLabel];
             [self.bgView addSubview:self.myImagesCollectionView];
-            
         }
         if (!_imageViewsDict) {
             _imageViewsDict = [[NSMutableArray alloc] init];
@@ -68,7 +66,7 @@
         _curUploadImageHelper=curUploadImageHelper;
     }
     //更新列表高度
-    [self.myImagesCollectionView setHeight:[MPImageUploadCell cellHeightWithObj:_curUploadImageHelper]];
+    [self.myImagesCollectionView setHeight:[MPImageUploadProgressCell cellHeightWithObj:_curUploadImageHelper]];
     [self.myImagesCollectionView reloadData];
     
     //把为浏览大图做准备
@@ -97,14 +95,13 @@
         }else{
             NSInteger curRowImageCount=curUploadImage.imagesArray.count<kupdateMaximumNumberOfImage?curUploadImage.imagesArray.count +1:kupdateMaximumNumberOfImage;
             row = ceilf((float)(curRowImageCount)/3.0);
-            cellHeight += ([MPImageCollectionCell ccellSize].height +5) *row;
+            cellHeight += ([MPImageProgressCollectionCell ccellSize].height +5) *row;
         }
     }
     else
     {
         cellHeight+=kImageCollectionCell_Width;
     }
-   
     return cellHeight;
 }
 
@@ -122,24 +119,26 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     __weak typeof(self) weakSelf = self;
-    MPImageCollectionCell *ccell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MPImageCollectionCell class]) forIndexPath:indexPath];
+    MPImageProgressCollectionCell *ccell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MPImageProgressCollectionCell class]) forIndexPath:indexPath];
     if (indexPath.row < self.curUploadImageHelper.imagesArray.count) {
         MPImageItemModel *curImage = [weakSelf.curUploadImageHelper.imagesArray objectAtIndex:indexPath.row];
         ccell.curImageItem = curImage;
     }else{
         ccell.curImageItem = nil;
     }
+    
     ccell.deleteImageBlock = ^(MPImageItemModel *toDelete){
         if (weakSelf.deleteImageBlock) {
             weakSelf.deleteImageBlock(toDelete);
         }
     };
+    ccell.imgIndex = indexPath.row + 900;
     return ccell;
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [MPImageCollectionCell ccellSize];
+    return [MPImageProgressCollectionCell ccellSize];
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsZero;
@@ -188,6 +187,7 @@
     }
     return nil;
 }
+
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.width - 20, 60)];
@@ -204,4 +204,6 @@
     }
     return _titleLabel;
 }
+
+
 @end

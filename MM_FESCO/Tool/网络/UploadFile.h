@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Photos/Photos.h>
+
+typedef void(^Result)(NSData *data, NSString *fileName);
 
 @interface UploadFile : NSObject
 // 上传图片
-- (void)uploadFileWithURL:(NSURL *)url imageDic:(NSDictionary *)imgDic pramDic:(NSDictionary *)pramDic;
+- (void)uploadFileWithURL:(NSURL *)url imageUrl:(NSString *)imageUrl  imgIndex:(NSInteger)imgIndex;
+
+-(void)getImageFromPHAsset:(PHAsset *)asset Complete:(Result)result;
+
 @end

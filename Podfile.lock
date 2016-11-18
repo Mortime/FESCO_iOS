@@ -29,6 +29,7 @@ PODS:
   - IQKeyboardManager (3.3.7)
   - JPush (1.8.8)
   - JSONKit (1.4)
+  - M13ProgressSuite (1.2.9)
   - Mantle (2.0.7):
     - Mantle/extobjc (= 2.0.7)
   - Mantle/extobjc (2.0.7)
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JPush (~> 1.8.7)
   - JSONKit
+  - M13ProgressSuite (~> 1.2.7)
   - Mantle (~> 2.0.5)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
@@ -99,6 +101,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JPush: d1a4a90294389d2c6bd2ca987df8140dd4ffcbd2
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
+  M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -116,6 +119,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: edd9ba66eb9fc7e48f97aeb016ddf2b0ea485a33
+PODFILE CHECKSUM: aa398ea0d448c2ac9731db72e24cb3fe526a8f8c
 
 COCOAPODS: 1.1.1

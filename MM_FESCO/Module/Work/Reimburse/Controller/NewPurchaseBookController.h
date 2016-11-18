@@ -12,7 +12,7 @@
 #import "cameraHelper.h"
 #import "MPUploadImageHelper.h"
 #import "MPImageItemModel.h"
-#import "MPImageUploadCell.h"
+#import "MPImageUploadProgressCell.h"
 @interface NewPurchaseBookController : MMBaseViewController
 
 @property (nonatomic, assign) NSInteger dateType;

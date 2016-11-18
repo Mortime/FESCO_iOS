@@ -285,6 +285,8 @@
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
+		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
+		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
 		76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */; };
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
@@ -302,9 +304,7 @@
 		76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A881DD95C5600249133 /* BankInfoModel.m */; };
 		76D12A8C1DD9AA9300249133 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A8B1DD9AA9300249133 /* UploadFile.m */; };
 		76EBA2E41DD4027700DB67B1 /* NumberAddOffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */; };
-		76F02FC21DD4531B00D32771 /* MPImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA41DD4531B00D32771 /* MPImageCollectionCell.m */; };
 		76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA61DD4531B00D32771 /* MPImageItemModel.m */; };
-		76F02FC41DD4531B00D32771 /* MPImageUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA81DD4531B00D32771 /* MPImageUploadCell.m */; };
 		76F02FC61DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FAE1DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m */; };
 		76F02FC71DD4531B00D32771 /* QBAssetsCollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FB01DD4531B00D32771 /* QBAssetsCollectionFooterView.m */; };
 		76F02FC81DD4531B00D32771 /* QBAssetsCollectionOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FB21DD4531B00D32771 /* QBAssetsCollectionOverlayView.m */; };
@@ -944,6 +944,10 @@
 		764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseRecordHeaderView.m; sourceTree = "<group>"; };
 		764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseWorkHeaderView.h; sourceTree = "<group>"; };
 		764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseWorkHeaderView.m; sourceTree = "<group>"; };
+		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
+		76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageProgressCollectionCell.m; sourceTree = "<group>"; };
+		76920B4A1DDC430D005B2B76 /* MPImageUploadProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageUploadProgressCell.h; sourceTree = "<group>"; };
+		76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageUploadProgressCell.m; sourceTree = "<group>"; };
 		76AB71681DDAFCF8001B2D0D /* PurchaseCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCityCell.h; sourceTree = "<group>"; };
 		76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCityCell.m; sourceTree = "<group>"; };
 		76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseCell.h; sourceTree = "<group>"; };
@@ -977,12 +981,8 @@
 		76D12A8B1DD9AA9300249133 /* UploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFile.m; sourceTree = "<group>"; };
 		76EBA2E21DD4027700DB67B1 /* NumberAddOffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberAddOffView.h; sourceTree = "<group>"; };
 		76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberAddOffView.m; sourceTree = "<group>"; };
-		76F02FA31DD4531B00D32771 /* MPImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageCollectionCell.h; sourceTree = "<group>"; };
-		76F02FA41DD4531B00D32771 /* MPImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageCollectionCell.m; sourceTree = "<group>"; };
 		76F02FA51DD4531B00D32771 /* MPImageItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageItemModel.h; sourceTree = "<group>"; };
 		76F02FA61DD4531B00D32771 /* MPImageItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageItemModel.m; sourceTree = "<group>"; };
-		76F02FA71DD4531B00D32771 /* MPImageUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageUploadCell.h; sourceTree = "<group>"; };
-		76F02FA81DD4531B00D32771 /* MPImageUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageUploadCell.m; sourceTree = "<group>"; };
 		76F02FAD1DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetsCollectionCheckmarkView.h; sourceTree = "<group>"; };
 		76F02FAE1DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBAssetsCollectionCheckmarkView.m; sourceTree = "<group>"; };
 		76F02FAF1DD4531B00D32771 /* QBAssetsCollectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetsCollectionFooterView.h; sourceTree = "<group>"; };
@@ -2623,12 +2623,12 @@
 		76F02FA21DD4531B00D32771 /* ImageUpdate */ = {
 			isa = PBXGroup;
 			children = (
-				76F02FA31DD4531B00D32771 /* MPImageCollectionCell.h */,
-				76F02FA41DD4531B00D32771 /* MPImageCollectionCell.m */,
+				76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */,
+				76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */,
+				76920B4A1DDC430D005B2B76 /* MPImageUploadProgressCell.h */,
+				76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */,
 				76F02FA51DD4531B00D32771 /* MPImageItemModel.h */,
 				76F02FA61DD4531B00D32771 /* MPImageItemModel.m */,
-				76F02FA71DD4531B00D32771 /* MPImageUploadCell.h */,
-				76F02FA81DD4531B00D32771 /* MPImageUploadCell.m */,
 				76F02FA91DD4531B00D32771 /* Other */,
 			);
 			path = ImageUpdate;
@@ -2962,6 +2962,7 @@
 				597223A91DADE05400D01A7A /* ApprovalController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
+				76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */,
 				59EC91161D98CB5900E802FA /* EMCDDeviceManager+Microphone.m in Sources */,
 				59EC91EB1D98D9AD00E802FA /* PSTCollectionViewUpdateItem.m in Sources */,
 				76CBDCEA1DDB064700272D91 /* CityItem.m in Sources */,
@@ -3009,7 +3010,6 @@
 				59EC91D61D98D9AD00E802FA /* EMSDWebImageDownloader.m in Sources */,
 				59EC914F1D98CB5900E802FA /* EaseEmoji.m in Sources */,
 				5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */,
-				76F02FC41DD4531B00D32771 /* MPImageUploadCell.m in Sources */,
 				597223E31DADE05400D01A7A /* PhoneListModel.m in Sources */,
 				76CBDCE81DDB064700272D91 /* CityButton.m in Sources */,
 				59EC91CC1D98D9AD00E802FA /* MWGridViewController.m in Sources */,
@@ -3095,7 +3095,6 @@
 				597223BC1DADE05400D01A7A /* ApprovalViewModel.m in Sources */,
 				597223AE1DADE05400D01A7A /* OverTimeListModel.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
-				76F02FC21DD4531B00D32771 /* MPImageCollectionCell.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
 				76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */,
 				597223AB1DADE05400D01A7A /* OverTimeDetailController.m in Sources */,
@@ -3157,6 +3156,7 @@
 				59EC91D21D98D9AD00E802FA /* DACircularProgressView.m in Sources */,
 				59C197C81D5AC27A00C7F593 /* UIViewController+Method.m in Sources */,
 				76F02FED1DD4541100D32771 /* UIView+Extension.m in Sources */,
+				76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */,
 				597223B81DADE05400D01A7A /* OverTimeView.m in Sources */,
 				59EC916C1D98CB5900E802FA /* EaseFacialView.m in Sources */,
 				59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */,

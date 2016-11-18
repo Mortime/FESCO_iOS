@@ -8,11 +8,20 @@
 
 #import "UploadFile.h"
 
+
+@interface UploadFile ()<NSURLSessionTaskDelegate>
+
+@property (nonatomic, strong) NSURLSession *session;
+
+@end
+
 @implementation UploadFile
 // 拼接字符串
 static NSString *boundaryStr = @"--";   // 分隔字符串
 static NSString *randomIDStr;           // 本次上传标示字符串
 static NSString *uploadID;              // 上传(php)脚本中，接收文件字段
+
+
 
 - (instancetype)init
 {
@@ -52,23 +61,27 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
 }
 
 #pragma mark - 上传文件
-- (void)uploadFileWithURL:(NSURL *)url imageDic:(NSDictionary *)imgDic pramDic:(NSDictionary *)pramDic
+- (void)uploadFileWithURL:(NSURL *)url imageUrl:(NSString *)imageUrl  imgIndex:(NSInteger)imgIndex
 {
     // 1> 数据体
     
     NSMutableData *dataM = [NSMutableData data];
     
     //    [dataM appendData:[boundaryStr dataUsingEncoding:NSUTF8StringEncoding]];
-    for (NSString *name  in [imgDic allKeys]) {
-        NSString *topStr = [self topStringWithMimeType:@"image/png" uploadFile:name];
-        [dataM appendData:[topStr dataUsingEncoding:NSUTF8StringEncoding]];
-        [dataM appendData:[imgDic valueForKey:name]];
-    }
     
-    for (NSString *name  in [pramDic allKeys]) {
-        NSString *bottomStr = [self bottomString:name value:[pramDic valueForKey:name]];
-        [dataM appendData:[bottomStr dataUsingEncoding:NSUTF8StringEncoding]];
-    }
+
+//        [dataM appendData:[imageUrl dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData *dataImage = UIImageJPEGRepresentation([UIImage imageNamed:imageUrl], 0.5);
+//    [dataM appendData:dataImage];
+     NSString *topStr = [self topStringWithMimeType:@"image/png" uploadFile:imageUrl];
+    [dataM appendData:[topStr dataUsingEncoding:NSUTF8StringEncoding]];
+    [dataM appendData:dataImage];
+    
+    NSString *bottomStr = [self bottomString:[NSString stringWithFormat:@"上传图片%lu",imgIndex] value:[NSString stringWithFormat:@"图片%lu",imgIndex]];
+    [dataM appendData:[bottomStr dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    
     [dataM appendData:[[NSString stringWithFormat:@"%@%@--\r\n", boundaryStr, randomIDStr] dataUsingEncoding:NSUTF8StringEncoding]];
     
     // 1. Request
@@ -92,6 +105,20 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
     
     
     // 3> 连接服务器发送请求
+//    [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"connectionError= %@",error);
+//        }
+//        
+//        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"result= %@", result);
+//
+//    }];
+
+    
+    
+    
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if (connectionError) {
@@ -101,5 +128,57 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
         NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"result= %@", result);
     }];
+}
+#pragma mark - 检测上传进度
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+   didSendBodyData:(int64_t)bytesSent
+    totalBytesSent:(int64_t)totalBytesSent
+totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
+{
+    float progress = (float)totalBytesSent / totalBytesExpectedToSend;
+    NSLog(@"%f %@", progress, [NSThread currentThread]);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    NSLog(@"完成");
+}
+// 懒加载
+- (NSURLSession *)session
+{
+    if(_session == nil)
+    {
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    }
+    return _session;
+}
+
+-(void)getImageFromPHAsset:(PHAsset *)asset Complete:(Result)result {
+    __block NSData *data;
+    PHAssetResource *resource = [[PHAssetResource assetResourcesForAsset:asset] firstObject];
+    if (asset.mediaType == PHAssetMediaTypeImage) {
+        PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+        options.version = PHImageRequestOptionsVersionCurrent;
+        options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        options.synchronous = YES;
+        [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                          options:options
+                                                    resultHandler:
+         ^(NSData *imageData,
+           NSString *dataUTI,
+           UIImageOrientation orientation,
+           NSDictionary *info) {
+             data = [NSData dataWithData:imageData];
+         }];
+    }
+    
+    if (result) {
+        if (data.length <= 0) {
+            result(nil, nil);
+        } else {
+            result(data, resource.originalFilename);
+        }
+    }
 }
 @end

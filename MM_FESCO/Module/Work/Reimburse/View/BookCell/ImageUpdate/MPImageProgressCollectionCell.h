@@ -1,20 +1,24 @@
 //
-//  MPImageCollectionCell.h
-//  MobileProject 图片单元格
+//  MPImageProgressCollectionCell.h
+//  MobileProject 带进度效果
 //
-//  Created by wujunyang on 16/7/20.
+//  Created by wujunyang on 16/7/22.
 //  Copyright © 2016年 wujunyang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "M13ProgressViewPie.h"
 #import "MPImageItemModel.h"
+//#import "MPUploadImageItemService.h"
 
-@interface MPImageCollectionCell : UICollectionViewCell
+@interface MPImageProgressCollectionCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView          *imgView;
 @property (strong, nonatomic) UIButton             *deleteBtn;
 @property (strong, nonatomic) MPImageItemModel     *curImageItem;
 @property (copy, nonatomic) void (^deleteImageBlock) (MPImageItemModel *toDelete);
+
+@property (nonatomic, assign) NSInteger imgIndex;  // 用于标示上传图片的下标
 
 //单元格大小
 +(CGSize)ccellSize;

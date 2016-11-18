@@ -94,7 +94,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ((_dateType == 1) ? (indexPath.row == 4):(indexPath.row == 5)) {
-    return [MPImageUploadCell cellHeightWithObj:self.curUploadImageHelper];
+    return [MPImageUploadProgressCell cellHeightWithObj:self.curUploadImageHelper];
     }
     return 54;
 }
@@ -184,10 +184,10 @@
     }
     if ((_dateType == 1) ? (indexPath.row == 4):(indexPath.row == 5)) {
         static NSString *cellID = @"UploadCell";
-        MPImageUploadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        MPImageUploadProgressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
         if (!cell) {
-            cell = [[MPImageUploadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell = [[MPImageUploadProgressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         __weak typeof(self)weakSelf = self;
         cell.accessoryType    = UITableViewCellAccessoryNone;
@@ -392,29 +392,7 @@
 //        
 //        
 //    };
-    UploadFile *upload = [[UploadFile alloc] init];
-    
-    
-    // 这里如果是在同一部电脑上开启的web服务的话,要用localhost,如果用ip的话有时候会出错
-    
-     NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
-//    NSString *urlString = @"http://localhost:8080/UploadFile/servlet/UploadHandleServlet";
-    
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"1.jpg" ofType:nil];
-//    NSData *data = [NSData dataWithContentsOfFile:path];
- MPImageItemModel *imageItem =    self.curUploadImageHelper.imagesArray[0];
-    NSData *data = UIImageJPEGRepresentation(imageItem.image, 0.9);
-    
-    NSMutableDictionary *imageDic = [NSMutableDictionary dictionary];
-    [imageDic setValue:data forKey:@"1.jpg"];
-    
-    
-    NSMutableDictionary *pramDic = [NSMutableDictionary dictionary];
-    [pramDic setValue:@"测试文章标题" forKey:@"title"];
-    
-    
-    [upload uploadFileWithURL:[NSURL URLWithString:urlString] imageDic:imageDic pramDic:pramDic];
-    
+        
     
 }
 
