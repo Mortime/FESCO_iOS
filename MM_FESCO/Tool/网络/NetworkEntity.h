@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NetworkTool.h"
 #import "AFNetworking.h"
+#import "NewPurchaseRecordModel.h"
 
 @interface NetworkEntity : NSObject
 
@@ -518,12 +519,21 @@
  
  *  @param emp_Id （req）  员工id
  
- *  @param apply （req）
+ *  @param memo （req） 备注
  
- *  @param details （req）
+ *  @param type （req） 单据类型
+ 
+ *  @param group_Id （req）  报销部门
+ 
+ *  @param apply_Date （req） 报销日期
+ 
+ *  @param account_Id （req）  收款账号
+ 
+ *  @param PurchaseRecordModel （req） PurchaseRecordModel 消费记录模型
+ 
  
  */
-+ (void)postPreserveReimburseApplyWithApply:(NSString *)apply details:(NSString *)details Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 /**

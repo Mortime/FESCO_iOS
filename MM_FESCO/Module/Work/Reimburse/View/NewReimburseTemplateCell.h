@@ -27,7 +27,9 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 
 @property (nonatomic,assign) BOOL isExist; // 是否可输入 , 默认不可输入
 
-@property (nonatomic, assign) BOOL isShowPickView;   // 是否显示  
+@property (nonatomic, assign) BOOL isShowPickView;   // 是否显示
+
+@property (nonatomic, assign) BOOL isGroup; // 用于区别是报销部门 和 收款人
 
 
 /**

@@ -11,7 +11,7 @@
 
 /*
  {
- "bill_Num" = 1;
+ "bill_Num" = 1;  *
  "detail_Id" = 8;
  "detail_Memo" = Ce;
  "emp_Id" = 163;
@@ -22,7 +22,7 @@
  "spend_Begin" = 1478966400000;
  "spend_City" = "\U5b89\U9633";
  "spend_End" = 1479139200000;
- "spend_Type" = 17;
+ "spend_Type" = 17; *
  "spend_Type_Str" = "\U957f\U9014-\U7070\U673a";
  }
 
@@ -30,13 +30,25 @@
  */
 @interface NewPurchaseRecordModel : NSObject
 
-@property (nonatomic, assign) NSInteger moneyAmount;
+@property (nonatomic, strong) NSString *spendType;  // 消费类型
 
-@property (nonatomic, strong) NSString *spendBegin;
+@property (nonatomic, assign) NSInteger billNum;  // 发票数 /
 
-@property (nonatomic, strong) NSString *spendEnd;
+@property (nonatomic, assign) NSInteger moneyAmount;   // 金额  /
 
-@property (nonatomic, strong) NSString *spendType;
+@property (nonatomic, strong) NSString *picUrl;  // 图片Url
+
+@property (nonatomic, strong) NSString *spendMemo;  // 消费备注
+
+@property (nonatomic, strong) NSString *picMemo;  // 图片描述
+
+@property (nonatomic, strong) NSString *spendBegin;  // 开始时间 /
+
+@property (nonatomic, strong) NSString *spendEnd;  // 结束时间  /
+
+@property (nonatomic, strong) NSString *cityName;  // 消费城市
+
+@property (nonatomic, assign) NSInteger spendId; // 消费ID
 
 @property (nonatomic, assign) NSInteger detailId;
 

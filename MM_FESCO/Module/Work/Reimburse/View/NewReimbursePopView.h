@@ -11,7 +11,7 @@
 
 @protocol NewReimbursePopViewDelegate <NSObject>
 
-- (void)newReimbursePopViewDelegateWithType:(NSString *)type;
+- (void)newReimbursePopViewDelegateWithType:(NSString *)type typeCode:(NSInteger)typeCode;
 
 - (void)newReimbursePopViewDelegate;
 
@@ -20,5 +20,6 @@
 
 @property (nonatomic,weak) id <NewReimbursePopViewDelegate> delegate;
 @property (nonatomic,strong) NSArray *dataArray;
+
 
 @end

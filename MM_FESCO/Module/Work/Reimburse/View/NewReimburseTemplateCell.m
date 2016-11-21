@@ -8,6 +8,7 @@
 
 #import "NewReimburseTemplateCell.h"
 #import "BankInfoModel.h"
+#import "GroupInfoModel.h"
 
 @interface NewReimburseTemplateCell () <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -22,6 +23,8 @@
 @property (strong, nonatomic) UIDatePicker *dateView;
 
 @property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
+
+@property (nonatomic, strong) NSString *resultStr;
 
 
 @end
@@ -130,19 +133,34 @@
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-     BankInfoModel *model =  self.dataArray[row];
+    if (_isGroup) {
+         GroupInfoModel *model =  self.dataArray[row];
+        _resultStr = model.groupName;
+        return  _resultStr;
+    }else{
+        BankInfoModel *model =  self.dataArray[row];
+        
+        _resultStr = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+        return _resultStr;
+    }
     
-    NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
-    return result;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
+    if (_isGroup) {
+        GroupInfoModel *model =  self.dataArray[row];
     
-    BankInfoModel *model =  self.dataArray[row];
-    
-    NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
-    
-    self.detailTextField.text = result;
+        
+        self.detailTextField.text = model.groupName;
+
+    }else{
+        BankInfoModel *model =  self.dataArray[row];
+        
+        NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+        
+        self.detailTextField.text = result;
+
+    }
     
     //    if (_didEndEditingBlock) {
     //        _didEndEditingBlock(self.rightTextFiled,self.tag);

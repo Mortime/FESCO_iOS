@@ -285,10 +285,12 @@
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
+		7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7682502E1DE29FE9007520BD /* ReimburseModel.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
 		76929B211DDEA90F00775AF3 /* NewPurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B201DDEA90F00775AF3 /* NewPurchaseRecordCell.m */; };
 		76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */; };
+		76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */; };
 		76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */; };
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
@@ -946,6 +948,8 @@
 		764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseRecordHeaderView.m; sourceTree = "<group>"; };
 		764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseWorkHeaderView.h; sourceTree = "<group>"; };
 		764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseWorkHeaderView.m; sourceTree = "<group>"; };
+		7682502D1DE29FE9007520BD /* ReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseModel.h; sourceTree = "<group>"; };
+		7682502E1DE29FE9007520BD /* ReimburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseModel.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
 		76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageProgressCollectionCell.m; sourceTree = "<group>"; };
 		76920B4A1DDC430D005B2B76 /* MPImageUploadProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageUploadProgressCell.h; sourceTree = "<group>"; };
@@ -954,6 +958,8 @@
 		76929B201DDEA90F00775AF3 /* NewPurchaseRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordCell.m; sourceTree = "<group>"; };
 		76929B221DDEAD7100775AF3 /* NewPurchaseRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseRecordModel.h; sourceTree = "<group>"; };
 		76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordModel.m; sourceTree = "<group>"; };
+		76929B251DDEEB8E00775AF3 /* GroupInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoModel.h; sourceTree = "<group>"; };
+		76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoModel.m; sourceTree = "<group>"; };
 		76AB71681DDAFCF8001B2D0D /* PurchaseCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCityCell.h; sourceTree = "<group>"; };
 		76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCityCell.m; sourceTree = "<group>"; };
 		76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseCell.h; sourceTree = "<group>"; };
@@ -2521,8 +2527,12 @@
 				76D12A851DD95C4800249133 /* TemplateInfoModel.m */,
 				76D12A871DD95C5600249133 /* BankInfoModel.h */,
 				76D12A881DD95C5600249133 /* BankInfoModel.m */,
+				76929B251DDEEB8E00775AF3 /* GroupInfoModel.h */,
+				76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */,
 				76929B221DDEAD7100775AF3 /* NewPurchaseRecordModel.h */,
 				76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */,
+				7682502D1DE29FE9007520BD /* ReimburseModel.h */,
+				7682502E1DE29FE9007520BD /* ReimburseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2920,6 +2930,7 @@
 				76D12A8C1DD9AA9300249133 /* UploadFile.m in Sources */,
 				76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */,
 				76CBDCE71DDB064700272D91 /* ButtonGroupView.m in Sources */,
+				7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */,
 				59EC91581D98CB5900E802FA /* EaseUsersListViewController.m in Sources */,
 				597223DC1DADE05400D01A7A /* PersonalMessageController.m in Sources */,
 				59EC91471D98CB5900E802FA /* EaseConversationModel.m in Sources */,
@@ -2936,6 +2947,7 @@
 				597222ED1DADDE5900D01A7A /* MMDataBase.m in Sources */,
 				59EC91DB1D98D9AD00E802FA /* NSData+EMImageContentType.m in Sources */,
 				763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */,
+				76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */,
 				59EC91CD1D98D9AD00E802FA /* MWPhoto.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,

@@ -93,6 +93,16 @@
 
 
 /**
+ *  将json格式转换成json字符串   @"'methodname':'emp/loadEmpInfo.json', 'tonnnn':'iiiiiiiii' }"  如果遇到json 数字则    @"'methodname':'emp/loadEmpInfo.json', 'tonnnn':[iiiiiiiii] }"
+ *
+ *  @param Dictionary：字典
+ *
+ */
++ (NSString *)jsonToJsonStringArrayWith:(NSDictionary *)dic;
+
+
+
+/**
  *  将  title  content  组合成  tittel(123...456)形式
  *
  *  @param  title 
@@ -102,5 +112,12 @@
  */
 
 + (NSString *)stringWithTitle:(NSString *)title content:(NSInteger)content;
+/**
+ *  将json格式转换成json字符串   @"'methodname':'emp/loadEmpInfo.json', 'tonnnn':'iiiiiiiii' }"
+ *
+ *  @param Dictionary：字典
+ *
+ */
++ (NSString *)jsonToJsonArrayWith:(NSDictionary *)dic;
 
 @end

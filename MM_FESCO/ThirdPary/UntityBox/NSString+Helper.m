@@ -176,6 +176,30 @@
     resultStr = [NSString stringWithFormat:@"{%@}",resultStr];
     return resultStr;
 }
+
++ (NSString *)jsonToJsonStringArrayWith:(NSDictionary *)dic{
+    NSString *resultStr = @"";
+    NSArray *allKey = [dic allKeys];
+    for (NSString *key in allKey) {
+        NSString *valueStr = [dic objectForKey:key];
+        
+        NSString *mignhtStr = @"";
+        if ([key isEqualToString:@"apply"] || [key isEqualToString:@"details"]) {
+            mignhtStr = [NSString stringWithFormat:@"'%@':%@",key,valueStr];
+        }else{
+            mignhtStr = [NSString stringWithFormat:@"'%@':'%@'",key,valueStr];
+        }
+        
+        resultStr = [NSString stringWithFormat:@"%@,%@",resultStr,mignhtStr];
+    }
+    
+    //    MMLog(@"00000000000000 ===========  re %@",resultStr);
+    
+    resultStr = [resultStr substringFromIndex:1];//截取掉下标0之后的字符串
+    resultStr = [NSString stringWithFormat:@"{%@}",resultStr];
+    return resultStr;
+
+}
 #pragma mark ----  组合成  tittel(123...456)形式
 + (NSString *)stringWithTitle:(NSString *)title content:(NSInteger)content{
     
@@ -187,6 +211,22 @@
     NSString *twoStr = [mightStr substringFromIndex:length - 3];
     
     return [NSString stringWithFormat:@"%@(%@...%@)",title,oneStr,twoStr];
+//    return [NSString stringWithFormat:@"%@%@",title,mightStr];
 }
++ (NSString *)jsonToJsonArrayWith:(NSDictionary *)dic{
+    NSString *resultStr = @"";
+    NSArray *allKey = [dic allKeys];
+    for (NSString *key in allKey) {
+        NSString *valueStr = [dic objectForKey:key];
+        NSString *mignhtStr = [NSString stringWithFormat:@"'%@':'%@'",key,valueStr];
+        resultStr = [NSString stringWithFormat:@"%@,%@",resultStr,mignhtStr];
+    }
+    
+    //    MMLog(@"00000000000000 ===========  re %@",resultStr);
+    
+    resultStr = [resultStr substringFromIndex:1];//截取掉下标0之后的字符串
+    resultStr = [NSString stringWithFormat:@"{%@}",resultStr];
+    return resultStr;
 
+}
 @end

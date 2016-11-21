@@ -109,11 +109,11 @@
     }
     if (sender.tag == 20001) {
         // 确定;
-        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType:)]) {
+        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType: typeCode:)]) {
             
             TemplateInfoModel *model = _dataArray[_index];
             
-            [_delegate newReimbursePopViewDelegateWithType:model.typeName];
+            [_delegate newReimbursePopViewDelegateWithType:model.typeName typeCode:model.typeCode];
         }
     }
 }

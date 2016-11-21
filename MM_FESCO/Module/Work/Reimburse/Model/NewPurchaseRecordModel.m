@@ -24,8 +24,6 @@
  "spend_Type" = 17;
  "spend_Type_Str" = "\U957f\U9014-\U7070\U673a";
  }
- 
- 
  */
 
 @implementation NewPurchaseRecordModel
@@ -37,7 +35,12 @@
               @"spendEnd":@"spend_End",
               @"spendType":@"spend_Type_Str",
               @"detailId":@"detail_Id",
-              
+               @"billNum":@"bill_Num",
+               @"picUrl":@"pic_Url",
+               @"spendMemo":@"detail_Memo",
+               @"picMemo":@"pic_Desc",
+               @"cityName":@"spend_City",
+              @"spendId":@"spend_Type"
               
               };
 }

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReimburseModel.h"
 
 @interface ReimburseCell : UITableViewCell
 
+@property (nonatomic, strong) ReimburseModel *model;
 @end

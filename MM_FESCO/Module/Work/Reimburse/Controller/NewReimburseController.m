@@ -16,6 +16,7 @@
 #import "BankInfoModel.h"
 #import "TemplateInfoModel.h"
 #import "NewPurchaseRecordModel.h"
+#import "GroupInfoModel.h"
 
 #define kBottomH  50
 
@@ -45,11 +46,23 @@
 
 @property (nonatomic, strong) NSMutableArray *bankArray;   // 银行信息数组
 
-@property (nonatomic, strong) NSMutableArray *purchaseRccordArray;   // 银行信息数组
+@property (nonatomic, strong) NSMutableArray *groupArray;  // 部门数组
+
+@property (nonatomic, strong) NSMutableArray *purchaseRccordArray;   // 消费记录数组
 
 @property (nonatomic, assign) NSInteger allMoneyNumber;  // 消费总金额
 
-@property (nonatomic, strong) NSString *oneStr;
+@property (nonatomic, strong) NSString *oneStr;  // 模板类型
+@property (nonatomic, assign) NSInteger typeCode; // 模板类型id
+@property (nonatomic, strong) NSString *titleStr; // 标题
+@property (nonatomic, strong) NSString *dateStr; // 报销日期
+@property (nonatomic, assign) NSInteger groupID; // 报销组id
+@property (nonatomic, strong) NSString *peopleStr; // 收款人
+@property (nonatomic, assign) NSInteger peopleNumber; // 收款账号
+@property (nonatomic, strong) NSString *momeStr;  // 备注
+@property (nonatomic, strong) NSString *remomeStr; // 敏感字段
+
+
 
 @property (nonatomic, strong) NSDictionary  *dic;
 
@@ -93,8 +106,9 @@
     self.mobanArray = [NSMutableArray array];
     self.bankArray = [NSMutableArray array];
     self.purchaseRccordArray = [NSMutableArray array];
-    self.titleArray = @[@"模板",@"标题",@"报销日期",@"收款人",@"备注",@"敏感字段"];
-    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择收款人",@"(选填)",@"(选填)改信息不会被打印"];
+    self.groupArray = [NSMutableArray array];
+    self.titleArray = @[@"模板",@"标题",@"报销日期",@"报销部门",@"收款人",@"备注",@"敏感字段"];
+    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择报销部门",@"请选择收款人",@"(选填)",@"(选填)该信息不会被打印"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     
     
@@ -136,6 +150,13 @@
                 BankInfoModel *modle = [BankInfoModel yy_modelWithDictionary:dic];
                 [_bankArray addObject:modle];
             }
+            // 组信息
+            NSArray *groupArray = [responseObject objectForKey:@"groups"];
+            for (NSDictionary *dic in groupArray) {
+                GroupInfoModel *modle = [GroupInfoModel yy_modelWithDictionary:dic];
+                [_groupArray addObject:modle];
+            }
+
 
             [self.tableView reloadData];
         }
@@ -166,7 +187,7 @@
         return 1;
     }
     if (section == 1) {
-        return 5 ;
+        return 6 ;
     }
     if (section == 2) {
         return _purchaseRccordArray.count;
@@ -268,28 +289,34 @@
                 cell.arrowImageView.hidden = YES;
                 cell.isExist = YES;
             }
-            // 收款人
+            // 报销日期
+            if (indexPath.row == 1) {
+                cell.isShowDataPickView = YES;
+                cell.isExist = YES;
+            }
+            // 报销部门
             if (indexPath.row == 2) {
-                //            cell.arrowImageView.hidden = YES;
-                //            cell.isExist = YES;
-                //            cell.detailStr = [UserInfoModel defaultUserInfo].empName;
+                cell.dataArray = _groupArray;
+                cell.isShowPickView = YES;
+                cell.isExist = YES;
+                cell.isGroup = YES;
+                
+            }
+
+            // 收款人
+            if (indexPath.row == 3) {
                 cell.dataArray = _bankArray;
                 cell.isShowPickView = YES;
                 cell.isExist = YES;
                 
             }
             
-            // 报销日期
-            if (indexPath.row == 1) {
-                cell.isShowDataPickView = YES;
-                cell.isExist = YES;
-            }
             // 备注
-            if (indexPath.row == 3) {
+            if (indexPath.row == 4) {
                 cell.isExist = YES;
             }
             //
-            if (indexPath.row == 4) {
+            if (indexPath.row == 5) {
                 cell.isExist = YES;
             }
         }
@@ -314,6 +341,20 @@
 }
 #pragma mark --- Action
 - (void)myAction{
+    // 点击保存时
+    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_purchaseRccordArray Success:^(id responseObject) {
+        MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            // 保存成功
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+            [toastView show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *failure) {
+        MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [toastView show];
+    }];
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -330,9 +371,10 @@
     [self.popView removeFromSuperview];
 }
 // 点击确定
-- (void)newReimbursePopViewDelegateWithType:(NSString *)type{
+- (void)newReimbursePopViewDelegateWithType:(NSString *)type typeCode:(NSInteger)typeCode{
     MMLog(@"type = %@",type);
     _oneStr = type;
+    _typeCode = typeCode;
      [self.popView removeFromSuperview];
     //一个cell刷新
     [self.tableView reloadData];
@@ -383,6 +425,42 @@
 }
 - (void)blockBackWithTextField:(UITextField *)textField  tag:(NSUInteger)tag{
     MMLog(@"textField.text = %@",textField.text);
+    if (tag == 60000) {
+        // 标题
+        _titleStr = textField.text;
+    }
+    if (tag == 60001) {
+        // 报销日期
+        _dateStr = textField.text;
+    }
+    if (tag == 60002) {
+        // 报销部门
+        for (GroupInfoModel *model in _groupArray) {
+            if ([model.groupName isEqualToString:textField.text]) {
+                _groupID = model.ID;
+            }
+        }
+    }
+    if (tag == 60003) {
+        // 收款人
+        
+        for (BankInfoModel *model in _bankArray) {
+            NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+            if ([str isEqualToString:textField.text]) {
+                _peopleStr = model.bankPayName;
+                _peopleNumber  = model.bankNumber;
+            }
+        }
+    }
+    if (tag == 60004) {
+        // 备注
+        _momeStr = textField.text;
+    }
+    if (tag == 60005) {
+        // 敏感字段
+        _remomeStr = textField.text;
+    }
+    
 }
 - (UITableView *)tableView {
     

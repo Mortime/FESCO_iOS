@@ -1270,16 +1270,85 @@
 
 }
 //  保存报销申请
-+ (void)postPreserveReimburseApplyWithApply:(NSString *)apply details:(NSString *)details Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+   NSString *applyJsonArray = @"";
+    // 申请jsonArray
+    NSDictionary *applyDic = @{@"memo":memo,
+                               @"type":[NSString stringWithFormat:@"%lu",type],
+                               @"apply_Date":applyDate,
+                               @"group_Id":[NSString stringWithFormat:@"%lu",groupId],
+                               @"account_Id":[NSString stringWithFormat:@"%lu",accountId],
+                               @"title":title,
+                               @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                               @"cust_Id":[UserInfoModel defaultUserInfo].custId
+                               };
+    
+    applyJsonArray = [NSString jsonToJsonArrayWith:applyDic];
+    applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
+    MMLog(@"applyJsonArray ============ %@",applyJsonArray);
+    
+    // 描述jsonArray
+    
+     NSString *detailJsonArray = @"";
+    
+    for (NewPurchaseRecordModel *newPurchaseRecordModel in newPurchaseRecordModelArray) {
+        // 可能为空的字段
+        // 1. 消费描述
+        NSString *spendMemo = @"";
+        if (newPurchaseRecordModel.spendMemo) {
+            spendMemo = newPurchaseRecordModel.spendMemo;
+        }
+        // 2. 开始时间
+        NSString *spendStart = @"";
+        if (newPurchaseRecordModel.spendBegin) {
+            spendStart = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendBegin];
+        }
+        
+        // 3. 结束时间
+        NSString *spendEnd = @"";
+        if (newPurchaseRecordModel.spendEnd) {
+            spendEnd = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendEnd];
+        }
+        // 4. 消费城市
+        NSString *spendCity = @"";
+        if (newPurchaseRecordModel.cityName) {
+            spendCity = newPurchaseRecordModel.cityName;
+        }
+        
+        
+        
+        NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.spendId],
+                                    @"money_Amount":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.moneyAmount],
+                                    @"bill_Num":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.billNum],
+                                    @"pic_Url":newPurchaseRecordModel.picUrl,
+                                    @"detail_Memo":spendMemo,
+                                    @"spend_Begin":spendStart,
+                                    @"pic_Desc":newPurchaseRecordModel.picMemo,
+                                    @"spend_End":spendEnd,
+                                    @"spend_City":spendCity
+                                    
+                                    };
+        
+        NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
+        detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
+    }
+   // 去掉开始时的,
+    NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
+   
+    detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
+    
+    
+    MMLog(@"===detailJsonArray ============%@",detailJsonArray);
     
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
-                          @"apply":apply,
-                          @"details":details,
+                          @"apply":applyJsonArray,
+                          @"details":detailJsonArray,
                           @"methodname":@"expense/saveExpenseApply.json"};
     
-    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    NSString *jsonParam =  [NSString jsonToJsonStringArrayWith:dic];
     
     NSString *sign = [NSString sortKeyWith:dic];
     

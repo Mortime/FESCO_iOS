@@ -10,6 +10,8 @@
 #import "ReimburseCell.h"
 #import "ReimburseRecordHeaderView.h"
 #import "NewReimburseController.h"
+#import "ReimburseModel.h"
+#import "NewPurchaseRecordModel.h"
 
 
 #define kHeaderH  130
@@ -24,6 +26,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong)  NSMutableArray *dataArray;
+
+@property (nonatomic, strong) NSMutableArray *reimburseArray;
 
 //  未制单消费  我的借款  差旅行程
 @property (nonatomic, strong) UIView *recodeBgView;
@@ -61,6 +65,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.seletButtonArray = [NSMutableArray array];
+    self.reimburseArray = [NSMutableArray array];
     self.title = @"报销";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
@@ -88,6 +93,16 @@
     [NetworkEntity postReimburseListSuccess:^(id responseObject) {
         
         MMLog(@"ReimburseList  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            // 请求成功
+            NSArray *dicArray = [responseObject objectForKey:@"list"];
+            for (NSDictionary *dic in dicArray) {
+                ReimburseModel *model = [ReimburseModel yy_modelWithDictionary:dic];
+                [_dataArray addObject:model];
+            }
+            [_tableView reloadData];
+           
+        }
     } failure:^(NSError *failure) {
         MMLog(@"ReimburseList  =======failure=====%@",failure);
     }];
@@ -95,7 +110,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,6 +125,7 @@
     if (!cell) {
         cell = [[ReimburseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+    cell.model = _dataArray[indexPath.row];
     
     return cell;
     

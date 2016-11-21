@@ -132,5 +132,37 @@
     }
     return _moneyLabel;
 }
-
+- (void)setModel:(ReimburseModel *)model{
+    if (model.title) {
+        _titleLabel.text = model.title;
+    }
+    
+    //报销单状态  // 0待提交，1待审批，2待支付，3未通过，4已支付
+    NSString *status = @"";
+    if (model.statusReimburse == 0) {
+        status = @"待提交";
+    }
+    if (model.statusReimburse == 1) {
+        status = @"待审批";
+    }
+    if (model.statusReimburse == 2) {
+        status = @"待支付";
+    }
+    if (model.statusReimburse == 3) {
+        status = @"待通过";
+    }
+    if (model.statusReimburse == 4) {
+        status = @"待支付";
+    }
+    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",status,model.typeStr];
+    NSArray *array = model.details;
+    
+    // 总金额
+    NSInteger number = 0;
+    for (NSDictionary *dic in array) {
+        number = number + [[dic objectForKey:@"money_Amount"] integerValue];
+    }
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",number];
+    
+}
 @end

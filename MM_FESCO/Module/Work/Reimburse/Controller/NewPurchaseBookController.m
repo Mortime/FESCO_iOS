@@ -465,6 +465,9 @@
     }else{
         _picUrl = @"";
     }
+    if (!_memo) {
+        _memo = @"";
+    }
     [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
         MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
