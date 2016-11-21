@@ -9,6 +9,7 @@
 #import "NewReimbursePopView.h"
 #import "NewReimbursePopViewCell.h"
 #import "TemplateInfoModel.h"
+#import "GroupInfoModel.h"
 #define kBottomH  50
 
 #define kButtonW  ((kMMWidth - 40 - 1) / 2)
@@ -23,7 +24,6 @@
 
 @property (nonatomic, strong) UIView *topView;  // 主背景
 
-@property (nonatomic, strong) UILabel *titleLabel;  // title
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -47,6 +47,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        [self initUI];
+    }
+    return self;
+}
+- (instancetype)initWithFrame:(CGRect)frame type:(popViewType)popViewType{
+    if (self = [super initWithFrame:frame]) {
+        _popViewType = popViewType;
         [self initUI];
     }
     return self;
@@ -80,8 +87,15 @@
     if (!cell) {
         cell = [[NewReimbursePopViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    TemplateInfoModel *model = _dataArray[indexPath.row];
-    cell.titleStr = model.typeName;
+    if (_popViewType == shenpiren) {
+        GroupInfoModel *model = _dataArray[indexPath.row];
+        cell.titleStr = model.groupName;
+
+    }else{
+        TemplateInfoModel *model = _dataArray[indexPath.row];
+        cell.titleStr = model.typeName;
+    }
+   
     return cell;
     
     
@@ -103,17 +117,26 @@
 - (void)didClick:(UIButton *)sender{
     if (sender.tag == 20000) {
         // 取消;
-        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegate)]) {
-            [_delegate newReimbursePopViewDelegate];
+        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithIndexTag:)]) {
+            [_delegate newReimbursePopViewDelegateWithIndexTag:self.tag];
         }
     }
     if (sender.tag == 20001) {
         // 确定;
-        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType: typeCode:)]) {
+        if ([_delegate respondsToSelector:@selector(newReimbursePopViewDelegateWithType: typeCode: indexTag:)]) {
             
-            TemplateInfoModel *model = _dataArray[_index];
             
-            [_delegate newReimbursePopViewDelegateWithType:model.typeName typeCode:model.typeCode];
+            if (_popViewType == shenpiren) {
+                GroupInfoModel *model = _dataArray[_index];
+                
+                [_delegate newReimbursePopViewDelegateWithType:model.groupName typeCode:model.ID indexTag:self.tag];
+
+            }else{
+                TemplateInfoModel *model = _dataArray[_index];
+                
+                [_delegate newReimbursePopViewDelegateWithType:model.typeName typeCode:model.typeCode indexTag:self.tag];
+            }
+           
         }
     }
 }

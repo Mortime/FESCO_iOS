@@ -33,6 +33,13 @@ typedef NS_ENUM(NSUInteger,ApprovalType){
     leaveApprovalType     // 请假审批
 };
 
+typedef NS_ENUM(NSUInteger,popViewType){
+    
+    moban,   // 弹出模板
+    shenpiren     // 弹出审批人
+   
+};
+
 
 
 #endif /* MMModelDataMacro_h */

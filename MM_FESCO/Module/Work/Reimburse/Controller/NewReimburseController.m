@@ -39,6 +39,8 @@
 
 @property (nonatomic, strong) NewReimbursePopView *popView;  // 模板
 
+@property (nonatomic, strong) NewReimbursePopView *popViewApplyMan; // 审批人
+
 @property (nonatomic, strong) NewReimburseConsumePopView *consumePopView;  // 添加消费
 
 
@@ -61,6 +63,8 @@
 @property (nonatomic, assign) NSInteger peopleNumber; // 收款账号
 @property (nonatomic, strong) NSString *momeStr;  // 备注
 @property (nonatomic, strong) NSString *remomeStr; // 敏感字段
+
+@property (nonatomic, assign) NSInteger manApplyID; // 审批人
 
 
 
@@ -357,6 +361,25 @@
     }];
     
 }
+- (void)commit{
+    // 点击提交时
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_purchaseRccordArray applyMan:_manApplyID Success:^(id responseObject) {
+        MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            // 提交成功
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
+            [toastView show];
+            [self.popViewApplyMan removeFromSuperview];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+
+    } failure:^(NSError *failure) {
+        MMLog(@"CommitReimburseApply  =======failure=====%@",failure);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [toastView show];
+    }];
+    
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -367,19 +390,37 @@
 }
 #pragma mark --  NewReimbursePopViewDelegate  方法
 // 点击取消
-- (void)newReimbursePopViewDelegate{
-    [self.popView removeFromSuperview];
+- (void)newReimbursePopViewDelegateWithIndexTag:(NSInteger)indexTag{
+    if (indexTag == 187) {
+        // 模板视图
+        [self.popView removeFromSuperview];
+
+
+    }
+    if (indexTag == 188) {
+        // 选择审批人
+        [self.popViewApplyMan removeFromSuperview];
+    }
 }
 // 点击确定
-- (void)newReimbursePopViewDelegateWithType:(NSString *)type typeCode:(NSInteger)typeCode{
-    MMLog(@"type = %@",type);
-    _oneStr = type;
-    _typeCode = typeCode;
-     [self.popView removeFromSuperview];
-    //一个cell刷新
-    [self.tableView reloadData];
-//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+- (void)newReimbursePopViewDelegateWithType:(NSString *)type typeCode:(NSInteger)typeCode indexTag:(NSInteger)indexTag{
+    if (indexTag == 187) {
+        // 模板视图
+        MMLog(@"type = %@",type);
+        _oneStr = type;
+        _typeCode = typeCode;
+        [self.popView removeFromSuperview];
+        //一个cell刷新
+        [self.tableView reloadData];
+    }
+    if (indexTag == 188) {
+         // 选择审批人
+         MMLog(@"type = %@",type);
+        _manApplyID = typeCode;
+        [self commit];
+    }
+    
+
 }
 
 #pragma mark --  NewPurchaseRecordCellDelegate  方法
@@ -462,6 +503,12 @@
     }
     
 }
+// 提交送审
+- (void)postCommitApply{
+    self.popViewApplyMan.dataArray = self.groupArray;
+    
+    [self.view addSubview:self.popViewApplyMan];
+}
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
@@ -504,6 +551,7 @@
         [_rightButton setTitle:@"提交送审" forState:UIControlStateNormal];
         _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_rightButton addTarget:self action:@selector(postCommitApply) forControlEvents:UIControlEventTouchUpInside];
         
         
     }
@@ -518,10 +566,22 @@
     if (_popView == nil) {
         _popView = [[NewReimbursePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
         _popView.backgroundColor = [UIColor clearColor];
+        _popView.tag = 187;
         _popView.delegate = self;
     }
     return _popView;
 }
+- (NewReimbursePopView *)popViewApplyMan{
+    if (_popViewApplyMan == nil) {
+        _popViewApplyMan = [[NewReimbursePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) type:shenpiren];
+        _popViewApplyMan.titleLabel.text = @"选择审批人";
+        _popViewApplyMan.tag = 188;
+        _popViewApplyMan.backgroundColor = [UIColor clearColor];
+        _popViewApplyMan.delegate = self;
+    }
+    return _popViewApplyMan;
+}
+
 - (NewReimburseConsumePopView *)consumePopView{
     if (_consumePopView == nil) {
         _consumePopView = [[NewReimburseConsumePopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];

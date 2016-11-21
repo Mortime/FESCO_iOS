@@ -534,6 +534,30 @@
  
  */
 + (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *  提交报销申请
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ *  @param memo （req） 备注
+ 
+ *  @param type （req） 单据类型
+ 
+ *  @param group_Id （req）  报销部门
+ 
+ *  @param apply_Date （req） 报销日期
+ 
+ *  @param account_Id （req）  收款账号
+ 
+ *  @param PurchaseRecordModel （req） PurchaseRecordModel 消费记录模型
+ 
+ *  @param manID （req） 审批人ID
+ 
+ 
+ */
++ (void)postCommitReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray applyMan:(NSInteger)manID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 /**
