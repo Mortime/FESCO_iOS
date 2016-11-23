@@ -475,7 +475,9 @@
                           @"picUrl":_picUrl,
                           @"picDesc":_picStr,
                           @"detailMemo":_memo,
-                          @"spendCity":_cityName
+                          @"spendCity":_cityName,
+                          @"ID":[NSString stringWithFormat:@"%lu",_ID],
+                          @"typePurchaseStr":_typePurchaseStr
                           };
     
     
@@ -499,7 +501,13 @@
             
             // 保存数据
 //            [MMDataBase saveItemDict:mutableDic tname:t_purchaseRecord];
-            [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName];
+            [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
+            // 保存成功
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+            [toastView show];
+            NSArray * ctrlArray = self.navigationController.viewControllers;
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+            
 //            [ws showData];
             
         }

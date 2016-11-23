@@ -23,7 +23,7 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 + (void)saveItemDict:(NSMutableDictionary *)itemDict tname:(NSString *)tname;
 
 // 数据库中存没每个字段
-+ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity;
++ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity  ID:(NSString *)ID typePurchaseStr:(NSString *)typePurchaseStr;
 
 
 //返回全部数据

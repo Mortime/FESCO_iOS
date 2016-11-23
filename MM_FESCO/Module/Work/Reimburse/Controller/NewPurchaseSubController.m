@@ -62,7 +62,7 @@
     
     NSDictionary *dic = _dataArray[indexPath.row];
     bookVC.ID = [[dic objectForKey:@"id"] integerValue];
-    
+    bookVC.typePurchaseStr =  [NSString stringWithFormat:@"%@-%@",self.title,[dic objectForKey:@"type_Name"]];
     
     [self.navigationController pushViewController:bookVC animated:YES];
 }

@@ -34,7 +34,7 @@ static FMDatabase *_db;
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
     if ([tname isEqualToString:t_purchaseRecord]) {
-        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,moneyAmount text NOT NULL,spendBegin text NOT NULL,spendEnd text NOT NULL,billNum text NOT NULL,picUrl text NOT NULL,picDesc text NOT NULL,detailMemo text NOT NULL,spendCity text NOT NULL)",tname];
+        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,moneyAmount text NOT NULL,spendBegin text NOT NULL,spendEnd text NOT NULL,billNum text NOT NULL,picUrl text NOT NULL,picDesc text NOT NULL,detailMemo text NOT NULL,spendCity text NOT NULL,typeID text NOT NULL,typePurchaseStr text NOT NULL)",tname];
         BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
         initDatabaseBlock(result);
     }else{
@@ -83,9 +83,9 @@ static FMDatabase *_db;
     
 }
 // 数据库中存没每个字段
-+ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity{
++ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity  ID:(NSString *)ID typePurchaseStr:(NSString *)typePurchaseStr{
     
-     [_db executeUpdateWithFormat:@"INSERT INTO t_purchaseRecord (moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity) VALUES (%@,%@,%@,%@,%@,%@,%@,%@)",moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity];
+     [_db executeUpdateWithFormat:@"INSERT INTO t_purchaseRecord (moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity,typeID,typePurchaseStr) VALUES (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@)",moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity,ID,typePurchaseStr];
 }
 
 //返回全部数据
@@ -157,13 +157,17 @@ static FMDatabase *_db;
         
         NSString *spendCity = [resultSet stringForColumn:@"spendCity"];
         
+        NSString *typeID = [resultSet stringForColumn:@"typeID"];
+        
+        NSString *typePurchaseStr = [resultSet stringForColumn:@"typePurchaseStr"];
+        
         
          NSString *value = [resultSet stringForColumnIndex:0];
         
         MMLog(@"moneyAmount ===== %@,spendBegin = %@",moneyAmount,spendBegin);
        
             
-            NSArray *array = @[moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity];
+            NSArray *array = @[moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity,typeID,typePurchaseStr];
             MMLog(@"array = %@",array);
         [resultArray addObject:array];
         

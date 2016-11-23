@@ -21,4 +21,6 @@
 
 @property (nonatomic, assign) NSInteger ID;
 
+@property (nonatomic, strong) NSString *typePurchaseStr; //  长途-飞机 或者  补助 ...
+
 @end

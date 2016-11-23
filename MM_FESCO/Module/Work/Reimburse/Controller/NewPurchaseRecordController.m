@@ -84,6 +84,7 @@
         bookVC.dateType = modle.dateType;
         bookVC.needCity = modle.needCity;
         bookVC.ID = modle.ID;
+        bookVC.typePurchaseStr = modle.typeName;
 
         [self.navigationController pushViewController:bookVC animated:YES];
     }

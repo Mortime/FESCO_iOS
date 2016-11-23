@@ -181,6 +181,7 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
 }
 - (void)setDataArray:(NSArray *)dataArray{
+    _titleLabel.text = dataArray[9];
     NSString *timeStr = @"";
     timeStr = dataArray[1];
     if (dataArray[2]) {

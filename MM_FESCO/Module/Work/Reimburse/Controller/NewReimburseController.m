@@ -152,7 +152,7 @@
 - (void)initData{
     
     [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
-//        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
         if (responseObject) {
             _dic = responseObject;
             // 模板信息
