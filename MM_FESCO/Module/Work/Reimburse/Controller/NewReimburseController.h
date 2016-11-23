@@ -7,7 +7,12 @@
 //
 
 #import "MMBaseViewController.h"
+#import "ReimburseModel.h"
 
 @interface NewReimburseController : MMBaseViewController
+
+@property (nonatomic, assign)  RePurchaseBookType rePurchaseBook;
+
+@property (nonatomic, strong) ReimburseModel *reimburseModel;
 
 @end

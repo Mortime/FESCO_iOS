@@ -50,7 +50,8 @@
 
 @property (nonatomic, strong) NSMutableArray *groupArray;  // 部门数组
 
-@property (nonatomic, strong) NSMutableArray *purchaseRccordArray;   // 消费记录数组
+@property (nonatomic, strong) NSMutableArray *editPurchaseRccordArray;   // 消费记录数组  这个消费记录数组 为编辑时数组
+@property (nonatomic, strong) NSMutableArray *newsPurchaseRccordArray; // 消费记录数组  这个消费记录数组 为新建时数组
 
 @property (nonatomic, assign) NSInteger allMoneyNumber;  // 消费总金额
 
@@ -80,25 +81,37 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     // 加载消费记录
-    [_purchaseRccordArray removeAllObjects];
+    [_editPurchaseRccordArray removeAllObjects];
     _allMoneyNumber = 0;
-    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
+//    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
+//        
+//        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
+//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+//            if ([[responseObject objectForKey:@"list"] count]) {
+//                for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
+//                    NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
+//                    [_editPurchaseRccordArray addObject:model];
+//                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
+//                }
+//            }
+//            [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+//            [self.tableView reloadData];
+//        }
+//    } failure:^(NSError *failure) {
+//        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
+//    }];
+    
+    NSArray *array = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
+    for (NSArray *ar in array) {
+        [_editPurchaseRccordArray addObject:ar];
+         _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
         
-        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            if ([[responseObject objectForKey:@"list"] count]) {
-                for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
-                    NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
-                    [_purchaseRccordArray addObject:model];
-                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
-                }
-            }
-            [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-            [self.tableView reloadData];
-        }
-    } failure:^(NSError *failure) {
-        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
-    }];
+    }
+    [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+    [self.tableView reloadData];
+    
+    
+    MMLog(@"str === %@",array);
 }
 
 
@@ -109,7 +122,8 @@
     self.title = @"新建报销单";
     self.mobanArray = [NSMutableArray array];
     self.bankArray = [NSMutableArray array];
-    self.purchaseRccordArray = [NSMutableArray array];
+    self.editPurchaseRccordArray = [NSMutableArray array];
+    self.newsPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
     self.titleArray = @[@"模板",@"标题",@"报销日期",@"报销部门",@"收款人",@"备注",@"敏感字段"];
     self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择报销部门",@"请选择收款人",@"(选填)",@"(选填)该信息不会被打印"];
@@ -138,7 +152,7 @@
 - (void)initData{
     
     [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
-        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+//        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
         if (responseObject) {
             _dic = responseObject;
             // 模板信息
@@ -194,7 +208,7 @@
         return 6 ;
     }
     if (section == 2) {
-        return _purchaseRccordArray.count;
+        return _editPurchaseRccordArray.count;
     }
     return 0;
 }
@@ -267,7 +281,7 @@
         if (!cell) {
             cell = [[NewPurchaseRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        cell.model = _purchaseRccordArray[indexPath.row];
+        cell.dataArray = _editPurchaseRccordArray[indexPath.row];
         cell.indexTag = indexPath.row;
         cell.delegate = self;
         return cell;
@@ -346,7 +360,7 @@
 #pragma mark --- Action
 - (void)myAction{
     // 点击保存时
-    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_purchaseRccordArray Success:^(id responseObject) {
+    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray Success:^(id responseObject) {
         MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             // 保存成功
@@ -363,7 +377,7 @@
 }
 - (void)commit{
     // 点击提交时
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_purchaseRccordArray applyMan:_manApplyID Success:^(id responseObject) {
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID Success:^(id responseObject) {
         MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             // 提交成功
@@ -425,13 +439,13 @@
 
 #pragma mark --  NewPurchaseRecordCellDelegate  方法
 - (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag{
-    NewPurchaseRecordModel *model  = _purchaseRccordArray[tag];
+    NewPurchaseRecordModel *model  = _editPurchaseRccordArray[tag];
     
     [NetworkEntity postDeleReimburseRecordWithDetailId:model.detailId Success:^(id responseObject) {
         MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             // 删除成功
-            [_purchaseRccordArray removeObjectAtIndex:tag];
+            [_editPurchaseRccordArray removeObjectAtIndex:tag];
             // 金额减少
             _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
             NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);

@@ -33,11 +33,32 @@ static FMDatabase *_db;
     NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
+    if ([tname isEqualToString:t_purchaseRecord]) {
+        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,moneyAmount text NOT NULL,spendBegin text NOT NULL,spendEnd text NOT NULL,billNum text NOT NULL,picUrl text NOT NULL,picDesc text NOT NULL,detailMemo text NOT NULL,spendCity text NOT NULL)",tname];
+        BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
+        initDatabaseBlock(result);
+    }else{
+        /*
+         
+         @"moneyAmount":_moneyNumber,
+         @"spendBegin":_startTime,
+         @"spendEnd":_endTime,
+         @"billNum":_billNumber,
+         @"picUrl":_picUrl,
+         @"picDesc":_picStr,
+         @"detailMemo":_memo,
+         @"spendCity":_cityName
+         
+         */
+        
+        // 返回创建表的结果
+        
+        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
+        BOOL result= [_db executeUpdate:sql];
+        initDatabaseBlock(result);
+        
+    }
     
-    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
-    BOOL result= [_db executeUpdate:sql];
-    // 返回创建表的结果
-    initDatabaseBlock(result);
 
 }
 
@@ -53,8 +74,18 @@ static FMDatabase *_db;
         
         [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
     }
-  
     
+    if ([tname isEqualToString:t_purchaseRecord]) {
+        
+        [_db executeUpdateWithFormat:@"INSERT INTO t_purchaseRecord (itemDict) VALUES (%@)",dictData];
+    }
+    
+    
+}
+// 数据库中存没每个字段
++ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity{
+    
+     [_db executeUpdateWithFormat:@"INSERT INTO t_purchaseRecord (moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity) VALUES (%@,%@,%@,%@,%@,%@,%@,%@)",moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity];
 }
 
 //返回全部数据
@@ -95,7 +126,60 @@ static FMDatabase *_db;
     existData(isExist);
 }
 
+// 根据表名 得到一个表全部数据
++ (NSArray *)allTableDataListWithTableName:(NSString *)tableName{
+    
+    NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
+    _db = [FMDatabase databaseWithPath:path];
+    [_db open];
 
+    
+    FMResultSet *resultSet = nil;
+    resultSet = [_db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@;",tableName]];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    // 遍历查询结果
+    while (resultSet.next) {
+        
+        NSString *moneyAmount = [resultSet stringForColumn:@"moneyAmount"];
+        
+        NSString *spendBegin = [resultSet stringForColumn:@"spendBegin"];
+        
+        NSString *spendEnd = [resultSet stringForColumn:@"spendEnd"];
+        
+        NSString *billNum = [resultSet stringForColumn:@"billNum"];
+        
+        NSString *picUrl = [resultSet stringForColumn:@"picUrl"];
+        
+        NSString *picDesc = [resultSet stringForColumn:@"picDesc"];
+        
+        NSString *detailMemo = [resultSet stringForColumn:@"detailMemo"];
+        
+        NSString *spendCity = [resultSet stringForColumn:@"spendCity"];
+        
+        
+         NSString *value = [resultSet stringForColumnIndex:0];
+        
+        MMLog(@"moneyAmount ===== %@,spendBegin = %@",moneyAmount,spendBegin);
+       
+            
+            NSArray *array = @[moneyAmount,spendBegin,spendEnd,billNum,picUrl,picDesc,detailMemo,spendCity];
+            MMLog(@"array = %@",array);
+        [resultArray addObject:array];
+        
+    }
+
+    MMLog(@"dict = %@",resultArray);
+    
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:0 error:NULL];
+//    if (!jsonData) {
+//        return nil;
+//    }
+//    
+//    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return resultArray;
+
+}
 
 
 @end

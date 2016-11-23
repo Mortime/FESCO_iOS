@@ -180,5 +180,15 @@
     _timeLabel.text = timeStr;
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
 }
+- (void)setDataArray:(NSArray *)dataArray{
+    NSString *timeStr = @"";
+    timeStr = dataArray[1];
+    if (dataArray[2]) {
+        NSString *end = dataArray[2];
+        timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
+    }
+    _timeLabel.text = timeStr;
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[dataArray[0] integerValue]];
 
+}
 @end

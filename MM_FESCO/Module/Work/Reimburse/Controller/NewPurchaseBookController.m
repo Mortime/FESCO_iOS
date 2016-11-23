@@ -468,21 +468,72 @@
     if (!_memo) {
         _memo = @"";
     }
-    [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
-        MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            // 提交成功
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
-            [toastView show];
-            NSArray * ctrlArray = self.navigationController.viewControllers;
-            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+    NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
+                          @"spendBegin":_startTime,
+                          @"spendEnd":_endTime,
+                          @"billNum":_billNumber,
+                          @"picUrl":_picUrl,
+                          @"picDesc":_picStr,
+                          @"detailMemo":_memo,
+                          @"spendCity":_cityName
+                          };
+    
+    
+    __weak typeof(self) ws = self;
+    // 点击保存时将数据存入本地数据库
+    [MMDataBase initializeDatabaseWithTableName:t_purchaseRecord baseBlock:^(BOOL isSuccess) {
+        if (isSuccess) {
+            // 表创建成功
+            MMLog(@"表创建成功");
+            // 添加判断数据是否存在的字段
+//            NSDictionary *dic = (NSDictionary *)responseObject;
+            NSMutableDictionary *mutableDic = dic.mutableCopy;
+            [mutableDic setValue:@"exist" forKey:@"ID"];
+            
+            NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                       NSUserDomainMask,
+                                                                       YES);
+            NSString *restltDocumentDirectory = [resultPaths lastObject];
+            MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
+
+            
+            // 保存数据
+//            [MMDataBase saveItemDict:mutableDic tname:t_purchaseRecord];
+            [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName];
+//            [ws showData];
             
         }
-    } failure:^(NSError *failure) {
-        MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-        [toastView show];
+
     }];
+    
+    
+    
+    
+    
+    
+    
+    
+//    [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
+//        MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+//            // 提交成功
+//            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
+//            [toastView show];
+//            NSArray * ctrlArray = self.navigationController.viewControllers;
+//            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+//            
+//        }
+//    } failure:^(NSError *failure) {
+//        MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+//        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+//        [toastView show];
+//    }];
+}
+
+- (void)showData{
+    // 取出全部数据
+    NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_purchaseRecord];
+            MMLog(@"数据库返回数据: %@",dataBaseDic);
 }
 - (void)didClickedWithCityName:(NSString *)cityName{
     _cityName = cityName;

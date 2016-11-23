@@ -14,9 +14,13 @@
 
 #define t_applySignup @"t_applySignup"  // 补签申请数据库表
 
+#define t_purchaseRecord   @" t_purchaseRecord" // 添加消费记录
+
 #define kTonkenChangeNotifition  @"TonkenChangeNotifition" // tonkey改变的通知
 
 #define kDateChangeNotifition @"DateChangeNotifition"  // 日期改变的通知
+
+#define kGetReimburseRecordNotifition  @"GetReimburseRecordNotifition"  // 加载消费记录的通知
 
 
 typedef NS_ENUM(NSUInteger,RecodeType){
@@ -39,6 +43,13 @@ typedef NS_ENUM(NSUInteger,popViewType){
     shenpiren     // 弹出审批人
    
 };
+typedef NS_ENUM(NSUInteger,RePurchaseBookType){
+    
+    newReimburseBook,   // 新建报销单
+    editReimburseBook     // 编辑报销单
+    
+};
+
 
 
 

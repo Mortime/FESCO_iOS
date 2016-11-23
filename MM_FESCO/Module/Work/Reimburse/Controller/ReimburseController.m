@@ -129,11 +129,16 @@
     
     return cell;
     
-    
-    
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+    newReimburseVC.rePurchaseBook = newReimburseBook;
+    newReimburseVC.reimburseModel = _dataArray[indexPath.row];
+    [self.navigationController pushViewController:newReimburseVC animated:YES];
 
-#pragma mark --- Action 
+}
+#pragma mark --- Action
 - (void)didClickWorkHeaderView:(UIButton *)sender{
     for (UIButton *btn in _seletButtonArray) {
         if (btn.tag == sender.tag) {
@@ -151,6 +156,7 @@
         // 报表
         MMLog(@"点击了添加报销单");
         NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+        newReimburseVC.rePurchaseBook = newReimburseBook;
         [self.navigationController pushViewController:newReimburseVC animated:YES];
     }
     if (sender.tag == 502) {

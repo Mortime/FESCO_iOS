@@ -22,11 +22,18 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 //存入数据库
 + (void)saveItemDict:(NSMutableDictionary *)itemDict tname:(NSString *)tname;
 
+// 数据库中存没每个字段
++ (void)saveItemWithMoneyAmount:(NSString *)moneyAmount spendBegin:(NSString *)spendBegin  spendEnd:(NSString *)spendEnd billNum:(NSString *)billNum picUrl:(NSString *)picUrl picDesc:(NSString *) picDesc detailMemo:(NSString *)detailMemo  spendCity:(NSString *)spendCity;
+
+
 //返回全部数据
 + (NSDictionary *)allDatalistWithTname:(NSString *)tname;
 
 //通过一组数据的唯一标识判断数据是否存在  
 + (void)isExistWithId:(NSString *)idStr tname:(NSString *)tname isExist:(existData)existData;
+
+// 根据表名 得到一个表全部数据
++ (NSArray *)allTableDataListWithTableName:(NSString *)tableName;
 
 
 @end
