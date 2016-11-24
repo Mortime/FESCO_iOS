@@ -14,7 +14,7 @@
 
 #define t_applySignup @"t_applySignup"  // 补签申请数据库表
 
-#define t_purchaseRecord   @" t_purchaseRecord" // 添加消费记录
+#define t_purchaseRecord   @"t_purchaseRecord" // 添加消费记录
 
 #define kTonkenChangeNotifition  @"TonkenChangeNotifition" // tonkey改变的通知
 

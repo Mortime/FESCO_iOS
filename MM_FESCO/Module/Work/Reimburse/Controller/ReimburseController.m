@@ -59,6 +59,9 @@
 
 @implementation ReimburseController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self initData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -84,12 +87,14 @@
     self.tableView.tableFooterView = self.tableBottomView;
     [self.view addSubview:self.tableView];
     
-    [self initData];
+    
     
     MMLog(@"[UIScreen mainScreen].bounds.size.height = %f",[UIScreen mainScreen].bounds.size.height);
     
 }
 - (void)initData{
+    
+    [_dataArray removeAllObjects];
     [NetworkEntity postReimburseListSuccess:^(id responseObject) {
         
         MMLog(@"ReimburseList  =======responseObject=====%@",responseObject);

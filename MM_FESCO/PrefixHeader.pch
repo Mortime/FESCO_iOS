@@ -122,7 +122,7 @@
 //#define kImageCollectionCell_Width floorf((kMMWidth - 10*2- 10*3 - 80)/3)
 #define kImageCollectionCell_Width floorf(40)
 //最大的上传图片张数
-#define kupdateMaximumNumberOfImage 1
+#define kupdateMaximumNumberOfImage 3
 
 #define MPWeakSelf(type)  __weak typeof(type) weak##type = type;
 #define MPStrongSelf(type)  __strong typeof(type) type = weak##type;

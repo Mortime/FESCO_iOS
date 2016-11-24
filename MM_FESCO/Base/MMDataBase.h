@@ -35,5 +35,5 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 // 根据表名 得到一个表全部数据
 + (NSArray *)allTableDataListWithTableName:(NSString *)tableName;
 
-
++(void) deleteAll;
 @end

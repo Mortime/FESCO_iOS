@@ -75,10 +75,6 @@ static FMDatabase *_db;
         [_db executeUpdateWithFormat:@"INSERT INTO t_phoneList (itemDict, idStr) VALUES (%@, %@)",dictData, itemDict[@"ID"]];
     }
     
-    if ([tname isEqualToString:t_purchaseRecord]) {
-        
-        [_db executeUpdateWithFormat:@"INSERT INTO t_purchaseRecord (itemDict) VALUES (%@)",dictData];
-    }
     
     
 }
@@ -185,5 +181,25 @@ static FMDatabase *_db;
 
 }
 
++(void) deleteAll
+{
+    
+    NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
+    _db = [FMDatabase databaseWithPath:path];
+    [_db open];
+    
+    BOOL success =  [_db executeUpdate:@"DELETE FROM t_purchaseRecord"];
+
+    
+    [_db close];
+    if (success) {
+        MMLog(@"表删除成功");
+
+    }
+    
+//    return success;
+    
+}
 
 @end

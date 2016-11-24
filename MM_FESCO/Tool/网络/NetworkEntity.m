@@ -1292,44 +1292,43 @@
     
      NSString *detailJsonArray = @"";
     
-    for (NewPurchaseRecordModel *newPurchaseRecordModel in newPurchaseRecordModelArray) {
+    for (NSArray *mightarray in newPurchaseRecordModelArray) {
         // 可能为空的字段
         // 1. 消费描述
         NSString *spendMemo = @"";
-        if (newPurchaseRecordModel.spendMemo) {
-            spendMemo = newPurchaseRecordModel.spendMemo;
+        if (mightarray[6]) {
+            spendMemo = mightarray[6];
         }
         // 2. 开始时间
         NSString *spendStart = @"";
-        if (newPurchaseRecordModel.spendBegin) {
-            spendStart = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendBegin];
+        if (mightarray[1]) {
+            spendStart = mightarray[1];
         }
         
         // 3. 结束时间
         NSString *spendEnd = @"";
-        if (newPurchaseRecordModel.spendEnd) {
-            spendEnd = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendEnd];
+        if (mightarray[2]) {
+            spendEnd = mightarray[2];
         }
         // 4. 消费城市
         NSString *spendCity = @"";
-        if (newPurchaseRecordModel.cityName) {
-            spendCity = newPurchaseRecordModel.cityName;
+        if (mightarray[7]) {
+            spendCity = mightarray[7];
         }
         
         
         
-        NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.spendId],
-                                    @"money_Amount":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.moneyAmount],
-                                    @"bill_Num":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.billNum],
-                                    @"pic_Url":newPurchaseRecordModel.picUrl,
+        NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
+                                    @"money_Amount":mightarray[0],
+                                    @"bill_Num":mightarray[3],
+                                    @"pic_Url":mightarray[4],
                                     @"detail_Memo":spendMemo,
                                     @"spend_Begin":spendStart,
-                                    @"pic_Desc":newPurchaseRecordModel.picMemo,
+                                    @"pic_Desc":mightarray[5],
                                     @"spend_End":spendEnd,
                                     @"spend_City":spendCity
                                     
                                     };
-        
         NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
         detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
     }
@@ -1387,43 +1386,61 @@
     applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
     MMLog(@"applyJsonArray ============ %@",applyJsonArray);
     
+    
+    /*
+     
+     (
+     100,
+     "2016-11-20",
+     "2016-11-22",
+     1,
+     "F://expensePics/9/5/20161122121357IMG_0002.JPG",
+     "\U56fe\U7247900",
+     ceshi,
+     "\U5b89\U9633",
+     17,
+     "\U957f\U9014-\U7070\U673a"
+     )
+     
+     */
+    
     // 描述jsonArray
     
     NSString *detailJsonArray = @"";
     
-    for (NewPurchaseRecordModel *newPurchaseRecordModel in newPurchaseRecordModelArray) {
+    for (NSArray *mightarray in newPurchaseRecordModelArray) {
         // 可能为空的字段
         // 1. 消费描述
         NSString *spendMemo = @"";
-        if (newPurchaseRecordModel.spendMemo) {
-            spendMemo = newPurchaseRecordModel.spendMemo;
+        if (mightarray[6]) {
+            spendMemo = mightarray[6];
         }
         // 2. 开始时间
         NSString *spendStart = @"";
-        if (newPurchaseRecordModel.spendBegin) {
-            spendStart = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendBegin];
+        if (mightarray[1]) {
+            spendStart = mightarray[1];
         }
         
         // 3. 结束时间
         NSString *spendEnd = @"";
-        if (newPurchaseRecordModel.spendEnd) {
-            spendEnd = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:newPurchaseRecordModel.spendEnd];
+        if (mightarray[2]) {
+            spendEnd = mightarray[2];
         }
         // 4. 消费城市
         NSString *spendCity = @"";
-        if (newPurchaseRecordModel.cityName) {
-            spendCity = newPurchaseRecordModel.cityName;
+        if (mightarray[7]) {
+            spendCity = mightarray[7];
         }
         
         
         
-        NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.spendId],
-                                    @"money_Amount":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.moneyAmount],
-                                    @"bill_Num":[NSString stringWithFormat:@"%lu",newPurchaseRecordModel.billNum],
-                                    @"pic_Url":newPurchaseRecordModel.picUrl,
+        NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
+                                    @"money_Amount":mightarray[0],
+                                    @"bill_Num":mightarray[3],
+                                    @"pic_Url":mightarray[4],
                                     @"detail_Memo":spendMemo,
                                     @"spend_Begin":spendStart,
-                                    @"pic_Desc":newPurchaseRecordModel.picMemo,
+                                    @"pic_Desc":mightarray[5],
                                     @"spend_End":spendEnd,
                                     @"spend_City":spendCity
                                     

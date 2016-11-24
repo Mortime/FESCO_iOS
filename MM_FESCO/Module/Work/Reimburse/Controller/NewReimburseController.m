@@ -384,6 +384,7 @@
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
             [toastView show];
             [self.popViewApplyMan removeFromSuperview];
+            [MMDataBase deleteAll];
             [self.navigationController popViewControllerAnimated:YES];
         }
 
@@ -437,25 +438,34 @@
 
 }
 
-#pragma mark --  NewPurchaseRecordCellDelegate  方法
+#pragma mark --  NewPurchaseRecordCellDelegate  方法  删除添加的消费记录
 - (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag{
-    NewPurchaseRecordModel *model  = _editPurchaseRccordArray[tag];
+    NSArray *array  = _editPurchaseRccordArray[tag];
     
-    [NetworkEntity postDeleReimburseRecordWithDetailId:model.detailId Success:^(id responseObject) {
-        MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            // 删除成功
-            [_editPurchaseRccordArray removeObjectAtIndex:tag];
-            // 金额减少
-            _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
-            NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-            _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
-            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
-            [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-        }
-    } failure:^(NSError *failure) {
-        MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
-    }];
+    // 删除成功
+    [_editPurchaseRccordArray removeObjectAtIndex:tag];
+    // 金额减少
+    _allMoneyNumber = _allMoneyNumber - [array[0] integerValue];
+    NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
+    _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+    
+//    [NetworkEntity postDeleReimburseRecordWithDetailId:model.detailId Success:^(id responseObject) {
+//        MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
+//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+//            // 删除成功
+//            [_editPurchaseRccordArray removeObjectAtIndex:tag];
+//            // 金额减少
+//            _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
+//            NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
+//            _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+//            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+//            [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+//        }
+//    } failure:^(NSError *failure) {
+//        MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
+//    }];
 }
 #pragma mark --  NewReimburseConsumePopViewDelegate  方法
 - (void)newReimburseConsumePopViewDelegatWithRow:(NSInteger)row{
