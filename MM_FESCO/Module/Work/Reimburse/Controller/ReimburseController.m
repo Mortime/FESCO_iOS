@@ -136,12 +136,15 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
-    newReimburseVC.rePurchaseBook = editReimburseBook;
-    newReimburseVC.reimburseModel = _dataArray[indexPath.row];
-    [self.navigationController pushViewController:newReimburseVC animated:YES];
+    ReimburseModel *model = _dataArray[indexPath.row];
+    if (model.statusReimburse == 0) {
+        // 待提交状态
+        NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+        newReimburseVC.rePurchaseBook = editReimburseBook;
+        newReimburseVC.reimburseModel = _dataArray[indexPath.row];
+        [self.navigationController pushViewController:newReimburseVC animated:YES];
 
+    }
 }
 #pragma mark --- Action
 - (void)didClickWorkHeaderView:(UIButton *)sender{
