@@ -138,7 +138,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
-    newReimburseVC.rePurchaseBook = newReimburseBook;
+    newReimburseVC.rePurchaseBook = editReimburseBook;
     newReimburseVC.reimburseModel = _dataArray[indexPath.row];
     [self.navigationController pushViewController:newReimburseVC animated:YES];
 

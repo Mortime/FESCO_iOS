@@ -10,9 +10,11 @@
 #import <JSONKit.h>
 
 
-@interface UploadFile ()<NSURLSessionTaskDelegate>
+@interface UploadFile ()<NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
+
+@property (nonatomic, strong) MMUploadSccessBlock successBlock;
 
 @end
 
@@ -62,7 +64,7 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
 }
 
 #pragma mark - 上传文件
-- (void)uploadFileWithURL:(NSURL *)url imageUrl:(NSString *)imageUrl  imgIndex:(NSInteger)imgIndex
+- (void)uploadFileWithURL:(NSURL *)url imageUrl:(NSString *)imageUrl  imgIndex:(NSInteger)imgIndex  successBlock:(MMUploadSccessBlock)success
 {
     // 1> 数据体
     
@@ -120,30 +122,37 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
 //    }];
 
     
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request     delegate:self];
+    if (connection == nil) {
+        // 创建失败
+        return;
+    }
+    _successBlock = success;
+
+    
+//    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//        
+//        if (connectionError) {
+//            NSLog(@"connectionError= %@",connectionError);
+//        }
+//        
+//        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"result= %@", result);
+//        
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//        
+//        NSLog(@"myDictionary= %@", dic);
+//        if ([[dic objectForKey:@"errcode"] integerValue] == 0) {
+//            // 上传成功
+//            // 保存服务器返回的图片地址
+//            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"path"] forKey:@"imgUrl"];
+//           
+//            
+//        }
+//        
+//    }];
     
     
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
-        if (connectionError) {
-            NSLog(@"connectionError= %@",connectionError);
-        }
-        
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"result= %@", result);
-        
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        
-        NSLog(@"myDictionary= %@", dic);
-        if ([[dic objectForKey:@"errcode"] integerValue] == 0) {
-            // 上传成功
-            // 保存服务器返回的图片地址
-            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"path"] forKey:@"imgUrl"];
-           
-            
-        }
-        
-    }];
 }
 #pragma mark - 检测上传进度
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
@@ -159,16 +168,16 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
     NSLog(@"完成");
 }
-// 懒加载
-- (NSURLSession *)session
-{
-    if(_session == nil)
-    {
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
-    }
-    return _session;
-}
+//// 懒加载
+//- (NSURLSession *)session
+//{
+//    if(_session == nil)
+//    {
+//        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+//    }
+//    return _session;
+//}
 
 -(void)getImageFromPHAsset:(PHAsset *)asset Complete:(Result)result {
     __block NSData *data;
@@ -197,4 +206,28 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
         }
     }
 }
+#pragma mark 每发送一段数据给服务器，就会调用这个方法。这个方法可以用来监听文件上传进度
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
+    
+    MMLog(@"bytesWritten = %lu,totalBytesWritten= = %lu,totalBytesExpectedToWrite = %lu",bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+    
+}
+// 接收数据
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    
+    if (_successBlock) {
+        _successBlock(dic);
+    }
+    
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    //
+    MMLog(@"接收到服务器的响应");
+}
+
 @end

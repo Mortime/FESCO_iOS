@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong)  PurchaseCityCell *cityCell;
 
-
+@property (nonatomic, strong) NSMutableArray *picIDArray;
 
 
 // 保存时提交服务器数据
@@ -58,7 +58,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor colorWithHexString:@"f0eff5"];
-
+    self.picIDArray = [NSMutableArray array];
     
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
@@ -77,6 +77,9 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.preservationButton];
+    
+    // 注册一个通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kGetPicIDNotifition object:nil];
    
     
 }
@@ -250,6 +253,12 @@
     }
 }
 
+
+#pragma mark ------  Notifition
+- (void)getPicID{
+    NSString *ns=[[NSUserDefaults standardUserDefaults] objectForKey:@"picID"][0];
+    [_picIDArray addObject:ns];
+}
 #pragma mark 自定义代码
 
 //弹出选择框
@@ -459,8 +468,13 @@
     if (_needCity == 0) {
         _cityName = @"";
     }
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"imgUrl"]) {
-        _picUrl= [[NSUserDefaults standardUserDefaults] objectForKey:@"imgUrl"];
+    if (_picIDArray) {
+        
+        
+        //把数组转换成字符串
+        NSString *picStr=[_picIDArray componentsJoinedByString:@","];
+        _picUrl= picStr;
+        MMLog(@"picArray == %@,ns == %@",_picIDArray,picStr);
         _picStr =  [[NSUserDefaults standardUserDefaults] objectForKey:@"imgDes"];
     }else{
         _picUrl = @"";

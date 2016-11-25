@@ -1190,7 +1190,7 @@
 //  加载报销列表
 + (void)postReimburseListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
-                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,  
                           @"methodname":@"expense/getExpenseApplyList.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
@@ -1316,7 +1316,7 @@
             spendCity = mightarray[7];
         }
         
-        
+        MMLog(@"pic_Url == pic_Url %@",mightarray[4]);
         
         NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
                                     @"money_Amount":mightarray[0],

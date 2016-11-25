@@ -19,6 +19,8 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 
 @property (nonatomic,strong) NSString *placeHold;
 
+@property (nonatomic,strong) NSString *text;
+
 @property (nonatomic, strong) UIImageView *arrowImageView;
 
 @property (nonatomic,strong) NSArray *dataArray;

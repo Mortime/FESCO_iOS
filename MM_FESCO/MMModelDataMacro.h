@@ -22,6 +22,8 @@
 
 #define kGetReimburseRecordNotifition  @"GetReimburseRecordNotifition"  // 加载消费记录的通知
 
+#define kGetPicIDNotifition @"GetPicIDNotifition" // 通知控制器取出PicID
+
 
 typedef NS_ENUM(NSUInteger,RecodeType){
     

@@ -72,6 +72,9 @@
 @property (nonatomic, strong) NSDictionary  *dic;
 
 
+@property (nonatomic,strong) NSMutableArray *textTitleArray;  // 当从已经保存的消费记录进入界面时 ,显示已经保存的内容
+
+@property (nonatomic,strong) NSMutableArray *netWorkRecordArray; //  用于存放保存之后的消费记录模型
 
 
 
@@ -81,38 +84,53 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     // 加载消费记录
-    [_editPurchaseRccordArray removeAllObjects];
-    _allMoneyNumber = 0;
-//    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
-//        
-//        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
-//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-//            if ([[responseObject objectForKey:@"list"] count]) {
-//                for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
-//                    NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
-//                    [_editPurchaseRccordArray addObject:model];
-//                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
-//                }
-//            }
-//            [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-//            [self.tableView reloadData];
-//        }
-//    } failure:^(NSError *failure) {
-//        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
-//    }];
-    
-    NSArray *array = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
-    for (NSArray *ar in array) {
-        [_editPurchaseRccordArray addObject:ar];
-         _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
+    if (_rePurchaseBook == editReimburseBook) {
+        // 当编辑报销单时
+        // 1 .加载消费记录(从已经保存的报销单加载消费记录)
+        NSArray *array = _reimburseModel.details;
+        for (NSDictionary *dic in array) {
+            NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
+            [_netWorkRecordArray addObject:model];
+        }
+        [_tableView reloadData];
         
+    }else{
+        //    
+        [_editPurchaseRccordArray removeAllObjects];
+        _allMoneyNumber = 0;
+        //    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
+        //
+        //        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
+        //        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+        //            if ([[responseObject objectForKey:@"list"] count]) {
+        //                for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
+        //                    NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
+        //                    [_editPurchaseRccordArray addObject:model];
+        //                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
+        //                }
+        //            }
+        //            [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        //            [self.tableView reloadData];
+        //        }
+        //    } failure:^(NSError *failure) {
+        //        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
+        //    }];
+        
+        NSArray *array = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
+        for (NSArray *ar in array) {
+            [_editPurchaseRccordArray addObject:ar];
+            _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
+            
+        }
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        [self.tableView reloadData];
+        
+        
+        MMLog(@"str === %@",array);
+
     }
-    [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-    [self.tableView reloadData];
     
-    
-    MMLog(@"str === %@",array);
-}
+    }
 
 
 - (void)viewDidLoad {
@@ -125,8 +143,17 @@
     self.editPurchaseRccordArray = [NSMutableArray array];
     self.newsPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
-    self.titleArray = @[@"模板",@"标题",@"报销日期",@"报销部门",@"收款人",@"备注",@"敏感字段"];
-    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择报销部门",@"请选择收款人",@"(选填)",@"(选填)该信息不会被打印"];
+    self.netWorkRecordArray = [NSMutableArray array];
+    
+    if (_rePurchaseBook == editReimburseBook) {
+        NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
+        NSString *people = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
+        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,@"测试组",people,_reimburseModel.memo].mutableCopy;
+    }
+   
+    
+    self.titleArray = @[@"模板",@"标题",@"报销日期",@"报销部门",@"收款人",@"备注"];
+    self.placeTitleArray = @[@"请选择模板",@"请输入标题",@"请选择报销日期",@"请选择报销部门",@"请选择收款人",@"(选填)"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     
     
@@ -205,7 +232,7 @@
         return 1;
     }
     if (section == 1) {
-        return 6 ;
+        return 5 ;
     }
     if (section == 2) {
         return _editPurchaseRccordArray.count;
@@ -281,9 +308,16 @@
         if (!cell) {
             cell = [[NewPurchaseRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        cell.dataArray = _editPurchaseRccordArray[indexPath.row];
-        cell.indexTag = indexPath.row;
-        cell.delegate = self;
+        if (_rePurchaseBook == editReimburseBook) {
+            cell.model = _netWorkRecordArray[indexPath.row];
+            cell.indexTag = indexPath.row;
+            cell.delegate = self;
+        }else{
+            cell.dataArray = _editPurchaseRccordArray[indexPath.row];
+            cell.indexTag = indexPath.row;
+            cell.delegate = self;
+        }
+        
         return cell;
 
     }else{
@@ -345,11 +379,19 @@
         if (indexPath.section == 0) {
             cell.titleStr = _titleArray[indexPath.row];
             cell.placeHold = _placeTitleArray[indexPath.row];
-            cell.detailStr = _oneStr;
+            
+            if (_rePurchaseBook == editReimburseBook ) {
+                cell.detailStr = _textTitleArray[indexPath.row];
+            }else{
+                cell.detailStr = _oneStr;
+            }
         }
         if (indexPath.section == 1) {
             cell.titleStr = _titleArray[indexPath.row + 1];
             cell.placeHold = _placeTitleArray[indexPath.row + 1];
+            if (_rePurchaseBook == editReimburseBook ) {
+                cell.detailStr = _textTitleArray[indexPath.row + 1];
+            }
         }
         return cell;
     }
@@ -366,6 +408,7 @@
             // 保存成功
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
             [toastView show];
+            [MMDataBase deleteAll];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *failure) {
@@ -423,6 +466,7 @@
         // 模板视图
         MMLog(@"type = %@",type);
         _oneStr = type;
+        [_textTitleArray replaceObjectAtIndex:0 withObject:_oneStr];
         _typeCode = typeCode;
         [self.popView removeFromSuperview];
         //一个cell刷新
@@ -493,10 +537,12 @@
     if (tag == 60000) {
         // 标题
         _titleStr = textField.text;
+        [_textTitleArray replaceObjectAtIndex:1 withObject:_titleStr];
     }
     if (tag == 60001) {
         // 报销日期
         _dateStr = textField.text;
+        [_textTitleArray replaceObjectAtIndex:2 withObject:_dateStr];
     }
     if (tag == 60002) {
         // 报销部门
@@ -505,6 +551,7 @@
                 _groupID = model.ID;
             }
         }
+        [_textTitleArray replaceObjectAtIndex:3 withObject:textField.text];
     }
     if (tag == 60003) {
         // 收款人
@@ -516,15 +563,14 @@
                 _peopleNumber  = model.bankNumber;
             }
         }
+        [_textTitleArray replaceObjectAtIndex:4 withObject:textField.text];
     }
     if (tag == 60004) {
         // 备注
         _momeStr = textField.text;
+        [_textTitleArray replaceObjectAtIndex:5 withObject:_momeStr];
     }
-    if (tag == 60005) {
-        // 敏感字段
-        _remomeStr = textField.text;
-    }
+    
     
 }
 // 提交送审

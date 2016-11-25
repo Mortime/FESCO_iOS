@@ -22,4 +22,6 @@
 
 @property (nonatomic, weak) id <NewPurchaseRecordCellDelegate> delegate;
 
+@property (nonatomic, strong)  NewPurchaseRecordModel *model;
+
 @end

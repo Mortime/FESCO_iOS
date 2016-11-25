@@ -12,13 +12,13 @@
 
 
 @interface MPImageProgressCollectionCell()
-//<NSURLSessionTaskDelegate>
 
 @property(nonatomic,strong)M13ProgressViewPie *progressView;
 
 @property(nonatomic)CGFloat propress;
 
-//@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSMutableArray *picIDArray;
+
 @end
 
 @implementation MPImageProgressCollectionCell
@@ -34,6 +34,7 @@
             _imgView.clipsToBounds = YES;
             _imgView.layer.masksToBounds = YES;
             _imgView.layer.cornerRadius = 2.0;
+            self.picIDArray = [NSMutableArray array];
             [self.contentView addSubview:_imgView];
         }
         
@@ -105,97 +106,28 @@
                     MMLog(@"dataStr = %@===fileName =%@",str,fileName);
                     
                     
-                    [upload  uploadFileWithURL:[NSURL URLWithString:urlString] imageUrl:fileName  imgIndex:_imgIndex];
+                    [upload  uploadFileWithURL:[NSURL URLWithString:urlString] imageUrl:fileName  imgIndex:_imgIndex successBlock:^(NSDictionary *data) {
+                        MMLog(@"picIds = %@",data);
+                        
+                        /*
+                         errcode = 0;
+                         picIds =     (
+                         11
+                         );
+                         */
+                        if ([[data objectForKey:@"errcode"] integerValue] == 0) {
+                            // 对图片ID加入数组
+                            [_picIDArray addObject:[data objectForKey:@"picIds"][0]];
+                        }
+                        [[NSUserDefaults standardUserDefaults] setObject:_picIDArray forKey:@"picID"];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kGetPicIDNotifition object:self];
+                        
+                    }];
                     
                     
                 }];
                 
-                
-                // 这里如果是在同一部电脑上开启的web服务的话,要用localhost,如果用ip的话有时候会出错
-                
-               
-//                NSString *imgStr = [self.curImageItem.assetURL absoluteString];
-                
-                
-                
-
-                
-                
-                
-                
-                
-                
-                
-                
-//                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost/post/upload.php"]cachePolicy:1 timeoutInterval:7];
-//                
-//                request.HTTPMethod = @"post";
-//                
-//                // boundary可随意命名
-//                NSString *boundary = @"chen";
-//                
-//                // 拼接请求头
-//                [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary] forHTTPHeaderField:@"Content-Type"];
-//                
-//                // 创建可变data 后面一样拼接
-//                NSMutableData *myData = [NSMutableData data];
-//                
-//                NSString *str = [NSString stringWithFormat:@"--%@\n",boundary];
-//                [myData appendData:[str dataUsingEncoding:NSUTF8StringEncoding]];
-//                
-//                // html页面上传表单里的 <input type="file" name="userfile">
-//                NSString *name = @"userfile";
-//                // 上传后文件的名字
-//                NSString *filename = @"1.zip";
-//                
-//                str = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n",name,filename];
-//                [myData appendData:[str dataUsingEncoding:NSUTF8StringEncoding]];
-//                
-//                str = @"Content-Type: application/octet-stream\n\n";
-//                [myData appendData:[str dataUsingEncoding:NSUTF8StringEncoding]];
-//                
-//                // bundle中的文件转换成二进制数据
-//                NSURL *uploadFile = [[NSBundle mainBundle]URLForResource:@"music.mp3.zip" withExtension:nil];
-//                [myData appendData:[NSData dataWithContentsOfURL:uploadFile]];
-//                
-//                str = [NSString stringWithFormat:@"\n\n--%@--",boundary];
-//                [myData appendData:[str dataUsingEncoding:NSUTF8StringEncoding]];
-//                
-//                request.HTTPBody = myData;
-//                [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//                    
-//                }];
-//                [[self.session uploadTaskWithRequest:request fromData:myData]resume];
-                
-                
-
-                
-                
-                
-                
-//                    MPUploadImageItemService *req=[[MPUploadImageItemService alloc]initWithUploadImageItem:self.curImageItem];
-//
-//                    [req startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest *request) {
-//                        //上传成功后返回图片信息
-//                        self.curImageItem.upServicePath=@"2sdfsdfsdf.JPG";
-//                        
-//                    } failure:^(__kindof YTKBaseRequest *request) {
-//                        [MPRequstFailedHelper requstFailed:request];
-//                    }];
-//                    
-//                    //上传进度
-//                    req.uploadPropressBlock = ^(NSUInteger __unused bytesWritten,
-//                                                long long totalBytesWritten,
-//                                                long long totalBytesExpectedToWrite){
-//                        
-//                        MPStrongSelf(self);
-//                        CGFloat propress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
-//                        NSLog(@"进度进度：%lld/%lld___%2f",totalBytesWritten,totalBytesExpectedToWrite,propress);
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            self.propress=propress;
-//                        });
-//                    };
-            }
+}
         }];
     }
     else
@@ -257,30 +189,5 @@
 +(CGSize)ccellSize{
     return CGSizeMake(kImageCollectionCell_Width,kImageCollectionCell_Width);
 }
-
-//#pragma mark - 检测上传进度
-//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-//   didSendBodyData:(int64_t)bytesSent
-//    totalBytesSent:(int64_t)totalBytesSent
-//totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
-//{
-//    float progress = (float)totalBytesSent / totalBytesExpectedToSend;
-//    NSLog(@"%f %@", progress, [NSThread currentThread]);
-//}
-//
-//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-//{
-//    NSLog(@"完成");
-//}
-//// 懒加载
-//- (NSURLSession *)session
-//{
-//    if(_session == nil)
-//    {
-//        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
-//    }
-//    return _session;
-//}
 
 @end
