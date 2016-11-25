@@ -86,12 +86,16 @@
     // 加载消费记录
     if (_rePurchaseBook == editReimburseBook) {
         // 当编辑报销单时
+        [_netWorkRecordArray removeAllObjects];
+        _allMoneyNumber = 0;
         // 1 .加载消费记录(从已经保存的报销单加载消费记录)
         NSArray *array = _reimburseModel.details;
         for (NSDictionary *dic in array) {
             NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
             [_netWorkRecordArray addObject:model];
+            _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
         }
+         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
         [_tableView reloadData];
         
     }else{
@@ -235,7 +239,12 @@
         return 5 ;
     }
     if (section == 2) {
-        return _editPurchaseRccordArray.count;
+        if (_rePurchaseBook == editReimburseBook) {
+            return _netWorkRecordArray.count;
+        }else{
+            return _editPurchaseRccordArray.count;
+        }
+        
     }
     return 0;
 }
@@ -400,44 +409,59 @@
     
 }
 #pragma mark --- Action
+// 点击保存时
 - (void)myAction{
-    // 点击保存时
-    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray Success:^(id responseObject) {
-        MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            // 保存成功
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+    if (_rePurchaseBook == editReimburseBook) {
+        
+    }else{
+        
+        [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray Success:^(id responseObject) {
+            MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
+            if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                // 保存成功
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                [toastView show];
+                [MMDataBase deleteAll];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } failure:^(NSError *failure) {
+            MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
             [toastView show];
-            [MMDataBase deleteAll];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    } failure:^(NSError *failure) {
-        MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-        [toastView show];
-    }];
+        }];
+ 
+    }
     
 }
-- (void)commit{
-    // 点击提交时
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID Success:^(id responseObject) {
-        MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            // 提交成功
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
-            [toastView show];
-            [self.popViewApplyMan removeFromSuperview];
-            [MMDataBase deleteAll];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
 
-    } failure:^(NSError *failure) {
-        MMLog(@"CommitReimburseApply  =======failure=====%@",failure);
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-        [toastView show];
-    }];
+// 点击提交时
+- (void)commit{
+//    rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid
     
-}
+    NSInteger detailid = 0 ;
+    if (_rePurchaseBook == editReimburseBook) {
+        detailid = _reimburseModel.applyId;
+    }
+    
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:detailid Success:^(id responseObject) {
+            MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
+            if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                // 提交成功
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
+                [toastView show];
+                [self.popViewApplyMan removeFromSuperview];
+                [MMDataBase deleteAll];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        } failure:^(NSError *failure) {
+            MMLog(@"CommitReimburseApply  =======failure=====%@",failure);
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+            [toastView show];
+        }];
+
+    }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0 && indexPath.row == 0) {

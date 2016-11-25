@@ -1369,7 +1369,9 @@
 }
 
 // 提交报销单
-+ (void)postCommitReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray applyMan:(NSInteger)manID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray applyMan:(NSInteger)manID rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    
     NSString *applyJsonArray = @"";
     // 申请jsonArray
     NSDictionary *applyDic = @{@"memo":memo,
@@ -1381,7 +1383,21 @@
                                @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                                @"cust_Id":[UserInfoModel defaultUserInfo].custId
                                };
-    
+
+    if (rePurchaseBookType == editReimburseBook) {
+        
+        applyDic = @{@"memo":memo,
+                     @"type":[NSString stringWithFormat:@"%lu",type],
+                     @"apply_Date":applyDate,
+                     @"group_Id":[NSString stringWithFormat:@"%lu",groupId],
+                     @"account_Id":[NSString stringWithFormat:@"%lu",accountId],
+                     @"title":title,
+                     @"detailid":[NSString stringWithFormat:@"%lu",detailid],
+                     @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                     @"cust_Id":[UserInfoModel defaultUserInfo].custId
+                     };
+
+    }
     applyJsonArray = [NSString jsonToJsonArrayWith:applyDic];
     applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
     MMLog(@"applyJsonArray ============ %@",applyJsonArray);
@@ -1406,55 +1422,58 @@
     
     // 描述jsonArray
     
-    NSString *detailJsonArray = @"";
-    
-    for (NSArray *mightarray in newPurchaseRecordModelArray) {
-        // 可能为空的字段
-        // 1. 消费描述
-        NSString *spendMemo = @"";
-        if (mightarray[6]) {
-            spendMemo = mightarray[6];
+     NSString *detailJsonArray = @"";
+    if (newPurchaseRecordModelArray.count == 0) {
+        
+    }else{
+        for (NSArray *mightarray in newPurchaseRecordModelArray) {
+            // 可能为空的字段
+            // 1. 消费描述
+            NSString *spendMemo = @"";
+            if (mightarray[6]) {
+                spendMemo = mightarray[6];
+            }
+            // 2. 开始时间
+            NSString *spendStart = @"";
+            if (mightarray[1]) {
+                spendStart = mightarray[1];
+            }
+            
+            // 3. 结束时间
+            NSString *spendEnd = @"";
+            if (mightarray[2]) {
+                spendEnd = mightarray[2];
+            }
+            // 4. 消费城市
+            NSString *spendCity = @"";
+            if (mightarray[7]) {
+                spendCity = mightarray[7];
+            }
+            
+            
+            
+            NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
+                                        @"money_Amount":mightarray[0],
+                                        @"bill_Num":mightarray[3],
+                                        @"pic_Url":mightarray[4],
+                                        @"detail_Memo":spendMemo,
+                                        @"spend_Begin":spendStart,
+                                        @"pic_Desc":mightarray[5],
+                                        @"spend_End":spendEnd,
+                                        @"spend_City":spendCity
+                                        
+                                        };
+            
+            NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
+            detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
         }
-        // 2. 开始时间
-        NSString *spendStart = @"";
-        if (mightarray[1]) {
-            spendStart = mightarray[1];
-        }
+        // 去掉开始时的,
+        NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
         
-        // 3. 结束时间
-        NSString *spendEnd = @"";
-        if (mightarray[2]) {
-            spendEnd = mightarray[2];
-        }
-        // 4. 消费城市
-        NSString *spendCity = @"";
-        if (mightarray[7]) {
-            spendCity = mightarray[7];
-        }
-        
-        
-        
-        NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                    @"money_Amount":mightarray[0],
-                                    @"bill_Num":mightarray[3],
-                                    @"pic_Url":mightarray[4],
-                                    @"detail_Memo":spendMemo,
-                                    @"spend_Begin":spendStart,
-                                    @"pic_Desc":mightarray[5],
-                                    @"spend_End":spendEnd,
-                                    @"spend_City":spendCity
-                                    
-                                    };
-        
-        NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-        detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
+        detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
     }
-    // 去掉开始时的,
-    NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
     
-    detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
-    
-    
+
     MMLog(@"===detailJsonArray ============%@",detailJsonArray);
     
     NSDictionary *dic = @{
