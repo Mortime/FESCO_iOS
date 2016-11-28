@@ -60,12 +60,15 @@
 @property (nonatomic, strong) NSString *titleStr; // 标题
 @property (nonatomic, strong) NSString *dateStr; // 报销日期
 @property (nonatomic, assign) NSInteger groupID; // 报销组id
+@property (nonatomic, strong) NSString *groupStr; // 报销组名称
 @property (nonatomic, strong) NSString *peopleStr; // 收款人
 @property (nonatomic, assign) NSInteger peopleNumber; // 收款账号
 @property (nonatomic, strong) NSString *momeStr;  // 备注
 @property (nonatomic, strong) NSString *remomeStr; // 敏感字段
 
 @property (nonatomic, assign) NSInteger manApplyID; // 审批人
+
+@property (nonatomic, assign) NSInteger detailid; // 当编辑报销单时,
 
 
 
@@ -152,7 +155,7 @@
     if (_rePurchaseBook == editReimburseBook) {
         NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
         NSString *people = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
-        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,@"测试组",people,_reimburseModel.memo].mutableCopy;
+        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,@" ",people,_reimburseModel.memo].mutableCopy;
     }
    
     
@@ -408,6 +411,14 @@
     
     
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        self.popView.dataArray = self.mobanArray;
+        
+        [self.view addSubview:self.popView];
+    }
+}
 #pragma mark --- Action
 // 点击保存时
 - (void)myAction{
@@ -433,17 +444,10 @@
     }
     
 }
-
 // 点击提交时
 - (void)commit{
 //    rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid
-    
-    NSInteger detailid = 0 ;
-    if (_rePurchaseBook == editReimburseBook) {
-        detailid = _reimburseModel.applyId;
-    }
-    
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:detailid Success:^(id responseObject) {
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
             MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                 // 提交成功
@@ -452,6 +456,10 @@
                 [self.popViewApplyMan removeFromSuperview];
                 [MMDataBase deleteAll];
                 [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交失败"];
+                [toastView show];
+
             }
             
         } failure:^(NSError *failure) {
@@ -461,16 +469,63 @@
         }];
 
     }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        self.popView.dataArray = self.mobanArray;
-        
-        [self.view addSubview:self.popView];
-    }
+// 添加消费记录视图
+- (void)popConsumePopView{
+    [self.view addSubview:self.consumePopView];
 }
-#pragma mark --  NewReimbursePopViewDelegate  方法
+// 提交送审
+- (void)postCommitApply{
+    
+    _detailid = 0 ;
+    if (_rePurchaseBook == editReimburseBook) {
+        
+        // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
+        if (!_oneStr) {
+            _oneStr = _reimburseModel.typeStr;
+            for (TemplateInfoModel *model in _mobanArray) {
+                if ([model.typeName isEqualToString:_oneStr]) {
+                    _typeCode = model.typeCode;
+                }
+            }
+        }
+        if (!_titleStr) {
+            _titleStr = _reimburseModel.title;
+        }
+        if (!_dateStr) {
+            _dateStr = _reimburseModel.editTime;
+        }
+        if (!_groupStr) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
+            [toastView show];
+            return;
+            
+        }
+        if (!_peopleStr) {
+            
+            
+            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
+            for (BankInfoModel *model in _bankArray) {
+                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+                if ([str isEqualToString:str1]) {
+                    _peopleStr = model.bankPayName;
+                    _peopleNumber  = model.bankNumber;
+                }
+            }
+        }
+        if (!_momeStr) {
+            _momeStr = _reimburseModel.memo;
+        }
+        _detailid = _reimburseModel.applyId;
+    }
+
+    
+    self.popViewApplyMan.dataArray = self.groupArray;
+    
+    [self.view addSubview:self.popViewApplyMan];
+}
+#pragma mark -- Delegate方法
+
+/*  NewReimbursePopViewDelegate */
 // 点击取消
 - (void)newReimbursePopViewDelegateWithIndexTag:(NSInteger)indexTag{
     if (indexTag == 187) {
@@ -506,7 +561,7 @@
 
 }
 
-#pragma mark --  NewPurchaseRecordCellDelegate  方法  删除添加的消费记录
+/*  NewPurchaseRecordCellDelegate  方法  删除添加的消费记录 */
 - (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag{
     NSArray *array  = _editPurchaseRccordArray[tag];
     
@@ -535,7 +590,7 @@
 //        MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
 //    }];
 }
-#pragma mark --  NewReimburseConsumePopViewDelegate  方法
+ /*  NewReimburseConsumePopViewDelegate  方法 */
 - (void)newReimburseConsumePopViewDelegatWithRow:(NSInteger)row{
     if (row == 0) {
         // 新建消费记录
@@ -552,10 +607,8 @@
         [self.consumePopView removeFromSuperview];
     }
 }
-#pragma mark --- Action 
-- (void)popConsumePopView{
-     [self.view addSubview:self.consumePopView];
-}
+
+#pragma mark -------- Blcok 回调
 - (void)blockBackWithTextField:(UITextField *)textField  tag:(NSUInteger)tag{
     MMLog(@"textField.text = %@",textField.text);
     if (tag == 60000) {
@@ -573,6 +626,7 @@
         for (GroupInfoModel *model in _groupArray) {
             if ([model.groupName isEqualToString:textField.text]) {
                 _groupID = model.ID;
+                _groupStr = textField.text;
             }
         }
         [_textTitleArray replaceObjectAtIndex:3 withObject:textField.text];
@@ -597,12 +651,7 @@
     
     
 }
-// 提交送审
-- (void)postCommitApply{
-    self.popViewApplyMan.dataArray = self.groupArray;
-    
-    [self.view addSubview:self.popViewApplyMan];
-}
+
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
