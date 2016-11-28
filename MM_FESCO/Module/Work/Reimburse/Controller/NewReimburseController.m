@@ -154,7 +154,13 @@
     
     if (_rePurchaseBook == editReimburseBook) {
         NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
-        NSString *people = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
+        
+        NSString *people = @"";
+        for (BankInfoModel *model in _bankArray) {
+            if (_reimburseModel.accountId == model.bankNumber) {
+            people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+            }
+        }
         self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,@" ",people,_reimburseModel.memo].mutableCopy;
     }
    
@@ -208,7 +214,16 @@
                 GroupInfoModel *modle = [GroupInfoModel yy_modelWithDictionary:dic];
                 [_groupArray addObject:modle];
             }
-
+            if (_rePurchaseBook == editReimburseBook) {
+                
+                NSString *people = @"";
+                for (BankInfoModel *model in _bankArray) {
+                    if (_reimburseModel.accountId == model.bankNumber) {
+                        people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+                    }
+                }
+                [_textTitleArray replaceObjectAtIndex:4 withObject:people];
+            }
 
             [self.tableView reloadData];
         }
@@ -465,7 +480,12 @@
                 [toastView show];
                 [MMDataBase deleteAll];
                 [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+                [toastView show];
+                
             }
+
         } failure:^(NSError *failure) {
             MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
@@ -699,17 +719,15 @@
             
         }
         if (!_peopleStr) {
-            
-            
-            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
             for (BankInfoModel *model in _bankArray) {
-                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
-                if ([str isEqualToString:str1]) {
-                    _peopleStr = model.bankPayName;
-                    _peopleNumber  = model.bankNumber;
+                if (model.bankNumber == _reimburseModel.accountId) {
+                    NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+                        _peopleStr = str;
+                        _peopleNumber  = model.bankNumber;
+                    }
+
                 }
             }
-        }
         if (!_momeStr) {
             _momeStr = _reimburseModel.memo;
         }

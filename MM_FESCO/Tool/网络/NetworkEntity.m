@@ -1304,7 +1304,10 @@
     
     // 描述jsonArray
     
-     NSString *detailJsonArray = @"";
+    NSString *detailJsonArray = @"";
+    if (newPurchaseRecordModelArray.count == 0) {
+        
+    }else{
     
     for (NSArray *mightarray in newPurchaseRecordModelArray) {
         // 可能为空的字段
@@ -1351,6 +1354,7 @@
    
     detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
     
+    }
     
     MMLog(@"===detailJsonArray ============%@",detailJsonArray);
     
