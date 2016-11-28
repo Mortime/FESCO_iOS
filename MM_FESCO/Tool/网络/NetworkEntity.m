@@ -1270,7 +1270,7 @@
 
 }
 //  保存报销申请
-+ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
    NSString *applyJsonArray = @"";
     // 申请jsonArray
@@ -1283,7 +1283,21 @@
                                @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                                @"cust_Id":[UserInfoModel defaultUserInfo].custId
                                };
-    
+    if (rePurchaseBookType == editReimburseBook) {
+        
+        applyDic = @{@"memo":memo,
+                     @"type":[NSString stringWithFormat:@"%lu",type],
+                     @"apply_Date":applyDate,
+                     @"group_Id":[NSString stringWithFormat:@"%lu",groupId],
+                     @"account_Id":[NSString stringWithFormat:@"%lu",accountId],
+                     @"title":title,
+                     @"detailid":[NSString stringWithFormat:@"%lu",detailid],
+                     @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                     @"cust_Id":[UserInfoModel defaultUserInfo].custId
+                     };
+        
+    }
+
     applyJsonArray = [NSString jsonToJsonArrayWith:applyDic];
     applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
     MMLog(@"applyJsonArray ============ %@",applyJsonArray);

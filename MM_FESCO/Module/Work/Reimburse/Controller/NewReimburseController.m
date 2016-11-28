@@ -422,11 +422,50 @@
 #pragma mark --- Action
 // 点击保存时
 - (void)myAction{
+   
+    _detailid = 0 ;
     if (_rePurchaseBook == editReimburseBook) {
         
-    }else{
-        
-        [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray Success:^(id responseObject) {
+        // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
+        if (!_oneStr) {
+            _oneStr = _reimburseModel.typeStr;
+            for (TemplateInfoModel *model in _mobanArray) {
+                if ([model.typeName isEqualToString:_oneStr]) {
+                    _typeCode = model.typeCode;
+                }
+            }
+        }
+        if (!_titleStr) {
+            _titleStr = _reimburseModel.title;
+        }
+        if (!_dateStr) {
+            _dateStr = _reimburseModel.editTime;
+        }
+        if (!_groupStr) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
+            [toastView show];
+            return;
+            
+        }
+        if (!_peopleStr) {
+            
+            
+            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
+            for (BankInfoModel *model in _bankArray) {
+                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+                if ([str isEqualToString:str1]) {
+                    _peopleStr = model.bankPayName;
+                    _peopleNumber  = model.bankNumber;
+                }
+            }
+        }
+        if (!_momeStr) {
+            _momeStr = _reimburseModel.memo;
+        }
+        _detailid = _reimburseModel.applyId;
+    }
+
+        [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
             MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                 // 保存成功
@@ -440,8 +479,6 @@
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
             [toastView show];
         }];
- 
-    }
     
 }
 // 点击提交时
