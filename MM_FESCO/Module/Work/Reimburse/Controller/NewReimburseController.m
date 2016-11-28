@@ -423,48 +423,8 @@
 // 点击保存时
 - (void)myAction{
    
-    _detailid = 0 ;
-    if (_rePurchaseBook == editReimburseBook) {
-        
-        // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
-        if (!_oneStr) {
-            _oneStr = _reimburseModel.typeStr;
-            for (TemplateInfoModel *model in _mobanArray) {
-                if ([model.typeName isEqualToString:_oneStr]) {
-                    _typeCode = model.typeCode;
-                }
-            }
-        }
-        if (!_titleStr) {
-            _titleStr = _reimburseModel.title;
-        }
-        if (!_dateStr) {
-            _dateStr = _reimburseModel.editTime;
-        }
-        if (!_groupStr) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
-            [toastView show];
-            return;
-            
-        }
-        if (!_peopleStr) {
-            
-            
-            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
-            for (BankInfoModel *model in _bankArray) {
-                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
-                if ([str isEqualToString:str1]) {
-                    _peopleStr = model.bankPayName;
-                    _peopleNumber  = model.bankNumber;
-                }
-            }
-        }
-        if (!_momeStr) {
-            _momeStr = _reimburseModel.memo;
-        }
-        _detailid = _reimburseModel.applyId;
-    }
-
+    [self editPurchaseDataInModel];
+    [self showMessage];
         [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
             MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
@@ -513,49 +473,8 @@
 // 提交送审
 - (void)postCommitApply{
     
-    _detailid = 0 ;
-    if (_rePurchaseBook == editReimburseBook) {
-        
-        // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
-        if (!_oneStr) {
-            _oneStr = _reimburseModel.typeStr;
-            for (TemplateInfoModel *model in _mobanArray) {
-                if ([model.typeName isEqualToString:_oneStr]) {
-                    _typeCode = model.typeCode;
-                }
-            }
-        }
-        if (!_titleStr) {
-            _titleStr = _reimburseModel.title;
-        }
-        if (!_dateStr) {
-            _dateStr = _reimburseModel.editTime;
-        }
-        if (!_groupStr) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
-            [toastView show];
-            return;
-            
-        }
-        if (!_peopleStr) {
-            
-            
-            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
-            for (BankInfoModel *model in _bankArray) {
-                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
-                if ([str isEqualToString:str1]) {
-                    _peopleStr = model.bankPayName;
-                    _peopleNumber  = model.bankNumber;
-                }
-            }
-        }
-        if (!_momeStr) {
-            _momeStr = _reimburseModel.memo;
-        }
-        _detailid = _reimburseModel.applyId;
-    }
-
-    
+    [self editPurchaseDataInModel];
+    [self showMessage];
     self.popViewApplyMan.dataArray = self.groupArray;
     
     [self.view addSubview:self.popViewApplyMan];
@@ -688,7 +607,89 @@
     
     
 }
-
+#pragma maek ----- 公共方法
+ // 提示语
+- (void)showMessage{
+   
+    if (!_oneStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_titleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报标题"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_dateStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_groupStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_peopleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报收款人"];
+        [toastView show];
+        return;
+        
+    }
+    
+}
+// 当编辑报销单时,用户没有编辑信息,用从Model读取数据
+- (void)editPurchaseDataInModel{
+    _detailid = 0 ;
+    if (_rePurchaseBook == editReimburseBook) {
+        
+        // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
+        if (!_oneStr) {
+            _oneStr = _reimburseModel.typeStr;
+            for (TemplateInfoModel *model in _mobanArray) {
+                if ([model.typeName isEqualToString:_oneStr]) {
+                    _typeCode = model.typeCode;
+                }
+            }
+        }
+        if (!_titleStr) {
+            _titleStr = _reimburseModel.title;
+        }
+        if (!_dateStr) {
+            _dateStr = _reimburseModel.editTime;
+        }
+        if (!_groupStr) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
+            [toastView show];
+            return;
+            
+        }
+        if (!_peopleStr) {
+            
+            
+            NSString *str1 = [NSString stringWithTitle:_reimburseModel.accountName content:_reimburseModel.accountId];
+            for (BankInfoModel *model in _bankArray) {
+                NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+                if ([str isEqualToString:str1]) {
+                    _peopleStr = model.bankPayName;
+                    _peopleNumber  = model.bankNumber;
+                }
+            }
+        }
+        if (!_momeStr) {
+            _momeStr = _reimburseModel.memo;
+        }
+        _detailid = _reimburseModel.applyId;
+    }
+    
+}
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
