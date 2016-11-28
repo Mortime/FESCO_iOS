@@ -424,7 +424,39 @@
 - (void)myAction{
    
     [self editPurchaseDataInModel];
-    [self showMessage];
+    if (!_oneStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_titleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报标题"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_dateStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_groupStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_peopleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报收款人"];
+        [toastView show];
+        return;
+        
+    }
+
         [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
             MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
@@ -474,7 +506,39 @@
 - (void)postCommitApply{
     
     [self editPurchaseDataInModel];
-    [self showMessage];
+    if (!_oneStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_titleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报标题"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_dateStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
+        [toastView show];
+        return;
+        
+    }
+    
+    if (!_groupStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
+        [toastView show];
+        return;
+        
+    }
+    if (!_peopleStr) {
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报收款人"];
+        [toastView show];
+        return;
+        
+    }
+
     self.popViewApplyMan.dataArray = self.groupArray;
     
     [self.view addSubview:self.popViewApplyMan];
@@ -608,43 +672,6 @@
     
 }
 #pragma maek ----- 公共方法
- // 提示语
-- (void)showMessage{
-   
-    if (!_oneStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
-        [toastView show];
-        return;
-        
-    }
-    if (!_titleStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报标题"];
-        [toastView show];
-        return;
-        
-    }
-    
-    if (!_dateStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
-        [toastView show];
-        return;
-        
-    }
-    
-    if (!_groupStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
-        [toastView show];
-        return;
-        
-    }
-    if (!_peopleStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报收款人"];
-        [toastView show];
-        return;
-        
-    }
-    
-}
 // 当编辑报销单时,用户没有编辑信息,用从Model读取数据
 - (void)editPurchaseDataInModel{
     _detailid = 0 ;
