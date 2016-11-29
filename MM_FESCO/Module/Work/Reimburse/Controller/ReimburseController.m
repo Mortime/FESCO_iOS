@@ -12,6 +12,7 @@
 #import "NewReimburseController.h"
 #import "ReimburseModel.h"
 #import "NewPurchaseRecordModel.h"
+#import "ProgressReimburseController.h"
 
 
 #define kHeaderH  130
@@ -144,6 +145,10 @@
         newReimburseVC.reimburseModel = _dataArray[indexPath.row];
         [self.navigationController pushViewController:newReimburseVC animated:YES];
 
+    }else{
+        ProgressReimburseController *progressVC = [[ProgressReimburseController alloc] init];
+        progressVC.model = model;
+        [self.navigationController pushViewController:progressVC animated:YES];
     }
 }
 #pragma mark --- Action

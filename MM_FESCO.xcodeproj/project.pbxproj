@@ -285,6 +285,10 @@
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
+		76515B3A1DED10E50054E910 /* ProgressReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B391DED10E50054E910 /* ProgressReimburseController.m */; };
+		76515B3D1DED12BA0054E910 /* ProgressStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B3C1DED12BA0054E910 /* ProgressStatusCell.m */; };
+		76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B3F1DED12D40054E910 /* ProgressMessageCell.m */; };
+		76515B431DED12FB0054E910 /* ProgressPuschaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */; };
 		7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7682502E1DE29FE9007520BD /* ReimburseModel.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
@@ -948,6 +952,14 @@
 		764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseRecordHeaderView.m; sourceTree = "<group>"; };
 		764499DD1DCC821800A6404F /* ReimburseWorkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseWorkHeaderView.h; sourceTree = "<group>"; };
 		764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseWorkHeaderView.m; sourceTree = "<group>"; };
+		76515B381DED10E50054E910 /* ProgressReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressReimburseController.h; sourceTree = "<group>"; };
+		76515B391DED10E50054E910 /* ProgressReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressReimburseController.m; sourceTree = "<group>"; };
+		76515B3B1DED12BA0054E910 /* ProgressStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressStatusCell.h; sourceTree = "<group>"; };
+		76515B3C1DED12BA0054E910 /* ProgressStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressStatusCell.m; sourceTree = "<group>"; };
+		76515B3E1DED12D40054E910 /* ProgressMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressMessageCell.h; sourceTree = "<group>"; };
+		76515B3F1DED12D40054E910 /* ProgressMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressMessageCell.m; sourceTree = "<group>"; };
+		76515B411DED12FB0054E910 /* ProgressPuschaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressPuschaseCell.h; sourceTree = "<group>"; };
+		76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressPuschaseCell.m; sourceTree = "<group>"; };
 		7682502D1DE29FE9007520BD /* ReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseModel.h; sourceTree = "<group>"; };
 		7682502E1DE29FE9007520BD /* ReimburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseModel.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
@@ -2582,6 +2594,8 @@
 				763256DD1DD3025000C9C903 /* NewPurchaseSubController.m */,
 				763256EF1DD319D900C9C903 /* NewPurchaseBookController.h */,
 				763256F01DD319D900C9C903 /* NewPurchaseBookController.m */,
+				76515B381DED10E50054E910 /* ProgressReimburseController.h */,
+				76515B391DED10E50054E910 /* ProgressReimburseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2612,6 +2626,12 @@
 				763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */,
 				763256DF1DD302D200C9C903 /* PurchaseSubCell.h */,
 				763256E01DD302D200C9C903 /* PurchaseSubCell.m */,
+				76515B3B1DED12BA0054E910 /* ProgressStatusCell.h */,
+				76515B3C1DED12BA0054E910 /* ProgressStatusCell.m */,
+				76515B3E1DED12D40054E910 /* ProgressMessageCell.h */,
+				76515B3F1DED12D40054E910 /* ProgressMessageCell.m */,
+				76515B411DED12FB0054E910 /* ProgressPuschaseCell.h */,
+				76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2923,6 +2943,7 @@
 				59A59E1E1D499EF2001F3122 /* NGOSegmentControl.m in Sources */,
 				597223BE1DADE05400D01A7A /* CheckListModel.m in Sources */,
 				59C005C61D92542300A329CD /* RegisterController.m in Sources */,
+				76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */,
 				59EC91591D98CB5900E802FA /* EaseViewController.m in Sources */,
 				597223D41DADE05400D01A7A /* MMMianCell.m in Sources */,
 				59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */,
@@ -2946,6 +2967,7 @@
 				76F02FD51DD4539C00D32771 /* MPFileManager.m in Sources */,
 				597222ED1DADDE5900D01A7A /* MMDataBase.m in Sources */,
 				59EC91DB1D98D9AD00E802FA /* NSData+EMImageContentType.m in Sources */,
+				76515B3D1DED12BA0054E910 /* ProgressStatusCell.m in Sources */,
 				763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */,
 				76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */,
 				59EC91CD1D98D9AD00E802FA /* MWPhoto.m in Sources */,
@@ -3062,6 +3084,7 @@
 				59EC916E1D98CB5900E802FA /* EaseRecordView.m in Sources */,
 				59CC544F1DACE8310030D486 /* MMScrollView.m in Sources */,
 				59CC544E1DACE8310030D486 /* JZPassRateToolBarView.m in Sources */,
+				76515B431DED12FB0054E910 /* ProgressPuschaseCell.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59EC916B1D98CB5900E802FA /* EaseFaceView.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,
@@ -3204,6 +3227,7 @@
 				59EC91E91D98D9AD00E802FA /* PSTCollectionViewItemKey.m in Sources */,
 				59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */,
 				76F02FFA1DD4592F00D32771 /* cameraHelper.m in Sources */,
+				76515B3A1DED10E50054E910 /* ProgressReimburseController.m in Sources */,
 				597223D61DADE05400D01A7A /* OverTimeRecordListModel.m in Sources */,
 				597223BB1DADE05400D01A7A /* TextMainApprovalDetailCell.m in Sources */,
 				597223CD1DADE05400D01A7A /* LeaveApplyCell.m in Sources */,
