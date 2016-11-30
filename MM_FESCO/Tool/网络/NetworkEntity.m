@@ -924,7 +924,7 @@
 /**
  *   提交休假申请  'hol_Set_Id':'','hol_Begin':'','hol_End':'','hol_Begin_Apm':'','hol_End_Apm':'','hol_Num':'','momo':'','approval_Man':'','hol_Unit
  */
-+ (void)postCommitLeaveApplyWihtHolSetId:(NSInteger)holSetId holUnit:(NSInteger)holUnit holNum:(NSString *)holNum  beginTime:(NSString *)beginTime endTime:(NSString *)endTime   holBeginApm:(NSString *)holBeginApm holEndApm:(NSString *)holEndApm reason:(NSString *)reason approvalMan:(NSInteger )approvalManID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitLeaveApplyWihtHolSetId:(NSInteger)holSetId holUnit:(NSInteger)holUnit holNum:(NSString *)holNum  beginTime:(NSString *)beginTime endTime:(NSString *)endTime   holBeginApm:(NSString *)holBeginApm holEndApm:(NSString *)holEndApm reason:(NSString *)reason approvalMan:(NSInteger )approvalManID holName:(NSString *)holName Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
@@ -937,6 +937,7 @@
                           @"hol_End":endTime,
                           @"momo":reason,
                           @"approval_Man":[NSString stringWithFormat:@"%lu",approvalManID],
+                          @"hol_Name":holName,
                           @"methodname":@"kq/saveHolApply.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
@@ -1306,7 +1307,7 @@
     
     NSString *detailJsonArray = @"";
     if (newPurchaseRecordModelArray.count == 0) {
-        
+        detailJsonArray = @"'[ ]'";
     }else{
     
     for (NSArray *mightarray in newPurchaseRecordModelArray) {
@@ -1442,7 +1443,7 @@
     
      NSString *detailJsonArray = @"";
     if (newPurchaseRecordModelArray.count == 0) {
-        
+        detailJsonArray = @"'[ ]'";
     }else{
         for (NSArray *mightarray in newPurchaseRecordModelArray) {
             // 可能为空的字段

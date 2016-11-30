@@ -279,7 +279,7 @@
     }
     
     
-    [NetworkEntity postCommitLeaveApplyWihtHolSetId:holSetId holUnit:unitID holNum:holNum beginTime:_timeDuring endTime:endTime holBeginApm:beginAMPM holEndApm:endAMPM reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
+    [NetworkEntity postCommitLeaveApplyWihtHolSetId:holSetId holUnit:unitID holNum:holNum beginTime:_timeDuring endTime:endTime holBeginApm:beginAMPM holEndApm:endAMPM reason:_applyIdea approvalMan:applyPeopleID holName:_beginTime Success:^(id responseObject) {
         
         MMLog(@"CommitLeaveApply ========responseObject=========%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {

@@ -121,6 +121,7 @@
 - (void)setModel:(PurchaseRecordModel *)model{
     _titleLabel.text = model.typeName;
     MMLog(@"model.icon] = %@",model.icon);
+    
     FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:model.icon];
     
     [_btn setTitle:[NSString fontAwesomeIconStringForEnum:FAStar] forState:UIControlStateNormal];
