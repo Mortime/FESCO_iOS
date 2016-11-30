@@ -171,7 +171,12 @@
         NSString *beginTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"check_Time"]];
         NSString *address = [applyMessage objectForKey:@"cust_Addr"];
         NSString *endTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"apply_Date"]];
-        NSString *reason = [applyMessage objectForKey:@"memo"];
+        
+        NSString *reason = @" ";
+        if (![[applyMessage objectForKey:@"memo"] isKindOfClass:[NSNull class]]) {
+           reason = [applyMessage objectForKey:@"memo"];
+        }
+        
         self.headerBottomArray = @[typeStr,beginTime,address,endTime];
         self.topDataArray = @[reason];
         

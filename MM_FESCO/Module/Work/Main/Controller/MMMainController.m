@@ -61,7 +61,6 @@ static NSString *kMallID = @"MallID";
     // 隐藏导航条底部分割线
     navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     navBarHairlineImageView.hidden=YES;
-    
 }
 
 
