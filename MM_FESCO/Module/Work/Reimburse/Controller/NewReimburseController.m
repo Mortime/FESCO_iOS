@@ -106,37 +106,29 @@
                     [_netWorkRecordArray addObject:model];
                     _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
                 }
+                [_editPurchaseRccordArray removeAllObjects];
+                NSArray *array1 = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
+                for (NSArray *ar in array1) {
+                    [_editPurchaseRccordArray addObject:ar];
+                    _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
+                    
+                }
                 [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-                [_tableView reloadData];
+                [self.tableView reloadData];
+  
 
             }
         } failure:^(NSError *failure) {
             MMLog(@"EditReimburseBook (编辑时基本信息)  =======failure=====%@",failure);
         }];
+        
+        
 
         
     }else{
         //    
         [_editPurchaseRccordArray removeAllObjects];
         _allMoneyNumber = 0;
-        //    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
-        //
-        //        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
-        //        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-        //            if ([[responseObject objectForKey:@"list"] count]) {
-        //                for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
-        //                    NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
-        //                    [_editPurchaseRccordArray addObject:model];
-        //                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
-        //                }
-        //            }
-        //            [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-        //            [self.tableView reloadData];
-        //        }
-        //    } failure:^(NSError *failure) {
-        //        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
-        //    }];
-        
         NSArray *array = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
         for (NSArray *ar in array) {
             [_editPurchaseRccordArray addObject:ar];
@@ -263,13 +255,13 @@
     return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 2) {
+    if (section == 3) {
         return 10;
     }
     return 0;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -279,12 +271,11 @@
         return 5 ;
     }
     if (section == 2) {
-        if (_rePurchaseBook == editReimburseBook) {
-            return _netWorkRecordArray.count;
-        }else{
-            return _editPurchaseRccordArray.count;
-        }
-        
+        return _netWorkRecordArray.count;
+    }
+    
+    if (section == 3) {
+        return _editPurchaseRccordArray.count;
     }
     return 0;
 }
@@ -338,10 +329,13 @@
     if (section == 0) {
         return 10;
     }
-    return 45;
+    if (section == 1 || section == 2) {
+        return 45;
+    }
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 2) {
+    if (indexPath.section == 2 || indexPath.section == 3) {
         return 59;
     }
     return 49;
@@ -350,14 +344,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    if (indexPath.section == 2) {
+    if (indexPath.section == 2 || indexPath.section == 3) {
         static NSString *cellID = @"ID";
        NewPurchaseRecordCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
         if (!cell) {
             cell = [[NewPurchaseRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        if (_rePurchaseBook == editReimburseBook) {
+        if (indexPath.section == 2) {
             cell.model = _netWorkRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
