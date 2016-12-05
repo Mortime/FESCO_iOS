@@ -17,6 +17,7 @@
 #import "TemplateInfoModel.h"
 #import "NewPurchaseRecordModel.h"
 #import "GroupInfoModel.h"
+#import "EditMessageModel.h"
 
 #define kBottomH  50
 
@@ -79,6 +80,8 @@
 
 @property (nonatomic,strong) NSMutableArray *netWorkRecordArray; //  用于存放保存之后的消费记录模型
 
+@property (nonatomic,strong) NSString *picID; // 图片ID
+
 
 
 @end
@@ -92,14 +95,25 @@
         [_netWorkRecordArray removeAllObjects];
         _allMoneyNumber = 0;
         // 1 .加载消费记录(从已经保存的报销单加载消费记录)
-        NSArray *array = _reimburseModel.details;
-        for (NSDictionary *dic in array) {
-            NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
-            [_netWorkRecordArray addObject:model];
-            _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
-        }
-         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-        [_tableView reloadData];
+        
+        [NetworkEntity postEditReimburseBookOfEditWithApplyId:_reimburseModel.applyId Success:^(id responseObject) {
+            MMLog(@"EditReimburseBook (编辑时基本信息)  =======responseObject=====%@",responseObject);
+            if (responseObject) {
+                NSDictionary *dic = [responseObject objectForKey:@"apply"];
+                NSArray *array = [dic objectForKey:@"details"];
+                for (NSDictionary *dic in array) {
+                    EditMessageModel *model = [EditMessageModel yy_modelWithDictionary:dic];
+                    [_netWorkRecordArray addObject:model];
+                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
+                }
+                [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+                [_tableView reloadData];
+
+            }
+        } failure:^(NSError *failure) {
+            MMLog(@"EditReimburseBook (编辑时基本信息)  =======failure=====%@",failure);
+        }];
+
         
     }else{
         //    
@@ -192,7 +206,7 @@
 - (void)initData{
     
     [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
-        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+//        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
         if (responseObject) {
             _dic = responseObject;
             // 模板信息
@@ -233,6 +247,14 @@
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
         [toastView show];
     }];
+    
+    
+//    if (_rePurchaseBook == editReimburseBook) {
+//        
+//        }
+    
+    
+    
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

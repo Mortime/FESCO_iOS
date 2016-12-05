@@ -270,6 +270,7 @@
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
 		761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */; };
 		761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */; };
+		761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */; };
 		763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763256CD1DD2B63900C9C903 /* FontAwesome.ttf */; };
 		763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */; };
 		763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */; };
@@ -923,6 +924,8 @@
 		761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseConsumePopView.m; sourceTree = "<group>"; };
 		761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseRecordController.h; sourceTree = "<group>"; };
 		761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordController.m; sourceTree = "<group>"; };
+		761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMessageModel.h; sourceTree = "<group>"; };
+		761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMessageModel.m; sourceTree = "<group>"; };
 		763256CD1DD2B63900C9C903 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		763256CE1DD2B63900C9C903 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
@@ -2545,6 +2548,8 @@
 				76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */,
 				7682502D1DE29FE9007520BD /* ReimburseModel.h */,
 				7682502E1DE29FE9007520BD /* ReimburseModel.m */,
+				761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */,
+				761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3070,6 +3075,7 @@
 				76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */,
 				597223D01DADE05400D01A7A /* LeaveRecordView.m in Sources */,
 				76EBA2E41DD4027700DB67B1 /* NumberAddOffView.m in Sources */,
+				761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */,
 				59EC91DC1D98D9AD00E802FA /* UIButton+EMWebCache.m in Sources */,
 				763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */,
 				59EC91651D98CB5900E802FA /* EaseBubbleView+Voice.m in Sources */,

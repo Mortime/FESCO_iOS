@@ -502,7 +502,7 @@
 
 
 /**
- *  加载编辑报销单
+ *  加载编辑报销单  新建报销单是调用
  
  *  @param cust_Id （req） 公司id
  
@@ -510,6 +510,18 @@
  
  */
 + (void)postEditReimburseBookSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+
+/**
+ *  加载编辑报销单  编辑报销单是调用
+ 
+ *  @param cust_Id （req） 公司id
+ 
+ *  @param emp_Id （req）  员工id
+ 
+ */
++ (void)postEditReimburseBookOfEditWithApplyId:(NSInteger)applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 /**

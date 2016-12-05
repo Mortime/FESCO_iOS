@@ -8,6 +8,7 @@
 
 #import "NetworkEntity.h"
 #import "NewPurchaseRecordModel.h"
+#import "EditMessageModel.h"
 
 
 @implementation NetworkEntity
@@ -1243,7 +1244,7 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 
-//  加载编辑报销单
+//  加载编辑报销单   (新建报销单)
 + (void)postEditReimburseBookSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
@@ -1270,6 +1271,35 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
+}
+//  加载编辑报销单   (编辑报销单)  {'methodname':'expense/loadEditApply.json','emp_Id':'','cust_Id':'','apply_Id':''}
+
++ (void)postEditReimburseBookOfEditWithApplyId:(NSInteger)applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"methodname":@"expense/loadEditApply.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/loadEditApply.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 //  保存报销申请
 + (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray networkModelArray:(NSArray *)networkModelArray rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid applyID:(NSInteger)applyID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
@@ -1312,53 +1342,47 @@
         // 编辑报销单
         if (networkModelArray.count) {
             // 编辑时从服务器获取的消费记录
-            for (NewPurchaseRecordModel *model in networkModelArray) {
+            for (EditMessageModel *model in networkModelArray) {
                 // 可能为空的字段
                 // 1. 消费描述
-                NSString *spendMemo = @" ";
-                if (model.spendMemo) {
-                    spendMemo = model.spendMemo;
+                NSString *spendMemo = @"";
+                if (model.detailMemo) {
+                    spendMemo = model.detailMemo;
                 }
                 // 2. 开始时间
-                NSString *spendStart = @" ";
+                NSString *spendStart = @"";
                 if (model.spendBegin) {
                     spendStart = model.spendBegin;
                 }
                 
                 // 3. 结束时间
-                NSString *spendEnd = @" ";
+                NSString *spendEnd = @"";
                 if (model.spendEnd) {
                     spendEnd = model.spendEnd;
                 }
                 // 4. 消费城市
-                NSString *spendCity = @" ";
+                NSString *spendCity = @"";
                 if (model.cityName) {
                     spendCity = model.cityName;
                 }
                 
-                // 5. 图片Url
-                NSString *picUrl = @" ";
-                if (model.picUrl) {
-                    picUrl = model.picUrl;
+                // 5. 图片ID
+                NSString *picID = @"";
+                for (NSDictionary *dic in model.picArray) {
+                    picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
                 }
-                
-                // 6. 图片memo
-                NSString *picMemo = @" ";
-                if (model.picMemo) {
-                    picMemo = model.picMemo;
-                }
+                NSString *resultPicId = [picID substringFromIndex:1];
                 
                 // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
                 
-                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],picUrl,spendMemo,spendStart,picMemo,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
+                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
                 
                 NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
                                             @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
                                             @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
-                                            @"pic_Url":picUrl,
+                                            @"pic_Ids":resultPicId,
                                             @"detail_Memo":spendMemo,
                                             @"spend_Begin":spendStart,
-                                            @"pic_Desc":picMemo,
                                             @"spend_End":spendEnd,
                                             @"spend_City":spendCity,
                                             @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
@@ -1405,10 +1429,9 @@
                     NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
                                                 @"money_Amount":mightarray[0],
                                                 @"bill_Num":mightarray[3],
-                                                @"pic_Url":mightarray[4],
+                                                @"pic_Ids":mightarray[4],
                                                 @"detail_Memo":spendMemo,
                                                 @"spend_Begin":spendStart,
-                                                @"pic_Desc":mightarray[5],
                                                 @"spend_End":spendEnd,
                                                 @"spend_City":spendCity
                                                 
@@ -1465,10 +1488,9 @@
                 NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
                                             @"money_Amount":mightarray[0],
                                             @"bill_Num":mightarray[3],
-                                            @"pic_Url":mightarray[4],
+                                            @"pic_Ids":mightarray[4],
                                             @"detail_Memo":spendMemo,
                                             @"spend_Begin":spendStart,
-                                            @"pic_Desc":mightarray[5],
                                             @"spend_End":spendEnd,
                                             @"spend_City":spendCity
                                             
@@ -1662,53 +1684,48 @@
         // 编辑报销单
         if (networkModelArray.count) {
             // 编辑时从服务器获取的消费记录
-            for (NewPurchaseRecordModel *model in networkModelArray) {
+            for (EditMessageModel *model in networkModelArray) {
                 // 可能为空的字段
                 // 1. 消费描述
-                NSString *spendMemo = @" ";
-                if (model.spendMemo) {
-                    spendMemo = model.spendMemo;
+                NSString *spendMemo = @"";
+                if (model.detailMemo) {
+                    spendMemo = model.detailMemo;
                 }
                 // 2. 开始时间
-                NSString *spendStart = @" ";
+                NSString *spendStart = @"";
                 if (model.spendBegin) {
                     spendStart = model.spendBegin;
                 }
                 
                 // 3. 结束时间
-                NSString *spendEnd = @" ";
+                NSString *spendEnd = @"";
                 if (model.spendEnd) {
                     spendEnd = model.spendEnd;
                 }
                 // 4. 消费城市
-                NSString *spendCity = @" ";
+                NSString *spendCity = @"";
                 if (model.cityName) {
                     spendCity = model.cityName;
                 }
                 
-                // 5. 图片Url
-                NSString *picUrl = @" ";
-                if (model.picUrl) {
-                    picUrl = model.picUrl;
+                // 5. 图片ID
+                NSString *picID = @"";
+                for (NSDictionary *dic in model.picArray) {
+                    picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
                 }
+                NSString *resultPicId = [picID substringFromIndex:1];
                 
-                // 6. 图片memo
-                NSString *picMemo = @" ";
-                if (model.picMemo) {
-                    picMemo = model.picMemo;
-                }
-                
+
                 // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
                 
-                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],picUrl,spendMemo,spendStart,picMemo,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
+                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
                 
                 NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
                                             @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
                                             @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
-                                            @"pic_Url":picUrl,
+                                            @"pic_Ids":resultPicId,
                                             @"detail_Memo":spendMemo,
                                             @"spend_Begin":spendStart,
-                                            @"pic_Desc":picMemo,
                                             @"spend_End":spendEnd,
                                             @"spend_City":spendCity,
                                             @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
@@ -1755,10 +1772,9 @@
                             NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
                                                         @"money_Amount":mightarray[0],
                                                         @"bill_Num":mightarray[3],
-                                                        @"pic_Url":mightarray[4],
+                                                        @"pic_Ids":mightarray[4],
                                                         @"detail_Memo":spendMemo,
                                                         @"spend_Begin":spendStart,
-                                                        @"pic_Desc":mightarray[5],
                                                         @"spend_End":spendEnd,
                                                         @"spend_City":spendCity
                                                         
@@ -1815,10 +1831,9 @@
                 NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
                                             @"money_Amount":mightarray[0],
                                             @"bill_Num":mightarray[3],
-                                            @"pic_Url":mightarray[4],
+                                            @"pic_Ids":mightarray[4],
                                             @"detail_Memo":spendMemo,
                                             @"spend_Begin":spendStart,
-                                            @"pic_Desc":mightarray[5],
                                             @"spend_End":spendEnd,
                                             @"spend_City":spendCity
                                             
