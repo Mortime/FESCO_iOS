@@ -471,26 +471,27 @@
         return;
         
     }
-
-        [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
-            MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
-            if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-                // 保存成功
-                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-                [toastView show];
-                [MMDataBase deleteAll];
-                [self.navigationController popViewControllerAnimated:YES];
-            }else{
-                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
-                [toastView show];
-                
-            }
-
-        } failure:^(NSError *failure) {
-            MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+    
+    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
+        
+        MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            // 保存成功
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
             [toastView show];
-        }];
+            [MMDataBase deleteAll];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+            [toastView show];
+            
+        }
+
+    } failure:^(NSError *failure) {
+        MMLog(@"PreserveReimburseApply  =======failure=====%@",failure);
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [toastView show];
+    }];
     
 }
 // 点击提交时
