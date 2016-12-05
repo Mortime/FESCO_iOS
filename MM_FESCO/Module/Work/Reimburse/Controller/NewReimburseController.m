@@ -496,7 +496,7 @@
 // 点击提交时
 - (void)commit{
 //    rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:_detailid Success:^(id responseObject) {
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:0 applyID:_detailid Success:^(id responseObject) {
             MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                 // 提交成功
@@ -731,7 +731,7 @@
         if (!_momeStr) {
             _momeStr = _reimburseModel.memo;
         }
-        _detailid = _reimburseModel.applyId;
+        _detailid = _reimburseModel.applyId;  // 申请ID 
     }
     
 }

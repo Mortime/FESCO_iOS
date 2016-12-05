@@ -98,7 +98,7 @@
     [_dataArray removeAllObjects];
     [NetworkEntity postReimburseListSuccess:^(id responseObject) {
         
-        MMLog(@"ReimburseList  =======responseObject=====%@",responseObject);
+//        MMLog(@"ReimburseList  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             // 请求成功
             NSArray *dicArray = [responseObject objectForKey:@"list"];
