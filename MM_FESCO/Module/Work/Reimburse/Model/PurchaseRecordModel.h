@@ -24,6 +24,7 @@
 
 @property (nonatomic, assign) NSInteger ID;
 
+@property (nonatomic, strong) NSString *picName;
 
 
 @end

@@ -77,7 +77,7 @@
         _textView.textAlignment = NSTextAlignmentCenter;
         _textView.editable = NO;
         _textView.textColor = [UIColor grayColor];
-        _textView.text = @"2条消费记录\n共369元";
+        _textView.text = @"0条消费记录\n共0元";
     }
     return _textView;
 }

@@ -113,6 +113,7 @@
             cell = [[NewPurchaseSubTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         cell.titleLabel.text = self.title;
+        cell.iconImageView.image = [UIImage imageNamed:[NSString backPicNameWith:self.title]];
         return cell;
 
     }

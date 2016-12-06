@@ -120,4 +120,14 @@
  */
 + (NSString *)jsonToJsonArrayWith:(NSDictionary *)dic;
 
+/**
+ *   根据名称返回一个图片名称
+ 
+ *
+ *  @param  title
+ 
+ *
+ */
+
++ (NSString *)backPicNameWith:(NSString *)title;
 @end

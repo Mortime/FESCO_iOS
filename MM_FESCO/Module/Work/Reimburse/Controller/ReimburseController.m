@@ -164,6 +164,8 @@
     if (sender.tag == 500) {
         // 报表
         MMLog(@"点击了报表");
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
     }
     if (sender.tag == 501) {
         // 报表
@@ -175,9 +177,16 @@
     if (sender.tag == 502) {
         // 报表
         MMLog(@"点击了列表");
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
+
     }
 }
-
+// 点击手势
+- (void)didList:(UIGestureRecognizer *)ges{
+    ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+    [view show];
+}
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
@@ -204,8 +213,11 @@
     if (_leftRecordView == nil) {
         _leftRecordView = [[ReimburseRecordHeaderView alloc] initWithFrame:CGRectMake(0, 0, kWight, kHeaderH)];
         _leftRecordView.titleStr = @"未制单消费";
-        _leftRecordView.textViewStr = @"2条消费记录\n共369元";
+        _leftRecordView.textViewStr = @"0条消费记录\n共0元";
         _leftRecordView.imgStr = @"Reimburse_weidingdanxiaofei";
+        _leftRecordView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
+        [_leftRecordView addGestureRecognizer:ges];
     }
     return _leftRecordView;
 }
@@ -215,6 +227,8 @@
         _centerRecordView.titleStr = @"我的借款";
         _centerRecordView.textViewStr = @"剩余 0元";
         _centerRecordView.imgStr = @"Reimburse_wodejiekuang";
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
+        [_centerRecordView addGestureRecognizer:ges];
     }
     return _centerRecordView;
 }
@@ -224,6 +238,8 @@
         _rightRecordView.titleStr = @"差旅行程";
         _rightRecordView.textViewStr = @"最近行程: 无";
         _rightRecordView.imgStr = @"Reimburse_wodexingcheng";
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
+        [_rightRecordView addGestureRecognizer:ges];
     }
     return _rightRecordView;
 }

@@ -51,8 +51,8 @@
     [self.flageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(20);
         make.left.mas_equalTo(self.mas_left).offset(10);
-        make.width.mas_equalTo(@32);
-        make.height.mas_equalTo(@32);
+        make.width.mas_equalTo(@20);
+        make.height.mas_equalTo(@20);
         
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -141,6 +141,7 @@
     NSString *status = @"";
     if (model.statusReimburse == 0) {
         status = @"待提交";
+        
     }
     if (model.statusReimburse == 1) {
         status = @"待审批";
@@ -152,7 +153,12 @@
         status = @"待通过";
     }
     if (model.statusReimburse == 4) {
-        status = @"待支付";
+        status = @"已支付";
+    }
+    if (model.statusReimburse == 0) {
+        _flageView.image = [UIImage imageNamed:@"NewReimburseController_Commit"];
+    }else{
+        _flageView.image = [UIImage imageNamed:@"NewReimburseController_Apply"];
     }
     _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",status,model.typeStr];
     NSArray *array = model.details;

@@ -229,4 +229,36 @@
     return resultStr;
 
 }
+//  根据名称返回一个图片名称
++ (NSString *)backPicNameWith:(NSString *)title{
+    NSString *str  = @"";
+    if ([title isEqualToString:@"长途"]) {
+        str = @"NewReimburseController_ChangTu";
+    }
+    if ([title isEqualToString:@"交通"]) {
+        str = @"NewReimburseController_JiaoTong";
+        
+    }
+    if ([title isEqualToString:@"餐饮"]) {
+        str = @"NewReimburseController_CanYin";
+        
+    }
+    if ([title isEqualToString:@"住宿"]) {
+        str = @"NewReimburseController_Hotel";
+        
+    }
+    if ([title isEqualToString:@"通讯"]) {
+        str = @"NewReimburseController_TongXun";
+        
+    }
+    if ([title isEqualToString:@"补助"]) {
+        str = @"NewReimburseController_BuZhu";
+        
+    }
+    if ([title isEqualToString:@"其他"]) {
+        str = @"NewReimburseController_Other";
+        
+    }
+    return str;
+}
 @end
