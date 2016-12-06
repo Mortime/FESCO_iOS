@@ -369,6 +369,10 @@
     _billNumber = billNumber;
 }
 
+//  点击返回 
+- (void)backView{
+    
+}
 //上传图片
 -(void)myAction
 {

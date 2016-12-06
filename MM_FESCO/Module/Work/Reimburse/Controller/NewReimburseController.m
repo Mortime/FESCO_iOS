@@ -18,6 +18,7 @@
 #import "NewPurchaseRecordModel.h"
 #import "GroupInfoModel.h"
 #import "EditMessageModel.h"
+#import "BLPFAlertView.h"
 
 #define kBottomH  50
 
@@ -183,15 +184,31 @@
     
     [self.view addSubview:self.tableView];
     
+    
+    //设置左边
+    self.navigationItem.leftBarButtonItem = nil;
+    UIButton*leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,25,25)];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"side"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(backView)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
+
+    
         //设置右边
         UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
-        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [rightButton setTitle:@"保存" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
         self.navigationItem.rightBarButtonItem= rightItem;
+    
+    
+    
+    
+    
+    
+    
     [self initData];
 
 }
@@ -450,7 +467,31 @@
         [self.view addSubview:self.popView];
     }
 }
+
 #pragma mark --- Action
+- (void)backView{
+    MMLog(@"点击了返回");
+    if (_rePurchaseBook == newReimburseBook) {
+        // 弹出提示框
+        [BLPFAlertView showAlertWithTitle:@"提示" message:@"报销单尚未保存,是否返回?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"返回"] completion:^(NSUInteger selectedOtherButtonIndex) {
+            MMLog(@"index = %lu",selectedOtherButtonIndex+1);
+            NSUInteger indexAlert = selectedOtherButtonIndex + 1;
+            if (indexAlert == 1) {
+                // 正常返回
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else {
+                return ;
+            }
+            
+        }];
+
+    }else if (_rePurchaseBook == editReimburseBook){
+        // 正常返回
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 // 点击保存时
 - (void)myAction{
    
@@ -574,6 +615,14 @@
         [toastView show];
         return;
         
+    }
+    
+    if (_rePurchaseBook == newReimburseBook) {
+        if (_newsPurchaseRccordArray.count == 0) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请添加消费记录"];
+            [toastView show];
+            return;
+        }
     }
 
     self.popViewApplyMan.dataArray = self.groupArray;
