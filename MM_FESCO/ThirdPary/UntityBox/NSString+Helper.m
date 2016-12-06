@@ -205,10 +205,10 @@
     
     NSString *mightStr = [NSString stringWithFormat:@"%lu",content];
     
-    NSString *oneStr = [mightStr substringToIndex:3];
+    NSString *oneStr = [mightStr substringToIndex:4];
     
     NSInteger  length = mightStr.length;
-    NSString *twoStr = [mightStr substringFromIndex:length - 3];
+    NSString *twoStr = [mightStr substringFromIndex:length - 4];
     
     return [NSString stringWithFormat:@"%@(%@...%@)",title,oneStr,twoStr];
 //    return [NSString stringWithFormat:@"%@%@",title,mightStr];
