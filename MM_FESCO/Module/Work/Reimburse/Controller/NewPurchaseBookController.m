@@ -64,15 +64,15 @@
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
     _billNumber = @"1";
     
-    //设置右边
-    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
-    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem= rightItem;
+//    //设置右边
+//    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
+//    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+//    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+//    self.navigationItem.rightBarButtonItem= rightItem;
 
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.cancelButton];
@@ -127,6 +127,7 @@
             cell.textFiled.leftTitle = @"金额";
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
+        cell.textFiled.rightTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         cell.delegate = self;
         cell.tag = 8000;
         return cell;
@@ -486,6 +487,7 @@
     if (!_memo) {
         _memo = @"";
     }
+    MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_picStr,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
     NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
                           @"spendBegin":_startTime,
                           @"spendEnd":_endTime,

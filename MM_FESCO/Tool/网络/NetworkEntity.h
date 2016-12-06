@@ -599,8 +599,12 @@
 + (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spend_City  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *  保存消费记录  
- 
+ *  删除报销申请
+ *  @param detail_Id （req）  记录Id
+ */
++ (void)postDelePurchaseBookWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *  删除消费记录
  *  @param detail_Id （req）  记录Id
  */
 + (void)postDeleReimburseRecordWithDetailId:(NSInteger )detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;

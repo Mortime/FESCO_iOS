@@ -1922,6 +1922,35 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
+// 删除报销申请
++ (void)postDelePurchaseBookWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"methodname":@"expense/deleteApply.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/deleteApply.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
 // 删除消费记录
 + (void)postDeleReimburseRecordWithDetailId:(NSInteger )detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{

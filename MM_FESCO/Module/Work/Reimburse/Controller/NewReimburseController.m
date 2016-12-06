@@ -53,7 +53,6 @@
 @property (nonatomic, strong) NSMutableArray *groupArray;  // 部门数组
 
 @property (nonatomic, strong) NSMutableArray *editPurchaseRccordArray;   // 消费记录数组  这个消费记录数组 为编辑时数组
-@property (nonatomic, strong) NSMutableArray *newsPurchaseRccordArray; // 消费记录数组  这个消费记录数组 为新建时数组
 
 @property (nonatomic, assign) NSInteger allMoneyNumber;  // 消费总金额
 
@@ -155,7 +154,6 @@
     self.mobanArray = [NSMutableArray array];
     self.bankArray = [NSMutableArray array];
     self.editPurchaseRccordArray = [NSMutableArray array];
-    self.newsPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
     self.netWorkRecordArray = [NSMutableArray array];
     
@@ -193,21 +191,34 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
 
-    
+    if (_rePurchaseBook == editReimburseBook) {
+        // 显示删除按钮
+        //保存
+        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+        [rightButton setBackgroundImage:[UIImage imageNamed:@"NewReimburseController_Save"] forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+        
+        //删除
+        UIButton*rightButton1 = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+       [rightButton1 setBackgroundImage:[UIImage imageNamed:@"NewReimburseController_Dele"] forState:UIControlStateNormal];
+        [rightButton1 addTarget:self action:@selector(delReimburseBook)forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc]initWithCustomView:rightButton1];
+        
+        
+        self.navigationItem.rightBarButtonItems= @[rightItem,rightItem1];
+        
+    }else{
         //设置右边
         UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [rightButton setTitle:@"保存" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
         self.navigationItem.rightBarButtonItem= rightItem;
-    
-    
-    
-    
-    
-    
+ 
+    }
     
     [self initData];
 
@@ -478,6 +489,7 @@
             NSUInteger indexAlert = selectedOtherButtonIndex + 1;
             if (indexAlert == 1) {
                 // 正常返回
+                [MMDataBase deleteAll];
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else {
@@ -490,6 +502,27 @@
         // 正常返回
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+// 点击删除
+- (void)delReimburseBook{
+    [NetworkEntity postDelePurchaseBookWithApplyId:_reimburseModel.applyId Success:^(id responseObject) {
+        
+        MMLog(@"DelePurchaseBook  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] intValue] == 0) {
+            ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
+            [alertView show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
+            [alertView show];
+        }
+        
+    } failure:^(NSError *failure) {
+        
+        MMLog(@"DelePurchaseBook  =======failure=====%@",failure);
+        ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [alertView show];
+    }];
 }
 
 // 点击保存时
@@ -585,7 +618,7 @@
     
     [self editPurchaseDataInModel];
     if (!_oneStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销模板"];
         [toastView show];
         return;
         
@@ -618,7 +651,7 @@
     }
     
     if (_rePurchaseBook == newReimburseBook) {
-        if (_newsPurchaseRccordArray.count == 0) {
+        if (_editPurchaseRccordArray.count == 0) {
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请添加消费记录"];
             [toastView show];
             return;

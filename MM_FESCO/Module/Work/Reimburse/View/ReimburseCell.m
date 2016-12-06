@@ -164,5 +164,23 @@
     }
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",number];
     
+    
+//    if (model.details) {
+//        NSArray *detailArray = model.details;
+//        NSDictionary *dic = detailArray[0];
+//        NSArray *array  = [dic objectForKey:@"pics"];
+//        if (array.count) {
+//            
+//            NSDictionary *dic = array[0];
+//            NSString *picUrl = [dic objectForKey:@"pic_Url"];
+//            if (![picUrl isKindOfClass:[NSNull class]]) {
+//                MMLog(@"picUrl = %@",picUrl);
+//                 [_flageView  sd_setImageWithURL:[NSURL URLWithString:picUrl]];
+//            }
+//           
+//        }
+//        
+//    }
+    
 }
 @end
