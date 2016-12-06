@@ -421,12 +421,9 @@
     
 }
 #pragma mark -- Action 
-// 在记一笔
-- (void)didPreservationButton{
-    
-}
-// 保存
-- (void)didCancelButton{
+
+// 保存 在记一笔
+- (void)didPreservationButton:(UIButton *)sender{
     
     if (!_moneyNumber) {
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
@@ -523,10 +520,16 @@
 //            [MMDataBase saveItemDict:mutableDic tname:t_purchaseRecord];
             [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
             // 保存成功
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-            [toastView show];
-            NSArray * ctrlArray = self.navigationController.viewControllers;
-            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+            if (sender.tag == 701) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                [toastView show];
+                NSArray * ctrlArray = self.navigationController.viewControllers;
+                [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+            }else if (sender.tag == 700){
+                NSArray * ctrlArray = self.navigationController.viewControllers;
+                [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
+            }
+            
             
 //            [ws showData];
             
@@ -595,9 +598,10 @@
         _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kBottomButtonW, 50);
         [_preservationButton setTitle:@"在记一笔" forState:UIControlStateNormal];
         [_preservationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_preservationButton addTarget:self action:@selector(didPreservationButton) forControlEvents:UIControlEventTouchUpInside];
+        [_preservationButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
         [_preservationButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         _preservationButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _preservationButton.tag = 700;
         
     }
     return _preservationButton;
@@ -608,9 +612,10 @@
         _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame), self.view.height - 50 - 64, kBottomButtonW, 50);
         [_cancelButton setTitle:@"保存" forState:UIControlStateNormal];
         [_cancelButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
-        [_cancelButton addTarget:self action:@selector(didCancelButton) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
         [_cancelButton setBackgroundColor:[UIColor whiteColor]];
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _cancelButton.tag = 701;
         
     }
     return _cancelButton;

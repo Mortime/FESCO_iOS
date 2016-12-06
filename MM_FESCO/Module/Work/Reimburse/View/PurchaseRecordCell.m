@@ -124,7 +124,7 @@
     
     FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:model.icon];
     
-    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:FAStar] forState:UIControlStateNormal];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     
     [_btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 }
