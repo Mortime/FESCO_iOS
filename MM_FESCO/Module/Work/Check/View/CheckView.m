@@ -438,7 +438,7 @@
 - (UILabel *)bigSignLable{
     if (_bigSignLable == nil) {
         _bigSignLable = [[UILabel alloc]init];
-        _bigSignLable.text = @"1";
+        _bigSignLable.text = @"0";
         _bigSignLable.font = [UIFont boldSystemFontOfSize:80];
         _bigSignLable.textColor = [UIColor whiteColor];
         _bigSignLable.textAlignment = NSTextAlignmentRight;
