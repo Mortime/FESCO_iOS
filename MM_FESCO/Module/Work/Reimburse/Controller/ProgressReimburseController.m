@@ -39,7 +39,7 @@
     self.messageTitleArray = @[@"报销日期",@"收款账号"];
     NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_model.applyDate];
     NSString *bankNumber = [NSString stringWithFormat:@"%lu",_model.accountId];
-    self.messageContentArray = @[@" ",time,bankNumber];
+    self.messageContentArray = @[time,bankNumber];
     for (NSDictionary *dic in _model.details) {
         NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
         [_reimburselistArray addObject:model];
