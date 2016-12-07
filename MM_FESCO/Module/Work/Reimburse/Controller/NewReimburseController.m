@@ -194,13 +194,13 @@
     if (_rePurchaseBook == editReimburseBook) {
         // 显示删除按钮
         //保存
-        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+        UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,15,15)];
         [rightButton setBackgroundImage:[UIImage imageNamed:@"NewReimburseController_Save"] forState:UIControlStateNormal];
         [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
         
         //删除
-        UIButton*rightButton1 = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+        UIButton*rightButton1 = [[UIButton alloc]initWithFrame:CGRectMake(0,0,15,15)];
        [rightButton1 setBackgroundImage:[UIImage imageNamed:@"NewReimburseController_Dele"] forState:UIControlStateNormal];
         [rightButton1 addTarget:self action:@selector(delReimburseBook)forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc]initWithCustomView:rightButton1];
@@ -383,6 +383,7 @@
             cell.model = _netWorkRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
+            cell.deleBtn.hidden = YES;
         }else{
             cell.dataArray = _editPurchaseRccordArray[indexPath.row];
             cell.indexTag = indexPath.row;

@@ -36,7 +36,7 @@
     
 }
 - (void)initData{
-    self.messageTitleArray = @[@"报销部门",@"报销日期",@"收款账号"];
+    self.messageTitleArray = @[@"报销日期",@"收款账号"];
     NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_model.applyDate];
     NSString *bankNumber = [NSString stringWithFormat:@"%lu",_model.accountId];
     self.messageContentArray = @[@" ",time,bankNumber];
@@ -102,7 +102,7 @@
     if (section == 0) {
         return 1 ;
     }else if (section == 1){
-        return 3;
+        return 2;
     }else{
         return _model.details.count;
     }

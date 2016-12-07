@@ -85,8 +85,8 @@
     if (_btn == nil) {
         _btn = [UIButton buttonWithType:UIButtonTypeCustom];
         _btn.backgroundColor = [UIColor clearColor];
-        _btn.layer.masksToBounds = YES;
-        _btn.layer.cornerRadius = 15;
+//        _btn.layer.masksToBounds = YES;
+//        _btn.layer.cornerRadius = 15;
     }
     return _btn;
 }

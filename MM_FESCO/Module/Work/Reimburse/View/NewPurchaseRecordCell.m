@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIButton *deleBtn;
+
 
 @property (nonatomic, strong) UIImageView *flageImageView;
 
@@ -133,7 +133,7 @@
 - (UIImageView *)flageImageView{
     if (_flageImageView == nil) {
         _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = [UIColor cyanColor];
+        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     }
     return _flageImageView;
 }
@@ -169,8 +169,16 @@
     return _moneyLabel;
 }
 
-- (void)setModel:(NewPurchaseRecordModel *)model{
-    _titleLabel.text = model.spendType;
+- (void)setModel:(EditMessageModel *)model{
+    if (model.spendType) {
+        _titleLabel.text = model.spendType;
+    }else{
+        _titleLabel.text = @"未知";
+    }
+    
+    
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendType substringToIndex:2]]];
+    
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: model.spendBegin];
     if (model.spendEnd) {
@@ -182,6 +190,7 @@
 }
 - (void)setDataArray:(NSArray *)dataArray{
     _titleLabel.text = dataArray[9];
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[dataArray[9] substringToIndex:2]]];
     NSString *timeStr = @"";
     timeStr = dataArray[1];
     if (dataArray[2]) {

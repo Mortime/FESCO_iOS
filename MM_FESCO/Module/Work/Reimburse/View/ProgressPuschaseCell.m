@@ -62,7 +62,7 @@
         
     }];
     [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
         make.height.mas_equalTo(@30);
@@ -145,6 +145,10 @@
 
 - (void)setModel:(NewPurchaseRecordModel *)model{
     _titleLabel.text = model.spendType;
+    
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendType substringToIndex:2]]];
+    
+    
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: model.spendBegin];
     if (model.spendEnd) {
