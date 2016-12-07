@@ -190,7 +190,7 @@
 
 - (UIView *)bgView{
     if (_bgView == nil) {
-        _bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.width - 20, 60)];
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, kMMWidth - 20, 60)];
         _bgView.backgroundColor = [UIColor whiteColor];
     }
     return _bgView;
