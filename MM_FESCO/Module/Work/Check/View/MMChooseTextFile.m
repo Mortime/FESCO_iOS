@@ -110,7 +110,9 @@
     if (_isShowDataPickView) {
         [self valueChange:_dateView];
     }
-    
+    if ([self.rightTextFiled.text isEqualToString:@""]) {
+        self.rightTextFiled.text = self.dataArray[0];
+    }
    
         if (_didEndEditingBlock) {
             _didEndEditingBlock(self.rightTextFiled,self.tag);
@@ -138,9 +140,6 @@
     NSString *resultString = self.dataArray[row];
     self.rightTextFiled.text = resultString;
     
-//    if (_didEndEditingBlock) {
-//        _didEndEditingBlock(self.rightTextFiled,self.tag);
-//    }
     
 }
 #pragma mark ----- UIDataView
@@ -180,7 +179,6 @@
 - (UILabel *)leftLabel{
     if (_leftLabel == nil) {
         _leftLabel = [[UILabel alloc] init];
-//        _leftLabel.centerY = self.bgView.centerY;
         _leftLabel.font = [UIFont systemFontOfSize:14];
         _leftLabel.textColor = [UIColor grayColor];
     }
@@ -203,7 +201,7 @@
         _pickerView = [[UIPickerView alloc] init];
         _pickerView.delegate = self;
         _pickerView.dataSource = self;
-//        _pickerView.backgroundColor = [UIColor whiteColor];
+        
     }
     return _pickerView;
 }
