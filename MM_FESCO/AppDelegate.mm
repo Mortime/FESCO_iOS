@@ -49,6 +49,8 @@
     // 启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
     
+    
+    [self localNotificationWithApplication:application LaunchOptions:launchOptions];
      [self sysConfigWithApplication:application LaunchOptions:launchOptions];
     
     BOOL isGetNewTonkey = [MMLoginTool checkCancelAppointmentWithBeginTime];
@@ -100,6 +102,113 @@
     EMOptions *options = [EMOptions optionsWithAppkey:@"1172160923115122#mm"];
 //    options.apnsCertName = @"istore_dev";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
+}
+// 注册本地通知
+- (void)localNotificationWithApplication:(UIApplication *)application LaunchOptions:(NSDictionary *)launchOptions{
+//    UILocalNotification *notification = [[UILocalNotification alloc] init];
+//    // 设置触发通知的时间
+//    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+//    NSLog(@"fireDate=%@",fireDate);
+//    
+//    notification.fireDate = fireDate;
+//    // 时区
+//    notification.timeZone = [NSTimeZone defaultTimeZone];
+//    // 设置重复的间隔
+//    notification.repeatInterval = kCFCalendarUnitSecond;
+//    
+//    // 通知内容
+//    notification.alertBody =  @"该签到了";
+//    notification.applicationIconBadgeNumber = 1;
+//    // 通知被触发时播放的声音
+//    notification.soundName = UILocalNotificationDefaultSoundName;
+//    // 通知参数
+//    NSDictionary *userDict = [NSDictionary dictionaryWithObject:@"签到" forKey:@"key"];
+//    notification.userInfo = userDict;
+//    
+//    // ios8后，需要添加这个注册，才能得到授权
+//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
+//                                                                                 categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        // 通知重复提示的单位，可以是天、周、月
+//        notification.repeatInterval = NSCalendarUnitDay;
+//    } else {
+//        // 通知重复提示的单位，可以是天、周、月
+//        notification.repeatInterval = NSDayCalendarUnit;
+//    }
+//    
+//    // 执行通知注册
+//    [application scheduleLocalNotification:notification];
+    
+    NSDate *now = [NSDate date];
+    //取得系统时间
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    components = [calendar components:unitFlags fromDate:now];
+    NSInteger hour = [components hour];
+    NSInteger min = [components minute];
+    NSInteger sec = [components second];
+    NSInteger week = [components weekday];
+    MMLog(@"week = %lu",week);
+    
+    UIUserNotificationSettings *seting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+    
+    [application registerUserNotificationSettings:seting];
+    
+    
+    UILocalNotification*local=[[UILocalNotification alloc]init];
+    
+    //给这些属性赋值才能让通知有特定的内容
+    
+    local.alertBody=@"亲,该上班了,记得签到哦!";
+    
+    //特定的时间让显示出来(从现在5秒后显示出来)
+    
+//    local.fireDate=[NSDate dateWithTimeIntervalSinceNow:10];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    
+    
+        NSDate *date = [formatter dateFromString:@"09:22:00"];
+        //通知发出的时间
+        local.fireDate = date;
+    
+    if (!(week == 1 || week == 7)) {
+        local.repeatInterval = kCFCalendarUnitDay;
+    }
+
+
+
+    //滑动解锁的文字(在推送通知信息的下面一小行字)
+
+    local.alertAction =@"签到";
+    
+    //有声音给声音,没声音用默认的
+    
+    local.soundName=@"UILocalNotificationDefaultSoundName";
+    
+//        local.repeatInterval = kCFCalendarUnitSecond;
+    
+    //设置图标右上角数字
+    
+    local.applicationIconBadgeNumber = -1;
+    
+    //用户信息
+    
+    local.userInfo=@{@"name":@"亲",@"content":@"该签到了哦!",@"time":@"20180101"};
+    
+    //3:定制一个通知 
+    [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
+    
+    
+    [[UIApplication sharedApplication]scheduleLocalNotification:local];
+    
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
