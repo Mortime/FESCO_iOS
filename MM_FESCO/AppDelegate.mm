@@ -177,7 +177,7 @@
     [formatter setDateFormat:@"HH:mm:ss"];
     
     
-        NSDate *date = [formatter dateFromString:@"09:22:00"];
+        NSDate *date = [formatter dateFromString:@"08:20:00"];
         //通知发出的时间
         local.fireDate = date;
     

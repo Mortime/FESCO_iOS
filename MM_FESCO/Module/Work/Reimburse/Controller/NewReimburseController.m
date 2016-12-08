@@ -546,7 +546,7 @@
    
     [self editPurchaseDataInModel];
     if (!_oneStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销类型"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销类型"];
         [toastView show];
         return;
         
@@ -559,20 +559,20 @@
     }
     
     if (!_dateStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销日期"];
         [toastView show];
         return;
         
     }
     
     if (!_groupStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
         [toastView show];
         return;
         
     }
     if (!_peopleStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报收款人"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择收款人"];
         [toastView show];
         return;
         
@@ -634,7 +634,7 @@
     
     [self editPurchaseDataInModel];
     if (!_oneStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销模板"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销模板"];
         [toastView show];
         return;
         
@@ -647,14 +647,14 @@
     }
     
     if (!_dateStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销日期"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销日期"];
         [toastView show];
         return;
         
     }
     
     if (!_groupStr) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报报销部门"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
         [toastView show];
         return;
         
