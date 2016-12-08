@@ -187,8 +187,8 @@
     local.alertAction =@"签到";
     
     //有声音给声音,没声音用默认的
-    
-    local.soundName=@"UILocalNotificationDefaultSoundName";
+        local.soundName = UILocalNotificationDefaultSoundName;
+//    local.soundName=@"UILocalNotificationDefaultSoundName";
     
 //        local.repeatInterval = kCFCalendarUnitSecond;
     
