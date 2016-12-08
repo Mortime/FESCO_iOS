@@ -33,6 +33,7 @@
 #define kSignStatisticDate @"SignStatisticDate"   // 签到统计日期记录
 
 
+
 typedef NS_ENUM(NSUInteger,RecodeType){
     
     RecodeTypeCheck,   // 考勤记录

@@ -11,7 +11,7 @@
 
 
 
-@interface MPImageProgressCollectionCell()
+@interface MPImageProgressCollectionCell()<UploadFiledProgressDelegate>
 
 @property(nonatomic,strong)M13ProgressViewPie *progressView;
 
@@ -47,13 +47,13 @@
             _deleteBtn.layer.masksToBounds = YES;
             
             [_deleteBtn addTarget:self action:@selector(deleteBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-            [self.contentView addSubview:_deleteBtn];
+//            [self.contentView addSubview:_deleteBtn];
         }
         
         if (!_progressView) {
-            _progressView=[[M13ProgressViewPie alloc]initWithFrame:CGRectMake(kImageCollectionCell_Width-25, kImageCollectionCell_Width-25, 20, 20)];
+            _progressView=[[M13ProgressViewPie alloc]initWithFrame:CGRectMake(kImageCollectionCell_Width-15, kImageCollectionCell_Width-15, 15, 15)];
             _progressView.primaryColor=[UIColor whiteColor];
-            _progressView.secondaryColor=[UIColor grayColor];
+            _progressView.secondaryColor= MM_MAIN_FONTCOLOR_BLUE;
             [self.contentView addSubview:_progressView];
         }
     }
@@ -92,6 +92,7 @@
             if (imageItem&&self.curImageItem.uploadState!=MPImageUploadStateSuccess) {
                 
                 UploadFile *upload = [[UploadFile alloc] init];
+                upload.delegate = self;
                  NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
                 
                 PHFetchResult *fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[self.curImageItem.assetURL] options:nil];
@@ -143,7 +144,14 @@
     }
 }
 
+- (void)uploadFiledProgressDelegateWithSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
+    
+    CGFloat propress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.propress=propress;
+    });
 
+}
 -(void)setPropress:(CGFloat)propress
 {
     _propress=propress;

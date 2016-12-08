@@ -80,9 +80,14 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
     [dataM appendData:[topStr dataUsingEncoding:NSUTF8StringEncoding]];
     [dataM appendData:dataImage];
     
-    NSString *bottomStr = [self bottomString:[NSString stringWithFormat:@"上传图片%lu",imgIndex] value:[NSString stringWithFormat:@"图片%lu",imgIndex]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // 设置时间格式
+    formatter.dateFormat            = @"yyyyMMddHHmmss";
+    NSString *str                         = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *bottomStr = [self bottomString:[NSString stringWithFormat:@"上传时间%@",str] value:str];
      // 保存图片描述
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"图片%lu",imgIndex] forKey:@"imgDes"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"上传时间%@",str] forKey:@"imgDes"];
 
     [dataM appendData:[bottomStr dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -122,7 +127,7 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
 //    }];
 
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request     delegate:self];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection == nil) {
         // 创建失败
         return;
@@ -210,6 +215,9 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
     
     MMLog(@"bytesWritten = %lu,totalBytesWritten= = %lu,totalBytesExpectedToWrite = %lu",bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+    if ([_delegate respondsToSelector:@selector(uploadFiledProgressDelegateWithSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
+        [_delegate uploadFiledProgressDelegateWithSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
+    }
     
 }
 // 接收数据

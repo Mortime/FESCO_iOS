@@ -506,23 +506,38 @@
 }
 // 点击删除
 - (void)delReimburseBook{
-    [NetworkEntity postDelePurchaseBookWithApplyId:_reimburseModel.applyId Success:^(id responseObject) {
-        
-        MMLog(@"DelePurchaseBook  =======responseObject=====%@",responseObject);
-        if ([[responseObject objectForKey:@"errcode"] intValue] == 0) {
-            ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
-            [alertView show];
-            [self.navigationController popViewControllerAnimated:YES];
-        }else{
-            ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
-            [alertView show];
+    
+    // 弹出提示框
+    [BLPFAlertView showAlertWithTitle:@"提示" message:@"您要删除改报销单吗?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] completion:^(NSUInteger selectedOtherButtonIndex) {
+        MMLog(@"index = %lu",selectedOtherButtonIndex+1);
+        NSUInteger indexAlert = selectedOtherButtonIndex + 1;
+        if (indexAlert == 1) {
+            // 删除报销单
+            [NetworkEntity postDelePurchaseBookWithApplyId:_reimburseModel.applyId Success:^(id responseObject) {
+                
+                MMLog(@"DelePurchaseBook  =======responseObject=====%@",responseObject);
+                if ([[responseObject objectForKey:@"errcode"] intValue] == 0) {
+                    ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
+                    [alertView show];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
+                    [alertView show];
+                }
+                
+            } failure:^(NSError *failure) {
+                
+                MMLog(@"DelePurchaseBook  =======failure=====%@",failure);
+                ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+                [alertView show];
+            }];
+
+            
+            
+        }else {
+            return ;
         }
         
-    } failure:^(NSError *failure) {
-        
-        MMLog(@"DelePurchaseBook  =======failure=====%@",failure);
-        ToastAlertView *alertView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-        [alertView show];
     }];
 }
 
