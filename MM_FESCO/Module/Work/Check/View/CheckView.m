@@ -247,13 +247,13 @@
             if (_signType == 1 || _signType == 3) {
                 
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:[NSDate date] forKey:@"kDate"];
+                [defaults setObject:[NSDate date] forKey:kSignDate];
                 
-                NSString *numberStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"kSignNumber"];
+                NSString *numberStr = [[NSUserDefaults standardUserDefaults] objectForKey:kSingNumber];
                 NSInteger number = [numberStr integerValue];
                 number = number + 1;
                 //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:[NSString stringWithFormat:@"%lu",number] forKey:@"kSignNumber"];
+                [defaults setObject:[NSString stringWithFormat:@"%lu",number] forKey:kSingNumber];
                 _bigSignLable.text = [NSString stringWithFormat:@"%lu",number];
  
             }
@@ -438,12 +438,17 @@
 - (UILabel *)bigSignLable{
     if (_bigSignLable == nil) {
         _bigSignLable = [[UILabel alloc]init];
-        _bigSignLable.text = @"0";
+       
         _bigSignLable.font = [UIFont boldSystemFontOfSize:80];
         _bigSignLable.textColor = [UIColor whiteColor];
         _bigSignLable.textAlignment = NSTextAlignmentRight;
-        NSString *number = [[NSUserDefaults standardUserDefaults] objectForKey:@"kSignNumber"];
-        _bigSignLable.text = number;
+        NSString *number = [[NSUserDefaults standardUserDefaults] objectForKey:kSingNumber];
+        if ([number integerValue] > 0) {
+            _bigSignLable.text = number;
+        }else{
+             _bigSignLable.text = @"0";
+        }
+        
     }
     return _bigSignLable;
 }

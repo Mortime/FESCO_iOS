@@ -107,13 +107,13 @@
     NSString *dateStr = [dateFormat stringFromDate:[NSDate date]];
     MMLog(@"dateStr  ==== dateStr   ======= %@",dateStr);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:dateStr forKey:@"kDate"];
+    [defaults setObject:dateStr forKey:kSignStatisticDate];
     [self recodeDate];
 
 }
 - (void)recodeDate{
     MMLog(@"我被通知了");
-    NSString *dateStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"kDate"];
+    NSString *dateStr = [[NSUserDefaults standardUserDefaults] objectForKey:kSignStatisticDate];
     [NetworkEntity postCheckCheckWithDate:dateStr success:^(id responseObject) {
                 MMLog(@"CheckWithDate ===responseObject=========%@",responseObject);
                 

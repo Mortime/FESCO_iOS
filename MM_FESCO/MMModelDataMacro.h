@@ -14,6 +14,8 @@
 
 #define t_applySignup @"t_applySignup"  // 补签申请数据库表
 
+
+// 通知
 #define t_purchaseRecord   @"t_purchaseRecord" // 添加消费记录
 
 #define kTonkenChangeNotifition  @"TonkenChangeNotifition" // tonkey改变的通知
@@ -23,6 +25,12 @@
 #define kGetReimburseRecordNotifition  @"GetReimburseRecordNotifition"  // 加载消费记录的通知
 
 #define kGetPicIDNotifition @"GetPicIDNotifition" // 通知控制器取出PicID
+
+
+// Key标识符
+#define kSingNumber  @"SingNumber"  //  存储签到次数
+#define kSignDate    @"SignDate"    // 记录签到日期,用于次日签到数据清0
+#define kSignStatisticDate @"SignStatisticDate"   // 签到统计日期记录
 
 
 typedef NS_ENUM(NSUInteger,RecodeType){

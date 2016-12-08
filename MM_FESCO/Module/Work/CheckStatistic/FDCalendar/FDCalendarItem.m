@@ -338,7 +338,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:dateStr forKey:@"kDate"];
+    [defaults setObject:dateStr forKey:kSignStatisticDate];
     [[NSNotificationCenter defaultCenter] postNotificationName:kDateChangeNotifition object:self];
     
     

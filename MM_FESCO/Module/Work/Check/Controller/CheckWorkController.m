@@ -43,14 +43,11 @@
     
     
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [self.checkView.locService stopUserLocationService];
-    [self.checkView.mapView viewWillDisappear];
-    self.checkView.mapView.delegate = nil;
+- (void)viewWillAppear:(BOOL)animated{
     
     // 判断签到次数是否清空
     // 当点击的不是本月的数据时, 进行数据刷新
-    NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:@"kDate"];
+    NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:kSignDate];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormat stringFromDate:date];
@@ -59,11 +56,17 @@
     [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr1 = [dateFormat1 stringFromDate: [NSDate date]];
     if (![dateStr isEqualToString:dateStr1]) {
-        NSString *number = [[NSUserDefaults standardUserDefaults] objectForKey:@"kSignNumber"];
+        NSString *number = [[NSUserDefaults standardUserDefaults] objectForKey:kSingNumber];
         number = @"0";
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:number forKey:@"kSignNumber"];
+        [defaults setObject:number forKey:kSingNumber];
     }
+
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.checkView.locService stopUserLocationService];
+    [self.checkView.mapView viewWillDisappear];
+    self.checkView.mapView.delegate = nil;
     
 
 }
