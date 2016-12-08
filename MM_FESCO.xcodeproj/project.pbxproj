@@ -297,6 +297,7 @@
 		76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */; };
 		76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */; };
 		76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */; };
+		76B3EB2A1DF956AD00814610 /* NetMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B3EB291DF956AD00814610 /* NetMonitor.m */; };
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
 		76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95631DD05F14000E6EF1 /* NewReimburseTemplateCell.m */; };
@@ -977,6 +978,8 @@
 		76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoModel.m; sourceTree = "<group>"; };
 		76AB71681DDAFCF8001B2D0D /* PurchaseCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCityCell.h; sourceTree = "<group>"; };
 		76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCityCell.m; sourceTree = "<group>"; };
+		76B3EB281DF956AD00814610 /* NetMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetMonitor.h; sourceTree = "<group>"; };
+		76B3EB291DF956AD00814610 /* NetMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetMonitor.m; sourceTree = "<group>"; };
 		76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseCell.h; sourceTree = "<group>"; };
 		76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseCell.m; sourceTree = "<group>"; };
 		76BB955F1DD058A3000E6EF1 /* NewReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimburseController.h; sourceTree = "<group>"; };
@@ -1780,6 +1783,8 @@
 		5977624D1D48AB8100BD8472 /* 网络 */ = {
 			isa = PBXGroup;
 			children = (
+				76B3EB281DF956AD00814610 /* NetMonitor.h */,
+				76B3EB291DF956AD00814610 /* NetMonitor.m */,
 				5977624E1D48ABCB00BD8472 /* NetworkTool.h */,
 				5977624F1D48ABCB00BD8472 /* NetworkTool.m */,
 				59D3FE971D507C62002CCCA4 /* NetworkEntity.h */,
@@ -3020,6 +3025,7 @@
 				59EC91E71D98D9AD00E802FA /* PSTCollectionViewData.m in Sources */,
 				597223EB1DAE0CA600D01A7A /* SMPageControl.m in Sources */,
 				76F02FC81DD4531B00D32771 /* QBAssetsCollectionOverlayView.m in Sources */,
+				76B3EB2A1DF956AD00814610 /* NetMonitor.m in Sources */,
 				594776011D768FEF0094D354 /* RefreshTableView.m in Sources */,
 				76F030091DD45E0100D32771 /* MPUploadImageHelper.m in Sources */,
 				59EC91D41D98D9AD00E802FA /* EMSDWebImageCompat.m in Sources */,

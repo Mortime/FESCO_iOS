@@ -125,7 +125,9 @@ static NSString *uploadID;              // 上传(php)脚本中，接收文件�
 //        NSLog(@"result= %@", result);
 //
 //    }];
-
+    
+    
+    
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection == nil) {
