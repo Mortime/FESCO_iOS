@@ -3418,7 +3418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
 			};
 			name = Debug;
 		};
@@ -3449,7 +3449,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
 			};
 			name = Release;
 		};

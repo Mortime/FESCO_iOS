@@ -147,6 +147,8 @@
 //    [application scheduleLocalNotification:notification];
     
     NSDate *now = [NSDate date];
+    
+
     //取得系统时间
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -157,7 +159,13 @@
     NSInteger sec = [components second];
     NSInteger week = [components weekday];
     MMLog(@"week = %lu",week);
+    if (week <= 6) {
+        [self newLocalNotifitionWithApplication:application LaunchOptions:launchOptions];
+    }
     
+}
+     
+- (void)newLocalNotifitionWithApplication:(UIApplication *)application LaunchOptions:(NSDictionary *)launchOptions{
     UIUserNotificationSettings *seting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
     
     [application registerUserNotificationSettings:seting];
@@ -167,35 +175,35 @@
     
     //给这些属性赋值才能让通知有特定的内容
     
+    
     local.alertBody=@"亲,该上班了,记得签到哦!";
+    
+    local.timeZone = [NSTimeZone defaultTimeZone];
     
     //特定的时间让显示出来(从现在5秒后显示出来)
     
-//    local.fireDate=[NSDate dateWithTimeIntervalSinceNow:10];
+    //    local.fireDate=[NSDate dateWithTimeIntervalSinceNow:10];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
     
     
-        NSDate *date = [formatter dateFromString:@"08:20:00"];
-        //通知发出的时间
-        local.fireDate = date;
+    NSDate *date = [formatter dateFromString:@"08:20:00"];
+    //通知发出的时间
+    local.fireDate = date;
+    local.repeatInterval = kCFCalendarUnitWeekday;
     
-    if (!(week == 1 || week == 7)) {
-        local.repeatInterval = kCFCalendarUnitDay;
-    }
-
-
-
+    
+    
     //滑动解锁的文字(在推送通知信息的下面一小行字)
-
+    
     local.alertAction =@"签到";
     
     //有声音给声音,没声音用默认的
-        local.soundName = UILocalNotificationDefaultSoundName;
-//    local.soundName=@"UILocalNotificationDefaultSoundName";
+    local.soundName = UILocalNotificationDefaultSoundName;
+    //    local.soundName=@"UILocalNotificationDefaultSoundName";
     
-//        local.repeatInterval = kCFCalendarUnitSecond;
+    //        local.repeatInterval = kCFCalendarUnitSecond;
     
     //设置图标右上角数字
     
@@ -205,15 +213,13 @@
     
     local.userInfo=@{@"name":@"亲",@"content":@"该签到了哦!",@"time":@"20180101"};
     
-    //3:定制一个通知 
+    //3:定制一个通知
     [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
     
     
-    [[UIApplication sharedApplication]scheduleLocalNotification:local];
-    
-    
-    
-    
+    [application scheduleLocalNotification:local];
+
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

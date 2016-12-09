@@ -193,7 +193,20 @@
         [self valueChange:_dateView];
     }
     
-    
+    if ([self.detailTextField.text isEqualToString:@""]) {
+        if (_isGroup) {
+            GroupInfoModel *model =  self.dataArray[0];
+
+            self.detailTextField.text = model.groupName;
+        }else if(self.dataArray.count){
+            BankInfoModel *model =  self.dataArray[0];
+            
+            NSString *result = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
+            
+            self.detailTextField.text = result;
+        }
+        
+    }
     if (_didEndEditingBlock) {
         _didEndEditingBlock(self.detailTextField,self.tag);
     }
