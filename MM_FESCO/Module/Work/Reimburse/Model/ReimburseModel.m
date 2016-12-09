@@ -73,7 +73,8 @@
               @"applyDate":@"apply_Date",
               @"applyId":@"apply_Id",
               @"accountName":@"account_Name",
-              @"accountId":@"account_Id"
+              @"accountId":@"account_Id",
+              @"groupId":@"group_Id"
               
               };
 }

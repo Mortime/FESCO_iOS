@@ -25,7 +25,7 @@
 @implementation GroupInfoModel
 + (NSDictionary *)modelCustomPropertyMapper {
     
-    return @{ @"ID":@"id",
+    return @{ @"ID":@"group_Id",
               @"groupName":@"group_Name"
               };
 }

@@ -82,6 +82,8 @@
 
 @property (nonatomic, strong) NSString *memo;
 
+@property (nonatomic, assign) NSInteger groupId; // 报销部门id
+
 
 
 @end

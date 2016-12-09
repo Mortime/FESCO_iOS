@@ -162,15 +162,24 @@
     self.netWorkRecordArray = [NSMutableArray array];
     
     if (_rePurchaseBook == editReimburseBook) {
+        // 日期
         NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
         
+        // 报销部门
+        NSString *groupName = @"";
+        for (GroupInfoModel *model in _groupArray) {
+            if (_reimburseModel.groupId == model.ID) {
+                groupName = model.groupName;
+            }
+        }
+        // 收款人
         NSString *people = @"";
         for (BankInfoModel *model in _bankArray) {
             if (_reimburseModel.accountId == model.bankNumber) {
             people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
             }
         }
-        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,@" ",people,_reimburseModel.memo].mutableCopy;
+        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,groupName,people,_reimburseModel.memo].mutableCopy;
     }
    
     
@@ -250,6 +259,7 @@
             NSArray *groupArray = [responseObject objectForKey:@"groups"];
             for (NSDictionary *dic in groupArray) {
                 GroupInfoModel *modle = [GroupInfoModel yy_modelWithDictionary:dic];
+                MMLog(@"组信息新建时 ============ %lu",modle.ID);
                 [_groupArray addObject:modle];
             }
             // 审批人
@@ -259,7 +269,19 @@
                 [_applyManArray addObject:modle];
             }
             
+            
+            // 当编辑报销单时,因为其他数据是直接从_reimburseModel 获取的,所以不需要刷新;
+            
             if (_rePurchaseBook == editReimburseBook) {
+                
+                // 报销部门
+                NSString *groupName = @"";
+                for (GroupInfoModel *model in _groupArray) {
+                    if (_reimburseModel.groupId == model.ID) {
+                        groupName = model.groupName;
+                    }
+                }
+                [_textTitleArray replaceObjectAtIndex:3 withObject:groupName];
                 
                 NSString *people = @"";
                 for (BankInfoModel *model in _bankArray) {
@@ -839,10 +861,13 @@
             _dateStr = _reimburseModel.editTime;
         }
         if (!_groupStr) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请选择报销部门"];
-            [toastView show];
-            return;
-            
+            for (GroupInfoModel *model in _groupArray) {
+                if (_reimburseModel.groupId == model.ID) {
+                    _groupStr = model.groupName;
+                    _groupID = model.ID;
+                }
+            }
+
         }
         if (!_peopleStr) {
             for (BankInfoModel *model in _bankArray) {
