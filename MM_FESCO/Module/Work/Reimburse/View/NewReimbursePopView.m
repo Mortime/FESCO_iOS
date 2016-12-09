@@ -10,6 +10,7 @@
 #import "NewReimbursePopViewCell.h"
 #import "TemplateInfoModel.h"
 #import "GroupInfoModel.h"
+#import "ReimburseApplyManModel.h"
 #define kBottomH  50
 
 #define kButtonW  ((kMMWidth - 40 - 1) / 2)
@@ -88,8 +89,8 @@
         cell = [[NewReimbursePopViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     if (_popViewType == shenpiren) {
-        GroupInfoModel *model = _dataArray[indexPath.row];
-        cell.titleStr = model.groupName;
+        ReimburseApplyManModel *model = _dataArray[indexPath.row];
+        cell.titleStr = model.empName;
 
     }else{
         TemplateInfoModel *model = _dataArray[indexPath.row];
@@ -127,9 +128,9 @@
             
             
             if (_popViewType == shenpiren) {
-                GroupInfoModel *model = _dataArray[_index];
+                ReimburseApplyManModel *model = _dataArray[_index];
                 
-                [_delegate newReimbursePopViewDelegateWithType:model.groupName typeCode:model.ID indexTag:self.tag];
+                [_delegate newReimbursePopViewDelegateWithType:model.empName typeCode:model.empId indexTag:self.tag];
 
             }else{
                 TemplateInfoModel *model = _dataArray[_index];

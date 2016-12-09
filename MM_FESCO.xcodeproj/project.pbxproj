@@ -265,6 +265,7 @@
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
+		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
@@ -915,6 +916,8 @@
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
+		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
+		761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApplyManModel.m; sourceTree = "<group>"; };
 		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
@@ -2549,6 +2552,8 @@
 				76D12A881DD95C5600249133 /* BankInfoModel.m */,
 				76929B251DDEEB8E00775AF3 /* GroupInfoModel.h */,
 				76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */,
+				761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */,
+				761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */,
 				76929B221DDEAD7100775AF3 /* NewPurchaseRecordModel.h */,
 				76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */,
 				7682502D1DE29FE9007520BD /* ReimburseModel.h */,
@@ -3227,6 +3232,7 @@
 				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
 				597223A51DADE05400D01A7A /* BuffetController.m in Sources */,
 				59EC914E1D98CB5900E802FA /* EaseMessageReadManager.m in Sources */,
+				761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */,
 				764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */,
 				59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */,
 				76CBDCEE1DDB064800272D91 /* DVVSubCityCell.m in Sources */,

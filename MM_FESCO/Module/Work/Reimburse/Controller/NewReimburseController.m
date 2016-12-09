@@ -17,6 +17,7 @@
 #import "TemplateInfoModel.h"
 #import "NewPurchaseRecordModel.h"
 #import "GroupInfoModel.h"
+#import "ReimburseApplyManModel.h"
 #import "EditMessageModel.h"
 #import "BLPFAlertView.h"
 
@@ -51,6 +52,8 @@
 @property (nonatomic, strong) NSMutableArray *bankArray;   // 银行信息数组
 
 @property (nonatomic, strong) NSMutableArray *groupArray;  // 部门数组
+
+@property (nonatomic, strong) NSMutableArray *applyManArray;  // 部门数组
 
 @property (nonatomic, strong) NSMutableArray *editPurchaseRccordArray;   // 消费记录数组  这个消费记录数组 为编辑时数组
 
@@ -155,6 +158,7 @@
     self.bankArray = [NSMutableArray array];
     self.editPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
+    self.applyManArray = [NSMutableArray array];
     self.netWorkRecordArray = [NSMutableArray array];
     
     if (_rePurchaseBook == editReimburseBook) {
@@ -226,7 +230,7 @@
 - (void)initData{
     
     [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
-//        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+        MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
         if (responseObject) {
             _dic = responseObject;
             // 模板信息
@@ -248,6 +252,13 @@
                 GroupInfoModel *modle = [GroupInfoModel yy_modelWithDictionary:dic];
                 [_groupArray addObject:modle];
             }
+            // 审批人
+            NSArray *applyManArray = [responseObject objectForKey:@"approvalManList"];
+            for (NSDictionary *dic in applyManArray) {
+                ReimburseApplyManModel *modle = [ReimburseApplyManModel yy_modelWithDictionary:dic];
+                [_applyManArray addObject:modle];
+            }
+            
             if (_rePurchaseBook == editReimburseBook) {
                 
                 NSString *people = @"";
@@ -674,7 +685,7 @@
         }
     }
 
-    self.popViewApplyMan.dataArray = self.groupArray;
+    self.popViewApplyMan.dataArray = self.applyManArray;
     
     [self.view addSubview:self.popViewApplyMan];
 }
