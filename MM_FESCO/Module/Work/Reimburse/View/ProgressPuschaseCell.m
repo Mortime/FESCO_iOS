@@ -107,7 +107,7 @@
 - (UIImageView *)flageImageView{
     if (_flageImageView == nil) {
         _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = [UIColor cyanColor];
+        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     }
     return _flageImageView;
 }

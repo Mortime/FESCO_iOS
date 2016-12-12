@@ -67,6 +67,7 @@
 @property (nonatomic, strong) NSString *groupStr; // 报销组名称
 @property (nonatomic, strong) NSString *peopleStr; // 收款人
 @property (nonatomic, assign) NSInteger peopleNumber; // 收款账号
+@property (nonatomic, assign) NSInteger peopleID; // 收款人账号ID
 @property (nonatomic, strong) NSString *momeStr;  // 备注
 @property (nonatomic, strong) NSString *remomeStr; // 敏感字段
 
@@ -611,7 +612,7 @@
         
     }
     
-    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
+    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
         
         MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
@@ -636,7 +637,7 @@
 // 点击提交时
 - (void)commit{
 //    rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleNumber purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:0 applyID:_detailid Success:^(id responseObject) {
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:0 applyID:_detailid Success:^(id responseObject) {
             MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                 // 提交成功
@@ -827,6 +828,7 @@
             if ([str isEqualToString:textField.text]) {
                 _peopleStr = model.bankPayName;
                 _peopleNumber  = model.bankNumber;
+                _peopleID = model.empBankId;
             }
         }
         [_textTitleArray replaceObjectAtIndex:4 withObject:textField.text];
@@ -875,6 +877,7 @@
                     NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
                         _peopleStr = str;
                         _peopleNumber  = model.bankNumber;
+                        _peopleID = model.empBankId;
                     }
 
                 }

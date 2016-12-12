@@ -12,7 +12,8 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     
     return @{ @"bankNumber":@"emp_Bank_No",
-              @"bankPayName":@"bank_Pay_Name"
+              @"bankPayName":@"bank_Pay_Name",
+              @"empBankId":@"emp_Bank_Id"
               };
 }
 

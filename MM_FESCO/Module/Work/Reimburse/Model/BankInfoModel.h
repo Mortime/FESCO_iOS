@@ -33,4 +33,6 @@
 
 @property (nonatomic, strong) NSString *bankPayName;
 
+@property (nonatomic, assign) NSInteger empBankId;
+
 @end
