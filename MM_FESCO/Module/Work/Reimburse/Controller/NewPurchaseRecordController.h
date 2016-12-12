@@ -11,4 +11,7 @@
 @interface NewPurchaseRecordController : UIViewController
 
 @property (nonatomic, strong) NSDictionary *dic;
+
+@property (nonatomic, assign) RePurchaseBookType bookType;
+
 @end

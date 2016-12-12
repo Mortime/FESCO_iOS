@@ -57,7 +57,8 @@ typedef NS_ENUM(NSUInteger,popViewType){
 typedef NS_ENUM(NSUInteger,RePurchaseBookType){
     
     newReimburseBook,   // 新建报销单
-    editReimburseBook     // 编辑报销单
+    editReimburseBook,    // 编辑报销单
+    noBookPurchase         // 未制单消费
     
 };
 

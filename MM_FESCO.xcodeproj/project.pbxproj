@@ -301,6 +301,9 @@
 		76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */; };
 		76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */; };
 		76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */; };
+		76B1F5CC1DFE4360001EBAB5 /* NOBookPurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1F5CB1DFE4360001EBAB5 /* NOBookPurchaseController.m */; };
+		76B1F5CF1DFE44C9001EBAB5 /* NOBookPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1F5CE1DFE44C9001EBAB5 /* NOBookPurchaseCell.m */; };
+		76B1F5D21DFE4EE6001EBAB5 /* NOBookPurchaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1F5D11DFE4EE6001EBAB5 /* NOBookPurchaseModel.m */; };
 		76B3EB2A1DF956AD00814610 /* NetMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B3EB291DF956AD00814610 /* NetMonitor.m */; };
 		76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB955D1DD026CE000E6EF1 /* ReimburseCell.m */; };
 		76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BB95601DD058A3000E6EF1 /* NewReimburseController.m */; };
@@ -993,6 +996,12 @@
 		76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoModel.m; sourceTree = "<group>"; };
 		76AB71681DDAFCF8001B2D0D /* PurchaseCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCityCell.h; sourceTree = "<group>"; };
 		76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCityCell.m; sourceTree = "<group>"; };
+		76B1F5CA1DFE4360001EBAB5 /* NOBookPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookPurchaseController.h; sourceTree = "<group>"; };
+		76B1F5CB1DFE4360001EBAB5 /* NOBookPurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookPurchaseController.m; sourceTree = "<group>"; };
+		76B1F5CD1DFE44C9001EBAB5 /* NOBookPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookPurchaseCell.h; sourceTree = "<group>"; };
+		76B1F5CE1DFE44C9001EBAB5 /* NOBookPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookPurchaseCell.m; sourceTree = "<group>"; };
+		76B1F5D01DFE4EE6001EBAB5 /* NOBookPurchaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookPurchaseModel.h; sourceTree = "<group>"; };
+		76B1F5D11DFE4EE6001EBAB5 /* NOBookPurchaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookPurchaseModel.m; sourceTree = "<group>"; };
 		76B3EB281DF956AD00814610 /* NetMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetMonitor.h; sourceTree = "<group>"; };
 		76B3EB291DF956AD00814610 /* NetMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetMonitor.m; sourceTree = "<group>"; };
 		76BB955C1DD026CE000E6EF1 /* ReimburseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseCell.h; sourceTree = "<group>"; };
@@ -2581,6 +2590,8 @@
 				7682502E1DE29FE9007520BD /* ReimburseModel.m */,
 				761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */,
 				761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */,
+				76B1F5D01DFE4EE6001EBAB5 /* NOBookPurchaseModel.h */,
+				76B1F5D11DFE4EE6001EBAB5 /* NOBookPurchaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2632,6 +2643,8 @@
 				763256F01DD319D900C9C903 /* NewPurchaseBookController.m */,
 				76515B381DED10E50054E910 /* ProgressReimburseController.h */,
 				76515B391DED10E50054E910 /* ProgressReimburseController.m */,
+				76B1F5CA1DFE4360001EBAB5 /* NOBookPurchaseController.h */,
+				76B1F5CB1DFE4360001EBAB5 /* NOBookPurchaseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2668,6 +2681,8 @@
 				76515B3F1DED12D40054E910 /* ProgressMessageCell.m */,
 				76515B411DED12FB0054E910 /* ProgressPuschaseCell.h */,
 				76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */,
+				76B1F5CD1DFE44C9001EBAB5 /* NOBookPurchaseCell.h */,
+				76B1F5CE1DFE44C9001EBAB5 /* NOBookPurchaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3037,7 +3052,9 @@
 				597223D51DADE05400D01A7A /* OverTimeApplyController.m in Sources */,
 				597223B51DADE05400D01A7A /* MMLeaveTitleView.m in Sources */,
 				59EC91571D98CB5900E802FA /* EaseRefreshTableViewController.m in Sources */,
+				76B1F5D21DFE4EE6001EBAB5 /* NOBookPurchaseModel.m in Sources */,
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
+				76B1F5CF1DFE44C9001EBAB5 /* NOBookPurchaseCell.m in Sources */,
 				597223D71DADE05400D01A7A /* OverTimeApplyCell.m in Sources */,
 				597223BD1DADE05400D01A7A /* CheckWorkController.m in Sources */,
 				597223A91DADE05400D01A7A /* ApprovalController.m in Sources */,
@@ -3081,6 +3098,7 @@
 				59EC91CE1D98D9AD00E802FA /* MWPhotoBrowser.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
 				76CBDCEB1DDB064800272D91 /* CityListViewController.m in Sources */,
+				76B1F5CC1DFE4360001EBAB5 /* NOBookPurchaseController.m in Sources */,
 				59EC915B1D98CB5900E802FA /* EaseBaseMessageCell.m in Sources */,
 				76BB95641DD05F14000E6EF1 /* NewReimburseTemplateCell.m in Sources */,
 				59EC91ED1D98D9AD00E802FA /* PSTGridLayoutItem.m in Sources */,

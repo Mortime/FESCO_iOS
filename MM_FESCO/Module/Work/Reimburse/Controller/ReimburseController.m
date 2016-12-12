@@ -13,6 +13,7 @@
 #import "ReimburseModel.h"
 #import "NewPurchaseRecordModel.h"
 #import "ProgressReimburseController.h"
+#import "NOBookPurchaseController.h"
 
 
 #define kHeaderH  130
@@ -184,8 +185,24 @@
 }
 // 点击手势
 - (void)didList:(UIGestureRecognizer *)ges{
-    ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-    [view show];
+    ReimburseRecordHeaderView *view = (ReimburseRecordHeaderView *)ges.view;
+    if (view.tag == 900) {
+        // 未制单消费
+        NOBookPurchaseController *noBookVC = [[NOBookPurchaseController alloc] init];
+        [self.navigationController pushViewController:noBookVC animated:YES];
+    }
+    if (view.tag == 901) {
+        // 我的借款
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
+
+    }
+    if (view.tag == 902) {
+        // 差旅行程
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
+
+    }
 }
 - (UITableView *)tableView {
     
@@ -216,6 +233,7 @@
         _leftRecordView.textViewStr = @"0条消费记录\n共0元";
         _leftRecordView.imgStr = @"Reimburse_weidingdanxiaofei";
         _leftRecordView.userInteractionEnabled = YES;
+        _leftRecordView.tag = 900;
         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
         [_leftRecordView addGestureRecognizer:ges];
     }
@@ -227,6 +245,7 @@
         _centerRecordView.titleStr = @"我的借款";
         _centerRecordView.textViewStr = @"剩余 0元";
         _centerRecordView.imgStr = @"Reimburse_wodejiekuang";
+        _centerRecordView.tag = 901;
         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
         [_centerRecordView addGestureRecognizer:ges];
     }
@@ -238,6 +257,7 @@
         _rightRecordView.titleStr = @"差旅行程";
         _rightRecordView.textViewStr = @"最近行程: 无";
         _rightRecordView.imgStr = @"Reimburse_wodexingcheng";
+        _rightRecordView.tag = 902;
         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didList:)];
         [_rightRecordView addGestureRecognizer:ges];
     }

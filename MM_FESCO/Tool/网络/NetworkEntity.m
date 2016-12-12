@@ -1894,11 +1894,11 @@
                           @"money_Amount":moneyAmount,
                           @"bill_Num":billNum,
                           @"detail_Memo":detailMemo,
-                          @"pic_Url":picUrl,
-                          @"pic_Desc":picDesc,
+                          @"pic_Ids":picUrl,
                           @"spend_Begin":spendBegin,
                           @"spend_End":spendEnd,
                           @"spend_City":spendCity,
+                          @"detail_Id":@"",
                           @"methodname":@"expense/saveExpenseRecord.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];

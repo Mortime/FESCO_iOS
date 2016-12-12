@@ -20,4 +20,6 @@
 
 @property (nonatomic, strong) NSString *icon;  // 标题名称
 
+@property (nonatomic, assign) RePurchaseBookType bookType;
+
 @end

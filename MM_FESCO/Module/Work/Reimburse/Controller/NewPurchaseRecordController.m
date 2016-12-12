@@ -33,14 +33,41 @@
     [self initData];
 }
 - (void)initData{
-    
-    NSArray *array = [_dic objectForKey:@"spendTypes"];
-            for (NSDictionary *dic in array) {
-                PurchaseRecordModel *modle = [PurchaseRecordModel yy_modelWithDictionary:dic];
-                [_dataArray addObject:modle];
+    if (_bookType == noBookPurchase) {
+        // 未制单消费
+        [_dataArray removeAllObjects];
+        [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
+            MMLog(@"EditReimburseBook  =======responseObject=====%@",responseObject);
+            if (responseObject) {
+                NSArray *array = [responseObject objectForKey:@"spendTypes"];
+                for (NSDictionary *dic in array) {
+                    PurchaseRecordModel *modle = [PurchaseRecordModel yy_modelWithDictionary:dic];
+                    [_dataArray addObject:modle];
+                }
+                [_tableView reloadData];
+
             }
-            [self.tableView reloadData];
-}
+            
+        } failure:^(NSError *failure) {
+            MMLog(@"EditReimburseBook  =======failure=====%@",failure);
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+            [toastView show];
+        }];
+
+    }else{
+        
+        //
+        [_dataArray removeAllObjects];
+        NSArray *array = [_dic objectForKey:@"spendTypes"];
+        for (NSDictionary *dic in array) {
+            PurchaseRecordModel *modle = [PurchaseRecordModel yy_modelWithDictionary:dic];
+            [_dataArray addObject:modle];
+        }
+        [self.tableView reloadData];
+
+    }
+    
+    }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _dataArray.count;
@@ -69,7 +96,7 @@
     PurchaseRecordModel *modle = _dataArray[indexPath.row];
     NewPurchaseSubController *subVC = [[NewPurchaseSubController alloc] init];
     subVC.title = modle.typeName;
-    
+    subVC.bookType = self.bookType;
     subVC.dataArray = modle.subTypes;
     subVC.dateType = modle.dateType;
     subVC.needCity = modle.needCity;
@@ -85,6 +112,7 @@
         bookVC.dateType = modle.dateType;
         bookVC.needCity = modle.needCity;
         bookVC.ID = modle.ID;
+        bookVC.bookType = self.bookType;
         bookVC.typePurchaseStr = modle.typeName;
         subVC.icon = modle.icon; 
 

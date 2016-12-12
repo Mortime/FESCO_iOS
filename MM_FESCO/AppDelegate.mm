@@ -51,7 +51,7 @@
     [NSThread sleepForTimeInterval:1];
     
     // 本地通知
-    [self localNotificationWithApplication:application LaunchOptions:launchOptions];
+//    [self localNotificationWithApplication:application LaunchOptions:launchOptions];
     // 系统配置
      [self sysConfigWithApplication:application LaunchOptions:launchOptions];
     //  监听网络
