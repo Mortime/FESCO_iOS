@@ -27,6 +27,7 @@
 #import "OverTimeStatistiscController.h"
 #import "ReimburseController.h"
 
+
 static NSString *kMallID = @"MallID";
 
 @interface MMMainController () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -280,6 +281,7 @@ static NSString *kMallID = @"MallID";
         
     }if (indexPath.row == 10) {
           // HRS数据录入
+        
         
     }
     if (indexPath.row == 10) {

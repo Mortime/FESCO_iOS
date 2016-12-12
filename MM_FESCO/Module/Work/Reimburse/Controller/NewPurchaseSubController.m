@@ -59,6 +59,7 @@
     bookVC.title  = self.title;
     bookVC.dateType = self.dateType;
     bookVC.needCity = self.needCity;
+    bookVC.icon = self.icon;
     
     NSDictionary *dic = _dataArray[indexPath.row];
     bookVC.ID = [[dic objectForKey:@"id"] integerValue];

@@ -13,6 +13,7 @@
 #import "UploadFile.h"
 #import "PurchaseCityCell.h"
 #import "CityListViewController.h"
+#import "NSString+FontAwesome.h"
 
 #define kBottomButtonW    ((kMMWidth) / 2)
 @interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate,NewPurchaseSubContentCellDelegate,NewPurchaseSubBookCellDelegate>
@@ -113,7 +114,14 @@
             cell = [[NewPurchaseSubTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         cell.titleLabel.text = self.title;
-        cell.iconImageView.image = [UIImage imageNamed:[NSString backPicNameWith:self.title]];
+        NSArray *iconArray = [self.icon componentsSeparatedByString:@" "];
+        FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+        
+        [cell.btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+        [cell.btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+        
+        [cell.btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+
         return cell;
 
     }

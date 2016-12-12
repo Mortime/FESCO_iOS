@@ -266,14 +266,17 @@
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
+		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
+		761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 761601CA1DFAA7BC006F9B59 /* FontAwesome.ttf */; };
+		761601D31DFAA7BC006F9B59 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601CC1DFAA7BC006F9B59 /* NSString+FontAwesome.m */; };
+		761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */; };
+		761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
 		761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */; };
 		761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */; };
 		761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */; };
-		763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763256CD1DD2B63900C9C903 /* FontAwesome.ttf */; };
-		763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */; };
 		763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */; };
 		763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */; };
 		763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */; };
@@ -918,6 +921,18 @@
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
 		761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApplyManModel.m; sourceTree = "<group>"; };
+		761601BD1DFAA26E006F9B59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		761601BF1DFAA41F006F9B59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		761601C11DFAA432006F9B59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		761601C81DFAA7BC006F9B59 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		761601C91DFAA7BC006F9B59 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		761601CA1DFAA7BC006F9B59 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		761601CB1DFAA7BC006F9B59 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		761601CC1DFAA7BC006F9B59 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		761601CD1DFAA7BC006F9B59 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		761601CF1DFAA7BC006F9B59 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
@@ -930,9 +945,6 @@
 		761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordController.m; sourceTree = "<group>"; };
 		761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMessageModel.h; sourceTree = "<group>"; };
 		761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMessageModel.m; sourceTree = "<group>"; };
-		763256CD1DD2B63900C9C903 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
-		763256CE1DD2B63900C9C903 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
-		763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		763256D31DD2B9C900C9C903 /* PurchaseRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordModel.h; sourceTree = "<group>"; };
 		763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordModel.m; sourceTree = "<group>"; };
 		763256D61DD2BF4C00C9C903 /* PurchaseRecordSubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordSubModel.h; sourceTree = "<group>"; };
@@ -1106,6 +1118,9 @@
 		3307DFA9C514EA781167E167 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				761601C11DFAA432006F9B59 /* Foundation.framework */,
+				761601BF1DFAA41F006F9B59 /* UIKit.framework */,
+				761601BD1DFAA26E006F9B59 /* CoreGraphics.framework */,
 				59FC07A21D95137600C1D0E0 /* libiconv.tbd */,
 				59FC07A01D95135400C1D0E0 /* libstdc++.6.0.9.tbd */,
 				59FC079E1D95134300C1D0E0 /* libz.tbd */,
@@ -2532,9 +2547,15 @@
 		763256CC1DD2B63900C9C903 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				763256CD1DD2B63900C9C903 /* FontAwesome.ttf */,
-				763256CE1DD2B63900C9C903 /* NSString+FontAwesome.h */,
-				763256CF1DD2B63900C9C903 /* NSString+FontAwesome.m */,
+				761601C81DFAA7BC006F9B59 /* FAImageView.h */,
+				761601C91DFAA7BC006F9B59 /* FAImageView.m */,
+				761601CA1DFAA7BC006F9B59 /* FontAwesome.ttf */,
+				761601CB1DFAA7BC006F9B59 /* NSString+FontAwesome.h */,
+				761601CC1DFAA7BC006F9B59 /* NSString+FontAwesome.m */,
+				761601CD1DFAA7BC006F9B59 /* UIFont+FontAwesome.h */,
+				761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */,
+				761601CF1DFAA7BC006F9B59 /* UIImage+FontAwesome.h */,
+				761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2866,12 +2887,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
+				761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */,
 				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */,
 				76CBDCE91DDB064700272D91 /* citydict.plist in Resources */,
-				763256D01DD2B63900C9C903 /* FontAwesome.ttf in Resources */,
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
 				76F02FCE1DD4531B00D32771 /* QBImagePickerController.strings in Resources */,
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
@@ -2959,6 +2980,7 @@
 				597223BE1DADE05400D01A7A /* CheckListModel.m in Sources */,
 				59C005C61D92542300A329CD /* RegisterController.m in Sources */,
 				76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */,
+				761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */,
 				59EC91591D98CB5900E802FA /* EaseViewController.m in Sources */,
 				597223D41DADE05400D01A7A /* MMMianCell.m in Sources */,
 				59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */,
@@ -2980,10 +3002,10 @@
 				59EC91E11D98D9AD00E802FA /* UIImageView+EMWebCache.m in Sources */,
 				764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */,
 				76F02FD51DD4539C00D32771 /* MPFileManager.m in Sources */,
+				761601D31DFAA7BC006F9B59 /* NSString+FontAwesome.m in Sources */,
 				597222ED1DADDE5900D01A7A /* MMDataBase.m in Sources */,
 				59EC91DB1D98D9AD00E802FA /* NSData+EMImageContentType.m in Sources */,
 				76515B3D1DED12BA0054E910 /* ProgressStatusCell.m in Sources */,
-				763256D11DD2B63900C9C903 /* NSString+FontAwesome.m in Sources */,
 				76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */,
 				59EC91CD1D98D9AD00E802FA /* MWPhoto.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
@@ -3156,6 +3178,7 @@
 				597223E21DADE05400D01A7A /* PhoneListTableController.m in Sources */,
 				597223BC1DADE05400D01A7A /* ApprovalViewModel.m in Sources */,
 				597223AE1DADE05400D01A7A /* OverTimeListModel.m in Sources */,
+				761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
 				76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */,
@@ -3182,6 +3205,7 @@
 				763256F11DD319D900C9C903 /* NewPurchaseBookController.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
+				761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */,
 				59EC915C1D98CB5900E802FA /* EaseCustomMessageCell.m in Sources */,
 				761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */,
 				592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */,

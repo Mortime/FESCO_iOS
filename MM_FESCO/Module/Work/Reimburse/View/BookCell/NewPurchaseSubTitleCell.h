@@ -10,7 +10,7 @@
 
 @interface NewPurchaseSubTitleCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 
 @property (nonatomic ,strong) UILabel *titleLabel;

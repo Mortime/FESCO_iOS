@@ -122,14 +122,16 @@
     _titleLabel.text = model.typeName;
     MMLog(@"model.icon] = %@",model.icon);
     
-    [_btn setImage:[UIImage imageNamed:[NSString backPicNameWith:model.typeName]] forState:UIControlStateNormal];
+//    [_btn setImage:[UIImage imageNamed:[NSString backPicNameWith:model.typeName]] forState:UIControlStateNormal];
+    NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
     
     
     
-//    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:model.icon];
-//    
-//    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
-//    
-//    [_btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+    
+    [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
 }
 @end

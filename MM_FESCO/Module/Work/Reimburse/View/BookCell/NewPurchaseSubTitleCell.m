@@ -39,7 +39,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.iconImageView];
+    [self.bgView addSubview:self.btn];
     [self.bgView addSubview:self.titleLabel];
     
     
@@ -55,7 +55,7 @@
         
     }];
 
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
@@ -64,7 +64,7 @@
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top).offset(0);
-        make.left.mas_equalTo(self.iconImageView.mas_right).offset(20);
+        make.left.mas_equalTo(self.btn.mas_right).offset(20);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
         
@@ -79,13 +79,15 @@
     }
     return _bgView;
 }
-- (UIImageView *)iconImageView{
-    if (_iconImageView == nil) {
-        _iconImageView = [[UIImageView alloc] init];
-        _iconImageView.backgroundColor = [UIColor cyanColor];
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn.backgroundColor = [UIColor clearColor];
+
     }
-    return _iconImageView;
+    return _btn;
 }
+
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];

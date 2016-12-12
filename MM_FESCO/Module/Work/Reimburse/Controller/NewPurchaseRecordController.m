@@ -73,6 +73,7 @@
     subVC.dataArray = modle.subTypes;
     subVC.dateType = modle.dateType;
     subVC.needCity = modle.needCity;
+    subVC.icon = modle.icon;
     
     
     if (subVC.dataArray) {
@@ -85,6 +86,7 @@
         bookVC.needCity = modle.needCity;
         bookVC.ID = modle.ID;
         bookVC.typePurchaseStr = modle.typeName;
+        subVC.icon = modle.icon; 
 
         [self.navigationController pushViewController:bookVC animated:YES];
     }

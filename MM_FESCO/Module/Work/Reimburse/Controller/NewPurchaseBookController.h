@@ -23,4 +23,6 @@
 
 @property (nonatomic, strong) NSString *typePurchaseStr; //  长途-飞机 或者  补助 ...
 
+@property (nonatomic, strong) NSString *icon; // 标题名称
+
 @end

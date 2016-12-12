@@ -18,5 +18,6 @@
 
 @property (nonatomic, assign) NSInteger ID;
 
+@property (nonatomic, strong) NSString *icon;  // 标题名称
 
 @end
