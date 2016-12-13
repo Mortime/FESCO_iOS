@@ -89,7 +89,7 @@
         make.top.mas_equalTo(self.bgView.mas_top);
         make.left.mas_equalTo(self.titleLabel.mas_right);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
-    
+        make.right.mas_equalTo(self.bgView.mas_right);
         
     }];
 

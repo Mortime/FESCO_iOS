@@ -1368,10 +1368,21 @@
                 
                 // 5. 图片ID
                 NSString *picID = @"";
+                NSString *resultPicId = @"";
+                MMLog(@"%@",model.picArray);
                 for (NSDictionary *dic in model.picArray) {
-                    picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
+                    
+                    if (![[dic objectForKey:@"id"]  isKindOfClass:[NSNull class]]) {
+                       picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
+                    }
+                    
                 }
-                NSString *resultPicId = [picID substringFromIndex:1];
+                if (![picID isEqualToString:@""]) {
+                    resultPicId = [picID substringFromIndex:1];
+                }else{
+                    resultPicId = @"";
+                }
+               
                 
                 // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
                 
@@ -1710,10 +1721,20 @@
                 
                 // 5. 图片ID
                 NSString *picID = @"";
+                NSString *resultPicId = @"";
+                MMLog(@"%@",model.picArray);
                 for (NSDictionary *dic in model.picArray) {
-                    picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
+                    
+                    if (![[dic objectForKey:@"id"]  isKindOfClass:[NSNull class]]) {
+                        picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
+                    }
+                    
                 }
-                NSString *resultPicId = [picID substringFromIndex:1];
+                if (![picID isEqualToString:@""]) {
+                    resultPicId = [picID substringFromIndex:1];
+                }else{
+                    resultPicId = @"";
+                }
                 
 
                 // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.

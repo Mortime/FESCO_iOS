@@ -760,7 +760,7 @@
     _allMoneyNumber = _allMoneyNumber - [array[0] integerValue];
     NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
     _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
     [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
     
 //    [NetworkEntity postDeleReimburseRecordWithDetailId:model.detailId Success:^(id responseObject) {
