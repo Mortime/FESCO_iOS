@@ -259,7 +259,6 @@
             NSArray *groupArray = [responseObject objectForKey:@"groups"];
             for (NSDictionary *dic in groupArray) {
                 GroupInfoModel *modle = [GroupInfoModel yy_modelWithDictionary:dic];
-                MMLog(@"组信息新建时 ============ %lu",modle.ID);
                 [_groupArray addObject:modle];
             }
             // 审批人

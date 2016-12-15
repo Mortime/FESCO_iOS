@@ -667,7 +667,7 @@
     if (_preservationButton == nil) {
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kBottomButtonW, 50);
-        if (_bookType == noBookPurchase) {
+        if (_bookType == NOBookPurchaseEdit) {
             // 未制单消费
             [_preservationButton setTitle:@"删除" forState:UIControlStateNormal];
         }else{

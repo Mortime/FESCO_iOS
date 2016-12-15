@@ -63,6 +63,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self initData];
+    // 加载未制单消费记录
+    [self initDataNOBook];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -114,6 +116,26 @@
         MMLog(@"ReimburseList  =======failure=====%@",failure);
     }];
     
+}
+- (void)initDataNOBook{
+    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
+        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
+        CGFloat number = 0;
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+            NSArray *array = [responseObject objectForKey:@"list"];
+            if (array.count) {
+                for (NSDictionary *dic in array) {
+                    number = number + [[dic objectForKey:@"money_Amount"] integerValue];
+                }
+            }
+            _leftRecordView.textViewStr = [NSString stringWithFormat:@"%lu条消费记录\n共%.f元",array.count,number];
+        }
+    } failure:^(NSError *failure) {
+        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+        [view show];
+    }];
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
