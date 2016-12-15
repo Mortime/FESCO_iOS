@@ -10,6 +10,7 @@
 #import "NOBookPurchaseCell.h"
 #import "NOBookPurchaseModel.h"
 #import "NewPurchaseRecordController.h"
+#import "NewPurchaseBookController.h"
 
 @interface NOBookPurchaseController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -45,6 +46,7 @@
     
 }
 - (void)initData{
+    [self.dataArray removeAllObjects];
     [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
         MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
@@ -81,6 +83,37 @@
     cell.model = _dataArray[indexPath.row];
         return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+    bookVC.bookType = NOBookPurchaseEdit;
+    NOBookPurchaseModel *model = self.dataArray[indexPath.row];
+    bookVC.noBookmodel = model;
+    if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+        // 日期类型
+            // 不显示结束日期
+        bookVC.dateType =  1;
+    }else{
+           // 显示结束日期
+        bookVC.dateType =  2;
+    }
+    if ([model.cityName isKindOfClass:[NSNull class]] || !model.spendEnd) {
+        // 城市名称
+            // 不显示x
+        bookVC.needCity = 0;
+    }else{
+        // 显示
+        bookVC.needCity = 1;
+    }
+    
+    // 消费类型
+    bookVC.typePurchaseStr = model.spendTypeStr;
+    bookVC.title = model.spendTypeStr;
+    
+    
+    
+    
+    [self.navigationController pushViewController:bookVC animated:YES];
 }
 #pragma mark --- Action  
 - (void)didClick:(UIButton *)sender{

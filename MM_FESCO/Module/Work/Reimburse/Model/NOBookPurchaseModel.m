@@ -19,7 +19,7 @@
               @"detailId":@"detail_Id",
               @"billNum":@"bill_Num",
               @"picUrl":@"pic_Url",
-              @"spendMemo":@"detail_Memo",
+              @"detailMemo":@"detail_Memo",
               @"picMemo":@"pic_Desc",
               @"cityName":@"spend_City",
               @"spendType":@"spend_Type"

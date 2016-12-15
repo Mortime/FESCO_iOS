@@ -64,16 +64,6 @@
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
     _billNumber = @"1";
-    
-//    //设置右边
-//    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
-//    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
-//    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [rightButton addTarget:self action:@selector(myAction)forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-//    self.navigationItem.rightBarButtonItem= rightItem;
 
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.cancelButton];
@@ -81,7 +71,28 @@
     
     // 注册一个通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kGetPicIDNotifition object:nil];
-   
+   // 未制单消费编辑时,给提交数据赋值
+    if (_bookType == NOBookPurchaseEdit) {
+        _moneyNumber = [NSString stringWithFormat:@"%lu",_noBookmodel.moneyAmount];
+        _startTime = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendBegin];
+        if (_dateType == 2) {
+            // 显示结束日期
+            _endTime = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendEnd];
+        }
+        _billNumber = [NSString stringWithFormat:@"%lu",_noBookmodel.billNum];
+        // 附件可能为空
+        // 描述可能为空
+        if (![_noBookmodel.detailMemo isKindOfClass:[NSNull class]]) {
+            _memo = _noBookmodel.detailMemo;
+        }
+        // 消费城市
+        if (_needCity == 1) {
+            // 显示消费城市
+            _cityName = _noBookmodel.cityName;
+        }
+    }
+    
+    
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -134,6 +145,9 @@
             cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
             cell.textFiled.leftTitle = @"金额";
+        if (_bookType == NOBookPurchaseEdit) {
+            cell.textFiled.textFileStr = [NSString stringWithFormat:@"%lu",_noBookmodel.moneyAmount];
+        }
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
         cell.textFiled.rightTextFiled.keyboardType = UIKeyboardTypeNumberPad;
@@ -162,6 +176,9 @@
         }
         cell.tag = 8001;
         cell.delegate = self;
+        if (_bookType == NOBookPurchaseEdit) {
+            cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendBegin];
+        }
        
         return cell;
     }
@@ -179,6 +196,11 @@
             cell.textFiled.timeType = @"yyyy-mm-dd";
             cell.tag = 8002;
             cell.delegate = self;
+            
+            if (_bookType == NOBookPurchaseEdit) {
+                cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendEnd];
+            }
+
             return cell;
         }
 
@@ -192,6 +214,9 @@
             cell = [[NewPurchaseSubBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         cell.delegate = self;
+        if (_bookType == NOBookPurchaseEdit) {
+            cell.addOffView.resultLabel.text = [NSString stringWithFormat:@"%lu",_noBookmodel.billNum];
+        }
                 
         return cell;
     }
@@ -230,7 +255,9 @@
             cell.textFiled.isExist = YES;
         cell.delegate = self;
         cell.tag = 8003;
-            
+        if (_bookType == NOBookPurchaseEdit && ![_noBookmodel.detailMemo isKindOfClass:[NSNull class]]) {
+            cell.textFiled.textFileStr = _noBookmodel.detailMemo;
+        }
         
         return cell;
     }
@@ -244,6 +271,9 @@
         }
         _cityCell = cell;
         
+        if (_bookType == NOBookPurchaseEdit) {
+            cell.resultLabel.text = _noBookmodel.cityName;
+        }
         return cell;
 
     }
@@ -434,77 +464,155 @@
 // 保存 在记一笔
 - (void)didPreservationButton:(UIButton *)sender{
     
-    if (!_moneyNumber) {
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
-        [toastView show];
-        return;
-    }
-    if (_dateType  == 1) {
-        if (!_startTime) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入日期"];
-            [toastView show];
-            return;
-        }
-        
-    }
-    if (_dateType == 2) {
-        if (!_startTime) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入开始日期"];
-            [toastView show];
-            return;
-        }
-        if (!_endTime) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入结束日期"];
-            [toastView show];
-            return;
-        }
-
-
-    }
-    if (_needCity == 1) {
-        if (!_cityName) {
-            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入城市名称"];
-            [toastView show];
-            return;
-        }
-
-    }
-    
-    if (_dateType == 1) {
-        _endTime = @"";
-    }
-    if (_needCity == 0) {
-        _cityName = @"";
-    }
-    if (_picIDArray) {
-        
-        
-        //把数组转换成字符串
-        NSString *picStr=[_picIDArray componentsJoinedByString:@","];
-        _picUrl= picStr;
-        MMLog(@"picArray == %@,ns == %@",_picIDArray,picStr);
-        _picStr =  [[NSUserDefaults standardUserDefaults] objectForKey:@"imgDes"];
-    }else{
-        _picUrl = @"";
-    }
-    if (!_memo) {
-        _memo = @"";
-    }
-/*
-    以上是数据的基本判断
- */
-    
-    
-    if (_bookType == noBookPurchase) {
-        // 添加未制单消费记录
-            [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName Success:^(id responseObject) {
-                MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+    if (sender.tag == 700 && _bookType == NOBookPurchaseEdit) {
+        // 删除未制单消费
+            [NetworkEntity postDeleReimburseRecordWithDetailId:_noBookmodel.detailId Success:^(id responseObject) {
+                MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
                 if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-                    // 提交成功
-                    if (sender.tag == 701) {
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
+                    [toastView show];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
+                    [toastView show];
+                }
+                
+            } failure:^(NSError *failure) {
+                MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+                [toastView show];
+            }];
+
+    }else{
+        //
+        if (!_moneyNumber) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
+            [toastView show];
+            return;
+        }
+        if (_dateType  == 1) {
+            if (!_startTime) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入日期"];
+                [toastView show];
+                return;
+            }
+            
+        }
+        if (_dateType == 2) {
+            if (!_startTime) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入开始日期"];
+                [toastView show];
+                return;
+            }
+            if (!_endTime) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入结束日期"];
+                [toastView show];
+                return;
+            }
+            
+            
+        }
+        if (_needCity == 1) {
+            if (!_cityName) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入城市名称"];
+                [toastView show];
+                return;
+            }
+            
+        }
+        
+        if (_dateType == 1) {
+            _endTime = @"";
+        }
+        if (_needCity == 0) {
+            _cityName = @"";
+        }
+        if (_picIDArray) {
+            
+            
+            //把数组转换成字符串
+            NSString *picStr=[_picIDArray componentsJoinedByString:@","];
+            _picUrl= picStr;
+            MMLog(@"picArray == %@,ns == %@",_picIDArray,picStr);
+            _picStr =  [[NSUserDefaults standardUserDefaults] objectForKey:@"imgDes"];
+        }else{
+            _picUrl = @"";
+        }
+        if (!_memo) {
+            _memo = @"";
+        }
+        /*
+         以上是数据的基本判断
+         */
+        
+        
+        if (_bookType == NOBookPurchaseEdit || _bookType == noBookPurchase) {
+            
+            if (sender.tag == 701) {
+                //在记一笔 保存未制单消费
+                NSString *detail = @"";
+                if (_bookType == NOBookPurchaseEdit) {
+                    detail = [NSString stringWithFormat:@"%lu",_noBookmodel.detailId];
+                }
+                [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
+                    MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+                    if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                        [toastView show];
+                        [self.navigationController popViewControllerAnimated:YES];
                         
+                        
+                    }else{
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+                        [toastView show];
+                    }
+                } failure:^(NSError *failure) {
+                    MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+                    [toastView show];
+                }];
+                
+            }
+        }else{
+            // 添加报销单的消费记录
+            MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_picStr,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
+            NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
+                                  @"spendBegin":_startTime,
+                                  @"spendEnd":_endTime,
+                                  @"billNum":_billNumber,
+                                  @"picUrl":_picUrl,
+                                  @"picDesc":_picStr,
+                                  @"detailMemo":_memo,
+                                  @"spendCity":_cityName,
+                                  @"ID":[NSString stringWithFormat:@"%lu",_ID],
+                                  @"typePurchaseStr":_typePurchaseStr
+                                  };
+            
+            
+            __weak typeof(self) ws = self;
+            // 点击保存时将数据存入本地数据库
+            [MMDataBase initializeDatabaseWithTableName:t_purchaseRecord baseBlock:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    // 表创建成功
+                    MMLog(@"表创建成功");
+                    // 添加判断数据是否存在的字段
+                    //            NSDictionary *dic = (NSDictionary *)responseObject;
+                    NSMutableDictionary *mutableDic = dic.mutableCopy;
+                    [mutableDic setValue:@"exist" forKey:@"ID"];
+                    
+                    NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                               NSUserDomainMask,
+                                                                               YES);
+                    NSString *restltDocumentDirectory = [resultPaths lastObject];
+                    MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
+                    
+                    
+                    // 保存数据
+                    [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
+                    // 保存成功
+                    if (sender.tag == 701) {
                         // 保存
-                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
                         [toastView show];
                         NSArray * ctrlArray = self.navigationController.viewControllers;
                         [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
@@ -514,68 +622,14 @@
                         [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
                     }
                     
-        
                 }
-            } failure:^(NSError *failure) {
-                MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
-                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-                [toastView show];
+                
             }];
-
-    }else{
-        // 添加报销单的消费记录
-        MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_picStr,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
-        NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
-                              @"spendBegin":_startTime,
-                              @"spendEnd":_endTime,
-                              @"billNum":_billNumber,
-                              @"picUrl":_picUrl,
-                              @"picDesc":_picStr,
-                              @"detailMemo":_memo,
-                              @"spendCity":_cityName,
-                              @"ID":[NSString stringWithFormat:@"%lu",_ID],
-                              @"typePurchaseStr":_typePurchaseStr
-                              };
-        
-        
-        __weak typeof(self) ws = self;
-        // 点击保存时将数据存入本地数据库
-        [MMDataBase initializeDatabaseWithTableName:t_purchaseRecord baseBlock:^(BOOL isSuccess) {
-            if (isSuccess) {
-                // 表创建成功
-                MMLog(@"表创建成功");
-                // 添加判断数据是否存在的字段
-                //            NSDictionary *dic = (NSDictionary *)responseObject;
-                NSMutableDictionary *mutableDic = dic.mutableCopy;
-                [mutableDic setValue:@"exist" forKey:@"ID"];
-                
-                NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                                           NSUserDomainMask,
-                                                                           YES);
-                NSString *restltDocumentDirectory = [resultPaths lastObject];
-                MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
-                
-                
-                // 保存数据
-                [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
-                // 保存成功
-                if (sender.tag == 701) {
-                    // 保存
-                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-                    [toastView show];
-                    NSArray * ctrlArray = self.navigationController.viewControllers;
-                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
-                }else if (sender.tag == 700){
-                    // 在记一笔
-                    NSArray * ctrlArray = self.navigationController.viewControllers;
-                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
-                }
-                
-            }
             
-        }];
+        }
 
     }
+    
 }
 
 - (void)showData{
@@ -613,7 +667,13 @@
     if (_preservationButton == nil) {
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kBottomButtonW, 50);
-        [_preservationButton setTitle:@"在记一笔" forState:UIControlStateNormal];
+        if (_bookType == noBookPurchase) {
+            // 未制单消费
+            [_preservationButton setTitle:@"删除" forState:UIControlStateNormal];
+        }else{
+            [_preservationButton setTitle:@"在记一笔" forState:UIControlStateNormal];
+        }
+        
         [_preservationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_preservationButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
         [_preservationButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];

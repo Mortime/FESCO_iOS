@@ -46,7 +46,6 @@
 
 @property (nonatomic, strong) NewReimburseConsumePopView *consumePopView;  // 添加消费
 
-
 @property (nonatomic, strong) NSMutableArray *mobanArray;  // 模板数字
 
 @property (nonatomic, strong) NSMutableArray *bankArray;   // 银行信息数组
@@ -302,13 +301,7 @@
         [toastView show];
     }];
     
-    
-//    if (_rePurchaseBook == editReimburseBook) {
-//        
-//        }
-    
-    
-    
+
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -499,6 +492,7 @@
                 cell.detailStr = _textTitleArray[indexPath.row + 1];
             }
         }
+        
         return cell;
     }
     

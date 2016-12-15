@@ -7,7 +7,7 @@
 //
 
 #import "NewPurchaseSubBookCell.h"
-#import "NumberAddOffView.h"
+
 
 @interface NewPurchaseSubBookCell ()<NumberAddOffViewDelegate>
 
@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
-@property (nonatomic, strong) NumberAddOffView *addOffView;
+
 
 
 

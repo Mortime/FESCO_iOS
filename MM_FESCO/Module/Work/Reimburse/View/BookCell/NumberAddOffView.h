@@ -16,6 +16,8 @@
 
 @interface NumberAddOffView : UIView
 
+@property (nonatomic, strong) UILabel *resultLabel;
+
 @property (nonatomic, weak) id <NumberAddOffViewDelegate> delegate;
 
 @end

@@ -1906,7 +1906,7 @@
 
 }
 // 保存消费记录
-+ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity detailId:(NSString *)detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
 
     
     NSDictionary *dic = @{
@@ -1919,7 +1919,7 @@
                           @"spend_Begin":spendBegin,
                           @"spend_End":spendEnd,
                           @"spend_City":spendCity,
-                          @"detail_Id":@"",
+                          @"detail_Id":detailId,
                           @"methodname":@"expense/saveExpenseRecord.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];

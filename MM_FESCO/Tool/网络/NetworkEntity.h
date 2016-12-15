@@ -596,7 +596,7 @@
  *  @param spend_City （req）  spendType 下的  need_City  0为空 , 1选择消费城市
  
  */
-+ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spend_City  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity detailId:(NSString *)detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
  *  删除报销申请

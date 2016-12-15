@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIButton *reduceButton;
 
-@property (nonatomic, strong) UILabel *resultLabel;
+
 
 @property (nonatomic, strong) UILabel *unitLabel;
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NumberAddOffView.h"
 
 
 @protocol NewPurchaseSubBookCellDelegate <NSObject>
@@ -15,6 +16,8 @@
 
 @end
 @interface NewPurchaseSubBookCell : UITableViewCell
+
+@property (nonatomic, strong) NumberAddOffView *addOffView;
 
 @property (nonatomic, weak) id <NewPurchaseSubBookCellDelegate> delegate;
 
