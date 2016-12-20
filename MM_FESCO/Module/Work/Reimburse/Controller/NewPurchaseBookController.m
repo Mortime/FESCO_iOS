@@ -63,6 +63,8 @@
     
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
+
+//    _curUploadImageHelper.imagesArray = self.urlArray;
     _billNumber = @"1";
 
     [self.view addSubview:self.tableView];
@@ -229,6 +231,11 @@
         }
         __weak typeof(self)weakSelf = self;
         cell.accessoryType    = UITableViewCellAccessoryNone;
+        
+        if (_bookType == NOBookPurchaseEdit) {
+            self.curUploadImageHelper.selectedAssetURLs = self.urlArray;
+        }
+        
         cell.curUploadImageHelper=self.curUploadImageHelper;
         cell.addPicturesBlock = ^(){
             [self showActionForPhoto];
@@ -366,6 +373,7 @@
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didSelectAssets:(NSArray *)assets{
     NSMutableArray *selectedAssetURLs = [NSMutableArray new];
     [imagePickerController.selectedAssetURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        MMLog(@"obj == %@",obj);
         [selectedAssetURLs addObject:obj];
     }];
     MPWeakSelf(self)

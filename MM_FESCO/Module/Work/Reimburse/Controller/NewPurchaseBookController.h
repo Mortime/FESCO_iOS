@@ -14,6 +14,8 @@
 #import "MPImageItemModel.h"
 #import "MPImageUploadProgressCell.h"
 #import "NOBookPurchaseModel.h"
+
+
 @interface NewPurchaseBookController : MMBaseViewController
 
 @property (nonatomic, assign) NSInteger dateType;
@@ -29,5 +31,7 @@
 @property (nonatomic, assign) RePurchaseBookType bookType;
 
 @property (nonatomic, strong) NOBookPurchaseModel *noBookmodel;
+
+@property (nonatomic, strong) NSMutableArray *urlArray;
 
 @end
