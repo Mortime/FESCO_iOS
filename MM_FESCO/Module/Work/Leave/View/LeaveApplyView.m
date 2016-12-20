@@ -118,15 +118,15 @@
             NSString *str = [dic objectForKey:@"hol_Name"];
             if ([str isEqualToString:@"年假"]) {
                 if ([[dic objectForKey:@"time_Unit"] integerValue] == 1) {
-                    _yearHolNumber = [NSString stringWithFormat:@"%lu天",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                    _yearHolNumber = [NSString stringWithFormat:@"%.1f天",[[dic objectForKey:@"availableAllNum"] floatValue]];
                 }
             }
             if ([str isEqualToString:@"调休"]) {
                 if ([[dic objectForKey:@"time_Unit"] integerValue] == 2) {
-                    _wearHolNumber = [NSString stringWithFormat:@"%lu小时",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                    _wearHolNumber = [NSString stringWithFormat:@"%.1f小时",[[dic objectForKey:@"availableAllNum"] floatValue]];
                 }
                 if ([[dic objectForKey:@"time_Unit"] integerValue] == 1) {
-                    _wearHolNumber = [NSString stringWithFormat:@"%lu天",[[dic objectForKey:@"availableAllNum"] integerValue]];
+                    _wearHolNumber = [NSString stringWithFormat:@"%.1f天",[[dic objectForKey:@"availableAllNum"] floatValue]];
                 }
                 if ([[dic objectForKey:@"time_Unit"] integerValue] == 3) {
                     _wearHolNumber = [NSString stringWithFormat:@"%lu半天",[[dic objectForKey:@"availableAllNum"] integerValue]];
