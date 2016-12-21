@@ -29,7 +29,6 @@
 		597222EE1DADDE5900D01A7A /* MMNoDataShowBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222EB1DADDE5900D01A7A /* MMNoDataShowBGView.m */; };
 		597222F11DADDFDA00D01A7A /* MMCyeleShowLableTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222F01DADDFDA00D01A7A /* MMCyeleShowLableTagView.m */; };
 		597222F41DADE00A00D01A7A /* MMBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222F31DADE00A00D01A7A /* MMBaseViewModel.m */; };
-		597223A51DADE05400D01A7A /* BuffetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222F81DADE05400D01A7A /* BuffetController.m */; };
 		597223A61DADE05400D01A7A /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222FB1DADE05400D01A7A /* MyController.m */; };
 		597223A71DADE05400D01A7A /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597222FE1DADE05400D01A7A /* NewsController.m */; };
 		597223A81DADE05400D01A7A /* ToolsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597223011DADE05400D01A7A /* ToolsController.m */; };
@@ -276,6 +275,9 @@
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
 		761C0E9B1DD1C67700886083 /* NewReimburseConsumePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */; };
 		761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */; };
+		761C37401E09299A007E1607 /* BuffetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C373E1E09299A007E1607 /* BuffetController.m */; };
+		761C37431E0929D9007E1607 /* BuffetImagLableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C37421E0929D9007E1607 /* BuffetImagLableCell.m */; };
+		761C37461E0929F1007E1607 /* BuffetLableImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C37451E0929F1007E1607 /* BuffetLableImageCell.m */; };
 		761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */; };
 		763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */; };
 		763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */; };
@@ -414,8 +416,6 @@
 		597222F01DADDFDA00D01A7A /* MMCyeleShowLableTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCyeleShowLableTagView.m; sourceTree = "<group>"; };
 		597222F21DADE00A00D01A7A /* MMBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBaseViewModel.h; sourceTree = "<group>"; };
 		597222F31DADE00A00D01A7A /* MMBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBaseViewModel.m; sourceTree = "<group>"; };
-		597222F71DADE05400D01A7A /* BuffetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetController.h; sourceTree = "<group>"; };
-		597222F81DADE05400D01A7A /* BuffetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetController.m; sourceTree = "<group>"; };
 		597222FA1DADE05400D01A7A /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
 		597222FB1DADE05400D01A7A /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
 		597222FD1DADE05400D01A7A /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
@@ -946,6 +946,12 @@
 		761C0E9A1DD1C67700886083 /* NewReimburseConsumePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimburseConsumePopView.m; sourceTree = "<group>"; };
 		761C0E9C1DD1CEE100886083 /* NewPurchaseRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPurchaseRecordController.h; sourceTree = "<group>"; };
 		761C0E9D1DD1CEE100886083 /* NewPurchaseRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordController.m; sourceTree = "<group>"; };
+		761C373D1E09299A007E1607 /* BuffetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetController.h; sourceTree = "<group>"; };
+		761C373E1E09299A007E1607 /* BuffetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetController.m; sourceTree = "<group>"; };
+		761C37411E0929D9007E1607 /* BuffetImagLableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetImagLableCell.h; sourceTree = "<group>"; };
+		761C37421E0929D9007E1607 /* BuffetImagLableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetImagLableCell.m; sourceTree = "<group>"; };
+		761C37441E0929F1007E1607 /* BuffetLableImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetLableImageCell.h; sourceTree = "<group>"; };
+		761C37451E0929F1007E1607 /* BuffetLableImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetLableImageCell.m; sourceTree = "<group>"; };
 		761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMessageModel.h; sourceTree = "<group>"; };
 		761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMessageModel.m; sourceTree = "<group>"; };
 		763256D31DD2B9C900C9C903 /* PurchaseRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordModel.h; sourceTree = "<group>"; };
@@ -1225,8 +1231,8 @@
 		597222F61DADE05400D01A7A /* Buffet */ = {
 			isa = PBXGroup;
 			children = (
-				597222F71DADE05400D01A7A /* BuffetController.h */,
-				597222F81DADE05400D01A7A /* BuffetController.m */,
+				761C373C1E09299A007E1607 /* Controller */,
+				761C373F1E09299A007E1607 /* View */,
 			);
 			path = Buffet;
 			sourceTree = "<group>";
@@ -2553,6 +2559,26 @@
 			path = DVVTabBarController;
 			sourceTree = "<group>";
 		};
+		761C373C1E09299A007E1607 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				761C373D1E09299A007E1607 /* BuffetController.h */,
+				761C373E1E09299A007E1607 /* BuffetController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		761C373F1E09299A007E1607 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				761C37411E0929D9007E1607 /* BuffetImagLableCell.h */,
+				761C37421E0929D9007E1607 /* BuffetImagLableCell.m */,
+				761C37441E0929F1007E1607 /* BuffetLableImageCell.h */,
+				761C37451E0929F1007E1607 /* BuffetLableImageCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		763256CC1DD2B63900C9C903 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -3182,6 +3208,7 @@
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59EC91601D98CB5900E802FA /* EaseBubbleView+Gif.m in Sources */,
+				761C37431E0929D9007E1607 /* BuffetImagLableCell.m in Sources */,
 				59EC91171D98CB5900E802FA /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				59A59E1B1D499EF2001F3122 /* DVVDoubleRowToolBarView.m in Sources */,
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
@@ -3265,6 +3292,7 @@
 				76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */,
 				597223B81DADE05400D01A7A /* OverTimeView.m in Sources */,
 				59EC916C1D98CB5900E802FA /* EaseFacialView.m in Sources */,
+				761C37461E0929F1007E1607 /* BuffetLableImageCell.m in Sources */,
 				59EC91EE1D98D9AD00E802FA /* PSTGridLayoutRow.m in Sources */,
 				597223A61DADE05400D01A7A /* MyController.m in Sources */,
 				59E99B6A1DB89C1D002D0486 /* LaterTimeStatisticCell.m in Sources */,
@@ -3272,12 +3300,12 @@
 				597223DA1DADE05400D01A7A /* OverTimeRecordView.m in Sources */,
 				597223E01DADE05400D01A7A /* EasySerachViewController.m in Sources */,
 				59614F7A1D7E90A8004D3AAE /* TTRefreshFooter.m in Sources */,
-				597223A51DADE05400D01A7A /* BuffetController.m in Sources */,
 				59EC914E1D98CB5900E802FA /* EaseMessageReadManager.m in Sources */,
 				761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */,
 				764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */,
 				59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */,
 				76CBDCEE1DDB064800272D91 /* DVVSubCityCell.m in Sources */,
+				761C37401E09299A007E1607 /* BuffetController.m in Sources */,
 				597223AA1DADE05400D01A7A /* LeaveApprovalDetailController.m in Sources */,
 				76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
