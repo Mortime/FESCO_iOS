@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) UITableView  *tableView;
 
+@property (nonatomic, strong) NSArray *imgArray;
+
 @property (nonatomic, strong) NSArray *topTitleArray;
 
 @property (nonatomic, strong) NSArray *bottomTitleArray;
@@ -28,6 +30,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.imgArray = @[@"Buffet_Ruzhi",@"Buffet_Shebao",@"Buffet_Gongjijin"];
     self.topTitleArray = @[@"入职办理",@"社保",@"公积金"];
     self.bottomTitleArray = @[@"员工基本信息自助",@"员工社保信息自助",@"员工公积金信息自助"];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
@@ -54,6 +57,7 @@
         }
             cell.topStr = self.topTitleArray[indexPath.row];
             cell.bottomStr = self.bottomTitleArray[indexPath.row];
+        cell.imgStr = self.imgArray[indexPath.row];
             return cell;
         
     }else{
@@ -65,6 +69,7 @@
         }
         cell.topStr = self.topTitleArray[indexPath.row];
         cell.bottomStr = self.bottomTitleArray[indexPath.row];
+        cell.imgStr = self.imgArray[indexPath.row];
         
         return cell;
 

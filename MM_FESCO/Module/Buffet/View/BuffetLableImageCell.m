@@ -8,7 +8,7 @@
 
 #import "BuffetLableImageCell.h"
 
-#define showOffX 10
+#define showOffX 8
 
 @interface BuffetLableImageCell ()
 
@@ -155,7 +155,7 @@
 - (UIImageView *)flagImageView{
     if (_flagImageView == nil) {
         _flagImageView = [[UIImageView alloc] init];
-        _flagImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        _flagImageView.backgroundColor = [UIColor clearColor];
         _flagImageView.layer.masksToBounds = YES;
         _flagImageView.layer.cornerRadius = 35;
         
@@ -199,5 +199,8 @@
 }
 - (void)setBottomStr:(NSString *)bottomStr{
     _bottomLable.text = bottomStr;
+}
+- (void)setImgStr:(NSString *)imgStr{
+    _flagImageView.image = [UIImage imageNamed:imgStr];
 }
 @end

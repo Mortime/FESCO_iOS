@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.title = @"消费记录";
+    self.title = @"未制单消费记录";
     self.dataArray = [NSMutableArray array];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];

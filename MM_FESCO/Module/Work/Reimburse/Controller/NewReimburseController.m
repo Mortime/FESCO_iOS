@@ -20,6 +20,7 @@
 #import "ReimburseApplyManModel.h"
 #import "EditMessageModel.h"
 #import "BLPFAlertView.h"
+#import "NOBookChooseController.h"
 
 #define kBottomH  50
 
@@ -783,6 +784,10 @@
     }
     if (row == 1) {
         // 导入已有消费
+         [self.consumePopView removeFromSuperview];
+        NOBookChooseController *choooseVC = [[NOBookChooseController alloc] init];
+        HMNagationController *naviVC = [[HMNagationController alloc] initWithRootViewController:choooseVC];
+        [self.navigationController presentViewController:naviVC animated:YES completion:nil];
     }
     if (row == 2) {
         // 取消

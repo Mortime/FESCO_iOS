@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) NSString *bottomStr;
 
+@property (nonatomic, strong) NSString *imgStr;
+
 @end
