@@ -133,8 +133,10 @@
     return _moneyLabel;
 }
 - (void)setModel:(ReimburseModel *)model{
-    if (model.title) {
+    if (![model.title isEqual:[NSNull null]]) {
         _titleLabel.text = model.title;
+    }else{
+        _titleLabel.text = @"暂无";
     }
     
     //报销单状态  // 0待提交，1待审批，2待支付，3未通过，4已支付

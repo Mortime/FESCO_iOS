@@ -200,10 +200,11 @@
         if ([_reimburseModel.memo isKindOfClass:[NSNull class]] || _reimburseModel.memo) {
             _reimburseModel.memo = @"";
         }
-        if ([_reimburseModel.title isKindOfClass:[NSNull class]] || !_reimburseModel.title) {
+        if ([_reimburseModel.title isKindOfClass:[NSNull class]] || !_reimburseModel.title ) {
             _reimburseModel.title = @"";
         }
-        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,groupName,people,_reimburseModel.memo].mutableCopy;
+//        self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,groupName,people,_reimburseModel.memo].mutableCopy;
+        self.textTitleArray= [NSMutableArray arrayWithObjects:_reimburseModel.typeStr,_reimburseModel.title,applyDate,groupName,people,_reimburseModel.memo, nil];
     }
    
     

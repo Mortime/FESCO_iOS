@@ -65,7 +65,8 @@
                                         @"spend_Begin":spendStart,
                                         @"spend_End":spendEnd,
                                         @"spend_City":spendCity,
-                                        @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
+                                        @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId],
+                                        @"detail_Id_Before_Imported":[NSString stringWithFormat:@"%lu",model.detailId]
                                         
                                         };
             

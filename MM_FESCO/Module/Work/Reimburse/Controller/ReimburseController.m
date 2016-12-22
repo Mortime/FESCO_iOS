@@ -119,7 +119,7 @@
 }
 - (void)initDataNOBook{
     [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
-        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
+//        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
         CGFloat number = 0;
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             NSArray *array = [responseObject objectForKey:@"list"];

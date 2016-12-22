@@ -1327,7 +1327,7 @@
 
     applyJsonArray = [NSString jsonToJsonArrayWith:applyDic];
     applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
-    MMLog(@"applyJsonArray ============ %@",applyJsonArray);
+//    MMLog(@"applyJsonArray ============ %@",applyJsonArray); 
     
     // 描述jsonArray
     NSString *detailJsonArray = @"";
@@ -1346,14 +1346,14 @@
             // 编辑时从服务器获取的消费记录
             NSString *resultStr = [NetworkDataTool MM_initWithEditMessageModelArray:networkModelArray];
             detailJsonArray = resultStr;
-            MMLog(@"编辑时从服务器获取的消费记录resultStr==%@=detailJsonArray==%@",resultStr,detailJsonArray);
+//            MMLog(@"编辑时从服务器获取的消费记录resultStr==%@=detailJsonArray==%@",resultStr,detailJsonArray);
         }
             // 拼接本地新增的消费记录
             NSString *newStr = @"";
             if (newPurchaseRecordModelArray.count != 0) {
                 newStr = [NetworkDataTool MM_initWithNewPurchaseRecordModelArray:newPurchaseRecordModelArray];
                 detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,newStr];
-                MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
+//                MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
             }
             // 未制单消费
                 if (noBookArray.count) {
@@ -1361,7 +1361,7 @@
                 }
             detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
             
-            MMLog(@"未制单消费 ===未制单消费 ============%@",detailJsonArray);
+//            MMLog(@"未制单消费 ===未制单消费 ============%@",detailJsonArray);
         }else{
         
         // 新增消费记录   保存时可以为空
@@ -1374,17 +1374,18 @@
                 detailJsonArray = newStr;
                 MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
             }
+            
+            if (noBookArray.count) {
+                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
+            }
+            detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
         }
-        if (noBookArray.count) {
-            detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
-        }
-        detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
+        
         
         MMLog(@"New ===detailJsonArray ============%@",detailJsonArray);
         
     }
-    
-    
+    MMLog(@"+++++++++++++++++++++++++++==========================%@",detailJsonArray);
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
