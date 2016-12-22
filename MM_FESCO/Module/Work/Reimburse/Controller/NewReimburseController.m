@@ -21,10 +21,11 @@
 #import "EditMessageModel.h"
 #import "BLPFAlertView.h"
 #import "NOBookChooseController.h"
+#import "NOBookChooseModel.h"
 
 #define kBottomH  50
 
-@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate,NewPurchaseRecordCellDelegate>
+@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate,NewPurchaseRecordCellDelegate,NOBookChooseControllerDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -84,6 +85,8 @@
 
 @property (nonatomic,strong) NSMutableArray *netWorkRecordArray; //  用于存放保存之后的消费记录模型
 
+@property (nonatomic, strong) NSMutableArray *noBookRecordArray; // 选择的未制单消费数组
+
 @property (nonatomic,strong) NSString *picID; // 图片ID
 
 
@@ -129,7 +132,7 @@
         
 
         
-    }else{
+    }else if (_rePurchaseBook == newReimburseBook){
         //    
         [_editPurchaseRccordArray removeAllObjects];
         _allMoneyNumber = 0;
@@ -146,6 +149,17 @@
         MMLog(@"str === %@",array);
 
     }
+    
+    // 未制单消费数组
+    if (_noBookRecordArray.count) {
+        for (NOBookChooseModel *model in _noBookRecordArray) {
+            _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
+        }
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        [self.tableView reloadData];
+        
+    }
+    
     
     }
 
@@ -179,6 +193,15 @@
             if (_reimburseModel.accountId == model.bankNumber) {
             people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
             }
+        }
+        if ([_reimburseModel.typeStr isKindOfClass:[NSNull class]] || !_reimburseModel.typeStr) {
+            _reimburseModel.typeStr = @"";
+        }
+        if ([_reimburseModel.memo isKindOfClass:[NSNull class]] || _reimburseModel.memo) {
+            _reimburseModel.memo = @"";
+        }
+        if ([_reimburseModel.title isKindOfClass:[NSNull class]] || !_reimburseModel.title) {
+            _reimburseModel.title = @"";
         }
         self.textTitleArray = @[_reimburseModel.typeStr,_reimburseModel.title,applyDate,groupName,people,_reimburseModel.memo].mutableCopy;
     }
@@ -310,13 +333,13 @@
     return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 3) {
+    if (section == 4) {
         return 10;
     }
     return 0;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 5;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -331,6 +354,9 @@
     
     if (section == 3) {
         return _editPurchaseRccordArray.count;
+    }
+    if (section == 4) {
+        return _noBookRecordArray.count;
     }
     return 0;
 }
@@ -390,7 +416,7 @@
     return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 2 || indexPath.section == 3) {
+    if (indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4) {
         return 59;
     }
     return 49;
@@ -399,7 +425,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    if (indexPath.section == 2 || indexPath.section == 3) {
+    if (indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4) {
         static NSString *cellID = @"ID";
        NewPurchaseRecordCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -411,10 +437,15 @@
             cell.indexTag = indexPath.row;
             cell.delegate = self;
             cell.deleBtn.hidden = YES;
-        }else{
+        }else if(indexPath.section == 3){
             cell.dataArray = _editPurchaseRccordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
+        }else{
+            cell.chooseModel = _noBookRecordArray[indexPath.row];
+            cell.indexTag = indexPath.row;
+            cell.delegate = self;
+            cell.deleBtn.hidden = YES;
         }
         
         return cell;
@@ -606,7 +637,7 @@
         
     }
     
-    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
+    [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray noBookAddArray:_noBookRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
         
         MMLog(@"PreserveReimburseApply  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
@@ -631,7 +662,7 @@
 // 点击提交时
 - (void)commit{
 //    rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid
-    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:0 applyID:_detailid Success:^(id responseObject) {
+    [NetworkEntity postCommitReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray noBookAddArray:_noBookRecordArray applyMan:_manApplyID rePurchaseBookType:_rePurchaseBook detailid:0 applyID:_detailid Success:^(id responseObject) {
             MMLog(@"CommitReimburseApply  =======responseObject=====%@",responseObject);
             if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                 // 提交成功
@@ -695,7 +726,7 @@
     }
     
     if (_rePurchaseBook == newReimburseBook) {
-        if (_editPurchaseRccordArray.count == 0) {
+        if (_editPurchaseRccordArray.count == 0 &&  _noBookRecordArray.count == 0) {
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请添加消费记录"];
             [toastView show];
             return;
@@ -786,6 +817,7 @@
         // 导入已有消费
          [self.consumePopView removeFromSuperview];
         NOBookChooseController *choooseVC = [[NOBookChooseController alloc] init];
+        choooseVC.delegate = self;
         HMNagationController *naviVC = [[HMNagationController alloc] initWithRootViewController:choooseVC];
         [self.navigationController presentViewController:naviVC animated:YES completion:nil];
     }
@@ -793,6 +825,12 @@
         // 取消
         [self.consumePopView removeFromSuperview];
     }
+}
+/*  NOBookChooseControllerDelegate */
+- (void)NOBookChooseControllerDelegateWithData:(NSMutableArray *)arrayData{
+    _noBookRecordArray = arrayData;
+    MMLog(@"NOBookChooseControllerDelegate %lu",arrayData.count);
+    [_tableView reloadData];
 }
 
 #pragma mark -------- Blcok 回调

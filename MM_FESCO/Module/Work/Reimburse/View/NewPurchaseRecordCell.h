@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewPurchaseRecordModel.h"
 #import "EditMessageModel.h"
+#import "NOBookChooseModel.h"
 
 @protocol NewPurchaseRecordCellDelegate <NSObject>
 
@@ -27,4 +28,5 @@
 
 @property (nonatomic, strong)  EditMessageModel *model;
 
+@property (nonatomic, strong) NOBookChooseModel *chooseModel;
 @end

@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) UIButton *rightButton;
 
+@property (nonatomic, strong) NSMutableArray *selectArray;
+
 @end
 
 @implementation NOBookChooseController
@@ -42,6 +44,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"选择未制单消费记录";
     self.dataArray = [NSMutableArray array];
+    self.selectArray = [NSMutableArray array];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
     footView.backgroundColor = [UIColor clearColor];
@@ -121,7 +124,26 @@
 }
 #pragma mark --- Action
 - (void)didClick:(UIButton *)sender{
-   
+    [_selectArray removeAllObjects];
+    for (NOBookChooseModel *model in _dataArray) {
+        if (model.isChoose) {
+            [_selectArray addObject:model];
+        }
+    }
+    
+    if (_selectArray.count == 0) {
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"请添加消费记录"];
+        [view show];
+        return;
+    }else{
+        
+        if ([_delegate respondsToSelector:@selector(NOBookChooseControllerDelegateWithData:)]) {
+            [_delegate NOBookChooseControllerDelegateWithData:_selectArray];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    
 }
 // 全选
 - (void)didChooseAll:(UIButton *)sender{

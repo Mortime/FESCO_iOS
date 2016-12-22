@@ -26,6 +26,8 @@
 
 #define kGetPicIDNotifition @"GetPicIDNotifition" // 通知控制器取出PicID
 
+#define  kAddNOBookNotifition @"AddNOBookNotifition"  // 添加未制单消费通知
+
 
 // Key标识符
 #define kSingNumber  @"SingNumber"  //  存储签到次数

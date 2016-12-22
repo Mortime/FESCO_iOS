@@ -201,4 +201,23 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[dataArray[0] integerValue]];
 
 }
+- (void)setChooseModel:(NOBookChooseModel *)chooseModel{
+    if (chooseModel.spendTypeStr) {
+        _titleLabel.text = chooseModel.spendTypeStr;
+    }else{
+        _titleLabel.text = @"未知";
+    }
+    
+    
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[chooseModel.spendTypeStr substringToIndex:2]]];
+    
+    NSString *timeStr = @"";
+    timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: chooseModel.spendBegin];
+    if (chooseModel.spendEnd) {
+        NSString *end = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:chooseModel.spendEnd];
+        timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
+    }
+    _timeLabel.text = timeStr;
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",chooseModel.moneyAmount];
+}
 @end

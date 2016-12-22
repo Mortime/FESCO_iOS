@@ -545,7 +545,7 @@
  
  
  */
-+ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray networkModelArray:(NSArray *)networkModelArray rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid applyID:(NSInteger)applyID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postPreserveReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray networkModelArray:(NSArray *)networkModelArray noBookAddArray:(NSArray *)noBookArray rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid applyID:(NSInteger)applyID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 /**
  *  提交报销申请
  
@@ -569,7 +569,7 @@
  
  
  */
-+ (void)postCommitReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray networkModelArray:(NSArray *)networkModelArray applyMan:(NSInteger)manID rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid applyID:(NSInteger)applyID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCommitReimburseApplyWithMemo:(NSString *)memo  title:(NSString *)title type:(NSUInteger)type applyDate:(NSString *)applyDate groupId:(NSUInteger)groupId accountId:(NSUInteger)accountId purchaseRecordModelArray:(NSArray *)newPurchaseRecordModelArray networkModelArray:(NSArray *)networkModelArray noBookAddArray:(NSArray *)noBookArray applyMan:(NSInteger)manID rePurchaseBookType:(NSInteger)rePurchaseBookType detailid:(NSInteger)detailid applyID:(NSInteger)applyID Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 /**

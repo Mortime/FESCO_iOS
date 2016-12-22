@@ -8,6 +8,14 @@
 
 #import "MMBaseViewController.h"
 
+@protocol NOBookChooseControllerDelegate <NSObject>
+
+- (void)NOBookChooseControllerDelegateWithData:(NSMutableArray *)arrayData;
+
+@end
+
 @interface NOBookChooseController : MMBaseViewController
+
+@property (nonatomic, weak) id <NOBookChooseControllerDelegate> delegate;
 
 @end
