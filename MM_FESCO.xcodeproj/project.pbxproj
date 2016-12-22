@@ -263,6 +263,7 @@
 		59FC07A31D95137600C1D0E0 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A21D95137600C1D0E0 /* libiconv.tbd */; };
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
+		760A7EF11E0B6B1F0036C6C6 /* NetworkDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
@@ -923,6 +924,8 @@
 		59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDockItem.m; sourceTree = "<group>"; };
 		59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVTabBarController.h; sourceTree = "<group>"; };
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
+		760A7EEF1E0B6B1F0036C6C6 /* NetworkDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataTool.h; sourceTree = "<group>"; };
+		760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataTool.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
@@ -1831,6 +1834,8 @@
 				5977624F1D48ABCB00BD8472 /* NetworkTool.m */,
 				59D3FE971D507C62002CCCA4 /* NetworkEntity.h */,
 				59D3FE981D507C62002CCCA4 /* NetworkEntity.m */,
+				760A7EEF1E0B6B1F0036C6C6 /* NetworkDataTool.h */,
+				760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */,
 				76D12A8A1DD9AA9300249133 /* UploadFile.h */,
 				76D12A8B1DD9AA9300249133 /* UploadFile.m */,
 			);
@@ -3331,6 +3336,7 @@
 				59EC91E51D98D9AD00E802FA /* PSTCollectionViewCell.m in Sources */,
 				59EC91D11D98D9AD00E802FA /* MWZoomingScrollView.m in Sources */,
 				59EC91E91D98D9AD00E802FA /* PSTCollectionViewItemKey.m in Sources */,
+				760A7EF11E0B6B1F0036C6C6 /* NetworkDataTool.m in Sources */,
 				59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */,
 				76F02FFA1DD4592F00D32771 /* cameraHelper.m in Sources */,
 				76515B3A1DED10E50054E910 /* ProgressReimburseController.m in Sources */,

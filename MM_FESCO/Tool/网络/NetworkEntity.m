@@ -1318,16 +1318,10 @@
                                };
     if (rePurchaseBookType == editReimburseBook) {
         
-        applyDic = @{@"memo":memo,
-                     @"type":[NSString stringWithFormat:@"%lu",type],
-                     @"apply_Date":applyDate,
-                     @"group_Id":[NSString stringWithFormat:@"%lu",groupId],
-                     @"account_Id":[NSString stringWithFormat:@"%lu",accountId],
-                     @"title":title,
-                     @"apply_Id":[NSString stringWithFormat:@"%lu",applyID],
-                     @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-                     @"cust_Id":[UserInfoModel defaultUserInfo].custId
-                     };
+        // 拼接 apply_Id
+        NSMutableDictionary *dic = applyDic.mutableCopy;
+        [dic setObject:[NSString stringWithFormat:@"%lu",applyID] forKey:@"apply_Id"];
+        applyDic = dic;
         
     }
 
@@ -1342,199 +1336,53 @@
     NSString *noBookDetailStr =  @"";
     //  未制单消费添加
     if (noBookArray.count) {
-        noBookDetailStr = [[self class] MM_initWithModel:noBookArray];
+       noBookDetailStr = [NetworkDataTool MM_initWithModel:noBookArray];
     }
 
     if (rePurchaseBookType == editReimburseBook) {
+        
         // 编辑报销单
         if (networkModelArray.count) {
             // 编辑时从服务器获取的消费记录
-            for (EditMessageModel *model in networkModelArray) {
-                // 可能为空的字段
-                // 1. 消费描述
-                NSString *spendMemo = @"";
-                if (model.detailMemo) {
-                    spendMemo = model.detailMemo;
-                }
-                // 2. 开始时间
-                NSString *spendStart = @"";
-                if (model.spendBegin) {
-                    spendStart = model.spendBegin;
-                }
-                
-                // 3. 结束时间
-                NSString *spendEnd = @"";
-                if (model.spendEnd) {
-                    spendEnd = model.spendEnd;
-                }
-                // 4. 消费城市
-                NSString *spendCity = @"";
-                if (model.cityName) {
-                    spendCity = model.cityName;
-                }
-                
-                // 5. 图片ID
-                NSString *picID = @"";
-                NSString *resultPicId = @"";
-                MMLog(@"%@",model.picArray);
-                for (NSDictionary *dic in model.picArray) {
-                    
-                    if (![[dic objectForKey:@"id"]  isKindOfClass:[NSNull class]]) {
-                       picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
-                    }
-                    
-                }
-                if (![picID isEqualToString:@""]) {
-                    resultPicId = [picID substringFromIndex:1];
-                }else{
-                    resultPicId = @"";
-                }
-               
-                
-                // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
-                
-                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
-                
-                NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
-                                            @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
-                                            @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
-                                            @"pic_Ids":resultPicId,
-                                            @"detail_Memo":spendMemo,
-                                            @"spend_Begin":spendStart,
-                                            @"spend_End":spendEnd,
-                                            @"spend_City":spendCity,
-                                            @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
-                                            
-                                            };
-                
-                NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-            }
-            // 去掉开始时的,
-            NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-            
-            
+            NSString *resultStr = [NetworkDataTool MM_initWithEditMessageModelArray:networkModelArray];
+            detailJsonArray = resultStr;
+            MMLog(@"编辑时从服务器获取的消费记录resultStr==%@=detailJsonArray==%@",resultStr,detailJsonArray);
+        }
             // 拼接本地新增的消费记录
             NSString *newStr = @"";
             if (newPurchaseRecordModelArray.count != 0) {
-                //  本地数据库的消费记录为空
-                for (NSArray *mightarray in newPurchaseRecordModelArray) {
-                    // 可能为空的字段
-                    // 1. 消费描述
-                    NSString *spendMemo = @"";
-                    if (mightarray[6]) {
-                        spendMemo = mightarray[6];
-                    }
-                    // 2. 开始时间
-                    NSString *spendStart = @"";
-                    if (mightarray[1]) {
-                        spendStart = mightarray[1];
-                    }
-                    
-                    // 3. 结束时间
-                    NSString *spendEnd = @"";
-                    if (mightarray[2]) {
-                        spendEnd = mightarray[2];
-                    }
-                    // 4. 消费城市
-                    NSString *spendCity = @"";
-                    if (mightarray[7]) {
-                        spendCity = mightarray[7];
-                    }
-                    
-                    
-                    
-                    NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                                @"money_Amount":mightarray[0],
-                                                @"bill_Num":mightarray[3],
-                                                @"pic_Ids":mightarray[4],
-                                                @"detail_Memo":spendMemo,
-                                                @"spend_Begin":spendStart,
-                                                @"spend_End":spendEnd,
-                                                @"spend_City":spendCity
-                                                
-                                                };
-                    
-                    NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                    detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-                }
-                // 去掉开始时的,
-                newStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-                
-                if (noBookArray.count) {
-                    resultStr = [NSString stringWithFormat:@"%@,%@,%@",resultStr,newStr,noBookDetailStr];
-                }else{
-                    resultStr = [NSString stringWithFormat:@"%@,%@",resultStr,newStr];
-                }
-                
+                newStr = [NetworkDataTool MM_initWithNewPurchaseRecordModelArray:newPurchaseRecordModelArray];
+                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,newStr];
+                MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
             }
+            // 未制单消费
+                if (noBookArray.count) {
+                    detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
+                }
+            detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
             
-            detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
-            
-            MMLog(@"networkModelArray ===detailJsonArray ============%@",detailJsonArray);
-        }
+            MMLog(@"未制单消费 ===未制单消费 ============%@",detailJsonArray);
+        }else{
         
-        
-    }else{
-        
-        // 新增消费记录
-        if (newPurchaseRecordModelArray.count == 0) {
+        // 新增消费记录   保存时可以为空
+        if (newPurchaseRecordModelArray.count == 0 && noBookArray.count == 0) {
             detailJsonArray = @"'[ ]'";
         }else{
-            for (NSArray *mightarray in newPurchaseRecordModelArray) {
-                // 可能为空的字段
-                // 1. 消费描述
-                NSString *spendMemo = @"";
-                if (mightarray[6]) {
-                    spendMemo = mightarray[6];
-                }
-                // 2. 开始时间
-                NSString *spendStart = @"";
-                if (mightarray[1]) {
-                    spendStart = mightarray[1];
-                }
-                
-                // 3. 结束时间
-                NSString *spendEnd = @"";
-                if (mightarray[2]) {
-                    spendEnd = mightarray[2];
-                }
-                // 4. 消费城市
-                NSString *spendCity = @"";
-                if (mightarray[7]) {
-                    spendCity = mightarray[7];
-                }
-                
-                
-                
-                NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                            @"money_Amount":mightarray[0],
-                                            @"bill_Num":mightarray[3],
-                                            @"pic_Ids":mightarray[4],
-                                            @"detail_Memo":spendMemo,
-                                            @"spend_Begin":spendStart,
-                                            @"spend_End":spendEnd,
-                                            @"spend_City":spendCity
-                                            
-                                            };
-                
-                NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-                
-            }
             
+            if (newPurchaseRecordModelArray.count != 0) {
+             NSString *newStr = [NetworkDataTool MM_initWithNewPurchaseRecordModelArray:newPurchaseRecordModelArray];
+                detailJsonArray = newStr;
+                MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
+            }
         }
         if (noBookArray.count) {
             detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
         }
-        // 去掉开始时的,
-        NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-        
-        detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
+        detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
         
         MMLog(@"New ===detailJsonArray ============%@",detailJsonArray);
         
-    }    
+    }
     
     
     NSDictionary *dic = @{
@@ -1583,22 +1431,12 @@
 
     if (rePurchaseBookType == editReimburseBook) {
         
-        applyDic = @{@"memo":memo,
-                     @"type":[NSString stringWithFormat:@"%lu",type],
-                     @"apply_Date":applyDate,
-                     @"group_Id":[NSString stringWithFormat:@"%lu",groupId],
-                     @"account_Id":[NSString stringWithFormat:@"%lu",accountId],
-                     @"title":title,
-                     @"apply_Id":[NSString stringWithFormat:@"%lu",applyID],
-                     @"emp_Id":[UserInfoModel defaultUserInfo].empId,
-                     @"cust_Id":[UserInfoModel defaultUserInfo].custId
-                     };
-
+        NSMutableDictionary *dic = applyDic.mutableCopy;
+        [dic setObject:[NSString stringWithFormat:@"%lu",applyID] forKey:@"apply_Id"];
+        applyDic = dic;
     }
     applyJsonArray = [NSString jsonToJsonArrayWith:applyDic];
     applyJsonArray = [NSString stringWithFormat:@"[%@]",applyJsonArray];
-    MMLog(@"applyJsonArray ============ %@",applyJsonArray);
-    
     
     /*
      
@@ -1623,205 +1461,55 @@
     
     // 无论新增还是编辑,都有能添加未制单消费
     NSString *noBookDetailStr =  @"";
-    
     //  未制单消费添加
     if (noBookArray.count) {
-        noBookDetailStr = [[self class] MM_initWithModel:noBookArray];
+        noBookDetailStr = [NetworkDataTool MM_initWithModel:noBookArray];
     }
-
+    
     if (rePurchaseBookType == editReimburseBook) {
+        
         // 编辑报销单
         if (networkModelArray.count) {
             // 编辑时从服务器获取的消费记录
-            for (EditMessageModel *model in networkModelArray) {
-                // 可能为空的字段
-                // 1. 消费描述
-                NSString *spendMemo = @"";
-                if (model.detailMemo) {
-                    spendMemo = model.detailMemo;
-                }
-                // 2. 开始时间
-                NSString *spendStart = @"";
-                if (model.spendBegin) {
-                    spendStart = model.spendBegin;
-                }
-                
-                // 3. 结束时间
-                NSString *spendEnd = @"";
-                if (model.spendEnd) {
-                    spendEnd = model.spendEnd;
-                }
-                // 4. 消费城市
-                NSString *spendCity = @"";
-                if (model.cityName) {
-                    spendCity = model.cityName;
-                }
-                
-                // 5. 图片ID
-                NSString *picID = @"";
-                NSString *resultPicId = @"";
-                MMLog(@"%@",model.picArray);
-                for (NSDictionary *dic in model.picArray) {
-                    
-                    if (![[dic objectForKey:@"id"]  isKindOfClass:[NSNull class]]) {
-                        picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
-                    }
-                    
-                }
-                if (![picID isEqualToString:@""]) {
-                    resultPicId = [picID substringFromIndex:1];
-                }else{
-                    resultPicId = @"";
-                }
-                
-
-                // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
-                
-                MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
-                
-                NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
-                                            @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
-                                            @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
-                                            @"pic_Ids":resultPicId,
-                                            @"detail_Memo":spendMemo,
-                                            @"spend_Begin":spendStart,
-                                            @"spend_End":spendEnd,
-                                            @"spend_City":spendCity,
-                                            @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
-                                            
-                                            };
-                
-                NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-            }
-            // 去掉开始时的,
-            NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-            
-            
-      // 拼接本地新增的消费记录
-            NSString *newStr = @"";
-                    if (newPurchaseRecordModelArray.count != 0) {
-                        //  本地数据库的消费记录为空
-                        for (NSArray *mightarray in newPurchaseRecordModelArray) {
-                            // 可能为空的字段
-                            // 1. 消费描述
-                            NSString *spendMemo = @"";
-                            if (mightarray[6]) {
-                                spendMemo = mightarray[6];
-                            }
-                            // 2. 开始时间
-                            NSString *spendStart = @"";
-                            if (mightarray[1]) {
-                                spendStart = mightarray[1];
-                            }
-                            
-                            // 3. 结束时间
-                            NSString *spendEnd = @"";
-                            if (mightarray[2]) {
-                                spendEnd = mightarray[2];
-                            }
-                            // 4. 消费城市
-                            NSString *spendCity = @"";
-                            if (mightarray[7]) {
-                                spendCity = mightarray[7];
-                            }
-                            
-                            
-                            
-                            NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                                        @"money_Amount":mightarray[0],
-                                                        @"bill_Num":mightarray[3],
-                                                        @"pic_Ids":mightarray[4],
-                                                        @"detail_Memo":spendMemo,
-                                                        @"spend_Begin":spendStart,
-                                                        @"spend_End":spendEnd,
-                                                        @"spend_City":spendCity
-                                                        
-                                                        };
-                            
-                            NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                            detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-                        }
-                        // 去掉开始时的,
-                       newStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-                        
-                        if (noBookArray.count) {
-                            resultStr = [NSString stringWithFormat:@"%@,%@,%@",resultStr,newStr,noBookDetailStr];
-                        }else{
-                            resultStr = [NSString stringWithFormat:@"%@,%@",resultStr,newStr];
-                        }
-                        
-                    }
-            
-            detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
-            
-            MMLog(@"networkModelArray ===detailJsonArray ============%@",detailJsonArray);
+            NSString *resultStr = [NetworkDataTool MM_initWithEditMessageModelArray:networkModelArray];
+            detailJsonArray = resultStr;
+            MMLog(@"编辑时从服务器获取的消费记录resultStr==%@=detailJsonArray==%@",resultStr,detailJsonArray);
         }
+        // 拼接本地新增的消费记录
+        NSString *newStr = @"";
+        if (newPurchaseRecordModelArray.count != 0) {
+            newStr = [NetworkDataTool MM_initWithNewPurchaseRecordModelArray:newPurchaseRecordModelArray];
+            detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,newStr];
+            MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
+        }
+        // 未制单消费
+        if (noBookArray.count) {
+            detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
+        }
+        detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
         
-        
+        MMLog(@"未制单消费 ===未制单消费 ============%@",detailJsonArray);
     }else{
         
-        // 新增消费记录
-        if (newPurchaseRecordModelArray.count == 0 && noBookArray.count == 0 ) {
+        // 提交消费记录 这里是不可以为空的
+        if (newPurchaseRecordModelArray.count == 0 && noBookArray.count == 0) {
             detailJsonArray = @"'[ ]'";
-        }else if(newPurchaseRecordModelArray.count){
-            for (NSArray *mightarray in newPurchaseRecordModelArray) {
-                // 可能为空的字段
-                // 1. 消费描述
-                NSString *spendMemo = @"";
-                if (mightarray[6]) {
-                    spendMemo = mightarray[6];
-                }
-                // 2. 开始时间
-                NSString *spendStart = @"";
-                if (mightarray[1]) {
-                    spendStart = mightarray[1];
-                }
-                
-                // 3. 结束时间
-                NSString *spendEnd = @"";
-                if (mightarray[2]) {
-                    spendEnd = mightarray[2];
-                }
-                // 4. 消费城市
-                NSString *spendCity = @"";
-                if (mightarray[7]) {
-                    spendCity = mightarray[7];
-                }
-                
-                
-                
-                NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                            @"money_Amount":mightarray[0],
-                                            @"bill_Num":mightarray[3],
-                                            @"pic_Ids":mightarray[4],
-                                            @"detail_Memo":spendMemo,
-                                            @"spend_Begin":spendStart,
-                                            @"spend_End":spendEnd,
-                                            @"spend_City":spendCity
-                                            
-                                            };
-                
-                NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-                detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,mightStr];
-                
-            }
+        }else{
             
+            if (newPurchaseRecordModelArray.count != 0) {
+                NSString *newStr = [NetworkDataTool MM_initWithNewPurchaseRecordModelArray:newPurchaseRecordModelArray];
+                detailJsonArray = newStr;
+                MMLog(@"拼接本地新增的消费记录resultStr==%@=detailJsonArray==%@",newStr,detailJsonArray);
+            }
         }
         if (noBookArray.count) {
             detailJsonArray = [NSString stringWithFormat:@"%@,%@",detailJsonArray,noBookDetailStr];
         }
-        // 去掉开始时的,
-        NSString *resultStr = [detailJsonArray substringFromIndex:1];//截取掉下标0之后的字符串
-        
-        detailJsonArray = [NSString stringWithFormat:@"[%@]",resultStr];
+        detailJsonArray = [NSString stringWithFormat:@"[%@]",detailJsonArray];
         
         MMLog(@"New ===detailJsonArray ============%@",detailJsonArray);
-
+        
     }
-    
-    
-    
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
@@ -1946,77 +1634,6 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 
-
-//  公用方法
-+ (NSString *)MM_initWithModel:(NSArray *)noBookArray{
-    // 无论新增还是编辑,都有能添加未制单消费
-    NSString *noBookDetailStr =  @"";
-    //  未制单消费添加
-    if (noBookArray.count) {
-        // 编辑时从服务器获取的消费记录
-        for (NOBookChooseModel *model in noBookArray) {
-            // 可能为空的字段
-            // 1. 消费描述
-            NSString *spendMemo = @"";
-            if (model.detailMemo) {
-                spendMemo = model.detailMemo;
-            }
-            // 2. 开始时间
-            NSString *spendStart = @"";
-            if (model.spendBegin) {
-                spendStart = model.spendBegin;
-            }
-            
-            // 3. 结束时间
-            NSString *spendEnd = @"";
-            if (model.spendEnd) {
-                spendEnd = model.spendEnd;
-            }
-            // 4. 消费城市
-            NSString *spendCity = @"";
-            if (model.cityName) {
-                spendCity = model.cityName;
-            }
-            
-            // 5. 图片ID
-            NSString *picID = @"";
-            NSString *resultPicId = @"";
-            MMLog(@"%@",model.picArray);
-            for (NSDictionary *dic in model.picArray) {
-                
-                if (![[dic objectForKey:@"id"]  isKindOfClass:[NSNull class]]) {
-                    picID = [NSString stringWithFormat:@"%@,%lu",picID,[[dic objectForKey:@"id"] integerValue]];
-                }
-                
-            }
-            if (![picID isEqualToString:@""]) {
-                resultPicId = [picID substringFromIndex:1];
-            }else{
-                resultPicId = @"";
-            }
-            
-            NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendType],
-                                        @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
-                                        @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
-                                        @"pic_Ids":resultPicId,
-                                        @"detail_Memo":spendMemo,
-                                        @"spend_Begin":spendStart,
-                                        @"spend_End":spendEnd,
-                                        @"spend_City":spendCity,
-                                        @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId]
-                                        
-                                        };
-            
-            NSString *mightStr = [NSString jsonToJsonArrayWith:detailDic];
-            noBookDetailStr = [NSString stringWithFormat:@"%@,%@",noBookDetailStr,mightStr];
-        }
-        
-    }
-
-    // 去掉开始时的,
-    noBookDetailStr = [noBookDetailStr substringFromIndex:1];//截取掉下标0之后的字符串
-    return noBookDetailStr;
-}
 
 
 
