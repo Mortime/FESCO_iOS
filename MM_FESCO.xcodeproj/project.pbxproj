@@ -264,6 +264,9 @@
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
 		760A7EF11E0B6B1F0036C6C6 /* NetworkDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */; };
+		760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */; };
+		760A7EFD1E0CCE9F0036C6C6 /* SocialSecurityShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */; };
+		760A7F001E0D071B0036C6C6 /* NOSocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
@@ -926,6 +929,12 @@
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
 		760A7EEF1E0B6B1F0036C6C6 /* NetworkDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataTool.h; sourceTree = "<group>"; };
 		760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataTool.m; sourceTree = "<group>"; };
+		760A7EF21E0CB6070036C6C6 /* SocialSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityController.h; sourceTree = "<group>"; };
+		760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityController.m; sourceTree = "<group>"; };
+		760A7EFB1E0CCE9F0036C6C6 /* SocialSecurityShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityShowView.h; sourceTree = "<group>"; };
+		760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityShowView.m; sourceTree = "<group>"; };
+		760A7EFE1E0D071B0036C6C6 /* NOSocialSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOSocialSecurityController.h; sourceTree = "<group>"; };
+		760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOSocialSecurityController.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
@@ -2578,6 +2587,10 @@
 			children = (
 				761C373D1E09299A007E1607 /* BuffetController.h */,
 				761C373E1E09299A007E1607 /* BuffetController.m */,
+				760A7EF21E0CB6070036C6C6 /* SocialSecurityController.h */,
+				760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */,
+				760A7EFE1E0D071B0036C6C6 /* NOSocialSecurityController.h */,
+				760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2589,6 +2602,8 @@
 				761C37421E0929D9007E1607 /* BuffetImagLableCell.m */,
 				761C37441E0929F1007E1607 /* BuffetLableImageCell.h */,
 				761C37451E0929F1007E1607 /* BuffetLableImageCell.m */,
+				760A7EFB1E0CCE9F0036C6C6 /* SocialSecurityShowView.h */,
+				760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3060,6 +3075,7 @@
 				59A59DFD1D499937001F3122 /* ToastAlertView.m in Sources */,
 				59EC91191D98CB5900E802FA /* EMCDDeviceManagerBase.m in Sources */,
 				59EC916D1D98CB5900E802FA /* EaseChatBarMoreView.m in Sources */,
+				760A7F001E0D071B0036C6C6 /* NOSocialSecurityController.m in Sources */,
 				59EC91E11D98D9AD00E802FA /* UIImageView+EMWebCache.m in Sources */,
 				764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */,
 				76F02FD51DD4539C00D32771 /* MPFileManager.m in Sources */,
@@ -3256,6 +3272,7 @@
 				59A59E211D499EF2001F3122 /* UIBarButtonItem+Helper.m in Sources */,
 				59F6510A1D70338C000596A7 /* PinyinHelper.m in Sources */,
 				59EC91611D98CB5900E802FA /* EaseBubbleView+Image.m in Sources */,
+				760A7EFD1E0CCE9F0036C6C6 /* SocialSecurityShowView.m in Sources */,
 				59EC915A1D98CB5900E802FA /* EaseUserCell.m in Sources */,
 				597222F41DADE00A00D01A7A /* MMBaseViewModel.m in Sources */,
 				59EC91CB1D98D9AD00E802FA /* MWGridCell.m in Sources */,
@@ -3271,6 +3288,7 @@
 				59EC91D91D98D9AD00E802FA /* EMSDWebImagePrefetcher.m in Sources */,
 				76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */,
 				763256F11DD319D900C9C903 /* NewPurchaseBookController.m in Sources */,
+				760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */,
 				59F4D6391D81387200C56E5D /* JZUserLoginManager.m in Sources */,
 				59EC91DE1D98D9AD00E802FA /* UIImage+EMMultiFormat.m in Sources */,
 				761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */,

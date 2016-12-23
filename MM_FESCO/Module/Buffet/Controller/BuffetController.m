@@ -9,8 +9,12 @@
 #import "BuffetController.h"
 #import "BuffetImagLableCell.h"
 #import "BuffetLableImageCell.h"
+#import "SocialSecurityShowView.h"
+#import "SocialSecurityController.h"
+#import "NOSocialSecurityController.h"
 
-@interface BuffetController ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface BuffetController ()<UITableViewDataSource,UITableViewDelegate,SocialSecurityShowViewDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
 
@@ -19,6 +23,8 @@
 @property (nonatomic, strong) NSArray *topTitleArray;
 
 @property (nonatomic, strong) NSArray *bottomTitleArray;
+
+@property (nonatomic, strong) SocialSecurityShowView *socialSecurityShowView;
 
 
 @end
@@ -76,8 +82,39 @@
     }
     
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        // 员工信息
+    }
+    if (indexPath.row == 1) {
+        // 社保自助
+        [self.view addSubview:self.socialSecurityShowView];
+    }
+    if (indexPath.row == 2) {
+        // 公积金自助
+    }
+}
+#pragma  mark ----- SocialSecurityShowViewDelegate
+- (void)socialSecurityShowViewDelegateWithMessageTag:(NSInteger)messageTag viewTag:(NSInteger)viewTag{
+    
+   [self.socialSecurityShowView removeFromSuperview];
+    if (viewTag == 9001) {
+        if (messageTag == 9004) {
+            // 参加过社保
+            SocialSecurityController *socialVC = [[SocialSecurityController alloc] init];
+            socialVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:socialVC animated:YES];
 
+        }
+        if (messageTag == 9005) {
+            // 没参加过社保
+            NOSocialSecurityController *NOsocialVC = [[NOSocialSecurityController alloc] init];
+            NOsocialVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:NOsocialVC animated:YES];
 
+        }
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -95,6 +132,13 @@
     }
     return _tableView;
 }
-
+- (SocialSecurityShowView *)socialSecurityShowView{
+    
+    if (_socialSecurityShowView == nil) {
+        _socialSecurityShowView = [[SocialSecurityShowView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+        _socialSecurityShowView.delegate = self;
+    }
+    return _socialSecurityShowView;
+}
 
 @end
