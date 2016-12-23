@@ -267,6 +267,9 @@
 		760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */; };
 		760A7EFD1E0CCE9F0036C6C6 /* SocialSecurityShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */; };
 		760A7F001E0D071B0036C6C6 /* NOSocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */; };
+		760A7F031E0D18D90036C6C6 /* SocialSecurityCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F021E0D18D90036C6C6 /* SocialSecurityCellView.m */; };
+		760A7F061E0D1B700036C6C6 /* SocialSecurityHearerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F051E0D1B700036C6C6 /* SocialSecurityHearerView.m */; };
+		760A7F091E0D20200036C6C6 /* SocialSecurityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
@@ -935,6 +938,12 @@
 		760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityShowView.m; sourceTree = "<group>"; };
 		760A7EFE1E0D071B0036C6C6 /* NOSocialSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOSocialSecurityController.h; sourceTree = "<group>"; };
 		760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOSocialSecurityController.m; sourceTree = "<group>"; };
+		760A7F011E0D18D90036C6C6 /* SocialSecurityCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityCellView.h; sourceTree = "<group>"; };
+		760A7F021E0D18D90036C6C6 /* SocialSecurityCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCellView.m; sourceTree = "<group>"; };
+		760A7F041E0D1B700036C6C6 /* SocialSecurityHearerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityHearerView.h; sourceTree = "<group>"; };
+		760A7F051E0D1B700036C6C6 /* SocialSecurityHearerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityHearerView.m; sourceTree = "<group>"; };
+		760A7F071E0D20200036C6C6 /* SocialSecurityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityCell.h; sourceTree = "<group>"; };
+		760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCell.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
@@ -2604,6 +2613,12 @@
 				761C37451E0929F1007E1607 /* BuffetLableImageCell.m */,
 				760A7EFB1E0CCE9F0036C6C6 /* SocialSecurityShowView.h */,
 				760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */,
+				760A7F011E0D18D90036C6C6 /* SocialSecurityCellView.h */,
+				760A7F021E0D18D90036C6C6 /* SocialSecurityCellView.m */,
+				760A7F041E0D1B700036C6C6 /* SocialSecurityHearerView.h */,
+				760A7F051E0D1B700036C6C6 /* SocialSecurityHearerView.m */,
+				760A7F071E0D20200036C6C6 /* SocialSecurityCell.h */,
+				760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3107,6 +3122,7 @@
 				59EC911C1D98CB5900E802FA /* EMVoiceConverter.mm in Sources */,
 				597762501D48ABCB00BD8472 /* NetworkTool.m in Sources */,
 				59E99B671DB8923C002D0486 /* LaterTimeStatisticController.m in Sources */,
+				760A7F091E0D20200036C6C6 /* SocialSecurityCell.m in Sources */,
 				597223D81DADE05400D01A7A /* OverTimeApplyView.m in Sources */,
 				59C90C2F1D5C07B300CE0385 /* UIViewController+HUD.m in Sources */,
 				597223B31DADE05400D01A7A /* LeaveApprovalView.m in Sources */,
@@ -3120,6 +3136,7 @@
 				5977621D1D489AE000BD8472 /* ViewController.m in Sources */,
 				76B1F5CF1DFE44C9001EBAB5 /* NOBookPurchaseCell.m in Sources */,
 				597223D71DADE05400D01A7A /* OverTimeApplyCell.m in Sources */,
+				760A7F031E0D18D90036C6C6 /* SocialSecurityCellView.m in Sources */,
 				597223BD1DADE05400D01A7A /* CheckWorkController.m in Sources */,
 				597223A91DADE05400D01A7A /* ApprovalController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
@@ -3195,6 +3212,7 @@
 				763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */,
 				59EC91651D98CB5900E802FA /* EaseBubbleView+Voice.m in Sources */,
 				59EC91E41D98D9AD00E802FA /* PSTCollectionView.m in Sources */,
+				760A7F061E0D1B700036C6C6 /* SocialSecurityHearerView.m in Sources */,
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				76CBDCF21DDB06C100272D91 /* DVVSearchView.m in Sources */,
