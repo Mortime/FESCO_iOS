@@ -93,7 +93,7 @@
     }
     
     if (_timeType) {
-        _dateView.datePickerMode = UIDatePickerModeDate;
+        self.dateView.datePickerMode = UIDatePickerModeDate;
     }
 }
 #pragma mark ----- UIScrollerDelegate

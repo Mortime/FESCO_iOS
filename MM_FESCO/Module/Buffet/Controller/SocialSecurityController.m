@@ -7,8 +7,23 @@
 //
 
 #import "SocialSecurityController.h"
+#import "SocialSecurityCardIDView.h"
 
-@interface SocialSecurityController ()
+#define kFooterCardH  140
+
+@interface SocialSecurityController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView  *tableView;
+
+@property (nonatomic,strong) UIView *footerView;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic,strong) SocialSecurityCardIDView *oneCardIDView;
+
+@property (nonatomic,strong) SocialSecurityCardIDView *twoCardIDView;
+
+@property (nonatomic, strong) UIButton *cancelButton;
 
 @end
 
@@ -22,11 +37,92 @@
     self.title = @"员工社保信息自助";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     
+    [self.footerView addSubview:self.titleLabel];
+    [self.footerView addSubview:self.oneCardIDView];
+    [self.footerView addSubview:self.twoCardIDView];
+    self.tableView.tableFooterView = self.footerView;
+    
+    [self.view addSubview:self.cancelButton];
+    [self.view addSubview:self.tableView];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 0;
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return nil;
+    
+}
+#pragma mark --- Action
+- (void)didCancelButton:(UIButton *)sender{
+    // 保存
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+#pragma  mark ----- Lazy 加载
+- (UITableView *)tableView {
+    
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 64 - 50) style:UITableViewStylePlain];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        
+    }
+    return _tableView;
+}
+
+- (UIButton *)cancelButton{
+    if (_cancelButton == nil) {
+        _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _cancelButton.frame = CGRectMake(0, self.view.height - 50 - 64,self.view.width, 50);
+        [_cancelButton setTitle:@"保存" forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_cancelButton addTarget:self action:@selector(didCancelButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        
+    }
+    return _cancelButton;
+}
+- (UIView *)footerView{
+    if (_footerView == nil) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.height,kFooterCardH * 2 + 10 + 40 + 10 + 50)];
+        _footerView.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _footerView;
+}
+- (UILabel *)titleLabel{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, self.view.width, 15)];
+        _titleLabel.text = @"上传身份证";
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.textColor = [UIColor blackColor];
+    }
+    return _titleLabel;
+}
+- (SocialSecurityCardIDView *)oneCardIDView{
+    if (_oneCardIDView == nil) {
+        _oneCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, kFooterCardH)];
+        _oneCardIDView.backgroundColor = [UIColor whiteColor];
+    }
+    return _oneCardIDView;
+}
+- (SocialSecurityCardIDView *)twoCardIDView{
+    if (_twoCardIDView == nil) {
+        _twoCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.oneCardIDView.frame) + 10, self.view.width, kFooterCardH)];
+        _twoCardIDView.backgroundColor = [UIColor whiteColor];
+    }
+    return _twoCardIDView;
+}
+
 @end
 

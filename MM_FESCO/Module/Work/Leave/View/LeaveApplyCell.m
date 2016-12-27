@@ -116,6 +116,7 @@
     if (_index == 3002 || _index == 3003) {
         if (_isShowAMPM) {
             _rithtTextFiled.hidden = NO;
+            _textFile.timeType = _timeType;
         }else{
             _rithtTextFiled.hidden = YES;
         }

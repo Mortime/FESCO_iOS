@@ -23,6 +23,8 @@
 
 @property (nonatomic, assign) BOOL isShowHourTime;
 
+@property (nonatomic, assign) NSString *timeType;
+
 
 @end
 
@@ -169,6 +171,7 @@
     cell.unitsArray = _unitsArray;
     cell.leftTitle = self.leftTitleArray[indexPat.row];
     cell.placeTitle = self.placeTitleArray[indexPat.row];
+    cell.timeType = _timeType;
     if ([_beginTime isEqualToString:@"年假"]) {
 
         cell.holNumberStr = _yearHolNumber;
@@ -198,11 +201,11 @@
 // 选择的上午或者下午  3012 开始时间  ,  3013 结束时间
 - (void)leaveApplyCellDelegateWithAMPM:(UITextField *)AMPM{
     if (AMPM.tag == 3012) {
-        _beginTime = AMPM.text;
+        _beginTimeAMPM = AMPM.text;
         
     }
     if (AMPM.tag == 3013) {
-        _endTime = AMPM.text;
+        _endAMPM = AMPM.text;
         
     }
 }
@@ -356,6 +359,7 @@
         _endTime = textFiled.text;
         if ([_endTime isEqualToString:@"半天"]) {
             _isShowAMPM = YES;
+            _timeType = @"yyyy-MM-dd";
         }else{
             _isShowAMPM = NO;
         }

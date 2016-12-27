@@ -49,21 +49,21 @@
     }];
     [self.nameView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-100);
         make.height.mas_equalTo(@44);
         
     }];
     [self.sexView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.nameView.mas_bottom);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-100);
         make.height.mas_equalTo(@44);
         
     }];
     [self.nationView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.sexView.mas_bottom);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-100);
         make.height.mas_equalTo(@44);
         

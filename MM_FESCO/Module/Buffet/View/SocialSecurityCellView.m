@@ -70,12 +70,12 @@
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.height.mas_equalTo(@14);
-        make.width.mas_equalTo(@60);
+        make.width.mas_equalTo(@100);
         
     }];
     [self.rightTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(self.leftLabel.mas_right).offset(10);
+        make.left.mas_equalTo(self.leftLabel.mas_right).offset(0);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.height.mas_equalTo(self.mas_height);
         make.right.mas_equalTo(self.bgView.mas_right);
