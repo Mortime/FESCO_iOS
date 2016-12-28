@@ -61,7 +61,7 @@
     
     [NetworkEntity postOverTimeStatisticSuccess:^(id responseObject) {
         
-//        MMLog(@"OverTimeStatistic  =======responseObject=====%@",responseObject);
+        MMLog(@"OverTimeStatistic  =======responseObject=====%@",responseObject);
         
         if ([[responseObject objectForKey:@"rankList"] count]) {
 
@@ -157,17 +157,17 @@
 }
 //  冒泡排序按照加班时长升序排序
 - (NSArray *)sortDurationWith:(NSArray *)array{
-    for (int i = 0; i < array.count - 1; i ++) {
-        for (int j = 0 ; j < array.count - 1 - i; j ++) {
-            if ([[array[j] objectForKey:@"duration"] floatValue] > [[array[j + 1] objectForKey:@"duration"] floatValue]) {
-                NSDictionary *dic = array[j];
-                array[j][@"duration"]  =  array[j + 1][@"duration"];
-                array[j][@"emp_Name"]  =  array[j + 1][@"emp_Name"];
-                array[j][@"counts"]  =  array[j + 1][@"counts"];
+    
+    NSMutableArray *mutableArray = array.mutableCopy;
+    for (int i = 0; i < mutableArray.count - 1; i ++) {
+        for (int j = 0 ; j < mutableArray.count - 1 - i; j ++) {
+            if ([[mutableArray[j] objectForKey:@"duration"] floatValue] > [[mutableArray[j + 1] objectForKey:@"duration"] floatValue]) {
                 
-                array[j + 1][@"duration"] = dic[@"duration"];
-                array[j + 1][@"emp_Name"] = dic[@"emp_Name"];
-                array[j + 1][@"counts"] = dic[@"counts"];
+                NSDictionary *dic = mutableArray[j];
+                
+                NSDictionary *dic1 = mutableArray[j + 1];
+                [mutableArray setObject:dic atIndexedSubscript:j + 1];
+                [mutableArray setObject:dic1 atIndexedSubscript:j];
                 
             }
             
@@ -175,7 +175,7 @@
     }
     
     MMLog(@"array排序后  ==  %@",array);
-    return array;
+    return mutableArray;
 }
 - (OverTimeStatisticHeaderView *)leftView{
     if (_leftView == nil) {

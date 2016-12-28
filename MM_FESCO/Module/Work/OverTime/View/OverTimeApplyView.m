@@ -171,6 +171,9 @@
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
             [self.parementVC showTotasViewWithMes:@"提交成功"];
         }
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"duplicate"]) {
+            [self.parementVC showTotasViewWithMes:@"该加班时间段已经存在,请重新选择!"];
+        }
     } failure:^(NSError *failure) {
         MMLog(@"CommitOverTimeApply ========failure=========%@",failure);
         [self.parementVC showTotasViewWithMes:@"网络错误"];

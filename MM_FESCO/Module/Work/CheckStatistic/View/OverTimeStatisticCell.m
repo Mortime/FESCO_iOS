@@ -190,7 +190,7 @@
         _nameLabel.text = model.name;
     }
     if (model.timeNumber) {
-        _timeLabel.text = [NSString stringWithFormat:@"%.1fH",model.timeNumber];
+        _timeLabel.text = [NSString stringWithFormat:@"%.2fH",model.timeNumber];
     }
     
 }
