@@ -17,6 +17,12 @@
 
 @property (nonatomic,strong) UIView *footerView;
 
+@property (nonatomic, strong) UIView *bgView;
+
+@property (nonatomic, strong) UILabel *leftLabel;
+
+@property (nonatomic, strong) UILabel *cardLabel;
+
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic,strong) SocialSecurityCardIDView *oneCardIDView;

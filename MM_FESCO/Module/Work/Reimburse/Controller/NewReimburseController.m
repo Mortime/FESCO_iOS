@@ -190,14 +190,14 @@
         // 收款人
         NSString *people = @"";
         for (BankInfoModel *model in _bankArray) {
-            if (_reimburseModel.accountId == model.bankNumber) {
+            if (_reimburseModel.accountId == model.empBankId) {
             people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
             }
         }
         if ([_reimburseModel.typeStr isKindOfClass:[NSNull class]] || !_reimburseModel.typeStr) {
             _reimburseModel.typeStr = @"";
         }
-        if ([_reimburseModel.memo isKindOfClass:[NSNull class]] || _reimburseModel.memo) {
+        if ([_reimburseModel.memo isKindOfClass:[NSNull class]] || !_reimburseModel.memo) {
             _reimburseModel.memo = @"";
         }
         if ([_reimburseModel.title isKindOfClass:[NSNull class]] || !_reimburseModel.title ) {
@@ -309,7 +309,7 @@
                 
                 NSString *people = @"";
                 for (BankInfoModel *model in _bankArray) {
-                    if (_reimburseModel.accountId == model.bankNumber) {
+                    if (_reimburseModel.accountId == model.empBankId) {
                         people = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
                     }
                 }
@@ -911,7 +911,7 @@
         }
         if (!_peopleStr) {
             for (BankInfoModel *model in _bankArray) {
-                if (model.bankNumber == _reimburseModel.accountId) {
+                if (model.empBankId == _reimburseModel.accountId) {
                     NSString *str = [NSString stringWithTitle:model.bankPayName content:model.bankNumber];
                         _peopleStr = str;
                         _peopleNumber  = model.bankNumber;
