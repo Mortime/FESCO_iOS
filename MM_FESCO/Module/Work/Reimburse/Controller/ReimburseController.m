@@ -64,7 +64,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [self initData];
     // 加载未制单消费记录
-    [self initDataNOBook];
+//    [self initDataNOBook];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,10 +77,10 @@
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
     
-    [self.recodeBgView addSubview:self.leftRecordView];
-    [self.recodeBgView addSubview:self.centerRecordView];
-    [self.recodeBgView addSubview:self.rightRecordView];
-    [self.view addSubview:self.recodeBgView];
+//    [self.recodeBgView addSubview:self.leftRecordView];
+//    [self.recodeBgView addSubview:self.centerRecordView];
+//    [self.recodeBgView addSubview:self.rightRecordView];
+//    [self.view addSubview:self.recodeBgView];
     
     [self.bottomView addSubview:self.reportChartBtn];
     [self.bottomView addSubview:self.addReportBtn];
@@ -117,26 +117,26 @@
     }];
     
 }
-- (void)initDataNOBook{
-    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
-//        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
-        CGFloat number = 0;
-        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-            NSArray *array = [responseObject objectForKey:@"list"];
-            if (array.count) {
-                for (NSDictionary *dic in array) {
-                    number = number + [[dic objectForKey:@"money_Amount"] integerValue];
-                }
-            }
-            _leftRecordView.textViewStr = [NSString stringWithFormat:@"%lu条消费记录\n共%.f元",array.count,number];
-        }
-    } failure:^(NSError *failure) {
-        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
-        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-        [view show];
-    }];
-
-}
+//- (void)initDataNOBook{
+//    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
+////        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
+//        CGFloat number = 0;
+//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+//            NSArray *array = [responseObject objectForKey:@"list"];
+//            if (array.count) {
+//                for (NSDictionary *dic in array) {
+//                    number = number + [[dic objectForKey:@"money_Amount"] integerValue];
+//                }
+//            }
+//            _leftRecordView.textViewStr = [NSString stringWithFormat:@"%lu条消费记录\n共%.f元",array.count,number];
+//        }
+//    } failure:^(NSError *failure) {
+//        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
+//        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+//        [view show];
+//    }];
+//
+//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _dataArray.count;
@@ -198,10 +198,10 @@
         [self.navigationController pushViewController:newReimburseVC animated:YES];
     }
     if (sender.tag == 502) {
-        // 报表
-        MMLog(@"点击了列表");
-        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-        [view show];
+        MMLog(@"未制单消费");
+        // 未制单消费
+        NOBookPurchaseController *noBookVC = [[NOBookPurchaseController alloc] init];
+        [self.navigationController pushViewController:noBookVC animated:YES];
 
     }
 }
@@ -229,7 +229,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,kHeaderH + kBottomH , self.view.width, self.view.height - (kHeaderH + kBottomH) - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,kBottomH, self.view.width, self.view.height - kBottomH - 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -292,7 +292,7 @@
 // 报销  添加报销单  列表
 - (UIView *)bottomView{
     if (_bottomView == nil) {
-        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.recodeBgView.frame), self.view.width, kBottomH)];
+        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kBottomH)];
         _bottomView.backgroundColor = RGB_Color(240, 239, 245);
         
     }
@@ -352,19 +352,14 @@
         _listBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _listBtn.frame = CGRectMake(kWight * 2, 0, kWight, kBottomH);
         _listBtn.backgroundColor = [UIColor clearColor];
-        [_listBtn setTitle:@"列表" forState:UIControlStateNormal];
-        [_listBtn setImage:[UIImage imageNamed:@"Reimburse_Liebiao_Normal"] forState:UIControlStateNormal];
-        [_listBtn setImage:[UIImage imageNamed:@"Reimburse_Liebiao_Select"] forState:UIControlStateSelected];
+        [_listBtn setTitle:@"未制单消费" forState:UIControlStateNormal];
+        [_listBtn setImage:[UIImage imageNamed:@"Reimburse_weidingdanxiaofei_Normal"] forState:UIControlStateNormal];
+        [_listBtn setImage:[UIImage imageNamed:@"Reimburse_weidingdanxiaofei_Select"] forState:UIControlStateSelected];
         _listBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_listBtn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
         
         [_listBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (kWight - 48)/2, 51, (kWight - 48)/2)];
-        if (MMIphone6) {
-            [_listBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -20, 31, (kWight - 48)/2)];
-        }
-        if (MMIphone6Plus) {
-            [_listBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -10, 31, (kWight - 48)/2)];
-        }
+        [_listBtn setTitleEdgeInsets:UIEdgeInsetsMake(83, -40, 31, 0)];
         
         _listBtn.tag = 502;
         [self.seletButtonArray addObject:_listBtn];
