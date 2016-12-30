@@ -42,7 +42,9 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"员工社保信息自助";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
-    
+    [self.footerView addSubview:self.bgView];
+    [self.bgView addSubview:self.leftLabel];
+    [self.bgView addSubview:self.cardLabel];
     [self.footerView addSubview:self.titleLabel];
     [self.footerView addSubview:self.oneCardIDView];
     [self.footerView addSubview:self.twoCardIDView];
@@ -100,15 +102,41 @@
 }
 - (UIView *)footerView{
     if (_footerView == nil) {
-        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.height,kFooterCardH * 2 + 10 + 40 + 10 + 50)];
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,kFooterCardH * 2 + 10 + 40 + 10 + 50 + 44)];
         _footerView.backgroundColor = [UIColor clearColor];
         
     }
     return _footerView;
 }
+- (UIView *)bgView{
+    if (_bgView == nil) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,44)];
+        _bgView.backgroundColor = [UIColor whiteColor];
+        
+    }
+    return _bgView;
+}
+- (UILabel *)leftLabel{
+    if (_leftLabel == nil) {
+        _leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, CGRectGetHeight(self.bgView.frame))];
+        _leftLabel.text = @"身份证号";
+        _leftLabel.font = [UIFont systemFontOfSize:14];
+        _leftLabel.textColor = [UIColor blackColor];
+    }
+    return _leftLabel;
+}
+- (UILabel *)cardLabel{
+    if (_cardLabel == nil) {
+        _cardLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.leftLabel.frame), 0, self.view.width - CGRectGetMaxX(self.leftLabel.frame), CGRectGetHeight(self.bgView.frame))];
+        _cardLabel.text = @"11010819640546";
+        _cardLabel.font = [UIFont systemFontOfSize:14];
+        _cardLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
+    }
+    return _cardLabel;
+}
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, self.view.width, 15)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.leftLabel.frame) + 20, self.view.width, 15)];
         _titleLabel.text = @"上传身份证";
         _titleLabel.font = [UIFont systemFontOfSize:14];
         _titleLabel.textColor = [UIColor blackColor];
@@ -117,7 +145,7 @@
 }
 - (SocialSecurityCardIDView *)oneCardIDView{
     if (_oneCardIDView == nil) {
-        _oneCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, kFooterCardH)];
+        _oneCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + 10, self.view.width, kFooterCardH)];
         _oneCardIDView.backgroundColor = [UIColor whiteColor];
     }
     return _oneCardIDView;

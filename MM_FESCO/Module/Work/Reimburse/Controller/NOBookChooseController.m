@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSMutableArray *selectArray;
 
+@property (nonatomic, assign) CGFloat numberAll;
+
 @end
 
 @implementation NOBookChooseController
@@ -43,6 +45,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"选择未制单消费记录";
+    self.numberAll = 0.00;
     self.dataArray = [NSMutableArray array];
     self.selectArray = [NSMutableArray array];
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
@@ -71,7 +74,6 @@
     [leftButton addTarget:self action:@selector(didBack:)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= leftItem;
-
     
     
 }
@@ -120,6 +122,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NOBookChooseModel *model = _dataArray[indexPath.row];
     model.isChoose = !model.isChoose;
+    [self allNumberSetTitleWithChooseModel:model];
     [_tableView reloadData];
 }
 #pragma mark --- Action
@@ -148,17 +151,22 @@
 // 全选
 - (void)didChooseAll:(UIButton *)sender{
     if (!sender.selected) {
+        _numberAll = 0.00;
         for (NOBookChooseModel *model in _dataArray) {
             model.isChoose = YES;
+            _numberAll = _numberAll + model.moneyAmount;
             [_allChooseButton setTitle:@"全不选" forState:UIControlStateNormal];
         }
     }else{
+        _numberAll = 0.00;
         for (NOBookChooseModel *model in _dataArray) {
             model.isChoose = NO;
             [_allChooseButton setTitle:@"全选" forState:UIControlStateNormal];
+            
         }
     }
     sender.selected = !sender.selected;
+[_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_numberAll] forState:UIControlStateNormal];
     
     [_tableView reloadData];
 }
@@ -168,6 +176,17 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+}
+- (void)allNumberSetTitleWithChooseModel:(NOBookChooseModel *)model{
+        if (model.isChoose) {
+            
+            _numberAll = _numberAll + model.moneyAmount;
+        }else{
+            _numberAll = _numberAll - model.moneyAmount;
+        }
+        MMLog(@"_numberAll = %f",_numberAll);
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_numberAll] forState:UIControlStateNormal];
     
 }
 - (UITableView *)tableView {

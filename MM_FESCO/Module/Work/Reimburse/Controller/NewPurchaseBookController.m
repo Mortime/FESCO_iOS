@@ -567,7 +567,9 @@
                     if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
                         [toastView show];
-                        [self.navigationController popViewControllerAnimated:YES];
+                        NSArray * ctrlArray = self.navigationController.viewControllers;
+                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+
                         
                         
                     }else{
