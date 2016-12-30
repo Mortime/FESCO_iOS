@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SocialSecurityCardIDView : UIView
-
+@property (nonatomic, strong) NSString *imgStr;
 @end

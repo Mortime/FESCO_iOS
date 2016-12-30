@@ -123,8 +123,8 @@
         
         make.top.mas_equalTo(self.whiteBgView.mas_top).offset(-10);
         make.right.mas_equalTo(self.whiteBgView.mas_right).offset(10);
-        make.height.mas_equalTo(@20);
-        make.width.mas_equalTo(@20);
+        make.height.mas_equalTo(@30);
+        make.width.mas_equalTo(@30);
         
     }];
     
@@ -303,7 +303,7 @@
     
     if (_forkButton == nil) {
         _forkButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-        _forkButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_forkButton setBackgroundImage:[UIImage imageNamed:@"Buffer_Fork_BG"] forState:UIControlStateNormal];
         [_forkButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
         _forkButton.tag = 9003;
     }

@@ -61,5 +61,9 @@
     }
     return _cardIDImageView;
 }
+- (void)setImgStr:(NSString *)imgStr{
+    _cardIDImageView.image =  [UIImage imageNamed:imgStr];
+
+}
 @end
 

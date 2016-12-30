@@ -146,6 +146,7 @@
 - (SocialSecurityCardIDView *)oneCardIDView{
     if (_oneCardIDView == nil) {
         _oneCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + 10, self.view.width, kFooterCardH)];
+        _oneCardIDView.imgStr = @"Buffer_CardIDBg";
         _oneCardIDView.backgroundColor = [UIColor whiteColor];
     }
     return _oneCardIDView;
@@ -154,6 +155,7 @@
     if (_twoCardIDView == nil) {
         _twoCardIDView = [[SocialSecurityCardIDView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.oneCardIDView.frame) + 10, self.view.width, kFooterCardH)];
         _twoCardIDView.backgroundColor = [UIColor whiteColor];
+        _twoCardIDView.imgStr = @"Buffer_CardIDBg_F";
     }
     return _twoCardIDView;
 }
