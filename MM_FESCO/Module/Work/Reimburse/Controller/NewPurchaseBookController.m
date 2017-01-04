@@ -376,6 +376,11 @@
         MMLog(@"obj == %@",obj);
         [selectedAssetURLs addObject:obj];
     }];
+    if (_bookType == editReimburseBook) {
+        [selectedAssetURLs addObjectsFromArray:_urlArray];
+    }
+    _urlArray = selectedAssetURLs;
+    MMLog(@"selectedAssetURLs = %@",selectedAssetURLs);
     MPWeakSelf(self)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.curUploadImageHelper.selectedAssetURLs = selectedAssetURLs;

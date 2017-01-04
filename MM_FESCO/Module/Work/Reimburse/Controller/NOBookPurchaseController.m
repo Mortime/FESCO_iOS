@@ -110,10 +110,10 @@
     bookVC.typePurchaseStr = model.spendTypeStr;
     bookVC.title = model.spendTypeStr;
     
-    // 测试数组
+//    // 测试数组
     NSMutableArray *array = [NSMutableArray array];
-    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
-    [array addObject:URL];
+//    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
+//    [array addObject:URL];
     bookVC.urlArray = array;
     
     

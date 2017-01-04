@@ -172,7 +172,7 @@
         NSString *address = [applyMessage objectForKey:@"cust_Addr"];
         NSString *endTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"apply_Date"]];
         
-        NSString *reason = @" ";
+        NSString *reason = @"暂无";
         if (![[applyMessage objectForKey:@"memo"] isKindOfClass:[NSNull class]]) {
            reason = [applyMessage objectForKey:@"memo"];
         }

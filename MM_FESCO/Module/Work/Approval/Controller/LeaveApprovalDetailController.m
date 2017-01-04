@@ -132,9 +132,19 @@
         
         NSDictionary *applyMessage = [responseObject objectForKey:@"holEmpExam"];
         // 基本信息展示
-        NSString *beginTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"hol_Begin"]];
-        NSString *endTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"hol_End"]];
-        NSString *reason = [applyMessage objectForKey:@"momo"];
+        NSString *beginTime = @"暂无";
+        NSString *endTime = @"暂无";
+        NSString *reason = @"暂无";
+        if (![[applyMessage objectForKey:@"hol_Begin"] isEqual:[NSNull null]]) {
+        beginTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"hol_Begin"]];
+        }
+        if (![[applyMessage objectForKey:@"hol_End"] isEqual:[NSNull null]]) {
+            endTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"hol_End"]];
+        }
+        if (![[applyMessage objectForKey:@"momo"] isEqual:[NSNull null]]) {
+            reason = [applyMessage objectForKey:@"momo"];
+        }
+
         self.headerBottomArray = @[beginTime,endTime];
         self.topDataArray = @[reason];
         

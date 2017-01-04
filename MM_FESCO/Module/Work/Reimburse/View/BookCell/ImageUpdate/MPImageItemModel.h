@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, MPImageUploadState)
 @property (readwrite, nonatomic, strong) NSString *photoLatitude;
 @property (readwrite, nonatomic, strong) NSString *photoLongitude;
 @property (readwrite, nonatomic, strong) NSString *photoTime;
+@property (nonatomic, assign) BOOL isUpload; // 是否要上传, 默认为no
 
 //转换图片
 + (instancetype)imageWithAssetURL:(NSURL *)assetURL isUploadProcess:(BOOL)isUploadProcess;
