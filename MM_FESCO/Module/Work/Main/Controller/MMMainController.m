@@ -155,6 +155,11 @@ static NSString *kMallID = @"MallID";
 #pragma mark --- Action 
 - (void)didSearch:(UIButton *)btn{
     
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:kUsreIcon];
+    [defaults synchronize];
+    
     [[UserInfoModel defaultUserInfo] loginOut];
     MMLoginController *logninVC = (MMLoginController *)[JZUserLoginManager loginController];
     ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = logninVC;

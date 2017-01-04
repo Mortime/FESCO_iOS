@@ -239,7 +239,7 @@
                 NSLog(@"登录成功");
             }
     
-            
+           
             // 登录成功后保存数据
             NSDate *localDate = [NSDate new];
             NSDateFormatter *dateFormatter = [NSDateFormatter new];
@@ -254,6 +254,9 @@
             
             [[UserInfoModel defaultUserInfo] loginViewDic:loginInfo];
             [NetworkTool setHTTPHeaderField:[loginInfo  objectForKey:@"token"]];
+            
+            // 加载用户头像
+            [self getUserIcon];
             
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"登录成功"];
             [toastView show];
@@ -287,7 +290,43 @@
     }];
 
 }
+- (void)getUserIcon{
+    AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"methodname":@"emp/showPicture.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/showPicture.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    [manager POST:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        MMLog(@"GetUserIconWithEmpId ====responseObject==== %@",responseObject);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:responseObject forKey:kUsreIcon];
 
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        MMLog(@"GetUserIconWithEmpId ====failure==== %@",error);
+    }];
+
+}
 // 跳转到注册界面
 - (void)pushRegister:(UITapGestureRecognizer *)tap{
     RegisterController *registerVC = [[RegisterController alloc] init];

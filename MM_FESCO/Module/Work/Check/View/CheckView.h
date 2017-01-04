@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong) BMKLocationService *locService;
 
+@property (nonatomic, strong) UIViewController *parentVC;
+
 @end

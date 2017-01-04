@@ -53,6 +53,12 @@
     
     self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 121)];
     _headerView.paramentVC = self;
+    
+        UIImage *image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kUsreIcon]];
+    if (image) {
+        self.headerView.imageView.image = image;
+    }
+
     [_headerView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
         [self messageEdit:textField];
     }];

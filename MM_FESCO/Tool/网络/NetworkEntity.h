@@ -608,4 +608,14 @@
  *  @param detail_Id （req）  记录Id
  */
 + (void)postDeleReimburseRecordWithDetailId:(NSInteger )detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *  获取用户头像
+ 
+ *  @param  emp_Id
+ 
+ */
+
++ (void)postGetUserIconWithEmpId:(NSString *)empId  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 @end

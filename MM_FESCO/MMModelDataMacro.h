@@ -33,6 +33,7 @@
 #define kSingNumber  @"SingNumber"  //  存储签到次数
 #define kSignDate    @"SignDate"    // 记录签到日期,用于次日签到数据清0
 #define kSignStatisticDate @"SignStatisticDate"   // 签到统计日期记录
+#define kUsreIcon     @"UsreIcon" // 保存用户头像
 
 
 

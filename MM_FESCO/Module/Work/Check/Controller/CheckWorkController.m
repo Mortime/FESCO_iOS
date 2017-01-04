@@ -246,6 +246,7 @@
         _checkView = [[CheckView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.scrollView.height)];
         _checkView.backgroundColor = [UIColor clearColor];
 //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        _checkView.parentVC = self;
         
     }
     return _checkView;

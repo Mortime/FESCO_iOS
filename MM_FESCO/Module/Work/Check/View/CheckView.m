@@ -7,8 +7,7 @@
 //
 
 #import "CheckView.h"
-
-
+#import "DVVImagePickerControllerManager.h"
 #import "popOutView.h"
 
 #define kButtonW  (kMMWidth / 3)
@@ -17,7 +16,7 @@
 
 #define kMapTypeW  50
 
-@interface CheckView ()<BMKLocationServiceDelegate,BMKMapViewDelegate>
+@interface CheckView ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UIImagePickerControllerDelegate>
 
 
 
@@ -128,6 +127,13 @@
     
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(initData) userInfo:nil repeats:YES];
+    
+    MMLog(@"[[NSUserDefaults standardUserDefaults] objectForKey:kUsreIcon] = %@",[[NSUserDefaults standardUserDefaults] objectForKey:kUsreIcon]);
+   
+    UIImage *image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kUsreIcon]];
+    if (image) {
+        self.iconView.image = image;
+    }
 
 }
 - (void)initData{
@@ -405,6 +411,73 @@
     }
 
 }
+- (void)selectIcon:(UIGestureRecognizer *)ges{
+    [DVVImagePickerControllerManager showImagePickerControllerFrom:self.parentVC delegate:self];
+}
+#pragma mark - imagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *photoImage = [info valueForKey:UIImagePickerControllerEditedImage];
+    NSData *photeoData = UIImageJPEGRepresentation(photoImage, 0.5);
+    //1.创建管理者对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/uploadPic.json"];
+    //2.上传文件
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"userHeader.png",@"uploadFile",[UserInfoModel defaultUserInfo].empId,@"emp_Id",[UserInfoModel defaultUserInfo].custId,@"cust_Id",nil];
+    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+        //        NSData* imageData = UIImagePNGRepresentation(photoImage);
+        NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* totalPath = [documentPath stringByAppendingPathComponent:@"userAvatarInfo"];
+        
+        //保存到 document
+        [photeoData writeToFile:totalPath atomically:NO];
+        
+        MMLog(@"totalPath = %@",totalPath);
+        
+        //保存到 NSUserDefaults
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:totalPath forKey:@"avatarInfo"];
+        
+        
+        UIImage *selfPhoto = [UIImage imageWithContentsOfFile:totalPath];
+        
+        NSData *photeoData11 = UIImageJPEGRepresentation(selfPhoto, 0.5);
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:photeoData11 forKey:kUsreIcon];
+        
+        //上传文件参数
+        [formData appendPartWithFileData:photeoData11 name:@"uploadFile" fileName:@"userHeader.png" mimeType:@"image/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //打印上传进度
+        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+        MMLog(@"==============oooooo%.2lf%%", progress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //请求成功
+        MMLog(@"请求成功：%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //请求失败
+        MMLog(@"请求失败：%@",error);
+        
+    }];
+    
+    self.iconView.image = photoImage;
+    
+}
+
 #pragma mark ----- Lazy 加载
 - (UIView *)bgTopView{
     if (_bgTopView == nil) {
@@ -422,6 +495,10 @@
         _iconView.layer.masksToBounds = YES;
         _iconView.layer.cornerRadius = 32.5;
         _iconView.image = [UIImage imageNamed:@"People_placehode"];
+        _iconView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
+        [_iconView addGestureRecognizer:tapGesRe];
+
     }
     return _iconView;
 }

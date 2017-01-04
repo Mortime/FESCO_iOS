@@ -7,9 +7,6 @@
 //
 
 #import "MPImageProgressCollectionCell.h"
-#import "UploadFile.h"
-
-
 
 @interface MPImageProgressCollectionCell()<UploadFiledProgressDelegate>
 
@@ -91,42 +88,155 @@
             MPStrongSelf(self)
             if (imageItem&&self.curImageItem.uploadState!=MPImageUploadStateSuccess) {
                 
-                UploadFile *upload = [[UploadFile alloc] init];
-                upload.delegate = self;
-                 NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
+//                                UploadFile *upload = [[UploadFile alloc] init];
+//                                upload.delegate = self;
+//                                 NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
+//                
+//                                PHFetchResult *fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[self.curImageItem.assetURL] options:nil];
+//                                PHAsset *asset = fetchResult.firstObject;
+//
+//                NSData* imageData = UIImagePNGRepresentation(self.curImageItem.thumbnailImage);
+//                NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//                NSString* totalPath = [documentPath stringByAppendingPathComponent:@"userAvatar"];
+//                
+//                //保存到 document
+//                [imageData writeToFile:totalPath atomically:NO];
+//                
+//                //保存到 NSUserDefaults
+//                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//                [userDefaults setObject:totalPath forKey:@"avatar"];
+//                
+//
+//                
+//                                [upload  uploadFileWithURL:[NSURL URLWithString:urlString] imageUrl:totalPath  imgIndex:_imgIndex successBlock:^(NSDictionary *data) {
+//                                        MMLog(@"picIds = %@",data);
+//                
+//                                        /*
+//                                         errcode = 0;
+//                                         picIds =     (
+//                                         11
+//                                         );
+//                                         */
+//                                        if ([[data objectForKey:@"errcode"] integerValue] == 0) {
+//                                            // 对图片ID加入数组
+//                                            [_picIDArray addObject:[data objectForKey:@"picIds"][0]];
+//                                        }
+//                                        [[NSUserDefaults standardUserDefaults] setObject:_picIDArray forKey:@"picID"];
+//                                        [[NSNotificationCenter defaultCenter] postNotificationName:kGetPicIDNotifition object:self];
+//                                        
+//                                    }];
                 
-                PHFetchResult *fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[self.curImageItem.assetURL] options:nil];
-                PHAsset *asset = fetchResult.firstObject;
+    
                 
                 
-                [upload getImageFromPHAsset:asset Complete:^(NSData *data, NSString *fileName) {
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+//                UploadFile *upload = [[UploadFile alloc] init];
+//                upload.delegate = self;
+//                 NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
+//                
+//                PHFetchResult *fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[self.curImageItem.assetURL] options:nil];
+//                PHAsset *asset = fetchResult.firstObject;
+//                
+//                
+//                [upload getImageFromPHAsset:asset Complete:^(NSData *data, NSString *fileName) {
+//                    
+//                    NSString *str  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                    
+//                    
+//                    MMLog(@"dataStr = %@===fileName =%@",str,fileName);
+//                    NSURL *UEL   = self.curImageItem.assetURL;
+//                    
+//                    NSString *urlStr = [UEL absoluteString];
+//                    [upload  uploadFileWithURL:[NSURL URLWithString:urlString] imageUrl:urlStr  imgIndex:_imgIndex successBlock:^(NSDictionary *data) {
+//                        MMLog(@"picIds = %@",data);
+//                        
+//                        /*
+//                         errcode = 0;
+//                         picIds =     (
+//                         11
+//                         );
+//                         */
+//                        if ([[data objectForKey:@"errcode"] integerValue] == 0) {
+//                            // 对图片ID加入数组
+//                            [_picIDArray addObject:[data objectForKey:@"picIds"][0]];
+//                        }
+//                        [[NSUserDefaults standardUserDefaults] setObject:_picIDArray forKey:@"picID"];
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:kGetPicIDNotifition object:self];
+//                        
+//                    }];
+//                    
+//                    
+//                }];
+                
+                
+                
+                
+                //1.创建管理者对象
+                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/uploadPic.json"];
+                
+                //2.上传文件
+//                NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"image.png",@"uploadFile",nil];
+                [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     
-                    NSString *str  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    
+                                    NSData* imageData = UIImagePNGRepresentation(self.curImageItem.image);
+                                    NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                                    NSString* totalPath = [documentPath stringByAppendingPathComponent:@"bookImage"];
+                    
+                                    //保存到 document
+                                    [imageData writeToFile:totalPath atomically:NO];
+                    UIImage *selfPhoto = [UIImage imageWithContentsOfFile:totalPath];
+                    
+                    NSData *photeoData11 = UIImageJPEGRepresentation(selfPhoto, 0.5);
                     
                     
-                    MMLog(@"dataStr = %@===fileName =%@",str,fileName);
+                    // 可以在上传时使用当前的系统事件作为文件名
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    // 设置时间格式
+                    formatter.dateFormat            = @"yyyyMMddHHmmss";
+                    NSString *str                         = [formatter stringFromDate:[NSDate date]];
+                    NSString *fileName               = [NSString stringWithFormat:@"%@.png", str];
+
                     
                     
-                    [upload  uploadFileWithURL:[NSURL URLWithString:urlString] imageUrl:fileName  imgIndex:_imgIndex successBlock:^(NSDictionary *data) {
-                        MMLog(@"picIds = %@",data);
-                        
-                        /*
-                         errcode = 0;
-                         picIds =     (
-                         11
-                         );
-                         */
-                        if ([[data objectForKey:@"errcode"] integerValue] == 0) {
-                            // 对图片ID加入数组
-                            [_picIDArray addObject:[data objectForKey:@"picIds"][0]];
-                        }
-                        [[NSUserDefaults standardUserDefaults] setObject:_picIDArray forKey:@"picID"];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:kGetPicIDNotifition object:self];
-                        
-                    }];
+                    //上传文件参数
+                    [formData appendPartWithFileData:photeoData11 name:@"uploadFile" fileName:fileName mimeType:@"image/png"];
                     
+                } progress:^(NSProgress * _Nonnull uploadProgress) {
                     
-                }];
+                    //打印上传进度
+                    CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+                    MMLog(@"==============oooooo%.2lf%%", progress);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.propress=progress;
+                    });
+                    
+                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    
+                    //请求成功
+                    MMLog(@"请求成功：%@",responseObject);
+                    
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {  
+                    
+                    //请求失败  
+                    MMLog(@"请求失败：%@",error);
+                    
+                }];     
+                
+    
                 
 }
         }];

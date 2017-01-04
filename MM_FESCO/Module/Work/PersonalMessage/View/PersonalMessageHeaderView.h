@@ -19,6 +19,8 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField);
 
 @property (nonatomic, strong) UIViewController *paramentVC;
 
+@property (nonatomic, strong) UIImageView *imageView;
+
 
 /**
  *  textField结束编辑

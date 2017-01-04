@@ -9,13 +9,11 @@
 #import "PersonalMessageHeaderView.h"
 #import "DVVImagePickerControllerManager.h"
 
-@interface PersonalMessageHeaderView () <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate>
+@interface PersonalMessageHeaderView () <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UploadFiledProgressDelegate>
 
 @property (nonatomic, strong) UIView *bgView;
 
 @property (nonatomic, strong) UIImageView *bgImageView;
-
-@property (nonatomic, strong) UIImageView *imageView;
 
 @property (nonatomic, strong) UIView *nameBG;
 
@@ -227,45 +225,74 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *photoImage = [info valueForKey:UIImagePickerControllerEditedImage];
     NSData *photeoData = UIImageJPEGRepresentation(photoImage, 0.5);
+    //1.创建管理者对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/uploadPic.json"];
+    //2.上传文件
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"userHeader.png",@"uploadFile",[UserInfoModel defaultUserInfo].empId,@"emp_Id",[UserInfoModel defaultUserInfo].custId,@"cust_Id",nil];
+    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+//        NSData* imageData = UIImagePNGRepresentation(photoImage);
+        NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* totalPath = [documentPath stringByAppendingPathComponent:@"userAvatarInfo"];
+        
+        //保存到 document
+        [photeoData writeToFile:totalPath atomically:NO];
+        
+        MMLog(@"totalPath = %@",totalPath);
+        
+        //保存到 NSUserDefaults
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:totalPath forKey:@"avatarInfo"];
+        
+
+        UIImage *selfPhoto = [UIImage imageWithContentsOfFile:totalPath];
+        
+        NSData *photeoData11 = UIImageJPEGRepresentation(selfPhoto, 0.5);
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:photeoData11 forKey:kUsreIcon];
+
+        
+        //上传文件参数
+        [formData appendPartWithFileData:photeoData11 name:@"uploadFile" fileName:@"userHeader.png" mimeType:@"image/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //打印上传进度
+        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+        MMLog(@"==============oooooo%.2lf%%", progress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //请求成功
+        MMLog(@"请求成功：%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //请求失败
+        MMLog(@"请求失败：%@",error);
+        
+    }];
+   
     self.imageView.image = photoImage;
     
-//    __weak typeof(self) weakself = self;
-//    __block NSData *gcdPhotoData = photeoData;
-//    NSString *qiniuUrl = [NSString stringWithFormat:BASEURL,kQiniuUpdateUrl];
-//    [JENetwoking startDownLoadWithUrl:qiniuUrl postParam:nil WithMethod:JENetworkingRequestMethodGet withCompletion:^(id data) {
-//        
-//        NSDictionary *dataDic = data;
-//        NSString *qiniuToken = dataDic[@"data"];
-//        QNUploadManager *upLoadManager = [[QNUploadManager alloc] init];
-//        NSString *keyUrl = [NSString stringWithFormat:@"%@-%@.png",[NSString currentTimeDay],[AcountManager manager].userid];
-//        
-//        [upLoadManager putData:gcdPhotoData key:keyUrl token:qiniuToken complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-//            if (info) {
-//                
-//                NSString *upImageUrl = [NSString stringWithFormat:kQiniuImageUrl,key];
-//                NSString *updateUserInfoUrl = [NSString stringWithFormat:BASEURL,@"userinfo/updateuserinfo"];
-//                NSDictionary *headPortrait  = @{@"originalpic":upImageUrl,@"thumbnailpic":@"",@"width":@"",@"height":@""};
-//                
-//                NSDictionary *dicParam = @{@"headportrait":[JsonTransformManager dictionaryTransformJsonWith:headPortrait],@"userid":[AcountManager manager].userid};
-//                [JENetwoking startDownLoadWithUrl:updateUserInfoUrl postParam:dicParam WithMethod:JENetworkingRequestMethodPost withCompletion:^(id data) {
-//                    NSDictionary *dataParam = data;
-//                    NSNumber *messege = dataParam[@"type"];
-//                    if (messege.intValue == 1) {
-//                        [self showTotasViewWithMes:@"修改成功"];
-//                        [AcountManager saveUserHeadImageUrl:upImageUrl];
-//                        [weakself.iconImageView sd_setImageWithURL:[NSURL URLWithString:[AcountManager manager].userHeadImageUrl] placeholderImage:[UIImage imageWithData:gcdPhotoData]];
-//                        [[NSNotificationCenter defaultCenter] postNotificationName:YBNotif_ChangeUserPortrait object:nil];
-//                        
-//                    }else {
-//                        [self obj_showTotasViewWithMes:@"修改失败"];
-//                        
-//                        return;
-//                    }
-//                }];
-//            }
-//        } option:nil];
-//    }];
 }
+
+
+- (void)uploadFiledProgressDelegateWithSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
+    
+//    CGFloat propress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+////        self.propress=propress;
+//    });
+    
+}
+
 #pragma mark ----- Acction
 - (void)didClickSex:(UIButton *)btn{
     [self.sexTextFiled becomeFirstResponder];

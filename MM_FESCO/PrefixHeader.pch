@@ -40,6 +40,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "NetworkDataTool.h"
+#import "UploadFile.h"
 
 
 #endif

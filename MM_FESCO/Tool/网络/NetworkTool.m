@@ -15,9 +15,9 @@
 
 #define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com/payroll" // 正式服务器地址
 
-//#define  HOST_TEST_DAMIAN  @"http://11.0.147.115:8080/payroll"   // 测试服务器地址  rui
+#define  HOST_TEST_DAMIAN  @"http://11.0.161.15:8080/payroll"   // 测试服务器地址  rui
 
-#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
+//#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
 
 //#define QA_TEST
 
@@ -30,7 +30,7 @@
     dispatch_once(&onceToken, ^{
         _sharedClient = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[NetworkTool domain]]];
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
-        _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif", nil];
+        _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         
         
@@ -76,6 +76,7 @@
      failure:(NetworkFailureBlock)failure {
     
     AFHttpClient *manager = [AFHttpClient sharedClient];
+    
     
     [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
