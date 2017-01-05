@@ -12,4 +12,6 @@
 @interface ProgressPuschaseCell : UITableViewCell
 
 @property (nonatomic, strong) NewPurchaseRecordModel *model;
+
+@property (nonatomic, strong) NSDictionary *dic;
 @end

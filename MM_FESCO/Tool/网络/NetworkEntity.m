@@ -1665,5 +1665,95 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
+/**
+ *  报销审批列表
+ */
 
++ (void)postReimburseApprovalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"methodname":@"expense/getExpenseExamList.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/getExpenseExamList.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
+// 报销审批信息
++ (void)postReimburseApprovalInfoWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"methodname":@"expense/loadExpenseExamInfo.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/loadExpenseExamInfo.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
+// 提交审批
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"result":[NSString stringWithFormat:@"%lu",restult],
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"methodname":@"expense/saveExpenseExamResult.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/saveExpenseExamResult.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
 @end

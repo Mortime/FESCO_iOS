@@ -15,7 +15,7 @@
     MPImageItemModel *imageItem = [[MPImageItemModel alloc] init];
     imageItem.uploadState = MPImageUploadStateInit;
     imageItem.assetURL = assetURL;
-    
+    imageItem.isUpload = YES;
     MPWeakSelf(self);
     
     void (^selectAsset)(ALAsset *) = ^(ALAsset *asset){
@@ -94,7 +94,7 @@
     imageItem.assetURL = assetURL;
     imageItem.image = image;
     imageItem.thumbnailImage = [image imageScaledToSize:CGSizeMake(AdaptedWidth(70), AdaptedWidth(70))];
-    imageItem.isUpload = YES;
+    
     return imageItem;
 }
 

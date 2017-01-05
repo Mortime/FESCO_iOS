@@ -618,4 +618,30 @@
 
 + (void)postGetUserIconWithEmpId:(NSString *)empId  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+/**
+ *  报销审批列表
+ 
+ *  @param  emp_Id
+ 
+ */
+
++ (void)postReimburseApprovalListSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+
+/**
+ *  报销审批信息
+ 
+ *  @param  cust_Id, apply_Id
+ 
+ */
+
++ (void)postReimburseApprovalInfoWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *  提交报销审批
+ 
+ *  @param  result, apply_Id  result：0=未通过，1=通过
+ 
+ */
+
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

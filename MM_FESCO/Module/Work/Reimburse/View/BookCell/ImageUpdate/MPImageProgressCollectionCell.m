@@ -64,7 +64,7 @@
     if (_curImageItem) {
         
         _imgView.image=curImageItem.thumbnailImage;
-        if (!curImageItem.isUpload) {
+        if (curImageItem.isUpload) {
             _deleteBtn.hidden = YES;
             
             RAC(self.imgView, image) = [RACObserve(self.curImageItem, thumbnailImage)takeUntil:self.rac_prepareForReuseSignal];

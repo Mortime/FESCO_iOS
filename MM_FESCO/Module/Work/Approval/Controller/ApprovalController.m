@@ -11,6 +11,7 @@
 #import "OverTimeView.h"
 #import "SignUpApprovalView.h"
 #import "LeaveApprovalView.h"
+#import "ReimburseApprovalView.h"
 
 @interface ApprovalController () <UIScrollViewDelegate>
 
@@ -23,6 +24,8 @@
 @property (nonatomic, strong) SignUpApprovalView *signUpApprovalView;
 
 @property (nonatomic, strong) LeaveApprovalView *leaveApprovalView;
+
+@property (nonatomic, strong) ReimburseApprovalView *reimburseApprovalView;
 
 @property (nonatomic, assign) NSInteger  index;
 
@@ -39,6 +42,9 @@
     }
     if (_index == 2) {
         [_leaveApprovalView networkRequest];
+    }
+    if (_index == 3) {
+        [_reimburseApprovalView networkRequest];
     }
 }
 - (void)viewDidLoad {
@@ -59,6 +65,7 @@
     [_scrollView addSubview:self.overTimeView];
     [_scrollView addSubview:self.signUpApprovalView];
     [_scrollView addSubview:self.leaveApprovalView];
+    [_scrollView addSubview:self.reimburseApprovalView];
     
     CGFloat contentOffsetX = 0 * self.view.width;
     _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
@@ -107,6 +114,13 @@
         self.leaveApprovalView.approvalType = leaveApprovalType;
         [_leaveApprovalView networkRequest];
 
+    }else if (3 == index) {
+        CGFloat contentOffsetX = 3 * self.view.width;
+        _scrollView.contentOffset = CGPointMake(contentOffsetX, 0);
+        self.reimburseApprovalView.parementVC = self;
+        self.reimburseApprovalView.approvalType = reimburseApprovalType;
+        [_reimburseApprovalView networkRequest];
+        
     }
     
     
@@ -134,12 +148,18 @@
         //        self.appointListView.frame = CGRectMake(self.view.width * 2, -64, self.view.width, self.scrollView.height);
         
     }
+    if (3 * width== scrollView.contentOffset.x) {
+        // 补签申请
+        [_toolBarView selectItem:3];
+        //        self.appointListView.frame = CGRectMake(self.view.width * 2, -64, self.view.width, self.scrollView.height);
+        
+    }
 }
 - (UIScrollView *)scrollView{
     
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, self.view.width, self.view.height - 40 - 64)];
-        _scrollView.contentSize = CGSizeMake(3 * self.view.width, 0);
+        _scrollView.contentSize = CGSizeMake(4 * self.view.width, 0);
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.pagingEnabled = YES;
         _scrollView.userInteractionEnabled = YES;
@@ -159,7 +179,7 @@
         _toolBarView.followBarHeight = 3;
         _toolBarView.backgroundColor = [UIColor whiteColor];
         _toolBarView.selectButtonInteger = 0;
-        _toolBarView.titleArray = @[ @"加班审批", @"签到审批", @"请假审批"];
+        _toolBarView.titleArray = @[ @"加班审批", @"签到审批", @"请假审批",@"报销审批"];
         __weak typeof(self) ws = self;
         [_toolBarView dvvToolBarViewItemSelected:^(UIButton *button) {
             [ws dvvToolBarViewItemSelectedAction:button.tag];
@@ -200,6 +220,16 @@
         
     }
     return _leaveApprovalView;
+}
+// 报销审批
+- (ReimburseApprovalView *)reimburseApprovalView{
+    if (_reimburseApprovalView == nil) {
+        _reimburseApprovalView = [[ReimburseApprovalView alloc] initWithFrame:CGRectMake( 3 * self.view.width, 0, self.view.width, self.scrollView.height)];
+        _reimburseApprovalView.backgroundColor = [UIColor clearColor];
+        //        _checkView.commentDateSearchType = kCommentDateSearchTypeLastMonth;
+        
+    }
+    return _reimburseApprovalView;
 }
 
 

@@ -48,7 +48,8 @@ typedef NS_ENUM(NSUInteger,ApprovalType){
     
     overTimeApprovalType,   // 加班审批
     signUpApprovalType,     // 签到审批
-    leaveApprovalType     // 请假审批
+    leaveApprovalType ,    // 请假审批
+    reimburseApprovalType  // 报销 审批
 };
 
 typedef NS_ENUM(NSUInteger,popViewType){

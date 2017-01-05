@@ -170,4 +170,20 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[dataArray[0] integerValue]];
     
 }
+- (void)setDic:(NSDictionary *)dic{
+    _titleLabel.text = [dic objectForKey:@"spend_Type_Str"];
+    
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"spend_Type_Str"] substringToIndex:2]]];
+    
+    
+    NSString *timeStr = @"";
+    timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: [dic objectForKey:@"spend_Begin"]];
+    if (![[dic objectForKey:@"spend_End"] isEqual:[NSNull null]]) {
+        NSString *end = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"spend_End"]];
+        timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
+    }
+    _timeLabel.text = timeStr;
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"money_Amount"] integerValue]];
+
+}
 @end

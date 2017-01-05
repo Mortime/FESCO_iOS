@@ -11,6 +11,7 @@
 #import "OverTimeListModel.h"
 #import "SignUpApprovalListModel.h"
 #import "LeaveApprovalListModel.h"
+#import "ReimburseApprovalListModel.h"
 
 @implementation ApprovalViewModel
 - (instancetype)init
@@ -22,6 +23,7 @@
         _overTimeListArray = [NSMutableArray array];
         _signUpListArray = [NSMutableArray array];
         _LeaveListArray = [NSMutableArray array];
+        _reimburseListArray = [NSMutableArray array];
         
         
         
@@ -168,6 +170,36 @@
         }];
         
     }
+    
+    // 请假审批列表
+    if (_approvalType == reimburseApprovalType) {
+        
+    
+        
+        [NetworkEntity postReimburseApprovalListSuccess:^(id responseObject) {
+            
+            MMLog(@"_reimburseListArray ====== responseObject====%@",responseObject);
+            
+            [_reimburseListArray removeAllObjects];
+            if (! [[responseObject objectForKey:@"list"] count]) {
+                [self successRefreshBlock];
+                return ;
+            }
+            
+            for (NSDictionary *dic in [responseObject objectForKey:@"list"]) {
+                ReimburseApprovalListModel *model = [ReimburseApprovalListModel yy_modelWithDictionary:dic];
+                [_reimburseListArray addObject:model];
+                
+            }
+            [self successRefreshBlock];
+            
+        } failure:^(NSError *failure) {
+            
+            MMLog(@"_reimburseListArray ====== failure=========%@",failure);
+        }];
+        
+    }
+
     
     
 }

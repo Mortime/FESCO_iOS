@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSMutableArray *LeaveListArray;
 
+@property (nonatomic, strong) NSMutableArray *reimburseListArray;
+
 @property (nonatomic, assign) ApprovalType approvalType;
 
 @end

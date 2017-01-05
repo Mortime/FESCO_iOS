@@ -299,6 +299,12 @@
 		76383CFB1E0A164B004D4E13 /* NOBookChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383CFA1E0A164B004D4E13 /* NOBookChooseController.m */; };
 		76383CFE1E0A18DC004D4E13 /* NOBookChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383CFD1E0A18DC004D4E13 /* NOBookChooseCell.m */; };
 		76383D011E0A2277004D4E13 /* NOBookChooseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383D001E0A2277004D4E13 /* NOBookChooseModel.m */; };
+		764223B71E1D3C0F0094DEBB /* ReimburseApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */; };
+		764223BA1E1D3F340094DEBB /* ReimburseApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223B91E1D3F340094DEBB /* ReimburseApprovalCell.m */; };
+		764223BD1E1D415E0094DEBB /* ReimburseApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223BC1E1D415E0094DEBB /* ReimburseApprovalListModel.m */; };
+		764223C01E1DD06B0094DEBB /* ReimburseApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223BF1E1DD06B0094DEBB /* ReimburseApprovalDetailController.m */; };
+		764223C31E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223C21E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m */; };
+		764223C61E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223C51E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m */; };
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
@@ -1005,6 +1011,18 @@
 		76383CFD1E0A18DC004D4E13 /* NOBookChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookChooseCell.m; sourceTree = "<group>"; };
 		76383CFF1E0A2277004D4E13 /* NOBookChooseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookChooseModel.h; sourceTree = "<group>"; };
 		76383D001E0A2277004D4E13 /* NOBookChooseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookChooseModel.m; sourceTree = "<group>"; };
+		764223B51E1D3C0F0094DEBB /* ReimburseApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalView.h; sourceTree = "<group>"; };
+		764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalView.m; sourceTree = "<group>"; };
+		764223B81E1D3F340094DEBB /* ReimburseApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalCell.h; sourceTree = "<group>"; };
+		764223B91E1D3F340094DEBB /* ReimburseApprovalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalCell.m; sourceTree = "<group>"; };
+		764223BB1E1D415E0094DEBB /* ReimburseApprovalListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalListModel.h; sourceTree = "<group>"; };
+		764223BC1E1D415E0094DEBB /* ReimburseApprovalListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalListModel.m; sourceTree = "<group>"; };
+		764223BE1E1DD06B0094DEBB /* ReimburseApprovalDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalDetailController.h; sourceTree = "<group>"; };
+		764223BF1E1DD06B0094DEBB /* ReimburseApprovalDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalDetailController.m; sourceTree = "<group>"; };
+		764223C11E1DE0C40094DEBB /* ReimburseApprovalInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalInfoModel.h; sourceTree = "<group>"; };
+		764223C21E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalInfoModel.m; sourceTree = "<group>"; };
+		764223C41E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalInfoDetailsModel.h; sourceTree = "<group>"; };
+		764223C51E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalInfoDetailsModel.m; sourceTree = "<group>"; };
 		764499D31DCC7DBA00A6404F /* ReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseController.h; sourceTree = "<group>"; };
 		764499D41DCC7DBA00A6404F /* ReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseController.m; sourceTree = "<group>"; };
 		764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseRecordHeaderView.h; sourceTree = "<group>"; };
@@ -1336,6 +1354,8 @@
 				5972230A1DADE05400D01A7A /* OverTimeDetailController.m */,
 				5972230B1DADE05400D01A7A /* SignUpApprovalDetailController.h */,
 				5972230C1DADE05400D01A7A /* SignUpApprovalDetailController.m */,
+				764223BE1E1DD06B0094DEBB /* ReimburseApprovalDetailController.h */,
+				764223BF1E1DD06B0094DEBB /* ReimburseApprovalDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1349,6 +1369,12 @@
 				597223111DADE05400D01A7A /* OverTimeListModel.m */,
 				597223121DADE05400D01A7A /* SignUpApprovalListModel.h */,
 				597223131DADE05400D01A7A /* SignUpApprovalListModel.m */,
+				764223BB1E1D415E0094DEBB /* ReimburseApprovalListModel.h */,
+				764223BC1E1D415E0094DEBB /* ReimburseApprovalListModel.m */,
+				764223C11E1DE0C40094DEBB /* ReimburseApprovalInfoModel.h */,
+				764223C21E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m */,
+				764223C41E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.h */,
+				764223C51E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1381,6 +1407,10 @@
 				597223251DADE05400D01A7A /* OverTimeCell.m */,
 				597223261DADE05400D01A7A /* OverTimeView.h */,
 				597223271DADE05400D01A7A /* OverTimeView.m */,
+				764223B51E1D3C0F0094DEBB /* ReimburseApprovalView.h */,
+				764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */,
+				764223B81E1D3F340094DEBB /* ReimburseApprovalCell.h */,
+				764223B91E1D3F340094DEBB /* ReimburseApprovalCell.m */,
 				597223281DADE05400D01A7A /* SignUpApprovalCell.h */,
 				597223291DADE05400D01A7A /* SignUpApprovalCell.m */,
 				5972232A1DADE05400D01A7A /* SignUpApprovalView.h */,
@@ -3184,6 +3214,7 @@
 				76F02FCC1DD4531B00D32771 /* QBAssetsCollectionViewLayout.m in Sources */,
 				59EC91CE1D98D9AD00E802FA /* MWPhotoBrowser.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
+				764223BD1E1D415E0094DEBB /* ReimburseApprovalListModel.m in Sources */,
 				76CBDCEB1DDB064800272D91 /* CityListViewController.m in Sources */,
 				76B1F5CC1DFE4360001EBAB5 /* NOBookPurchaseController.m in Sources */,
 				59EC915B1D98CB5900E802FA /* EaseBaseMessageCell.m in Sources */,
@@ -3222,6 +3253,7 @@
 				5977621A1D489AE000BD8472 /* AppDelegate.mm in Sources */,
 				59A59E331D49C6A3001F3122 /* MMLoginController.m in Sources */,
 				76CBDCF21DDB06C100272D91 /* DVVSearchView.m in Sources */,
+				764223C61E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m in Sources */,
 				59EC91DD1D98D9AD00E802FA /* UIImage+EMGIF.m in Sources */,
 				59EC914A1D98CB5900E802FA /* NSString+Valid.m in Sources */,
 				597223C31DADE05400D01A7A /* FillApplyView.m in Sources */,
@@ -3277,6 +3309,7 @@
 				59EC916F1D98CB5900E802FA /* EaseConversationCell.m in Sources */,
 				764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */,
 				761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */,
+				764223B71E1D3C0F0094DEBB /* ReimburseApprovalView.m in Sources */,
 				59EC91EA1D98D9AD00E802FA /* PSTCollectionViewLayout.m in Sources */,
 				761C0E9E1DD1CEE100886083 /* NewPurchaseRecordController.m in Sources */,
 				59A59E221D499EF2001F3122 /* UIColor+Extension.m in Sources */,
@@ -3323,6 +3356,7 @@
 				76929B211DDEA90F00775AF3 /* NewPurchaseRecordCell.m in Sources */,
 				59EC91E61D98D9AD00E802FA /* PSTCollectionViewController.m in Sources */,
 				59F651041D70338C000596A7 /* ChineseInclude.m in Sources */,
+				764223C01E1DD06B0094DEBB /* ReimburseApprovalDetailController.m in Sources */,
 				763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */,
 				59EC91141D98CB5900E802FA /* EMAudioRecorderUtil.m in Sources */,
 				59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */,
@@ -3371,8 +3405,10 @@
 				59AF3B001DAF8C5900BE46BE /* CheckStatisticFooterView.m in Sources */,
 				76CBDCEE1DDB064800272D91 /* DVVSubCityCell.m in Sources */,
 				761C37401E09299A007E1607 /* BuffetController.m in Sources */,
+				764223C31E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m in Sources */,
 				597223AA1DADE05400D01A7A /* LeaveApprovalDetailController.m in Sources */,
 				76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */,
+				764223BA1E1D3F340094DEBB /* ReimburseApprovalCell.m in Sources */,
 				59A59DFF1D499937001F3122 /* UIView+TKCategory.m in Sources */,
 				59F651091D70338C000596A7 /* PinYinForObjc.m in Sources */,
 				59EC91E51D98D9AD00E802FA /* PSTCollectionViewCell.m in Sources */,
