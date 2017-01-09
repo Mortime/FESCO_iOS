@@ -61,6 +61,14 @@
     
     [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.tableView];
+    [self initData];
+}
+- (void)initData{
+    [NetworkEntity postNationerAndCountrySuccess:^(id responseObject) {
+        MMLog(@"NationerAndCountry ========= responseObject ============%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"NationerAndCountry ========= responseObject ============%@",failure);
+    }];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];

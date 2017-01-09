@@ -15,9 +15,9 @@
 
 #define  HOST_LINE_DOMAIN  @"http://www.payrollpen.com/payroll" // 正式服务器地址
 
-#define  HOST_TEST_DAMIAN  @"http://11.0.161.15:8080/payroll"   // 测试服务器地址  rui
+//#define  HOST_TEST_DAMIAN  @"http://11.0.161.15:8080/payroll"   // 测试服务器地址  rui
 
-//#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
+#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
 
 //#define QA_TEST
 

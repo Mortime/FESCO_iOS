@@ -192,14 +192,16 @@
 - (void)setModel:(ReimburseApprovalListModel *)model{
     _name.text = model.typeStr;
     _applyTime.text = [NSString stringWithFormat:@"报销时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:model.applyDate]];
-    _startTime.text = @"描述: 暂无";
-    if (![model.memo isEqual:[NSNull null]]) {
-        _startTime.text = [NSString stringWithFormat:@"描述: %@",model.memo];
+    
+    _startTime.text = @"标题: 暂无";
+    if (model.title != nil) {
+        _startTime.text = [NSString stringWithFormat:@"标题: %@",model.title];
     }
-    _endTime.text = @"标题: 暂无";
-    if (![model.title isEqual:[NSNull null]]) {
-        _endTime.text = [NSString stringWithFormat:@"标题: %@",model.title];
+    _endTime.text = @"描述: 暂无";
+    if (model.memo != nil) {
+        _endTime.text = [NSString stringWithFormat:@"描述: %@",model.memo];
     }
+    
 
     
 }

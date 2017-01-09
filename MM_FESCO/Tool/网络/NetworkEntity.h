@@ -644,4 +644,14 @@
  */
 
 + (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *  民族,国籍信息获取
+ 
+ *  @param
+ 
+ */
+
++ (void)postNationerAndCountrySuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 @end

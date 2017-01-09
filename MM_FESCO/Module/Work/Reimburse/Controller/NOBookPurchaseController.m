@@ -84,41 +84,41 @@
         return cell;
     
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
-    bookVC.bookType = NOBookPurchaseEdit;
-    NOBookPurchaseModel *model = self.dataArray[indexPath.row];
-    bookVC.noBookmodel = model;
-    if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
-        // 日期类型
-            // 不显示结束日期
-        bookVC.dateType =  1;
-    }else{
-           // 显示结束日期
-        bookVC.dateType =  2;
-    }
-    if ([model.cityName isKindOfClass:[NSNull class]] || !model.spendEnd) {
-        // 城市名称
-            // 不显示x
-        bookVC.needCity = 0;
-    }else{
-        // 显示
-        bookVC.needCity = 1;
-    }
-    
-    // 消费类型
-    bookVC.typePurchaseStr = model.spendTypeStr;
-    bookVC.title = model.spendTypeStr;
-    
-//    // 测试数组
-    NSMutableArray *array = [NSMutableArray array];
-    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
-    [array addObject:URL];
-    bookVC.urlArray = array;
-    
-    
-    [self.navigationController pushViewController:bookVC animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+//    bookVC.bookType = NOBookPurchaseEdit;
+//    NOBookPurchaseModel *model = self.dataArray[indexPath.row];
+//    bookVC.noBookmodel = model;
+//    if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+//        // 日期类型
+//            // 不显示结束日期
+//        bookVC.dateType =  1;
+//    }else{
+//           // 显示结束日期
+//        bookVC.dateType =  2;
+//    }
+//    if ([model.cityName isKindOfClass:[NSNull class]] || !model.spendEnd) {
+//        // 城市名称
+//            // 不显示x
+//        bookVC.needCity = 0;
+//    }else{
+//        // 显示
+//        bookVC.needCity = 1;
+//    }
+//    
+//    // 消费类型
+//    bookVC.typePurchaseStr = model.spendTypeStr;
+//    bookVC.title = model.spendTypeStr;
+//    
+////    // 测试数组
+//    NSMutableArray *array = [NSMutableArray array];
+////    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
+////    [array addObject:URL];
+//    bookVC.urlArray = array;
+//    
+//    
+//    [self.navigationController pushViewController:bookVC animated:YES];
+//}
 #pragma mark --- Action  
 - (void)didClick:(UIButton *)sender{
     NewPurchaseRecordController *purchaseRecordVC = [[NewPurchaseRecordController alloc] init];
