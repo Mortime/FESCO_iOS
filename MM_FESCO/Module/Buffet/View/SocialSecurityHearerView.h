@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SocialSecurityHearerViewDelegate <NSObject>
+
+- (void)socialSecurityHearerViewDelegateWithTag:(NSInteger)tag;
+
+@end
 @interface SocialSecurityHearerView : UIView
+
+@property (nonatomic, weak) id<SocialSecurityHearerViewDelegate>delegate;
 
 @end

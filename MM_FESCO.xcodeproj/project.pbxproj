@@ -277,6 +277,7 @@
 		761601D31DFAA7BC006F9B59 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601CC1DFAA7BC006F9B59 /* NSString+FontAwesome.m */; };
 		761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */; };
 		761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */; };
+		761A10901E236A040006601A /* SocialSecurityChooseDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
@@ -967,6 +968,8 @@
 		761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
 		761601CF1DFAA7BC006F9B59 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		761A108E1E236A040006601A /* SocialSecurityChooseDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityChooseDataController.h; sourceTree = "<group>"; };
+		761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityChooseDataController.m; sourceTree = "<group>"; };
 		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
@@ -2633,6 +2636,8 @@
 				760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */,
 				760A7EFE1E0D071B0036C6C6 /* NOSocialSecurityController.h */,
 				760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */,
+				761A108E1E236A040006601A /* SocialSecurityChooseDataController.h */,
+				761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3108,6 +3113,7 @@
 				76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */,
 				761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */,
 				59EC91591D98CB5900E802FA /* EaseViewController.m in Sources */,
+				761A10901E236A040006601A /* SocialSecurityChooseDataController.m in Sources */,
 				597223D41DADE05400D01A7A /* MMMianCell.m in Sources */,
 				59E99B6E1DB89D22002D0486 /* LaterTimeStatisticModel.m in Sources */,
 				59EC91641D98CB5900E802FA /* EaseBubbleView+Video.m in Sources */,

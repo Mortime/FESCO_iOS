@@ -10,10 +10,11 @@
 #import "SocialSecurityCell.h"
 #import "SocialSecurityHearerView.h"
 #import "SocialSecurityCardIDView.h"
+#import "SocialSecurityChooseDataController.h"
 
 #define kFooterCardH  140
 
-@interface NOSocialSecurityController ()<UITableViewDataSource,UITableViewDelegate>
+@interface NOSocialSecurityController ()<UITableViewDataSource,UITableViewDelegate,SocialSecurityHearerViewDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
 
@@ -119,6 +120,19 @@
     return cell;
     
 }
+#pragma mark -- SocialSecurityHearerViewDelegate
+- (void)socialSecurityHearerViewDelegateWithTag:(NSInteger)tag{
+    if (tag == 12301) {
+        // 点击选择民族
+        MMLog(@"点击选择民族");
+        SocialSecurityChooseDataController *chooseVC = [[SocialSecurityChooseDataController alloc] init];
+        NSArray *array = @[@"汉族",@"满族",@"回族",@"藏族",@"哈尼族"];
+        chooseVC.dataSource = array;
+        [self.navigationController pushViewController:chooseVC animated:YES];
+        
+    }
+}
+
 #pragma mark --- Action 
 - (void)didCancelButton:(UIButton *)sender{
     // 保存
@@ -146,6 +160,7 @@
     if (_headerView == nil) {
         _headerView = [[SocialSecurityHearerView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44 * 3 + 10)];
         _headerView.backgroundColor = [UIColor clearColor];
+        _headerView.delegate = self;
     }
     return _headerView;
 }

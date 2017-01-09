@@ -495,7 +495,7 @@
         _iconView.layer.masksToBounds = YES;
         _iconView.layer.cornerRadius = 32.5;
         _iconView.image = [UIImage imageNamed:@"People_placehode"];
-//        _iconView.userInteractionEnabled = YES;
+        _iconView.userInteractionEnabled = YES;
 //        UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
 //        [_iconView addGestureRecognizer:tapGesRe];
 
@@ -581,6 +581,8 @@
         _bgView.backgroundColor = [UIColor clearColor];
         _bgView.layer.masksToBounds = YES;
         _bgView.layer.cornerRadius = 5;
+        _bgView.layer.borderColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
+        _bgView.layer.borderWidth = 1;
     }
     return _bgView;
     

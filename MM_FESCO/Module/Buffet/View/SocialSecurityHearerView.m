@@ -77,6 +77,15 @@
     }];
     
 }
+- (void)taps:(UIGestureRecognizer *)ges{
+    
+    SocialSecurityCellView *view = (SocialSecurityCellView *)ges.view;
+    if ([_delegate respondsToSelector:@selector(socialSecurityHearerViewDelegateWithTag:)]) {
+        [_delegate socialSecurityHearerViewDelegateWithTag:view.tag];
+    }
+    
+    
+}
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
@@ -92,7 +101,7 @@
         _nameView.isExist = YES;
         _nameView.backgroundColor = [UIColor clearColor];
         [_nameView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-//            [self initHourTime:textField.text];
+            //            [self initHourTime:textField.text];
         }];
     }
     return _nameView;
@@ -115,11 +124,15 @@
         _nationView = [[SocialSecurityCellView alloc] init];
         _nationView.leftTitle = @"民族";
         _nationView.placeHold = @"请选择民族";
-        _nationView.dataArray = @[@"汉族",@"满族"];
         _nationView.backgroundColor = [UIColor clearColor];
+        _nationView.rightTextFiled.enabled = NO;
         [_nationView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             //            [self initHourTime:textField.text];
         }];
+        _nationView.userInteractionEnabled = YES;
+        _nationView.tag = 12301;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taps:)];
+        [_nationView addGestureRecognizer:tap];
     }
     return _nationView;
 }
