@@ -495,9 +495,9 @@
         _iconView.layer.masksToBounds = YES;
         _iconView.layer.cornerRadius = 32.5;
         _iconView.image = [UIImage imageNamed:@"People_placehode"];
-        _iconView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
-        [_iconView addGestureRecognizer:tapGesRe];
+//        _iconView.userInteractionEnabled = YES;
+//        UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
+//        [_iconView addGestureRecognizer:tapGesRe];
 
     }
     return _iconView;
