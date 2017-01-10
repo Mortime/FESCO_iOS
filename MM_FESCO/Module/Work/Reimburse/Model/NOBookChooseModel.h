@@ -60,4 +60,10 @@
 
 @property (nonatomic, assign) BOOL isChoose;  // 是否选中, 默认是No
 
+
+
+
+
+
+
 @end

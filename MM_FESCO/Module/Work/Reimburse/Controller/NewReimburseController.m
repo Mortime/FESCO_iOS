@@ -437,17 +437,15 @@
             cell.model = _netWorkRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
-            cell.deleBtn.hidden = YES;
         }else if(indexPath.section == 3){
             cell.dataArray = _editPurchaseRccordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
-            cell.deleBtn.hidden = YES;
         }else{
             cell.chooseModel = _noBookRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
-            cell.deleBtn.hidden = YES;
+//            cell.deleBtn.hidden = YES;
         }
         
         return cell;

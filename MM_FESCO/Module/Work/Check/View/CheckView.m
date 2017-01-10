@@ -19,9 +19,6 @@
 @interface CheckView ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UIImagePickerControllerDelegate>
 
 
-
-
-
 @property (nonatomic, strong) UIView *bgTopView;
 
 @property (nonatomic, strong) UIImageView *iconView;
@@ -67,9 +64,6 @@
 
 
 @property (nonatomic, strong) NSString *memoOut;
-
-
-
 
 
 
