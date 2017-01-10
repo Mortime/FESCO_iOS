@@ -540,6 +540,16 @@
         
         [self.view addSubview:self.popView];
     }
+    if (indexPath.section == 2) {
+        // 编辑网络
+    }
+    if (indexPath.section == 3) {
+        // 本地新增
+    }
+    if (indexPath.section == 4) {
+        // 未制单消费
+    }
+    
 }
 
 #pragma mark --- Action
@@ -566,6 +576,8 @@
 
     }else if (_rePurchaseBook == editReimburseBook){
         // 正常返回
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:kReimburseRecordList];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

@@ -32,22 +32,7 @@
 @property (nonatomic, strong) NSMutableArray *picIDArray;
 
 
-// 保存时提交服务器数据
-@property (nonatomic, strong) NSString *moneyNumber;  // 金额
 
-@property (nonatomic, strong) NSString *startTime; // 开始时间
-
-@property (nonatomic, strong) NSString *endTime; // 结束时间
-
-@property (nonatomic, strong) NSString *billNumber; // 发票
-
-@property (nonatomic, strong) NSString *picUrl; // 照片链接
-
-@property (nonatomic, strong) NSString *picStr; // 照片描述
-
-@property (nonatomic, strong) NSString *memo; // 我的描述
-
-@property (nonatomic, strong) NSString *cityName; // 选择的城市
 
 
 @end
@@ -74,25 +59,6 @@
     // 注册一个通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kGetPicIDNotifition object:nil];
    // 未制单消费编辑时,给提交数据赋值
-    if (_bookType == NOBookPurchaseEdit) {
-        _moneyNumber = [NSString stringWithFormat:@"%lu",_noBookmodel.moneyAmount];
-        _startTime = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendBegin];
-        if (_dateType == 2) {
-            // 显示结束日期
-            _endTime = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendEnd];
-        }
-        _billNumber = [NSString stringWithFormat:@"%lu",_noBookmodel.billNum];
-        // 附件可能为空
-        // 描述可能为空
-        if (![_noBookmodel.detailMemo isKindOfClass:[NSNull class]]) {
-            _memo = _noBookmodel.detailMemo;
-        }
-        // 消费城市
-        if (_needCity == 1) {
-            // 显示消费城市
-            _cityName = _noBookmodel.cityName;
-        }
-    }
     
     
     
@@ -148,7 +114,7 @@
         }
             cell.textFiled.leftTitle = @"金额";
         if (_bookType == NOBookPurchaseEdit) {
-            cell.textFiled.textFileStr = [NSString stringWithFormat:@"%lu",_noBookmodel.moneyAmount];
+            cell.textFiled.textFileStr = _moneyNumber;
         }
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
@@ -179,7 +145,7 @@
         cell.tag = 8001;
         cell.delegate = self;
         if (_bookType == NOBookPurchaseEdit) {
-            cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendBegin];
+            cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_startTime];
         }
        
         return cell;
@@ -200,7 +166,7 @@
             cell.delegate = self;
             
             if (_bookType == NOBookPurchaseEdit) {
-                cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_noBookmodel.spendEnd];
+                cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_endTime];
             }
 
             return cell;
@@ -217,7 +183,7 @@
         }
         cell.delegate = self;
         if (_bookType == NOBookPurchaseEdit) {
-            cell.addOffView.resultLabel.text = [NSString stringWithFormat:@"%lu",_noBookmodel.billNum];
+            cell.addOffView.resultLabel.text = _billNumber;
         }
                 
         return cell;
@@ -262,8 +228,8 @@
             cell.textFiled.isExist = YES;
         cell.delegate = self;
         cell.tag = 8003;
-        if (_bookType == NOBookPurchaseEdit && ![_noBookmodel.detailMemo isKindOfClass:[NSNull class]]) {
-            cell.textFiled.textFileStr = _noBookmodel.detailMemo;
+        if (_bookType == NOBookPurchaseEdit && ![_memo isKindOfClass:[NSNull class]]) {
+            cell.textFiled.textFileStr = _memo;
         }
         
         return cell;
@@ -279,7 +245,7 @@
         _cityCell = cell;
         
         if (_bookType == NOBookPurchaseEdit) {
-            cell.resultLabel.text = _noBookmodel.cityName;
+            cell.resultLabel.text = _cityName;
         }
         return cell;
 

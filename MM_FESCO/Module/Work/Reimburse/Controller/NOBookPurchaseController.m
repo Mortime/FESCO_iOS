@@ -96,6 +96,7 @@
     }else{
            // 显示结束日期
         bookVC.dateType =  2;
+        bookVC.endTime = model.spendEnd;
     }
     if ([model.cityName isKindOfClass:[NSNull class]] || !model.spendEnd) {
         // 城市名称
@@ -109,6 +110,10 @@
     // 消费类型
     bookVC.typePurchaseStr = model.spendTypeStr;
     bookVC.title = model.spendTypeStr;
+    bookVC.startTime = model.spendBegin;
+    bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+    bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
+    bookVC.memo = model.detailMemo;
     
 //    // 测试数组
     NSMutableArray *array = [NSMutableArray array];
