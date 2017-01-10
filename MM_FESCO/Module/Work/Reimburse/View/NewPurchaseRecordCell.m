@@ -107,8 +107,8 @@
 }
 #pragma mark --- Action
 - (void)didDeleRecord{
-    if ([_delegate respondsToSelector:@selector(newPurchaseRecordCellDelegateWithTag:)]) {
-        [_delegate newPurchaseRecordCellDelegateWithTag:_indexTag];
+    if ([_delegate respondsToSelector:@selector(newPurchaseRecordCellDelegateWithTag:sectionTag:)]) {
+        [_delegate newPurchaseRecordCellDelegateWithTag:_indexTag sectionTag:_sectionTag];
     }
 }
 

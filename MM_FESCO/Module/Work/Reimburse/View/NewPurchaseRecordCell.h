@@ -13,7 +13,7 @@
 
 @protocol NewPurchaseRecordCellDelegate <NSObject>
 
-- (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag;
+- (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag sectionTag:(NSInteger)sectionTag;
 
 @end
 @interface NewPurchaseRecordCell : UITableViewCell
@@ -21,6 +21,10 @@
 @property (nonatomic, strong) NSDictionary *dic;
 
 @property (nonatomic, assign) NSInteger indexTag;
+
+@property (nonatomic, assign) NSInteger sectionTag;
+
+
 
 @property (nonatomic, strong) UIButton *deleBtn;
 

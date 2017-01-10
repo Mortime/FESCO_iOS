@@ -436,14 +436,17 @@
         if (indexPath.section == 2) {
             cell.model = _netWorkRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
+            cell.sectionTag = indexPath.section;
             cell.delegate = self;
         }else if(indexPath.section == 3){
             cell.dic = _editPurchaseRccordArray[indexPath.row];
             cell.indexTag = indexPath.row;
+            cell.sectionTag = indexPath.section;
             cell.delegate = self;
         }else{
             cell.chooseModel = _noBookRecordArray[indexPath.row];
             cell.indexTag = indexPath.row;
+            cell.sectionTag = indexPath.section;
             cell.delegate = self;
 //            cell.deleBtn.hidden = YES;
         }
@@ -784,32 +787,48 @@
 }
 
 /*  NewPurchaseRecordCellDelegate  方法  删除添加的消费记录 */
-- (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag{
-    NSDictionary *dic = _editPurchaseRccordArray[tag];
-    // 删除成功
-    [_editPurchaseRccordArray removeObjectAtIndex:tag];
-    // 金额减少
-    _allMoneyNumber = _allMoneyNumber - [[dic objectForKey:@"moneyAmount"] integerValue];
-    NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-    _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
-    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+- (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag sectionTag:(NSInteger)sectionTag{
+    if (sectionTag == 2) {
+        // 网络
+        EditMessageModel *model = _netWorkRecordArray[tag];
+        // 删除成功
+        [_netWorkRecordArray removeObjectAtIndex:tag];
+        // 金额减少
+        _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
+        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+    }
+    if (sectionTag == 3) {
+        // 编辑
+        NSDictionary *dic = _editPurchaseRccordArray[tag];
+        // 删除成功
+        [_editPurchaseRccordArray removeObjectAtIndex:tag];
+        // 金额减少
+        _allMoneyNumber = _allMoneyNumber - [[dic objectForKey:@"moneyAmount"] integerValue];
+        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
+        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+    }
+    if (sectionTag == 4) {
+        // 未制单
+        NOBookChooseModel *model = _noBookRecordArray[tag];
+        // 删除成功
+        [_noBookRecordArray removeObjectAtIndex:tag];
+        // 金额减少
+        _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
+        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:4];
+        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+    }
+
     
-//    [NetworkEntity postDeleReimburseRecordWithDetailId:model.detailId Success:^(id responseObject) {
-//        MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
-//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-//            // 删除成功
-//            [_editPurchaseRccordArray removeObjectAtIndex:tag];
-//            // 金额减少
-//            _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
-//            NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-//            _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
-//            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
-//            [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-//        }
-//    } failure:^(NSError *failure) {
-//        MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
-//    }];
+    
+
+
 }
  /*  NewReimburseConsumePopViewDelegate  方法 */
 - (void)newReimburseConsumePopViewDelegatWithRow:(NSInteger)row{
