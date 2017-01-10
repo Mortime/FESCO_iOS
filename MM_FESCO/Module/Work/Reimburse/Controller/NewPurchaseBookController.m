@@ -544,10 +544,9 @@
             
             
             //把数组转换成字符串
-            NSString *picStr=[_picIDArray componentsJoinedByString:@","];
-            _picUrl= picStr;
-            MMLog(@"picArray == %@,ns == %@",_picIDArray,picStr);
-            _picStr =  [[NSUserDefaults standardUserDefaults] objectForKey:@"imgDes"];
+            NSString *picID=[_picIDArray componentsJoinedByString:@","];
+            _picUrl= picID;
+            MMLog(@"picArray == %@,ns == %@",_picIDArray,picID);
         }else{
             _picUrl = @"";
         }
@@ -567,7 +566,7 @@
                 if (_bookType == NOBookPurchaseEdit) {
                     detail = [NSString stringWithFormat:@"%lu",_noBookmodel.detailId];
                 }
-                [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl picDesc:_picStr spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
+                [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
                     MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
                     if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
                         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
@@ -590,58 +589,91 @@
             }
         }else{
             // 添加报销单的消费记录
-            MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_picStr,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
+            MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
             NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
                                   @"spendBegin":_startTime,
                                   @"spendEnd":_endTime,
                                   @"billNum":_billNumber,
                                   @"picUrl":_picUrl,
-                                  @"picDesc":_picStr,
                                   @"detailMemo":_memo,
                                   @"spendCity":_cityName,
                                   @"ID":[NSString stringWithFormat:@"%lu",_ID],
                                   @"typePurchaseStr":_typePurchaseStr
                                   };
+            NSMutableArray *mutArray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
+            if (mutArray.count == 0) {
+                mutArray = [NSMutableArray array];
+            }
+            [mutArray addObject:dic];
+            [[NSUserDefaults standardUserDefaults] setObject:mutArray forKey:kReimburseRecordList];
             
             
-            __weak typeof(self) ws = self;
-            // 点击保存时将数据存入本地数据库
-            [MMDataBase initializeDatabaseWithTableName:t_purchaseRecord baseBlock:^(BOOL isSuccess) {
-                if (isSuccess) {
-                    // 表创建成功
-                    MMLog(@"表创建成功");
-                    // 添加判断数据是否存在的字段
-                    //            NSDictionary *dic = (NSDictionary *)responseObject;
-                    NSMutableDictionary *mutableDic = dic.mutableCopy;
-                    [mutableDic setValue:@"exist" forKey:@"ID"];
-                    
-                    NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                                               NSUserDomainMask,
-                                                                               YES);
-                    NSString *restltDocumentDirectory = [resultPaths lastObject];
-                    MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
-                    
-                    
-                    // 保存数据
-                    [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
-                    // 保存成功
-                    if (sender.tag == 701) {
-                        // 保存
-                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-                        [toastView show];
-                        NSArray * ctrlArray = self.navigationController.viewControllers;
-                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
-                    }else if (sender.tag == 700){
-                        // 在记一笔
-                        NSArray * ctrlArray = self.navigationController.viewControllers;
-                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
-                    }
-                    
-                }
-                
-            }];
+                                // 保存成功
+                                if (sender.tag == 701) {
+                                    // 保存
+                                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                                    [toastView show];
+                                    NSArray * ctrlArray = self.navigationController.viewControllers;
+                                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+                                }else if (sender.tag == 700){
+                                    // 在记一笔
+                                    NSArray * ctrlArray = self.navigationController.viewControllers;
+                                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
+                                }
+                                
+                            }
+        
+        
             
-        }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+//            __weak typeof(self) ws = self;
+//            // 点击保存时将数据存入本地数据库
+//            [MMDataBase initializeDatabaseWithTableName:t_purchaseRecord baseBlock:^(BOOL isSuccess) {
+//                if (isSuccess) {
+//                    // 表创建成功
+//                    MMLog(@"表创建成功");
+//                    // 添加判断数据是否存在的字段
+//                    //            NSDictionary *dic = (NSDictionary *)responseObject;
+//                    NSMutableDictionary *mutableDic = dic.mutableCopy;
+//                    [mutableDic setValue:@"exist" forKey:@"ID"];
+//                    
+//                    NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                                               NSUserDomainMask,
+//                                                                               YES);
+//                    NSString *restltDocumentDirectory = [resultPaths lastObject];
+//                    MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
+//                    
+//                    
+//                    // 保存数据
+//                    [MMDataBase saveItemWithMoneyAmount:_moneyNumber spendBegin:_startTime spendEnd:_endTime billNum:_billNumber picUrl:_picUrl picDesc:_picStr detailMemo:_memo spendCity:_cityName ID: [NSString stringWithFormat:@"%lu",_ID]typePurchaseStr:_typePurchaseStr];
+//                    // 保存成功
+//                    if (sender.tag == 701) {
+//                        // 保存
+//                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+//                        [toastView show];
+//                        NSArray * ctrlArray = self.navigationController.viewControllers;
+//                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+//                    }else if (sender.tag == 700){
+//                        // 在记一笔
+//                        NSArray * ctrlArray = self.navigationController.viewControllers;
+//                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
+//                    }
+//                    
+//                }
+//                
+//            }];
+            
+            
+//        }
 
     }
     

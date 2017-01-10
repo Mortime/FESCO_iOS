@@ -18,7 +18,7 @@
 @end
 @interface NewPurchaseRecordCell : UITableViewCell
 
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSDictionary *dic;
 
 @property (nonatomic, assign) NSInteger indexTag;
 

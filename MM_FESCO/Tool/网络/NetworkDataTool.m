@@ -156,36 +156,49 @@
     
     NSString *newStr = @"";
     //  本地数据库的消费记录为空
-    for (NSArray *mightarray in newPurchaseRecordModelArray) {
+    for (NSDictionary *dic in newPurchaseRecordModelArray) {
         // 可能为空的字段
+        /*
+         
+         @"moneyAmount":_moneyNumber,
+         @"spendBegin":_startTime,
+         @"spendEnd":_endTime,
+         @"billNum":_billNumber,
+         @"picUrl":_picUrl,
+         @"picDesc":_picStr,
+         @"detailMemo":_memo,
+         @"spendCity":_cityName
+         
+         */
+        
+        
+        
         // 1. 消费描述
         NSString *spendMemo = @"";
-        if (mightarray[6]) {
-            spendMemo = mightarray[6];
+        if ([dic objectForKey:@"detailMemo"]) {
+            spendMemo = [dic objectForKey:@"detailMemo"];
         }
         // 2. 开始时间
         NSString *spendStart = @"";
-        if (mightarray[1]) {
-            spendStart = mightarray[1];
+        if ([dic objectForKey:@"spendBegin"]) {
+          spendStart = [dic objectForKey:@"spendBegin"];
         }
         
         // 3. 结束时间
         NSString *spendEnd = @"";
-        if (mightarray[2]) {
-            spendEnd = mightarray[2];
+        if ([dic objectForKey:@"spendEnd"]) {
+         spendEnd = [dic objectForKey:@"spendEnd"];
         }
         // 4. 消费城市
         NSString *spendCity = @"";
-        if (mightarray[7]) {
-            spendCity = mightarray[7];
+        if ([dic objectForKey:@"spendCity"]) {
+        spendCity = [dic objectForKey:@"spendCity"];
         }
         
-        
-        
-        NSDictionary *detailDic = @{@"spend_Type":mightarray[8],
-                                    @"money_Amount":mightarray[0],
-                                    @"bill_Num":mightarray[3],
-                                    @"pic_Ids":mightarray[4],
+        NSDictionary *detailDic = @{@"spend_Type":[dic objectForKey:@"ID"],
+                                    @"money_Amount":[dic objectForKey:@"moneyAmount"],
+                                    @"bill_Num":[dic objectForKey:@"billNum"],
+                                    @"pic_Ids":[dic objectForKey:@"picUrl"],
                                     @"detail_Memo":spendMemo,
                                     @"spend_Begin":spendStart,
                                     @"spend_End":spendEnd,

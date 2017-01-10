@@ -1541,7 +1541,7 @@
 
 }
 // 保存消费记录
-+ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl picDesc:(NSString *)picDesc spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity detailId:(NSString *)detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postPreservePurchaseRecordWithSpendType:(NSUInteger )spendType moneyAmount:(NSString *)moneyAmount  billNum:(NSString *)billNum detailMemo:(NSString *)detailMemo picUrl:(NSString *)picUrl spendBegin:(NSString *)spendBegin spendEnd:(NSString *)spendEnd spendCity:(NSString *)spendCity detailId:(NSString *)detailId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
 
     
     NSDictionary *dic = @{

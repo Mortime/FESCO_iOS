@@ -188,18 +188,26 @@
     _timeLabel.text = timeStr;
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
 }
-- (void)setDataArray:(NSArray *)dataArray{
-    _titleLabel.text = dataArray[9];
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[dataArray[9] substringToIndex:2]]];
+- (void)setDic:(NSDictionary *)dic{
+    _titleLabel.text = [dic objectForKey:@"typePurchaseStr"];
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"typePurchaseStr"] substringToIndex:2]]];
     NSString *timeStr = @"";
-    timeStr = dataArray[1];
-    if (dataArray[2]) {
-        NSString *end = dataArray[2];
+    timeStr = [dic objectForKey:@"spendBegin"];
+    if ([dic objectForKey:@"spendEnd"]) {
+        NSString *end = [dic objectForKey:@"spendEnd"];
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[dataArray[0] integerValue]];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"moneyAmount"]integerValue]];
 
+    
+    
+    
+    
+    
+    
+    
+    
 }
 - (void)setChooseModel:(NOBookChooseModel *)chooseModel{
     if (chooseModel.spendTypeStr) {

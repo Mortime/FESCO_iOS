@@ -114,10 +114,11 @@
                     _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
                 }
                 [_editPurchaseRccordArray removeAllObjects];
-                NSArray *array1 = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
-                for (NSArray *ar in array1) {
-                    [_editPurchaseRccordArray addObject:ar];
-                    _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
+                NSMutableArray *mutarray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
+                
+                for (NSDictionary *dic in mutarray) {
+                    [_editPurchaseRccordArray addObject:dic];
+                    _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
                     
                 }
                 [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
@@ -136,17 +137,16 @@
         //    
         [_editPurchaseRccordArray removeAllObjects];
         _allMoneyNumber = 0;
-        NSArray *array = [MMDataBase allTableDataListWithTableName:t_purchaseRecord];
-        for (NSArray *ar in array) {
-            [_editPurchaseRccordArray addObject:ar];
-            _allMoneyNumber = _allMoneyNumber + [ar[0] integerValue];
+        NSMutableArray *mutarray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
+        
+        for (NSDictionary *dic in mutarray) {
+            [_editPurchaseRccordArray addObject:dic];
+            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
             
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
         [self.tableView reloadData];
         
-        
-        MMLog(@"str === %@",array);
 
     }
     
@@ -438,7 +438,7 @@
             cell.indexTag = indexPath.row;
             cell.delegate = self;
         }else if(indexPath.section == 3){
-            cell.dataArray = _editPurchaseRccordArray[indexPath.row];
+            cell.dic = _editPurchaseRccordArray[indexPath.row];
             cell.indexTag = indexPath.row;
             cell.delegate = self;
         }else{
@@ -549,7 +549,10 @@
             NSUInteger indexAlert = selectedOtherButtonIndex + 1;
             if (indexAlert == 1) {
                 // 正常返回
-                [MMDataBase deleteAll];
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults removeObjectForKey:kReimburseRecordList];
+
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else {
@@ -644,7 +647,9 @@
             // 保存成功
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
             [toastView show];
-            [MMDataBase deleteAll];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:kReimburseRecordList];
+
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
@@ -669,7 +674,10 @@
                 ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交成功"];
                 [toastView show];
                 [self.popViewApplyMan removeFromSuperview];
-                [MMDataBase deleteAll];
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults removeObjectForKey:kReimburseRecordList];
+
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
                 ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"提交失败"];
@@ -777,12 +785,11 @@
 
 /*  NewPurchaseRecordCellDelegate  方法  删除添加的消费记录 */
 - (void)newPurchaseRecordCellDelegateWithTag:(NSInteger)tag{
-    NSArray *array  = _editPurchaseRccordArray[tag];
-    
+    NSDictionary *dic = _editPurchaseRccordArray[tag];
     // 删除成功
     [_editPurchaseRccordArray removeObjectAtIndex:tag];
     // 金额减少
-    _allMoneyNumber = _allMoneyNumber - [array[0] integerValue];
+    _allMoneyNumber = _allMoneyNumber - [[dic objectForKey:@"moneyAmount"] integerValue];
     NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
     _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
     NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];

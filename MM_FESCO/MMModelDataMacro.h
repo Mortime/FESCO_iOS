@@ -34,6 +34,7 @@
 #define kSignDate    @"SignDate"    // 记录签到日期,用于次日签到数据清0
 #define kSignStatisticDate @"SignStatisticDate"   // 签到统计日期记录
 #define kUsreIcon     @"UsreIcon" // 保存用户头像
+#define kReimburseRecordList  @"ReimburseRecordList"  // 本地保存消费记录
 
 
 
