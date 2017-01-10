@@ -13,8 +13,11 @@
 #import "ProgressPuschaseCell.h"
 #import "NewPurchaseRecordModel.h"
 #import "ReimburseApprovalInfoModel.h"
+#import "ReimburseApprovalRecordCell.h"
 
-@interface ReimburseApprovalDetailController ()<UITableViewDelegate,UITableViewDataSource>
+#import "TextMainApprovalDetailCell.h"
+#import "FileMainApprovalDetailCell.h"
+@interface ReimburseApprovalDetailController ()<UITableViewDelegate,UITableViewDataSource,fileMainApprovalDetailCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -28,14 +31,42 @@
 
 @property (nonatomic, strong) MMBottomButton *bottomButton;
 
+
+@property (nonatomic, strong) NSArray *mightArray;
+@property (nonatomic, strong) NSArray *mightDataArray;
+
+@property (nonatomic, strong) NSArray *bottomArray;
+@property (nonatomic, strong) NSMutableArray *bottomDataArray;
+
+@property (nonatomic, strong) NSMutableArray *pickDataArray;
+
+@property (nonatomic, assign) BOOL isShowLaterMessage;
+
+@property (nonatomic, strong) NSString *applyIdea;
+
+@property (nonatomic, strong) NSString *applyPeopel;
+
+@property (nonatomic, strong) NSArray *resultArray;
+
 @end
 
 @implementation ReimburseApprovalDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"审批进度";
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.title = @"报销审批";
     self.messageTitleArray = @[@"报销日期",@"收款账号"];
+    
+    self.mightArray = @[@"审批意见",@"再次审批"];
+    self.mightDataArray = @[@"请输入审批意见",@"请选择再次审批人"];
+    
+    self.bottomArray = @[@"前次审批",@"审批结果",@"审批意见"];
+    self.bottomDataArray = [NSMutableArray array];
+    
+    self.pickDataArray = [NSMutableArray array];
+    
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.reimburseInfoArray = [NSMutableArray array];
     self.reimburselistArray = [NSMutableArray array];
@@ -57,6 +88,74 @@
                 [_reimburseInfoArray addObject:model];
             [_messageContentArray replaceObjectAtIndex:0 withObject:[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:model.applyDate]];
             [_messageContentArray replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%lu",model.accountId]];
+            
+            
+            
+            
+            // 前次审批
+            NSArray *allKey = [responseObject allKeys];
+            for (NSString *keyStr in allKey) {
+                if ([keyStr isEqualToString:@"lastApprovalStep"]) {
+                    _isShowLaterMessage = YES;
+                    NSDictionary *dic = [responseObject objectForKey:keyStr];
+                    
+                    MMLog(@"lastApprovalStep == %@",dic);
+                    
+                    /*
+                     lastApprovalStep =     {
+                     "apply_Id" = 183;
+                     "approval_Man" = 163;
+                     "approval_Man_Str" = "\U80e1\U677e";
+                     "approval_Time" = "<null>";
+                     "is_Over" = 0;
+                     "is_Pass" = 2;
+                     "is_Pass_Str" = "\U901a\U8fc7\U5ba1\U6279";
+                     memo = "<null>";
+                     "next_Approval_Man" = "<null>";
+                     "step_Id" = 103;
+                     };
+
+                     */
+                     NSString *lastDate = @"";
+                    if ([dic objectForKey:@"approval_Time"] == nil || [[dic objectForKey:@"approval_Time"] isKindOfClass:[NSNull class]]) {
+                        lastDate = @"暂无";
+                    }else{
+                        lastDate = [NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]];
+                    }
+                   
+                    [_bottomDataArray addObject:lastDate];
+                    NSString *lastRelutt = @"";
+                    NSInteger result = [[dic objectForKey:@"is_Pass"] integerValue];
+                    if (result == 1) {
+                        lastRelutt = @"不通过";
+                    }
+                    if (result == 2) {
+                        lastRelutt = @"通过";
+                    }
+                    
+                    [_bottomDataArray addObject:lastRelutt];
+                    
+                    
+                    NSString *lastMemo = [dic objectForKey:@"memo"];
+                    if (lastMemo == nil  || [lastMemo isKindOfClass:[NSNull class]]) {
+                        lastMemo = @"暂无";
+                    }
+                    [_bottomDataArray addObject:lastMemo];
+                    
+                    
+                }
+            }
+
+            // 审批人选择
+            NSArray  *applyPeople = [responseObject objectForKey:@"approvalManList"];
+            _resultArray =  applyPeople;
+            for (NSDictionary *dic in applyPeople) {
+                NSString *str = [dic objectForKey:@"emp_Name"];
+                [_pickDataArray addObject:str];
+            }
+
+            
+            
             [_tableView reloadData];
             
         }
@@ -67,64 +166,70 @@
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    if (section == 0 || section == 1 || section == 3) {
+        return 10;
+    }
+    return 0;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     // 一区头部视图
     if (section == 0) {
-        UIView *sectionTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+        UIView *sectionTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
         sectionTwo.backgroundColor = [UIColor clearColor];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,self.view.width , 20)];
-        label.centerY = sectionTwo.centerY;
-        label.font = [UIFont systemFontOfSize:12];
-        label.textColor = [UIColor grayColor];
-        label.text = @"基本信息";
-        
-        [sectionTwo addSubview:label];
+    
         return sectionTwo;
     }
-    // 三区头部视图
+    // 二区头部视图
     if (section == 1) {
-        UIView *sectionThree = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+        UIView *sectionThree = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
         sectionThree.backgroundColor = [UIColor clearColor];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,100 ,20)];
-        label.centerY = sectionThree.centerY + 5;
-        label.font = [UIFont systemFontOfSize:12];
-        label.textColor = [UIColor grayColor];
-        label.text = @"消费明细";
-        [sectionThree addSubview:label];
+    
+        return sectionThree;
+    }
+    // 二区头部视图
+    if (section == 3) {
+        UIView *sectionThree = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
+        sectionThree.backgroundColor = [UIColor clearColor];
         
         return sectionThree;
     }
+
     
     return nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    if (_isShowLaterMessage) {
+        return 4;
+    }
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0){
+    if (section == 1){
         return 2;
     }
-    ReimburseApprovalInfoModel *model = _reimburseInfoArray.firstObject;
-    
-    return model.details.count;
+    if (section == 0) {
+        ReimburseApprovalInfoModel *model = _reimburseInfoArray.firstObject;
+        
+        return model.details.count;
+    }
+    if (section == 2){
+        return 2;
+    }
+    if (section == 3){
+        return 3;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 44;
-    }
-    return 54;
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         static NSString *cellID = @"MessageID";
         ProgressMessageCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -135,22 +240,74 @@
         cell.contentStr = _messageContentArray[indexPath.row];
         return cell;
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         static NSString *cellID = @"ID";
-        ProgressPuschaseCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        ReimburseApprovalRecordCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
         if (!cell) {
-            cell = [[ProgressPuschaseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell = [[ReimburseApprovalRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         ReimburseApprovalInfoModel *model = _reimburseInfoArray.firstObject;
         cell.dic = model.details[indexPath.row];
         return cell;
     }
     
+    if (indexPath.section == 2) {
+        static NSString *cellID = @"cellID";
+        FileMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[FileMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        cell.leftTitle = self.mightArray[indexPath.row];
+        cell.rightTitle = self.mightDataArray[indexPath.row];
+        // pickView的数据源
+        if (indexPath.row == 1) {
+            cell.pickDataArray = self.pickDataArray;
+            cell.isExist = NO;
+        }
+        cell.textFiledTag = indexPath.row + 1000;
+        cell.delegate = self;
+        
+        
+        return cell;
+        
+    }
+    if (indexPath.section == 3) {
+        static NSString *cellID = @"cellID";
+        TextMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[TextMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        cell.leftTitle = self.bottomArray[indexPath.row];
+        cell.rightTitle = self.bottomDataArray[indexPath.row];
+        return cell;
+        
+    }
+    
+    
     
     return nil;
+
+
+}
+#pragma mark ---  fileMainApprovalDetailCellDelegate 方法
+- (void)fileMainApprovalDetailCellDelegateWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{
+    
+    if (indexTag == 1000) {
+        // 审批意见
+        MMLog(@"审批意见");
+        _applyIdea = textfile.text;
+    }
+    if (indexTag == 1001) {
+        // 审批人
+        MMLog(@"审批人");
+        _applyPeopel = textfile.text;
+    }
     
 }
+
 #pragma mark ---- 底部按钮点击回调
 - (void)didClick:(NSInteger)sender{
 
@@ -173,7 +330,25 @@
         msgError = @"驳回失败";
 
     }
-    [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag Success:^(id responseObject) {
+    
+    // 审批意见
+    NSString *applyIdea = @"";
+    if (_applyIdea) {
+        applyIdea = _applyIdea;
+    }
+    
+    // 审批人
+    NSString *applyPeople = @"";
+    if (_applyPeopel) {
+        for (NSDictionary *dic in _resultArray) {
+            if ([[dic objectForKey:@"emp_Name"] isEqualToString:_applyPeopel]) {
+                applyPeople = [dic objectForKey:@"emp_Id"];
+            }
+        }
+    }
+
+    
+    [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag memo:applyIdea nextApprovalMan:applyPeople Success:^(id responseObject) {
         MMLog(@"CommitReimburseApproval ========= responseObject ============%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
             
@@ -190,6 +365,7 @@
         [self showTotasViewWithMes:@"网络错误"];
     }];
     
+    
 }
 
 
@@ -200,7 +376,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , self.view.width, self.view.height - 50) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , self.view.width, self.view.height - 50 - 64) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;

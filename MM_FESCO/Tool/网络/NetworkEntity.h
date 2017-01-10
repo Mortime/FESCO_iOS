@@ -641,7 +641,7 @@
  
  */
 
-+ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
  *  民族,国籍信息获取

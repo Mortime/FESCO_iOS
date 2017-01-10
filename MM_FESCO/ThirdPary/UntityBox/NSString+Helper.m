@@ -259,6 +259,17 @@
         str = @"NewReimburseController_Other";
         
     }
+    if ([title isEqualToString:@"日常报销单"]) {
+        str = @"ReimburseApproal_RiChang";
+        
+    }
+    if ([title isEqualToString:@"差旅报销单"]) {
+        str = @"ReimburseApproal_ChuChai";
+        
+    }if ([title isEqualToString:@"付款申请单"]) {
+        str = @"ReimburseApproal_FuKuang";
+        
+    }
     return str;
 }
 @end

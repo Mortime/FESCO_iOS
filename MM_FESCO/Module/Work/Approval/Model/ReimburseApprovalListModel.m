@@ -15,7 +15,8 @@
     return @{ @"accountId": @"account_Id",
               @"applyDate":@"apply_Date",
               @"typeStr":@"type_Str",
-              @"applyId":@"apply_Id"
+              @"applyId":@"apply_Id",
+              @"empName":@"emp_Name"
               };
 }
 @end

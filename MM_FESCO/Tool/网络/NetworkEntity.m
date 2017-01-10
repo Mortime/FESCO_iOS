@@ -1728,10 +1728,13 @@
 
 }
 // 提交审批
-+ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"result":[NSString stringWithFormat:@"%lu",restult],
                           @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"memo":memo,
+                          @"next_Approval_Man":next_Approval_Man,
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                           @"methodname":@"expense/saveExpenseExamResult.json"
                           };
     

@@ -278,6 +278,7 @@
 		761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601CE1DFAA7BC006F9B59 /* UIFont+FontAwesome.m */; };
 		761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */; };
 		761A10901E236A040006601A /* SocialSecurityChooseDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */; };
+		761A10931E24D3E00006601A /* ReimburseApprovalRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A10921E24D3E00006601A /* ReimburseApprovalRecordCell.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
@@ -970,6 +971,8 @@
 		761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		761A108E1E236A040006601A /* SocialSecurityChooseDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityChooseDataController.h; sourceTree = "<group>"; };
 		761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityChooseDataController.m; sourceTree = "<group>"; };
+		761A10911E24D3E00006601A /* ReimburseApprovalRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalRecordCell.h; sourceTree = "<group>"; };
+		761A10921E24D3E00006601A /* ReimburseApprovalRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalRecordCell.m; sourceTree = "<group>"; };
 		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
@@ -1414,6 +1417,8 @@
 				764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */,
 				764223B81E1D3F340094DEBB /* ReimburseApprovalCell.h */,
 				764223B91E1D3F340094DEBB /* ReimburseApprovalCell.m */,
+				761A10911E24D3E00006601A /* ReimburseApprovalRecordCell.h */,
+				761A10921E24D3E00006601A /* ReimburseApprovalRecordCell.m */,
 				597223281DADE05400D01A7A /* SignUpApprovalCell.h */,
 				597223291DADE05400D01A7A /* SignUpApprovalCell.m */,
 				5972232A1DADE05400D01A7A /* SignUpApprovalView.h */,
@@ -3249,6 +3254,7 @@
 				597223E41DADE05400D01A7A /* PhoneListCell.m in Sources */,
 				76BB955E1DD026CE000E6EF1 /* ReimburseCell.m in Sources */,
 				597223D01DADE05400D01A7A /* LeaveRecordView.m in Sources */,
+				761A10931E24D3E00006601A /* ReimburseApprovalRecordCell.m in Sources */,
 				76EBA2E41DD4027700DB67B1 /* NumberAddOffView.m in Sources */,
 				761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */,
 				59EC91DC1D98D9AD00E802FA /* UIButton+EMWebCache.m in Sources */,
