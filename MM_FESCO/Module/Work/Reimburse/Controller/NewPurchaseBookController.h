@@ -16,6 +16,12 @@
 #import "NOBookPurchaseModel.h"
 
 
+@protocol NewPurchaseBookControllerDelegate <NSObject>
+
+- (void)newPurchaseBookControllerDelegateWith:(NSMutableArray *)array sectionTag:(NSInteger)sectionTag;
+
+@end
+
 @interface NewPurchaseBookController : MMBaseViewController
 
 
@@ -44,6 +50,13 @@
 @property (nonatomic, strong) NSString *memo; // 我的描述
 
 @property (nonatomic, strong) NSString *cityName; // 选择的城市
+
+@property (nonatomic, assign) NSInteger indexTag;  //
+
+@property (nonatomic, assign) NSInteger sectionTag;
+
+@property (nonatomic, strong) NSMutableArray *networkArrayEdit;
+@property (nonatomic, weak) id <NewPurchaseBookControllerDelegate>delegate;
 
 
 

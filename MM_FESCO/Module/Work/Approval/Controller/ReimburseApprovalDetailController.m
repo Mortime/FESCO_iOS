@@ -17,6 +17,7 @@
 
 #import "TextMainApprovalDetailCell.h"
 #import "FileMainApprovalDetailCell.h"
+#import "ReimburseApprovalRecordDetailController.h"
 @interface ReimburseApprovalDetailController ()<UITableViewDelegate,UITableViewDataSource,fileMainApprovalDetailCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -291,6 +292,68 @@
     return nil;
 
 
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        
+        ReimburseApprovalRecordDetailController *detailVc = [[ReimburseApprovalRecordDetailController alloc] init];
+        
+        ReimburseApprovalInfoModel *model = _reimburseInfoArray.firstObject;
+        NSDictionary *dic = model.details[indexPath.row];
+        /*
+         "apply_Id" = 108;
+         "bill_Num" = 1;
+         "cust_Id" = "<null>";
+         "detail_Id" = 136;
+         "detail_Id_Before_Imported" = "<null>";
+         "detail_Memo" = VV;
+         "emp_Id" = "<null>";
+         "expense_Date" = "<null>";
+         icon = "fa fa-car fa-lg";
+         "money_Amount" = 55;
+         "pic_Ids" = "<null>";
+         pics =     (
+         {
+         "detail_Id" = 136;
+         id = 138;
+         "pic_Desc" = "<null>";
+         "pic_Url" = "F://expensePics/15/15/20161222172610IMG_0003.JPG";
+         }
+         );
+         "spend_Begin" = 1482336000000;
+         "spend_Begin_Str" = "<null>";
+         "spend_City" = "<null>";
+         "spend_End" = "<null>";
+         "spend_End_Str" = "<null>";
+         "spend_Type" = 18;
+         "spend_Type_Str" = "\U4ea4\U901a-\U516c\U4ea4";
+         trId = "<null>";
+         
+         */
+        if ([[dic objectForKey:@"spendEnd"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendEnd"]) {
+            // 日期类型
+            // 不显示结束日期
+            detailVc.dateType =  1;
+        }else{
+            // 显示结束日期
+            detailVc.dateType =  2;
+            detailVc.endTime = [dic objectForKey:@"spendEnd"];
+        }
+        if ([[dic objectForKey:@"spendCity"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendCity"]) {
+            // 城市名称
+            // 不显示x
+            detailVc.needCity = 0;
+        }else{
+            // 显示
+            detailVc.needCity = 1;
+        }
+        detailVc.icon = [dic objectForKey:@"icon"];
+        detailVc.title = [dic objectForKey:@"spend_Type_Str"];
+        detailVc.dic = dic;
+        [self.navigationController pushViewController:detailVc animated:YES];
+ 
+    }
+    
 }
 #pragma mark ---  fileMainApprovalDetailCellDelegate 方法
 - (void)fileMainApprovalDetailCellDelegateWithTextFile:(UITextField *)textfile indexTag:(NSInteger)indexTag{

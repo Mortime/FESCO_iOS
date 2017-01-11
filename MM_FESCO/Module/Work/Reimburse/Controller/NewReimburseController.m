@@ -22,10 +22,11 @@
 #import "BLPFAlertView.h"
 #import "NOBookChooseController.h"
 #import "NOBookChooseModel.h"
+#import "NewPurchaseBookController.h"
 
 #define kBottomH  50
 
-@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate,NewPurchaseRecordCellDelegate,NOBookChooseControllerDelegate>
+@interface NewReimburseController () <UITableViewDelegate,UITableViewDataSource,NewReimbursePopViewDelegate,NewReimburseConsumePopViewDelegate,NewPurchaseRecordCellDelegate,NOBookChooseControllerDelegate,NewPurchaseBookControllerDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -83,13 +84,10 @@
 
 @property (nonatomic,strong) NSMutableArray *textTitleArray;  // 当从已经保存的消费记录进入界面时 ,显示已经保存的内容
 
-@property (nonatomic,strong) NSMutableArray *netWorkRecordArray; //  用于存放保存之后的消费记录模型
 
 @property (nonatomic, strong) NSMutableArray *noBookRecordArray; // 选择的未制单消费数组
 
 @property (nonatomic,strong) NSString *picID; // 图片ID
-
-
 
 @end
 
@@ -99,42 +97,25 @@
     // 加载消费记录
     if (_rePurchaseBook == editReimburseBook) {
         // 当编辑报销单时
-        [_netWorkRecordArray removeAllObjects];
         _allMoneyNumber = 0;
         // 1 .加载消费记录(从已经保存的报销单加载消费记录)
         
-        [NetworkEntity postEditReimburseBookOfEditWithApplyId:_reimburseModel.applyId Success:^(id responseObject) {
-            MMLog(@"EditReimburseBook (编辑时基本信息)  =======responseObject=====%@",responseObject);
-            if (responseObject) {
-                NSDictionary *dic = [responseObject objectForKey:@"apply"];
-                NSArray *array = [dic objectForKey:@"details"];
-                for (NSDictionary *dic in array) {
-                    EditMessageModel *model = [EditMessageModel yy_modelWithDictionary:dic];
-                    [_netWorkRecordArray addObject:model];
-                    _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
-                }
-                [_editPurchaseRccordArray removeAllObjects];
-                NSMutableArray *mutarray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
-                
-                for (NSDictionary *dic in mutarray) {
-                    [_editPurchaseRccordArray addObject:dic];
-                    _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
-                    
-                }
-                [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-                [self.tableView reloadData];
-  
-
-            }
-        } failure:^(NSError *failure) {
-            MMLog(@"EditReimburseBook (编辑时基本信息)  =======failure=====%@",failure);
-        }];
+        for (EditMessageModel *model in _netWorkRecordArray) {
+            _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
+        }
+        [_editPurchaseRccordArray removeAllObjects];
+        NSMutableArray *mutarray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
         
-        
+        for (NSDictionary *dic in mutarray) {
+            [_editPurchaseRccordArray addObject:dic];
+            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
+            
+        }
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
 
         
     }else if (_rePurchaseBook == newReimburseBook){
-        //    
+        //  新建消费记录
         [_editPurchaseRccordArray removeAllObjects];
         _allMoneyNumber = 0;
         NSMutableArray *mutarray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
@@ -145,23 +126,23 @@
             
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-        [self.tableView reloadData];
         
 
     }
     
     // 未制单消费数组
-    if (_noBookRecordArray.count) {
-        for (NOBookChooseModel *model in _noBookRecordArray) {
+    NSArray *noBookArray = [[NSUserDefaults standardUserDefaults] objectForKey:kNOBookRecordList];
+    if (noBookArray.count) {
+        for (NOBookChooseModel *model in noBookArray) {
             _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
-        [self.tableView reloadData];
+        
         
     }
+    [self.tableView reloadData];
     
-    
-    }
+}
 
 
 - (void)viewDidLoad {
@@ -174,7 +155,6 @@
     self.editPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
     self.applyManArray = [NSMutableArray array];
-    self.netWorkRecordArray = [NSMutableArray array];
     
     if (_rePurchaseBook == editReimburseBook) {
         // 日期
@@ -542,16 +522,166 @@
     }
     if (indexPath.section == 2) {
         // 编辑网络
+        
+        NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+        bookVC.bookType = PurchaseEdit;
+        EditMessageModel *model = _netWorkRecordArray[indexPath.row];
+        if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+            // 日期类型
+            // 不显示结束日期
+            bookVC.dateType =  1;
+        }else{
+            // 显示结束日期
+            bookVC.dateType =  2;
+            bookVC.endTime = model.spendEnd;
+        }
+        if ([model.cityName isKindOfClass:[NSNull class]] || !model.cityName) {
+            // 城市名称
+            // 不显示x
+            bookVC.needCity = 0;
+        }else{
+            // 显示
+            bookVC.needCity = 1;
+        }
+        
+        // 消费类型
+        bookVC.typePurchaseStr = model.spendType;
+        bookVC.title = model.spendType;
+        bookVC.startTime = model.spendBegin;
+        bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+        bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
+        bookVC.memo = model.detailMemo;
+        bookVC.indexTag = indexPath.row;
+        bookVC.sectionTag = indexPath.section;
+        bookVC.networkArrayEdit = _netWorkRecordArray;
+        bookVC.delegate = self;
+        
+        //    // 测试数组
+        NSMutableArray *array = [NSMutableArray array];
+        //    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
+        //    [array addObject:URL];
+        bookVC.urlArray = array;
+        
+        [self.navigationController pushViewController:bookVC animated:YES];
+        
     }
     if (indexPath.section == 3) {
         // 本地新增
+        NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+        bookVC.bookType = PurchaseEdit;
+        NSDictionary *dic = _editPurchaseRccordArray[indexPath.row];
+        
+        /*
+         
+         NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
+         @"spendBegin":_startTime,
+         @"spendEnd":_endTime,
+         @"billNum":_billNumber,
+         @"picUrl":_picUrl,
+         @"detailMemo":_memo,
+         @"spendCity":_cityName,
+         @"ID":[NSString stringWithFormat:@"%lu",_ID],
+         @"typePurchaseStr":_typePurchaseStr
+         };
+
+         
+         */
+        
+        
+        
+        if ([[dic objectForKey:@"spendEnd"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendEnd"]) {
+            // 日期类型
+            // 不显示结束日期
+            bookVC.dateType =  1;
+        }else{
+            // 显示结束日期
+            bookVC.dateType =  2;
+            bookVC.endTime = [dic objectForKey:@"spendEnd"];
+        }
+        if ([[dic objectForKey:@"spendCity"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendCity"]) {
+            // 城市名称
+            // 不显示x
+            bookVC.needCity = 0;
+        }else{
+            // 显示
+            bookVC.needCity = 1;
+        }
+        
+        // 消费类型
+        bookVC.typePurchaseStr = [dic objectForKey:@"typePurchaseStr"];
+        bookVC.title = [dic objectForKey:@"typePurchaseStr"];
+        bookVC.startTime = [dic objectForKey:@"spendBegin"];
+        bookVC.moneyNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"moneyAmount"]];
+        bookVC.billNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"billNum"]];
+        bookVC.memo = [dic objectForKey:@"detailMemo"];
+        bookVC.indexTag = indexPath.row;
+        bookVC.sectionTag = indexPath.section;
+        bookVC.networkArrayEdit = _editPurchaseRccordArray;
+        bookVC.delegate = self;
+        
+        //    // 测试数组
+        NSMutableArray *array = [NSMutableArray array];
+        //    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
+        //    [array addObject:URL];
+        bookVC.urlArray = array;
+        
+        [self.navigationController pushViewController:bookVC animated:YES];
     }
     if (indexPath.section == 4) {
         // 未制单消费
+        NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
+        bookVC.bookType = PurchaseEdit;
+        NOBookChooseModel *model = _noBookRecordArray[indexPath.row];
+        if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+            // 日期类型
+            // 不显示结束日期
+            bookVC.dateType =  1;
+        }else{
+            // 显示结束日期
+            bookVC.dateType =  2;
+            bookVC.endTime = model.spendEnd;
+        }
+        if ([model.cityName isKindOfClass:[NSNull class]] || !model.cityName) {
+            // 城市名称
+            // 不显示x
+            bookVC.needCity = 0;
+        }else{
+            // 显示
+            bookVC.needCity = 1;
+        }
+        
+        // 消费类型
+        bookVC.typePurchaseStr = model.spendTypeStr;
+        bookVC.title = model.spendTypeStr;
+        bookVC.startTime = model.spendBegin;
+        bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+        bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
+        bookVC.memo = model.detailMemo;
+        bookVC.indexTag = indexPath.row;
+        bookVC.sectionTag = indexPath.section;
+        bookVC.networkArrayEdit = _netWorkRecordArray;
+        bookVC.delegate = self;
+        
+        //    // 测试数组
+        NSMutableArray *array = [NSMutableArray array];
+        //    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
+        //    [array addObject:URL];
+        bookVC.urlArray = array;
+        
+        [self.navigationController pushViewController:bookVC animated:YES];
+
     }
     
 }
-
+- (void)newPurchaseBookControllerDelegateWith:(NSMutableArray *)array sectionTag:(NSInteger)sectionTag{
+    if (sectionTag == 2) {
+        _netWorkRecordArray = array;
+    }
+    if (sectionTag == 4) {
+        _noBookRecordArray = array;
+    }
+    
+}
 #pragma mark --- Action
 - (void)backView{
     MMLog(@"点击了返回");

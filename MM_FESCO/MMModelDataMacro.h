@@ -35,6 +35,8 @@
 #define kSignStatisticDate @"SignStatisticDate"   // 签到统计日期记录
 #define kUsreIcon     @"UsreIcon" // 保存用户头像
 #define kReimburseRecordList  @"ReimburseRecordList"  // 本地保存消费记录
+#define kNetworkRecordList @"NetworkRecordList"       // 网络消费记录
+#define kNOBookRecordList @"NOBookRecordList"         // 未制单消费记录
 
 
 
@@ -64,7 +66,8 @@ typedef NS_ENUM(NSUInteger,RePurchaseBookType){
     newReimburseBook,   // 新建报销单
     editReimburseBook,    // 编辑报销单
     noBookPurchase,         // 未制单消费  在一笔
-    NOBookPurchaseEdit   // 未制单消费  编辑
+    NOBookPurchaseEdit,   // 未制单消费  编辑
+    PurchaseEdit   // 未制单消费  编辑
     
 };
 

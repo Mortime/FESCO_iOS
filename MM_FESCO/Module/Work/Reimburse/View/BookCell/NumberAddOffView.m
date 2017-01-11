@@ -10,14 +10,6 @@
 
 @interface NumberAddOffView ()
 
-@property (nonatomic, strong) UIButton *reduceButton;
-
-
-
-@property (nonatomic, strong) UILabel *unitLabel;
-
-@property (nonatomic, strong) UIButton *addButton;
-
 @end
 
 @implementation NumberAddOffView

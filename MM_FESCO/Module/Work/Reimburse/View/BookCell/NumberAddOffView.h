@@ -18,6 +18,13 @@
 
 @property (nonatomic, strong) UILabel *resultLabel;
 
+@property (nonatomic, strong) UIButton *reduceButton;
+
+@property (nonatomic, strong) UILabel *unitLabel;
+
+@property (nonatomic, strong) UIButton *addButton;
+
+
 @property (nonatomic, weak) id <NumberAddOffViewDelegate> delegate;
 
 @end

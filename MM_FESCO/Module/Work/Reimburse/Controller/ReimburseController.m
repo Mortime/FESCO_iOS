@@ -56,6 +56,8 @@
 
 @property (nonatomic, strong) NSMutableArray *seletButtonArray;
 
+@property (nonatomic, strong) NSMutableArray *netWorkRecordArray;
+
 
 @end
 
@@ -73,6 +75,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.seletButtonArray = [NSMutableArray array];
     self.reimburseArray = [NSMutableArray array];
+    self.netWorkRecordArray = [NSMutableArray array];
     self.title = @"报销";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.dataArray = [NSMutableArray array];
@@ -163,11 +166,28 @@
     ReimburseModel *model = _dataArray[indexPath.row];
     if (model.statusReimburse == 0) {
         // 待提交状态
-        NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
-        newReimburseVC.rePurchaseBook = editReimburseBook;
-        newReimburseVC.reimburseModel = _dataArray[indexPath.row];
-        [self.navigationController pushViewController:newReimburseVC animated:YES];
+        [_netWorkRecordArray removeAllObjects];
+        [NetworkEntity postEditReimburseBookOfEditWithApplyId:model.applyId Success:^(id responseObject) {
+            MMLog(@"EditReimburseBook (编辑时基本信息)  =======responseObject=====%@",responseObject);
+            if (responseObject) {
+                NSDictionary *dic = [responseObject objectForKey:@"apply"];
+                NSArray *array = [dic objectForKey:@"details"];
+                for (NSDictionary *dic in array) {
+                    EditMessageModel *model = [EditMessageModel yy_modelWithDictionary:dic];
+                    [_netWorkRecordArray addObject:model];
+    
+                }
+                
+                NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+                newReimburseVC.rePurchaseBook = editReimburseBook;
+                newReimburseVC.reimburseModel = _dataArray[indexPath.row];
+                newReimburseVC.netWorkRecordArray = _netWorkRecordArray;
+                [self.navigationController pushViewController:newReimburseVC animated:YES];
 
+            }
+        } failure:^(NSError *failure) {
+            MMLog(@"EditReimburseBook (编辑时基本信息)  =======failure=====%@",failure);
+        }];
     }else{
         ProgressReimburseController *progressVC = [[ProgressReimburseController alloc] init];
         progressVC.model = model;

@@ -279,6 +279,8 @@
 		761601D51DFAA7BC006F9B59 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601D01DFAA7BC006F9B59 /* UIImage+FontAwesome.m */; };
 		761A10901E236A040006601A /* SocialSecurityChooseDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */; };
 		761A10931E24D3E00006601A /* ReimburseApprovalRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A10921E24D3E00006601A /* ReimburseApprovalRecordCell.m */; };
+		761A10961E2501D50006601A /* MMDataCodeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A10951E2501D50006601A /* MMDataCodeTool.m */; };
+		761A10991E25EC740006601A /* ReimburseApprovalRecordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761A10981E25EC740006601A /* ReimburseApprovalRecordDetailController.m */; };
 		761C0E921DD16D4500886083 /* NewReimbursePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E911DD16D4500886083 /* NewReimbursePopView.m */; };
 		761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E941DD1751D00886083 /* NewReimbursePopViewCell.m */; };
 		761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C0E971DD1C66500886083 /* NewReimburseConsumePopViewCell.m */; };
@@ -973,6 +975,10 @@
 		761A108F1E236A040006601A /* SocialSecurityChooseDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityChooseDataController.m; sourceTree = "<group>"; };
 		761A10911E24D3E00006601A /* ReimburseApprovalRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalRecordCell.h; sourceTree = "<group>"; };
 		761A10921E24D3E00006601A /* ReimburseApprovalRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalRecordCell.m; sourceTree = "<group>"; };
+		761A10941E2501D50006601A /* MMDataCodeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataCodeTool.h; sourceTree = "<group>"; };
+		761A10951E2501D50006601A /* MMDataCodeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataCodeTool.m; sourceTree = "<group>"; };
+		761A10971E25EC740006601A /* ReimburseApprovalRecordDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalRecordDetailController.h; sourceTree = "<group>"; };
+		761A10981E25EC740006601A /* ReimburseApprovalRecordDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalRecordDetailController.m; sourceTree = "<group>"; };
 		761C0E901DD16D4500886083 /* NewReimbursePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopView.h; sourceTree = "<group>"; };
 		761C0E911DD16D4500886083 /* NewReimbursePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewReimbursePopView.m; sourceTree = "<group>"; };
 		761C0E931DD1751D00886083 /* NewReimbursePopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewReimbursePopViewCell.h; sourceTree = "<group>"; };
@@ -1225,6 +1231,8 @@
 			children = (
 				59474CF41D6D863000DC6E50 /* MMSQManagerTool.h */,
 				59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */,
+				761A10941E2501D50006601A /* MMDataCodeTool.h */,
+				761A10951E2501D50006601A /* MMDataCodeTool.m */,
 			);
 			path = "数据库";
 			sourceTree = "<group>";
@@ -1362,6 +1370,8 @@
 				5972230C1DADE05400D01A7A /* SignUpApprovalDetailController.m */,
 				764223BE1E1DD06B0094DEBB /* ReimburseApprovalDetailController.h */,
 				764223BF1E1DD06B0094DEBB /* ReimburseApprovalDetailController.m */,
+				761A10971E25EC740006601A /* ReimburseApprovalRecordDetailController.h */,
+				761A10981E25EC740006601A /* ReimburseApprovalRecordDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3311,6 +3321,7 @@
 				59EC91D51D98D9AD00E802FA /* EMSDWebImageDecoder.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
+				761A10961E2501D50006601A /* MMDataCodeTool.m in Sources */,
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
 				59EC91601D98CB5900E802FA /* EaseBubbleView+Gif.m in Sources */,
@@ -3320,6 +3331,7 @@
 				59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */,
 				59EC916F1D98CB5900E802FA /* EaseConversationCell.m in Sources */,
 				764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */,
+				761A10991E25EC740006601A /* ReimburseApprovalRecordDetailController.m in Sources */,
 				761C0E951DD1751D00886083 /* NewReimbursePopViewCell.m in Sources */,
 				764223B71E1D3C0F0094DEBB /* ReimburseApprovalView.m in Sources */,
 				59EC91EA1D98D9AD00E802FA /* PSTCollectionViewLayout.m in Sources */,

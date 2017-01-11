@@ -98,7 +98,7 @@
         bookVC.dateType =  2;
         bookVC.endTime = model.spendEnd;
     }
-    if ([model.cityName isKindOfClass:[NSNull class]] || !model.spendEnd) {
+    if ([model.cityName isKindOfClass:[NSNull class]] || !model.cityName) {
         // 城市名称
             // 不显示x
         bookVC.needCity = 0;

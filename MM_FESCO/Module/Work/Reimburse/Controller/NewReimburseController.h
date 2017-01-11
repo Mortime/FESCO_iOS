@@ -15,4 +15,5 @@
 
 @property (nonatomic, strong) ReimburseModel *reimburseModel;
 
+@property (nonatomic,strong) NSMutableArray *netWorkRecordArray; //  用于存放保存之后的消费记录模型
 @end
