@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) UIImageView *flageView;
 
-@property (nonatomic ,strong) UILabel *titleLabel;
-
 @property (nonatomic ,strong) UILabel *detailLabel;
 
 @property (nonatomic ,strong) UILabel *moneyLabel;
@@ -38,8 +36,6 @@
     
     [self addSubview:self.flageView];
     
-    [self addSubview:self.titleLabel];
-    
     [self addSubview:self.detailLabel];
     
     [self addSubview:self.moneyLabel];
@@ -49,24 +45,15 @@
 }
 - (void)layoutSubviews{
     [self.flageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(20);
+        make.centerY.mas_equalTo(self.mas_centerY);
         make.left.mas_equalTo(self.mas_left).offset(10);
-        make.width.mas_equalTo(@20);
-        make.height.mas_equalTo(@20);
-        
-    }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flageView.mas_top);
-        make.left.mas_equalTo(self.flageView.mas_right).offset(10);
-        make.right.mas_equalTo(self.mas_right).offset(-150);
-        make.height.mas_equalTo(@15);
-        
+        make.width.mas_equalTo(@16);
+        make.height.mas_equalTo(@16);
         
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(15);
-        make.left.mas_equalTo(self.titleLabel.mas_left);
-        make.right.mas_equalTo(self.mas_right).offset(-150);
+        make.centerY.mas_equalTo(self.flageView.mas_centerY);
+        make.left.mas_equalTo(self.flageView.mas_right).offset(10);
         make.height.mas_equalTo(@13);
         
     }];
@@ -96,27 +83,15 @@
 - (UIImageView *)flageView{
     if (_flageView == nil) {
         _flageView = [[UIImageView alloc] init];
-        _flageView.backgroundColor = [UIColor cyanColor];
+        _flageView.backgroundColor = [UIColor clearColor];
     }
     return _flageView;
 }
-- (UILabel *)titleLabel{
-    if (_titleLabel == nil) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
-        _titleLabel.text = @"出差";
-        
-    }
-    return _titleLabel;
-}
-
 - (UILabel *)detailLabel{
     if (_detailLabel == nil) {
         _detailLabel = [[UILabel alloc] init];
-        _detailLabel.font = [UIFont systemFontOfSize:12];
+        _detailLabel.font = [UIFont systemFontOfSize:14];
         _detailLabel.textColor = [UIColor grayColor];
-        _detailLabel.text = @"待提交 | 日常报销单";
         
     }
     return _detailLabel;
@@ -127,19 +102,22 @@
         _moneyLabel = [[UILabel alloc] init];
         _moneyLabel.font = [UIFont systemFontOfSize:14];
         _moneyLabel.textColor = [UIColor grayColor];
-        _moneyLabel.text = @"¥ 8894";
 
     }
     return _moneyLabel;
 }
 - (void)setModel:(ReimburseModel *)model{
-    if (![model.title isEqual:[NSNull null]]) {
-        _titleLabel.text = model.title;
-    }else{
-        _titleLabel.text = @"暂无";
-    }
-    
     //报销单状态  // 0待提交，1待审批，2待支付，3未通过，4已支付
+    _moneyLabel.textColor  = [UIColor grayColor];
+    // 总金额
+    NSArray *array = model.details;
+    NSInteger number = 0;
+    for (NSDictionary *dic in array) {
+        number = number + [[dic objectForKey:@"money_Amount"] integerValue];
+    }
+
+    
+
     NSString *status = @"";
     if (model.statusReimburse == 0) {
         status = @"待提交";
@@ -147,6 +125,7 @@
     }
     if (model.statusReimburse == 1) {
         status = @"待审批";
+        _moneyLabel.textColor  = MM_MAIN_FONTCOLOR_BLUE;
     }
     if (model.statusReimburse == 2) {
         status = @"待支付";
@@ -157,38 +136,10 @@
     if (model.statusReimburse == 4) {
         status = @"已支付";
     }
-    if (model.statusReimburse == 0) {
-        _flageView.image = [UIImage imageNamed:@"NewReimburseController_Commit"];
-    }else{
-        _flageView.image = [UIImage imageNamed:@"NewReimburseController_Apply"];
-    }
-    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",status,model.typeStr];
-    NSArray *array = model.details;
+        _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
+    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %lu",number]];
+    _moneyLabel.text = status;
     
-    // 总金额
-    NSInteger number = 0;
-    for (NSDictionary *dic in array) {
-        number = number + [[dic objectForKey:@"money_Amount"] integerValue];
-    }
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",number];
-    
-    
-//    if (model.details) {
-//        NSArray *detailArray = model.details;
-//        NSDictionary *dic = detailArray[0];
-//        NSArray *array  = [dic objectForKey:@"pics"];
-//        if (array.count) {
-//            
-//            NSDictionary *dic = array[0];
-//            NSString *picUrl = [dic objectForKey:@"pic_Url"];
-//            if (![picUrl isKindOfClass:[NSNull class]]) {
-//                MMLog(@"picUrl = %@",picUrl);
-//                 [_flageView  sd_setImageWithURL:[NSURL URLWithString:picUrl]];
-//            }
-//           
-//        }
-//        
-//    }
     
 }
 @end

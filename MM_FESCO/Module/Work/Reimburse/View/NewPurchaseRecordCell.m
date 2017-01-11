@@ -201,13 +201,6 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"moneyAmount"]integerValue]];
 
     
-    
-    
-    
-    
-    
-    
-    
 }
 - (void)setChooseModel:(NOBookChooseModel *)chooseModel{
     if (chooseModel.spendTypeStr) {
