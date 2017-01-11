@@ -131,9 +131,8 @@
     }
     
     // 未制单消费数组
-    NSArray *noBookArray = [[NSUserDefaults standardUserDefaults] objectForKey:kNOBookRecordList];
-    if (noBookArray.count) {
-        for (NOBookChooseModel *model in noBookArray) {
+    if (_noBookRecordArray.count) {
+        for (NOBookChooseModel *model in _noBookRecordArray) {
             _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];

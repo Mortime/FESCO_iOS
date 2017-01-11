@@ -114,6 +114,7 @@
     bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
     bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
     bookVC.memo = model.detailMemo;
+    bookVC.ID = model.spendType;
     
 //    // 测试数组
     NSMutableArray *array = [NSMutableArray array];
