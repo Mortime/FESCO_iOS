@@ -49,6 +49,10 @@
 
 @property (nonatomic, strong) NSArray *resultArray;
 
+
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *manID;
+
 @end
 
 @implementation ReimburseApprovalDetailController
@@ -121,7 +125,7 @@
                     if ([dic objectForKey:@"approval_Time"] == nil || [[dic objectForKey:@"approval_Time"] isKindOfClass:[NSNull class]]) {
                         lastDate = @"暂无";
                     }else{
-                        lastDate = [NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]];
+                        lastDate = [NSString stringWithFormat:@"%@ 于 %@",[dic objectForKey:@"approval_Man_Str"],[NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]]];
                     }
                    
                     [_bottomDataArray addObject:lastDate];
@@ -373,6 +377,8 @@
 
 #pragma mark ---- 底部按钮点击回调
 - (void)didClick:(NSInteger)sender{
+    _type = @"";
+    
 
     NSInteger tagFlag = 0;
     
@@ -401,33 +407,101 @@
     }
     
     // 审批人
-    NSString *applyPeople = @"";
+    _manID = @"";
     if (_applyPeopel) {
         for (NSDictionary *dic in _resultArray) {
             if ([[dic objectForKey:@"emp_Name"] isEqualToString:_applyPeopel]) {
-                applyPeople = [dic objectForKey:@"emp_Id"];
+                _manID = [dic objectForKey:@"emp_Id"];
             }
         }
     }
-
     
-    [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag memo:applyIdea nextApprovalMan:applyPeople Success:^(id responseObject) {
-        MMLog(@"CommitReimburseApproval ========= responseObject ============%@",responseObject);
-        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+    // 选择了审批人
+    if (_applyPeopel && ![_applyPeopel isEqualToString:@" "] && ![_applyPeopel isEqualToString:@""] ) {
+        
+        if (sender == 10010) {
+            // 同意
+            tagFlag =  2;
+            msgSuccess = @"审批成功";
+            msgError = @"审批失败";
             
-            [self showTotasViewWithMes:msgSuccess];
-            [self.navigationController popViewControllerAnimated:YES];
             
-        }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
+            [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag memo:applyIdea nextApprovalMan:_manID type:_type Success:^(id responseObject) {
+                MMLog(@"CommitReimburseApproval ========= responseObject ============%@",responseObject);
+                if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+                    
+                    [self showTotasViewWithMes:msgSuccess];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
+                    
+                    [self showTotasViewWithMes:msgError];
+                }
+                
+            } failure:^(NSError *failure) {
+                MMLog(@"CommitReimburseApproval ========= responseObject ============%@",failure);
+                [self showTotasViewWithMes:@"网络错误"];
+            }];
+
             
-            [self showTotasViewWithMes:msgError];
         }
+    }else{
+        // 没有选择审批人
+        [NetworkEntity postCommitReimburseApprovalBeforeSuccess:^(id responseObject) {
+            
+            MMLog(@"CommitReimburseApprovalBefore ========= responseObject ============%@",responseObject);
+            
+            /*
+             
+             checkMan =     {
+             "cust_Id" = 29;
+             id = 22;
+             title = "\U7b2c\U4e09\U65b9";
+             type = 2;
+             "type_Id" = 61;
+             "type_Name" = "\U62a5\U9500\U5ba1\U5355";
+             };
+             errcode = 0;
+             message = success;
+             */
+            
+            if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                // 请求成功
+                NSDictionary *dic = [responseObject objectForKey:@"checkMan"];
+                if ([dic allKeys].count) {
+                    
+                    _manID =  [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type_Id"] integerValue]];
+                    _type = [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type"] integerValue]];
+                }
+                
+                [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag memo:applyIdea nextApprovalMan:_manID type:_type Success:^(id responseObject) {
+                    MMLog(@"CommitReimburseApproval ========= responseObject ============%@",responseObject);
+                    if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+                        
+                        [self showTotasViewWithMes:msgSuccess];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    }else if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]){
+                        
+                        [self showTotasViewWithMes:msgError];
+                    }
+                    
+                } failure:^(NSError *failure) {
+                    MMLog(@"CommitReimburseApproval ========= responseObject ============%@",failure);
+                    [self showTotasViewWithMes:@"网络错误"];
+                }];
 
-    } failure:^(NSError *failure) {
-        MMLog(@"CommitReimburseApproval ========= responseObject ============%@",failure);
-        [self showTotasViewWithMes:@"网络错误"];
-    }];
+
+            }
+            
+        } failure:^(NSError *failure) {
+            
+            MMLog(@"CommitReimburseApprovalBefore ========= responseObject ============%@",failure);
+        }];
+
+    }
     
+
     
 }
 

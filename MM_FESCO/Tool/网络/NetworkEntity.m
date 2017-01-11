@@ -1728,13 +1728,14 @@
 
 }
 // 提交审批
-+ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man type:(NSString *)type Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"result":[NSString stringWithFormat:@"%lu",restult],
                           @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
                           @"memo":memo,
                           @"next_Approval_Man":next_Approval_Man,
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"type":type,
                           @"methodname":@"expense/saveExpenseExamResult.json"
                           };
     
@@ -1745,6 +1746,33 @@
     NSLog(@"%@%@",jsonParam,sign);
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/saveExpenseExamResult.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
++ (void)postCommitReimburseApprovalBeforeSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"methodname":@"expense/getLastCheckMan.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/getLastCheckMan.json"];
     
     NSDictionary *param = @{@"jsonParam":jsonParam,
                             

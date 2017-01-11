@@ -641,7 +641,17 @@
  
  */
 
-+ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postCommitReimburseApprovalWithApplyId:(NSInteger )applyId result:(NSInteger )restult memo:(NSString *)memo nextApprovalMan:(NSString *)next_Approval_Man type:(NSString *)type Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/**
+ *  提交报销审批前
+ 
+ *  @param  result, apply_Id  result：0=未通过，1=通过
+ 
+ */
+
++ (void)postCommitReimburseApprovalBeforeSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 
 /**
  *  民族,国籍信息获取
