@@ -38,6 +38,10 @@
 #define kNetworkRecordList @"NetworkRecordList"       // 网络消费记录
 #define kNOBookRecordList @"NOBookRecordList"         // 未制单消费记录
 
+#define kGroupName @"GroupName"     // 本地保存组名
+
+#define kGroupID @"GroupID"     // 本地保存组名
+
 
 
 typedef NS_ENUM(NSUInteger,RecodeType){

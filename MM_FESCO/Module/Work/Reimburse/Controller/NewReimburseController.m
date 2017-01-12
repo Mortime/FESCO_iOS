@@ -155,6 +155,28 @@
     self.groupArray = [NSMutableArray array];
     self.applyManArray = [NSMutableArray array];
     
+    
+    if (_rePurchaseBook == newReimburseBook) {
+        // 获得系统时间
+        NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *currDate = [dateFormatter stringFromDate:[NSDate date]];
+        _dateStr = currDate;
+        
+        NSString *groupsStr = [[NSUserDefaults standardUserDefaults] objectForKey:kGroupName];
+        if (groupsStr) {
+            _groupStr = groupsStr;
+        }
+        
+        NSString *strID = [[NSUserDefaults standardUserDefaults] objectForKey:kGroupID];
+        if (strID) {
+            _groupID = [strID integerValue];
+        }
+        
+
+    }
+    
+    
     if (_rePurchaseBook == editReimburseBook) {
         // 日期
         NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
@@ -457,6 +479,10 @@
             if (indexPath.row == 1) {
                 cell.isShowDataPickView = YES;
                 cell.isExist = YES;
+                if (_rePurchaseBook == newReimburseBook) {
+                    cell.detailStr  = _dateStr;
+                }
+                
             }
             // 报销部门
             if (indexPath.row == 2) {
@@ -464,6 +490,9 @@
                 cell.isShowPickView = YES;
                 cell.isExist = YES;
                 cell.isGroup = YES;
+                if (_rePurchaseBook == newReimburseBook) {
+                    cell.detailStr  = _groupStr;
+                }
                 
             }
 
@@ -1019,6 +1048,14 @@
             if ([model.groupName isEqualToString:textField.text]) {
                 _groupID = model.ID;
                 _groupStr = textField.text;
+                
+                NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+                [def setObject:[NSString stringWithFormat:@"%lu",_groupID] forKey:kGroupID];
+                [def setObject:_groupStr forKey:kGroupName];
+                
+                
+                
+                
             }
         }
         [_textTitleArray replaceObjectAtIndex:3 withObject:textField.text];
