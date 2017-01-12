@@ -17,32 +17,8 @@
  "apply_Id" = 33;
  "approval_Man" = "<null>";
  "cust_Id" = 29;
- details =             (
- {
- "apply_Id" = 33;
- "bill_Num" = 1;
- "detail_Id" = "<null>";
- "detail_Memo" = ceshi;
- "emp_Id" = "<null>";
- "expense_Date" = "<null>";
- icon = "<null>";
- "money_Amount" = 400;
- "pic_Ids" = "<null>";
- pics =                     (
- );
- "spend_Begin" = 1479657600000;
- "spend_Begin_Str" = "<null>";
- "spend_City" = "\U5b89\U9633";
- "spend_End" = 1479744000000;
- "spend_End_Str" = "<null>";
- "spend_Type" = 17;
- "spend_Type_Str" = "\U957f\U9014-\U7070\U673a";
- trId = "<null>";
- }
- );
+ details =      
  "edit_Time" = 1479967835000;
- 
- 
  "emp_Id" = 163;
  "emp_Name" = "<null>";
  "exam_End_Is" = 0;
@@ -83,6 +59,8 @@
 @property (nonatomic, strong) NSString *memo;
 
 @property (nonatomic, assign) NSInteger groupId; // 报销部门id
+
+@property (nonatomic, assign) NSInteger moneySum; // 金钱总金额
 
 
 

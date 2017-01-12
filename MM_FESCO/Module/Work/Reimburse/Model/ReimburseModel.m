@@ -74,7 +74,8 @@
               @"applyId":@"apply_Id",
               @"accountName":@"account_Name",
               @"accountId":@"account_Id",
-              @"groupId":@"group_Id"
+              @"groupId":@"group_Id",
+              @"moneySum":@"money_Sum"
               
               };
 }

@@ -50,7 +50,7 @@
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
 
-//    _curUploadImageHelper.imagesArray = self.urlArray;
+    _curUploadImageHelper.imagesArray = self.urlArray;
     _billNumber = @"1";
 
     [self.view addSubview:self.tableView];
@@ -200,7 +200,7 @@
         cell.accessoryType    = UITableViewCellAccessoryNone;
         
         if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
-            self.curUploadImageHelper.selectedAssetURLs = self.urlArray;
+//            self.curUploadImageHelper.selectedAssetURLs = self.urlArray;
         }
         
         cell.curUploadImageHelper=self.curUploadImageHelper;
@@ -344,9 +344,9 @@
         [selectedAssetURLs addObject:obj];
     }];
     if (_bookType == editReimburseBook || _bookType == PurchaseEdit) {
-        [selectedAssetURLs addObjectsFromArray:_urlArray];
+//        [selectedAssetURLs addObjectsFromArray:_urlArray];
     }
-    _urlArray = selectedAssetURLs;
+//    _urlArray = selectedAssetURLs;
     MMLog(@"selectedAssetURLs = %@",selectedAssetURLs);
     MPWeakSelf(self)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

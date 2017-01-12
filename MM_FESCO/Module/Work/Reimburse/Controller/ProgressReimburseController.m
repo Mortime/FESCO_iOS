@@ -10,7 +10,7 @@
 #import "ProgressStatusCell.h"
 #import "ProgressMessageCell.h"
 #import "ProgressPuschaseCell.h"
-#import "NewPurchaseRecordModel.h"
+#import "ProgressReimburseModel.h"
 
 @interface ProgressReimburseController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -36,15 +36,31 @@
     
 }
 - (void)initData{
+    
     self.messageTitleArray = @[@"报销日期",@"收款账号"];
-    NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_model.applyDate];
-    NSString *bankNumber = [NSString stringWithFormat:@"%lu",_model.accountId];
-    self.messageContentArray = @[time,bankNumber];
-    for (NSDictionary *dic in _model.details) {
-        NewPurchaseRecordModel *model = [NewPurchaseRecordModel yy_modelWithDictionary:dic];
-        [_reimburselistArray addObject:model];
+    [NetworkEntity postReimburseApprovalInfoWithApplyId:_model.applyId Success:^(id responseObject) {
+        
+        MMLog(@"ReimburseApprovalInfo  =======responseObject=====%@",responseObject);
+        
+        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
+            NSDictionary *dic = [responseObject objectForKey:@"apply"];
+            
+            NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"apply_Date"]];
+            NSString *bankNumber = [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"account_Id"] integerValue]];
+            self.messageContentArray = @[time,bankNumber];
+            NSArray *array = [dic objectForKey:@"details"];
+            for (NSDictionary *dic in array) {
+                ProgressReimburseModel *model = [ProgressReimburseModel yy_modelWithDictionary:dic];
+                [_reimburselistArray addObject:model];
+            }
+            [self.tableView reloadData];
+        }
+
+    } failure:^(NSError *failure) {
+        MMLog(@"ReimburseApprovalInfo  =======failure=====%@",failure);
+    }];
+    
     }
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
        return 30;
 }
@@ -104,7 +120,7 @@
     }else if (section == 1){
         return 2;
     }else{
-        return _model.details.count;
+        return _reimburselistArray.count;
     }
        }
 
@@ -150,7 +166,7 @@
         if (!cell) {
             cell = [[ProgressPuschaseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        cell.model = _reimburselistArray[indexPath.row];
+        cell.progressModel = _reimburselistArray[indexPath.row];
         return cell;
     }
 

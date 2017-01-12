@@ -109,13 +109,6 @@
 - (void)setModel:(ReimburseModel *)model{
     //报销单状态  // 0待提交，1待审批，2待支付，3未通过，4已支付
     _moneyLabel.textColor  = [UIColor grayColor];
-    // 总金额
-    NSArray *array = model.details;
-    NSInteger number = 0;
-    for (NSDictionary *dic in array) {
-        number = number + [[dic objectForKey:@"money_Amount"] integerValue];
-    }
-
     
 
     NSString *status = @"";
@@ -131,13 +124,13 @@
         status = @"待支付";
     }
     if (model.statusReimburse == 3) {
-        status = @"待通过";
+        status = @"未通过";
     }
     if (model.statusReimburse == 4) {
         status = @"已支付";
     }
-        _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
-    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %lu",number]];
+    _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
+    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %lu",model.moneySum]];
     _moneyLabel.text = status;
     
     

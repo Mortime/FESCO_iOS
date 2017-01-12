@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "NewPurchaseRecordModel.h"
+#import "ProgressReimburseModel.h"
 
 @interface ProgressPuschaseCell : UITableViewCell
 
 @property (nonatomic, strong) NewPurchaseRecordModel *model;
 
 @property (nonatomic, strong) NSDictionary *dic;
+
+@property (nonatomic, strong) ProgressReimburseModel *progressModel;
+
 @end

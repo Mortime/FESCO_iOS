@@ -11,7 +11,7 @@
 #import "NOBookPurchaseModel.h"
 #import "NewPurchaseRecordController.h"
 #import "NewPurchaseBookController.h"
-
+#import "MPImageItemModel.h"
 @interface NOBookPurchaseController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -116,11 +116,18 @@
     bookVC.memo = model.detailMemo;
     bookVC.ID = model.spendType;
     
-//    // 测试数组
-    NSMutableArray *array = [NSMutableArray array];
-//    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
-//    [array addObject:URL];
-    bookVC.urlArray = array;
+////    // 测试数组
+//    NSMutableArray *array = [NSMutableArray array];
+//    NSURL *URL = [NSURL URLWithString:@"https://ooo.0o0.ooo/2016/06/06/57552f5b4dcec.gif"];
+//    NSData *data = [NSData dataWithContentsOfURL:URL];
+//    
+//    UIImage *img = [UIImage imageWithData:data];
+//    MPImageItemModel *modelItem = [[MPImageItemModel alloc] init];
+//    modelItem.thumbnailImage = img;
+////    modelItem.assetURL = URL;
+//    modelItem.isUpload = NO;
+//    [array addObject:modelItem];
+//    bookVC.urlArray = array;
     
     
     [self.navigationController pushViewController:bookVC animated:YES];

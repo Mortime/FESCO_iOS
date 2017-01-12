@@ -186,4 +186,19 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"money_Amount"] integerValue]];
 
 }
+- (void)setProgressModel:(ProgressReimburseModel *)progressModel{
+    _titleLabel.text = progressModel.spendType;
+    
+    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[progressModel.spendType substringToIndex:2]]];
+    
+    
+    NSString *timeStr = @"";
+    timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: progressModel.spendBegin];
+    if (progressModel.spendEnd) {
+        NSString *end = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:progressModel.spendEnd];
+        timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
+    }
+    _timeLabel.text = timeStr;
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",progressModel.moneyAmount];
+}
 @end
