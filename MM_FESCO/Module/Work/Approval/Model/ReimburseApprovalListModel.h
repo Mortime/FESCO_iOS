@@ -11,60 +11,28 @@
  {
  "account_Id" = 1401;
  "account_Name" = "<null>";
- "apply_Date" = 1483459200000;
+ "apply_Date" = 1483718400000;
  "apply_Date_Str" = "<null>";
- "apply_Id" = 164;
+ "apply_Id" = 190;
  "approval_Man" = "<null>";
  "cust_Id" = 29;
- details =             (
- {
- "apply_Id" = 164;
- "bill_Num" = 1;
- "cust_Id" = "<null>";
- "detail_Id" = 238;
- "detail_Id_Before_Imported" = "<null>";
- "detail_Memo" = Ceshi;
- "emp_Id" = "<null>";
- "expense_Date" = "<null>";
- icon = "<null>";
- "money_Amount" = 100;
- "pic_Ids" = "<null>";
- pics =                     (
- {
- "detail_Id" = 238;
- id = "<null>";
- "pic_Desc" = "<null>";
- "pic_Url" = "<null>";
- }
- );
- "spend_Begin" = 1483459200000;
- "spend_Begin_Str" = "<null>";
- "spend_City" = "<null>";
- "spend_End" = "<null>";
- "spend_End_Str" = "<null>";
- "spend_Type" = 19;
- "spend_Type_Str" = "\U4ea4\U901a-\U5730\U94c1";
- trId = "<null>";
- }
- );
- "edit_Time" = 1483499867000;
+ details = "<null>";
+ "edit_Time" = 1484189829000;
  "emp_Id" = 163;
  "emp_Name" = "<null>";
  "exam_End_Is" = 1;
  "exam_End_Is_Str" = "<null>";
  "exam_Step_Is_Over" = 0;
  "exam_Step_Is_Over_Str" = "<null>";
- "group_Id" = 4;
+ "group_Id" = 10;
  "group_Name" = "<null>";
- memo = Ceshi;
- "money_Sum" = "<null>";
+ memo = "<null>";
+ "money_Sum" = 11;
  "search_Begin" = "<null>";
  "search_End" = "<null>";
- title = OO;
- type = 2;
- "type_Str" = "\U5dee\U65c5\U62a5\U9500\U5355";
- },
-
+ title = Cass;
+ type = 1;
+ "type_Str" = "\U65e5\U5e38\U62a5\U9500\U5355";
  
  */
 
@@ -88,5 +56,8 @@
 @property (nonatomic, strong) NSString *typeStr;
 
 @property (nonatomic, strong) NSString *empName;
+
+@property (nonatomic, assign) NSInteger moneySum;
+
 
 @end

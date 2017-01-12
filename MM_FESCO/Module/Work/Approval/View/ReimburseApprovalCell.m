@@ -241,12 +241,8 @@
     if (model.memo != nil) {
         _memoLabel.text = [NSString stringWithFormat:@"描述: %@",model.memo];
     }
-    
-    NSInteger money = 0;
-    for (NSDictionary *dic in model.details) {
-        money = money + [[dic objectForKey:@"money_Amount"] integerValue];
-    }
-    _moneyLabel.text = [NSString stringWithFormat:@"￥ %lu",money];
+
+    _moneyLabel.text = [NSString stringWithFormat:@"￥ %lu",model.moneySum];
     
     _name.text = @"暂无";
     if (model.empName != nil) {

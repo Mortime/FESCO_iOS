@@ -16,7 +16,8 @@
               @"applyDate":@"apply_Date",
               @"typeStr":@"type_Str",
               @"applyId":@"apply_Id",
-              @"empName":@"emp_Name"
+              @"empName":@"emp_Name",
+              @"moneySum":@"money_Sum"
               };
 }
 @end
