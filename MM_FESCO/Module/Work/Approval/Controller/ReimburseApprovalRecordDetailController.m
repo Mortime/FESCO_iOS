@@ -121,7 +121,7 @@
             cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         cell.textFiled.leftTitle = @"金额";
-        cell.textFiled.textFileStr = [NSString stringWithFormat:@"%lu",[[_dic objectForKey:@"money_Amount"] integerValue]];
+        cell.textFiled.textFileStr = [NSString stringWithFormat:@"%.2f",[[_dic objectForKey:@"money_Amount"] floatValue]];
         cell.textFiled.rightTextFiled.userInteractionEnabled = NO;
         
         return cell;

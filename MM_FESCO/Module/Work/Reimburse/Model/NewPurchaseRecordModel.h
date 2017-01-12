@@ -34,7 +34,7 @@
 
 @property (nonatomic, assign) NSInteger billNum;  // 发票数 /
 
-@property (nonatomic, assign) NSInteger moneyAmount;   // 金额  /
+@property (nonatomic, assign) CGFloat moneyAmount;   // 金额  /
 
 @property (nonatomic, strong) NSString *picUrl;  // 图片Url
 

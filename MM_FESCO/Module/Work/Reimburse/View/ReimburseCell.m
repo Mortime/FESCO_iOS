@@ -35,6 +35,7 @@
 - (void)initUI{
     
     [self addSubview:self.flageView];
+
     
     [self addSubview:self.detailLabel];
     
@@ -96,7 +97,6 @@
     }
     return _detailLabel;
 }
-
 - (UILabel *)moneyLabel{
     if (_moneyLabel == nil) {
         _moneyLabel = [[UILabel alloc] init];
@@ -130,7 +130,7 @@
         status = @"已支付";
     }
     _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
-    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %lu",model.moneySum]];
+    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %.2f",model.moneySum]];
     _moneyLabel.text = status;
     
     

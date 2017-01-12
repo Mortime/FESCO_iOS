@@ -111,7 +111,7 @@
     bookVC.typePurchaseStr = model.spendTypeStr;
     bookVC.title = model.spendTypeStr;
     bookVC.startTime = model.spendBegin;
-    bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+    bookVC.moneyNumber = [NSString stringWithFormat:@"%.2f",model.moneyAmount];
     bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
     bookVC.memo = model.detailMemo;
     bookVC.ID = model.spendType;

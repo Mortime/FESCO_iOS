@@ -58,7 +58,7 @@
             }
             
             NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendType],
-                                        @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
+                                        @"money_Amount":[NSString stringWithFormat:@"%.2f",model.moneyAmount],
                                         @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
                                         @"pic_Ids":resultPicId,
                                         @"detail_Memo":spendMemo,
@@ -133,7 +133,7 @@
         MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
         
         NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
-                                    @"money_Amount":[NSString stringWithFormat:@"%lu",model.moneyAmount],
+                                    @"money_Amount":[NSString stringWithFormat:@"%.2f",model.moneyAmount],
                                     @"bill_Num":[NSString stringWithFormat:@"%lu",model.billNum],
                                     @"pic_Ids":resultPicId,
                                     @"detail_Memo":spendMemo,

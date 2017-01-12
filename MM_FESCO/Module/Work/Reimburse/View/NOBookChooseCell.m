@@ -178,7 +178,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
     
     if (model.isChoose) {
         _leftimagView.image = [UIImage imageNamed:@"NewReimbursePopView_Select"];

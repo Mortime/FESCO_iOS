@@ -155,7 +155,7 @@
             timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
         }
         _timeLabel.text = timeStr;
-        _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
+        _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
 }
 
 @end

@@ -456,7 +456,7 @@
         }else if (sender.tag == 701 && _sectionTag == 2){
             
             EditMessageModel *model = _networkArrayEdit[_indexTag];
-            model.moneyAmount = [_moneyNumber integerValue];
+            model.moneyAmount = [_moneyNumber floatValue];
             model.spendBegin = _startTime;
             model.spendEnd = _endTime;
             model.billNum = [_billNumber integerValue];
@@ -529,7 +529,7 @@
         }else if (sender.tag == 701 && _sectionTag == 4){
             
             NOBookChooseModel *model = _networkArrayEdit[_indexTag];
-            model.moneyAmount = [_moneyNumber integerValue];
+            model.moneyAmount = [_moneyNumber floatValue];
             model.spendBegin = _startTime;
             model.spendEnd = _endTime;
             model.billNum = [_billNumber integerValue];

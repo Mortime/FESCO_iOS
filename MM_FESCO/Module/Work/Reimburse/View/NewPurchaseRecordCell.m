@@ -186,7 +186,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
 }
 - (void)setDic:(NSDictionary *)dic{
     _titleLabel.text = [dic objectForKey:@"typePurchaseStr"];
@@ -198,7 +198,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"moneyAmount"]integerValue]];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",[[dic objectForKey:@"moneyAmount"] floatValue]];
 
     
 }
@@ -219,6 +219,6 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",chooseModel.moneyAmount];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",chooseModel.moneyAmount];
 }
 @end

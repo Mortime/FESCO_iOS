@@ -60,7 +60,7 @@
 
 @property (nonatomic, assign) NSInteger groupId; // 报销部门id
 
-@property (nonatomic, assign) NSInteger moneySum; // 金钱总金额
+@property (nonatomic, assign) CGFloat moneySum; // 金钱总金额
 
 
 

@@ -57,7 +57,7 @@
 
 @property (nonatomic, strong) NSString *empName;
 
-@property (nonatomic, assign) NSInteger moneySum;
+@property (nonatomic, assign) CGFloat moneySum;
 
 
 @end

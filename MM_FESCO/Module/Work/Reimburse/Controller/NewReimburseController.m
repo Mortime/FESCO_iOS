@@ -59,7 +59,7 @@
 
 @property (nonatomic, strong) NSMutableArray *editPurchaseRccordArray;   // 消费记录数组  这个消费记录数组 为编辑时数组
 
-@property (nonatomic, assign) NSInteger allMoneyNumber;  // 消费总金额
+@property (nonatomic, assign) CGFloat allMoneyNumber;  // 消费总金额
 
 @property (nonatomic, strong) NSString *oneStr;  // 模板类型
 @property (nonatomic, assign) NSInteger typeCode; // 模板类型id
@@ -111,7 +111,7 @@
             _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
             
         }
-        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber] forState:UIControlStateNormal];
 
         
     }else if (_rePurchaseBook == newReimburseBook){
@@ -125,7 +125,7 @@
             _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
             
         }
-        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber] forState:UIControlStateNormal];
         
 
     }
@@ -135,7 +135,7 @@
         for (NOBookChooseModel *model in _noBookRecordArray) {
             _allMoneyNumber = _allMoneyNumber + model.moneyAmount;
         }
-        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %lu",_allMoneyNumber] forState:UIControlStateNormal];
+        [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber] forState:UIControlStateNormal];
         
         
     }
@@ -576,7 +576,7 @@
         bookVC.typePurchaseStr = model.spendType;
         bookVC.title = model.spendType;
         bookVC.startTime = model.spendBegin;
-        bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+        bookVC.moneyNumber = [NSString stringWithFormat:@"%.2f",model.moneyAmount];
         bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
         bookVC.memo = model.detailMemo;
         bookVC.indexTag = indexPath.row;
@@ -682,7 +682,7 @@
         bookVC.typePurchaseStr = model.spendTypeStr;
         bookVC.title = model.spendTypeStr;
         bookVC.startTime = model.spendBegin;
-        bookVC.moneyNumber = [NSString stringWithFormat:@"%lu",model.moneyAmount];
+        bookVC.moneyNumber = [NSString stringWithFormat:@"%.2f",model.moneyAmount];
         bookVC.billNumber = [NSString stringWithFormat:@"%lu",model.billNum];
         bookVC.memo = model.detailMemo;
         bookVC.indexTag = indexPath.row;
@@ -965,8 +965,8 @@
         [_netWorkRecordArray removeObjectAtIndex:tag];
         // 金额减少
         _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
-        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSLog(@"_allMoneyNumber = %.2f",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber];
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
         [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
     }
@@ -977,8 +977,8 @@
         [_editPurchaseRccordArray removeObjectAtIndex:tag];
         // 金额减少
         _allMoneyNumber = _allMoneyNumber - [[dic objectForKey:@"moneyAmount"] integerValue];
-        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSLog(@"_allMoneyNumber = %.2f",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber];
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
         [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
     }
@@ -989,8 +989,8 @@
         [_noBookRecordArray removeObjectAtIndex:tag];
         // 金额减少
         _allMoneyNumber = _allMoneyNumber - model.moneyAmount;
-        NSLog(@"_allMoneyNumber = %lu",_allMoneyNumber);
-        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %lu",_allMoneyNumber];
+        NSLog(@"_allMoneyNumber = %.2f",_allMoneyNumber);
+        _leftButton.titleLabel.text = [NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber];
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:4];
         [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
     }

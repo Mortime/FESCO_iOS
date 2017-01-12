@@ -242,7 +242,7 @@
         _memoLabel.text = [NSString stringWithFormat:@"描述: %@",model.memo];
     }
 
-    _moneyLabel.text = [NSString stringWithFormat:@"￥ %lu",model.moneySum];
+    _moneyLabel.text = [NSString stringWithFormat:@"￥ %.2f",model.moneySum];
     
     _name.text = @"暂无";
     if (model.empName != nil) {

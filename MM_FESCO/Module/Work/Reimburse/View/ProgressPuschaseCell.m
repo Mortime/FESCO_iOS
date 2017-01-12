@@ -167,7 +167,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[dataArray[0] integerValue]];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",[dataArray[0] floatValue]];
     
 }
 - (void)setDic:(NSDictionary *)dic{
@@ -183,7 +183,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",[[dic objectForKey:@"money_Amount"] integerValue]];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",[[dic objectForKey:@"money_Amount"] floatValue]];
 
 }
 - (void)setProgressModel:(ProgressReimburseModel *)progressModel{
@@ -199,6 +199,6 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",progressModel.moneyAmount];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",progressModel.moneyAmount];
 }
 @end
