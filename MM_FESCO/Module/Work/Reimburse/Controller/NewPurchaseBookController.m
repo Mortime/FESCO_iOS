@@ -665,10 +665,11 @@
                                   @"ID":[NSString stringWithFormat:@"%lu",_ID],
                                   @"typePurchaseStr":_typePurchaseStr
                                   };
-            NSMutableArray *mutArray = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
-            if (mutArray.count == 0) {
-                mutArray = [NSMutableArray array];
+            NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
+            if (array.count == 0) {
+                array = [NSArray array];
             }
+            NSMutableArray *mutArray = array.mutableCopy;
             [mutArray addObject:dic];
             [[NSUserDefaults standardUserDefaults] setObject:mutArray forKey:kReimburseRecordList];
             
