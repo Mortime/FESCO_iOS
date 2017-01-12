@@ -28,13 +28,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MM_FESCO/Module/Work/Reimburse/View/ProgressPuschaseCell.m"
-            timestampString = "505289283.031608"
+            filePath = "MM_FESCO/Module/Work/Reimburse/Controller/NewReimburseController.m"
+            timestampString = "505892701.159678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-setDic:"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -44,13 +44,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MM_FESCO/Module/Work/Reimburse/View/ProgressPuschaseCell.m"
-            timestampString = "505289294.359625"
+            filePath = "MM_FESCO/Module/Work/Reimburse/Controller/NewReimburseController.m"
+            timestampString = "505892751.763907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-setDic:"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM_FESCO/Module/Work/Reimburse/Controller/NewReimburseController.m"
+            timestampString = "505892753.365766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

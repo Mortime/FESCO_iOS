@@ -80,7 +80,7 @@
     }];
     
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(10);
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(5);
         make.left.mas_equalTo(self.titleLabel.mas_left);
         make.height.mas_equalTo(@14);
         

@@ -167,7 +167,7 @@
     if (_applyTime == nil) {
         _applyTime = [[UILabel alloc] init];
         _applyTime.font = [UIFont systemFontOfSize:12];
-        _applyTime.textColor = [UIColor grayColor];
+        _applyTime.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _applyTime.text = @"申请时间: 2016-8-30 20:34";
         
     }

@@ -46,15 +46,15 @@
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-       return 20;
+       return 30;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     //  一区头部视图
     if (section == 0) {
-        UIView *sectionOne = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+        UIView *sectionOne = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 30)];
         sectionOne.backgroundColor = [UIColor clearColor];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,self.view.width , 20)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,self.view.width , 30)];
         label.centerY = sectionOne.centerY;
         label.font = [UIFont systemFontOfSize:12];
         label.textColor = [UIColor grayColor];
@@ -65,10 +65,10 @@
     }
     // 二区头部视图
     if (section == 1) {
-        UIView *sectionTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+        UIView *sectionTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 30)];
         sectionTwo.backgroundColor = [UIColor clearColor];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,self.view.width , 20)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,self.view.width , 30)];
         label.centerY = sectionTwo.centerY;
         label.font = [UIFont systemFontOfSize:12];
         label.textColor = [UIColor grayColor];
@@ -109,8 +109,11 @@
        }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 || indexPath.section == 1) {
+    if (indexPath.section == 0) {
         return 44;
+    }
+    if (indexPath.section == 1) {
+        return 30;
     }
     return 54;
 }

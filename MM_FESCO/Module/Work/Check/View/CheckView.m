@@ -587,8 +587,8 @@
     if (_standardButton == nil) {
         _standardButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _standardButton.frame = CGRectMake(0, kMapTypeW / 2, kMapTypeW, kMapTypeW / 2);
-        _standardButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-        [_standardButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _standardButton.backgroundColor = [UIColor whiteColor];
+        [_standardButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
         [_standardButton setTitle:@"地图" forState:UIControlStateNormal];
         _standardButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_standardButton addTarget:self action:@selector(didClickMapType:) forControlEvents:UIControlEventTouchUpInside];
@@ -603,8 +603,8 @@
     if (_statelliteButton == nil) {
         _statelliteButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _statelliteButton.frame = CGRectMake(0, 0, kMapTypeW, kMapTypeW / 2);
-        _statelliteButton.backgroundColor = [UIColor whiteColor];
-        [_statelliteButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        _statelliteButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_statelliteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_statelliteButton setTitle:@"卫星" forState:UIControlStateNormal];
         _statelliteButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_statelliteButton addTarget:self action:@selector(didClickMapType:) forControlEvents:UIControlEventTouchUpInside];

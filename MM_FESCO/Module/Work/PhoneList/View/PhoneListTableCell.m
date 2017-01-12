@@ -68,7 +68,7 @@
         
 //        make.top.mas_equalTo(self.mobileLabel.mas_bottom).offset(10);
         make.top.mas_equalTo(self.bgView.mas_top);
-        make.right.mas_equalTo(self.mobileLabel.mas_left).offset(-10);
+        make.right.mas_equalTo(self.mobileLabel.mas_left).offset(-15);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
         
     }];

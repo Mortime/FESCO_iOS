@@ -33,6 +33,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initUI];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
         
     }
