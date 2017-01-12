@@ -103,7 +103,7 @@
     subVC.icon = modle.icon;
     
     
-    if (subVC.dataArray) {
+    if (modle.subTypes.count) {
         [self.navigationController pushViewController:subVC animated:YES];
     }else{
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
