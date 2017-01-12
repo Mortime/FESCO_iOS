@@ -190,6 +190,16 @@
 
 }
 
++(NSString *)ssWithDate:(NSString *)dateStr dateType:(NSString *)dateType{
+    
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:dateType];
+            NSDate *date = [dateFormatter dateFromString:dateStr];
+            long long timeStr = [@(floor([date timeIntervalSince1970] * 1000)) longLongValue];
+           return  [NSString stringWithFormat:@"%lli",timeStr];
+
+}
+
 // 获得系统时间
 + (NSString *)dateFromLocalWithFormatString:(NSString *)formatString {
     

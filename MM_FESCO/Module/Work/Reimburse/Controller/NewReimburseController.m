@@ -525,7 +525,7 @@
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
         bookVC.bookType = PurchaseEdit;
         EditMessageModel *model = _netWorkRecordArray[indexPath.row];
-        if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+        if ([model.spendEnd isKindOfClass:[NSNull class]] || model.spendEnd) {
             // 日期类型
             // 不显示结束日期
             bookVC.dateType =  1;
@@ -534,7 +534,7 @@
             bookVC.dateType =  2;
             bookVC.endTime = model.spendEnd;
         }
-        if ([model.cityName isKindOfClass:[NSNull class]] || !model.cityName) {
+        if ([model.cityName isKindOfClass:[NSNull class]] || model.cityName) {
             // 城市名称
             // 不显示x
             bookVC.needCity = 0;
@@ -588,7 +588,7 @@
         
         
         
-        if ([[dic objectForKey:@"spendEnd"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendEnd"]) {
+        if ([[dic objectForKey:@"spendEnd"] isKindOfClass:[NSNull class]] || [dic objectForKey:@"spendEnd"]) {
             // 日期类型
             // 不显示结束日期
             bookVC.dateType =  1;
@@ -597,7 +597,7 @@
             bookVC.dateType =  2;
             bookVC.endTime = [dic objectForKey:@"spendEnd"];
         }
-        if ([[dic objectForKey:@"spendCity"] isKindOfClass:[NSNull class]] || ![dic objectForKey:@"spendCity"]) {
+        if ([[dic objectForKey:@"spendCity"] isKindOfClass:[NSNull class]] || [dic objectForKey:@"spendCity"]) {
             // 城市名称
             // 不显示x
             bookVC.needCity = 0;
@@ -609,7 +609,7 @@
         // 消费类型
         bookVC.typePurchaseStr = [dic objectForKey:@"typePurchaseStr"];
         bookVC.title = [dic objectForKey:@"typePurchaseStr"];
-        bookVC.startTime = [dic objectForKey:@"spendBegin"];
+        bookVC.startTime = [NSDate ssWithDate:[dic objectForKey:@"spendBegin"] dateType:@"yyyy-MM-dd"];
         bookVC.moneyNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"moneyAmount"]];
         bookVC.billNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"billNum"]];
         bookVC.memo = [dic objectForKey:@"detailMemo"];
@@ -631,7 +631,7 @@
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
         bookVC.bookType = PurchaseEdit;
         NOBookChooseModel *model = _noBookRecordArray[indexPath.row];
-        if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd) {
+        if ([model.spendEnd isKindOfClass:[NSNull class]] || model.spendEnd) {
             // 日期类型
             // 不显示结束日期
             bookVC.dateType =  1;
@@ -640,7 +640,7 @@
             bookVC.dateType =  2;
             bookVC.endTime = model.spendEnd;
         }
-        if ([model.cityName isKindOfClass:[NSNull class]] || !model.cityName) {
+        if ([model.cityName isKindOfClass:[NSNull class]] || model.cityName) {
             // 城市名称
             // 不显示x
             bookVC.needCity = 0;

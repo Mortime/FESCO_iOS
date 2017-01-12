@@ -497,7 +497,15 @@
              */
             NSMutableDictionary *mutDic = dic.mutableCopy;
 
-            [mutDic setValue:@"moneyAmount" forKey:_moneyNumber];
+            [mutDic setValue:_moneyNumber forKey:@"moneyAmount"];
+            [mutDic setValue:_startTime forKey:@"spendBegin"];
+            [mutDic setValue:_endTime forKey:@"spendEnd"];
+            [mutDic setValue:_billNumber forKey:@"billNum"];
+            [mutDic setValue:_memo forKey:@"detailMemo"];
+            [mutDic setValue:_cityName forKey:@"spendCity"];
+            [mutDic setValue:[NSString stringWithFormat:@"%lu",_ID] forKey:@"ID"];
+            [mutDic setValue:_picUrl forKey:@"picUrl"];
+            
             
 //            [dic objectForKey:@"moneyAmount"] = _moneyNumber ;
 //            model.spendBegin = _startTime;

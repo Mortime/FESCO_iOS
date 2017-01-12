@@ -56,6 +56,10 @@
 
 + (NSString *)dateFromLocalWithFormatString:(NSString *)formatString;
 
+/*
+ 将制定的时间格式转换为毫秒    
+ */
++(NSString *)ssWithDate:(NSString *)dateStr dateType:(NSString *)dateType;
 
 // Comparing dates
 - (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
