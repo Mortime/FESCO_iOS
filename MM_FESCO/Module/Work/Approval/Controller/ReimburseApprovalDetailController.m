@@ -129,16 +129,8 @@
                     }
                    
                     [_bottomDataArray addObject:lastDate];
-                    NSString *lastRelutt = @"";
-                    NSInteger result = [[dic objectForKey:@"is_Pass"] integerValue];
-                    if (result == 1) {
-                        lastRelutt = @"不通过";
-                    }
-                    if (result == 2) {
-                        lastRelutt = @"通过";
-                    }
-                    
-                    [_bottomDataArray addObject:lastRelutt];
+                    // 审批状态
+                    [_bottomDataArray addObject:[dic objectForKey:@"is_Pass_Str"]];
                     
                     
                     NSString *lastMemo = [dic objectForKey:@"memo"];
