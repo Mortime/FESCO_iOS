@@ -1103,7 +1103,7 @@
             _titleStr = _reimburseModel.title;
         }
         if (!_dateStr) {
-            _dateStr = _reimburseModel.editTime;
+            _dateStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: _reimburseModel.editTime];
         }
         if (!_groupStr) {
             for (GroupInfoModel *model in _groupArray) {

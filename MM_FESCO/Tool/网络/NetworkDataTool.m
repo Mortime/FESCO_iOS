@@ -26,13 +26,13 @@
             // 2. 开始时间
             NSString *spendStart = @"";
             if (model.spendBegin) {
-                spendStart = model.spendBegin;
+                spendStart = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:model.spendBegin];
             }
             
             // 3. 结束时间
             NSString *spendEnd = @"";
             if (model.spendEnd) {
-                spendEnd = model.spendEnd;
+                spendEnd = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:model.spendEnd];
             }
             // 4. 消费城市
             NSString *spendCity = @"";
@@ -65,7 +65,7 @@
                                         @"spend_Begin":spendStart,
                                         @"spend_End":spendEnd,
                                         @"spend_City":spendCity,
-                                        @"detail_Id":[NSString stringWithFormat:@"%lu",model.detailId],
+                                        @"detail_Id":@"",
                                         @"detail_Id_Before_Imported":[NSString stringWithFormat:@"%lu",model.detailId]
                                         
                                         };

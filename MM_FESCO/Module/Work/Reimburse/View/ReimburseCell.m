@@ -148,7 +148,7 @@
         status = @"已支付";
     }
     _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
-    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %.2f",model.moneySum]];
+    _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:model.applyDate],[NSString stringWithFormat:@"¥ %.2f",model.moneySum]];
     _moneyLabel.text = status;
     _titleLabel.text = model.title;
     
