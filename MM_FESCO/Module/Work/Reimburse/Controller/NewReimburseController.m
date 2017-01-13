@@ -812,6 +812,9 @@
         return;
         
     }
+    if (!_momeStr) {
+        _momeStr = @"";
+    }
     
     [NetworkEntity postPreserveReimburseApplyWithMemo:_momeStr title:_titleStr type:_typeCode applyDate:_dateStr groupId:_groupID accountId:_peopleID purchaseRecordModelArray:_editPurchaseRccordArray networkModelArray:_netWorkRecordArray noBookAddArray:_noBookRecordArray rePurchaseBookType:_rePurchaseBook detailid:_detailid applyID:_detailid Success:^(id responseObject) {
         
