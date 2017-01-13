@@ -38,6 +38,23 @@
 - (void)initData{
     
     self.messageTitleArray = @[@"报销日期",@"收款账号"];
+    
+    [NetworkEntity postReimburseApprovalInfoWithForEmpApplyId:_model.applyId Success:^(id responseObject) {
+        MMLog(@"ReimburseApprovalInfoWithForEmp  =======responseObject=====%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"ReimburseApprovalInfoWithForEmp  =======failure=====%@",failure);
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     [NetworkEntity postReimburseApprovalInfoWithApplyId:_model.applyId Success:^(id responseObject) {
         
         MMLog(@"ReimburseApprovalInfo  =======responseObject=====%@",responseObject);

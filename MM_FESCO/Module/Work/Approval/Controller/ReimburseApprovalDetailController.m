@@ -403,7 +403,7 @@
         if (_applyPeopel && ![_applyPeopel isEqualToString:@" "] && ![_applyPeopel isEqualToString:@""] ) {
 
                 // 同意
-                tagFlag =  2;
+                tagFlag =  1;
                 msgSuccess = @"审批成功";
                 msgError = @"审批失败";
             

@@ -636,13 +636,13 @@
 + (void)postReimburseApprovalInfoWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 /**
- *  报销审批进度信息  (审批时)
+ *  报销审批进度信息  (查看审批进度)
  
  *  @param  cust_Id, apply_Id
  
  */
 
-//+ (void)postReimburseApprovalInfoWithApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postReimburseApprovalInfoWithForEmpApplyId:(NSInteger )applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 /**
  *  提交报销审批
  
