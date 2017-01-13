@@ -192,9 +192,9 @@
     _titleLabel.text = [dic objectForKey:@"typePurchaseStr"];
     _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"typePurchaseStr"] substringToIndex:2]]];
     NSString *timeStr = @"";
-    timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"spendBegin"]];
+    timeStr = [dic objectForKey:@"spendBegin"];
     if ([dic objectForKey:@"spendEnd"]) {
-        NSString *end = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"spendEnd"]];;
+        NSString *end = [dic objectForKey:@"spendEnd"];
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;

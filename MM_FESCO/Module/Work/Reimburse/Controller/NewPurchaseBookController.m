@@ -119,7 +119,7 @@
         }
             cell.textFiled.placeHold = @"¥ 0.00";
             cell.textFiled.isExist = YES;
-        cell.textFiled.rightTextFiled.keyboardType = UIKeyboardTypeNumberPad;
+        cell.textFiled.rightTextFiled.keyboardType = UIKeyboardTypeDecimalPad;
         cell.delegate = self;
         cell.tag = 8000;
         return cell;
@@ -496,6 +496,9 @@
              
              */
             NSMutableDictionary *mutDic = dic.mutableCopy;
+            
+    
+            
 
             [mutDic setValue:_moneyNumber forKey:@"moneyAmount"];
             [mutDic setValue:_startTime forKey:@"spendBegin"];

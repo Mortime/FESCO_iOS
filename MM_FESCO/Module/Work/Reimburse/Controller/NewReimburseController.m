@@ -108,7 +108,7 @@
         
         for (NSDictionary *dic in mutarray) {
             [_editPurchaseRccordArray addObject:dic];
-            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
+            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] floatValue];
             
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber] forState:UIControlStateNormal];
@@ -122,7 +122,7 @@
         
         for (NSDictionary *dic in mutarray) {
             [_editPurchaseRccordArray addObject:dic];
-            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] integerValue];
+            _allMoneyNumber = _allMoneyNumber + [[dic objectForKey:@"moneyAmount"] floatValue];
             
         }
         [_leftButton setTitle:[NSString stringWithFormat:@"¥ %.2f",_allMoneyNumber] forState:UIControlStateNormal];

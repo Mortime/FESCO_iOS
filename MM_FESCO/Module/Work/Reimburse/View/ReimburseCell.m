@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) UIImageView *flageView;
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic ,strong) UILabel *detailLabel;
 
 @property (nonatomic ,strong) UILabel *moneyLabel;
@@ -36,7 +38,7 @@
     
     [self addSubview:self.flageView];
 
-    
+    [self addSubview:self.titleLabel];
     [self addSubview:self.detailLabel];
     
     [self addSubview:self.moneyLabel];
@@ -52,8 +54,15 @@
         make.height.mas_equalTo(@16);
         
     }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_top).offset(10);
+        make.left.mas_equalTo(self.flageView.mas_right).offset(10);
+        make.height.mas_equalTo(@13);
+        
+    }];
+
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.flageView.mas_centerY);
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(10);
         make.left.mas_equalTo(self.flageView.mas_right).offset(10);
         make.height.mas_equalTo(@13);
         
@@ -88,10 +97,19 @@
     }
     return _flageView;
 }
+- (UILabel *)titleLabel{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont systemFontOfSize:12];
+        _titleLabel.textColor = [UIColor grayColor];
+        
+    }
+    return _titleLabel;
+}
 - (UILabel *)detailLabel{
     if (_detailLabel == nil) {
         _detailLabel = [[UILabel alloc] init];
-        _detailLabel.font = [UIFont systemFontOfSize:14];
+        _detailLabel.font = [UIFont systemFontOfSize:12];
         _detailLabel.textColor = [UIColor grayColor];
         
     }
@@ -132,6 +150,7 @@
     _flageView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
     _detailLabel.text = [NSString stringWithFormat:@"%@ | %@",model.typeStr,[NSString stringWithFormat:@"¥ %.2f",model.moneySum]];
     _moneyLabel.text = status;
+    _titleLabel.text = model.title;
     
     
 }
