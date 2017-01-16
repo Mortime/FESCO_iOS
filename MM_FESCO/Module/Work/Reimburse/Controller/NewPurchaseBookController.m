@@ -13,7 +13,6 @@
 #import "UploadFile.h"
 #import "PurchaseCityCell.h"
 #import "CityListViewController.h"
-#import "NSString+FontAwesome.h"
 #import "EditMessageModel.h"
 #import "NOBookChooseModel.h"
 #define kBottomButtonW    ((kMMWidth) / 2)

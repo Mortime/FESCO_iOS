@@ -1792,6 +1792,8 @@
 + (void)postCommitReimburseApprovalBeforeSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
                           @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"type_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"type":@1,
                           @"methodname":@"expense/getLastCheckMan.json"
                           };
     

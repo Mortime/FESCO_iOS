@@ -41,6 +41,7 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "NetworkDataTool.h"
 #import "UploadFile.h"
+#import "NSString+FontAwesome.h"
 
 
 #endif

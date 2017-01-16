@@ -7,10 +7,10 @@
 //
 
 #import "FileMainApprovalDetailCell.h"
-#import "ApprovalTextFiledView.h"
+
 @interface FileMainApprovalDetailCell ()
 
-@property (nonatomic ,strong) ApprovalTextFiledView *rightTextFiled;
+
 
 @end
 

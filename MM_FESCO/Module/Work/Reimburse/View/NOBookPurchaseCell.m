@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIImageView *flageImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
@@ -44,7 +44,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.flageImageView];
+    [self.bgView addSubview:self.btn];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.timeLabel];
     [self.bgView addSubview:self.moneyLabel];
@@ -61,7 +61,7 @@
         
         
     }];
-    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
@@ -71,8 +71,8 @@
     
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flageImageView.mas_top);
-        make.left.mas_equalTo(self.flageImageView.mas_right).offset(10);
+        make.top.mas_equalTo(self.btn.mas_top);
+        make.left.mas_equalTo(self.btn.mas_right).offset(10);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.height.mas_equalTo(@14);
         
@@ -80,7 +80,7 @@
     }];
     
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(10);
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(5);
         make.left.mas_equalTo(self.titleLabel.mas_left);
         make.height.mas_equalTo(@14);
         
@@ -104,12 +104,12 @@
     }
     return _bgView;
 }
-- (UIImageView *)flageImageView{
-    if (_flageImageView == nil) {
-        _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-    }
-    return _flageImageView;
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+}
+    return _btn;
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -145,9 +145,6 @@
 - (void)setModel:(NOBookPurchaseModel *)model{
         _titleLabel.text = model.spendTypeStr;
     
-        _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendTypeStr substringToIndex:2]]];
-    
-    
         NSString *timeStr = @"";
         timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: model.spendBegin];
         if (model.spendEnd) {
@@ -156,6 +153,17 @@
         }
         _timeLabel.text = timeStr;
         _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
+    
+    
+    
+    NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+
+    
+    
+    
 }
 
 @end

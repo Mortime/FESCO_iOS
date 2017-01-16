@@ -12,6 +12,7 @@ typedef void(^DVVSearchViewUITextFieldDelegateBlock)(UITextField *textField,NSIn
 
 @interface ApprovalTextFiledView : UIView
 
+@property (nonatomic, strong) UITextField *rightTextFiled;
 
 @property (nonatomic,strong) NSString *leftTitle;
 

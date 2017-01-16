@@ -43,6 +43,8 @@
 
 @property (nonatomic, assign) BOOL isShowLaterMessage;
 
+@property (nonatomic, assign) BOOL isNOShowAppMan;
+
 @property (nonatomic, strong) NSString *applyIdea;
 
 @property (nonatomic, strong) NSString *applyPeopel;
@@ -103,6 +105,14 @@
                 if ([keyStr isEqualToString:@"lastApprovalStep"]) {
                     _isShowLaterMessage = YES;
                     NSDictionary *dic = [responseObject objectForKey:keyStr];
+                    if ([dic objectForKey:@"is_Other_Party"] && ![[dic objectForKey:@"is_Other_Party"] isKindOfClass:[NSNull class]]) {
+                        
+                        if ([[dic objectForKey:@"is_Other_Party"] integerValue] == 0 ||[[dic objectForKey:@"is_Other_Party"] integerValue]== 1) {
+                            _isNOShowAppMan = YES;
+                        }
+                    }
+                    
+                    
                     
                     MMLog(@"lastApprovalStep == %@",dic);
                     
@@ -152,8 +162,6 @@
                 NSString *str = [dic objectForKey:@"emp_Name"];
                 [_pickDataArray addObject:str];
             }
-
-            
             
             [_tableView reloadData];
             
@@ -213,7 +221,8 @@
         return model.details.count;
     }
     if (section == 2){
-        return 2;
+                   return 2;
+        
     }
     if (section == 3){
         return 3;
@@ -264,6 +273,9 @@
         if (indexPath.row == 1) {
             cell.pickDataArray = self.pickDataArray;
             cell.isExist = NO;
+            if (_isNOShowAppMan) {
+                cell.rightTextFiled.rightTextFiled.userInteractionEnabled = NO;
+            }
         }
         cell.textFiledTag = indexPath.row + 1000;
         cell.delegate = self;
@@ -451,9 +463,15 @@
                     NSDictionary *dic = [responseObject objectForKey:@"checkMan"];
                     if ([dic allKeys].count) {
                         
-                        _manID =  [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type_Id"] integerValue]];
-                        _type = [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type"] integerValue]];
-                    }
+                        if ([[dic objectForKey:@"type_Id"] integerValue] == 0) {
+                            _manID =@"";
+                            _type = @"";
+                        }else{
+                            _manID =  [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type_Id"] integerValue]];
+                            _type = [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"type"] integerValue]];
+
+                        }
+}
                     
                     [NetworkEntity postCommitReimburseApprovalWithApplyId:_applyId result:tagFlag memo:applyIdea nextApprovalMan:_manID type:_type Success:^(id responseObject) {
                         MMLog(@"CommitReimburseApproval ========= responseObject ============%@",responseObject);

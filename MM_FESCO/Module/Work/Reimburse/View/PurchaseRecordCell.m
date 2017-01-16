@@ -8,7 +8,6 @@
 
 #import "PurchaseRecordCell.h"
 
-#import "NSString+FontAwesome.h"
 
 @interface PurchaseRecordCell ()
 
@@ -124,11 +123,7 @@
     
 //    [_btn setImage:[UIImage imageNamed:[NSString backPicNameWith:model.typeName]] forState:UIControlStateNormal];
     NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
-    
-    
-    
     FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
-    
     [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
     [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     

@@ -8,7 +8,6 @@
 
 #import "ReimburseApprovalRecordDetailController.h"
 #import "NewPurchaseSubTitleCell.h"
-#import "NSString+FontAwesome.h"
 #import "NewPurchaseSubContentCell.h"
 #import "NewPurchaseSubBookCell.h"
 #import "PurchaseCityCell.h"

@@ -58,6 +58,8 @@
 
 @property (nonatomic, assign) NSInteger detailId;
 
+@property (nonatomic, strong) NSString *icon;
+
 
 
 @end

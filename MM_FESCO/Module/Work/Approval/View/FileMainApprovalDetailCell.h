@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ApprovalTextFiledView.h"
 
 
 @protocol fileMainApprovalDetailCellDelegate <NSObject>
@@ -16,6 +17,8 @@
 @end
 
 @interface FileMainApprovalDetailCell : UITableViewCell
+
+@property (nonatomic ,strong) ApprovalTextFiledView *rightTextFiled;
 
 @property (nonatomic ,strong) NSString *leftTitle;
 

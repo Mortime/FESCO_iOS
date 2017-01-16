@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UILabel *leftLabel;
 
-@property (nonatomic, strong) UITextField *rightTextFiled;
+
 
 @property (strong, nonatomic) UIPickerView *pickerView;
 
