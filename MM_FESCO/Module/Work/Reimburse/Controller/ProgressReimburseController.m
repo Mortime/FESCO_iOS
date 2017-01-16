@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) NSMutableArray *reimburselistArray;
 
+@property (nonatomic, strong) NSDictionary *lastTepDic;
+
 @end
 
 @implementation ProgressReimburseController
@@ -41,27 +43,31 @@
     
     [NetworkEntity postReimburseApprovalInfoWithForEmpApplyId:_model.applyId Success:^(id responseObject) {
         MMLog(@"ReimburseApprovalInfoWithForEmp  =======responseObject=====%@",responseObject);
-    } failure:^(NSError *failure) {
-        MMLog(@"ReimburseApprovalInfoWithForEmp  =======failure=====%@",failure);
-    }];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    [NetworkEntity postReimburseApprovalInfoWithApplyId:_model.applyId Success:^(id responseObject) {
-        
-        MMLog(@"ReimburseApprovalInfo  =======responseObject=====%@",responseObject);
-        
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
-            NSDictionary *dic = [responseObject objectForKey:@"apply"];
+            /*
+             
+             lastApprovalStep =     {
+             "apply_Id" = 285;
+             approvalTime = "<null>";
+             "approval_Man" = 163;
+             "approval_Man_Str" = "\U80e1\U677e";
+             "approval_Time" = 1484546923000;
+             "is_Other_Party" = "<null>";
+             "is_Over" = 1;
+             "is_Pass" = 1;
+             "is_Pass_Str" = "\U901a\U8fc7\U5ba1\U6279";
+             memo = "<null>";
+             "next_Approval_Man" = 4399;
+             "step_Id" = 223;
+             };
+
+             */
             
+            _lastTepDic  = [responseObject objectForKey:@"lastApprovalStep"];
+            
+            
+            
+            NSDictionary *dic = [responseObject objectForKey:@"apply"];
             NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"apply_Date"]];
             NSString *bankNumber = [NSString stringWithFormat:@"%lu",[[dic objectForKey:@"account_Id"] integerValue]];
             self.messageContentArray = @[time,bankNumber];
@@ -74,7 +80,8 @@
         }
 
     } failure:^(NSError *failure) {
-        MMLog(@"ReimburseApprovalInfo  =======failure=====%@",failure);
+        MMLog(@"ReimburseApprovalInfoWithForEmp  =======failure=====%@",failure);
+        
     }];
     
     }
@@ -160,7 +167,9 @@
         if (!cell) {
             cell = [[ProgressStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
+        cell.appleMan = [_lastTepDic objectForKey:@"approval_Man_Str"];
         cell.statusTag = _model.statusReimburse;
+        cell.memo = [_lastTepDic objectForKey:@"memo"];
         return cell;
     }
     

@@ -57,7 +57,7 @@
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightButton.frame = CGRectMake(CGRectGetMaxX(self.leftButton.frame), 0, self.width/2, self.height);
         [_rightButton setTitle:@"驳回" forState:UIControlStateNormal];
-        [_rightButton setTitleColor:MM_MAIN_LINE_COLOR forState:UIControlStateNormal];
+        [_rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_rightButton addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
         [_rightButton setBackgroundColor:MM_MAIN_BACKGROUND_COLOR];
          _rightButton.tag = 10011;

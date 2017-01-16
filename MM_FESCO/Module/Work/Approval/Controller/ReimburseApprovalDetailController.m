@@ -121,11 +121,13 @@
                      };
 
                      */
-                     NSString *lastDate = @"";
-                    if ([dic objectForKey:@"approval_Time"] == nil || [[dic objectForKey:@"approval_Time"] isKindOfClass:[NSNull class]]) {
-                        lastDate = @"暂无";
-                    }else{
-                        lastDate = [NSString stringWithFormat:@"%@ 于 %@",[dic objectForKey:@"approval_Man_Str"],[NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]]];
+                     NSString *lastDate = @"暂无";
+                    if ([dic objectForKey:@"approval_Man_Str"] != nil && ![[dic objectForKey:@"approval_Man_Str"] isKindOfClass:[NSNull class]]) {
+                        lastDate = [dic objectForKey:@"approval_Man_Str"];
+                        if ([dic objectForKey:@"approval_Time"] != nil && ![[dic objectForKey:@"approval_Time"] isKindOfClass:[NSNull class]]) {
+                            lastDate = [NSString stringWithFormat:@"%@ 于 %@",[dic objectForKey:@"approval_Man_Str"],[NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]]];
+                        }
+                        
                     }
                    
                     [_bottomDataArray addObject:lastDate];

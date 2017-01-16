@@ -129,13 +129,16 @@
         _statusLabel.text = @"待提交";
     }
     if (statusTag == 1) {
-        _statusLabel.text = @"待审批";
+        _statusLabel.text = [NSString stringWithFormat:@"%@ %@",_appleMan,@"待审批"];
     }
     if (statusTag == 2) {
         _statusLabel.text = @"待支付";
     }
     if (statusTag == 3) {
-        _statusLabel.text = @"未通过";
+        _statusLabel.text = [NSString stringWithFormat:@"%@ %@",_appleMan,@"未通过"];
+        if (_memo) {
+            _statusLabel.text = [NSString stringWithFormat:@"%@ %@ %@",_appleMan,@"未通过",_memo];
+        }
     }
     if (statusTag == 4) {
         _statusLabel.text = @"已支付";

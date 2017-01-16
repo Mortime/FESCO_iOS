@@ -246,7 +246,7 @@
     
     _name.text = @"暂无";
     if (model.empName != nil) {
-        _memoLabel.text = model.empName;
+        _name.text = model.empName;
     }
     
     

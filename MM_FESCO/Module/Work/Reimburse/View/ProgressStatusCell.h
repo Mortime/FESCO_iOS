@@ -12,4 +12,8 @@
 
 @property (nonatomic, assign) NSInteger statusTag;
 
+@property (nonatomic, strong) NSString *appleMan;
+
+@property (nonatomic, strong) NSString *memo;
+
 @end
