@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIImageView *flageImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
@@ -44,7 +44,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.flageImageView];
+    [self.bgView addSubview:self.btn];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.timeLabel];
     [self.bgView addSubview:self.moneyLabel];
@@ -61,7 +61,7 @@
         
         
     }];
-    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
@@ -71,8 +71,8 @@
     
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flageImageView.mas_top);
-        make.left.mas_equalTo(self.flageImageView.mas_right).offset(10);
+        make.top.mas_equalTo(self.btn.mas_top);
+        make.left.mas_equalTo(self.btn.mas_right).offset(10);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.height.mas_equalTo(@14);
         
@@ -104,12 +104,14 @@
     }
     return _bgView;
 }
-- (UIImageView *)flageImageView{
-    if (_flageImageView == nil) {
-        _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn.backgroundColor = [UIColor clearColor];
+        [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
+
     }
-    return _flageImageView;
+    return _btn;
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -146,7 +148,7 @@
 - (void)setModel:(NewPurchaseRecordModel *)model{
     _titleLabel.text = model.spendType;
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendType substringToIndex:2]]];
+    [_btn setBackgroundImage:[UIImage imageNamed:[NSString backPicNameWith:[model.spendType substringToIndex:2]]] forState:UIControlStateNormal];
     
     
     NSString *timeStr = @"";
@@ -156,7 +158,7 @@
         timeStr = [NSString stringWithFormat:@"%@~%@",timeStr,end];
     }
     _timeLabel.text = timeStr;
-    _moneyLabel.text = [NSString stringWithFormat:@"¥ %lu",model.moneyAmount];
+    _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
 }
 - (void)setDataArray:(NSArray *)dataArray{
     _titleLabel.text = dataArray[9];
@@ -173,7 +175,7 @@
 - (void)setDic:(NSDictionary *)dic{
     _titleLabel.text = [dic objectForKey:@"spend_Type_Str"];
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"spend_Type_Str"] substringToIndex:2]]];
+     [_btn setBackgroundImage:[UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"spend_Type_Str"] substringToIndex:2]]] forState:UIControlStateNormal];
     
     
     NSString *timeStr = @"";
@@ -189,8 +191,10 @@
 - (void)setProgressModel:(ProgressReimburseModel *)progressModel{
     _titleLabel.text = progressModel.spendType;
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[progressModel.spendType substringToIndex:2]]];
-    
+    NSArray *iconArray = [progressModel.icon componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: progressModel.spendBegin];

@@ -12,6 +12,7 @@
 #import "ProgressPuschaseCell.h"
 #import "ProgressReimburseModel.h"
 
+
 @interface ProgressReimburseController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,6 +25,8 @@
 
 @property (nonatomic, strong) NSDictionary *lastTepDic;
 
+@property (nonatomic, strong) UIButton *editButton;
+
 @end
 
 @implementation ProgressReimburseController
@@ -34,6 +37,7 @@
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.reimburselistArray = [NSMutableArray array];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.editButton];
     [self initData];
     
 }
@@ -200,7 +204,14 @@
     return nil;
     
 }
-
+- (void)didClick:(UIButton *)sender{
+    [NetworkEntity postEditReimburseOfNOBassWithApplyID:_model.applyId Success:^(id responseObject) {
+        
+        MMLog(@"EditReimburseOfNOBass  =======responseObject=====%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"EditReimburseOfNOBass  =======failure=====%@",failure);
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -218,6 +229,17 @@
     }
     return _tableView;
 }
-
-
+- (UIButton *)editButton{
+    if (_editButton == nil) {
+        _editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _editButton.frame = CGRectMake(0, self.view.height - 64 - 50, self.view.width, 50);
+        [_editButton setTitle:@"重新编辑" forState:UIControlStateNormal];
+        [_editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_editButton addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_editButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        _editButton.tag = 10011;
+        
+    }
+    return _editButton;
+}
 @end

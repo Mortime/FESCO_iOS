@@ -670,5 +670,14 @@
  */
 
 + (void)postNationerAndCountrySuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *  编辑未通过报销单   
+ 
+ *  @param
+ 
+ */
+
++ (void)postEditReimburseOfNOBassWithApplyID:(NSInteger)applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 
 @end

@@ -1845,4 +1845,32 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
++ (void)postEditReimburseOfNOBassWithApplyID:(NSInteger)applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSDictionary *dic = @{
+                          @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"apply_Id":[NSString stringWithFormat:@"%lu",applyId],
+                          @"methodname":@"expense/loadNewExpenseExamInfo.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/loadNewExpenseExamInfo.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
 @end
