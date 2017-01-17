@@ -10,6 +10,7 @@
 
 
 #define kLabelH  15
+
 @interface ReimburseApprovalCell ()
 
 @property (nonatomic ,strong) UIView *bgView;
@@ -48,20 +49,26 @@
 
 - (void)initUI{
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.flagView];
-    [self.bgView addSubview:self.titleLabel];
-    [self.bgView addSubview:self.applyTime];
+    [self addSubview:self.flagView];
     [self.bgView addSubview:self.biaotiLabel];
+    [self.bgView addSubview:self.moneyLabel];
+    [self.bgView addSubview:self.applyTime];
     [self.bgView addSubview:self.memoLabel];
     [self.bgView addSubview:self.iconView];
     [self.bgView addSubview:self.name];
-    [self.bgView addSubview:self.moneyLabel];
+    [self.bgView addSubview:self.titleLabel];
+    
+    
+    
+    
+    
+    
     
     
 }
 - (void)layoutSubviews{
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(5);
+        make.top.mas_equalTo(self.mas_top).offset(15);
         make.left.mas_equalTo(self.mas_left);
         make.bottom.mas_equalTo(self.mas_bottom);
         make.right.mas_equalTo(self.mas_right);
@@ -69,42 +76,43 @@
     }];
     
     [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgView.mas_top).offset(20);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
-        make.width.mas_equalTo(@16);
-        make.height.mas_equalTo(@16);
+        make.top.mas_equalTo(self.mas_top).offset(5);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
+        make.width.mas_equalTo(@10);
+        make.height.mas_equalTo(@10);
         
     }];
     
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.flagView.mas_centerY);
-        make.left.mas_equalTo(self.flagView.mas_right).offset(10);
+    [self.biaotiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.bgView.mas_top).offset(20);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
+        make.height.mas_equalTo(@kLabelH);
+        
+        
+    }];
+    
+    [self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.biaotiLabel.mas_bottom).offset(10);
+        make.left.mas_equalTo(self.biaotiLabel.mas_left);
         make.height.mas_equalTo(@kLabelH);
         
     }];
     
     [self.applyTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flagView.mas_bottom).offset(20);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(10);
+        make.top.mas_equalTo(self.moneyLabel.mas_bottom).offset(10);
+        make.left.mas_equalTo(self.biaotiLabel.mas_left);
         make.height.mas_equalTo(@kLabelH);
         
     }];
-    
-    [self.biaotiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.applyTime.mas_bottom).offset(10);
-        make.left.mas_equalTo(self.applyTime.mas_left);
-        make.height.mas_equalTo(@kLabelH);
-        
-        
-    }];
+
     [self.memoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.biaotiLabel.mas_bottom).offset(10);
-        make.left.mas_equalTo(self.applyTime.mas_left);
+        make.top.mas_equalTo(self.applyTime.mas_bottom).offset(10);
+        make.left.mas_equalTo(self.biaotiLabel.mas_left);
         make.height.mas_equalTo(@kLabelH);
         
         
     }];
-    
+
     [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top).offset(20);
         make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
@@ -120,14 +128,24 @@
         make.height.mas_equalTo(@17);
         
     }];
+
     
-    [self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.name.mas_bottom).offset(10);
-        make.centerX.mas_equalTo(self.name.mas_centerX);
-        make.height.mas_equalTo(@17);
-        make.width.mas_equalTo(@100);
+        make.centerX.mas_equalTo(self.iconView.mas_centerX);
+        make.height.mas_equalTo(@kLabelH);
         
     }];
+
+    
+    
+    
+    
+   
+    
+   
+    
+    
 }
 
 - (void)awakeFromNib {
@@ -231,18 +249,18 @@
     _flagView.image = [UIImage imageNamed:[NSString backPicNameWith:model.typeStr]];
     
     _titleLabel.text = model.typeStr;
-    _applyTime.text = [NSString stringWithFormat:@"报销时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:model.applyDate]];
+    _applyTime.text = [NSString stringWithFormat:@"报销时间    %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:model.applyDate]];
     
-    _biaotiLabel.text = @"标题: 暂无";
+    _biaotiLabel.text = @"标题    暂无";
     if (model.title != nil) {
-        _biaotiLabel.text = [NSString stringWithFormat:@"标题: %@",model.title];
+        _biaotiLabel.text = [NSString stringWithFormat:@"标题    %@",model.title];
     }
-    _memoLabel.text = @"描述: 暂无";
+    _memoLabel.text = @"描述    暂无";
     if (model.memo != nil) {
-        _memoLabel.text = [NSString stringWithFormat:@"描述: %@",model.memo];
+        _memoLabel.text = [NSString stringWithFormat:@"描述    %@",model.memo];
     }
 
-    _moneyLabel.text = [NSString stringWithFormat:@"￥ %.2f",model.moneySum];
+    _moneyLabel.text = [NSString stringWithFormat:@"金额    ￥%.2f",model.moneySum];
     
     _name.text = @"暂无";
     if (model.empName != nil) {

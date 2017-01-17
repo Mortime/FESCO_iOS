@@ -2998,16 +2998,17 @@
 				TargetAttributes = {
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4VRC5XFR8F;
+						DevelopmentTeam = L3GS8KJ8Y4;
+						ProvisioningStyle = Automatic;
 					};
 					5977622A1D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4VRC5XFR8F;
+						DevelopmentTeam = L3GS8KJ8Y4;
 						TestTargetID = 597762111D489AE000BD8472;
 					};
 					597762351D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4VRC5XFR8F;
+						DevelopmentTeam = L3GS8KJ8Y4;
 						TestTargetID = 597762111D489AE000BD8472;
 					};
 				};
@@ -3531,7 +3532,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4VRC5XFR8F;
+				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3578,7 +3579,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4VRC5XFR8F;
+				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3608,7 +3609,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				DEVELOPMENT_TEAM = 4VRC5XFR8F;
+				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3625,8 +3626,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3638,8 +3639,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				DEVELOPMENT_TEAM = 4VRC5XFR8F;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
+				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3656,8 +3657,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d67da61a-8685-4cf8-b341-f5fee74aba1c";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_shuxinProfiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

@@ -71,7 +71,8 @@ typedef NS_ENUM(NSUInteger,RePurchaseBookType){
     editReimburseBook,    // 编辑报销单
     noBookPurchase,         // 未制单消费  在一笔
     NOBookPurchaseEdit,   // 未制单消费  编辑
-    PurchaseEdit   // 未制单消费  编辑
+    PurchaseEdit,  // 未制单消费  编辑
+    NOPassEdit     // 审核未通过后再在编辑
     
 };
 

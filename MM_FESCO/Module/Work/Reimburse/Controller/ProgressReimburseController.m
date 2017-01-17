@@ -11,6 +11,7 @@
 #import "ProgressMessageCell.h"
 #import "ProgressPuschaseCell.h"
 #import "ProgressReimburseModel.h"
+#import "NewReimburseController.h"
 
 
 @interface ProgressReimburseController ()<UITableViewDelegate,UITableViewDataSource>
@@ -173,6 +174,11 @@
         }
         cell.appleMan = [_lastTepDic objectForKey:@"approval_Man_Str"];
         cell.statusTag = _model.statusReimburse;
+        
+//        0待提交，1待审批，2待支付，3未通过，4已支付
+        if (_model.statusReimburse == 3) {
+            _editButton.hidden = NO;
+        }
         cell.memo = [_lastTepDic objectForKey:@"memo"];
         return cell;
     }
@@ -238,6 +244,7 @@
         [_editButton addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
         [_editButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         _editButton.tag = 10011;
+        _editButton.hidden = YES;
         
     }
     return _editButton;
