@@ -122,27 +122,13 @@
     }
     return _statusLabel;
 }
-- (void)setStatusTag:(NSInteger)statusTag{
-    
+- (void)setShowModel:(ProgressShowModel *)showModel{
     // 0待提交，1待审批，2待支付，3未通过，4已支付
-    if (statusTag == 0) {
-        _statusLabel.text = @"待提交";
-    }
-    if (statusTag == 1) {
-        _statusLabel.text = [NSString stringWithFormat:@"%@ %@",_appleMan,@"待审批"];
-    }
-    if (statusTag == 2) {
-        _statusLabel.text = @"待支付";
-    }
-    if (statusTag == 3) {
-        _statusLabel.text = [NSString stringWithFormat:@"%@ %@",_appleMan,@"未通过"];
-        if (_memo) {
-            _statusLabel.text = [NSString stringWithFormat:@"%@ %@ %@",_appleMan,@"未通过",_memo];
-        }
-    }
-    if (statusTag == 4) {
-        _statusLabel.text = @"已支付";
+    _statusLabel.text = [NSString stringWithFormat:@"%@ %@",showModel.approvalManStr,showModel.isPassStr];
+    if (_memo) {
+        _statusLabel.text = [NSString stringWithFormat:@"%@ %@ %@",showModel.approvalManStr,showModel.isPassStr,showModel.memo];
     }
 }
+
 @end
 

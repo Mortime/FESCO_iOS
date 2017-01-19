@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIImageView *flageImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
@@ -44,7 +44,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.flageImageView];
+    [self.bgView addSubview:self.btn];
 //    [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.timeLabel];
     [self.bgView addSubview:self.moneyLabel];
@@ -61,7 +61,7 @@
         
         
     }];
-    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgView.mas_left).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
@@ -94,12 +94,12 @@
     }
     return _bgView;
 }
-- (UIImageView *)flageImageView{
-    if (_flageImageView == nil) {
-        _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
     }
-    return _flageImageView;
+    return _btn;
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -135,7 +135,11 @@
 - (void)setDic:(NSDictionary *)dic{
     _titleLabel.text = [dic objectForKey:@"spend_Type_Str"];
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"spend_Type_Str"] substringToIndex:2]]];
+    NSArray *iconArray = [[dic objectForKey:@"icon"] componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     
     
     NSString *timeStr = @"";

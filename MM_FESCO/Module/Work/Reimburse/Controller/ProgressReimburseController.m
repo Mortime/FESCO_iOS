@@ -12,6 +12,8 @@
 #import "ProgressPuschaseCell.h"
 #import "ProgressReimburseModel.h"
 #import "NewReimburseController.h"
+#import "EditMessageModel.h"
+#import "ProgressShowModel.h"
 
 
 @interface ProgressReimburseController ()<UITableViewDelegate,UITableViewDataSource>
@@ -27,6 +29,9 @@
 @property (nonatomic, strong) NSDictionary *lastTepDic;
 
 @property (nonatomic, strong) UIButton *editButton;
+@property (nonatomic, strong) NSMutableArray *noBassEditArray;
+
+@property (nonatomic, strong) NSMutableArray *progressShoeModelArray;
 
 @end
 
@@ -37,8 +42,15 @@
     self.title = @"审批进度";
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.reimburselistArray = [NSMutableArray array];
+    self.noBassEditArray = [NSMutableArray array];
+    self.progressShoeModelArray = [NSMutableArray array];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.editButton];
+    
+    //        0待提交，1待审批，2待支付，3未通过，4已支付
+    if (_model.statusReimburse == 3) {
+        _editButton.hidden = NO;
+    }
     [self initData];
     
 }
@@ -67,10 +79,13 @@
              };
 
              */
+        
+            NSArray  *showArray = [responseObject objectForKey:@"lastApprovalStep"];
             
-            _lastTepDic  = [responseObject objectForKey:@"lastApprovalStep"];
-            
-            
+            for (NSDictionary *dic in showArray) {
+                ProgressShowModel *model = [ProgressShowModel yy_modelWithDictionary:dic];
+                [_progressShoeModelArray addObject:model];
+            }
             
             NSDictionary *dic = [responseObject objectForKey:@"apply"];
             NSString *time = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[dic objectForKey:@"apply_Date"]];
@@ -145,7 +160,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 1 ;
+        return [_progressShoeModelArray count];
     }else if (section == 1){
         return 2;
     }else{
@@ -172,14 +187,7 @@
         if (!cell) {
             cell = [[ProgressStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        cell.appleMan = [_lastTepDic objectForKey:@"approval_Man_Str"];
-        cell.statusTag = _model.statusReimburse;
-        
-//        0待提交，1待审批，2待支付，3未通过，4已支付
-        if (_model.statusReimburse == 3) {
-            _editButton.hidden = NO;
-        }
-        cell.memo = [_lastTepDic objectForKey:@"memo"];
+        cell.showModel = _progressShoeModelArray[indexPath.row];
         return cell;
     }
     
@@ -211,9 +219,30 @@
     
 }
 - (void)didClick:(UIButton *)sender{
+    
+    [_noBassEditArray removeAllObjects];
     [NetworkEntity postEditReimburseOfNOBassWithApplyID:_model.applyId Success:^(id responseObject) {
         
+        
         MMLog(@"EditReimburseOfNOBass  =======responseObject=====%@",responseObject);
+        
+        
+         NSDictionary *dic = [responseObject objectForKey:@"apply"];
+        ReimburseModel *model = [ReimburseModel yy_modelWithDictionary:dic];
+         NSArray *array = [dic objectForKey:@"details"];
+         for (NSDictionary *dic in array) {
+         EditMessageModel *model = [EditMessageModel yy_modelWithDictionary:dic];
+         [_noBassEditArray addObject:model];
+         
+         }
+         
+         NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
+//         newReimburseVC.rePurchaseBook = editReimburseBook;
+        newReimburseVC.rePurchaseBook = NOPassEdit;
+         newReimburseVC.reimburseModel = model;
+         newReimburseVC.netWorkRecordArray = _noBassEditArray;
+        
+        [self.navigationController pushViewController:newReimburseVC animated:YES];
     } failure:^(NSError *failure) {
         MMLog(@"EditReimburseOfNOBass  =======failure=====%@",failure);
     }];

@@ -78,8 +78,8 @@
     [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(5);
         make.left.mas_equalTo(self.bgView.mas_left).offset(20);
-        make.width.mas_equalTo(@10);
-        make.height.mas_equalTo(@10);
+        make.width.mas_equalTo(@20);
+        make.height.mas_equalTo(@20);
         
     }];
     

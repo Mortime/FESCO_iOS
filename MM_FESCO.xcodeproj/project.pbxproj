@@ -309,6 +309,7 @@
 		764223C01E1DD06B0094DEBB /* ReimburseApprovalDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223BF1E1DD06B0094DEBB /* ReimburseApprovalDetailController.m */; };
 		764223C31E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223C21E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m */; };
 		764223C61E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223C51E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m */; };
+		7642925C1E30663000A2B54F /* ProgressShowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7642925B1E30663000A2B54F /* ProgressShowModel.m */; };
 		764499D51DCC7DBA00A6404F /* ReimburseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499D41DCC7DBA00A6404F /* ReimburseController.m */; };
 		764499DC1DCC81CB00A6404F /* ReimburseRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DB1DCC81CB00A6404F /* ReimburseRecordHeaderView.m */; };
 		764499DF1DCC821800A6404F /* ReimburseWorkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764499DE1DCC821800A6404F /* ReimburseWorkHeaderView.m */; };
@@ -1036,6 +1037,8 @@
 		764223C21E1DE0C40094DEBB /* ReimburseApprovalInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalInfoModel.m; sourceTree = "<group>"; };
 		764223C41E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalInfoDetailsModel.h; sourceTree = "<group>"; };
 		764223C51E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalInfoDetailsModel.m; sourceTree = "<group>"; };
+		7642925A1E30663000A2B54F /* ProgressShowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressShowModel.h; sourceTree = "<group>"; };
+		7642925B1E30663000A2B54F /* ProgressShowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressShowModel.m; sourceTree = "<group>"; };
 		764499D31DCC7DBA00A6404F /* ReimburseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseController.h; sourceTree = "<group>"; };
 		764499D41DCC7DBA00A6404F /* ReimburseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseController.m; sourceTree = "<group>"; };
 		764499DA1DCC81CB00A6404F /* ReimburseRecordHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseRecordHeaderView.h; sourceTree = "<group>"; };
@@ -2718,6 +2721,8 @@
 				76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */,
 				7682502D1DE29FE9007520BD /* ReimburseModel.h */,
 				7682502E1DE29FE9007520BD /* ReimburseModel.m */,
+				7642925A1E30663000A2B54F /* ProgressShowModel.h */,
+				7642925B1E30663000A2B54F /* ProgressShowModel.m */,
 				761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */,
 				761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */,
 				76B1F5D01DFE4EE6001EBAB5 /* NOBookPurchaseModel.h */,
@@ -2998,17 +3003,17 @@
 				TargetAttributes = {
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = L3GS8KJ8Y4;
+						DevelopmentTeam = Q368GW6N72;
 						ProvisioningStyle = Automatic;
 					};
 					5977622A1D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = L3GS8KJ8Y4;
+						DevelopmentTeam = Q368GW6N72;
 						TestTargetID = 597762111D489AE000BD8472;
 					};
 					597762351D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = L3GS8KJ8Y4;
+						DevelopmentTeam = Q368GW6N72;
 						TestTargetID = 597762111D489AE000BD8472;
 					};
 				};
@@ -3331,6 +3336,7 @@
 				761A10961E2501D50006601A /* MMDataCodeTool.m in Sources */,
 				59C90C321D5C27F900CE0385 /* NSDate+Category.m in Sources */,
 				59A59E001D499937001F3122 /* UIViewAdditions.m in Sources */,
+				7642925C1E30663000A2B54F /* ProgressShowModel.m in Sources */,
 				59EC91601D98CB5900E802FA /* EaseBubbleView+Gif.m in Sources */,
 				761C37431E0929D9007E1607 /* BuffetImagLableCell.m in Sources */,
 				59EC91171D98CB5900E802FA /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -3528,11 +3534,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
+				DEVELOPMENT_TEAM = Q368GW6N72;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3575,11 +3581,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
+				DEVELOPMENT_TEAM = Q368GW6N72;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3607,13 +3613,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q368GW6N72;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3624,7 +3630,7 @@
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.zyt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3638,13 +3644,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 松 胡 (M7PG3DZT68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FESCO e-HR Service (Beijing) Co., Ltd.";
-				DEVELOPMENT_TEAM = L3GS8KJ8Y4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q368GW6N72;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3655,7 +3661,7 @@
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxinDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.zyt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

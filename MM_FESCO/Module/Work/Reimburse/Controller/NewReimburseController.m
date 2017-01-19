@@ -95,7 +95,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     // 加载消费记录
-    if (_rePurchaseBook == editReimburseBook) {
+    if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit) {
         // 当编辑报销单时
         _allMoneyNumber = 0;
         // 1 .加载消费记录(从已经保存的报销单加载消费记录)
@@ -177,7 +177,7 @@
     }
     
     
-    if (_rePurchaseBook == editReimburseBook) {
+    if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit) {
         // 日期
         NSString *applyDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_reimburseModel.applyDate];
         
@@ -230,7 +230,7 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
 
-    if (_rePurchaseBook == editReimburseBook) {
+    if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit ) {
         // 显示删除按钮
         //保存
         UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,15,15)];
@@ -297,7 +297,7 @@
             
             // 当编辑报销单时,因为其他数据是直接从_reimburseModel 获取的,所以不需要刷新;
             
-            if (_rePurchaseBook == editReimburseBook) {
+            if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit) {
                 
                 // 报销部门
                 NSString *groupName = @"";
@@ -521,7 +521,7 @@
             cell.titleStr = _titleArray[indexPath.row];
             cell.placeHold = _placeTitleArray[indexPath.row];
             
-            if (_rePurchaseBook == editReimburseBook ) {
+            if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit) {
                 cell.detailStr = _textTitleArray[indexPath.row];
             }else{
                 cell.detailStr = _oneStr;
@@ -530,7 +530,7 @@
         if (indexPath.section == 1) {
             cell.titleStr = _titleArray[indexPath.row + 1];
             cell.placeHold = _placeTitleArray[indexPath.row + 1];
-            if (_rePurchaseBook == editReimburseBook ) {
+            if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit ) {
                 cell.detailStr = _textTitleArray[indexPath.row + 1];
             }
         }
@@ -732,7 +732,7 @@
             
         }];
 
-    }else if (_rePurchaseBook == editReimburseBook){
+    }else if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit){
         // 正常返回
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults removeObjectForKey:kReimburseRecordList];
@@ -1010,6 +1010,7 @@
          [self.consumePopView removeFromSuperview];
         NewPurchaseRecordController *puschaseVC = [[NewPurchaseRecordController alloc] init];
         puschaseVC.dic = _dic;
+        puschaseVC.bookType = NOPassEdit;
         [self.navigationController pushViewController:puschaseVC animated:YES];
     }
     if (row == 1) {
@@ -1088,7 +1089,7 @@
 // 当编辑报销单时,用户没有编辑信息,用从Model读取数据
 - (void)editPurchaseDataInModel{
     _detailid = 0 ;
-    if (_rePurchaseBook == editReimburseBook) {
+    if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit ) {
         
         // 当编辑报销单时, 如果用户不点击对应项, 这是block回调就不会调用,所以当点击时要从Model 中取数据
         if (!_oneStr) {

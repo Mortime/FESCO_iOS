@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProgressShowModel.h"
 
 @interface ProgressStatusCell : UITableViewCell
+
+
+@property (nonatomic, strong) ProgressShowModel *showModel;
 
 @property (nonatomic, assign) NSInteger statusTag;
 

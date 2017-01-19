@@ -90,6 +90,14 @@
         MMLog(@"ReimburseApprovalInfo ========= responseObject ============%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
             // 请求成功
+            if ([responseObject objectForKey:@"is_Other_Party"] && ![[responseObject objectForKey:@"is_Other_Party"] isKindOfClass:[NSNull class]]) {
+                
+                if ([[responseObject objectForKey:@"is_Other_Party"] integerValue] == 0 ||[[responseObject objectForKey:@"is_Other_Party"] integerValue]== 1) {
+                    _isNOShowAppMan = YES;
+                }
+            }
+            
+
             NSDictionary *dic = [responseObject objectForKey:@"apply"];
                 ReimburseApprovalInfoModel *model = [ReimburseApprovalInfoModel yy_modelWithDictionary:dic];
                 [_reimburseInfoArray addObject:model];
@@ -105,13 +113,6 @@
                 if ([keyStr isEqualToString:@"lastApprovalStep"]) {
                     _isShowLaterMessage = YES;
                     NSDictionary *dic = [responseObject objectForKey:keyStr];
-                    if ([dic objectForKey:@"is_Other_Party"] && ![[dic objectForKey:@"is_Other_Party"] isKindOfClass:[NSNull class]]) {
-                        
-                        if ([[dic objectForKey:@"is_Other_Party"] integerValue] == 0 ||[[dic objectForKey:@"is_Other_Party"] integerValue]== 1) {
-                            _isNOShowAppMan = YES;
-                        }
-                    }
-                    
                     
                     
                     MMLog(@"lastApprovalStep == %@",dic);

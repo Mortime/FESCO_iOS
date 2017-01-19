@@ -33,7 +33,7 @@
     [self initData];
 }
 - (void)initData{
-    if (_bookType == noBookPurchase) {
+    if (_bookType == noBookPurchase || _bookType == NOPassEdit) {
         // 未制单消费
         [_dataArray removeAllObjects];
         [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
