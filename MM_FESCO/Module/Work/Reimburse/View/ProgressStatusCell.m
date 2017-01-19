@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UILabel *statusLabel;
 
+@property (nonatomic, strong) UILabel *timeLabel;
 @end
 
 @implementation ProgressStatusCell
@@ -46,6 +47,7 @@
     [self.bgView addSubview:self.lineView];
     [self.bgView addSubview:self.cycleView];
     [self.bgView addSubview:self.statusLabel];
+    [self.bgView addSubview:self.timeLabel];
     
 }
 - (void)layoutSubviews{
@@ -57,7 +59,7 @@
         
     }];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgView.mas_top);
+        make.top.mas_equalTo(self.bgView.mas_top).offset(5);
         make.left.mas_equalTo(self.bgView.mas_left).offset(40);
         make.bottom.mas_equalTo(self.bgView.mas_bottom);
         make.width.mas_equalTo(@1);
@@ -74,9 +76,15 @@
     }];
     [self.statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.lineView.mas_left).offset(20);
-        make.centerY.mas_equalTo(self.bgView.mas_centerY);
+        make.centerY.mas_equalTo(self.bgView.mas_centerY).offset(-5);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.height.mas_equalTo(@15);
+        
+    }];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.lineView.mas_left).offset(20);
+        make.top.mas_equalTo(self.statusLabel.mas_bottom).offset(5);
+        make.height.mas_equalTo(@13);
         
     }];
 
@@ -122,12 +130,22 @@
     }
     return _statusLabel;
 }
+- (UILabel *)timeLabel{
+    if (_timeLabel == nil) {
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.font = [UIFont systemFontOfSize:12];
+        _timeLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
+        
+    }
+    return _timeLabel;
+}
 - (void)setShowModel:(ProgressShowModel *)showModel{
     // 0待提交，1待审批，2待支付，3未通过，4已支付
     _statusLabel.text = [NSString stringWithFormat:@"%@ %@",showModel.approvalManStr,showModel.isPassStr];
     if (_memo) {
         _statusLabel.text = [NSString stringWithFormat:@"%@ %@ %@",showModel.approvalManStr,showModel.isPassStr,showModel.memo];
     }
+    _timeLabel.text = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:showModel.approvalTime];
 }
 
 @end
