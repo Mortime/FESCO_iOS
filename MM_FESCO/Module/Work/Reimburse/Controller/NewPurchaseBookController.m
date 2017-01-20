@@ -29,7 +29,10 @@
 
 @property (nonatomic, strong)  PurchaseCityCell *cityCell;
 
-@property (nonatomic, strong) NSMutableArray *picIDArray;
+@property (nonatomic, strong) NSMutableArray *picIDArray;  // 新建是图片ID
+
+@property (nonatomic, strong) NSMutableArray *huancunIDArray;  // 缓存图片id的数据,用于编辑消费记录未保存之前
+
 
 
 
@@ -45,7 +48,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor colorWithHexString:@"f0eff5"];
     self.picIDArray = [NSMutableArray array];
-    
+    self.huancunIDArray = [NSMutableArray array];
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
 
@@ -57,7 +60,7 @@
     [self.view addSubview:self.preservationButton];
     
     // 注册一个通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kGetPicIDNotifition object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kPicUpSuccessNotifition object:nil];
    // 未制单消费编辑时,给提交数据赋值
     
     
@@ -200,6 +203,7 @@
         
         if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
 //            self.curUploadImageHelper.selectedAssetURLs = self.urlArray;
+            
         }
         
         cell.curUploadImageHelper=self.curUploadImageHelper;
@@ -211,7 +215,6 @@
             [weakSelf.tableView reloadData];
         };
 
-        
         return cell;
     }
 
@@ -266,11 +269,18 @@
     }
 }
 
-
 #pragma mark ------  Notifition
 - (void)getPicID{
-    NSString *ns=[[NSUserDefaults standardUserDefaults] objectForKey:@"picID"][0];
-    [_picIDArray addObject:ns];
+    NSString *ns=[[NSUserDefaults standardUserDefaults] objectForKey:kPicUpSuccessID];
+    
+    if (_bookType == editReimburseBook ) {
+        [_picIDArray addObject:ns];
+    }else{
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:ns forKey:@"id"];
+        [_huancunIDArray addObject:dic];
+    }
+    
 }
 #pragma mark 自定义代码
 
@@ -461,6 +471,14 @@
             model.billNum = [_billNumber integerValue];
             model.detailMemo = _memo;
             model.cityName = _cityName;
+            // 图片数组
+            NSArray *picArray = model.picArray;
+            NSMutableArray *muArray = picArray.mutableCopy;
+            for (NSDictionary *dic in _huancunIDArray) {
+                [muArray addObject:dic];
+            }
+            model.picArray = muArray;
+            
             [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:model];
             if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
                 [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];

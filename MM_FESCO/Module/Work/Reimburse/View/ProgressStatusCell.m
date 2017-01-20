@@ -145,7 +145,10 @@
     if (_memo) {
         _statusLabel.text = [NSString stringWithFormat:@"%@ %@ %@",showModel.approvalManStr,showModel.isPassStr,showModel.memo];
     }
-    _timeLabel.text = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:showModel.approvalTime];
+    if (showModel.approvalTime) {
+        _timeLabel.text = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:showModel.approvalTime];
+    }
+    
 }
 
 @end

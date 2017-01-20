@@ -11,6 +11,7 @@
 #import "MPImageItemModel.h"
 //#import "MPUploadImageItemService.h"
 
+
 @interface MPImageProgressCollectionCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView          *imgView;

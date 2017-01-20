@@ -134,6 +134,11 @@
                         
                         //请求成功
                         MMLog(@"请求成功：%@",responseObject);
+                        NSDictionary *dic = [[responseObject objectForKey:@"pics"] firstObject];
+                        MMLog(@"[dic objectForKey===%@",[dic objectForKey:@"id"]);
+                        [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"id"] forKey:kPicUpSuccessID];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kPicUpSuccessNotifition object:self];
+                        
                         
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {  
                         

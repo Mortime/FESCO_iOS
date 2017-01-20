@@ -58,20 +58,13 @@
 @property (nonatomic, strong) NSMutableArray *networkArrayEdit;
 @property (nonatomic, weak) id <NewPurchaseBookControllerDelegate>delegate;
 
-
-
-
-
-
-
-
-
 @property (nonatomic, assign) NSInteger ID;
 @property (nonatomic, strong) NSString *icon; // 标题名称
 @property (nonatomic, strong) NOBookPurchaseModel *noBookmodel;
 
 
-
+// 加载图片相关信息
+@property (nonatomic, strong) NSArray *EditPicArray; // 网络编辑图片展示
 
 
 

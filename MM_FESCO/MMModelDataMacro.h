@@ -24,9 +24,9 @@
 
 #define kGetReimburseRecordNotifition  @"GetReimburseRecordNotifition"  // 加载消费记录的通知
 
-#define kGetPicIDNotifition @"GetPicIDNotifition" // 通知控制器取出PicID
-
 #define  kAddNOBookNotifition @"AddNOBookNotifition"  // 添加未制单消费通知
+
+#define kPicUpSuccessNotifition  @"kPicUpSuccessNotifition"  // 图片上传成功通知
 
 
 // Key标识符
@@ -41,6 +41,10 @@
 #define kGroupName @"GroupName"     // 本地保存组名
 
 #define kGroupID @"GroupID"     // 本地保存组名
+
+
+#define kPicUpSuccessID  @"PicUpSuccessID"  // 图片上传成功存储的ID
+
 
 
 

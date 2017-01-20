@@ -9,6 +9,10 @@
 #import "MMBaseViewController.h"
 #import "ReimburseModel.h"
 
+typedef void (^NetworkSuccessBlock) (id responseObject);
+
+typedef void (^NetworkFailureBlock) (NSError *failure);
+
 @interface NewReimburseController : MMBaseViewController
 
 @property (nonatomic, assign)  RePurchaseBookType rePurchaseBook;
