@@ -176,13 +176,8 @@
         _titleLabel.text = @"未知";
     }
     
-    
-    NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
-    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
-    
-    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
-    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
-
+    // 设置图标
+    [self setBtnIconWithIconStr:model.icon];
     
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: model.spendBegin];
@@ -194,9 +189,12 @@
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.moneyAmount];
 }
 - (void)setDic:(NSDictionary *)dic{
+    
     _titleLabel.text = [dic objectForKey:@"typePurchaseStr"];
-//    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"typePurchaseStr"] substringToIndex:2]]];
-    _btn.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+    
+    // 设置图标
+    [self setBtnIconWithIconStr:[dic objectForKey:@"icon"]];
+    
     NSString *timeStr = @"";
     timeStr = [dic objectForKey:@"spendBegin"];
     if ([dic objectForKey:@"spendEnd"]) {
@@ -215,12 +213,8 @@
         _titleLabel.text = @"未知";
     }
     
-    
-    NSArray *iconArray = [chooseModel.icon componentsSeparatedByString:@" "];
-    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
-    
-    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
-    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+    // 设置图标
+   [self setBtnIconWithIconStr:chooseModel.icon];
     
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: chooseModel.spendBegin];
@@ -230,5 +224,11 @@
     }
     _timeLabel.text = timeStr;
     _moneyLabel.text = [NSString stringWithFormat:@"¥ %.2f",chooseModel.moneyAmount];
+}
+- (void)setBtnIconWithIconStr:(NSString *)iconStr{
+    NSArray *iconArray = [iconStr componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
 }
 @end

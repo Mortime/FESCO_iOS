@@ -33,7 +33,6 @@
     [self initData];
 }
 - (void)initData{
-    if (_bookType == noBookPurchase || _bookType == NOPassEdit) {
         // 未制单消费
         [_dataArray removeAllObjects];
         [NetworkEntity postEditReimburseBookSuccess:^(id responseObject) {
@@ -54,20 +53,7 @@
             [toastView show];
         }];
 
-    }else{
-        
-        //
-        [_dataArray removeAllObjects];
-        NSArray *array = [_dic objectForKey:@"spendTypes"];
-        for (NSDictionary *dic in array) {
-            PurchaseRecordModel *modle = [PurchaseRecordModel yy_modelWithDictionary:dic];
-            [_dataArray addObject:modle];
-        }
-        [self.tableView reloadData];
-
-    }
-    
-    }
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _dataArray.count;
@@ -114,7 +100,7 @@
         bookVC.ID = modle.ID;
         bookVC.bookType = self.bookType;
         bookVC.typePurchaseStr = modle.typeName;
-        subVC.icon = modle.icon; 
+        bookVC.icon = modle.icon; 
 
         [self.navigationController pushViewController:bookVC animated:YES];
     }

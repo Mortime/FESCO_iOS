@@ -75,10 +75,6 @@
 }
 
 
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -741,6 +737,7 @@
                                   @"picUrl":_picUrl,
                                   @"detailMemo":_memo,
                                   @"spendCity":_cityName,
+                                  @"icon":self.icon,
                                   @"ID":[NSString stringWithFormat:@"%lu",_ID],
                                   @"typePurchaseStr":_typePurchaseStr
                                   };

@@ -645,6 +645,7 @@
         bookVC.moneyNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"moneyAmount"]];
         bookVC.billNumber = [NSString stringWithFormat:@"%@",[dic objectForKey:@"billNum"]];
         bookVC.memo = [dic objectForKey:@"detailMemo"];
+        bookVC.icon = [dic objectForKey:@"icon"];
         bookVC.indexTag = indexPath.row;
         bookVC.sectionTag = indexPath.section;
         bookVC.networkArrayEdit = _editPurchaseRccordArray;
@@ -692,14 +693,8 @@
         bookVC.indexTag = indexPath.row;
         bookVC.sectionTag = indexPath.section;
         bookVC.networkArrayEdit = _noBookRecordArray;
+        bookVC.EditPicArray = model.picArray;
         bookVC.delegate = self;
-        
-        
-        //    // 测试数组
-        NSMutableArray *array = [NSMutableArray array];
-        //    NSURL *URL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=B84E8479-475C-4727-A4A4-B77AA9980897&ext=JPG"];
-        //    [array addObject:URL];
-        bookVC.urlArray = array;
         
         [self.navigationController pushViewController:bookVC animated:YES];
 
