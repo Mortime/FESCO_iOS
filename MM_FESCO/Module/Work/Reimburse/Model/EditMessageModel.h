@@ -62,5 +62,7 @@
 
 @property (nonatomic, strong) NSString *detailMemo;  // 消费城市
 
+@property (nonatomic, strong) NSString *icon;
+
 
 @end

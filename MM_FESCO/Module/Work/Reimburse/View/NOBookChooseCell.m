@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIImageView *leftimagView;
 
-@property (nonatomic, strong) UIImageView *flageImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
@@ -47,7 +47,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
     [self.bgView addSubview:self.leftimagView];
-    [self.bgView addSubview:self.flageImageView];
+    [self.bgView addSubview:self.btn];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.timeLabel];
     [self.bgView addSubview:self.moneyLabel];
@@ -74,7 +74,7 @@
     }];
 
     
-    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.leftimagView.mas_right).offset(10);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
@@ -84,8 +84,8 @@
     
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flageImageView.mas_top);
-        make.left.mas_equalTo(self.flageImageView.mas_right).offset(10);
+        make.top.mas_equalTo(self.btn.mas_top);
+        make.left.mas_equalTo(self.btn.mas_right).offset(10);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.height.mas_equalTo(@14);
         
@@ -127,12 +127,12 @@
     return _leftimagView;
 }
 
-- (UIImageView *)flageImageView{
-    if (_flageImageView == nil) {
-        _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
     }
-    return _flageImageView;
+    return _btn;
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -168,7 +168,13 @@
 - (void)setModel:(NOBookChooseModel *)model{
     _titleLabel.text = model.spendTypeStr;
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendTypeStr substringToIndex:2]]];
+    NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+    
+
     
     
     NSString *timeStr = @"";

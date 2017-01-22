@@ -14,7 +14,7 @@
 
 
 
-@property (nonatomic, strong) UIImageView *flageImageView;
+@property (nonatomic, strong) UIButton *btn;
 
 @property (nonatomic ,strong) UILabel *titleLabel;
 
@@ -47,7 +47,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addSubview:self.bgView];
     [self addSubview:self.deleBtn];
-    [self.bgView addSubview:self.flageImageView];
+    [self.bgView addSubview:self.btn];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.timeLabel];
     [self.bgView addSubview:self.moneyLabel];
@@ -71,7 +71,7 @@
         make.width.mas_equalTo(@20);
         make.height.mas_equalTo(@20);
     }];
-    [self.flageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgView.mas_left).offset(20);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@30);
@@ -81,8 +81,8 @@
 
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.flageImageView.mas_top);
-        make.left.mas_equalTo(self.flageImageView.mas_right).offset(10);
+        make.top.mas_equalTo(self.btn.mas_top);
+        make.left.mas_equalTo(self.btn.mas_right).offset(10);
         make.right.mas_equalTo(self.bgView.mas_right);
         make.height.mas_equalTo(@14);
         
@@ -130,12 +130,12 @@
     }
     return _deleBtn;
 }
-- (UIImageView *)flageImageView{
-    if (_flageImageView == nil) {
-        _flageImageView = [[UIImageView alloc] init];
-        _flageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+- (UIButton *)btn{
+    if (_btn == nil) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btn setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
     }
-    return _flageImageView;
+    return _btn;
 }
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
@@ -177,7 +177,12 @@
     }
     
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[model.spendType substringToIndex:2]]];
+    NSArray *iconArray = [model.icon componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+
     
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: model.spendBegin];
@@ -190,7 +195,8 @@
 }
 - (void)setDic:(NSDictionary *)dic{
     _titleLabel.text = [dic objectForKey:@"typePurchaseStr"];
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"typePurchaseStr"] substringToIndex:2]]];
+//    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[[dic objectForKey:@"typePurchaseStr"] substringToIndex:2]]];
+    _btn.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     NSString *timeStr = @"";
     timeStr = [dic objectForKey:@"spendBegin"];
     if ([dic objectForKey:@"spendEnd"]) {
@@ -210,7 +216,11 @@
     }
     
     
-    _flageImageView.image = [UIImage imageNamed:[NSString backPicNameWith:[chooseModel.spendTypeStr substringToIndex:2]]];
+    NSArray *iconArray = [chooseModel.icon componentsSeparatedByString:@" "];
+    FAIcon icon = [NSString fontAwesomeEnumForIconIdentifier:iconArray[1]];
+    
+    [_btn.titleLabel setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:20]];
+    [_btn setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     
     NSString *timeStr = @"";
     timeStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss: chooseModel.spendBegin];

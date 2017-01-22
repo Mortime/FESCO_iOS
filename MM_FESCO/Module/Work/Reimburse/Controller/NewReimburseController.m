@@ -579,6 +579,7 @@
         
         // 消费类型
         bookVC.typePurchaseStr = model.spendType;
+        bookVC.icon = model.icon;
         bookVC.title = model.spendType;
         bookVC.startTime = model.spendBegin;
         bookVC.moneyNumber = [NSString stringWithFormat:@"%.2f",model.moneyAmount];
@@ -682,6 +683,7 @@
         
         // 消费类型
         bookVC.typePurchaseStr = model.spendTypeStr;
+        bookVC.icon = model.icon;
         bookVC.title = model.spendTypeStr;
         bookVC.startTime = model.spendBegin;
         bookVC.moneyNumber = [NSString stringWithFormat:@"%.2f",model.moneyAmount];
