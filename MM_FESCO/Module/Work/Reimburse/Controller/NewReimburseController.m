@@ -91,7 +91,7 @@
 @property (nonatomic,strong) NSString *picID; // 图片ID
 
 
-@property (nonatomic, strong) NSMutableArray *picStreamArray;
+
 
 @end
 
@@ -158,7 +158,7 @@
     self.editPurchaseRccordArray = [NSMutableArray array];
     self.groupArray = [NSMutableArray array];
     self.applyManArray = [NSMutableArray array];
-    self.picStreamArray = [NSMutableArray array];
+    
     
     
     if (_rePurchaseBook == newReimburseBook) {
@@ -590,37 +590,9 @@
         bookVC.delegate = self;
         bookVC.EditPicArray = model.picArray;
         
-        [_picStreamArray removeAllObjects];
-        for (NSDictionary *dic in model.picArray) {
-            if ([dic objectForKey:@"id"]) {
-                [self postGetPicStreamforeWithPicId:[dic objectForKey:@"id"] Success:^(id responseObject) {
-                    MMLog(@"GetPicStreamforeWithPicId ====responseObject==== %@",responseObject);
-                     UIImage *image = [UIImage imageWithData:responseObject];
-                    MPImageItemModel *model = [[MPImageItemModel alloc] init];
-                    model.thumbnailImage = image;
-                    model.image= image;  
-                    [_picStreamArray addObject:model];
-                    MMLog(@"_picStreamArray = %@",_picStreamArray);
-                    
-                    bookVC.urlArray = _picStreamArray;
-                    [self.navigationController pushViewController:bookVC animated:YES];
 
-                } failure:^(NSError *failure) {
-                    MMLog(@"GetPicStreamforeWithPicId ====failure==== %@",failure);
-                }];
-                
-               
-            }else{
-                [self.navigationController pushViewController:bookVC animated:YES];
+        [self.navigationController pushViewController:bookVC animated:YES];
 
-            }
-                   }
-        
-        //    // 测试数组
-        
-    
-        
-        
         
     }
     if (indexPath.section == 3) {
@@ -717,7 +689,7 @@
         bookVC.memo = model.detailMemo;
         bookVC.indexTag = indexPath.row;
         bookVC.sectionTag = indexPath.section;
-        bookVC.networkArrayEdit = _netWorkRecordArray;
+        bookVC.networkArrayEdit = _noBookRecordArray;
         bookVC.delegate = self;
         
         
@@ -1163,38 +1135,6 @@
         _detailid = _reimburseModel.applyId;  // 申请ID 
     }
     
-}
-- (void)postGetPicStreamforeWithPicId:(NSString *)picId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
-    AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSDictionary *dic = @{
-                          @"pic_Id":picId,
-                          @"methodname":@"expense/getPicStream.json"
-                          };
-    
-    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
-    
-    NSString *sign = [NSString sortKeyWith:dic];
-    
-    NSLog(@"%@%@",jsonParam,sign);
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/getPicStream.json"];
-    
-    NSDictionary *param = @{@"jsonParam":jsonParam,
-                            
-                            @"sign":sign,
-                            
-                            @"tokenkey":[UserInfoModel defaultUserInfo].token
-                            
-                            
-                            };
-    [manager POST:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
-
 }
 
 - (UITableView *)tableView {

@@ -34,6 +34,9 @@
 @property (nonatomic, strong) NSMutableArray *huancunIDArray;  // 缓存图片id的数据,用于编辑消费记录未保存之前
 
 
+@property (nonatomic, strong) NSMutableArray *picStreamArray;
+
+
 
 
 
@@ -42,6 +45,40 @@
 
 @implementation NewPurchaseBookController
 
+- (void)viewWillAppear:(BOOL)animated{
+    if (_bookType == PurchaseEdit) {
+        [_picStreamArray removeAllObjects];
+        for (NSDictionary *dic in _EditPicArray) {
+            if ([dic objectForKey:@"id"]) {
+                [self postGetPicStreamforeWithPicId:[dic objectForKey:@"id"] Success:^(id responseObject) {
+                    MMLog(@"GetPicStreamforeWithPicId ====responseObject==== %@",responseObject);
+                    UIImage *image = [UIImage imageWithData:responseObject];
+                    MPImageItemModel *model = [[MPImageItemModel alloc] init];
+                    model.thumbnailImage = image;
+                    model.image= image;
+                    [_picStreamArray addObject:model];
+                    MMLog(@"_picStreamArray = %@",_picStreamArray);
+                    [_tableView reloadData];
+                    
+                } failure:^(NSError *failure) {
+                    MMLog(@"GetPicStreamforeWithPicId ====failure==== %@",failure);
+                }];
+                
+                
+            }
+        }
+    
+
+    }
+    
+
+}
+
+
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -49,16 +86,18 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"f0eff5"];
     self.picIDArray = [NSMutableArray array];
     self.huancunIDArray = [NSMutableArray array];
+    self.picStreamArray = [NSMutableArray array];
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
 
-    _curUploadImageHelper.imagesArray = self.urlArray;
+    _curUploadImageHelper.imagesArray = self.picStreamArray;
 
     _billNumber = @"1";
 
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.preservationButton];
+    
     
     // 注册一个通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kPicUpSuccessNotifition object:nil];
@@ -550,13 +589,24 @@
         }else if (sender.tag == 701 && _sectionTag == 4){
             
             NOBookChooseModel *model = _networkArrayEdit[_indexTag];
+            MMLog(@"+++=%@",model.spendTypeStr);
             model.moneyAmount = [_moneyNumber floatValue];
             model.spendBegin = _startTime;
             model.spendEnd = _endTime;
             model.billNum = [_billNumber integerValue];
             model.detailMemo = _memo;
             model.cityName = _cityName;
+            // 图片数组
+            NSArray *picArray = model.picArray;
+            NSMutableArray *muArray = picArray.mutableCopy;
+            for (NSDictionary *dic in _huancunIDArray) {
+                [muArray addObject:dic];
+            }
+            model.picArray = muArray;
+            
+            
             [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:model];
+            MMLog(@"+++=%@",model.spendTypeStr);
             if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
                 [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
             }
@@ -726,6 +776,42 @@
     NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_purchaseRecord];
             MMLog(@"数据库返回数据: %@",dataBaseDic);
 }
+
+- (void)postGetPicStreamforeWithPicId:(NSString *)picId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *dic = @{
+                          @"pic_Id":picId,
+                          @"methodname":@"expense/getPicStream.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/getPicStream.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    [manager POST:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
+
+
+
 - (void)didClickedWithCityName:(NSString *)cityName{
     _cityName = cityName;
     _cityCell.resultLabel.textColor = [UIColor blackColor];
