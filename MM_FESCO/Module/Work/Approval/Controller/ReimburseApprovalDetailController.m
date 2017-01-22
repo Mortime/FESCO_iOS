@@ -55,6 +55,8 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *manID;
 
+@property (nonatomic, strong) NSMutableArray *picStreamArray;
+
 @end
 
 @implementation ReimburseApprovalDetailController
@@ -73,6 +75,7 @@
     self.bottomDataArray = [NSMutableArray array];
     
     self.pickDataArray = [NSMutableArray array];
+    self.picStreamArray = [NSMutableArray array];
     
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
     self.reimburseInfoArray = [NSMutableArray array];
@@ -361,7 +364,43 @@
         detailVc.icon = [dic objectForKey:@"icon"];
         detailVc.title = [dic objectForKey:@"spend_Type_Str"];
         detailVc.dic = dic;
-        [self.navigationController pushViewController:detailVc animated:YES];
+        
+        
+        for (NSDictionary *dic in [[model.details firstObject] objectForKey:@"pics"]) {
+            if ([dic objectForKey:@"id"]) {
+                [_picStreamArray removeAllObjects];
+                [self postGetPicStreamforeWithPicId:[dic objectForKey:@"id"] Success:^(id responseObject) {
+                    MMLog(@"GetPicStreamforeWithPicId ====responseObject==== %@",responseObject);
+                    UIImage *image = [UIImage imageWithData:responseObject];
+                    MPImageItemModel *model = [[MPImageItemModel alloc] init];
+                    model.thumbnailImage = image;
+                    model.image= image;
+                    [_picStreamArray addObject:model];
+                    MMLog(@"_picStreamArray = %@",_picStreamArray);
+                    
+
+                    detailVc.picStreamArray = _picStreamArray;
+                    //                    bookVC.imgBigArray = bigArray;
+                    [self.navigationController pushViewController:detailVc animated:YES];
+                    
+                } failure:^(NSError *failure) {
+                    MMLog(@"GetPicStreamforeWithPicId ====failure==== %@",failure);
+                }];
+                
+                
+            }else{
+                [self.navigationController pushViewController:detailVc animated:YES];
+                
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+//        [self.navigationController pushViewController:detailVc animated:YES];
  
     }
     
@@ -541,6 +580,39 @@
     
 }
 
+
+- (void)postGetPicStreamforeWithPicId:(NSString *)picId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *dic = @{
+                          @"pic_Id":picId,
+                          @"methodname":@"expense/getPicStream.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"expense/getPicStream.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    [manager POST:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

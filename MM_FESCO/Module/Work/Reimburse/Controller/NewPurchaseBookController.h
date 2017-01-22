@@ -35,6 +35,8 @@
 
 @property (nonatomic, strong) NSMutableArray *urlArray;
 
+@property (nonatomic, strong) NSMutableArray *imgBigArray;
+
 // 保存时提交服务器数据
 
 @property (nonatomic, strong) NSString *moneyNumber;  // 金额

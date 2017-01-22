@@ -61,6 +61,7 @@
 -(void)setCurImageItem:(MPImageItemModel *)curImageItem
 {
     _curImageItem=curImageItem;
+    self.progressView.hidden=YES;        //   自己添加
     if (_curImageItem) {
         
         _imgView.image=curImageItem.thumbnailImage;

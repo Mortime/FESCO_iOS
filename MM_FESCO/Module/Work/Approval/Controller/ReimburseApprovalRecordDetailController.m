@@ -31,6 +31,7 @@
     
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
+    _curUploadImageHelper.imagesArray = self.picStreamArray;
     
     [self.view addSubview:self.tableView];
     

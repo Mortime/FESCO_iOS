@@ -26,5 +26,7 @@
 @property (nonatomic, strong) NSString *startTime; // 标题名称
 @property (nonatomic, strong) NSDictionary *dic;
 
+@property (nonatomic, strong) NSMutableArray *picStreamArray;
+
 
 @end
