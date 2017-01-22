@@ -52,7 +52,6 @@
     //初始化
     _curUploadImageHelper=[MPUploadImageHelper MPUploadImageForSend:NO];
 
-//        _curUploadImageHelper.selectedAssetURLs = self.imgBigArray;
     _curUploadImageHelper.imagesArray = self.urlArray;
 
     _billNumber = @"1";

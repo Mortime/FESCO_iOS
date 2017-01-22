@@ -589,9 +589,10 @@
         bookVC.networkArrayEdit = _netWorkRecordArray;
         bookVC.delegate = self;
         bookVC.EditPicArray = model.picArray;
+        
+        [_picStreamArray removeAllObjects];
         for (NSDictionary *dic in model.picArray) {
             if ([dic objectForKey:@"id"]) {
-                [_picStreamArray removeAllObjects];
                 [self postGetPicStreamforeWithPicId:[dic objectForKey:@"id"] Success:^(id responseObject) {
                     MMLog(@"GetPicStreamforeWithPicId ====responseObject==== %@",responseObject);
                      UIImage *image = [UIImage imageWithData:responseObject];
@@ -601,13 +602,7 @@
                     [_picStreamArray addObject:model];
                     MMLog(@"_picStreamArray = %@",_picStreamArray);
                     
-                    NSMutableArray *bigArray = [NSMutableArray array];
-                    [bigArray addObject:@"assets-library://asset/asset.JPG?id=99D53A1F-FEEF-40E1-8BB3-7DD55A43C8B7&ext=JPG"];
-                    
-                    
-                    
                     bookVC.urlArray = _picStreamArray;
-//                    bookVC.imgBigArray = bigArray;
                     [self.navigationController pushViewController:bookVC animated:YES];
 
                 } failure:^(NSError *failure) {

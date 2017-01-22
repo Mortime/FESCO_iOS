@@ -72,13 +72,26 @@
     //把为浏览大图做准备
     if (_imageViewsDict) {
         [_imageViewsDict removeAllObjects];
-        
-        for (NSURL *itemUrl in curUploadImageHelper.selectedAssetURLs) {
-            MWPhoto *mwphoto=[MWPhoto photoWithURL:itemUrl];
-            mwphoto.caption=nil;
-            [_imageViewsDict addObject:mwphoto];
+        for (MPImageItemModel *model in curUploadImageHelper.imagesArray) {
+            // 当编辑是无法获得selectedAssetURLs,这时把图片直接传给MWPhoto
+            if (!model.isUpload) {
+                MWPhoto *mwphoto=[MWPhoto photoWithImage:model.image];
+                mwphoto.caption=nil;
+                [_imageViewsDict addObject:mwphoto];
+
+            }else{
+                
+                // 原始只有这一种情况,
+                for (NSURL *itemUrl in curUploadImageHelper.selectedAssetURLs) {
+                    MWPhoto *mwphoto=[MWPhoto photoWithURL:itemUrl];
+                    mwphoto.caption=nil;
+                    [_imageViewsDict addObject:mwphoto];
+                }
+ 
+            }
         }
-    }
+        
+            }
 }
 
 
