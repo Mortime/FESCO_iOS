@@ -109,10 +109,10 @@
     UIButton *button = [UIButton new];
     [button.layer setMasksToBounds:YES];
     [button.layer setCornerRadius:btnHeight / 2.f];
-    [button setTitle:@"点击进入" forState:UIControlStateNormal];
+//    [button setTitle:@"点击进入" forState:UIControlStateNormal];
     
     button.frame = CGRectMake((SCREEN_WIDTH - btnWidth) / 2, SCREEN_HEIGHT - btnHeight - btnBottom +  28, btnWidth, btnHeight);
-    button.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+    button.backgroundColor = [UIColor clearColor];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *imageView = (UIImageView *)[self.scrollView viewWithTag:tag];
