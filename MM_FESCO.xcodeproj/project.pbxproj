@@ -318,6 +318,8 @@
 		76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B3F1DED12D40054E910 /* ProgressMessageCell.m */; };
 		76515B431DED12FB0054E910 /* ProgressPuschaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */; };
 		765E1D151E1206F100B6C598 /* SocialSecurityCardIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 765E1D141E1206F100B6C598 /* SocialSecurityCardIDView.m */; };
+		7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */ = {isa = PBXBuildFile; fileRef = 7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */; };
+		7662B5D61E35987C007951E9 /* YBWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7662B5D51E35987C007951E9 /* YBWelcomeController.m */; };
 		7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7682502E1DE29FE9007520BD /* ReimburseModel.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
@@ -1055,6 +1057,9 @@
 		76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressPuschaseCell.m; sourceTree = "<group>"; };
 		765E1D131E1206F100B6C598 /* SocialSecurityCardIDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityCardIDView.h; sourceTree = "<group>"; };
 		765E1D141E1206F100B6C598 /* SocialSecurityCardIDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCardIDView.m; sourceTree = "<group>"; };
+		7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "红色.tag6.savedSearch"; sourceTree = "<group>"; };
+		7662B5D41E35987C007951E9 /* YBWelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBWelcomeController.h; sourceTree = "<group>"; };
+		7662B5D51E35987C007951E9 /* YBWelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWelcomeController.m; sourceTree = "<group>"; };
 		7682502D1DE29FE9007520BD /* ReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseModel.h; sourceTree = "<group>"; };
 		7682502E1DE29FE9007520BD /* ReimburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseModel.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
@@ -2021,6 +2026,8 @@
 		59A59E301D49C6A3001F3122 /* MM_Login */ = {
 			isa = PBXGroup;
 			children = (
+				7662B5D41E35987C007951E9 /* YBWelcomeController.h */,
+				7662B5D51E35987C007951E9 /* YBWelcomeController.m */,
 				59F4D6371D81387200C56E5D /* JZUserLoginManager.h */,
 				59F4D6381D81387200C56E5D /* JZUserLoginManager.m */,
 				59A59E311D49C6A3001F3122 /* MMLoginController.h */,
@@ -2654,6 +2661,7 @@
 				761C373D1E09299A007E1607 /* BuffetController.h */,
 				761C373E1E09299A007E1607 /* BuffetController.m */,
 				760A7EF21E0CB6070036C6C6 /* SocialSecurityController.h */,
+				7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */,
 				760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */,
 				760A7EFE1E0D071B0036C6C6 /* NOSocialSecurityController.h */,
 				760A7EFF1E0D071B0036C6C6 /* NOSocialSecurityController.m */,
@@ -3003,8 +3011,7 @@
 				TargetAttributes = {
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 6SWT7Q8USS;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					5977622A1D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -3045,6 +3052,7 @@
 			files = (
 				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
 				761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */,
+				7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */,
 				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
@@ -3305,6 +3313,7 @@
 				597762171D489AE000BD8472 /* main.m in Sources */,
 				597223EF1DAE2F6400D01A7A /* CheckStatisticController.m in Sources */,
 				59EC914B1D98CB5900E802FA /* UIViewController+DismissKeyboard.m in Sources */,
+				7662B5D61E35987C007951E9 /* YBWelcomeController.m in Sources */,
 				59EC91DF1D98D9AD00E802FA /* UIImage+EMWebP.m in Sources */,
 				76F02FEE1DD4541100D32771 /* UIView+ViewController.m in Sources */,
 				59C197C51D5ABFB100C7F593 /* UserInfoModel.m in Sources */,
@@ -3534,8 +3543,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3558,7 +3567,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3581,8 +3590,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3599,7 +3608,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3613,9 +3622,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SWT7Q8USS;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3630,10 +3639,10 @@
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
 			};
 			name = Debug;
 		};
@@ -3644,9 +3653,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SWT7Q8USS;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3661,10 +3670,10 @@
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/MM_FESCO/Lib/EaseMob/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
 			};
 			name = Release;
 		};

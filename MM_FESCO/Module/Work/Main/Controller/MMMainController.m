@@ -287,16 +287,21 @@ static NSString *kMallID = @"MallID";
     }
     if (indexPath.row == 10) {
         //  薪酬列表
-        
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
         
     }
     if (indexPath.row == 11) {
           // HRS数据录入
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
         
         
     }
     if (indexPath.row == 12) {
           //  HRS数据勘查
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
         
     }
     

@@ -18,22 +18,8 @@
 #import "MyController.h"
 #import <BaiduMapAPI/BMapKit.h>
 #import "NetMonitor.h"
+#import "YBWelcomeController.h"
 
-//#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
-
-//#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
-
-//#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
-
-//#import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>//引入云检索功能所有的头文件
-
-//#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
-
-//#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
-
-//#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
-
-//#import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
 
 
 @interface AppDelegate ()
@@ -65,19 +51,24 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    if ([UserInfoModel  isLogin]) {
-        
-//        MMMainController *mainVC = [[MMMainController alloc] init];
-//        HMNagationController *NC = [[HMNagationController alloc] initWithRootViewController:mainVC];
-        DVVTabBarController *taBar = [self homeTabBarView];
-        
-        self.window.rootViewController = taBar;
-
+    // 引导页
+    if ([YBWelcomeController isShowWelcome]) {
+        self.window.rootViewController = [[YBWelcomeController alloc] init];
     }else{
         
-        MMLoginController *loginVC = [[MMLoginController alloc] init];
-        self.window.rootViewController = loginVC;
+        if ([UserInfoModel  isLogin]) {
+            DVVTabBarController *taBar = [self homeTabBarView];
+            
+            self.window.rootViewController = taBar;
+            
+        }else{
+            
+            MMLoginController *loginVC = [[MMLoginController alloc] init];
+            self.window.rootViewController = loginVC;
+        }
+
     }
+    
     
     
     	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
