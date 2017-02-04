@@ -115,6 +115,7 @@
     ReimburseApprovalDetailController *overVC = [[ReimburseApprovalDetailController alloc] init];
     ReimburseApprovalListModel *model = self.viewModel.reimburseListArray[indexPath.row];
     overVC.applyId = model.applyId;
+    overVC.hidesBottomBarWhenPushed = YES;
     [self.parementVC.navigationController pushViewController:overVC animated:YES];
 }
 

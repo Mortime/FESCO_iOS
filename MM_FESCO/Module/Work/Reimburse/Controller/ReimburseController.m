@@ -182,6 +182,7 @@
                 newReimburseVC.rePurchaseBook = editReimburseBook;
                 newReimburseVC.reimburseModel = _dataArray[indexPath.row];
                 newReimburseVC.netWorkRecordArray = _netWorkRecordArray;
+                newReimburseVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:newReimburseVC animated:YES];
 
             }
@@ -191,6 +192,7 @@
     }else{
         ProgressReimburseController *progressVC = [[ProgressReimburseController alloc] init];
         progressVC.model = model;
+        progressVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:progressVC animated:YES];
     }
 }
@@ -215,12 +217,14 @@
         MMLog(@"点击了添加报销单");
         NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
         newReimburseVC.rePurchaseBook = newReimburseBook;
+        newReimburseVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newReimburseVC animated:YES];
     }
     if (sender.tag == 502) {
         MMLog(@"未制单消费");
         // 未制单消费
         NOBookPurchaseController *noBookVC = [[NOBookPurchaseController alloc] init];
+        noBookVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:noBookVC animated:YES];
 
     }

@@ -115,6 +115,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SignUpApprovalDetailController *signUpApprovaVC = [[SignUpApprovalDetailController alloc] init];
     signUpApprovaVC.listModel = self.viewModel.signUpListArray[indexPath.row];
+    signUpApprovaVC.hidesBottomBarWhenPushed = YES;
     [self.parementVC.navigationController pushViewController:signUpApprovaVC animated:YES];
 }
 - (MMNoDataShowBGView *)noDataShowBGView{

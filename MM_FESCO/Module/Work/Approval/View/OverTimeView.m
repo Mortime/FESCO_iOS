@@ -112,6 +112,7 @@
     
     OverTimeDetailController *overVC = [[OverTimeDetailController alloc] init];
     overVC.overTimeModel = self.viewModel.overTimeListArray[indexPath.row];
+    overVC.hidesBottomBarWhenPushed = YES;
     [self.parementVC.navigationController pushViewController:overVC animated:YES];
 }
 

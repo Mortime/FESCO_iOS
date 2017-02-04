@@ -19,6 +19,9 @@
 #import "NewsController.h"
 #import "ToolsController.h"
 #import "MyController.h"
+#import "ApprovalController.h"
+#import "ReimburseController.h"
+#import "PhoneListController.h"
 #import <BaiduMapAPI/BMapKit.h>
 
 
@@ -487,12 +490,11 @@
 - (DVVTabBarController *)homeTabBarView {
     
     NSArray *controllerArray = @[ @"MMMainController",
-                                  @"BuffetController",
-                                  @"NewsController",
-                                  @"ToolsController",
-                                  @"MyController"];
+                                  @"ApprovalController",
+                                  @"ReimburseController",
+                                  @"PhoneListController"];
     
-    NSArray *titleArray = @[ @"工作", @"自助", @"资讯",@"工具",@"我的"];
+    NSArray *titleArray = @[ @"工作", @"审批", @"报销",@"通讯录"];
     
     DVVTabBarController *tabBarVC = [DVVTabBarController new];
     

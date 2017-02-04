@@ -19,7 +19,7 @@
 
 //#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
 
-#define QA_TEST
+//#define QA_TEST
 
 @implementation AFHttpClient
 
@@ -34,11 +34,11 @@
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         
         
-//        //接收无效的证书 默认是NO
-//        _sharedClient.securityPolicy.allowInvalidCertificates = YES;
-//        
+        //接收无效的证书 默认是NO
+        //_sharedClient.securityPolicy.allowInvalidCertificates = YES;
+//
 //        //不验证域名,默认是YES
-//        _sharedClient.securityPolicy.validatesDomainName = NO;
+        // _sharedClient.securityPolicy.validatesDomainName = YES;
         
 
         [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];

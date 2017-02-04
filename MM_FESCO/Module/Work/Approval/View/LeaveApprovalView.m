@@ -112,6 +112,7 @@
     
     LeaveApprovalDetailController *leaveApprovaVC = [[LeaveApprovalDetailController alloc] init];
     leaveApprovaVC.listModel = self.viewModel.LeaveListArray[indexPath.row];
+    leaveApprovaVC.hidesBottomBarWhenPushed = YES;
     [self.parementVC.navigationController pushViewController:leaveApprovaVC animated:YES];
 }
 

@@ -197,6 +197,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     
     EasySerachViewController *easy = [EasySerachViewController new];
     easy.dataArray = self.paramArray;
+    easy.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:easy animated:YES];
     
 }

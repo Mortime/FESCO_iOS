@@ -95,8 +95,14 @@ static NSString *kMallID = @"MallID";
     // 添加到 navigationBar 上
     [self.navigationController.navigationBar addSubview:statusBarView];
     
-    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"审批",@"加班",@"通讯录",@"签到统计",@"迟到排行",@"加班排行",@"报销",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
-    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Tongxunlv",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_BaoXiao",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
+//    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"审批",@"加班",@"通讯录",@"签到统计",@"迟到排行",@"加班排行",@"报销",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
+    
+    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"加班",@"签到统计",@"迟到排行",@"加班排行"];
+
+//    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Tongxunlv",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_BaoXiao",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
+    
+    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Jiabanshenqing",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang"];
+
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
@@ -227,13 +233,6 @@ static NSString *kMallID = @"MallID";
         
     }
     if (indexPath.row == 3) {
-        // 休假审批
-        ApprovalController *approvalVC = [[ApprovalController alloc] init];
-        approvalVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:approvalVC animated:YES];
-        
-    }
-    if (indexPath.row == 4) {
         // 加班申请, 加班记录  OverTimeApplyController
         
         OverTimeApplyController *overTimeApplyVC = [[OverTimeApplyController alloc] init];
@@ -241,15 +240,7 @@ static NSString *kMallID = @"MallID";
         [self.navigationController pushViewController:overTimeApplyVC animated:YES];
         
     }
-    if (indexPath.row == 5) {
-        // 通讯录
-        PhoneListController *phoneListVC = [[PhoneListController alloc] init];
-        phoneListVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:phoneListVC animated:YES];
-        
-        
-    }
-    if (indexPath.row == 6) {
+    if (indexPath.row == 4) {
         //  签到排行
         
         CheckStatisticController *checkStatVC = [[CheckStatisticController alloc] init];
@@ -257,51 +248,47 @@ static NSString *kMallID = @"MallID";
         [self.navigationController pushViewController:checkStatVC animated:YES];
 
         
-        
     }
-    
-    if (indexPath.row == 7) {
-           //  迟到排行
+    if (indexPath.row == 5) {
+        //  迟到排行
         
         LaterTimeStatisticController *laterTimeStatVC = [[LaterTimeStatisticController alloc] init];
         laterTimeStatVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:laterTimeStatVC animated:YES];
+
         
     }
-    if (indexPath.row == 8) {
-         // 加班排行
+    if (indexPath.row == 6) {
+        
+        // 加班排行
         OverTimeStatistiscController *overTimeStatVC = [[OverTimeStatistiscController alloc] init];
         overTimeStatVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:overTimeStatVC animated:YES];
+        
+    }
+    
+    if (indexPath.row == 7) {
+        
+    }
+    if (indexPath.row == 8) {
+        
 
         
     }
     if (indexPath.row == 9) {
-         //  报销
         
-        ReimburseController *reimburseVC = [[ReimburseController alloc] init];
-        reimburseVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:reimburseVC animated:YES];
 
         
     }
     if (indexPath.row == 10) {
-        //  薪酬列表
-        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-        [view show];
         
     }
     if (indexPath.row == 11) {
-          // HRS数据录入
-        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-        [view show];
+        
         
         
     }
     if (indexPath.row == 12) {
-          //  HRS数据勘查
-        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-        [view show];
         
     }
     
