@@ -45,6 +45,8 @@
 
 #define kPicUpSuccessID  @"PicUpSuccessID"  // 图片上传成功存储的ID
 
+#define kHttpsCerKey  @"zrfesco"
+
 
 
 
@@ -73,10 +75,18 @@ typedef NS_ENUM(NSUInteger,RePurchaseBookType){
     
     newReimburseBook,   // 新建报销单
     editReimburseBook,    // 编辑报销单
-    noBookPurchase,         // 未制单消费  在一笔
-    NOBookPurchaseEdit,   // 未制单消费  编辑
-    PurchaseEdit,  // 未制单消费  编辑
-    NOPassEdit     // 审核未通过后再在编辑
+    
+    noBookPurchase,         // 未制单消费记录模块在一笔
+    NOBookPurchaseEdit,   // 未制单消费记录模块编辑
+    
+    
+    PurchaseNetworkEdit,  // 添加报销单后的网络消费记录编辑
+    PurchaseBenDiEdit,  // 添加报销单后的本地消费记录编辑
+    PurchaseNOBookEdit,  // 添加报销单后的未制单消费记录编辑
+    
+    
+    
+    NOPassEdit     // 审核未通过后消费记录再编辑
     
 };
 

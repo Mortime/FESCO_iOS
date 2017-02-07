@@ -43,7 +43,7 @@
 @implementation NewPurchaseBookController
 
 - (void)viewWillAppear:(BOOL)animated{
-    if (_bookType == PurchaseEdit) {
+    if (_bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
         [_picStreamArray removeAllObjects];
         for (NSDictionary *dic in _EditPicArray) {
             if ([dic objectForKey:@"id"]) {
@@ -149,7 +149,7 @@
             cell = [[NewPurchaseSubContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
             cell.textFiled.leftTitle = @"金额";
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
             cell.textFiled.textFileStr = _moneyNumber;
         }
             cell.textFiled.placeHold = @"¥ 0.00";
@@ -180,7 +180,7 @@
         }
         cell.tag = 8001;
         cell.delegate = self;
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
             cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_startTime];
         }
        
@@ -201,7 +201,7 @@
             cell.tag = 8002;
             cell.delegate = self;
             
-            if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+            if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
                 cell.textFiled.textFileStr = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:_endTime];
             }
 
@@ -218,7 +218,7 @@
             cell = [[NewPurchaseSubBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
         cell.delegate = self;
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
             cell.addOffView.resultLabel.text = _billNumber;
         }
                 
@@ -234,7 +234,7 @@
         __weak typeof(self)weakSelf = self;
         cell.accessoryType    = UITableViewCellAccessoryNone;
         
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
 //            self.curUploadImageHelper.selectedAssetURLs = self.urlArray;
             
         }
@@ -264,7 +264,7 @@
             cell.textFiled.isExist = YES;
         cell.delegate = self;
         cell.tag = 8003;
-        if ((_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) && ![_memo isKindOfClass:[NSNull class]]) {
+        if ((_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) && ![_memo isKindOfClass:[NSNull class]]) {
             cell.textFiled.textFileStr = _memo;
         }
         
@@ -280,7 +280,7 @@
         }
         _cityCell = cell;
         
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
             cell.resultLabel.text = _cityName;
         }
         return cell;
@@ -385,7 +385,7 @@
         MMLog(@"obj == %@",obj);
         [selectedAssetURLs addObject:obj];
     }];
-    if (_bookType == editReimburseBook || _bookType == PurchaseEdit) {
+    if (_bookType == editReimburseBook || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
 //        [selectedAssetURLs addObjectsFromArray:_urlArray];
     }
 //    _urlArray = selectedAssetURLs;
@@ -486,8 +486,9 @@
 // 保存 在记一笔
 - (void)didPreservationButton:(UIButton *)sender{
     
-    if (_bookType == PurchaseEdit) {
-        // 编辑
+    
+     // 1. 报销单消费网络编辑
+    if (_bookType == PurchaseNetworkEdit) {
         if (sender.tag == 700 && _sectionTag == 2) {
             // 删除
             [_networkArrayEdit removeObjectAtIndex:_indexTag];
@@ -520,124 +521,228 @@
             
         }
         
-        if (sender.tag == 700 && _sectionTag == 3) {
-            // 删除
-            [_networkArrayEdit removeObjectAtIndex:_indexTag];
-            if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
-                [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
+        // 2. 报销单消费记录本地编辑
+        if (_bookType == PurchaseBenDiEdit) {
+            if (sender.tag == 700 && _sectionTag == 3) {
+                // 删除
+                [_networkArrayEdit removeObjectAtIndex:_indexTag];
+                if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
+                    [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else if (sender.tag == 701 && _sectionTag == 3){
+                
+                NSDictionary *dic = _networkArrayEdit[_indexTag];
+                /*
+                 
+                 NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
+                 @"spendBegin":_startTime,
+                 @"spendEnd":_endTime,
+                 @"billNum":_billNumber,
+                 @"picUrl":_picUrl,
+                 @"detailMemo":_memo,
+                 @"spendCity":_cityName,
+                 @"ID":[NSString stringWithFormat:@"%lu",_ID],
+                 @"typePurchaseStr":_typePurchaseStr
+                 };
+                 
+                 
+                 */
+                NSMutableDictionary *mutDic = dic.mutableCopy;
+                [mutDic setValue:_moneyNumber forKey:@"moneyAmount"];
+                [mutDic setValue:_startTime forKey:@"spendBegin"];
+                [mutDic setValue:_endTime forKey:@"spendEnd"];
+                [mutDic setValue:_billNumber forKey:@"billNum"];
+                [mutDic setValue:_memo forKey:@"detailMemo"];
+                [mutDic setValue:_cityName forKey:@"spendCity"];
+                [mutDic setValue:[NSString stringWithFormat:@"%lu",_ID] forKey:@"ID"];
+                [mutDic setValue:_picUrl forKey:@"picUrl"];
+                [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:mutDic];
+                [[NSUserDefaults standardUserDefaults] setObject:_networkArrayEdit forKey:kReimburseRecordList];
+                [self.navigationController popViewControllerAnimated:YES];
             }
-            [self.navigationController popViewControllerAnimated:YES];
-        }else if (sender.tag == 701 && _sectionTag == 3){
-            
-            NSDictionary *dic = _networkArrayEdit[_indexTag];
-            /*
-             
-             NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
-             @"spendBegin":_startTime,
-             @"spendEnd":_endTime,
-             @"billNum":_billNumber,
-             @"picUrl":_picUrl,
-             @"detailMemo":_memo,
-             @"spendCity":_cityName,
-             @"ID":[NSString stringWithFormat:@"%lu",_ID],
-             @"typePurchaseStr":_typePurchaseStr
-             };
-             
-             
-             */
-            NSMutableDictionary *mutDic = dic.mutableCopy;
-            
-    
-            
-
-            [mutDic setValue:_moneyNumber forKey:@"moneyAmount"];
-            [mutDic setValue:_startTime forKey:@"spendBegin"];
-            [mutDic setValue:_endTime forKey:@"spendEnd"];
-            [mutDic setValue:_billNumber forKey:@"billNum"];
-            [mutDic setValue:_memo forKey:@"detailMemo"];
-            [mutDic setValue:_cityName forKey:@"spendCity"];
-            [mutDic setValue:[NSString stringWithFormat:@"%lu",_ID] forKey:@"ID"];
-            [mutDic setValue:_picUrl forKey:@"picUrl"];
-            
-            
-//            [dic objectForKey:@"moneyAmount"] = _moneyNumber ;
-//            model.spendBegin = _startTime;
-//            model.spendEnd = _endTime;
-//            model.billNum = [_billNumber integerValue];
-//            model.detailMemo = _memo;
-//            model.cityName = _cityName;
-            [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:mutDic];
-            [[NSUserDefaults standardUserDefaults] setObject:_networkArrayEdit forKey:kReimburseRecordList];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        }
-
-        if (sender.tag == 700 && _sectionTag == 4) {
-            // 删除
-            [_networkArrayEdit removeObjectAtIndex:_indexTag];
-            if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
-                [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
-            }
-            [self.navigationController popViewControllerAnimated:YES];
-        }else if (sender.tag == 701 && _sectionTag == 4){
-            
-            NOBookChooseModel *model = _networkArrayEdit[_indexTag];
-            MMLog(@"+++=%@",model.spendTypeStr);
-            model.moneyAmount = [_moneyNumber floatValue];
-            model.spendBegin = _startTime;
-            model.spendEnd = _endTime;
-            model.billNum = [_billNumber integerValue];
-            model.detailMemo = _memo;
-            model.cityName = _cityName;
-            // 图片数组
-            NSArray *picArray = model.picArray;
-            NSMutableArray *muArray = picArray.mutableCopy;
-            for (NSDictionary *dic in _huancunIDArray) {
-                [muArray addObject:dic];
-            }
-            model.picArray = muArray;
-            
-            
-            [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:model];
-            MMLog(@"+++=%@",model.spendTypeStr);
-            if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
-                [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
-            }
-            [self.navigationController popViewControllerAnimated:YES];
-            
+ 
         }
         
+        // 3. 报销单消费记录未制单编辑
+        if (_bookType == PurchaseNOBookEdit) {
+            
+            if (sender.tag == 700 && _sectionTag == 4) {
+                // 删除
+                [_networkArrayEdit removeObjectAtIndex:_indexTag];
+                if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
+                    [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else if (sender.tag == 701 && _sectionTag == 4){
+                
+                NOBookChooseModel *model = _networkArrayEdit[_indexTag];
+                model.moneyAmount = [_moneyNumber floatValue];
+                model.spendBegin = _startTime;
+                model.spendEnd = _endTime;
+                model.billNum = [_billNumber integerValue];
+                model.detailMemo = _memo;
+                model.cityName = _cityName;
+                // 图片数组
+                NSArray *picArray = model.picArray;
+                NSMutableArray *muArray = picArray.mutableCopy;
+                for (NSDictionary *dic in _huancunIDArray) {
+                    [muArray addObject:dic];
+                }
+                model.picArray = muArray;
+                
+                
+                [_networkArrayEdit replaceObjectAtIndex:_indexTag withObject:model];
+                if ([_delegate respondsToSelector:@selector(newPurchaseBookControllerDelegateWith:sectionTag:)]) {
+                    [_delegate newPurchaseBookControllerDelegateWith:_networkArrayEdit sectionTag:_sectionTag];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+
+        }
         
-        
-        return;
-        
-    }
-    
-    
-    if (sender.tag == 700 && _bookType == NOBookPurchaseEdit) {
-        // 删除未制单消费
-            [NetworkEntity postDeleReimburseRecordWithDetailId:_noBookmodel.detailId Success:^(id responseObject) {
-                MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
-                if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
+    // 未制单消费模块消费记录编辑
+        if (_bookType == NOBookPurchaseEdit) {
+            if (sender.tag == 700) {
+                // 删除
+                [NetworkEntity postDeleReimburseRecordWithDetailId:_noBookmodel.detailId Success:^(id responseObject) {
+                    MMLog(@"DeleReimburseRecord  =======responseObject=====%@",responseObject);
+                    if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除成功"];
+                        [toastView show];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }else{
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
+                        [toastView show];
+                    }
+                    
+                } failure:^(NSError *failure) {
+                    MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
                     [toastView show];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }else{
-                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"删除失败"];
+                }];
+
+            } else if (sender.tag == 701){
+                // 保存
+                // 空数据判断
+                [self showMessageNoData];
+                if (!_moneyNumber) {
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
                     [toastView show];
+                    
+                    return;
+                }
+                if (_dateType  == 1) {
+                    if (!_startTime) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入日期"];
+                        [toastView show];
+                        return;
+                    }
+                    
+                }
+                if (_dateType == 2) {
+                    if (!_startTime) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入开始日期"];
+                        [toastView show];
+                        return;
+                    }
+                    if (!_endTime) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入结束日期"];
+                        [toastView show];
+                        return;
+                    }
+                    
+                    
+                }
+                if (_needCity == 1) {
+                    if (!_cityName) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入城市名称"];
+                        [toastView show];
+                        return;
+                    }
+                    
                 }
                 
-            } failure:^(NSError *failure) {
-                MMLog(@"DeleReimburseRecord  =======failure=====%@",failure);
-                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-                [toastView show];
-            }];
+                if (_dateType == 1) {
+                    _endTime = @"";
+                }
+                if (_needCity == 0) {
+                    _cityName = @"";
+                }
+                if (_picIDArray) {
+                    
+                    
+                    //把数组转换成字符串
+                    NSString *picID=[_picIDArray componentsJoinedByString:@","];
+                    _picUrl= picID;
+                    MMLog(@"picArray == %@,ns == %@",_picIDArray,picID);
+                }else{
+                    _picUrl = @"";
+                }
+                if (!_memo) {
+                    _memo = @"";
+                }
 
-    }else{
-        //
+                NSString *detail = [NSString stringWithFormat:@"%lu",_noBookmodel.detailId];
+                [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
+                    MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+                    if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                        [toastView show];
+                        NSArray * ctrlArray = self.navigationController.viewControllers;
+                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+                        
+                        
+                        
+                    }else{
+                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+                        [toastView show];
+                    }
+                } failure:^(NSError *failure) {
+                    MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+                    [toastView show];
+                }];
+                
+            }
+        }
+        
+    }
+        
+        
+    if (_bookType == noBookPurchase) {
+        //在记一笔 保存未制单消费
+        NSString *detail = @"";
+        [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
+            MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
+            if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+                [toastView show];
+                NSArray * ctrlArray = self.navigationController.viewControllers;
+                [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+                
+                
+                
+            }else{
+                ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+                [toastView show];
+            }
+        } failure:^(NSError *failure) {
+            MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
+            [toastView show];
+        }];
+
+    }
+    // 新建消费记录
+    if (_bookType == newReimburseBook) {
+        // 空数据判断
+        [self showMessageNoData];
         if (!_moneyNumber) {
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入金额"];
             [toastView show];
+            
             return;
         }
         if (_dateType  == 1) {
@@ -690,78 +795,44 @@
         if (!_memo) {
             _memo = @"";
         }
-        /*
-         以上是数据的基本判断
-         */
-        
-        
-        if (_bookType == NOBookPurchaseEdit || _bookType == noBookPurchase) {
-            
-            if (sender.tag == 701) {
-                //在记一笔 保存未制单消费
-                NSString *detail = @"";
-                if (_bookType == NOBookPurchaseEdit) {
-                    detail = [NSString stringWithFormat:@"%lu",_noBookmodel.detailId];
-                }
-                [NetworkEntity postPreservePurchaseRecordWithSpendType:_ID moneyAmount:_moneyNumber billNum:_billNumber detailMemo:_memo picUrl:_picUrl spendBegin:_startTime spendEnd:_endTime spendCity:_cityName detailId:detail Success:^(id responseObject) {
-                    MMLog(@"PreservePurchaseRecord  =======responseObject=====%@",responseObject);
-                    if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-                        [toastView show];
-                        NSArray * ctrlArray = self.navigationController.viewControllers;
-                        [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
 
-                        
-                        
-                    }else{
-                        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
-                        [toastView show];
-                    }
-                } failure:^(NSError *failure) {
-                    MMLog(@"PreservePurchaseRecord  =======failure=====%@",failure);
-                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-                    [toastView show];
-                }];
-                
-            }
-        }else{
-            // 添加报销单的消费记录
-            MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
-            NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
-                                  @"spendBegin":_startTime,
-                                  @"spendEnd":_endTime,
-                                  @"billNum":_billNumber,
-                                  @"picUrl":_picUrl,
-                                  @"detailMemo":_memo,
-                                  @"spendCity":_cityName,
-                                  @"icon":self.icon,
-                                  @"ID":[NSString stringWithFormat:@"%lu",_ID],
-                                  @"typePurchaseStr":_typePurchaseStr
-                                  };
-            NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
-            if (array.count == 0) {
-                array = [NSArray array];
-            }
-            NSMutableArray *mutArray = array.mutableCopy;
-            [mutArray addObject:dic];
-            [[NSUserDefaults standardUserDefaults] setObject:mutArray forKey:kReimburseRecordList];
-            
-            
-                                // 保存成功
-                                if (sender.tag == 701) {
-                                    // 保存
-                                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
-                                    [toastView show];
-                                    NSArray * ctrlArray = self.navigationController.viewControllers;
-                                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
-                                }else if (sender.tag == 700){
-                                    // 在记一笔
-                                    NSArray * ctrlArray = self.navigationController.viewControllers;
-                                    [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
-                                }
-                                
-                            }
+        // 添加报销单的消费记录
+        MMLog(@"\\\\\\\\\\\\\\\\\%@==%@==%@==%@==%@==%@==%@==%@==%@",_moneyNumber,_startTime,_endTime,_billNumber,_picUrl,_memo,_cityName,[NSString stringWithFormat:@"%lu",_ID],_typePurchaseStr);
+        NSDictionary *dic = @{@"moneyAmount":_moneyNumber,
+                              @"spendBegin":_startTime,
+                              @"spendEnd":_endTime,
+                              @"billNum":_billNumber,
+                              @"picUrl":_picUrl,
+                              @"detailMemo":_memo,
+                              @"spendCity":_cityName,
+                              @"icon":self.icon,
+                              @"ID":[NSString stringWithFormat:@"%lu",_ID],
+                              @"typePurchaseStr":_typePurchaseStr
+                              };
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:kReimburseRecordList];
+        if (array.count == 0) {
+            array = [NSArray array];
+        }
+        NSMutableArray *mutArray = array.mutableCopy;
+        [mutArray addObject:dic];
+        [[NSUserDefaults standardUserDefaults] setObject:mutArray forKey:kReimburseRecordList];
+        
+        
+        // 保存成功
+        if (sender.tag == 701) {
+            // 保存
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
+            [toastView show];
+            NSArray * ctrlArray = self.navigationController.viewControllers;
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+        }else if (sender.tag == 700){
+            // 在记一笔
+            NSArray * ctrlArray = self.navigationController.viewControllers;
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
+        }
+
     }
+
     
 }
 
@@ -774,6 +845,18 @@
 - (void)postGetPicStreamforeWithPicId:(NSString *)picId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
+    NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+    NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    securityPolicy.allowInvalidCertificates = YES;
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    securityPolicy.validatesDomainName = NO;
+    [securityPolicy setPinnedCertificates:certSet];
+    manager.securityPolicy  = securityPolicy;
+
     
     NSDictionary *dic = @{
                           @"pic_Id":picId,
@@ -812,7 +895,9 @@
     _cityCell.resultLabel.text =  cityName;
 }
 
-
+- (void)showMessageNoData{
+    
+}
 
 - (UITableView *)tableView {
     
@@ -836,7 +921,7 @@
     if (_preservationButton == nil) {
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _preservationButton.frame = CGRectMake(0, self.view.height - 50 - 64, kBottomButtonW, 50);
-        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseEdit) {
+        if (_bookType == NOBookPurchaseEdit || _bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
             // 未制单消费
             [_preservationButton setTitle:@"删除" forState:UIControlStateNormal];
         }else{

@@ -557,7 +557,7 @@
         // 编辑网络
         
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
-        bookVC.bookType = PurchaseEdit;
+        bookVC.bookType = PurchaseNetworkEdit;
         EditMessageModel *model = _netWorkRecordArray[indexPath.row];
         if ([model.spendEnd isKindOfClass:[NSNull class]] || !model.spendEnd || model.spendEnd == nil) {
             // 日期类型
@@ -599,7 +599,7 @@
     if (indexPath.section == 3) {
         // 本地新增
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
-        bookVC.bookType = PurchaseEdit;
+        bookVC.bookType = PurchaseBenDiEdit;
         NSDictionary *dic = _editPurchaseRccordArray[indexPath.row];
         
         /*
@@ -662,7 +662,7 @@
     if (indexPath.section == 4) {
         // 未制单消费
         NewPurchaseBookController *bookVC = [[NewPurchaseBookController alloc] init];
-        bookVC.bookType = PurchaseEdit;
+        bookVC.bookType = PurchaseNOBookEdit;
         NOBookChooseModel *model = _noBookRecordArray[indexPath.row];
         if ([model.spendEnd isKindOfClass:[NSNull class]] ||! model.spendEnd || model.spendEnd == nil) {
             // 日期类型

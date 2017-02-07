@@ -32,7 +32,7 @@
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
         
-        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"zrfesco" ofType:@"cer"];
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
         NSData * certData =[NSData dataWithContentsOfFile:cerPath];
         MMLog(@"certData == %@",certData);
         

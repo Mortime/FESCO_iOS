@@ -277,7 +277,7 @@
 +(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data{
     OSStatus securityError = errSecSuccess;
     //client certificate password
-    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:@"zrfesco"
+    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:kHttpsCerKey
                                                                  forKey:(__bridge id)kSecImportExportPassphrase];
     
     CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);

@@ -296,6 +296,15 @@
 - (void)getUserIcon{
     AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
+    NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+    NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    securityPolicy.allowInvalidCertificates = YES;
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    securityPolicy.validatesDomainName = NO;
+    [securityPolicy setPinnedCertificates:certSet];
+    manager.securityPolicy  = securityPolicy;
     
     NSDictionary *dic = @{
                           @"emp_Id":[UserInfoModel defaultUserInfo].empId,
