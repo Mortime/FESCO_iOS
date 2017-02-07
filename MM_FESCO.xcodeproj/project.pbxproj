@@ -370,9 +370,6 @@
 		76F02FEE1DD4541100D32771 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FE61DD4541100D32771 /* UIView+ViewController.m */; };
 		76F02FFA1DD4592F00D32771 /* cameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FF91DD4592F00D32771 /* cameraHelper.m */; };
 		76F030091DD45E0100D32771 /* MPUploadImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F030081DD45E0100D32771 /* MPUploadImageHelper.m */; };
-		76FE9A011E48151800828054 /* clientkey.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A001E48151800828054 /* clientkey.p12 */; };
-		76FE9A071E485A5F00828054 /* adn.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A061E485A5F00828054 /* adn.cer */; };
-		76FE9A091E4860AB00828054 /* test.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A081E4860AB00828054 /* test.cer */; };
 		76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A0A1E487B8700828054 /* zrfesco.cer */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */; };
@@ -1162,9 +1159,6 @@
 		76F02FF91DD4592F00D32771 /* cameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cameraHelper.m; sourceTree = "<group>"; };
 		76F030071DD45E0100D32771 /* MPUploadImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPUploadImageHelper.h; sourceTree = "<group>"; };
 		76F030081DD45E0100D32771 /* MPUploadImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPUploadImageHelper.m; sourceTree = "<group>"; };
-		76FE9A001E48151800828054 /* clientkey.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = clientkey.p12; sourceTree = "<group>"; };
-		76FE9A061E485A5F00828054 /* adn.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = adn.cer; sourceTree = "<group>"; };
-		76FE9A081E4860AB00828054 /* test.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.cer; sourceTree = "<group>"; };
 		76FE9A0A1E487B8700828054 /* zrfesco.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco.cer; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
@@ -1872,9 +1866,6 @@
 			isa = PBXGroup;
 			children = (
 				76FE9A0A1E487B8700828054 /* zrfesco.cer */,
-				76FE9A081E4860AB00828054 /* test.cer */,
-				76FE9A061E485A5F00828054 /* adn.cer */,
-				76FE9A001E48151800828054 /* clientkey.p12 */,
 				59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */,
 				597762161D489AE000BD8472 /* main.m */,
 				5977621E1D489AE000BD8472 /* Main.storyboard */,
@@ -3064,7 +3055,6 @@
 			files = (
 				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
 				761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */,
-				76FE9A011E48151800828054 /* clientkey.p12 in Resources */,
 				7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */,
 				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
@@ -3074,8 +3064,6 @@
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
 				76F02FCE1DD4531B00D32771 /* QBImagePickerController.strings in Resources */,
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
-				76FE9A071E485A5F00828054 /* adn.cer in Resources */,
-				76FE9A091E4860AB00828054 /* test.cer in Resources */,
 				597762201D489AE000BD8472 /* Main.storyboard in Resources */,
 				76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */,
 			);
