@@ -39,12 +39,12 @@
             _deleteBtn = [[UIButton alloc] initWithFrame:CGRectMake(kImageCollectionCell_Width-20, 0, 20, 20)];
             _deleteBtn.hidden=YES;
             [_deleteBtn setImage:[UIImage imageNamed:@"btn_right_delete_image"] forState:UIControlStateNormal];
-            _deleteBtn.backgroundColor = [UIColor blackColor];
+            _deleteBtn.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
             _deleteBtn.layer.cornerRadius = CGRectGetWidth(_deleteBtn.bounds)/2;
             _deleteBtn.layer.masksToBounds = YES;
             
             [_deleteBtn addTarget:self action:@selector(deleteBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-//            [self.contentView addSubview:_deleteBtn];
+            [self.contentView addSubview:_deleteBtn];
         }
         
         if (!_progressView) {
@@ -62,6 +62,7 @@
 {
     _curImageItem=curImageItem;
     self.progressView.hidden=YES;        //   自己添加
+    self.deleteBtn.hidden = NO;
     if (_curImageItem) {
         
         _imgView.image=curImageItem.thumbnailImage;
