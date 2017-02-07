@@ -1010,7 +1010,7 @@
          [self.consumePopView removeFromSuperview];
         NewPurchaseRecordController *puschaseVC = [[NewPurchaseRecordController alloc] init];
         puschaseVC.dic = _dic;
-        puschaseVC.bookType = NOPassEdit;
+        puschaseVC.bookType = self.rePurchaseBook;
         [self.navigationController pushViewController:puschaseVC animated:YES];
     }
     if (row == 1) {

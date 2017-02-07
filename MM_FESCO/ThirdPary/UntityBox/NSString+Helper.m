@@ -272,4 +272,31 @@
     }
     return str;
 }
+
+
++(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data{
+    OSStatus securityError = errSecSuccess;
+    //client certificate password
+    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:@"zrfesco"
+                                                                 forKey:(__bridge id)kSecImportExportPassphrase];
+    
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    securityError = SecPKCS12Import((__bridge CFDataRef)inPKCS12Data,(__bridge CFDictionaryRef)optionsDictionary,&items);
+    
+    if(securityError == 0) {
+        CFDictionaryRef myIdentityAndTrust =CFArrayGetValueAtIndex(items,0);
+        const void*tempIdentity =NULL;
+        tempIdentity= CFDictionaryGetValue (myIdentityAndTrust,kSecImportItemIdentity);
+        *outIdentity = (SecIdentityRef)tempIdentity;
+        const void*tempTrust =NULL;
+        tempTrust = CFDictionaryGetValue(myIdentityAndTrust,kSecImportItemTrust);
+        *outTrust = (SecTrustRef)tempTrust;
+    } else {
+        NSLog(@"Failedwith error code %d",(int)securityError);
+        return NO;
+    }
+    return YES;
+}
+
+
 @end

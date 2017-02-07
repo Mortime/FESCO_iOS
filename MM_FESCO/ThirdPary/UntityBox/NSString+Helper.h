@@ -130,4 +130,7 @@
  */
 
 + (NSString *)backPicNameWith:(NSString *)title;
+
++(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data;
+
 @end

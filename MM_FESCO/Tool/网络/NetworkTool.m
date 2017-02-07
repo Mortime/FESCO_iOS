@@ -31,14 +31,86 @@
         _sharedClient = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[NetworkTool domain]]];
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
-        _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"zrfesco" ofType:@"cer"];
+        NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+        MMLog(@"certData == %@",certData);
         
         
-        //接收无效的证书 默认是NO
-        //_sharedClient.securityPolicy.allowInvalidCertificates = YES;
-//
-//        //不验证域名,默认是YES
-        // _sharedClient.securityPolicy.validatesDomainName = YES;
+        
+        NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+        
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        
+        securityPolicy.allowInvalidCertificates = YES;
+        //validatesDomainName 是否需要验证域名，默认为YES；
+         securityPolicy.validatesDomainName = NO;
+    
+    
+        
+        [securityPolicy setPinnedCertificates:certSet];
+        
+        
+        
+        _sharedClient.securityPolicy  = securityPolicy;
+        
+        
+        
+        
+        [_sharedClient setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) {
+            DLog(@"setSessionDidBecomeInvalidBlock");
+        }];
+        
+        
+        __weak typeof(self)weakSelf = self;
+        [_sharedClient setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
+            NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+            __autoreleasing NSURLCredential *credential =nil;
+            if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+                if([_sharedClient.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+                    credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+                    if(credential) {
+                        disposition =NSURLSessionAuthChallengeUseCredential;
+                    } else {
+                        disposition =NSURLSessionAuthChallengePerformDefaultHandling;
+                    }
+                } else {
+                    disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+                }
+            } else {
+                // client authentication
+                SecIdentityRef identity = NULL;
+                SecTrustRef trust = NULL;
+                NSString *p12 = [[NSBundle mainBundle] pathForResource:@"clientkey"ofType:@"p12"];
+                NSFileManager *fileManager =[NSFileManager defaultManager];
+                
+                if(![fileManager fileExistsAtPath:p12])
+                {
+                    NSLog(@"client.p12:not exist");
+                }
+                else
+                {
+                    NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
+                    
+                    if ([NSString extractIdentity:&identity andTrust:&trust fromPKCS12Data:PKCS12Data])
+                    {
+                        SecCertificateRef certificate = NULL;
+                        SecIdentityCopyCertificate(identity, &certificate);
+                        const void*certs[] = {certificate};
+                        CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
+                        credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
+                        disposition =NSURLSessionAuthChallengeUseCredential;
+                    }
+                }
+            }
+            *_credential = credential;
+            return disposition;
+        }];
+
+        
+        
+        
+        
         
 
         [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
@@ -76,6 +148,7 @@
      failure:(NetworkFailureBlock)failure {
     
     AFHttpClient *manager = [AFHttpClient sharedClient];
+    
     
     
     [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -139,4 +212,5 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.operationQueue cancelAllOperations];
 }
+
 @end

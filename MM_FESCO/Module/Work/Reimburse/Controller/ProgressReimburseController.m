@@ -237,7 +237,6 @@
          }
          
          NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
-//         newReimburseVC.rePurchaseBook = editReimburseBook;
         newReimburseVC.rePurchaseBook = NOPassEdit;
          newReimburseVC.reimburseModel = model;
          newReimburseVC.netWorkRecordArray = _noBassEditArray;
