@@ -82,16 +82,28 @@
     
     //    self.backgroundImage = [UIImage imageNamed:@"tabBar_background"];
     
+//    self.iconNormalArray = @[ @"Home_Work_Normal",
+//                              @"Home_Zizhu_Normal",
+//                              @"Home_News_Normal" ,
+//                              @"Home_Tools_Normal",
+//                              @"Home_My_Normal"];
+//    
+//    self.iconSelectedArray = @[ @"Home_Work_Select",
+//                                @"Home_Zizhu_Select",
+//                                @"Home_News_Select",
+//                                @"Home_Tools_Select",
+//                                @"Home_My_Select"];
+    
     self.iconNormalArray = @[ @"Home_Work_Normal",
-                              @"Home_Zizhu_Normal",
-                              @"Home_News_Normal" ,
-                              @"Home_Tools_Normal",
+                              @"Test_Approval",
+                              @"Test_Purase" ,
+                              @"Test_Phone",
                               @"Home_My_Normal"];
     
     self.iconSelectedArray = @[ @"Home_Work_Select",
-                                @"Home_Zizhu_Select",
-                                @"Home_News_Select",
-                                @"Home_Tools_Select",
+                                @"Test_Approval_Select",
+                                @"Test_Purase_Select",
+                                @"Test_Phone_Select",
                                 @"Home_My_Select"];
 //
 //    self.itemBackgroundNormalArray = @[ @"",

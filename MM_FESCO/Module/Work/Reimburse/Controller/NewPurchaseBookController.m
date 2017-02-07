@@ -824,11 +824,11 @@
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存成功"];
             [toastView show];
             NSArray * ctrlArray = self.navigationController.viewControllers;
-            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:1] animated:YES];
         }else if (sender.tag == 700){
             // 在记一笔
             NSArray * ctrlArray = self.navigationController.viewControllers;
-            [self.navigationController popToViewController:[ctrlArray objectAtIndex:3] animated:YES];
+            [self.navigationController popToViewController:[ctrlArray objectAtIndex:2] animated:YES];
         }
 
     }
