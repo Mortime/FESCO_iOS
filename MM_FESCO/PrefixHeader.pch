@@ -1,0 +1,140 @@
+//
+//  PrefixHeader.pch
+//  MM_FESCO
+//
+//  Created by Mortimey on 16/7/28.
+//  Copyright © 2016年 Mortimey. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import "UIView+Sizes.h"
+#import "UIViewAdditions.h"
+#import "SWCommonMacro.h"
+#import "ToastAlertView.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
+#import "JSONKit.h"
+#import "NSDictionary+StrDic.h"
+#import "Masonry.h"
+#import "UIColor+Extension.h"
+#import "UIBarButtonItem+Helper.h"
+#import "UIImageView+SDWedImage.h"
+#import "NetworkEntity.h"
+#import "UserInfoModel.h"
+#import "UIViewController+Method.h"
+#import "NSString+Helper.h"
+#import <YYModel.h>
+#import "MMDataBase.h"
+#import <FMDatabase.h>
+#import "MMModelDataMacro.h"
+#import "NSDate+Category.h"
+#import "YBBaseNavigationController.h"
+#import "HMNagationController.h"
+#import "EMSDK.h"
+#import "MWPhotoBrowser.h"
+#import "UIImageView+EMWebCache.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import "NetworkDataTool.h"
+#import "UploadFile.h"
+#import "NSString+FontAwesome.h"
+
+
+#endif
+
+
+
+#ifdef __OBJC__
+
+#import "EaseUI.h"
+
+
+#define DEMO_CALL 1
+
+#endif
+
+
+
+
+
+#define FESCODATABASE  @"catalog.sqlite"
+
+#define RGB_Color(r,g,b)    RGBA_Color(r,g,b,1)
+#define RGBA_Color(r,g,b,a) ([UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a])
+
+#define MM_HIGHTCOLOR [UIColor colorWithWhite:0.9 alpha:1]
+#define MM_LINE_COLOR  RGB_Color(0xe6, 0xe6, 0xe6)
+#define MM_LINE_HEIGHT  0.5f
+#define RELOADDATACOUNT 10
+
+#define kMMWidth [UIScreen mainScreen].bounds.size.width
+#define kMMHeight [UIScreen mainScreen].bounds.size.height
+
+
+
+#ifdef DEBUG
+#define MMLog(...) NSLog(__VA_ARGS__)
+#else
+#define MMLog(...)
+#endif
+
+
+// V_2.0 Nav主色
+#define kFENavBackgroundColor RGB_Color(29,28,33)
+// V_2.0 红色
+#define kFERedColor RGB_Color(232,0,49)
+
+
+
+// 主背景颜色 #323a45
+#define MM_MAIN_BACKGROUND_COLOR [UIColor colorWithHexString:@"323a45"]
+
+// 蓝色字体
+#define MM_MAIN_FONTCOLOR_BLUE [UIColor colorWithHexString:@"00b6d8"]
+
+// 线条颜色  #414d5e
+#define MM_MAIN_LINE_COLOR [UIColor colorWithHexString:@"414d5e"]
+
+// 灰白背景颜色  #ECEBF3
+#define MM_GRAYWHITE_BACKGROUND_COLOR RGB_Color(236, 235, 243)
+
+// 数据库名称
+#define yikaojiuguodDBName @"yikaojiuguo_v20150520"
+
+#define KNOTIFICATION_USERLOADED @"userLoaded"
+
+
+#define MMIphone6Plus [UIScreen mainScreen].bounds.size.height==736
+#define MMIphone6 [UIScreen mainScreen].bounds.size.height==568
+#define MMIphone5 [UIScreen mainScreen].bounds.size.height==568
+#define MMIphone4 [UIScreen mainScreen].bounds.size.height==480
+
+
+#define FERatio 1.15
+#define FESizeRatio 1.5
+
+//static const CGFloat viewSlideHorizonRatio = 0.64;
+//static const CGFloat viewHeightNarrowRatio = 0.80;
+//static const CGFloat menuStartNarrowRatio  = 0.70;
+
+//上传图片相关
+//#define kImageCollectionCell_Width floorf((kMMWidth - 10*2- 10*3 - 80)/3)
+#define kImageCollectionCell_Width floorf(40)
+//最大的上传图片张数
+#define kupdateMaximumNumberOfImage 3
+
+#define MPWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define MPStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+//不同屏幕尺寸字体适配（320，568是因为效果图为IPHONE5 如果不是则根据实际情况修改）
+#define kScreenWidthRatio  (kMMWidth / 320.0)
+#define kScreenHeightRatio (kMMHeight / 568.0)
+#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
+#define AdaptedFontSize(R)     CHINESE_SYSTEM(AdaptedWidth(R))
+
+#endif /* PrefixHeader_pch */
