@@ -3630,7 +3630,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+<<<<<<< HEAD
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
+=======
+				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
+>>>>>>> d8e1013ee66e62c7d108646234621c5ba70bbbe1
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3662,7 +3666,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+<<<<<<< HEAD
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
+=======
+				GCC_PREFIX_HEADER = /Users/zhangyatao/Desktop/MM_FESCO/MM_FESCO/PrefixHeader.pch;
+>>>>>>> d8e1013ee66e62c7d108646234621c5ba70bbbe1
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
