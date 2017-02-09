@@ -346,6 +346,8 @@
 		76D12A861DD95C4800249133 /* TemplateInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A851DD95C4800249133 /* TemplateInfoModel.m */; };
 		76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A881DD95C5600249133 /* BankInfoModel.m */; };
 		76D12A8C1DD9AA9300249133 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D12A8B1DD9AA9300249133 /* UploadFile.m */; };
+		76D3217D1E4B00D800EEFF6E /* PushInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D321791E4B00D800EEFF6E /* PushInformationManager.m */; };
+		76D3217E1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D3217A1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.m */; };
 		76EBA2E41DD4027700DB67B1 /* NumberAddOffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */; };
 		76F02FC31DD4531B00D32771 /* MPImageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FA61DD4531B00D32771 /* MPImageItemModel.m */; };
 		76F02FC61DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FAE1DD4531B00D32771 /* QBAssetsCollectionCheckmarkView.m */; };
@@ -1112,6 +1114,11 @@
 		76D12A881DD95C5600249133 /* BankInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankInfoModel.m; sourceTree = "<group>"; };
 		76D12A8A1DD9AA9300249133 /* UploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFile.h; sourceTree = "<group>"; };
 		76D12A8B1DD9AA9300249133 /* UploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFile.m; sourceTree = "<group>"; };
+		76D321791E4B00D800EEFF6E /* PushInformationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushInformationManager.m; sourceTree = "<group>"; };
+		76D3217A1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DealJPushMessage.m"; sourceTree = "<group>"; };
+		76D3217B1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DealJPushMessage.h"; sourceTree = "<group>"; };
+		76D3217C1E4B00D800EEFF6E /* PushInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInformationManager.h; sourceTree = "<group>"; };
+		76D3217F1E4B24E000EEFF6E /* MM_FESCO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MM_FESCO.entitlements; sourceTree = "<group>"; };
 		76EBA2E21DD4027700DB67B1 /* NumberAddOffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberAddOffView.h; sourceTree = "<group>"; };
 		76EBA2E31DD4027700DB67B1 /* NumberAddOffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberAddOffView.m; sourceTree = "<group>"; };
 		76F02FA51DD4531B00D32771 /* MPImageItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageItemModel.h; sourceTree = "<group>"; };
@@ -1849,6 +1856,11 @@
 		597762141D489AE000BD8472 /* MM_FESCO */ = {
 			isa = PBXGroup;
 			children = (
+				76D3217F1E4B24E000EEFF6E /* MM_FESCO.entitlements */,
+				76D3217B1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.h */,
+				76D3217A1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.m */,
+				76D3217C1E4B00D800EEFF6E /* PushInformationManager.h */,
+				76D321791E4B00D800EEFF6E /* PushInformationManager.m */,
 				597762181D489AE000BD8472 /* AppDelegate.h */,
 				597762191D489AE000BD8472 /* AppDelegate.mm */,
 				597222F51DADE05400D01A7A /* Module */,
@@ -3014,7 +3026,13 @@
 				TargetAttributes = {
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 6SWT7Q8USS;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					5977622A1D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -3139,6 +3157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				597223AC1DADE05400D01A7A /* SignUpApprovalDetailController.m in Sources */,
+				76D3217E1E4B00D800EEFF6E /* AppDelegate+DealJPushMessage.m in Sources */,
 				5901494E1D8FC57900B2BAE2 /* HMNagationController.m in Sources */,
 				59EC915F1D98CB5900E802FA /* EaseBubbleView+File.m in Sources */,
 				597223D31DADE05400D01A7A /* MMMainCollectionCell.m in Sources */,
@@ -3183,6 +3202,7 @@
 				59E729F21D6A8C0300920CC1 /* BLPFAlertView.m in Sources */,
 				59EC915D1D98CB5900E802FA /* EaseMessageCell.m in Sources */,
 				76F02FC91DD4531B00D32771 /* QBAssetsCollectionVideoIndicatorView.m in Sources */,
+				76D3217D1E4B00D800EEFF6E /* PushInformationManager.m in Sources */,
 				76D12A861DD95C4800249133 /* TemplateInfoModel.m in Sources */,
 				59EC91501D98CB5900E802FA /* EaseEmojiEmoticons.m in Sources */,
 				763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */,
@@ -3547,8 +3567,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3571,7 +3591,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3594,8 +3614,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yatao Zhang (T3PBDC897F)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3612,7 +3632,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3626,9 +3646,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3645,8 +3666,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
-				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3658,9 +3679,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3677,8 +3699,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
-				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

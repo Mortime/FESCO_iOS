@@ -130,7 +130,7 @@
         
         // 当编辑消费记录时,如果消费记录已经存在要传 detail_Id, 如果是新添加的不用传 detail_Id.
         
-        MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%lu",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
+        MMLog(@"%@=%@=%@=%@=%@=%@=%@=%@=%@",[NSString stringWithFormat:@"%lu",model.spendId],[NSString stringWithFormat:@"%.2f",model.moneyAmount],[NSString stringWithFormat:@"%lu",model.billNum],resultPicId,spendMemo,spendStart,spendEnd,spendCity,[NSString stringWithFormat:@"%lu",model.detailId]);
         
         NSDictionary *detailDic = @{@"spend_Type":[NSString stringWithFormat:@"%lu",model.spendId],
                                     @"money_Amount":[NSString stringWithFormat:@"%.2f",model.moneyAmount],

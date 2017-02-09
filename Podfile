@@ -13,7 +13,7 @@ pod 'Mantle', '~> 2.0.5'
 pod "Qiniu", "~> 7.0"
 pod 'SDCycleScrollView','~> 1.3'
 pod 'NJKWebViewProgress'
-pod 'JPush', '~> 1.8.7'
+pod 'JPush'
 pod 'MJRefresh'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'UMengSocial', '~> 4.4'

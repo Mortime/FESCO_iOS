@@ -19,6 +19,7 @@
 #import <BaiduMapAPI/BMapKit.h>
 #import "NetMonitor.h"
 #import "YBWelcomeController.h"
+#import "AppDelegate+DealJPushMessage.h"
 
 
 
@@ -36,9 +37,7 @@
     // 启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
     
-    // 本地通知
-//    [self localNotificationWithApplication:application LaunchOptions:launchOptions];
-    // 系统配置
+   [self JPushApplication:application didFinishLaunchingWithOptions:launchOptions];    // 系统配置
      [self sysConfigWithApplication:application LaunchOptions:launchOptions];
     //  监听网络
     [NetMonitor manager];
@@ -99,44 +98,63 @@
 //    options.apnsCertName = @"istore_dev";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
 }
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    completionHandler(UIBackgroundFetchResultNewData);
+    //推送消息统一处理
+#warning YJG APP在前台接受到消息推送，处理消息逻辑
+#warning YJG APP在在后台，点击消息提醒，唤醒APP，处理消息逻辑
+    
+#warning YJG 服务器发送 APP在前台接受到消息推送，处理消息逻辑
+    /*
+     {
+     "_j_msgid" = 1612910701;
+     aps =     {
+     alert = "\U60a8\U5df2\U6210\U529f\U62a5\U540d\U9a7e\U6821\Uff0c\U8d76\U5feb\U5f00\U542f\U5b66\U8f66\U4e4b\U65c5\U5427";
+     badge = 1;
+     sound = "sound.caf";
+     };
+     data =     {
+     userid = 5644b9549aedea5c3e02a4ac;
+     
+     };
+     type = userapplysuccess;
+     }
+     */
+    
+    /*
+     jpush后台自定义消息：
+     {
+     "_j_msgid" = 927937560;
+     aps =     {
+     alert = "\U6d4b\U8bd5\U63a8\U9001\U6d88\U606f";
+     badge = 1;
+     sound = default;
+     };
+     }
+     */
+    MMLog(@"userInfo = %@",userInfo);
+#pragma mark - JPush推送消息统一接受
+    [self JPushfetchCompletionHandlerApplication:application didReceiveRemoteNotification:userInfo];
+#pragma mark - JPush接受推送消息 require
+    [self JPushApplication:application didReceiveRemoteNotification:userInfo];
+    
+}
+// 注册APNs失败回调
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    MMLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
 // 注册本地通知
 - (void)localNotificationWithApplication:(UIApplication *)application LaunchOptions:(NSDictionary *)launchOptions{
-//    UILocalNotification *notification = [[UILocalNotification alloc] init];
-//    // 设置触发通知的时间
-//    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
-//    NSLog(@"fireDate=%@",fireDate);
-//    
-//    notification.fireDate = fireDate;
-//    // 时区
-//    notification.timeZone = [NSTimeZone defaultTimeZone];
-//    // 设置重复的间隔
-//    notification.repeatInterval = kCFCalendarUnitSecond;
-//    
-//    // 通知内容
-//    notification.alertBody =  @"该签到了";
-//    notification.applicationIconBadgeNumber = 1;
-//    // 通知被触发时播放的声音
-//    notification.soundName = UILocalNotificationDefaultSoundName;
-//    // 通知参数
-//    NSDictionary *userDict = [NSDictionary dictionaryWithObject:@"签到" forKey:@"key"];
-//    notification.userInfo = userDict;
-//    
-//    // ios8后，需要添加这个注册，才能得到授权
-//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-//        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
-//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
-//                                                                                 categories:nil];
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//        // 通知重复提示的单位，可以是天、周、月
-//        notification.repeatInterval = NSCalendarUnitDay;
-//    } else {
-//        // 通知重复提示的单位，可以是天、周、月
-//        notification.repeatInterval = NSDayCalendarUnit;
-//    }
-//    
-//    // 执行通知注册
-//    [application scheduleLocalNotification:notification];
-    
+
     NSDate *now = [NSDate date];
     
 

@@ -27,6 +27,8 @@
 @property (nonatomic, strong) QNConfiguration *config;
 @property (nonatomic) float previousPercent;
 
+@property (nonatomic, strong) NSString *access; //AK
+
 @end
 
 @implementation QNFormUpload
@@ -47,6 +49,7 @@
         _httpManager = http;
         _config = config;
         _previousPercent = 0;
+        _access = token.access;
     }
     return self;
 }
@@ -93,9 +96,9 @@
             _complete([QNResponseInfo cancel], _key, nil);
             return;
         }
-        NSString *nextHost = _config.up.address;
+        NSString *nextHost = [_config.zone up:_token].address;
         if (info.isConnectionBroken || info.needSwitchServer) {
-            nextHost = _config.upBackup.address;
+            nextHost = [_config.zone upBackup:_token].address;
         }
 
         QNCompleteBlock retriedComplete = ^(QNResponseInfo *info, NSDictionary *resp) {
@@ -112,17 +115,19 @@
                        withMimeType:_option.mimeType
                   withCompleteBlock:retriedComplete
                   withProgressBlock:p
-                    withCancelBlock:_option.cancellationSignal];
+                    withCancelBlock:_option.cancellationSignal
+                         withAccess:_access];
     };
 
-    [_httpManager multipartPost:_config.up.address
+    [_httpManager multipartPost:[_config.zone up:_token].address
                        withData:_data
                      withParams:parameters
                    withFileName:fileName
                    withMimeType:_option.mimeType
               withCompleteBlock:complete
               withProgressBlock:p
-                withCancelBlock:_option.cancellationSignal];
+                withCancelBlock:_option.cancellationSignal
+                     withAccess:_access];
 }
 
 @end

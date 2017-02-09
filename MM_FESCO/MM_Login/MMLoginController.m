@@ -265,6 +265,19 @@
             [toastView show];
             [MBProgressHUD hideHUDForView:self.view animated:NO];
             
+            // JPush 注册别名
+            if ([UserInfoModel defaultUserInfo].empId) {
+                
+                MMLog(@"[UserInfoModel defaultUserInfo].empId == %@",[UserInfoModel defaultUserInfo].empId);
+                [JPUSHService setTags:nil alias:@"7778888aaaoooopppp" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                    NSString *callbackString =
+                    [NSString stringWithFormat:@"%d, \niTags: %@, \niAlias: %@\n", iResCode,
+                     iTags, iAlias];
+                    MMLog(@"TagsAlias回调:%@", callbackString);
+                }];
+            
+            }
+            
             UIWindow *window  = [UIApplication sharedApplication].keyWindow;
             DVVTabBarController *mainVC = [self homeTabBarView];
             window.rootViewController = mainVC;
@@ -344,7 +357,6 @@
     RegisterController *registerVC = [[RegisterController alloc] init];
     [self presentViewController:registerVC animated:YES completion:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -42,6 +42,7 @@
 #import "NetworkDataTool.h"
 #import "UploadFile.h"
 #import "NSString+FontAwesome.h"
+#import <JPUSHService.h>
 
 
 #endif
