@@ -37,6 +37,9 @@
 + (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes;
 + (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes;
 
+// 获得系统日期的日
++(NSString *)dateOfDayWithCurrTime;
+
 /*
  * 将毫秒转化为指定的时间格式 
  *  DateType  指定的时间格式

@@ -45,7 +45,11 @@
 
 #define kPicUpSuccessID  @"PicUpSuccessID"  // 图片上传成功存储的ID
 
-#define kHttpsCerKey  @"zrfesco"
+#define kHttpsCerKey  @"zrfesco"  
+
+#define kEmpIdKey @"EmpIdKey" // 签到成功后保存empId, 防止一个手机一天内打多次卡
+
+#define kSignUpTime @"SignUpTime" // 签到成功时间 
 
 
 

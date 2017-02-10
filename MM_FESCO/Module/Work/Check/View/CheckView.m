@@ -221,6 +221,23 @@
 #pragma mark ---- Data
 
 - (void)postNetWork{
+    // 防止一个手机登录多个账号打卡
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmpIdKey]) {
+    
+        if ([[UserInfoModel defaultUserInfo].empId integerValue] != [[[NSUserDefaults standardUserDefaults] objectForKey:kEmpIdKey] integerValue]) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"该手机不能为此用户打卡!"];
+            [toastView show];
+            return;
+
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     NSString *memo = @"";
     if (_signType == 1 || _signType == 2) {
@@ -265,6 +282,15 @@
             }else if (_signType == 3){
                 showMsg = @"外勤签到成功";
             }
+            // 保存empId
+            NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+            [def setObject:[UserInfoModel defaultUserInfo].empId forKey:kEmpIdKey];
+            
+            // 保存签到的日期中的日
+        NSString * curTime = [NSDate dateOfDayWithCurrTime];
+            NSLog(@"%@",curTime);
+             [def setObject:curTime forKey:kSignUpTime];
+            
             ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:showMsg];
             [toastView show];
             

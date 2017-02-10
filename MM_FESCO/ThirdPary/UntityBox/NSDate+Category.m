@@ -155,7 +155,13 @@
     
     return ret;
 }
-
++(NSString *)dateOfDayWithCurrTime{
+    NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
+    [formater setDateFormat:@"dd"];
+    NSDate *curDate = [NSDate date];//获取当前日期
+    NSString * curTime = [formater stringFromDate:curDate];
+    return curTime;
+}
 + (NSString *)formattedTimeFromTimeInterval:(long long)time{
     return [[NSDate dateWithTimeIntervalInMilliSecondSince1970:time] formattedTime];
 }

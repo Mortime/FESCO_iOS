@@ -34,6 +34,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // 清空签到成功的时间
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSignUpTime] isEqualToString:[NSDate dateOfDayWithCurrTime]]) {
+        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+        [def removeObjectForKey:kEmpIdKey];
+    }
     // 启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
     
@@ -82,7 +87,7 @@
 - (void)initMapSDk{
     
     self.mapManager = [[BMKMapManager alloc] init];
-    BOOL ret = [self.mapManager start:@"2u47gtqm2SsIW5fdsDRd0pnRQ2fG2LqO" generalDelegate:nil];
+    BOOL ret = [self.mapManager start:@"E5QiVMrWUN85psuPQDoGRCglacIrHlKD" generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     } else {
@@ -104,6 +109,14 @@
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
+/*
+
+ 在前台收到通知时，会调用下面这个方法,可以在这个方法里面实现收到通知时刷新或跳转界面的功能；程序在前台收到推送时通知栏不会弹出推送信息
+ */
+-(void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo{
+    
+}
+// 当程序在后台收到推送时，如果info.plist中配置了UIBackgroundModes会调用
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     completionHandler(UIBackgroundFetchResultNewData);

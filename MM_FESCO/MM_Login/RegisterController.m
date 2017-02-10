@@ -450,10 +450,12 @@
 - (void) startPainting{
     
     // 定义一个NSTimer
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                  target:self
-                                                selector:@selector(function:)  userInfo:nil
-                                                 repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(function:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+//                                                  target:self
+//                                                selector:@selector(function:)  userInfo:nil
+//                                                 repeats:YES];
 }
 
 // 停止定时器

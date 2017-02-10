@@ -267,9 +267,9 @@
             
             // JPush 注册别名
             if ([UserInfoModel defaultUserInfo].empId) {
-                
+                NSString *aliasStr = [NSString stringWithFormat:@"%@",[UserInfoModel defaultUserInfo].empId];
                 MMLog(@"[UserInfoModel defaultUserInfo].empId == %@",[UserInfoModel defaultUserInfo].empId);
-                [JPUSHService setTags:nil alias:@"7778888aaaoooopppp" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                [JPUSHService setTags:nil alias:aliasStr fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
                     NSString *callbackString =
                     [NSString stringWithFormat:@"%d, \niTags: %@, \niAlias: %@\n", iResCode,
                      iTags, iAlias];
