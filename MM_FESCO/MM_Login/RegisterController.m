@@ -37,6 +37,8 @@
 
 @property (nonatomic,strong) MMRegisterTextFiledView *codeNumTextFiled;
 
+@property (nonatomic, strong) MMRegisterTextFiledView *confirmPasswordTextFiled;
+
 @property (nonatomic, strong) UIButton *codeNumButton;
 
 @property (nonatomic, strong) UIButton *registButton;
@@ -64,6 +66,9 @@
 @end
 
 @implementation RegisterController
+-(void)viewWillDisappear:(BOOL)animated{
+    [self stopPainting];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
@@ -86,40 +91,41 @@
     [self.bgTextFiled addSubview:self.mailTextFiled];
     [self.bgTextFiled addSubview:self.userNameTextFiled];
     [self.bgTextFiled addSubview:self.passwordTextFiled];
-    [self.bgTextFiled addSubview:self.registButton];
+    [self.bgTextFiled addSubview:self.confirmPasswordTextFiled];
+    [self.view addSubview:self.registButton];
 }
 - (void)viewWillLayoutSubviews{
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top);
         make.left.mas_equalTo(self.view.mas_left);
         make.right.mas_equalTo(self.view.mas_right);
-        make.height.mas_equalTo(@220);
+        make.height.mas_equalTo(@180);
     }];
     
     [self.iconBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headerImageView.mas_centerX);
         make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(10);
-        make.height.mas_equalTo(@168);
-        make.width.mas_equalTo(@189);
+        make.height.mas_equalTo(@133);
+        make.width.mas_equalTo(150);
     }];
     [self.iconTopBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headerImageView.mas_centerX).offset(-10);
         make.centerY.mas_equalTo(self.headerImageView.mas_centerY).offset(0);
-        make.height.mas_equalTo(@168);
-        make.width.mas_equalTo(@189);
+        make.height.mas_equalTo(@133);
+        make.width.mas_equalTo(@150);
     }];
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.iconTopBgView.mas_centerX);
         make.centerY.mas_equalTo(self.iconTopBgView.mas_centerY);
-        make.height.mas_equalTo(@100);
-        make.width.mas_equalTo(@160);
+        make.height.mas_equalTo(@62);
+        make.width.mas_equalTo(@100);
     }];
     
     [self.bgTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.headerImageView.mas_bottom).offset(40);
+        make.top.mas_equalTo(self.headerImageView.mas_bottom).offset(15);
         make.left.mas_equalTo(self.view.mas_left).offset(20);
         make.right.mas_equalTo(self.view.mas_right).offset(-20);
-        make.height.mas_equalTo(@384);
+        make.height.mas_equalTo(@295);
         
     }];
     [self.mailTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -156,10 +162,18 @@
         make.height.mas_equalTo(@kTextFiledH);
         
     }];
+    [self.confirmPasswordTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.passwordTextFiled.mas_bottom).offset(kMarginH);
+        make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
+        make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
+        make.height.mas_equalTo(@kTextFiledH);
+        
+    }];
+
     
     
     [self.registButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.passwordTextFiled.mas_bottom).offset(40);
+        make.top.mas_equalTo(self.confirmPasswordTextFiled.mas_bottom).offset(40);
         make.left.mas_equalTo(self.mailTextFiled.mas_left).offset(0);
         make.right.mas_equalTo(self.mailTextFiled.mas_right).offset(0);
         make.height.mas_equalTo(@kTextFiledH);
@@ -254,7 +268,11 @@
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
     }
-//    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
+    // 验证邮箱和手机号
+    if (!([_mailStr isValidateEmail]||[_mailStr checkTel])) {
+        [self showTotasViewWithMes:@"请输入正确的邮箱或手机号"];
+        return;
+    }
     
     self.codeNumButton.userInteractionEnabled = NO;
     [self startPainting];
@@ -276,19 +294,21 @@
 
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
-                self.codeNumButton.userInteractionEnabled = NO;
+                self.codeNumButton.userInteractionEnabled = YES;
                 [self  stopPainting];
                 return;
             }
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
                 [self showTotasViewWithMes:@"该用户已经存在"];
-                self.codeNumButton.userInteractionEnabled = NO;
+                self.codeNumButton.userInteractionEnabled = YES;
                 [self  stopPainting];
                 return;
             }
         }
     } failure:^(NSError *failure) {
         MMLog(@"RegisterCodeNumber ========failure ============%@",failure);
+        self.codeNumButton.userInteractionEnabled = YES;
+        [self  stopPainting];
         [self showTotasViewWithMes:@"网络错误"];
     }];
 
@@ -334,6 +354,7 @@
         _bgTextFiled = [[UIView alloc] init];
         _bgTextFiled.backgroundColor = [UIColor clearColor];
         
+        
     }
     return _bgTextFiled;
 }
@@ -341,7 +362,7 @@
 - (MMRegisterTextFiledView *)mailTextFiled{
     if (_mailTextFiled == nil) {
         _mailTextFiled = [[MMRegisterTextFiledView alloc] init];
-        _mailTextFiled.leftTitle = @"邮箱";
+        _mailTextFiled.leftTitle = @"邮箱或手机号";
         _mailTextFiled.tag = 4000;
         [_mailTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
@@ -353,7 +374,7 @@
 - (MMRegisterTextFiledView *)userNameTextFiled{
     if (_userNameTextFiled == nil) {
         _userNameTextFiled = [[MMRegisterTextFiledView alloc] init];
-        _userNameTextFiled.leftTitle = @"账户";
+        _userNameTextFiled.leftTitle = @"登录账户";
         _userNameTextFiled.tag = 4001;
         [_userNameTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
@@ -368,6 +389,7 @@
         _passwordTextFiled = [[MMRegisterTextFiledView alloc] init];
         _passwordTextFiled.leftTitle = @"密码";
         _passwordTextFiled.tag = 4002;
+        _passwordTextFiled.rightTextFiled.secureTextEntry = YES;
         [_passwordTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
             
@@ -375,6 +397,20 @@
     }
     return _passwordTextFiled;
 }
+- (MMRegisterTextFiledView *)confirmPasswordTextFiled{
+    if (_confirmPasswordTextFiled == nil) {
+        _confirmPasswordTextFiled = [[MMRegisterTextFiledView alloc] init];
+        _confirmPasswordTextFiled.leftTitle = @"确认密码";
+        _confirmPasswordTextFiled.tag = 4004;
+        _confirmPasswordTextFiled.rightTextFiled.secureTextEntry = YES;
+        [_confirmPasswordTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+            
+        }];
+    }
+    return _confirmPasswordTextFiled;
+}
+
 
 - (MMRegisterTextFiledView *)codeNumTextFiled{
     if (_codeNumTextFiled == nil) {

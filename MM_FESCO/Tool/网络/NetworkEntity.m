@@ -27,7 +27,7 @@
     NSLog(@"mainHomeUrlstr  %@",urlStr);
     
     
-    NSDictionary * dic = @{@"email":mail
+    NSDictionary * dic = @{@"emailOrPhone":mail
                            
                            };
 
