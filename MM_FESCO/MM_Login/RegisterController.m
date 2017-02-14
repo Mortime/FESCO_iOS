@@ -82,7 +82,7 @@
     
     [self.view addSubview:self.bgTextFiled];
     [self.bgTextFiled addSubview:self.codeNumTextFiled];
-    [self.codeNumTextFiled addSubview:self.codeNumButton];
+    [self.bgTextFiled addSubview:self.codeNumButton];
     [self.bgTextFiled addSubview:self.mailTextFiled];
     [self.bgTextFiled addSubview:self.userNameTextFiled];
     [self.bgTextFiled addSubview:self.passwordTextFiled];
@@ -256,7 +256,8 @@
     }
 //    [self.codeNumTextFiled.rightTextFiled becomeFirstResponder];
     
-    
+    self.codeNumButton.userInteractionEnabled = NO;
+    [self startPainting];
     
     
     [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
@@ -266,11 +267,8 @@
             
             for (NSString *str in allkey) {
                 if ([str isEqualToString:@"ValidateCode"]) {
-                    self.codeNumButton.userInteractionEnabled = NO;
                      [self showTotasViewWithMes:@"验证码发送成功"];
                     _ValidateCode = [[responseObject objectForKey:@"ValidateCode"] integerValue];
-                    [self startPainting];
-                    
                     return ;
 
                 }
@@ -278,10 +276,14 @@
 
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
+                self.codeNumButton.userInteractionEnabled = NO;
+                [self  stopPainting];
                 return;
             }
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
                 [self showTotasViewWithMes:@"该用户已经存在"];
+                self.codeNumButton.userInteractionEnabled = NO;
+                [self  stopPainting];
                 return;
             }
         }

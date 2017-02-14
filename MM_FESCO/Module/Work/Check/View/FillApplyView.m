@@ -241,7 +241,7 @@
         [self showMsg:msg];
         return;
     }
-    
+    _commitButton.userInteractionEnabled = NO;
     [NetworkEntity postCommitApplyWithCheckType:_type address:_addStr time:_timeStr memo:_resultStr applyPeople:_peopleStr Success:^(id responseObject) {
         
         MMLog(@"commitApply ========responseObject======%@",responseObject);
@@ -252,10 +252,12 @@
         if ([msg isEqualToString:@"erroe"]) {
             [self showMsg:@"提交失败"];
         }
+        _commitButton.userInteractionEnabled = YES;
         
         
     } failure:^(NSError *failure) {
         MMLog(@"commitApply ========failure======%@",failure);
+        _commitButton.userInteractionEnabled = YES;
         [self showMsg:@"网络错误"];
     }];
     

@@ -161,7 +161,7 @@
     if ([_timeUntiy isEqualToString:@"半天"]) {
         timeUntiy = 3;
     }
-    
+    _commitButton.userInteractionEnabled = NO;
     [NetworkEntity postCommitOverTimeApplyWihtTimeUnit:timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
         
 //        MMLog(@"CommitOverTimeApply ========responseObject=========%@",responseObject);
@@ -174,8 +174,10 @@
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"duplicate"]) {
             [self.parementVC showTotasViewWithMes:@"该加班时间段已经存在,请重新选择!"];
         }
+        _commitButton.userInteractionEnabled = YES;
     } failure:^(NSError *failure) {
         MMLog(@"CommitOverTimeApply ========failure=========%@",failure);
+        _commitButton.userInteractionEnabled = YES;
         [self.parementVC showTotasViewWithMes:@"网络错误"];
     }];
     

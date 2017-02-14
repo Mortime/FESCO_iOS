@@ -281,7 +281,8 @@
         endAMPM = _endAMPM;
     }
     
-    
+    // 防止按钮重复点击
+    _commitButton.userInteractionEnabled = NO;
     [NetworkEntity postCommitLeaveApplyWihtHolSetId:holSetId holUnit:unitID holNum:holNum beginTime:_timeDuring endTime:endTime holBeginApm:beginAMPM holEndApm:endAMPM reason:_applyIdea approvalMan:applyPeopleID holName:_beginTime Success:^(id responseObject) {
         
         MMLog(@"CommitLeaveApply ========responseObject=========%@",responseObject);
@@ -296,10 +297,13 @@
         }else{
             [self.parementVC showTotasViewWithMes:@"提交失败"];
         }
+        _commitButton.userInteractionEnabled = YES;
         
     } failure:^(NSError *failure) {
         MMLog(@"CommitLeaveApply ========failure=========%@",failure);
+        _commitButton.userInteractionEnabled = YES;
         [self.parementVC showTotasViewWithMes:@"网络错误"];
+        
     }];
     
     
