@@ -13,7 +13,7 @@
 #import "MMLoginController.h"
 #import "JZUserLoginManager.h"
 
-#define  HOST_LINE_DOMAIN  @"https://www.payrollpen1.com/payroll" // 正式服务器地址
+#define  HOST_LINE_DOMAIN  @"https://www.payrollpen.com/payroll" // 正式服务器地址
 
 #define  HOST_TEST_DAMIAN  @"https://11.0.197.196:8443/payroll"   // 测试服务器地址  rui
 

@@ -253,7 +253,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,kBottomH, self.view.width, self.view.height - kBottomH - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,kBottomH, self.view.width, self.view.height - kBottomH - 64 - 46) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;

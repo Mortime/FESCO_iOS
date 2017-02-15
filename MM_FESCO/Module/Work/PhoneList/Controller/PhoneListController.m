@@ -221,7 +221,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {
-        CGFloat h = kMMHeight - 64 - self.tagView.height ;
+        CGFloat h = kMMHeight - 64 - self.tagView.height - 46;
         CGRect frame = CGRectMake(0, CGRectGetMaxY(self.tagView.frame), kMMWidth, h);
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:flowLayout];
