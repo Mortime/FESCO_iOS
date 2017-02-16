@@ -71,7 +71,6 @@
     UITapGestureRecognizer *tapGesRe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectIcon:)];
     [self.imageView addGestureRecognizer:tapGesRe];
 
-
 }
 
 - (void)selectIcon:(UIGestureRecognizer *)ges{
@@ -210,6 +209,12 @@
     return self.dataArray[row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    UILabel *label = (UILabel *)[pickerView viewForRow:row forComponent:component];
+    label.textColor = MM_MAIN_FONTCOLOR_BLUE;
+    
+    
+    
+    
     NSString *resultString = self.dataArray[row];
     self.sexTextFiled.text = resultString;
     
@@ -218,6 +223,16 @@
     }
 
 }
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:14];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.text = _dataArray[row];
+    label.textAlignment = NSTextAlignmentCenter;
+    return label;
+}
+
 #pragma mark - imagePickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -426,6 +441,7 @@
         _pickerView.delegate = self;
         _pickerView.dataSource = self;
         _pickerView.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+        
     }
     return _pickerView;
 }

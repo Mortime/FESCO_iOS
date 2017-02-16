@@ -15,9 +15,11 @@
 
 #define  HOST_LINE_DOMAIN  @"https://www.payrollpen.com/payroll" // 正式服务器地址
 
-#define  HOST_TEST_DAMIAN  @"https://11.0.197.196:8443/payroll"   // 测试服务器地址  rui
+//#define  HOST_TEST_DAMIAN  @"https://11.0.197.196:8443/payroll"   // 测试服务器地址  rui
 
-//#define  HOST_TEST_DAMIAN  @"http://11.0.162.82:8080/payroll"   // 测试服务器地址  tu 
+//#define  HOST_TEST_DAMIAN  @"https://11.0.197.211:8443/payroll"   // 测试服务器地址  tu  https://192.168.0.39:8090
+
+#define  HOST_TEST_DAMIAN  @"https://192.168.0.39:8090/payroll"   // 测试服务器地址  tu  https://192.168.0.39:8090
 
 //#define QA_TEST
 
@@ -31,7 +33,6 @@
         _sharedClient = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[NetworkTool domain]]];
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
-        _sharedClient.requestSerializer.timeoutInterval = 30.f;
         NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
         NSData * certData =[NSData dataWithContentsOfFile:cerPath];
         MMLog(@"certData == %@",certData);

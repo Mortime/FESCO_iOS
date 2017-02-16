@@ -166,28 +166,25 @@
 #pragma mark --- Action Targaet
 // 保存修改
 - (void)didPreservationButton:(UIButton *)btn{
-    MMLog(@"%@",[self dataForKey:kPhone]);
-    MMLog(@"%@",[self dataForKey:kMobile]);
-    MMLog(@"%@",[self dataForKey:kWeixin]);
-    MMLog(@"%@",[self dataForKey:kMail]);
-    MMLog(@"%@",[self dataForKey:kAddress]);
-    MMLog(@"%@",[self dataForKey:kZipCode]);
-    MMLog(@"%@",[self dataForKey:kName]);
-    MMLog(@"%@",[self dataForKey:kSex]);
     [NetworkEntity postSubmitPersonMessageWithEmpId:[UserInfoModel defaultUserInfo].empId empName:[self dataForKey:kName] gender:[self dataForKey:kSex] mobile:[self dataForKey:kMobile] phone:[self dataForKey:kPhone] weixinid:[self dataForKey:kWeixin] email:[self dataForKey:kMail] address:[self dataForKey:kAddress] zipcode:[self dataForKey:kZipCode] success:^(id responseObject) {
         MMLog(@"submitpersonMessage =====   ======= %@",responseObject);
         
-        
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改成功"];
-        [toastView show];
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([[responseObject objectForKey:@"errcode"]integerValue] == 0) {
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改成功"];
+            [toastView show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改失败"];
+            [toastView show];
+
+        }
+       
 
     } failure:^(NSError *failure) {
-        
-        
-        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"修改失败"];
+        ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
         [toastView show];
-
+       
     }];
     
     

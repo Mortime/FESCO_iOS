@@ -48,6 +48,9 @@
 
 @property (nonatomic, strong) UILabel *bottomLabel;
 
+@property (nonatomic, strong) UILabel *VLabel;
+
+
 
 
 
@@ -83,6 +86,7 @@
     [self.bottomView addSubview:self.recommendPasswordLabel];
     [self.bottomView addSubview:self.lineView];
     [self.bottomView addSubview:self.bottomLabel];
+    [self.bottomView addSubview:self.VLabel];
 
     
 }
@@ -165,6 +169,12 @@
         make.top.mas_equalTo(self.lineView.mas_bottom).offset(15);
         make.centerX.mas_equalTo(self.lineView.mas_centerX);
         make.height.mas_equalTo(@16);
+        make.width.mas_equalTo(@150);
+    }];
+    [self.VLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.bottomView.mas_bottom);
+        make.centerX.mas_equalTo(self.lineView.mas_centerX);
+        make.height.mas_equalTo(@13);
         make.width.mas_equalTo(@150);
     }];
 
@@ -483,7 +493,7 @@
         _recommendPasswordLabel.textAlignment = NSTextAlignmentCenter;
         _recommendPasswordLabel.textColor = [UIColor whiteColor];
         _recommendPasswordLabel.userInteractionEnabled = YES;
-         UITapGestureRecognizer * ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegister:)];
+         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegister:)];
         [_recommendPasswordLabel addGestureRecognizer:ges];
     }
     return _recommendPasswordLabel;
@@ -507,6 +517,19 @@
     }
     return _bottomLabel;
 }
+- (UILabel *)VLabel{
+    if (_VLabel == nil) {
+        _VLabel = [[UILabel alloc] init];
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [NSString stringWithFormat:@"V %@",[infoDic objectForKey:@"CFBundleShortVersionString"]];
+        _VLabel.text = appVersion;
+        _VLabel.font = [UIFont systemFontOfSize:12];
+        _VLabel.textAlignment = NSTextAlignmentCenter;
+        _VLabel.textColor = [UIColor whiteColor];
+    }
+    return _VLabel;
+}
+
 
 - (DVVTabBarController *)homeTabBarView {
     

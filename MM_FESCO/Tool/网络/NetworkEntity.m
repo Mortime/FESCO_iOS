@@ -51,7 +51,7 @@
     
     
     
-    NSDictionary * dic = @{@"email":mail,
+    NSDictionary * dic = @{@"emailOrPhone":mail,
                            @"login_name":userName,
                            @"login_password":password
                            

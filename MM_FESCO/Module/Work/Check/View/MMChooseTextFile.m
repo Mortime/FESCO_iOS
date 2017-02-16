@@ -192,7 +192,7 @@
         _rightTextFiled.font = [UIFont systemFontOfSize:14];
         _rightTextFiled.textColor = [UIColor grayColor];
         _rightTextFiled.backgroundColor = [UIColor clearColor];
-    
+    _rightTextFiled.tintColor = MM_MAIN_FONTCOLOR_BLUE;
     }
     return _rightTextFiled;
 }

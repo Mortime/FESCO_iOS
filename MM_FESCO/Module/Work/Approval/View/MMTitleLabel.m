@@ -30,10 +30,10 @@
 }
 - (void)layoutSubviews{
     NSNumber *W = [NSNumber numberWithFloat:self.width];
-    NSNumber *H = [NSNumber numberWithFloat:(self.height / 2)];
+    NSNumber *H = [NSNumber numberWithFloat:((self.height - 20) / 2)];
     
     [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top);
+        make.top.mas_equalTo(self.mas_top).offset(10);
 //        make.centerX.mas_equalTo(self.mas_centerX);
         make.left.mas_equalTo(self.mas_left);
         make.width.mas_equalTo(W);

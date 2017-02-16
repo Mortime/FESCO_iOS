@@ -13,7 +13,7 @@
 
 #define kMarginH   15
 
-#define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *200/667
+#define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *170/667
 
 //#define h_iconViewTOP [UIScreen mainScreen].bounds.size.height *104/667
 
@@ -292,16 +292,18 @@
                 }
             }
 
-            if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"]) {
+            if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"] || [[responseObject objectForKey:@"message"] isEqualToString:@"invalid phone number"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
                 self.codeNumButton.userInteractionEnabled = YES;
                 [self  stopPainting];
+                [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
                 return;
             }
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
                 [self showTotasViewWithMes:@"该用户已经存在"];
                 self.codeNumButton.userInteractionEnabled = YES;
                 [self  stopPainting];
+                [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
                 return;
             }
         }
@@ -309,6 +311,7 @@
         MMLog(@"RegisterCodeNumber ========failure ============%@",failure);
         self.codeNumButton.userInteractionEnabled = YES;
         [self  stopPainting];
+        [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [self showTotasViewWithMes:@"网络错误"];
     }];
 
@@ -525,9 +528,9 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.view.bounds = CGRectMake(0,  h_iconViewHeight , self.view.bounds.size.width, self.view.bounds.size.height);
     }];
-    CGRect frame = self.view.bounds;
-    frame.origin.y = h_iconViewHeight ;
-    _headerImageView.frame = frame;
+//    CGRect frame = self.view.bounds;
+//    frame.origin.y = h_iconViewHeight ;
+//    _headerImageView.frame = frame;
 }
 
 -(void)keyboardWillHidden
@@ -537,8 +540,8 @@
         bounds.origin = CGPointZero;
         self.view.bounds = bounds;
     }];
-    CGRect frame = self.view.bounds;
-    _headerImageView.frame = frame;
+//    CGRect frame = self.view.bounds;
+//    _headerImageView.frame = frame;
 }
 - (void)dealloc{
     [self  stopPainting];

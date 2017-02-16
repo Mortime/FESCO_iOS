@@ -75,13 +75,6 @@
     [self.bottomBgView addSubview:self.startTime];
     [self.bottomBgView addSubview:self.endTime];
     
-//    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
-//    longPressGr.minimumPressDuration = 1.0;
-//    [self addGestureRecognizer:longPressGr];
-    
-    
-    
-    
 }
 - (void)layoutSubviews{
     
@@ -156,9 +149,6 @@
         
     }];
     
-    
-    
-    
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.applyTime.mas_bottom).offset(10);
         make.left.mas_equalTo(self.flagView.mas_right).offset(5);
@@ -222,7 +212,7 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor  =  [UIColor colorWithHexString:@"323a45"];
+        _bgView.backgroundColor  =  [UIColor clearColor];
         
     }
     return _bgView;
@@ -268,7 +258,6 @@
     if (_flagLabel == nil) {
         _flagLabel = [[UILabel alloc] init];
         _flagLabel.font = [UIFont systemFontOfSize:14];
-        _flagLabel.textColor = [UIColor blackColor];
         _flagLabel.textAlignment = NSTextAlignmentCenter;
         
     }
@@ -358,15 +347,13 @@
     
     if (listModel.statusType == 0) {
         // 未通过
-        _flagView.layer.borderColor = [UIColor colorWithHexString:@"d2d2d2"].CGColor;
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"999999"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_no"];
         _flagLabel.text = @"未通过";
-        
-        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"d2d2d2"];
-        [_flagBottomButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        _bgView.backgroundColor = [UIColor colorWithHexString:@"d2d2d2"];
-        _titleName.textColor = [UIColor blackColor];
+        _flagLabel.textColor = [UIColor colorWithHexString:@"666666"];
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"999999"];
+        [_flagBottomButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _titleName.textColor = [UIColor colorWithHexString:@"666666"];
         
     }
     
@@ -375,25 +362,21 @@
         _flagView.layer.borderColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_pass"];
         _flagLabel.text = @"通过";
-        
+        _flagLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
         _flagBottomButon.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         [_flagBottomButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-        _bgView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-        _titleName.textColor = [UIColor whiteColor];
+        _titleName.textColor = MM_MAIN_FONTCOLOR_BLUE;
         
     }
     if (listModel.statusType == 2) {
         // 正在审批中
-        _flagView.layer.borderColor = [UIColor colorWithHexString:@"323a45"].CGColor;
+        _flagView.layer.borderColor = [UIColor colorWithHexString:@"666666"].CGColor;
         _flagImageView.image = [UIImage imageNamed:@"apply_ing"];
         _flagLabel.text = @"审批中";
-        
-        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"323a45"];
-        [_flagBottomButon setTitleColor:MM_MAIN_FONTCOLOR_BLUE forState:UIControlStateNormal];
-        
-        _bgView.backgroundColor = [UIColor colorWithHexString:@"323a45"];
-        _titleName.textColor = MM_MAIN_FONTCOLOR_BLUE;
+        _flagLabel.textColor = [UIColor colorWithHexString:@"666666"];;
+        _flagBottomButon.backgroundColor = [UIColor colorWithHexString:@"666666"];
+        [_flagBottomButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _titleName.textColor = [UIColor colorWithHexString:@"666666"];
         
     }
     
