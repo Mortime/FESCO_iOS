@@ -53,6 +53,8 @@
         _flagView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
         _flagView.backgroundColor = [UIColor redColor];
         _flagView.hidden = YES;
+        _flagView.layer.masksToBounds = YES;
+        _flagView.layer.cornerRadius = 5.f;
         [self addSubview:_flagView];
     }
     return _flagView;
@@ -244,26 +246,26 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
                 cell.flagView.hidden = YES;
                 if (array.count) {
                     if ([array[0] isEqualToString:@"normal"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffffff"];
                     }
                     if ([array[0] isEqualToString:@"lateArrive"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffdfbd"];
                         cell.dayLabel.textColor = [UIColor whiteColor];
                     }
                     if ([array[0] isEqualToString:@"earlyLeave"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"e4bdff"];
                         cell.dayLabel.textColor = [UIColor whiteColor];
                     }
                     if ([array[0] isEqualToString:@"offWork"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffbdbd"];
                         cell.dayLabel.textColor = [UIColor whiteColor];
                     }
                     if ([array[0] isEqualToString:@"holiday"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"bfffbd"];
                         cell.dayLabel.textColor = [UIColor whiteColor];
                     }
                     if ([array[0] isEqualToString:@"extraWork"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                        cell.backgroundColor =  [UIColor colorWithHexString:@"bdbfff"];
                         cell.dayLabel.textColor = [UIColor whiteColor];
                     }
                 }
@@ -272,24 +274,24 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
                     cell.flagView.hidden = NO;
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     
-                    if ([array[1] isEqualToString:@"normal"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"edf963"];
+                    if ([array[1] isEqualToString:@"normal"]) {  // self.colorArray = @[@"ffffff",@"ffdfbd",@"e4bdff",@"ffbdbd",@"bfffbd",@"bdbfff"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffffff"];
                     }
                     if ([array[1] isEqualToString:@"lateArrive"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e963f9"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffdfbd"];
                         
                     }
                     if ([array[1] isEqualToString:@"earlyLeave"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"636df9"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e4bdff"];
                     }
                     if ([array[1] isEqualToString:@"offWork"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f96363"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffbdbd"];
                     }
                     if ([array[1] isEqualToString:@"holiday"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"63f971"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"bfffbd"];
                     }
                     if ([array[1] isEqualToString:@"extraWork"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"f99b63"];
+                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"bdbfff"];
                     }
                     
                 }

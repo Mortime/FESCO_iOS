@@ -50,7 +50,7 @@
 }
 - (void)initData{
     self.titleArray = @[@"正常",@"迟到",@"早退",@"旷工",@"请假",@"加班"];
-    self.colorArray = @[@"edf963",@"e963f9",@"636df9",@"f96363",@"63f971",@"f99b63"];
+    self.colorArray = @[@"ffffff",@"ffdfbd",@"e4bdff",@"ffbdbd",@"bfffbd",@"bdbfff"];
     
 }
 @end
