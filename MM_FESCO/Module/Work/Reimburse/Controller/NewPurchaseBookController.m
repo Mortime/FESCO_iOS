@@ -96,8 +96,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPicID) name:kPicUpSuccessNotifition object:nil];
    // 未制单消费编辑时,给提交数据赋值
     
-    
-    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //  _dateType == 2 显示  结束时间 ,  _needCity == 1  显示 消费城市

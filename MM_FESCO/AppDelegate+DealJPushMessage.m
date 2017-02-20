@@ -56,13 +56,13 @@
 //    [[NSNotificationCenter defaultCenter] postNotificationName:YBNotif_HandleNotification object:nil userInfo:userInfo];
     
     // 应用正处理前台状态下，不会收到推送消息，因此在此处需要额外处理一下
-    if (application.applicationState == UIApplicationStateActive) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"收到推送消息"
-                                                        message:userInfo[@"aps"][@"alert"]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:@"确定",  nil];
-        [alert show];}
+//    if (application.applicationState == UIApplicationStateActive) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"收到推送消息"
+//                                                        message:userInfo[@"aps"][@"alert"]
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"取消"
+//                                              otherButtonTitles:@"确定",  nil];
+//        [alert show];}
     
 #endif
     

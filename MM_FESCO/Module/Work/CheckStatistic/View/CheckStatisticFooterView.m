@@ -83,7 +83,6 @@
         _checkContentView = [[UITextView alloc] init];
         _checkContentView.font = [UIFont systemFontOfSize:12];
         _checkContentView.textColor = [UIColor grayColor];
-//        _checkContentLabel.text = @"2018-89--8888";
         _checkContentView.backgroundColor = [UIColor clearColor];
     }
     return _checkContentView;
@@ -102,45 +101,18 @@
         _holidayContentLabel = [[UILabel alloc] init];
         _holidayContentLabel.font = [UIFont systemFontOfSize:12];
         _holidayContentLabel.textColor = [UIColor grayColor];
-//        _holidayContentLabel.text = @"2018-89--8888";
-//        _holidayContentLabel.backgroundColor = [UIColor cyanColor];
         
     }
     return _holidayContentLabel;
 }
 - (void)setRecodeStr:(NSString *)recodeStr{
     
-    NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:recodeStr]];
-//    [self.checkContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.checkTitleLabel.mas_bottom);
-//        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
-//        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-//        make.height.mas_equalTo(50);
-//    }];
-    
-//     MMLog(@"recodeStr  ==%@",recodeStr);
-    _checkContentView.text = recodeStr;
+_checkContentView.text = recodeStr;
 
 }
 - (void)setHolidayStr:(NSString *)holidayStr{
-    MMLog(@"holidayStr  ==%@%@",holidayStr,_holidayContentLabel);
-    
-    NSNumber *H = [NSNumber numberWithFloat:[self getLabelWidthWithString:holidayStr]];
-//    [self.holidayContentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.holidayTitelLabel.mas_bottom);
-//        make.left.mas_equalTo(self.checkTitleLabel.mas_left);
-//        make.right.mas_equalTo(self.checkTitleLabel.mas_right);
-//        make.height.mas_equalTo(H);
-//    }];
-    
-    MMLog(@"holidayStr  ==%@%@",holidayStr,_holidayContentLabel);
-    _holidayContentLabel.text = holidayStr;
+       _holidayContentLabel.text = holidayStr;
     
     }
 
-- (CGFloat)getLabelWidthWithString:(NSString *)string {
-      CGRect bounds = [string boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 10000) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.f]} context:nil];
-        
-    return bounds.size.height + 10;
-}
 @end
