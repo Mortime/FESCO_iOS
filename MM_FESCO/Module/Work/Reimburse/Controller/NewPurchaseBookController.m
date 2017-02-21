@@ -46,7 +46,7 @@
     if (_bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
         [_picStreamArray removeAllObjects];
         for (NSDictionary *dic in _EditPicArray) {
-            if ([dic objectForKey:@"id"]) {
+            if (![[dic objectForKey:@"id"] isEqual:[NSNull null]] ) {
                 [self postGetPicStreamforeWithPicId:[dic objectForKey:@"id"] Success:^(id responseObject) {
                     MMLog(@"GetPicStreamforeWithPicId ====responseObject==== %@",responseObject);
                     UIImage *image = [UIImage imageWithData:responseObject];

@@ -589,7 +589,10 @@
         bookVC.sectionTag = indexPath.section;
         bookVC.networkArrayEdit = _netWorkRecordArray;
         bookVC.delegate = self;
-        bookVC.EditPicArray = model.picArray;
+        if (model.picArray.count) {
+            bookVC.EditPicArray = model.picArray;
+        }
+        
         
 
         [self.navigationController pushViewController:bookVC animated:YES];

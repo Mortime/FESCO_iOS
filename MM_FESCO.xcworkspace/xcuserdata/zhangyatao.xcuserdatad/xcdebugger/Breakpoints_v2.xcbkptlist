@@ -29,53 +29,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MM_FESCO/MM_Login/RegisterController.m"
-            timestampString = "508848625.304204"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "-didClick"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RegisterController didClick]"
-                  moduleName = "MM_FESCO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/MM_Login/RegisterController.m"
-                  timestampString = "508848625.636682"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "239"
-                  endingLineNumber = "239"
-                  offsetFromSymbolStart = "657">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__30-[RegisterController didClick]_block_invoke"
-                  moduleName = "MM_FESCO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/MM_Login/RegisterController.m"
-                  timestampString = "508848625.639085"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "241"
-                  endingLineNumber = "241"
-                  offsetFromSymbolStart = "51">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
