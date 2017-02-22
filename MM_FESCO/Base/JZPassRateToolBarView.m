@@ -192,9 +192,9 @@
     btn.titleLabel.font = [UIFont fontWithName:@"DIN-Regular" size:11];
     btn.titleLabel.font = _titleFont;
     
-    CGSize btnSize = size;
+//    CGSize btnSize = size;
     if (titleArray.count==1) {
-        CGSize btnSize = [title sizeWithFont:_titleFont];
+        CGSize btnSize = [title sizeWithAttributes:@{@"NSFontAttributeName" : _titleFont}];
         btn.frame = CGRectMake(15, 0, btnSize.width, size.height);
     }else{
         //位置和大小

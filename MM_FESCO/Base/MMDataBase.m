@@ -157,8 +157,7 @@ static FMDatabase *_db;
         
         NSString *typePurchaseStr = [resultSet stringForColumn:@"typePurchaseStr"];
         
-        
-         NSString *value = [resultSet stringForColumnIndex:0];
+    
         
         MMLog(@"moneyAmount ===== %@,spendBegin = %@",moneyAmount,spendBegin);
        

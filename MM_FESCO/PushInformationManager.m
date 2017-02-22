@@ -50,6 +50,21 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"有教练对您评价啦，赶快去查看吧！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         [alertView show];
         
+//        UIViewController *viewC = self.ViewController;
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"有教练对您评价啦，赶快去查看吧" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            MMLog(@"点击了取消按钮");
+//        }];
+//        [alertController addAction:cancelAction];
+//        
+//        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+        
+        
+        
+        
+        
     }else if ([type isEqualToString:@"walletupdate"]) {
        
     }else if ([type isEqualToString:@"systemmsg"]) {

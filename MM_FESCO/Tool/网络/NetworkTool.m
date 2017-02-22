@@ -63,7 +63,6 @@
         }];
         
         
-        __weak typeof(self)weakSelf = self;
         [_sharedClient setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
             NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
             __autoreleasing NSURLCredential *credential =nil;

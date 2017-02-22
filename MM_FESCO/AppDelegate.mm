@@ -176,9 +176,9 @@
     NSDateComponents *components = [[NSDateComponents alloc] init];
     NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     components = [calendar components:unitFlags fromDate:now];
-    NSInteger hour = [components hour];
-    NSInteger min = [components minute];
-    NSInteger sec = [components second];
+//    NSInteger hour = [components hour];
+//    NSInteger min = [components minute];
+//    NSInteger sec = [components second];
     NSInteger week = [components weekday];
     MMLog(@"week = %lu",week);
     if (week <= 6) {

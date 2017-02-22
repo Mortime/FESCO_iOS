@@ -16,7 +16,7 @@
 #import "EditMessageModel.h"
 #import "NOBookChooseModel.h"
 #define kBottomButtonW    ((kMMWidth) / 2)
-@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate,NewPurchaseSubContentCellDelegate,NewPurchaseSubBookCellDelegate>
+@interface NewPurchaseBookController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QBImagePickerControllerDelegate,CityListViewDelegate,NewPurchaseSubContentCellDelegate,NewPurchaseSubBookCellDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -318,20 +318,12 @@
 //弹出选择框
 -(void)showActionForPhoto
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self
-                                  cancelButtonTitle:@"取消"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"拍照",@"从相册选择",nil];
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [actionSheet showInView:self.view];
-}
-#pragma mark UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)modalView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
+   
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        MMLog(@"点击了取消按钮");
+    }];
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //拍照
         if (![cameraHelper checkCameraAuthorizationStatus]) {
             return;
@@ -341,8 +333,9 @@
         picker.allowsEditing = NO;//设置可编辑
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:nil];//进入照相界面
-    }else if (buttonIndex == 1){
-        //相册
+    }];
+    UIAlertAction *chooseAction = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 从相册选择
         if (![cameraHelper checkPhotoLibraryAuthorizationStatus]) {
             return;
         }
@@ -355,10 +348,15 @@
         imagePickerController.allowsMultipleSelection = YES;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imagePickerController];
         [self presentViewController:navigationController animated:YES completion:NULL];
-    }
+
+    }];
+    
+    [alertController addAction:OKAction];
+    [alertController addAction:chooseAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
-
-
 #pragma mark UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
