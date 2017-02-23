@@ -22,4 +22,5 @@
 @property (strong, nonatomic) ToolsController   *toolsVC;
 @property (strong, nonatomic) MyController   *myVC;
 
+- (void)seleItemWithIndex:(NSInteger )index;
 @end

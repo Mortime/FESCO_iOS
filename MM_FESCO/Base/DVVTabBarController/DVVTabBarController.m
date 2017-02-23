@@ -40,6 +40,8 @@
 
 @property (nonatomic,assign) UIButton *selectBtn;
 
+@property (nonatomic, strong) NSMutableArray *itemArray;
+
 @end
 
 @implementation DVVTabBarController
@@ -62,6 +64,7 @@
     
     _titleNormalColor = [UIColor blackColor];
     _titleSelectedColor = MM_MAIN_FONTCOLOR_BLUE ;
+    _itemArray = [NSMutableArray array];
     
 }
 
@@ -229,6 +232,7 @@
     
     //添加
     [_coverView addSubview:itemBtn];
+    [_itemArray addObject:itemBtn];
     
     //重新布局
     [self reconfigureCoverViewSubviewsFrame];
@@ -238,11 +242,17 @@
         [self itemButtonSelected:itemBtn];
     }
 }
+- (void)seleItemWithIndex:(NSInteger )index{
+    for (DVVDockItem *item in _itemArray) {
+        if (item.tag == index) {
+            [self itemButtonSelected:item];
+        }
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

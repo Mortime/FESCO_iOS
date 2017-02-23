@@ -25,7 +25,10 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-
+#import "DVVTabBarController.h"
+#import "LeaveApplyRecordController.h"
+#import "OverTimeApplyController.h"
+#import "CheckWorkController.h"
 
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
@@ -391,13 +394,61 @@
             sound = default;
         };
         extras = { "jumpTo":xxx }
+   
+   101=休假审批列表
+   102=加班审批列表
+   103=补签审批列表
+   201=休假申请列表
+   202=加班申请列表
+   203=补签申请列表
    ;
     }
    */
-//    PersonalMessageController *VC = [[PersonalMessageController alloc] init];
-//    VC.hidesBottomBarWhenPushed = YES;
-    
+    MMLog(@"推送统一处理消息");
+    if (dic == nil) {
+        return;
+    }
+    if ([dic objectForKey:@"extras"]) {
+        NSDictionary *extrasDic = [dic objectForKey:@"extras"];
+        
+        NSInteger code = [[extrasDic objectForKey:@"jumpTo"] integerValue];
+        // 审批
+        if (code == 101 || code == 102 || code == 103) {
+            PersonalMessageController *VC = [[PersonalMessageController alloc] init];
+            VC.hidesBottomBarWhenPushed = YES;
+            DVVTabBarController *tbc = (DVVTabBarController *)self.window.rootViewController;
+            [tbc seleItemWithIndex:1];
+        }
+        
+        // 休假申请列表
+        if (code == 201) {
+            LeaveApplyRecordController *leaveVC = [[LeaveApplyRecordController alloc] init];
+            leaveVC.hidesBottomBarWhenPushed = YES;
+            DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
+                UINavigationController *NC = rootVC.selectedViewController;
+                [NC pushViewController:leaveVC animated:YES];
+        }
+        
+        // 加班申请列表
+        if (code == 202) {
+            OverTimeApplyController *overVC = [[OverTimeApplyController alloc] init];
+            overVC.hidesBottomBarWhenPushed = YES;
+            DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
+            UINavigationController *NC = rootVC.selectedViewController;
+            [NC pushViewController:overVC animated:YES];
+        }
 
+        // 补签申请列表
+        if (code == 203) {
+            CheckWorkController *checkVC = [[CheckWorkController alloc] init];
+            checkVC.hidesBottomBarWhenPushed = YES;
+            DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
+            UINavigationController *NC = rootVC.selectedViewController;
+            [NC pushViewController:checkVC animated:YES];
+        }
+
+        
+    }
 }
 
 @end
