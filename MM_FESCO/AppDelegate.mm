@@ -19,12 +19,16 @@
 #import <BaiduMapAPI/BMapKit.h>
 #import "NetMonitor.h"
 #import "YBWelcomeController.h"
-#import "AppDelegate+DealJPushMessage.h"
+#import "PersonalMessageController.h"
+
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 
 
 
-@interface AppDelegate ()
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @property (nonatomic, strong) BMKMapManager *mapManager;
 
@@ -42,8 +46,7 @@
     }
     // 启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
-    
-   [self JPushApplication:application didFinishLaunchingWithOptions:launchOptions];    // 系统配置
+
      [self sysConfigWithApplication:application LaunchOptions:launchOptions];
     //  监听网络
     [NetMonitor manager];
@@ -103,6 +106,25 @@
     EMOptions *options = [EMOptions optionsWithAppkey:@"1172160923115122#mm"];
 //    options.apnsCertName = @"istore_dev";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
+    
+    // 配置JPush
+    [JPUSHService resetBadge];
+    application.applicationIconBadgeNumber = 0;
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    // Required
+    //@param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
+    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:NO];
+    
+    
+    
+    
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
@@ -115,7 +137,7 @@
  在前台收到通知时，会调用下面这个方法,可以在这个方法里面实现收到通知时刷新或跳转界面的功能；程序在前台收到推送时通知栏不会弹出推送信息
  */
 -(void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo{
-    [self JPushApplication:application didReceiveRemoteNotification:userInfo];
+    [JPUSHService handleRemoteNotification:userInfo];
 }
 
 // 当程序在后台收到推送时，如果info.plist中配置了UIBackgroundModes会调用
@@ -155,10 +177,12 @@
      }
      */
     MMLog(@"userInfo = %@",userInfo);
-#pragma mark - JPush接受推送消息 require
-    [self JPushApplication:application didReceiveRemoteNotification:userInfo];
-#pragma mark - JPush推送消息统一接受
-    [self JPushfetchCompletionHandlerApplication:application didReceiveRemoteNotification:userInfo];
+//#pragma mark - JPush接受推送消息 require
+//    [self JPushApplication:application didReceiveRemoteNotification:userInfo];
+//#pragma mark - JPush推送消息统一接受
+//    [self JPushfetchCompletionHandlerApplication:application didReceiveRemoteNotification:userInfo];
+    
+    [JPUSHService handleRemoteNotification:userInfo];
     
 }
 // 注册APNs失败回调
@@ -325,6 +349,55 @@
     }
     
     return tabBarVC;
+}
+/*
+ * @brief handle UserNotifications.framework [willPresentNotification:withCompletionHandler:]
+ * @param center [UNUserNotificationCenter currentNotificationCenter] 新特性用户通知中心
+ * @param notification 前台得到的的通知对象
+ * @param completionHandler 该callback中的options 请使用UNNotificationPresentationOptions
+ */
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+}
+
+/*
+ * @brief handle UserNotifications.framework [didReceiveNotificationResponse:withCompletionHandler:]
+ * @param center [UNUserNotificationCenter currentNotificationCenter] 新特性用户通知中心
+ * @param response 通知响应对象
+ * @param completionHandler
+ */
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler();  // 系统要求执行这个方法
+    [self handleInfoWithDict:userInfo];
+}
+
+// 跳转页面的基本处理
+- (void)handleInfoWithDict:(NSDictionary *)dic{
+  /*  {
+        "_j_msgid" = 8560450051;
+        aps =     {
+            alert = "hello world!";
+            badge = 1;
+            sound = default;
+        };
+        extras = { "jumpTo":xxx }
+   ;
+    }
+   */
+//    PersonalMessageController *VC = [[PersonalMessageController alloc] init];
+//    VC.hidesBottomBarWhenPushed = YES;
+    
+
 }
 
 @end
