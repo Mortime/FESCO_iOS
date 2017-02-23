@@ -171,7 +171,6 @@
     cell.unitsArray = _unitsArray;
     cell.leftTitle = self.leftTitleArray[indexPat.row];
     cell.placeTitle = self.placeTitleArray[indexPat.row];
-    cell.timeType = _timeType;
     if ([_beginTime isEqualToString:@"年假"]) {
 
         cell.holNumberStr = _yearHolNumber;
@@ -305,28 +304,6 @@
         [self.parementVC showTotasViewWithMes:@"网络错误"];
         
     }];
-    
-    
-    
-    
-    
-    
-    
-    
-//
-//    [NetworkEntity postCommitLeaveApplyWihtTimeUnit:_timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
-//        
-//        MMLog(@"CommitLeaveApply ========responseObject=========%@",responseObject);
-//        if ([[responseObject objectForKey:@"message"] isEqualToString:@"error"]) {
-//            [self.parementVC showTotasViewWithMes:@"提交失败"];
-//        }
-//        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
-//            [self.parementVC showTotasViewWithMes:@"提交成功"];
-//        }
-//    } failure:^(NSError *failure) {
-//        MMLog(@"CommitLeaveApply ========failure=========%@",failure);
-//        [self.parementVC showTotasViewWithMes:@"网络错误"];
-//    }];
 
 }
 #pragma mark ----- TextFiledDelegate Block
@@ -356,14 +333,15 @@
         
         
         
-        [self refreshUI];
+//        [self refreshUI];
     }
     if (indexTag == 3001) {
         MMLog(@"时间单位");
         _endTime = textFiled.text;
         if ([_endTime isEqualToString:@"半天"]) {
             _isShowAMPM = YES;
-            _timeType = @"yyyy-MM-dd";
+        }else if([_endTime isEqualToString:@"天"]) {
+            _isShowAMPM = NO;
         }else{
             _isShowAMPM = NO;
         }
@@ -372,17 +350,19 @@
         MMLog(@"%@=====%@",_beginTime,_endTime);
         if (([_beginTime isEqualToString:@"调休"]) && ([_endTime isEqualToString:@"小时"])) {
             _isShowHourTime = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTimeTypeChangeNotifition object:self];
         }else{
             _isShowHourTime = NO;
         }
         
-        [self refreshUI];
+//        [self refreshUI];
         
         
     }
     if (indexTag == 3002) {
         MMLog(@"开始时间");
         _timeDuring = textFiled.text;
+        
     }
     if (indexTag == 3003) {
         MMLog(@"结束时间");
@@ -396,6 +376,8 @@
         MMLog(@"审批人");
         _applyPeopel = textFiled.text;
     }
+    
+    [self refreshUI];
 }
 
 - (UITableView *)tableView {

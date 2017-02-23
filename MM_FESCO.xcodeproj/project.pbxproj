@@ -3022,8 +3022,11 @@
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6SWT7Q8USS;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -3660,8 +3663,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE_SPECIFIER = ShuXinDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3693,8 +3696,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE_SPECIFIER = ShuXinDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

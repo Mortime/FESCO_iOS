@@ -23,6 +23,7 @@
 
 
 
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) BMKMapManager *mapManager;
@@ -114,8 +115,9 @@
  在前台收到通知时，会调用下面这个方法,可以在这个方法里面实现收到通知时刷新或跳转界面的功能；程序在前台收到推送时通知栏不会弹出推送信息
  */
 -(void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo{
-    
+    [self JPushApplication:application didReceiveRemoteNotification:userInfo];
 }
+
 // 当程序在后台收到推送时，如果info.plist中配置了UIBackgroundModes会调用
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
@@ -153,10 +155,10 @@
      }
      */
     MMLog(@"userInfo = %@",userInfo);
-#pragma mark - JPush推送消息统一接受
-    [self JPushfetchCompletionHandlerApplication:application didReceiveRemoteNotification:userInfo];
 #pragma mark - JPush接受推送消息 require
     [self JPushApplication:application didReceiveRemoteNotification:userInfo];
+#pragma mark - JPush推送消息统一接受
+    [self JPushfetchCompletionHandlerApplication:application didReceiveRemoteNotification:userInfo];
     
 }
 // 注册APNs失败回调

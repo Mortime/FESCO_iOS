@@ -93,6 +93,31 @@
         
         _textFile.dataArray = _resultUnitArray;
     }
+    
+    // 选择的时间单位为天或者半天时,显示时间格式为 YYYY-MM-dd ,当时间单位为小时, 还是要显示HH:dd,
+    if (_index == 3002 || _index == 3003) {
+        if (_isShowAMPM) {
+            _rithtTextFiled.hidden = NO;
+        }else if(_isShowTimeNum){
+            
+            _rithtTextFiled.hidden = YES;
+        }else{
+            _rithtTextFiled.hidden = YES;
+        }
+    }
+    
+    
+    if ( _index == 3003) {
+        if (_isShowTimeNum) {
+            _hourTimeNumTextFiled.hidden = NO;
+            _textFile.hidden = YES;
+        }else{
+            _hourTimeNumTextFiled.hidden = YES;
+            _textFile.hidden = NO;
+        }
+    }
+    
+
     // 显示日期PickView
     if (_index == 3002 || _index == 3003 ) {
         _textFile.isShowDataPickView = YES;
@@ -112,27 +137,6 @@
         _textFile.rightTextFiled.text = _holNumberStr;
     }
     
-    
-    if (_index == 3002 || _index == 3003) {
-        if (_isShowAMPM) {
-            _rithtTextFiled.hidden = NO;
-            _textFile.timeType = _timeType;
-        }else{
-            _rithtTextFiled.hidden = YES;
-        }
-    }
-
-    
-    if ( _index == 3003) {
-        if (_isShowTimeNum) {
-            _hourTimeNumTextFiled.hidden = NO;
-            _textFile.hidden = YES;
-        }else{
-            _hourTimeNumTextFiled.hidden = YES;
-             _textFile.hidden = NO;
-        }
-    }
-
     
     
     // 当选择休假并且选择时间单位为小时时 截止时间显示为请假时数,
@@ -197,11 +201,6 @@
     if (_textFile == nil) {
         _textFile = [[MMChooseTextFile alloc] init];
         _textFile.backgroundColor  = [UIColor whiteColor];
-////        _textFile.dataArray = self.dataArray;
-//        [_textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-//            
-//        }];
-//        
         
     }
     return _textFile;

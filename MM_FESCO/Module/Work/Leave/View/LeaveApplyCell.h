@@ -43,8 +43,6 @@
 
 @property (nonatomic, assign) BOOL isShowTimeNum; // 当假期类型为休假 时间单位为小时时显示
 
-@property (nonatomic, strong) NSString *timeType;
-
 
 @property (nonatomic, weak) id <LeaveApplyCellDelegate> delegate;
 

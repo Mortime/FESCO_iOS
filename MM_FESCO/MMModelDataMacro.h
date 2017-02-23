@@ -29,6 +29,9 @@
 #define kPicUpSuccessNotifition  @"kPicUpSuccessNotifition"  // 图片上传成功通知
 
 
+#define kTimeTypeChangeNotifition @"kTimeTypeChangeNotifition" // 日期改变的通知;
+
+
 // Key标识符
 #define kSingNumber  @"SingNumber"  //  存储签到次数
 #define kSignDate    @"SignDate"    // 记录签到日期,用于次日签到数据清0
@@ -49,7 +52,11 @@
 
 #define kEmpIdKey @"EmpIdKey" // 签到成功后保存empId, 防止一个手机一天内打多次卡
 
-#define kSignUpTime @"SignUpTime" // 签到成功时间 
+#define kSignUpTime @"SignUpTime" // 签到成功时间
+
+
+
+
 
 
 
