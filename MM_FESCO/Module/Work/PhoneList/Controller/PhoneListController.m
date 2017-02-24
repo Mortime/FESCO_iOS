@@ -203,10 +203,16 @@ static NSString * const reuseID  = @"PhoneListCell";
 
 - (void)didSearch:(UIButton *)btn{
     
-    EasySerachViewController *easy = [EasySerachViewController new];
-    easy.dataArray = self.paramArray;
-    easy.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:easy animated:YES];
+//    EasySerachViewController *easy = [EasySerachViewController new];
+//    easy.dataArray = self.paramArray;
+//    easy.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:easy animated:YES];
+    
+    
+    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"zrfesco_4302" conversationType:EMConversationTypeChat];
+    chatController.hidesBottomBarWhenPushed= YES;
+    [self.navigationController pushViewController:chatController animated:YES];
+    
     
 }
 - (void)didReceiveMemoryWarning {
