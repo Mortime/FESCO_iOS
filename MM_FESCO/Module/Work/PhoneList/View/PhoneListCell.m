@@ -19,6 +19,7 @@
     return self;
 }
 
+
 - (void)setUrlString:(NSString *)urlString
 {
     _urlString = urlString;

@@ -31,6 +31,7 @@
 #import "CheckWorkController.h"
 
 
+
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @property (nonatomic, strong) BMKMapManager *mapManager;
@@ -106,8 +107,8 @@
 - (void)sysConfigWithApplication:(UIApplication *)application LaunchOptions:(NSDictionary *)launchOptions
 {
     // 配置环信
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1172160923115122#mm"];
-//    options.apnsCertName = @"istore_dev";
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1187170223115321#payrollpen"];
+    options.apnsCertName = @"iOSJPushDev";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     
     // 配置JPush

@@ -85,7 +85,7 @@ static NSString * const reuseID  = @"PhoneListCell";
             // 数据不存在,进行网络请求
             
             [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-                //                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+                                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
                 [MMDataBase initializeDatabaseWithTableName:t_phoneList baseBlock:^(BOOL isSuccess) {
                     if (isSuccess) {
                         // 表创建成功
@@ -174,7 +174,15 @@ static NSString * const reuseID  = @"PhoneListCell";
 //    [self addChildViewController:(UIViewController *)cell.phoneListVC];
     return cell;
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary *dataDic =  _paramArray[indexPath.row];
+    NSInteger empID  =  [[dataDic objectForKey:@"emp_Id"] integerValue];
+    NSString *EMID = [NSString stringWithFormat:@"zrfesco_%lu",empID];
+    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:EMID conversationType:EMConversationTypeChat];
+    chatController.hidesBottomBarWhenPushed= YES;
+    [self.navigationController pushViewController:chatController animated:YES];
+}
 /** 手指滑动BigCollectionView，滑动结束后调用 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
