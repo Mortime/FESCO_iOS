@@ -104,6 +104,7 @@
     self.empName = [info objectForKey:@"emp_Name"];
     
     self.loginTime = [info objectForKey:@"MM_loginTime"];
+    self.loginPasswordMD5 = [info objectForKey:@"login_Password"];
     
     
     if (![[self class] isLogin]) {

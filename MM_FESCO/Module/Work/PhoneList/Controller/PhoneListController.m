@@ -167,7 +167,9 @@ static NSString * const reuseID  = @"PhoneListCell";
     PhoneListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     NSString *title = _gropArray[indexPath.row];
     cell.personListArray = self.allPersonMessageArray[indexPath.row];
+    cell.pareVC = self;
     cell.urlString = title;
+//    cell.pareVC = self;
     
     
     // 如果不加入响应者链，则无法利用NavController进行Push/Pop等操作。
@@ -203,15 +205,10 @@ static NSString * const reuseID  = @"PhoneListCell";
 
 - (void)didSearch:(UIButton *)btn{
     
-//    EasySerachViewController *easy = [EasySerachViewController new];
-//    easy.dataArray = self.paramArray;
-//    easy.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:easy animated:YES];
-    
-    
-    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"zrfesco_4302" conversationType:EMConversationTypeChat];
-    chatController.hidesBottomBarWhenPushed= YES;
-    [self.navigationController pushViewController:chatController animated:YES];
+    EasySerachViewController *easy = [EasySerachViewController new];
+    easy.dataArray = self.paramArray;
+    easy.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:easy animated:YES];
     
     
 }

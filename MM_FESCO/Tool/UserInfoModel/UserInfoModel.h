@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) NSString *loginTime; // 第一登录时间
 
+@property (nonatomic, strong) NSString *loginPasswordMD5; // 加密后服务器返回的密码;
+
 //@property(nonatomic,strong)NSString * schoolId;
 //@property(nonatomic,strong)NSString * schoolName;
 //@property(nonatomic,strong)NSString * complaintreminder;

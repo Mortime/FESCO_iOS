@@ -29,6 +29,7 @@
 - (void)initUI{
     [self addSubview:self.bgView];
     [self.bgView addSubview:self.leftImageView];
+    [self.bgView addSubview:self.messageImageView];
     [self.bgView addSubview:self.nameLabel];
     [self.bgView addSubview:self.mobileLabel];
     [self.bgView addSubview:self.phoneLabel];
@@ -47,6 +48,14 @@
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@40);
         make.height.mas_equalTo(@40);
+        
+    }];
+    [self.messageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.right.mas_equalTo(self.leftImageView.mas_right);
+        make.bottom.mas_equalTo(self.leftImageView.mas_bottom);
+        make.width.mas_equalTo(@15);
+        make.height.mas_equalTo(@15);
         
     }];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -112,6 +121,12 @@
     
 }
 
+#pragma mark ----- 环信消息发送
+- (void)pushMessage{
+    if ([_delegate respondsToSelector:@selector(phoneListTableCellDelegateWithEmpID:empName:)]) {
+        [_delegate phoneListTableCellDelegateWithEmpID:_empID empName:_empName];
+    }
+}
 #pragma mark ---- Lazy 加载
 - (UIView *)bgView{
     if (_bgView == nil) {
@@ -127,10 +142,25 @@
         _leftImageView.backgroundColor = [UIColor clearColor];
         _leftImageView.layer.masksToBounds = YES;
         _leftImageView.layer.cornerRadius = 20;
+        _leftImageView.userInteractionEnabled = YES;
         
     }
     return _leftImageView;
 }
+- (UIImageView *)messageImageView{
+    if (_messageImageView == nil) {
+        _messageImageView = [[UIImageView alloc] init];
+        _messageImageView.backgroundColor = [UIColor cyanColor];
+        _messageImageView.layer.masksToBounds = YES;
+        _messageImageView.layer.cornerRadius = 7.5;
+        _messageImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushMessage)];
+        [_messageImageView addGestureRecognizer:tapGes];
+        
+    }
+    return _messageImageView;
+}
+
 - (UILabel *)nameLabel{
     if (_nameLabel == nil) {
         _nameLabel = [[UILabel alloc] init];

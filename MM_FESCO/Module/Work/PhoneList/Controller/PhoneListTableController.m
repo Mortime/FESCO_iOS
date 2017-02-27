@@ -9,7 +9,7 @@
 #import "PhoneListTableController.h"
 #import "PhoneListTableCell.h"
 
-@interface PhoneListTableController ()
+@interface PhoneListTableController ()<PhoneListTableCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataList;
 
@@ -24,6 +24,7 @@
         self.view.backgroundColor = [UIColor clearColor];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.showsVerticalScrollIndicator = NO;
+        
     }
     return self;
 }
@@ -61,6 +62,7 @@
     
     if (![[dic objectForKey:@"emp_Name"] isKindOfClass:[NSNull class]]){
        cell.nameLabel.text = [dic objectForKey:@"emp_Name"];
+        cell.empName = [dic objectForKey:@"emp_Name"];
     }
     
     if (![[dic objectForKey:@"mobile"] isKindOfClass:[NSNull class]]) {
@@ -71,12 +73,16 @@
     
     cell.parantVC = nil;
     cell.parantVC  = self;
-    
+    cell.delegate = self;
     NSString *phoneStr = [dic objectForKey:@"phone"];
     if (phoneStr == nil  || [phoneStr isMemberOfClass:[NSNull class]]) {
         phoneStr = @" ";
     }
      cell.phoneLabel.text = phoneStr;
+    
+    
+    cell.empID = [[dic objectForKey:@"emp_Id"] integerValue];
+    
     
     [cell.leftImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"People_placehode"]];
     
@@ -84,6 +90,16 @@
 
 }
 
+- (void)phoneListTableCellDelegateWithEmpID:(NSInteger)empID empName:(NSString *)empName{
+    MMLog(@"各种回调后的========%lu=====%@",empID,empName);
+    NSString *EEMID = [NSString stringWithFormat:@"zrfesco_%lu",empID];
+    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:EEMID conversationType:EMConversationTypeChat];
+    chatController.hidesBottomBarWhenPushed= YES;
+    chatController.title = empName;
+    [_pareVC.navigationController pushViewController:chatController animated:YES];
 
+    
+    
+}
 
 @end

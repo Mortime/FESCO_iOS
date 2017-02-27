@@ -13,4 +13,6 @@
 @property (nonatomic, copy) NSString *urlString;
 
 @property (nonatomic, strong) NSArray *allPersonListArray;
+
+@property (nonatomic, strong) UIViewController *pareVC; 
 @end

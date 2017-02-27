@@ -121,14 +121,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     // 配置JPush
     [JPUSHService resetBadge];
     application.applicationIconBadgeNumber = 0;

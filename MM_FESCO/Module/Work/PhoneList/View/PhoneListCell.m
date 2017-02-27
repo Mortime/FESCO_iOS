@@ -29,7 +29,7 @@
     
     _phoneListVC.view.frame = self.bounds;
     _phoneListVC.urlString = urlString;
-
+    _phoneListVC.pareVC = _pareVC;
     _phoneListVC.allPersonListArray = self.personListArray;
     [self removeAllSubviews];
     [self addSubview:_phoneListVC.view];
