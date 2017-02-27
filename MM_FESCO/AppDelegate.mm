@@ -110,6 +110,24 @@
     EMOptions *options = [EMOptions optionsWithAppkey:@"1187170223115321#payrollpen"];
     options.apnsCertName = @"iOSJPushDev";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound |
+        UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // 配置JPush
     [JPUSHService resetBadge];
@@ -134,6 +152,8 @@
     
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    [[EMClient sharedClient] bindDeviceToken:deviceToken];
 }
 
 /*
