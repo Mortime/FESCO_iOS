@@ -243,7 +243,37 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
-
+/**
+ *   通讯录头像
+ */
++ (void)postPhoneNumberListIconUrlWithCustId:(NSString *)custid VNo:(NSInteger)VNo success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    if (!custid ) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSDictionary *dic = @{@"cust_Id":custid,
+                          @"version_No":[NSString stringWithFormat:@"%lu",VNo],
+                          @"methodname":@"emp/getEmpsPhotos.json"};
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/getEmpsPhotos.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
 /**
  *   签到
  */

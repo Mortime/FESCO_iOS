@@ -169,7 +169,7 @@ static NSString *kMallID = @"MallID";
     // 环信退出
     EMError *error = [[EMClient sharedClient] logout:YES];
     if (!error) {
-        MMLog(@"退出成功");
+        MMLog(@"环信退出成功");
     }
     MMLoginController *logninVC = (MMLoginController *)[JZUserLoginManager loginController];
     ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = logninVC;

@@ -60,7 +60,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     [self initUI];
     // 加载数据(如果数据库中有就从数据库中取,如果没有就网络请求数据)
     [self initData];
-    
+    [self initIconUrl];
     
 }
 - (void)initUI{
@@ -71,6 +71,15 @@ static NSString * const reuseID  = @"PhoneListCell";
     [self.tagView MMToolBarViewItemSelected:^(UILabel *label) {
         [self barViewItemSelect:label];
     }];
+}
+- (void)initIconUrl{
+    [NetworkEntity postPhoneNumberListIconUrlWithCustId:[UserInfoModel defaultUserInfo].custId VNo:0 success:^(id responseObject) {
+        MMLog(@"PhoneNumberListIconUrl =====responseObject ==========%@",responseObject);
+    } failure:^(NSError *failure) {
+        MMLog(@"PhoneNumberListIconUrl =====failure ==========%@",failure);
+    }];
+    
+
 }
 - (void)initData{
     

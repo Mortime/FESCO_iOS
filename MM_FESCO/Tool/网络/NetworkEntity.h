@@ -99,6 +99,16 @@
  */
 + (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
+
+/**
+ *  加载员工通讯录头像
+ 
+ *  @param  
+ 
+ */
+
++ (void)postPhoneNumberListIconUrlWithCustId:(NSString *)custid VNo:(NSInteger)VNo success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
 #pragma ================== 考勤 =====================
 /**
  *    签到

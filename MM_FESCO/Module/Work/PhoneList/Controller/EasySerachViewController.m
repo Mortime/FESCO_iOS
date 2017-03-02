@@ -35,7 +35,7 @@
         _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
         _searchController.dimsBackgroundDuringPresentation = NO;
-        _searchController.hidesNavigationBarDuringPresentation = YES;
+        _searchController.hidesNavigationBarDuringPresentation = NO;
         _searchController.searchBar.placeholder = @"搜索";
         [_searchController.searchBar sizeToFit];
     }
@@ -68,8 +68,14 @@
     }
     
     cell.nameLabel.text = [dic objectForKey:@"emp_Name"];
+    NSString *mobielStr = @" ";
+    if ([dic objectForKey:@"mobile"] != nil  && ![[dic objectForKey:@"mobile"] isMemberOfClass:[NSNull class]]) {
+        cell.mobileLabel.text = [dic objectForKey:@"mobile"];
+    }else{
+        cell.mobileLabel.text = mobielStr;
+    }
+
     
-    cell.mobileLabel.text = [dic objectForKey:@"mobile"];
     
     cell.parantVC  = self.searchController;
     
