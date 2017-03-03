@@ -32,34 +32,42 @@ static FMDatabase *_db;
     NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
     _db = [FMDatabase databaseWithPath:path];
-    [_db open];
-    if ([tname isEqualToString:t_purchaseRecord]) {
-        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,moneyAmount text NOT NULL,spendBegin text NOT NULL,spendEnd text NOT NULL,billNum text NOT NULL,picUrl text NOT NULL,picDesc text NOT NULL,detailMemo text NOT NULL,spendCity text NOT NULL,typeID text NOT NULL,typePurchaseStr text NOT NULL)",tname];
-        BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
-        initDatabaseBlock(result);
-    }else{
-        /*
-         
-         @"moneyAmount":_moneyNumber,
-         @"spendBegin":_startTime,
-         @"spendEnd":_endTime,
-         @"billNum":_billNumber,
-         @"picUrl":_picUrl,
-         @"picDesc":_picStr,
-         @"detailMemo":_memo,
-         @"spendCity":_cityName
-         
-         */
-        
-        // 返回创建表的结果
-        
-        NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
-        BOOL result= [_db executeUpdate:sql];
-        initDatabaseBlock(result);
-        
-    }
     
-
+    if ([_db open]) {
+        // 创建数据库表
+        if ([tname isEqualToString:@"t_userIconUrl"]) {
+            // 创建用户头像数据库表
+            NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,empID integer,avtar blob)",tname];
+            BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
+            initDatabaseBlock(result);
+            
+        }else if ([tname isEqualToString:t_purchaseRecord]) {
+            NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,moneyAmount text NOT NULL,spendBegin text NOT NULL,spendEnd text NOT NULL,billNum text NOT NULL,picUrl text NOT NULL,picDesc text NOT NULL,detailMemo text NOT NULL,spendCity text NOT NULL,typeID text NOT NULL,typePurchaseStr text NOT NULL)",tname];
+            BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
+            initDatabaseBlock(result);
+        }else{
+            /*
+             
+             @"moneyAmount":_moneyNumber,
+             @"spendBegin":_startTime,
+             @"spendEnd":_endTime,
+             @"billNum":_billNumber,
+             @"picUrl":_picUrl,
+             @"picDesc":_picStr,
+             @"detailMemo":_memo,
+             @"spendCity":_cityName
+             
+             */
+            
+            // 返回创建表的结果
+            
+            NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
+            BOOL result= [_db executeUpdate:sql];
+            initDatabaseBlock(result);
+            
+        }
+        [_db close];
+    }
 }
 
 //存入数据库
@@ -200,5 +208,85 @@ static FMDatabase *_db;
 //    return success;
     
 }
+
+
+
+//插入avtar数据
++ (void)addAvtarData:(NSInteger)empID avtar:(NSData *)data baseBlock:(initDatabaseBlock)initDatabaseBlock{
+    if ([_db open]) {
+        NSString *sql =@"INSERT INTO t_userIconUrl(empID, avtar) VALUES (?, ?)";
+        BOOL bResult = [_db executeUpdate:sql, @(empID), data];
+        initDatabaseBlock(bResult);
+        [_db open];
+    }
+}
+
+//获取avtar数据
++ (void)getAvtarData{
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM t_userIconUrl"];
+        FMResultSet *resultSet = [_db executeQuery:sql];
+        
+        while ([resultSet next]) {
+            
+            NSInteger emp = [resultSet intForColumn:@"empID"];
+            NSData *data = [resultSet dataForColumn:@"avtar"];
+//            UIImage *image = [UIImage imageWithData:data];
+            MMLog(@"emp===image=====%lu======%@",emp,data);
+        }
+    }
+    [_db close];
+}
+
+
+// 更新数据
++ (void)updateAvtarData:(NSInteger)empID avtar:(NSData *)data baseBlock:(initDatabaseBlock)initDatabaseBlock{
+    // 查询数据
+    if ([_db open]) {
+        FMResultSet *rs = [_db executeQuery:@"SELECT * FROM t_userIconUrl"];
+        // 遍历结果集
+        while ([rs next]) {
+            
+            NSInteger empIDTable = [rs intForColumn:@"empID"];
+            if (empIDTable != empID) {
+                // 为新增用户的头像
+                [[self class] addAvtarData:empID avtar:data baseBlock:^(BOOL isSuccess) {
+                    initDatabaseBlock(isSuccess);
+                }];
+
+            }else if (empIDTable == empID){
+                // 更新用户头像
+                [_db executeUpdate:@"UPDATE t_userIconUrl SET avtar = ? WHERE empID = ?;", data, @(empID)];
+            }
+            
+            
+        }
+        [_db close];
+    }
+}
+
++ (NSData *)getAvtarDateWith:(NSInteger)empID{
+    // 查询数据
+    NSData *data;
+    if ([_db open]) {
+        FMResultSet *rs = [_db executeQuery:@"SELECT * FROM t_userIconUrl"];
+        // 遍历结果集
+        while ([rs next]) {
+            
+            NSInteger empIDTable = [rs intForColumn:@"empID"];
+            if (empIDTable == empID) {
+                data = [rs dataForColumn:@"avtar"];
+            }
+            
+        }
+        [_db close];
+    }
+    return data;
+
+}
+
+
+
+
 
 @end

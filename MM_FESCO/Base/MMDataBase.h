@@ -35,5 +35,19 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 // 根据表名 得到一个表全部数据
 + (NSArray *)allTableDataListWithTableName:(NSString *)tableName;
 
-+(void) deleteAll;
++(void)deleteAll;
+
+//插入avtar数据
++ (void)addAvtarData:(NSInteger)empID avtar:(NSData *)data baseBlock:(initDatabaseBlock)initDatabaseBlock;
+
+// 得到数据
++ (void)getAvtarData;
+
+// 更新数据
++ (void)updateAvtarData:(NSInteger)empID avtar:(NSData *)data baseBlock:(initDatabaseBlock)initDatabaseBlock;
+
+// 根据empID在数据库中查询avtar
++ (NSData *)getAvtarDateWith:(NSInteger)empID;
+
+
 @end

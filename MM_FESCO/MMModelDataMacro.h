@@ -14,6 +14,8 @@
 
 #define t_applySignup @"t_applySignup"  // 补签申请数据库表
 
+#define t_userIconUrl  @"t_userIconUrl" // 用户头像数据库表
+
 
 // 通知
 #define t_purchaseRecord   @"t_purchaseRecord" // 添加消费记录
@@ -40,19 +42,13 @@
 #define kReimburseRecordList  @"ReimburseRecordList"  // 本地保存消费记录
 #define kNetworkRecordList @"NetworkRecordList"       // 网络消费记录
 #define kNOBookRecordList @"NOBookRecordList"         // 未制单消费记录
-
 #define kGroupName @"GroupName"     // 本地保存组名
-
 #define kGroupID @"GroupID"     // 本地保存组名
-
-
 #define kPicUpSuccessID  @"PicUpSuccessID"  // 图片上传成功存储的ID
-
-#define kHttpsCerKey  @"zrfesco"  
-
+#define kHttpsCerKey  @"zrfesco"
 #define kEmpIdKey @"EmpIdKey" // 签到成功后保存empId, 防止一个手机一天内打多次卡
-
 #define kSignUpTime @"SignUpTime" // 签到成功时间
+#define KAvtarUrlVersion  @"AvtarUrlVersion" // 保存头像的版本号,用于服务器更新头像
 
 
 

@@ -37,6 +37,8 @@ static NSString * const reuseID  = @"PhoneListCell";
 @property (nonatomic, strong) UIView *seachBGView;
 
 @property (nonatomic, strong) NSArray *paramArray;
+
+@property (nonatomic, assign) NSInteger versonNO;
 @end
 
 @implementation PhoneListController
@@ -49,6 +51,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"通讯录";
+    _versonNO == 0;
     // 添加右上角的搜查按钮
     _searchButton = [UIButton new];
     [_searchButton setImage:[UIImage imageNamed:@"phoneList_Search"] forState:UIControlStateNormal];
@@ -60,6 +63,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     [self initUI];
     // 加载数据(如果数据库中有就从数据库中取,如果没有就网络请求数据)
     [self initData];
+    // 用户头像加
     [self initIconUrl];
     
 }
@@ -73,8 +77,40 @@ static NSString * const reuseID  = @"PhoneListCell";
     }];
 }
 - (void)initIconUrl{
-    [NetworkEntity postPhoneNumberListIconUrlWithCustId:[UserInfoModel defaultUserInfo].custId VNo:0 success:^(id responseObject) {
+ NSInteger versonNO =  [[[NSUserDefaults standardUserDefaults] objectForKey:KAvtarUrlVersion] integerValue];
+    if (versonNO) {
+        _versonNO = versonNO;
+    }
+    
+    // 如果版本号为0 说明第一次加载这时要把数据全部存入数据库; 如果版本号不为0 说明为更新的值, 这时根据返回的empID,去数据库中查,如果有删除,存入新的,
+    [NetworkEntity postPhoneNumberListIconUrlWithCustId:[UserInfoModel defaultUserInfo].custId VNo:_versonNO success:^(id responseObject) {
         MMLog(@"PhoneNumberListIconUrl =====responseObject ==========%@",responseObject);
+        if (responseObject ) {
+            NSDictionary *dic = [responseObject objectForKey:@"empPhotos"];
+            NSArray *keyAll = [dic allKeys];
+            for (NSString *key in keyAll) {
+                
+                NSData *data = [[NSData alloc]initWithBase64EncodedString:[dic objectForKey:key] options:0];
+                MMLog(@"key ===%@===== date====%@",key,data);
+                [MMDataBase initializeDatabaseWithTableName:t_userIconUrl baseBlock:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        [MMDataBase addAvtarData:[key integerValue] avtar:data baseBlock:^(BOOL isSuccess) {
+                            if (isSuccess) {
+                                MMLog(@"插入数据成功");
+                            }else{
+                                MMLog(@"插入数据失败");
+                            }
+                        }];
+
+                    }
+                }];
+            }
+            // 得到全部数据
+//            [MMDataBase getAvtarData];
+            // 保存版本号  ---- 待实现
+            NSInteger V = [[responseObject objectForKey:@"version_No"] integerValue];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lu",V] forKey:KAvtarUrlVersion];
+        }
     } failure:^(NSError *failure) {
         MMLog(@"PhoneNumberListIconUrl =====failure ==========%@",failure);
     }];

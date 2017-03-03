@@ -83,8 +83,14 @@
     
     cell.empID = [[dic objectForKey:@"emp_Id"] integerValue];
     
-    
-    [cell.leftImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"People_placehode"]];
+    NSData *avearData = [MMDataBase getAvtarDateWith:[[dic objectForKey:@"emp_Id"] integerValue]];
+    MMLog(@"数据库中取出的头像 ==%@empID==%lu",avearData,[[dic objectForKey:@"emp_Id"] integerValue]);
+    if (avearData) {
+        cell.leftImageView.image = [UIImage imageWithData:avearData];
+    }else{
+        cell.leftImageView.image = [UIImage imageNamed:@"People_placehode"];
+    }
+
     
     return cell;
 
