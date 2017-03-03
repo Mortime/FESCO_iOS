@@ -43,7 +43,10 @@ static NSString * const reuseID  = @"PhoneListCell";
 
 @implementation PhoneListController
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    // 用户头像加
+    [self initIconUrl];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -51,7 +54,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"通讯录";
-    _versonNO == 0;
+    _versonNO = 0;
     // 添加右上角的搜查按钮
     _searchButton = [UIButton new];
     [_searchButton setImage:[UIImage imageNamed:@"phoneList_Search"] forState:UIControlStateNormal];
@@ -63,8 +66,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     [self initUI];
     // 加载数据(如果数据库中有就从数据库中取,如果没有就网络请求数据)
     [self initData];
-    // 用户头像加
-    [self initIconUrl];
+   
     
 }
 - (void)initUI{
@@ -92,18 +94,31 @@ static NSString * const reuseID  = @"PhoneListCell";
                 
                 NSData *data = [[NSData alloc]initWithBase64EncodedString:[dic objectForKey:key] options:0];
                 MMLog(@"key ===%@===== date====%@",key,data);
-                [MMDataBase initializeDatabaseWithTableName:t_userIconUrl baseBlock:^(BOOL isSuccess) {
-                    if (isSuccess) {
-                        [MMDataBase addAvtarData:[key integerValue] avtar:data baseBlock:^(BOOL isSuccess) {
-                            if (isSuccess) {
-                                MMLog(@"插入数据成功");
-                            }else{
-                                MMLog(@"插入数据失败");
-                            }
-                        }];
+                if (_versonNO == 0) {
+                    [MMDataBase initializeDatabaseWithTableName:t_userIconUrl baseBlock:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            [MMDataBase addAvtarData:[key integerValue] avtar:data baseBlock:^(BOOL isSuccess) {
+                                if (isSuccess) {
+                                    MMLog(@"插入数据成功");
+                                }else{
+                                    MMLog(@"插入数据失败");
+                                }
+                            }];
+                            
+                        }
+                    }];
 
-                    }
-                }];
+                }else{
+                    [MMDataBase updateAvtarData:[key integerValue] avtar:data baseBlock:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            MMLog(@"更新数据成功");
+                            [_collectionView reloadData];
+                        }else{
+                            MMLog(@"更新数据失败");
+                        }
+
+                    }];
+                }
             }
             // 得到全部数据
 //            [MMDataBase getAvtarData];
