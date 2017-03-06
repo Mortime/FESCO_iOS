@@ -8,6 +8,7 @@
 
 #import "PhoneListTableController.h"
 #import "PhoneListTableCell.h"
+#import "ChatViewController.h"
 
 @interface PhoneListTableController ()<PhoneListTableCellDelegate>
 
@@ -87,6 +88,7 @@
     MMLog(@"数据库中取出的头像 ==%@empID==%lu",avearData,[[dic objectForKey:@"emp_Id"] integerValue]);
     if (avearData) {
         cell.leftImageView.image = [UIImage imageWithData:avearData];
+        cell.imgIcon = [UIImage imageWithData:avearData];
     }else{
         cell.leftImageView.image = [UIImage imageNamed:@"People_placehode"];
     }
@@ -96,12 +98,13 @@
 
 }
 
-- (void)phoneListTableCellDelegateWithEmpID:(NSInteger)empID empName:(NSString *)empName{
+- (void)phoneListTableCellDelegateWithEmpID:(NSInteger)empID empName:(NSString *)empName iconImage:(UIImage *)iconImage{
     MMLog(@"各种回调后的========%lu=====%@",empID,empName);
     NSString *EEMID = [NSString stringWithFormat:@"zrfesco_%lu",empID];
-    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:EEMID conversationType:EMConversationTypeChat];
+    ChatViewController *chatController = [[ChatViewController alloc] initWithConversationChatter:EEMID conversationType:EMConversationTypeChat];
     chatController.hidesBottomBarWhenPushed= YES;
     chatController.title = empName;
+    chatController.imgeIcon = iconImage;
     [_pareVC.navigationController pushViewController:chatController animated:YES];
 
     

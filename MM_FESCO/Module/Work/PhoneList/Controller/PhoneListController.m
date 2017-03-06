@@ -65,7 +65,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     
     [self initUI];
     // 加载数据(如果数据库中有就从数据库中取,如果没有就网络请求数据)
-    [self initData];
+    
    
     
 }
@@ -88,6 +88,7 @@ static NSString * const reuseID  = @"PhoneListCell";
     [NetworkEntity postPhoneNumberListIconUrlWithCustId:[UserInfoModel defaultUserInfo].custId VNo:_versonNO success:^(id responseObject) {
         MMLog(@"PhoneNumberListIconUrl =====responseObject ==========%@",responseObject);
         if (responseObject ) {
+            [self initData];
             NSDictionary *dic = [responseObject objectForKey:@"empPhotos"];
             NSArray *keyAll = [dic allKeys];
             for (NSString *key in keyAll) {
@@ -238,12 +239,6 @@ static NSString * const reuseID  = @"PhoneListCell";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSDictionary *dataDic =  _paramArray[indexPath.row];
-    NSInteger empID  =  [[dataDic objectForKey:@"emp_Id"] integerValue];
-    NSString *EMID = [NSString stringWithFormat:@"zrfesco_%lu",empID];
-    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:EMID conversationType:EMConversationTypeChat];
-    chatController.hidesBottomBarWhenPushed= YES;
-    [self.navigationController pushViewController:chatController animated:YES];
 }
 /** 手指滑动BigCollectionView，滑动结束后调用 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

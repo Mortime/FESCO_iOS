@@ -123,8 +123,8 @@
 
 #pragma mark ----- 环信消息发送
 - (void)pushMessage{
-    if ([_delegate respondsToSelector:@selector(phoneListTableCellDelegateWithEmpID:empName:)]) {
-        [_delegate phoneListTableCellDelegateWithEmpID:_empID empName:_empName];
+    if ([_delegate respondsToSelector:@selector(phoneListTableCellDelegateWithEmpID:empName:iconImage:)]) {
+        [_delegate phoneListTableCellDelegateWithEmpID:_empID empName:_empName iconImage:_imgIcon];
     }
 }
 #pragma mark ---- Lazy 加载
@@ -143,6 +143,9 @@
         _leftImageView.layer.masksToBounds = YES;
         _leftImageView.layer.cornerRadius = 20;
         _leftImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushMessage)];
+        [_leftImageView addGestureRecognizer:tapGes];
+
         
     }
     return _leftImageView;
@@ -150,7 +153,7 @@
 - (UIImageView *)messageImageView{
     if (_messageImageView == nil) {
         _messageImageView = [[UIImageView alloc] init];
-        _messageImageView.backgroundColor = [UIColor cyanColor];
+        _messageImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         _messageImageView.layer.masksToBounds = YES;
         _messageImageView.layer.cornerRadius = 7.5;
         _messageImageView.userInteractionEnabled = YES;
@@ -166,7 +169,6 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = [UIFont systemFontOfSize:14];
         _nameLabel.textColor = [UIColor grayColor];
-        _nameLabel.text = @"奥巴马";
         
     }
     return _nameLabel;

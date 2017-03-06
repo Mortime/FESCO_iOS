@@ -10,7 +10,7 @@
 
 @protocol PhoneListTableCellDelegate <NSObject>
 
-- (void)phoneListTableCellDelegateWithEmpID:(NSInteger)empID empName:(NSString *)empName;
+- (void)phoneListTableCellDelegateWithEmpID:(NSInteger)empID empName:(NSString *)empName iconImage:(UIImage *)iconImage;
 
 @end
 
@@ -33,6 +33,8 @@
 @property (nonatomic, assign) NSInteger empID; // 该ID用于环信聊天
 
 @property (nonatomic, strong) NSString *empName; // 该name用于环信聊天
+
+@property (nonatomic, strong) UIImage *imgIcon;   // 聊天人的头像
 
 @property (nonatomic, weak) id <PhoneListTableCellDelegate> delegate;
 

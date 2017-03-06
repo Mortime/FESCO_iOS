@@ -302,6 +302,7 @@
 		76383CFB1E0A164B004D4E13 /* NOBookChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383CFA1E0A164B004D4E13 /* NOBookChooseController.m */; };
 		76383CFE1E0A18DC004D4E13 /* NOBookChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383CFD1E0A18DC004D4E13 /* NOBookChooseCell.m */; };
 		76383D011E0A2277004D4E13 /* NOBookChooseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76383D001E0A2277004D4E13 /* NOBookChooseModel.m */; };
+		763F40491E6D380100AD583A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763F40481E6D380100AD583A /* ChatViewController.m */; };
 		764223B71E1D3C0F0094DEBB /* ReimburseApprovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */; };
 		764223BA1E1D3F340094DEBB /* ReimburseApprovalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223B91E1D3F340094DEBB /* ReimburseApprovalCell.m */; };
 		764223BD1E1D415E0094DEBB /* ReimburseApprovalListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 764223BC1E1D415E0094DEBB /* ReimburseApprovalListModel.m */; };
@@ -1027,6 +1028,8 @@
 		76383CFD1E0A18DC004D4E13 /* NOBookChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookChooseCell.m; sourceTree = "<group>"; };
 		76383CFF1E0A2277004D4E13 /* NOBookChooseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookChooseModel.h; sourceTree = "<group>"; };
 		76383D001E0A2277004D4E13 /* NOBookChooseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOBookChooseModel.m; sourceTree = "<group>"; };
+		763F40471E6D380100AD583A /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		763F40481E6D380100AD583A /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		764223B51E1D3C0F0094DEBB /* ReimburseApprovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalView.h; sourceTree = "<group>"; };
 		764223B61E1D3C0F0094DEBB /* ReimburseApprovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApprovalView.m; sourceTree = "<group>"; };
 		764223B81E1D3F340094DEBB /* ReimburseApprovalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApprovalCell.h; sourceTree = "<group>"; };
@@ -2357,6 +2360,8 @@
 				59EC90D81D98CB5800E802FA /* EaseUsersListViewController.m */,
 				59EC90D91D98CB5800E802FA /* EaseViewController.h */,
 				59EC90DA1D98CB5800E802FA /* EaseViewController.m */,
+				763F40471E6D380100AD583A /* ChatViewController.h */,
+				763F40481E6D380100AD583A /* ChatViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3236,6 +3241,7 @@
 				760A7F031E0D18D90036C6C6 /* SocialSecurityCellView.m in Sources */,
 				597223BD1DADE05400D01A7A /* CheckWorkController.m in Sources */,
 				765E1D151E1206F100B6C598 /* SocialSecurityCardIDView.m in Sources */,
+				763F40491E6D380100AD583A /* ChatViewController.m in Sources */,
 				597223A91DADE05400D01A7A /* ApprovalController.m in Sources */,
 				59A59DFE1D499937001F3122 /* UIView+Sizes.m in Sources */,
 				59A59E1F1D499EF2001F3122 /* NSString+Helper.m in Sources */,
