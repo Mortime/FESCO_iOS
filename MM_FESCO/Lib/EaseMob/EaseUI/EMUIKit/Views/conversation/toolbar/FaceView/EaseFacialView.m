@@ -24,11 +24,11 @@
 
 - (void) setImage:(UIImage *)image withTitle:(NSString *)title forState:(UIControlState)stateType {
     //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
-    CGSize titleSize;
+//    CGSize titleSize = CGSizeMake(0, 0);
     if ([NSString instancesRespondToSelector:@selector(sizeWithAttributes:)]) {
-        titleSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
+//        titleSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
     } else {
-        titleSize = [title sizeWithFont:[UIFont systemFontOfSize:10]];
+//        titleSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
     }
     [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self setImageEdgeInsets:UIEdgeInsetsMake(0,
@@ -201,7 +201,7 @@
     cell.emotion = emotion;
     cell.userInteractionEnabled = YES;
     cell.delegate = self;
-    return cell;
+    return [UICollectionViewCell new];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section

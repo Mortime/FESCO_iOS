@@ -102,7 +102,7 @@
     CGFloat cellHeight = 30;
     if ([obj isKindOfClass:[MPUploadImageHelper class]]) {
         MPUploadImageHelper *curUploadImage = (MPUploadImageHelper *)obj;
-        NSInteger row;
+        NSInteger row = 0;
         if (curUploadImage.imagesArray.count <= 0) {
             row = 0;
             cellHeight+=kImageCollectionCell_Width;

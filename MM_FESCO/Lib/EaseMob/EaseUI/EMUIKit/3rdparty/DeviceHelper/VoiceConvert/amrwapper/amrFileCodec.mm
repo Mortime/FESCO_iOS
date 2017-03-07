@@ -40,7 +40,7 @@ static void SkipToPCMAudioData(FILE* fpwave)
 		fread(&chunk, 1, sizeof(EM_XCHUNKHEADER), fpwave);
 		if ( !memcmp(chunk.chChunkID, "data", 4) )
 		{
-			bDataBlock = 1;
+//			bDataBlock = 1;
 			break;
 		}
 		fseek(fpwave, chunk.nChunkSize, SEEK_CUR);
@@ -288,14 +288,14 @@ static int ReadAMRFrame(FILE* fpamr, unsigned char frameBuffer[], int stdFrameSi
 	// If it is a bad frame(not a standard frame)，continue for the next byte
 	while(1)
 	{
-		bytes = fread(&frameHeader, 1, sizeof(unsigned char), fpamr);
+//		bytes = fread(&frameHeader, 1, sizeof(unsigned char), fpamr);
 		if (feof(fpamr)) return 0;
 		if (frameHeader == stdFrameHeader) break;
 	}
 	
 	// Audio data for the frame (frame header has beeen read)
     frameBuffer[0] = frameHeader;
-	bytes = fread(&(frameBuffer[1]), 1, (stdFrameSize-1)*sizeof(unsigned char), fpamr);
+//	bytes = fread(&(frameBuffer[1]), 1, (stdFrameSize-1)*sizeof(unsigned char), fpamr);
 	if (feof(fpamr)) return 0;
 	
 	return 1;

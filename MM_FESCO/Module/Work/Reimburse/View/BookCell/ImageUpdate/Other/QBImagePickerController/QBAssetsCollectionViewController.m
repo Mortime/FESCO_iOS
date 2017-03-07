@@ -290,7 +290,7 @@
         return footerView;
     }
     
-    return nil;
+    return [UICollectionReusableView new];
 }
 
 

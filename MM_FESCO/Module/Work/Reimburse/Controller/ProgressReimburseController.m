@@ -215,7 +215,7 @@
     }
 
     
-    return nil;
+    return [UITableViewCell new];
     
 }
 - (void)didClick:(UIButton *)sender{

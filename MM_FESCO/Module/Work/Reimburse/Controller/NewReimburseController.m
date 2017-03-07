@@ -98,6 +98,7 @@
 @implementation NewReimburseController
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     // 加载消费记录
     if (_rePurchaseBook == editReimburseBook || _rePurchaseBook == NOPassEdit) {
         // 当编辑报销单时

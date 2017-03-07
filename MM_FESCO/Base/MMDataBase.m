@@ -229,10 +229,10 @@ static FMDatabase *_db;
         
         while ([resultSet next]) {
             
-            NSInteger emp = [resultSet intForColumn:@"empID"];
-            NSData *data = [resultSet dataForColumn:@"avtar"];
-//            UIImage *image = [UIImage imageWithData:data];
-            MMLog(@"emp===image=====%lu======%@",emp,data);
+//            NSInteger emp = [resultSet intForColumn:@"empID"];
+//            NSData *data = [resultSet dataForColumn:@"avtar"];
+////            UIImage *image = [UIImage imageWithData:data];
+//            MMLog(@"emp===image=====%lu======%@",emp,data);
         }
     }
     [_db close];

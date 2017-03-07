@@ -67,6 +67,7 @@
 
 @implementation RegisterController
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self stopPainting];
 }
 - (void)viewDidLoad {

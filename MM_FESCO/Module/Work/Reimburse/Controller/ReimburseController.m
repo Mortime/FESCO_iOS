@@ -64,6 +64,7 @@
 @implementation ReimburseController
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initData];
     // 加载未制单消费记录
 //    [self initDataNOBook];

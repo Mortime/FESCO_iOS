@@ -33,6 +33,7 @@
 
 @implementation ApprovalController
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     MMLog(@"MMMMMMM ========= %lu",_index);
     if (_index == 0) {
         [_overTimeView networkRequest];

@@ -76,7 +76,7 @@ int fa_constraintLabelToSize(UILabel *label, CGSize size, int maxFontSize, int m
         UILabel *label = [UILabel new];
         label.font = font;
         label.text = textContent;
-        fontSize = fa_constraintLabelToSize(label, size, 500, 5);
+//        fontSize = fa_constraintLabelToSize(label, size, 500, 5);
         font = label.font;
     }
     [iconColor setFill];

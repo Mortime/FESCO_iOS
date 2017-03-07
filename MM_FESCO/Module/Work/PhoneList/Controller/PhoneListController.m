@@ -44,6 +44,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 @implementation PhoneListController
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     // 用户头像加
     [self initIconUrl];
 }

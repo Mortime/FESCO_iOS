@@ -479,8 +479,8 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
         //打印上传进度
-        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
-        MMLog(@"==============oooooo%.2lf%%", progress);
+//        CGFloat progress = ;
+        MMLog(@"==============oooooo%.2lf%%", 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

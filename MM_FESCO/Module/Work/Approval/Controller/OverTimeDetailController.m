@@ -165,55 +165,60 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        static NSString *cellID = @"cellID";
-        TextMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-        
-        if (!cell) {
-            cell = [[TextMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    switch (indexPath.section) {
+        case 0:
+        {
+            static NSString *cellID = @"cellID";
+            TextMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            
+            if (!cell) {
+                cell = [[TextMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.leftTitle = self.topArray[indexPath.row];
+            cell.rightTitle = self.topDataArray[indexPath.row];
+            return cell;
         }
-        cell.leftTitle = self.topArray[indexPath.row];
-        cell.rightTitle = self.topDataArray[indexPath.row];
-        return cell;
-
+            break;
+        case 1:
+        {
+            static NSString *cellID = @"cellID";
+            FileMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            
+            if (!cell) {
+                cell = [[FileMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.leftTitle = self.mightArray[indexPath.row];
+            cell.rightTitle = self.mightDataArray[indexPath.row];
+            // pickView的数据源
+            if (indexPath.row == 1) {
+                cell.pickDataArray = self.pickDataArray;
+                cell.isExist = NO;
+            }
+            cell.textFiledTag = indexPath.row + 1000;
+            cell.delegate = self;
+            return cell;
+        }
+            break;
+        case 2:
+        {
+            static NSString *cellID = @"cellID";
+            TextMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            
+            if (!cell) {
+                cell = [[TextMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.leftTitle = self.bottomArray[indexPath.row];
+            cell.rightTitle = self.bottomDataArray[indexPath.row];
+            return cell;
+        }
+            break;
+            
+            
+        default:
+            break;
     }
-    if (indexPath.section == 1) {
-        static NSString *cellID = @"cellID";
-        FileMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-        
-        if (!cell) {
-            cell = [[FileMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        }
-        cell.leftTitle = self.mightArray[indexPath.row];
-        cell.rightTitle = self.mightDataArray[indexPath.row];
-        // pickView的数据源
-        if (indexPath.row == 1) {
-            cell.pickDataArray = self.pickDataArray;
-            cell.isExist = NO;
-        }
-        cell.textFiledTag = indexPath.row + 1000;
-        cell.delegate = self;
-        
     
-        return cell;
-        
-    }
-    if (indexPath.section == 2) {
-        static NSString *cellID = @"cellID";
-        TextMainApprovalDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-        
-        if (!cell) {
-            cell = [[TextMainApprovalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        }
-        cell.leftTitle = self.bottomArray[indexPath.row];
-        cell.rightTitle = self.bottomDataArray[indexPath.row];
-        return cell;
-        
-    }
-
-    
-    
-    return nil;
+    return  [UITableViewCell new];
     
     
     }

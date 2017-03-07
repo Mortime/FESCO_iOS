@@ -84,7 +84,7 @@
     }
     
     if (indexPath.section == 0) {
-        return nil;
+        return [EaseUserCell new];;
     } else {
         id<IUserModel> model = nil;
         if ([_dataSource respondsToSelector:@selector(userListViewController:userModelForIndexPath:)]) {

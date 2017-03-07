@@ -1795,12 +1795,12 @@
 
 - (void)sendImageMessageWithData:(NSData *)imageData
 {
-    id progress = nil;
+//    id progress = nil;
     if (_dataSource && [_dataSource respondsToSelector:@selector(messageViewController:progressDelegateForMessageBodyType:)]) {
-        progress = [_dataSource messageViewController:self progressDelegateForMessageBodyType:EMMessageBodyTypeImage];
+//        progress = [_dataSource messageViewController:self progressDelegateForMessageBodyType:EMMessageBodyTypeImage];
     }
     else{
-        progress = self;
+//        progress = self;
     }
     
     EMMessage *message = [EaseSDKHelper sendImageMessageWithImageData:imageData

@@ -219,7 +219,7 @@
     }
     
     
-    return nil;
+    return [UITableViewCell new];
     
     
 }

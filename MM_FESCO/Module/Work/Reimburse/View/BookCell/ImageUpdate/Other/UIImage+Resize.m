@@ -47,7 +47,7 @@
                                  thumbnailSize);
     UIImage *croppedImage = [resizedImage croppedImage:cropRect];
     
-    UIImage *transparentBorderImage = borderSize ? [croppedImage transparentBorderImage:borderSize] : croppedImage;
+//    UIImage *transparentBorderImage = borderSize ? [croppedImage transparentBorderImage:borderSize] : croppedImage;
 
     return nil;
 }

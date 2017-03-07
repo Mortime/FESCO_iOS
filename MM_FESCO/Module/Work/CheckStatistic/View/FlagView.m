@@ -21,12 +21,15 @@
 @implementation FlagView
 
 - (instancetype)initWithFrame:(CGRect)frame{
-    if (self == [super initWithFrame:frame]) {
+    
+    self = [super initWithFrame:frame];
+    if (self) {
         [self initData];
-
+        
         [self initUI];
-           }
+    }
     return self;
+
 }
 - (void)initUI{
     for (int i = 0; i < _titleArray.count; i++) {

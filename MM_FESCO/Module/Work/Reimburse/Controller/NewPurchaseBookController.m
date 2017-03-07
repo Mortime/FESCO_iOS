@@ -43,6 +43,7 @@
 @implementation NewPurchaseBookController
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if (_bookType == PurchaseNetworkEdit || _bookType == PurchaseBenDiEdit ||_bookType == PurchaseNOBookEdit) {
         [_picStreamArray removeAllObjects];
         for (NSDictionary *dic in _EditPicArray) {
@@ -286,7 +287,7 @@
     }
 
     
-    return nil;
+    return [UITableViewCell new];
     
 
 }

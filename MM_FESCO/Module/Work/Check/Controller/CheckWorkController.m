@@ -44,7 +44,7 @@
     
 }
 - (void)viewWillAppear:(BOOL)animated{
-    
+    [super viewWillAppear:animated];
     // 判断签到次数是否清空
     // 当点击的不是本月的数据时, 进行数据刷新
     NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:kSignDate];
@@ -64,6 +64,7 @@
 
 }
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.checkView.locService stopUserLocationService];
     [self.checkView.mapView viewWillDisappear];
     self.checkView.mapView.delegate = nil;
