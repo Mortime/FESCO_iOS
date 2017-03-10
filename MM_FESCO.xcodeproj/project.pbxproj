@@ -317,6 +317,7 @@
 		76515B3D1DED12BA0054E910 /* ProgressStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B3C1DED12BA0054E910 /* ProgressStatusCell.m */; };
 		76515B401DED12D40054E910 /* ProgressMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B3F1DED12D40054E910 /* ProgressMessageCell.m */; };
 		76515B431DED12FB0054E910 /* ProgressPuschaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */; };
+		765417351E728691004A65D3 /* MMSwitchText.m in Sources */ = {isa = PBXBuildFile; fileRef = 765417341E728691004A65D3 /* MMSwitchText.m */; };
 		765E1D151E1206F100B6C598 /* SocialSecurityCardIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 765E1D141E1206F100B6C598 /* SocialSecurityCardIDView.m */; };
 		7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */ = {isa = PBXBuildFile; fileRef = 7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */; };
 		7662B5D61E35987C007951E9 /* YBWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7662B5D51E35987C007951E9 /* YBWelcomeController.m */; };
@@ -1058,6 +1059,8 @@
 		76515B3F1DED12D40054E910 /* ProgressMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressMessageCell.m; sourceTree = "<group>"; };
 		76515B411DED12FB0054E910 /* ProgressPuschaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressPuschaseCell.h; sourceTree = "<group>"; };
 		76515B421DED12FB0054E910 /* ProgressPuschaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressPuschaseCell.m; sourceTree = "<group>"; };
+		765417331E728691004A65D3 /* MMSwitchText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSwitchText.h; sourceTree = "<group>"; };
+		765417341E728691004A65D3 /* MMSwitchText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSwitchText.m; sourceTree = "<group>"; };
 		765E1D131E1206F100B6C598 /* SocialSecurityCardIDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityCardIDView.h; sourceTree = "<group>"; };
 		765E1D141E1206F100B6C598 /* SocialSecurityCardIDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCardIDView.m; sourceTree = "<group>"; };
 		7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "红色.tag6.savedSearch"; sourceTree = "<group>"; };
@@ -1753,6 +1756,8 @@
 				597223901DADE05400D01A7A /* PersonalMessageDetailCell.m */,
 				597223911DADE05400D01A7A /* PersonalMessageHeaderView.h */,
 				597223921DADE05400D01A7A /* PersonalMessageHeaderView.m */,
+				765417331E728691004A65D3 /* MMSwitchText.h */,
+				765417341E728691004A65D3 /* MMSwitchText.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3331,6 +3336,7 @@
 				59CC544F1DACE8310030D486 /* MMScrollView.m in Sources */,
 				59CC544E1DACE8310030D486 /* JZPassRateToolBarView.m in Sources */,
 				76515B431DED12FB0054E910 /* ProgressPuschaseCell.m in Sources */,
+				765417351E728691004A65D3 /* MMSwitchText.m in Sources */,
 				5996FFB31D5876BE0005307C /* NSString+MD5.m in Sources */,
 				59EC916B1D98CB5900E802FA /* EaseFaceView.m in Sources */,
 				59A59E251D499EF2001F3122 /* UINavigationItem+BackItem.m in Sources */,

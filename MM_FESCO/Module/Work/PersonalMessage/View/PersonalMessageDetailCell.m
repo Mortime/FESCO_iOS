@@ -14,12 +14,7 @@
 
 @property (nonatomic ,strong) UIView *bgView;
 
-@property (nonatomic ,strong) UIImageView *lineImageView;
-
 @property (nonatomic ,strong) UIImageView *leftImageView;
-
-
-
 
 @property (nonatomic, strong) DVVSearchViewUITextFieldDelegateBlock didEndEditingBlock;
 
@@ -40,7 +35,6 @@
 }
 - (void)initUI{
     [self addSubview:self.bgView];
-    [self.bgView addSubview:self.lineImageView];
     [self.bgView addSubview:self.leftImageView];
     [self.bgView addSubview:self.detailFiled];
 }
@@ -58,22 +52,15 @@
     [super layoutSubviews];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(self.mas_top).offset(0);
-        make.left.mas_equalTo(self.mas_left).offset(0);
-        make.right.mas_equalTo(self.mas_right).offset(0);
-        make.height.mas_equalTo(@60);
-    }];
-    [self.lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.bgView.mas_top).offset(0);
-        make.left.mas_equalTo(self.bgView.mas_left).offset(0);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(0);
-        make.height.mas_equalTo(@1);
+        make.top.mas_equalTo(self.mas_top);
+        make.left.mas_equalTo(self.mas_left);
+        make.right.mas_equalTo(self.mas_right);
+        make.bottom.mas_equalTo(self.mas_bottom);
     }];
     [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         
-        make.left.mas_equalTo(self.bgView.mas_left).offset(35);
+        make.left.mas_equalTo(self.bgView.mas_left).offset(20);
         make.centerY.mas_equalTo(self.bgView.mas_centerY);
         make.width.mas_equalTo(@20);
         make.height.mas_equalTo(@22);
@@ -81,7 +68,7 @@
 
     [self.detailFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(self.leftImageView.mas_right).offset(44);
+        make.left.mas_equalTo(self.leftImageView.mas_right).offset(20);
         make.centerY.mas_equalTo(self.bgView.mas_centerY).offset(2);
         make.right.mas_equalTo(self.bgView.mas_right).offset(0);
         make.height.mas_equalTo(self.bgView.mas_height);
@@ -98,14 +85,6 @@
     }
     return _bgView;
 }
-
-- (UIImageView *)lineImageView{
-    if (_lineImageView == nil) {
-        _lineImageView = [[UIImageView alloc] init];
-        _lineImageView.backgroundColor = MM_MAIN_LINE_COLOR;
-    }
-    return _lineImageView;
-}
 - (UIImageView *)leftImageView{
     if (_leftImageView == nil) {
         _leftImageView = [[UIImageView alloc] init];
@@ -116,8 +95,8 @@
 - (UITextField *)detailFiled{
     if (_detailFiled == nil ) {
         _detailFiled = [[UITextField alloc] init];
-        _detailFiled.font = [UIFont systemFontOfSize:15];
-        _detailFiled.textColor = [UIColor whiteColor];
+        _detailFiled.font = [UIFont systemFontOfSize:14];
+        _detailFiled.textColor = [UIColor colorWithHexString:@"333333"];
         _detailFiled.backgroundColor = [UIColor clearColor];
         
 
@@ -137,7 +116,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
     MMLog(@"textField = %lu",textField.tag);
-    textField.textColor = [UIColor whiteColor];
+    textField.textColor = [UIColor colorWithHexString:@"333333"];
     if (_didEndEditingBlock) {
         _didEndEditingBlock(textField);
     }
@@ -224,8 +203,8 @@
 
     if (messageStr == nil || [messageStr isEqualToString:@""]) {
         
-        [_detailFiled setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [_detailFiled setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
+        [_detailFiled setValue:[UIColor colorWithHexString:@"999999"] forKeyPath:@"_placeholderLabel.textColor"];
+        [_detailFiled setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         self.detailFiled.placeholder = self.dataStr;
         messageStr = @"";
         

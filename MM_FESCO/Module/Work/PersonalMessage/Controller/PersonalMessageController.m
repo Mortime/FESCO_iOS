@@ -15,6 +15,8 @@
 
 #define kBottomButtonW    ((kMMWidth) / 2)
 
+#define kHeaderHH  200
+
 @interface PersonalMessageController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
@@ -30,6 +32,8 @@
 @property (nonatomic, strong) PersonalMessageModel * personalMessageModel;
 
 @property (nonatomic, strong) PersonalMessageHeaderView *headerView;
+
+
 
 
 
@@ -49,25 +53,20 @@
     self.imgArray  = @[@"PersonalMes_Landline",@"PersonalMes_Mobile",@"PersonalMes_weixin",@"PersonalMes_Mail",@"PersonalMes_Address",@"PersonalMes_MailCode"];
     
     self.dataArray  = @[@"请输入座机",@"请输入联系电话",@"请输入微信号",@"请输入邮箱",@"请输入居住地址",@"请输入邮编"];
-    self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 121)];
+    self.headerView = [[PersonalMessageHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderHH)];
     _headerView.paramentVC = self;
     
         UIImage *image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kUsreIcon]];
     if (image) {
         self.headerView.imageView.image = image;
     }
-
-    [_headerView dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField) {
-        [self messageEdit:textField];
-    }];
     
     UIImageView *lineView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 1)];
     lineView.backgroundColor =  MM_MAIN_LINE_COLOR;
-    
-    self.tableView.tableHeaderView = _headerView;
-    self.tableView.tableFooterView = lineView;
+
+    [self.view addSubview:_headerView];
     
     
     UIView *footerView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 50 - 64, self.view.width, 50)];
@@ -96,18 +95,18 @@
         MMLog(@"=============   PersonlMessagecong responseObject =  %@",responseObject);
         _personalMessageModel = [PersonalMessageModel yy_modelWithDictionary:responseObject];
         
-        _headerView.nameTextFiled.text = _personalMessageModel.empName;
+        _headerView.nameLabel.text = _personalMessageModel.empName;
         if (_personalMessageModel.gender == 1) {
-            _headerView.sexTextFiled.text = @"男";
+        [self storeData:@"男" forKey:kSex];
         }else if (_personalMessageModel.gender == 2){
-            _headerView.sexTextFiled.text = @"女";
+        [self storeData:@"女" forKey:kSex];
         }else{
-            _headerView.sexTextFiled.text = @"暂无";
+//            _headerView.sexTextFiled.text = @"暂无";
         }
         
         // 保存姓名和性别
         [self storeData:_personalMessageModel.empName forKey:kName];
-        [self storeData:_headerView.sexTextFiled.text forKey:kSex];
+//        [self storeData:_headerView.sexTextFiled.text forKey:kSex];
     
         [self.tableView reloadData];
         
@@ -123,7 +122,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 50;
 }
 
 
@@ -205,7 +204,7 @@
 - (UITableView *)tableView {
     
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - 50 - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kHeaderHH, self.view.width, self.view.height - 50 - 64 - kHeaderHH) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
@@ -222,9 +221,10 @@
         _preservationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _preservationButton.frame = CGRectMake(0, 0, kBottomButtonW, 50);
         [_preservationButton setTitle:@"保存修改" forState:UIControlStateNormal];
-        [_preservationButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        [_preservationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_preservationButton addTarget:self action:@selector(didPreservationButton:) forControlEvents:UIControlEventTouchUpInside];
         [_preservationButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        
         
     }
     return _preservationButton;
@@ -232,12 +232,12 @@
 - (UIButton *)cancelButton{
     if (_cancelButton == nil) {
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame) + 2, 0, kBottomButtonW - 2, 50);
+        _cancelButton.frame = CGRectMake(CGRectGetMaxX(self.preservationButton.frame), 0, kBottomButtonW, 50);
         [_cancelButton setTitle:@"修改密码" forState:UIControlStateNormal];
-        [_cancelButton setTitleColor:MM_MAIN_BACKGROUND_COLOR forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(didCancelButton:) forControlEvents:UIControlEventTouchUpInside];
         [_cancelButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
-        
+        _cancelButton.alpha = 0.9;
     }
     return _cancelButton;
 }
