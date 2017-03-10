@@ -83,7 +83,7 @@ static NSString *kMallID = @"MallID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+    self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -302,12 +302,12 @@ static NSString *kMallID = @"MallID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    return CGSizeMake((self.view.width) / 3, 105);
+    return CGSizeMake((self.view.width - 20) / 2, 105);
     
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(5, 10, 0, 10);
 }
 // 行间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

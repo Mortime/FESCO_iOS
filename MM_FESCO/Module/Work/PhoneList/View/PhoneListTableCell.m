@@ -29,7 +29,7 @@
 - (void)initUI{
     [self addSubview:self.bgView];
     [self.bgView addSubview:self.leftImageView];
-    [self.bgView addSubview:self.messageImageView];
+//    [self.bgView addSubview:self.messageImageView];
     [self.bgView addSubview:self.nameLabel];
     [self.bgView addSubview:self.mobileLabel];
     [self.bgView addSubview:self.phoneLabel];
@@ -50,14 +50,14 @@
         make.height.mas_equalTo(@40);
         
     }];
-    [self.messageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.right.mas_equalTo(self.leftImageView.mas_right);
-        make.bottom.mas_equalTo(self.leftImageView.mas_bottom);
-        make.width.mas_equalTo(@15);
-        make.height.mas_equalTo(@15);
-        
-    }];
+//    [self.messageImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.right.mas_equalTo(self.leftImageView.mas_right);
+//        make.bottom.mas_equalTo(self.leftImageView.mas_bottom);
+//        make.width.mas_equalTo(@15);
+//        make.height.mas_equalTo(@15);
+//        
+//    }];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.leftImageView.mas_right).offset(10);
