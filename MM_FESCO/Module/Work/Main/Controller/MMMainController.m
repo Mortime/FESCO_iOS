@@ -106,7 +106,7 @@ static NSString *kMallID = @"MallID";
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
     
-   _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 150)];
+   _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 101)];
     _cycleImageView.placeImage = img;
     _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
     [_cycleImageView setPageControlLocation:0 isCycle:YES];
