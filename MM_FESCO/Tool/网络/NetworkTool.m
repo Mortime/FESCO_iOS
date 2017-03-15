@@ -36,33 +36,17 @@
         NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
         NSData * certData =[NSData dataWithContentsOfFile:cerPath];
         MMLog(@"certData == %@",certData);
-        
-        
-        
         NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
-        
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
         
         securityPolicy.allowInvalidCertificates = YES;
         //validatesDomainName 是否需要验证域名，默认为YES；
          securityPolicy.validatesDomainName = NO;
-    
-    
-        
         [securityPolicy setPinnedCertificates:certSet];
-        
-        
-        
         _sharedClient.securityPolicy  = securityPolicy;
-        
-        
-        
-        
         [_sharedClient setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) {
             DLog(@"setSessionDidBecomeInvalidBlock");
         }];
-        
-        
         [_sharedClient setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
             NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
             __autoreleasing NSURLCredential *credential =nil;
@@ -106,12 +90,6 @@
             *_credential = credential;
             return disposition;
         }];
-
-        
-        
-        
-        
-        
 
         [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
         
