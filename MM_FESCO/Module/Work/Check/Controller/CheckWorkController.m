@@ -222,11 +222,11 @@
     if (!_toolBarView) {
         _toolBarView = [JZPassRateToolBarView new];
         _toolBarView.frame = CGRectMake(0, 0, self.view.width, 40);
-        _toolBarView.titleNormalColor = [UIColor grayColor];
-        _toolBarView.titleSelectColor = MM_MAIN_FONTCOLOR_BLUE;
-        _toolBarView.followBarColor = MM_MAIN_FONTCOLOR_BLUE;
+        _toolBarView.titleNormalColor = [UIColor whiteColor];
+        _toolBarView.titleSelectColor = [UIColor whiteColor];
+        _toolBarView.followBarColor = [UIColor whiteColor];
         _toolBarView.followBarHeight = 3;
-        _toolBarView.backgroundColor = [UIColor clearColor];
+        _toolBarView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
         _toolBarView.selectButtonInteger = 0;
         _toolBarView.titleArray = @[ @"考勤", @"考勤记录", @"补签申请" , @"补签记录"];
         __weak typeof(self) ws = self;

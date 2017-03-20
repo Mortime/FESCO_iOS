@@ -3032,7 +3032,7 @@
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6SWT7Q8USS;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3576,8 +3576,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3600,7 +3600,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3623,8 +3623,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3641,7 +3641,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3656,9 +3656,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				DEVELOPMENT_TEAM = 6SWT7Q8USS;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3675,8 +3675,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
-				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3689,9 +3689,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
-				DEVELOPMENT_TEAM = 6SWT7Q8USS;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3708,8 +3708,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
-				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

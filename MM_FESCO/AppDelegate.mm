@@ -32,9 +32,11 @@
 
 
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate,EMClientDelegate>
 
 @property (nonatomic, strong) BMKMapManager *mapManager;
+
+@property (nonnull,strong) MMLoginController *loginVC;
 
 @end
 
@@ -43,6 +45,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // 登录环信
+    NSString *EEMID = [NSString stringWithFormat:@"zrfesco_%@",[UserInfoModel defaultUserInfo].empId];
+//    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
+    
+    EMError *error = [[EMClient sharedClient] loginWithUsername:EEMID password:[UserInfoModel defaultUserInfo].loginPasswordMD5];
+    if (!error) {
+        MMLog(@"环信登录成功");
+        // 设置自动登录
+        [[EMClient sharedClient].options setIsAutoLogin:YES];
+        
+    }
+    else{
+        MMLog(@"环信登录失败 %@",error);
+    }
+
+//    if (!isAutoLogin) {
+//        EMError *error = [[EMClient sharedClient] loginWithUsername:EEMID password:[UserInfoModel defaultUserInfo].loginPasswordMD5];
+//        if (!error) {
+//            MMLog(@"环信登录成功");
+//            // 设置自动登录
+//            [[EMClient sharedClient].options setIsAutoLogin:YES];
+//            
+//        }
+//        else{
+//            MMLog(@"环信登录失败 %@",error);
+//        }
+//        
+//    }
+
+    
+    
+    
+    
+    
+    
+    application.applicationIconBadgeNumber = 0;
     // 清空签到成功的时间
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSignUpTime] isEqualToString:[NSDate dateOfDayWithCurrTime]]) {
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -108,8 +146,9 @@
 {
     // 配置环信
     EMOptions *options = [EMOptions optionsWithAppkey:@"1187170223115321#payrollpen"];
-//    options.apnsCertName = @"iOSJPushDev";
-        options.apnsCertName = @"iOSJPushPro";
+    options.apnsCertName = @"iOSJPushDev";
+//        options.apnsCertName = @"iOSJPushPro";
+    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [application registerForRemoteNotifications];
@@ -124,7 +163,7 @@
     
     // 配置JPush
     [JPUSHService resetBadge];
-    application.applicationIconBadgeNumber = 0;
+    
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -135,7 +174,7 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     // Required
     //@param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
-    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:YES];
+    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:NO];
     
     
     
@@ -384,5 +423,38 @@
         
     }
 }
+/*!
+ *  当前登录账号在其它设备登录时会接收到该回调
+ */
+- (void)userAccountDidLoginFromOtherDevice{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"该账户已经在其他地方登录,请重新登录!" preferredStyle:UIAlertControllerStyleAlert];
+    _loginVC = [[MMLoginController alloc] init];
+    self.window.rootViewController = _loginVC;
+    [_loginVC presentViewController:alertController animated:YES completion:nil];
+    
+    double delayInSeconds = 1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self dismiss];
+    });
 
+    
+}
+- (void)dismiss{
+    [_loginVC dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)userAccountDidRemoveFromServer{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"该账户已经在其他地方登录,请重新登录!" preferredStyle:UIAlertControllerStyleAlert];
+    _loginVC = [[MMLoginController alloc] init];
+    self.window.rootViewController = _loginVC;
+    [_loginVC presentViewController:alertController animated:YES completion:nil];
+    
+    double delayInSeconds = 1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self dismiss];
+    });
+
+}
 @end

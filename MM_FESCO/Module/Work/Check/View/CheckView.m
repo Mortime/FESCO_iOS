@@ -128,6 +128,16 @@
     if (image) {
         self.iconView.image = image;
     }
+    
+    
+}
+- (void)drawRect:(CGRect)rect{
+    //填充圆，无边框
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIColor *aColor = [UIColor redColor];
+    CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
+    CGContextAddArc(context, 150, 30, 30, 0, 2*M_PI, 0); //添加一个圆
+    CGContextDrawPath(context, kCGPathFill);//绘制填充
 
 }
 - (void)initData{
@@ -181,7 +191,9 @@
         make.right.mas_equalTo(self.signResultLable.mas_right);
         make.height.mas_equalTo(@14);
     }];
-}
+    
+    
+    }
 
 //实现相关delegate 处理位置信息更新
 //处理方向变更信息
@@ -232,12 +244,6 @@
 
         }
     }
-    
-    
-    
-    
-    
-    
     
     NSString *memo = @"";
     if (_signType == 1 || _signType == 2) {

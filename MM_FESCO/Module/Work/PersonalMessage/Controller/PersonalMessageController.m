@@ -80,6 +80,8 @@
     
     [self initData];
     
+    
+    
 }
 
 - (void)initData{

@@ -258,20 +258,31 @@
             
             // 登录环信
             NSString *EEMID = [NSString stringWithFormat:@"zrfesco_%@",[UserInfoModel defaultUserInfo].empId];
-            BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
-            if (!isAutoLogin) {
-                EMError *error = [[EMClient sharedClient] loginWithUsername:EEMID password:[UserInfoModel defaultUserInfo].loginPasswordMD5];
-                if (!error) {
-                    MMLog(@"环信登录成功");
-                    // 设置自动登录
-                    [[EMClient sharedClient].options setIsAutoLogin:YES];
-                    
-                }
-                else{
-                    MMLog(@"环信登录失败 %@",error);
-                }
-
+            EMError *error = [[EMClient sharedClient] loginWithUsername:EEMID password:[UserInfoModel defaultUserInfo].loginPasswordMD5];
+            if (!error) {
+                MMLog(@"环信登录成功");
+                // 设置自动登录
+                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                
             }
+            else{
+                MMLog(@"环信登录失败 %@",error);
+            }
+
+//            BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
+//            if (!isAutoLogin) {
+//                EMError *error = [[EMClient sharedClient] loginWithUsername:EEMID password:[UserInfoModel defaultUserInfo].loginPasswordMD5];
+//                if (!error) {
+//                    MMLog(@"环信登录成功");
+//                    // 设置自动登录
+//                    [[EMClient sharedClient].options setIsAutoLogin:YES];
+//                    
+//                }
+//                else{
+//                    MMLog(@"环信登录失败 %@",error);
+//                }
+//
+//            }
 
             
             // 加载用户头像

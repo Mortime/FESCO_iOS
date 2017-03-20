@@ -26,13 +26,10 @@
     NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/preRegister.json"];
     NSLog(@"mainHomeUrlstr  %@",urlStr);
     
-    
     NSDictionary * dic = @{@"emailOrPhone":mail
                            
                            };
 
-        
-    
     NSLog(@"mainHomeUrlstrdic  %@",dic);
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 
@@ -49,14 +46,11 @@
     NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/register.json"];
     NSLog(@"mainHomeUrlstr  %@",urlStr);
     
-    
-    
     NSDictionary * dic = @{@"emailOrPhone":mail,
                            @"login_name":userName,
                            @"login_password":password
                            
                            };
-    
     
     NSLog(@"mainHomeUrlstrdic  %@",dic);
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
