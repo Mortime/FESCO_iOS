@@ -100,12 +100,12 @@
     
     
     
-    [self addSubview:self.bgTopView];
-    [self.bgTopView addSubview:self.iconView];
-    [self.bgTopView addSubview:self.signResultLable];
-    [self.bgTopView addSubview:self.bigSignLable];
-    [self.bgTopView addSubview:self.lineView];
-    [self.bgTopView addSubview:self.timeLable];
+//    [self addSubview:self.bgTopView];
+//    [self.bgTopView addSubview:self.iconView];
+//    [self.bgTopView addSubview:self.signResultLable];
+//    [self.bgTopView addSubview:self.bigSignLable];
+//    [self.bgTopView addSubview:self.lineView];
+//    [self.bgTopView addSubview:self.timeLable];
     
     [self addSubview:self.scaleBoomButton];
     [self addSubview:self.scaleReduceButton];
@@ -131,15 +131,15 @@
     
     
 }
-- (void)drawRect:(CGRect)rect{
-    //填充圆，无边框
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    UIColor *aColor = [UIColor redColor];
-    CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
-    CGContextAddArc(context, 150, 30, 30, 0, 2*M_PI, 0); //添加一个圆
-    CGContextDrawPath(context, kCGPathFill);//绘制填充
-
-}
+//- (void)drawRect:(CGRect)rect{
+//    //填充圆，无边框
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    UIColor *aColor = [UIColor redColor];
+//    CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
+//    CGContextAddArc(context, 150, 30, 30, 0, 2*M_PI, 0); //添加一个圆
+//    CGContextDrawPath(context, kCGPathFill);//绘制填充
+//
+//}
 - (void)initData{
     
     // 获取系统当前时间
@@ -156,41 +156,41 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    [self.bgTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(0);
-        make.left.mas_equalTo(self.mas_left).offset(0);
-        make.right.mas_equalTo(self.mas_right);
-        make.height.mas_equalTo(@194);
-    }];
-    [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.bgTopView.mas_left).offset(10);
-        make.centerY.mas_equalTo(self.bgTopView.mas_centerY);
-        make.height.mas_equalTo(@65);
-        make.width.mas_equalTo(@65);
-    }];
-    [self.signResultLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bgTopView.mas_top).offset(25);
-        make.right.mas_equalTo(self.bgTopView.mas_right).offset(-40);
-        make.height.mas_equalTo(@14);
-    }];
-    [self.bigSignLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.signResultLable.mas_bottom).offset(10);
-        make.right.mas_equalTo(self.bgTopView.mas_right).offset(-60);
-        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(-44);
-    }];
-
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.bgTopView.mas_left).offset(3);
-        make.right.mas_equalTo(self.bgTopView.mas_right).offset(3);
-        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(0);
-        make.height.mas_equalTo(@1);
-    }];
-    [self.timeLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.bigSignLable.mas_bottom).offset(10);
-        make.right.mas_equalTo(self.signResultLable.mas_right);
-        make.height.mas_equalTo(@14);
-    }];
+//    [self.bgTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.mas_top).offset(0);
+//        make.left.mas_equalTo(self.mas_left).offset(0);
+//        make.right.mas_equalTo(self.mas_right);
+//        make.height.mas_equalTo(@194);
+//    }];
+//    [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.bgTopView.mas_left).offset(10);
+//        make.centerY.mas_equalTo(self.bgTopView.mas_centerY);
+//        make.height.mas_equalTo(@65);
+//        make.width.mas_equalTo(@65);
+//    }];
+//    [self.signResultLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.bgTopView.mas_top).offset(25);
+//        make.right.mas_equalTo(self.bgTopView.mas_right).offset(-40);
+//        make.height.mas_equalTo(@14);
+//    }];
+//    [self.bigSignLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.signResultLable.mas_bottom).offset(10);
+//        make.right.mas_equalTo(self.bgTopView.mas_right).offset(-60);
+//        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(-44);
+//    }];
+//
+//    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.bgTopView.mas_left).offset(3);
+//        make.right.mas_equalTo(self.bgTopView.mas_right).offset(3);
+//        make.bottom.mas_equalTo(self.bgTopView.mas_bottom).offset(0);
+//        make.height.mas_equalTo(@1);
+//    }];
+//    [self.timeLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.top.mas_equalTo(self.bigSignLable.mas_bottom).offset(10);
+//        make.right.mas_equalTo(self.signResultLable.mas_right);
+//        make.height.mas_equalTo(@14);
+//    }];
     
     
     }
@@ -327,10 +327,10 @@
         
         if (btn1.tag == btn.tag) {
             
-            btn1.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+            btn1.alpha = 0.9;
             
         }else{
-             btn1.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
+             btn1.alpha = 1;
             
         }
     
@@ -578,9 +578,8 @@
     
     if (_scaleBoomButton == nil) {
         _scaleBoomButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-        _scaleBoomButton.frame = CGRectMake(20, 230, 20, 22);
+        _scaleBoomButton.frame = CGRectMake(20, CGRectGetMaxY(self.bgView.frame) + 20, 30, 30);
         [_scaleBoomButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Boom"] forState:UIControlStateNormal];
-//        _scaleBoomButton.backgroundColor = [UIColor redColor];
         [_scaleBoomButton addTarget:self action:@selector(didClickMapScale:) forControlEvents:UIControlEventTouchUpInside];
         _scaleBoomButton.tag = 600;
     }
@@ -591,9 +590,8 @@
     
     if (_scaleReduceButton == nil) {
         _scaleReduceButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-        _scaleReduceButton.frame = CGRectMake(20, 230 + 30, 20, 22);
+        _scaleReduceButton.frame = CGRectMake(20, CGRectGetMaxY(self.bgView.frame) + 20 + 30, 30, 30);
         [_scaleReduceButton setBackgroundImage:[UIImage imageNamed:@"MapView_Standard_Reduce"] forState:UIControlStateNormal];
-//        _scaleReduceButton.backgroundColor = [UIColor redColor];
         [_scaleReduceButton addTarget:self action:@selector(didClickMapScale:) forControlEvents:UIControlEventTouchUpInside];
         _scaleReduceButton.tag = 601;
     }
@@ -603,12 +601,15 @@
 
 - (UIView *)bgView{
     if (_bgView == nil) {
-        _bgView = [[UIView alloc] initWithFrame:CGRectMake(self.width - kMapTypeW - 20,self.height - 50 - kMapTypeW - 50 , kMapTypeW, kMapTypeW)];
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(20,20 , kMapTypeW, kMapTypeW)];
         _bgView.backgroundColor = [UIColor clearColor];
         _bgView.layer.masksToBounds = YES;
         _bgView.layer.cornerRadius = 5;
         _bgView.layer.borderColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
         _bgView.layer.borderWidth = 1;
+        _bgView.layer.shadowOffset = CGSizeMake(0, 2);
+        _bgView.layer.shadowOpacity = 0.36;
+        _bgView.layer.shadowRadius = 2;
     }
     return _bgView;
     
@@ -652,8 +653,8 @@
     if (_signOutButton == nil) {
         _signOutButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _signOutButton.frame = CGRectMake(0, CGRectGetMaxY(self.mapView.frame), kButtonW, kButtonH);
-        _signOutButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
-        [_signOutButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _signOutButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_signOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_signOutButton setTitle:@"签退" forState:UIControlStateNormal];
         _signOutButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signOutButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
@@ -670,8 +671,8 @@
     if (_signUpButton == nil) {
         _signUpButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _signUpButton.frame = CGRectMake(CGRectGetMaxX(self.signOutButton.frame), self.signOutButton.frame.origin.y, kButtonW, kButtonH);
-        _signUpButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
-        [_signUpButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _signUpButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_signUpButton setTitle:@"签到" forState:UIControlStateNormal];
         _signUpButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_signUpButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
@@ -686,8 +687,8 @@
     if (_outButton == nil) {
         _outButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         _outButton.frame = CGRectMake(CGRectGetMaxX(self.signUpButton.frame), self.signOutButton.frame.origin.y, kButtonW, kButtonH);
-        _outButton.backgroundColor = MM_MAIN_BACKGROUND_COLOR;
-        [_outButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _outButton.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        [_outButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_outButton setTitle:@"外勤" forState:UIControlStateNormal];
         _outButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_outButton addTarget:self action:@selector(didSignButon:) forControlEvents:UIControlEventTouchUpInside];
