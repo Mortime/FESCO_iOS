@@ -32,7 +32,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"签到统计";
-    self.view.backgroundColor = [UIColor colorWithHexString:@"ededed"];
+    self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     self.holidayNameArray = [NSMutableArray array];
     self.checkRecodeArray = [NSMutableArray array];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recodeDate) name:kDateChangeNotifition object:nil];
@@ -47,7 +47,7 @@
     _footView.backgroundColor = [UIColor clearColor];
 
 
-    FlagView *flagView = [[FlagView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 60)];
+    FlagView *flagView = [[FlagView alloc] initWithFrame:CGRectMake(20, 0, self.view.width, 20)];
     flagView.backgroundColor = [UIColor clearColor];
     [self.footView addSubview:flagView];
     

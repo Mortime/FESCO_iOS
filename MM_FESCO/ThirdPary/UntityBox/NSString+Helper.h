@@ -132,5 +132,9 @@
 + (NSString *)backPicNameWith:(NSString *)title;
 
 +(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data;
-
+/*
+ *
+ *   根据月份返回英文状态下的月份
+ */
++ (NSString *)enlishMonthWithNumberMon:(NSString *)numberMon;
 @end

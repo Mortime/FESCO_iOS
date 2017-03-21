@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FlagBaseView : UIView
-@property (nonatomic, copy) NSString *titleStr;
-@property (nonatomic, strong) UIColor *titleColor;
+@property (nonatomic, copy) NSString *imgStr;
 @end

@@ -49,12 +49,14 @@
 
 - (UIView *)flagView {
     if (!_flagView) {
-        _flagView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width - 15, self.bounds.size.height - 15)];
-        _flagView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-        _flagView.backgroundColor = [UIColor redColor];
+        _flagView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 8, 8)];
+        _flagView.center = CGPointMake(self.bounds.size.width / 2, CGRectGetMaxY(self.dayLabel.frame) + 5);
+//        _flagView.backgroundColor = [UIColor redColor];
         _flagView.hidden = YES;
         _flagView.layer.masksToBounds = YES;
-        _flagView.layer.cornerRadius = 5.f;
+        _flagView.layer.cornerRadius = 4.f;
+        _flagView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _flagView.layer.borderWidth = 0.5;
         [self addSubview:_flagView];
     }
     return _flagView;
@@ -211,12 +213,9 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     static NSString *identifier = @"CalendarCell";
     FDCalendarCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.flagView.backgroundColor = [UIColor colorWithHexString:@"ededed"];
-
-    cell.dayLabel.textColor = [UIColor blackColor];
-    cell.chineseDayLabel.textColor = [UIColor grayColor];
-    
+    cell.backgroundColor = [UIColor clearColor];
+//    cell.flagView.backgroundColor = [UIColor redColor];
+    cell.flagView.hidden = YES;
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     NSInteger totalDaysOfMonth = [self totalDaysInMonthOfDate:self.date];
     NSInteger totalDaysOfLastMonth = [self totalDaysInMonthOfDate:[self previousMonthDate]];
@@ -226,72 +225,72 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthPrevious WithDay:day]];
-        cell.backgroundColor = [UIColor colorWithHexString:@"ededed"];
 
     } else if (indexPath.row >= totalDaysOfMonth + firstWeekday) {    // 大于这个月的最后一天
         NSInteger day = indexPath.row - totalDaysOfMonth - firstWeekday + 1;
         cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthNext WithDay:day]];
-        cell.backgroundColor = [UIColor colorWithHexString:@"ededed"];
+
     } else {    // 属于这个月
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
-        
+        cell.dayLabel.textColor = [UIColor whiteColor];
         
         // 显示签到类型的背景色值  (_dataArray.count + firstWeekday 本月数据数据越界问题 )
         if (indexPath.row < _dataArray.count + firstWeekday) {
             if (_dataArray.count) {
                 NSArray *array = _dataArray[day - 1];
-                cell.flagView.hidden = YES;
+                cell.flagView.hidden = NO;
                 if (array.count) {
+                    
+                    
                     if ([array[0] isEqualToString:@"normal"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffffff"];
+                        
+                        cell.flagView.hidden = YES;
                     }
+
                     if ([array[0] isEqualToString:@"lateArrive"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffdfbd"];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        cell.flagView.backgroundColor = [UIColor colorWithHexString:@"e6c169"];
+                        
                     }
                     if ([array[0] isEqualToString:@"earlyLeave"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"e4bdff"];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        cell.flagView.backgroundColor = [UIColor colorWithHexString:@"e66f69"];
+                        
                     }
                     if ([array[0] isEqualToString:@"offWork"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"ffbdbd"];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        cell.flagView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+                        
                     }
                     if ([array[0] isEqualToString:@"holiday"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"bfffbd"];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        cell.flagView.backgroundColor = [UIColor colorWithHexString:@"69e692"];
+                        
                     }
                     if ([array[0] isEqualToString:@"extraWork"]) {
-                        cell.backgroundColor =  [UIColor colorWithHexString:@"bdbfff"];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        
+                        cell.flagView.backgroundColor = [UIColor colorWithHexString:@"cd69e6"];
                     }
                 }
                 // 当有两张状态时 色块重叠
                 if (array.count == 2) {
-                    cell.flagView.hidden = NO;
+//                    cell.flagView.hidden = NO;
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     
-                    if ([array[1] isEqualToString:@"normal"]) {  // self.colorArray = @[@"ffffff",@"ffdfbd",@"e4bdff",@"ffbdbd",@"bfffbd",@"bdbfff"];
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffffff"];
-                    }
-                    if ([array[1] isEqualToString:@"lateArrive"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffdfbd"];
+                if ([array[1] isEqualToString:@"lateArrive"]) {
+                        
                         
                     }
                     if ([array[1] isEqualToString:@"earlyLeave"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"e4bdff"];
+                        
                     }
                     if ([array[1] isEqualToString:@"offWork"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"ffbdbd"];
+                        
                     }
                     if ([array[1] isEqualToString:@"holiday"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"bfffbd"];
+                        
                     }
                     if ([array[1] isEqualToString:@"extraWork"]) {
-                        cell.flagView.backgroundColor =  [UIColor colorWithHexString:@"bdbfff"];
+                        
                     }
                     
                 }
@@ -301,9 +300,9 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
         
         
         if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:self.date]) {
-            cell.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-//            cell.layer.cornerRadius = cell.frame.size.height / 2;
-            cell.dayLabel.textColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.layer.cornerRadius = cell.frame.size.height / 2;
+            cell.dayLabel.textColor = MM_MAIN_FONTCOLOR_BLUE;
             cell.chineseDayLabel.textColor = [UIColor whiteColor];
         }
         
@@ -312,7 +311,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
             
             // 将当前日期的那天高亮显示
             if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:[NSDate date]]) {
-                cell.dayLabel.textColor = [UIColor redColor];
+                cell.dayLabel.textColor = [UIColor whiteColor];
             }
         }
         

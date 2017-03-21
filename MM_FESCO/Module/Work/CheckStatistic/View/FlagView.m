@@ -13,9 +13,7 @@
 
 @interface FlagView ()
 
-@property (nonatomic, strong) NSArray *titleArray;
-
-@property (nonatomic, strong) NSArray *colorArray;
+@property (nonatomic, strong) NSArray *imgArray;
 @end
 
 @implementation FlagView
@@ -32,28 +30,18 @@
 
 }
 - (void)initUI{
-    for (int i = 0; i < _titleArray.count; i++) {
+    for (int i = 0; i < _imgArray.count; i++) {
         
-        CGFloat baseViewW = kMMWidth / 3;
-        CGFloat baseViewH = self.height / 2;
-        if (i < 3) {
+        CGFloat baseViewW = 15;
             
-            FlagBaseView *baseView = [[FlagBaseView alloc] initWithFrame:CGRectMake(i * baseViewW, 0, baseViewW, baseViewH)];
-            baseView.titleStr = _titleArray[i];
-            baseView.titleColor = [UIColor colorWithHexString:_colorArray[i]];
+            FlagBaseView *baseView = [[FlagBaseView alloc] initWithFrame:CGRectMake(i * (baseViewW + 15), 0, 15, 15)];
+            baseView.imgStr = _imgArray[i];
             [self addSubview:baseView];
-        }else{
-            FlagBaseView *baseView = [[FlagBaseView alloc] initWithFrame:CGRectMake((i - 3) * baseViewW, baseViewH, baseViewW, baseViewH)];
-            baseView.titleStr = _titleArray[i];
-            baseView.titleColor = [UIColor colorWithHexString:_colorArray[i]];
-            [self addSubview:baseView];
-
-        }
     }
 }
 - (void)initData{
-    self.titleArray = @[@"正常",@"迟到",@"早退",@"旷工",@"请假",@"加班"];
-    self.colorArray = @[@"ffffff",@"ffdfbd",@"e4bdff",@"ffbdbd",@"bfffbd",@"bdbfff"];
+    self.imgArray = @[@"flag_chidao",@"flag_zaotui",@"flag_jiaban",@"flag_jiaqi",@"flag_kuanggong"];
+    
     
 }
 @end
