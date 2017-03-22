@@ -144,6 +144,12 @@ static NSDateFormatter *dateFormattor;
 //    [titleButton addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:titleButton];
     
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(titleView.frame)/2, 110, 42)];
+    imageView.centerX = DeviceWidth/2;
+    imageView.backgroundColor = [UIColor clearColor];
+    imageView.image = [UIImage imageNamed:@"arrow_line"];
+    [titleView addSubview:imageView];
+    
     self.titleButton = titleButton;
 }
 
@@ -167,9 +173,7 @@ static NSDateFormatter *dateFormattor;
         [self addSubview:weekdayLabel];
         offsetX += weekdayLabel.frame.size.width;
     }
-//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 74, DeviceWidth - 30, 1)];
-//    lineView.backgroundColor = [UIColor lightGrayColor];
-//    [self addSubview:lineView];
+
 }
 
 // 设置包含日历的item的scrollView

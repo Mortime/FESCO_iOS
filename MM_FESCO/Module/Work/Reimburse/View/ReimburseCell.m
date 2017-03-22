@@ -16,6 +16,8 @@
 
 @property (nonatomic ,strong) UILabel *detailLabel;
 
+@property (nonatomic, strong) UIView *statusView;
+
 @property (nonatomic ,strong) UILabel *moneyLabel;
 
 
@@ -42,6 +44,7 @@
     [self addSubview:self.detailLabel];
     
     [self addSubview:self.moneyLabel];
+    [self addSubview:self.statusView];
     
     
     
@@ -72,6 +75,13 @@
         make.right.mas_equalTo(self.mas_right).offset(-10);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(@16);
+        
+    }];
+    [self.statusView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.moneyLabel.mas_left).offset(-10);
+        make.centerY.mas_equalTo(self.mas_centerY);
+        make.height.mas_equalTo(@8);
+        make.width.mas_equalTo(@8);
         
     }];
     
@@ -124,10 +134,20 @@
     }
     return _moneyLabel;
 }
+- (UIView *)statusView{
+    if (_statusView == nil) {
+        _statusView = [[UIView alloc] init];
+        _statusView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
+        _statusView.layer.masksToBounds = YES;
+        _statusView.layer.cornerRadius = 4;
+        _statusView.hidden = YES;
+    }
+    return _statusView;
+}
 - (void)setModel:(ReimburseModel *)model{
     //报销单状态  // 0待提交，1待审批，2待支付，3未通过，4已支付
     _moneyLabel.textColor  = [UIColor grayColor];
-    
+    _statusView.hidden = YES;
 
     NSString *status = @"";
     if (model.statusReimburse == 0) {
@@ -137,6 +157,7 @@
     if (model.statusReimburse == 1) {
         status = @"待审批";
         _moneyLabel.textColor  = MM_MAIN_FONTCOLOR_BLUE;
+        _statusView.hidden = NO;
     }
     if (model.statusReimburse == 2) {
         status = @"待支付";

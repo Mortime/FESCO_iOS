@@ -642,6 +642,10 @@
         _statelliteButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_statelliteButton addTarget:self action:@selector(didClickMapType:) forControlEvents:UIControlEventTouchUpInside];
         _statelliteButton.tag = 701;
+        _statelliteButton.layer.shadowColor = MM_MAIN_FONTCOLOR_BLUE.CGColor;
+        _statelliteButton.layer.shadowOffset = CGSizeMake(0, 2);
+        _statelliteButton.layer.shadowOpacity = 0.36;
+        _statelliteButton.layer.shadowRadius = 2;
     }
     return _statelliteButton;
     
