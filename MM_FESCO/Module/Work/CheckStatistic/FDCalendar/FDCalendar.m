@@ -344,6 +344,15 @@ static NSDateFormatter *dateFormattor;
     } failure:^(NSError *failure) {
         MMLog(@"CheckStatistic ===failure=========%@",failure);
     }];
+    
+    // 把选中的日期转化为字符串,底部签到时间展示
+    NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+    [dateFormat2 setDateFormat:@"yyyyMMdd"];
+    NSString *dateStr = [dateFormat2 stringFromDate:date];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:dateStr forKey:kSignStatisticDate];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDateChangeNotifition object:self];
+
 
 }
 @end

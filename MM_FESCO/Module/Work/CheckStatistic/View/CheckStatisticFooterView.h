@@ -13,6 +13,5 @@
 
 @property (nonatomic, copy) NSString *recodeStr;
 
-@property (nonatomic, copy) NSString *holidayStr;
 
 @end

@@ -13,13 +13,15 @@
 - (UILabel *)dayLabel;
 - (UILabel *)chineseDayLabel;
 - (UIView *)flagView;
+- (UIView *)twoFlagView;
 
 @end
 
 @implementation FDCalendarCell {
     UILabel *_dayLabel;
     UILabel *_chineseDayLabel;
-    UIView *_flagView; // 当签到状态有两种时,这时显示
+    UIView *_flagView; // 只有一种状态时
+    UIView *_twoFlagView; // 第二种状态
 }
 
 - (UILabel *)dayLabel {
@@ -51,7 +53,6 @@
     if (!_flagView) {
         _flagView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 8, 8)];
         _flagView.center = CGPointMake(self.bounds.size.width / 2, CGRectGetMaxY(self.dayLabel.frame) + 5);
-//        _flagView.backgroundColor = [UIColor redColor];
         _flagView.hidden = YES;
         _flagView.layer.masksToBounds = YES;
         _flagView.layer.cornerRadius = 4.f;
@@ -61,7 +62,19 @@
     }
     return _flagView;
 }
-
+- (UIView *)twoFlagView {
+    if (!_twoFlagView) {
+        _twoFlagView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 8, 8)];
+        _twoFlagView.center = CGPointMake(self.bounds.size.width / 2 + 8, CGRectGetMaxY(self.dayLabel.frame) + 5);
+        _twoFlagView.hidden = YES;
+        _twoFlagView.layer.masksToBounds = YES;
+        _twoFlagView.layer.cornerRadius = 4.f;
+        _twoFlagView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _twoFlagView.layer.borderWidth = 0.5;
+        [self addSubview:_twoFlagView];
+    }
+    return _twoFlagView;
+}
 
 @end
 
@@ -214,8 +227,9 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     FDCalendarCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor clearColor];
-//    cell.flagView.backgroundColor = [UIColor redColor];
+    
     cell.flagView.hidden = YES;
+    cell.twoFlagView.hidden = YES;
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     NSInteger totalDaysOfMonth = [self totalDaysInMonthOfDate:self.date];
     NSInteger totalDaysOfLastMonth = [self totalDaysInMonthOfDate:[self previousMonthDate]];
@@ -273,24 +287,39 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
                 }
                 // 当有两张状态时 色块重叠
                 if (array.count == 2) {
-//                    cell.flagView.hidden = NO;
+                    cell.twoFlagView.hidden = NO;
                     cell.dayLabel.textColor = [UIColor whiteColor];
+                    // 显示第二flagView时,flagView要重新布局
+//                    [cell.flagView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                        
+//                        
+//                        make.left.mas_equalTo(self.mas_left);
+//                        make.centerY.mas_equalTo(self.mas_centerY);
+//                        make.width.mas_equalTo(@8);
+//                        make.height.mas_equalTo(@8);
+//                        
+////                        make.top.
+////                        make.height.equalTo(@8);
+////                        make.width.equalTo(@8);
+////                        make.centerX.equalTo(@(self.bounds.size.width / 2));
+////                        make.centerY.equalTo(@(CGRectGetMaxY(self.dayLabel.frame) + 5));
+//                        
+//                    }];
                     
                 if ([array[1] isEqualToString:@"lateArrive"]) {
-                        
-                        
+                    cell.twoFlagView.backgroundColor = [UIColor colorWithHexString:@"e6c169"];
                     }
                     if ([array[1] isEqualToString:@"earlyLeave"]) {
-                        
+                        cell.twoFlagView.backgroundColor = [UIColor colorWithHexString:@"e66f69"];
                     }
                     if ([array[1] isEqualToString:@"offWork"]) {
-                        
+                        cell.twoFlagView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
                     }
                     if ([array[1] isEqualToString:@"holiday"]) {
-                        
+                        cell.twoFlagView.backgroundColor = [UIColor colorWithHexString:@"69e692"];
                     }
                     if ([array[1] isEqualToString:@"extraWork"]) {
-                        
+                        cell.twoFlagView.backgroundColor = [UIColor colorWithHexString:@"cd69e6"];
                     }
                     
                 }

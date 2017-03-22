@@ -51,7 +51,7 @@
     flagView.backgroundColor = [UIColor clearColor];
     [self.footView addSubview:flagView];
     
-    _checkStatisticView = [[CheckStatisticFooterView alloc] initWithFrame:CGRectMake(20, flagView.height + 20, self.view.width, 120)];
+    _checkStatisticView = [[CheckStatisticFooterView alloc] initWithFrame:CGRectMake(10, flagView.height + 10, self.view.width, 200)];
     _checkStatisticView.backgroundColor = [UIColor clearColor];
     [self.footView addSubview:_checkStatisticView];
     
@@ -59,45 +59,7 @@
     self.tableView.tableFooterView = self.footView;
      [self.view addSubview:self.tableView];
     
-    [self initData];
     [self initCheckData];
-}
-- (void)initData{
-    
-    
-    
-    // 获取剩余假期
-    [NetworkEntity postHolidayNumberSuccess:^(id responseObject) {
-        
-//        MMLog(@"HolidayNumber ===responseObject=========%@",responseObject);
-        if ([responseObject allKeys].count) {
-            for (NSDictionary *dic in [responseObject objectForKey:@"holPoolList"]) {
-                NSString *holidayName = [dic objectForKey:@"hol_Name"];
-                NSString *holidayNumber = [dic objectForKey:@"availableAllNum"];
-                NSString *relult = [NSString stringWithFormat:@"%@: %@",holidayName,holidayNumber];
-                [_holidayNameArray addObject:relult];
-            }
-            NSString *result = @"";
-            
-            for (int i = 0; i < _holidayNameArray.count; i++) {
-                if (i == 0) {
-                    result = _holidayNameArray[i];
-                }else{
-                     result = [NSString stringWithFormat:@"%@天  %@小时",result,_holidayNameArray[i]];
-                }
-            }
-            
-            _checkStatisticView.holidayStr = result;
-//            _checkStatisticView.recodeStr = @"kk";
-            
-            
-        }
-    } failure:^(NSError *failure) {
-         MMLog(@"HolidayNumber ===failure=========%@",failure);
-    }];
-    
-    
-
 }
 - (void)initCheckData{
     // 把选中的日期转化为字符串
@@ -120,7 +82,7 @@
         if ([[responseObject objectForKey:@"ceds"] count]) {
             [_checkRecodeArray removeAllObjects];
             for (NSDictionary *dic in [responseObject objectForKey:@"ceds"]) {
-                NSString *checkTime = [NSDate dateFromSSWithss:[dic objectForKey:@"check_Time"]];
+                NSString *checkTime = [NSDate dateFromSSWithDateType:@"HH:mm    yyyy-MM-dd" ss:[dic objectForKey:@"check_Time"]];
                 NSString *checkType = @"";
                 if ([[dic objectForKey:@"check_Type"] integerValue] == 1) {
                     checkType = @"签到";
@@ -130,7 +92,7 @@
                     checkType = @"外勤";
                 }
                  NSString *checkAddress = [dic objectForKey:@"cust_Addr"];
-                NSString *relult = [NSString stringWithFormat:@"%@  %@  %@",checkTime,checkType,checkAddress];
+                NSString *relult = [NSString stringWithFormat:@"%@    %@    %@",checkTime,checkType,checkAddress];
                 [_checkRecodeArray addObject:relult];
             }
             NSString *result = @"";
@@ -145,6 +107,8 @@
             
 
             _checkStatisticView.recodeStr = result;
+        }else{
+            _checkStatisticView.recodeStr = nil;
         }
         
         
