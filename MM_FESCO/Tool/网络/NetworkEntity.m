@@ -35,6 +35,27 @@
 
 }
 /**
+ *   找回密码 获取验证码
+ */
+
++ (void)postFindPasswordCodeNumberWithMail:(NSString *)mail success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    if (!mail) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/preReset.json"];
+    NSLog(@"mainHomeUrlstr  %@",urlStr);
+    
+    NSDictionary * dic = @{@"emailOrPhone":mail
+                           
+                           };
+    
+    NSLog(@"mainHomeUrlstrdic  %@",dic);
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+    
+}
+
+/**
  *   注册 注册
  */
 
@@ -56,7 +77,23 @@
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 }
 
-
+// 找回密码
++ (void)postFindPassworkWithMail:(NSString *)mail  userName:(NSString *)userName password:(NSString *)password  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    if (!mail) {
+        return [NetworkTool missParagramerCallBackFailure:failure];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"user/reset.json"];
+    NSLog(@"mainHomeUrlstr  %@",urlStr);
+    
+    NSDictionary * dic = @{@"emailOrPhone":mail,
+                           @"login_name":userName,
+                           @"login_password":password
+                           
+                           };
+    
+    NSLog(@"mainHomeUrlstrdic  %@",dic);
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
 
 
 /**

@@ -289,6 +289,7 @@
 		761C37431E0929D9007E1607 /* BuffetImagLableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C37421E0929D9007E1607 /* BuffetImagLableCell.m */; };
 		761C37461E0929F1007E1607 /* BuffetLableImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 761C37451E0929F1007E1607 /* BuffetLableImageCell.m */; };
 		761EAF9C1DF54F5800EF8160 /* EditMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */; };
+		762BAB9A1E8508B800712431 /* MMFindPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762BAB991E8508B800712431 /* MMFindPasswordController.m */; };
 		763256D51DD2B9C900C9C903 /* PurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */; };
 		763256D81DD2BF4C00C9C903 /* PurchaseRecordSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256D71DD2BF4C00C9C903 /* PurchaseRecordSubModel.m */; };
 		763256DB1DD2C27500C9C903 /* PurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 763256DA1DD2C27500C9C903 /* PurchaseRecordCell.m */; };
@@ -1003,6 +1004,8 @@
 		761C37451E0929F1007E1607 /* BuffetLableImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetLableImageCell.m; sourceTree = "<group>"; };
 		761EAF9A1DF54F5800EF8160 /* EditMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMessageModel.h; sourceTree = "<group>"; };
 		761EAF9B1DF54F5800EF8160 /* EditMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMessageModel.m; sourceTree = "<group>"; };
+		762BAB981E8508B800712431 /* MMFindPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMFindPasswordController.h; sourceTree = "<group>"; };
+		762BAB991E8508B800712431 /* MMFindPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMFindPasswordController.m; sourceTree = "<group>"; };
 		763256D31DD2B9C900C9C903 /* PurchaseRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordModel.h; sourceTree = "<group>"; };
 		763256D41DD2B9C900C9C903 /* PurchaseRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordModel.m; sourceTree = "<group>"; };
 		763256D61DD2BF4C00C9C903 /* PurchaseRecordSubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordSubModel.h; sourceTree = "<group>"; };
@@ -2056,6 +2059,8 @@
 				5994C4711D8271FD007660DD /* MMLoginTool.m */,
 				59C005C71D92724700A329CD /* MMRegisterTextFiledView.h */,
 				59C005C81D92724700A329CD /* MMRegisterTextFiledView.m */,
+				762BAB981E8508B800712431 /* MMFindPasswordController.h */,
+				762BAB991E8508B800712431 /* MMFindPasswordController.m */,
 			);
 			name = MM_Login;
 			path = ../MM_Login;
@@ -3329,6 +3334,7 @@
 				76CBDCF21DDB06C100272D91 /* DVVSearchView.m in Sources */,
 				764223C61E1DF2F50094DEBB /* ReimburseApprovalInfoDetailsModel.m in Sources */,
 				59EC91DD1D98D9AD00E802FA /* UIImage+EMGIF.m in Sources */,
+				762BAB9A1E8508B800712431 /* MMFindPasswordController.m in Sources */,
 				59EC914A1D98CB5900E802FA /* NSString+Valid.m in Sources */,
 				597223C31DADE05400D01A7A /* FillApplyView.m in Sources */,
 				59AF3AFA1DAF361600BE46BE /* FlagBaseView.m in Sources */,

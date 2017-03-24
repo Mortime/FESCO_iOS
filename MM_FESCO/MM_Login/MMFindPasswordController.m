@@ -1,12 +1,12 @@
 //
-//  RegisterController.m
+//  MMFindPasswordController.m
 //  MM_FESCO
 //
-//  Created by Mortimey on 16/9/21.
-//  Copyright © 2016年 Mortimey. All rights reserved.
+//  Created by Mortimey on 2017/3/24.
+//  Copyright © 2017年 Mortimey. All rights reserved.
 //
 
-#import "RegisterController.h"
+#import "MMFindPasswordController.h"
 #import "MMRegisterTextFiledView.h"
 
 #define kTextFiledH  44
@@ -15,9 +15,7 @@
 
 #define h_iconViewHeight [UIScreen mainScreen].bounds.size.height *170/667
 
-//#define h_iconViewTOP [UIScreen mainScreen].bounds.size.height *104/667
-
-@interface RegisterController ()
+@interface MMFindPasswordController ()
 
 @property (nonatomic, strong) UIImageView *headerImageView;
 
@@ -57,15 +55,10 @@
 
 
 @property (nonatomic, assign) int codeTime;
-
-
-
-
-
-
 @end
 
-@implementation RegisterController
+@implementation MMFindPasswordController
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self stopPainting];
@@ -170,7 +163,7 @@
         make.height.mas_equalTo(@kTextFiledH);
         
     }];
-
+    
     
     
     [self.registButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,13 +174,13 @@
         
     }];
     
-
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
-#pragma mark --- Action 
+#pragma mark --- Action
 - (void)initWithTextFile:(UITextField *)textFiled indexTag:(NSInteger )indexTag{
     if (indexTag == 4000) {
         // 邮箱
@@ -200,19 +193,19 @@
         MMLog(@"账户");
         _userName = textFiled.text;
     }
-
+    
     if (indexTag == 4002) {
         // 密码
         MMLog(@"密码");
         _password = textFiled.text;
     }
-
+    
     if (indexTag == 4003) {
         // 验证码
         MMLog(@"验证码");
         _codeNum = textFiled.text;
     }
-
+    
 }
 - (void)didClick{
     [_passwordTextFiled.rightTextFiled resignFirstResponder];
@@ -234,28 +227,24 @@
     if (_ValidateCode != [_codeNum integerValue]) {
         [self showTotasViewWithMes:@"请输入正确验证码"];
         return;
-
-    }
-
-    [NetworkEntity postRegisterNumberWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
         
+    }
+    [NetworkEntity postFindPassworkWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
         MMLog(@"RegisterNumber ========responseObject ============%@",responseObject);
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
             [self showTotasViewWithMes:@"该用户已经存在"];
             return;
         }
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
-            [self showTotasViewWithMes:@"注册成功"];
+            [self showTotasViewWithMes:@"找回密码成功"];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
 
-        
     } failure:^(NSError *failure) {
-        
         MMLog(@"RegisterNumber ========failure ============%@",failure);
-        [self showTotasViewWithMes:@"注册失败"];
-        
+        [self showTotasViewWithMes:@"找回密码失败"];
     }];
+
 }
 - (void)pushBack{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -279,21 +268,20 @@
     self.codeNumButton.userInteractionEnabled = NO;
     [self startPainting];
     
-    
-    [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
+    [NetworkEntity postFindPasswordCodeNumberWithMail:_mailStr success:^(id responseObject) {
         MMLog(@"RegisterCodeNumber ========responseObject ============%@",responseObject);
         if (responseObject) {
             NSArray *allkey = [responseObject allKeys];
             
             for (NSString *str in allkey) {
                 if ([str isEqualToString:@"ValidateCode"]) {
-                     [self showTotasViewWithMes:@"验证码发送成功"];
+                    [self showTotasViewWithMes:@"验证码发送成功"];
                     _ValidateCode = [[responseObject objectForKey:@"ValidateCode"] integerValue];
                     return ;
-
+                    
                 }
             }
-
+            
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"] || [[responseObject objectForKey:@"message"] isEqualToString:@"invalid phone number"]) {
                 [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
                 self.codeNumButton.userInteractionEnabled = YES;
@@ -316,7 +304,6 @@
         [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [self showTotasViewWithMes:@"网络错误"];
     }];
-
 }
 #pragma mark ---- Lazy
 - (UIImageView *)headerImageView{
@@ -340,7 +327,7 @@
     if (_iconTopBgView == nil) {
         _iconTopBgView = [[UIView alloc] init];
         _iconTopBgView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
-         _iconTopBgView.alpha = 0.95;
+        _iconTopBgView.alpha = 0.95;
         
     }
     return _iconTopBgView;
@@ -371,7 +358,7 @@
         _mailTextFiled.tag = 4000;
         [_mailTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
             [self initWithTextFile:textField indexTag:indexTag];
-
+            
         }];
     }
     return _mailTextFiled;
@@ -392,7 +379,7 @@
 - (MMRegisterTextFiledView *)passwordTextFiled{
     if (_passwordTextFiled == nil) {
         _passwordTextFiled = [[MMRegisterTextFiledView alloc] init];
-        _passwordTextFiled.leftTitle = @"密码";
+        _passwordTextFiled.leftTitle = @"新密码";
         _passwordTextFiled.tag = 4002;
         _passwordTextFiled.rightTextFiled.secureTextEntry = YES;
         [_passwordTextFiled MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
@@ -434,10 +421,10 @@
 - (UIButton *)registButton{
     if (_registButton == nil) {
         _registButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_registButton setTitle:@"点击注册" forState:UIControlStateNormal];
+        [_registButton setTitle:@"找回密码" forState:UIControlStateNormal];
         [_registButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_registButton addTarget:self action:@selector(didClick) forControlEvents:UIControlEventTouchUpInside];
-//        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
+        //        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         
         
     }
@@ -463,7 +450,7 @@
         _backButton.frame = CGRectMake(20, 20, 24, 24);
         [_backButton setImage:[UIImage imageNamed:@"side"] forState:UIControlStateNormal];
         [_backButton setImage:[UIImage imageNamed:@"side"] forState:UIControlStateHighlighted];
-
+        
         [_backButton addTarget:self action:@selector(pushBack) forControlEvents:UIControlEventTouchUpInside];
         //        [_registButton setBackgroundColor:MM_MAIN_FONTCOLOR_BLUE];
         
@@ -495,10 +482,10 @@
     // 定义一个NSTimer
     self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(function:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                                  target:self
-//                                                selector:@selector(function:)  userInfo:nil
-//                                                 repeats:YES];
+    //    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+    //                                                  target:self
+    //                                                selector:@selector(function:)  userInfo:nil
+    //                                                 repeats:YES];
 }
 
 // 停止定时器
@@ -530,9 +517,9 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.view.bounds = CGRectMake(0,  h_iconViewHeight , self.view.bounds.size.width, self.view.bounds.size.height);
     }];
-//    CGRect frame = self.view.bounds;
-//    frame.origin.y = h_iconViewHeight ;
-//    _headerImageView.frame = frame;
+    //    CGRect frame = self.view.bounds;
+    //    frame.origin.y = h_iconViewHeight ;
+    //    _headerImageView.frame = frame;
 }
 
 -(void)keyboardWillHidden
@@ -542,8 +529,8 @@
         bounds.origin = CGPointZero;
         self.view.bounds = bounds;
     }];
-//    CGRect frame = self.view.bounds;
-//    _headerImageView.frame = frame;
+    //    CGRect frame = self.view.bounds;
+    //    _headerImageView.frame = frame;
 }
 - (void)dealloc{
     [self  stopPainting];

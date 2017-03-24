@@ -23,6 +23,7 @@
 #import "ReimburseController.h"
 #import "PhoneListController.h"
 #import <BaiduMapAPI/BMapKit.h>
+#import "MMFindPasswordController.h"
 
 
 
@@ -384,6 +385,11 @@
     RegisterController *registerVC = [[RegisterController alloc] init];
     [self presentViewController:registerVC animated:YES completion:nil];
 }
+// 跳转到找回密码界面
+- (void)findPassword:(UITapGestureRecognizer *)tap{
+    MMFindPasswordController *findPasswordVC = [[MMFindPasswordController alloc] init];
+    [self presentViewController:findPasswordVC animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -531,6 +537,10 @@
         _bottomLabel.font = [UIFont systemFontOfSize:14];
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
         _bottomLabel.textColor = [UIColor whiteColor];
+        _bottomLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(findPassword:)];
+        [_bottomLabel addGestureRecognizer:ges];
+
     }
     return _bottomLabel;
 }
