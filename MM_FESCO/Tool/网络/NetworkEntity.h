@@ -690,4 +690,11 @@
 + (void)postEditReimburseOfNOBassWithApplyID:(NSInteger)applyId Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
+/**
+ *  有新版本时提示更新
+ 
+ *
+ 
+ */
++ (void)postNewVersionShowUserSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

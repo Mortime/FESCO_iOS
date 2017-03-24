@@ -1897,4 +1897,18 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
+// 有新版本时提示更新
++ (void)postNewVersionShowUserSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    
+    NSString * urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"appStore/getAppStore.json"];
+    
+    NSDictionary * dic = @{@"app_Type":@"2",
+                           @"app_Name":@"书薪APP"
+                           
+                           };
+    NSLog(@"url ------ %@, %@",urlStr,dic);
+    
+    
+    [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
 @end

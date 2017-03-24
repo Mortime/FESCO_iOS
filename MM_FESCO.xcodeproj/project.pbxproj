@@ -3658,7 +3658,7 @@
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;
@@ -3691,7 +3691,7 @@
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
 				INFOPLIST_FILE = MM_FESCO/Info.plist;

@@ -45,6 +45,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+     // 有新版本时提示更新
+    [self showMessageNewVersion];
     // 登录环信
     NSString *EEMID = [NSString stringWithFormat:@"zrfesco_%@",[UserInfoModel defaultUserInfo].empId];
 //    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
@@ -444,17 +446,45 @@
 - (void)dismiss{
     [_loginVC dismissViewControllerAnimated:YES completion:nil];
 }
-- (void)userAccountDidRemoveFromServer{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"该账户已经在其他地方登录,请重新登录!" preferredStyle:UIAlertControllerStyleAlert];
-    _loginVC = [[MMLoginController alloc] init];
-    self.window.rootViewController = _loginVC;
-    [_loginVC presentViewController:alertController animated:YES completion:nil];
-    
-    double delayInSeconds = 1.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self dismiss];
-    });
 
+- (void)showMessageNewVersion{
+    [NetworkEntity postNewVersionShowUserSuccess:^(id responseObject) {
+        
+        MMLog(@"NewVersionShowUser ===responseObject=========%@",responseObject);
+        
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [NSString stringWithFormat:@"v%@",[infoDic objectForKey:@"CFBundleShortVersionString"]];
+        
+        if (responseObject) {
+            NSArray *dataVersion = [responseObject objectForKey:@"appStore"];
+            NSDictionary *dataDic = [dataVersion lastObject];
+            NSString *versionStr = [dataDic objectForKey:@"version_Name"];
+            if ([versionStr isEqualToString:appVersion]) {
+                // 没有新版本,直接跳过
+            }else if(![versionStr isEqualToString:appVersion]){
+                // 有新版本,给出提示
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您有新的版本,请去更新!" preferredStyle:UIAlertControllerStyleAlert];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    // 取消
+                    
+                }]];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    // 确定
+                    NSString *str = @"https://itunes.apple.com/us/app/%E4%B9%A6%E8%96%AA/id1198059158?mt=8";
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+                    
+                }]];
+                
+                DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
+                [rootVC presentViewController:alertController animated:YES completion:nil];
+                
+            }
+        }
+        
+        
+    } failure:^(NSError *failure) {
+        MMLog(@"NewVersionShowUser ===failure=========%@",failure);
+    }];
 }
 @end
