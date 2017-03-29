@@ -17,12 +17,7 @@
 	<key>G</key>
 	<array/>
 	<key>H</key>
-	<array>
-		<dict>
-			<key>1</key>
-			<string>汉族</string>
-		</dict>
-	</array>
+	<array/>
 	<key>I</key>
 	<array/>
 	<key>J</key>
@@ -58,8 +53,6 @@
 	<key>Y</key>
 	<array/>
 	<key>Z</key>
-	<array>
-		<dict/>
-	</array>
+	<array/>
 </dict>
 </plist>

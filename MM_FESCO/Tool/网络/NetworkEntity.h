@@ -696,7 +696,7 @@
  
  */
 
-+ (void)postNationerAndCountrySuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postNationerAndCountryWithType:(NSString *)type  Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 /**
  *  编辑未通过报销单   
  

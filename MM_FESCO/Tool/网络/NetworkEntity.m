@@ -1879,9 +1879,9 @@
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 
 }
-+ (void)postNationerAndCountrySuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postNationerAndCountryWithType:(NSString *)type Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     NSDictionary *dic = @{
-                          @"code":@"nation",
+                          @"code":type,
                           @"methodname":@"dictApp/getDictInfoByCode.json"
                           };
     

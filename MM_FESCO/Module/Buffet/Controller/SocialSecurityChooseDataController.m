@@ -12,6 +12,7 @@
 #import "PinYinForObjc.h"
 #import "DVVSearchView.h"
 #import "DVVSubCityView.h"
+#import "BuffetDataTool.h"
 
 #define KSectionIndexBackgroundColor  [UIColor clearColor] //索引试图未选中时的背景颜色
 #define kSectionIndexTrackingBackgroundColor [UIColor lightGrayColor]//索引试图选中时的背景
@@ -29,6 +30,9 @@
 
 @property (strong, nonatomic) NSMutableArray *shouzifuArray;//定位城市数据
 
+
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
+
 @end
 
 @implementation SocialSecurityChooseDataController
@@ -41,6 +45,7 @@
     self.shouzifuArray = [NSMutableArray array];
 
     self.view.backgroundColor = MM_GRAYWHITE_BACKGROUND_COLOR;
+
     
     _searchView = [DVVSearchView new];
     _searchView.placeholder = @"请输入民族";
@@ -82,15 +87,23 @@
 //    _searchContentView.userInteractionEnabled = NO;
     
     [self initData];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ReUI) name:@"ReUI" object:nil];
 
 }
+- (void)ReUI{
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"nation"ofType:@"plist"];
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
+    NSLog(@"dataDic=============  iiiiii ============ = =========%@",dataDic);
+    _dataDic = dataDic;
+    
+
+    [self.tableView reloadData];
+}
 - (void)initData{
-    for (NSString *str in _dataSource) {
-        NSString *key = [PinYinForObjc chineseConvertToPinYinHead:str];
-        [_shouzifuArray addObject:key];
-    }
-    MMLog(@"_shouzifuArray = %@",_shouzifuArray);
+    BuffetDataTool *tool = [[BuffetDataTool alloc] init];
+    [tool buffetDataNationPlist];
+    
+    
 }
 #pragma mark - tableView
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -107,6 +120,10 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont systemFontOfSize:14];
+    NSArray *allkey = [self sortDurationWith:_dataDic];
+    
+    
+    titleLabel.text = allkey[section];
     [bgView addSubview:titleLabel];
     
     return bgView;
@@ -115,12 +132,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return [[_dataDic allKeys] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSArray *allkey = [self sortDurationWith:_dataDic];
+    
+    NSString *keyStr = allkey[section];
+    NSArray *array = [_dataDic objectForKey:keyStr];
+    
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,7 +168,12 @@
         [cell.textLabel setTextColor:[UIColor colorWithWhite:0 alpha:0.7]];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
-//    cell.textLabel.text = [[_cities objectForKey:key] objectAtIndex:indexPath.row];
+    NSArray *allkey = [self sortDurationWith:_dataDic];
+    NSString *keyStr = allkey[indexPath.section];
+    NSArray *array = [_dataDic objectForKey:keyStr];
+    NSDictionary *dic = array[indexPath.row];
+    NSString *key = [dic allKeys][0];
+    cell.textLabel.text = [dic objectForKey:key];
     return cell;
 }
 
@@ -183,8 +210,13 @@
 - (void)filterContentForSearchText:(NSString*)searchText {
     
 }
-
-
+//  升序排序
+- (NSArray *)sortDurationWith:(NSMutableDictionary *)dic{
+    
+    NSArray *allkey = [dic allKeys];
+    NSArray *newArray = [allkey sortedArrayUsingSelector:@selector(compare:)];
+    return newArray;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

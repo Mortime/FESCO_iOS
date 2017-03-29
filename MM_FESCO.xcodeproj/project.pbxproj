@@ -377,6 +377,7 @@
 		76F4778B1E8A52B500C73A64 /* nation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778A1E8A52B500C73A64 /* nation.plist */; };
 		76F4778D1E8A546400C73A64 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778C1E8A546400C73A64 /* country.plist */; };
 		76F4778F1E8A598600C73A64 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778E1E8A598600C73A64 /* test.plist */; };
+		76F477921E8B91DC00C73A64 /* BuffetDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F477911E8B91DC00C73A64 /* BuffetDataTool.m */; };
 		76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A0A1E487B8700828054 /* zrfesco.cer */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */; };
@@ -1178,6 +1179,8 @@
 		76F4778A1E8A52B500C73A64 /* nation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nation.plist; sourceTree = "<group>"; };
 		76F4778C1E8A546400C73A64 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
 		76F4778E1E8A598600C73A64 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
+		76F477901E8B91DC00C73A64 /* BuffetDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetDataTool.h; sourceTree = "<group>"; };
+		76F477911E8B91DC00C73A64 /* BuffetDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetDataTool.m; sourceTree = "<group>"; };
 		76FE9A0A1E487B8700828054 /* zrfesco.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco.cer; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
@@ -2970,6 +2973,8 @@
 				76F4778C1E8A546400C73A64 /* country.plist */,
 				76F4778A1E8A52B500C73A64 /* nation.plist */,
 				76F4778E1E8A598600C73A64 /* test.plist */,
+				76F477901E8B91DC00C73A64 /* BuffetDataTool.h */,
+				76F477911E8B91DC00C73A64 /* BuffetDataTool.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3335,6 +3340,7 @@
 				597223C51DADE05400D01A7A /* FillRecordView.m in Sources */,
 				597223DE1DADE05400D01A7A /* PersonalMessageDetailCell.m in Sources */,
 				597223C61DADE05400D01A7A /* MMChooseTextFile.m in Sources */,
+				76F477921E8B91DC00C73A64 /* BuffetDataTool.m in Sources */,
 				59EC916A1D98CB5900E802FA /* EaseTextView.m in Sources */,
 				59F651071D70338C000596A7 /* NSString+PinYin4Cocoa.m in Sources */,
 				59EC914D1D98CB5900E802FA /* EaseConvertToCommonEmoticonsHelper.m in Sources */,

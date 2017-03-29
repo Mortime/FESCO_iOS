@@ -12,7 +12,7 @@
 #import "SocialSecurityCardIDView.h"
 #import "SocialSecurityChooseDataController.h"
 #import "DVVImagePickerControllerManager.h"
-#import "PinYinForObjc.h"
+
 
 #define kFooterCardH  140
 
@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSArray *contentArray;
 
 
-@property (nonatomic, strong) NSMutableArray *nationArray;
+
 
 
 @end
@@ -49,7 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super viewDidLoad];
-    self.nationArray = [NSMutableArray array];
+        
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"员工社保信息自助";
@@ -68,31 +68,7 @@
     [self initData];
 }
 - (void)initData{
-    [NetworkEntity postNationerAndCountrySuccess:^(id responseObject) {
-        MMLog(@"NationerAndCountry ========= responseObject ============%@",responseObject);
-        
-        NSDictionary *dataArray = [responseObject objectForKey:@"dictInfo"];
-        NSString *dic = [dataArray objectForKey:@"1"];
-
-//        int i=0;
-//        for (int i=0;i < 8 ; i++) {
-//            NSDictionary *dic = dataArray[i];
-//            NSString *name = [dic objectForKey:[NSString stringWithFormat:@"%d",i+1]];
-//            // 汉字转换为拼音,然后取首字母
-//         NSString *header =  [PinYinForObjc chineseConvertToPinYinHead:name];
-//            if ([header isEqualToString:@"a"]) {
-//                NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:name,[NSString stringWithFormat:@"%d",i], nil];
-//                [_nationArray addObject:dic];
-//            }
-//            
-//        }
-//        
-        NSLog(@"nation === %@",dic);
-        
-        
-    } failure:^(NSError *failure) {
-        MMLog(@"NationerAndCountry ========= responseObject ============%@",failure);
-    }];
+    
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 10)];
