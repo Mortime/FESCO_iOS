@@ -12,9 +12,15 @@
 
 - (void)socialSecurityHearerViewDelegateWithTag:(NSInteger)tag;
 
+@optional
+
+- (void)socialSecurityHearerViewDelegateUpLoadImage;
+
 @end
 @interface SocialSecurityHearerView : UIView
 
 @property (nonatomic, weak) id<SocialSecurityHearerViewDelegate>delegate;
+
+@property (nonatomic, strong) UIImageView *iconView;
 
 @end

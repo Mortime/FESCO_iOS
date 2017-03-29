@@ -17,7 +17,9 @@
               @"empName":@"emp_Name",
               @"endTime":@"hol_End",
               @"name":@"hol_Name",
-              @"applyId":@"hol_Emp_Exam_Id"
+              @"applyId":@"hol_Emp_Exam_Id",
+              @"holBeginApm":@"hol_Begin_Apm",
+              @"holEndApm":@"hol_End_Apm"
               };
 }
 

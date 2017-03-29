@@ -374,6 +374,9 @@
 		76F02FEE1DD4541100D32771 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FE61DD4541100D32771 /* UIView+ViewController.m */; };
 		76F02FFA1DD4592F00D32771 /* cameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F02FF91DD4592F00D32771 /* cameraHelper.m */; };
 		76F030091DD45E0100D32771 /* MPUploadImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F030081DD45E0100D32771 /* MPUploadImageHelper.m */; };
+		76F4778B1E8A52B500C73A64 /* nation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778A1E8A52B500C73A64 /* nation.plist */; };
+		76F4778D1E8A546400C73A64 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778C1E8A546400C73A64 /* country.plist */; };
+		76F4778F1E8A598600C73A64 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778E1E8A598600C73A64 /* test.plist */; };
 		76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A0A1E487B8700828054 /* zrfesco.cer */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */; };
@@ -1172,6 +1175,9 @@
 		76F02FF91DD4592F00D32771 /* cameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cameraHelper.m; sourceTree = "<group>"; };
 		76F030071DD45E0100D32771 /* MPUploadImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPUploadImageHelper.h; sourceTree = "<group>"; };
 		76F030081DD45E0100D32771 /* MPUploadImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPUploadImageHelper.m; sourceTree = "<group>"; };
+		76F4778A1E8A52B500C73A64 /* nation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nation.plist; sourceTree = "<group>"; };
+		76F4778C1E8A546400C73A64 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
+		76F4778E1E8A598600C73A64 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
 		76FE9A0A1E487B8700828054 /* zrfesco.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco.cer; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
@@ -1320,6 +1326,7 @@
 		597222F61DADE05400D01A7A /* Buffet */ = {
 			isa = PBXGroup;
 			children = (
+				76F477891E8A51C500C73A64 /* Other */,
 				761C373C1E09299A007E1607 /* Controller */,
 				761C373F1E09299A007E1607 /* View */,
 			);
@@ -2957,6 +2964,16 @@
 			path = QBImagePickerController;
 			sourceTree = "<group>";
 		};
+		76F477891E8A51C500C73A64 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				76F4778C1E8A546400C73A64 /* country.plist */,
+				76F4778A1E8A52B500C73A64 /* nation.plist */,
+				76F4778E1E8A598600C73A64 /* test.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		D21145FCB92E766519624DFD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3037,7 +3054,7 @@
 					597762111D489AE000BD8472 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6SWT7Q8USS;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3084,11 +3101,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F4778D1E8A546400C73A64 /* country.plist in Resources */,
 				59F4D63D1D814B9E00C56E5D /* MMShuxin.plist in Resources */,
 				761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */,
 				7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */,
+				76F4778F1E8A598600C73A64 /* test.plist in Resources */,
 				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				59EC91701D98CB5900E802FA /* EaseUIResource.bundle in Resources */,
+				76F4778B1E8A52B500C73A64 /* nation.plist in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				59EC91F01D98D9AD00E802FA /* MWPhotoBrowser.bundle in Resources */,
 				76CBDCE91DDB064700272D91 /* citydict.plist in Resources */,
@@ -3582,8 +3602,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3606,7 +3626,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3629,8 +3649,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
@@ -3647,7 +3667,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "aa066093-6c55-4caf-9dd0-ad68a010fe0c";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3662,8 +3682,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
@@ -3681,8 +3701,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3695,8 +3715,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = MM_FESCO/MM_FESCO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhongruifs@163.com (N2E69U7QU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZHONGRUI FESCO Outsourcing Services (Beijing) Co., Ltd. (6SWT7Q8USS)";
 				DEVELOPMENT_TEAM = 6SWT7Q8USS;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/PrefixHeader.pch";
@@ -3714,8 +3734,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fesco.shuxiniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a67299a7-f64a-4bec-abcb-46d86e7f4c60";
+				PROVISIONING_PROFILE_SPECIFIER = shuxinDis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

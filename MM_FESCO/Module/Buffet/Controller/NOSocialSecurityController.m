@@ -11,6 +11,8 @@
 #import "SocialSecurityHearerView.h"
 #import "SocialSecurityCardIDView.h"
 #import "SocialSecurityChooseDataController.h"
+#import "DVVImagePickerControllerManager.h"
+#import "PinYinForObjc.h"
 
 #define kFooterCardH  140
 
@@ -37,7 +39,7 @@
 @property (nonatomic, strong) NSArray *contentArray;
 
 
-
+@property (nonatomic, strong) NSMutableArray *nationArray;
 
 
 @end
@@ -47,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super viewDidLoad];
+    self.nationArray = [NSMutableArray array];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"员工社保信息自助";
@@ -67,6 +70,26 @@
 - (void)initData{
     [NetworkEntity postNationerAndCountrySuccess:^(id responseObject) {
         MMLog(@"NationerAndCountry ========= responseObject ============%@",responseObject);
+        
+        NSDictionary *dataArray = [responseObject objectForKey:@"dictInfo"];
+        NSString *dic = [dataArray objectForKey:@"1"];
+
+//        int i=0;
+//        for (int i=0;i < 8 ; i++) {
+//            NSDictionary *dic = dataArray[i];
+//            NSString *name = [dic objectForKey:[NSString stringWithFormat:@"%d",i+1]];
+//            // 汉字转换为拼音,然后取首字母
+//         NSString *header =  [PinYinForObjc chineseConvertToPinYinHead:name];
+//            if ([header isEqualToString:@"a"]) {
+//                NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:name,[NSString stringWithFormat:@"%d",i], nil];
+//                [_nationArray addObject:dic];
+//            }
+//            
+//        }
+//        
+        NSLog(@"nation === %@",dic);
+        
+        
     } failure:^(NSError *failure) {
         MMLog(@"NationerAndCountry ========= responseObject ============%@",failure);
     }];
@@ -131,6 +154,83 @@
         [self.navigationController pushViewController:chooseVC animated:YES];
         
     }
+}
+-(void)socialSecurityHearerViewDelegateUpLoadImage{
+    [DVVImagePickerControllerManager showImagePickerControllerFrom:self delegate:self];
+}
+#pragma mark - imagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *photoImage = [info valueForKey:UIImagePickerControllerEditedImage];
+    NSData *photeoData = UIImageJPEGRepresentation(photoImage, 0.5);
+    //1.创建管理者对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
+    NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+    NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    securityPolicy.allowInvalidCertificates = YES;
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    securityPolicy.validatesDomainName = NO;
+    [securityPolicy setPinnedCertificates:certSet];
+    manager.securityPolicy  = securityPolicy;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/uploadInsPic.json"];
+    //2.上传文件
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"userOneBigPhoto.png",@"uploadFile",[UserInfoModel defaultUserInfo].empId,@"emp_Id",[UserInfoModel defaultUserInfo].custId,@"cust_Id",@"1",@"pic_Type",nil];
+    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+        //        NSData* imageData = UIImagePNGRepresentation(photoImage);
+        NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* totalPath = [documentPath stringByAppendingPathComponent:@"userOneBigPhotoInfo"];
+        
+        //保存到 document
+        [photeoData writeToFile:totalPath atomically:NO];
+        
+        MMLog(@"totalPath = %@",totalPath);
+        
+        //保存到 NSUserDefaults
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:totalPath forKey:@"userOneBigPhotoInfo"];
+        
+        
+        UIImage *selfPhoto = [UIImage imageWithContentsOfFile:totalPath];
+        
+        NSData *photeoData11 = UIImageJPEGRepresentation(selfPhoto, 0.5);
+        
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        [defaults setObject:photeoData11 forKey:kUsreIcon];
+        
+        
+        //上传文件参数
+        [formData appendPartWithFileData:photeoData11 name:@"uploadFile" fileName:@"userOneBigPhoto.png" mimeType:@"image/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //打印上传进度
+        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+        MMLog(@"==============oooooo%.2lf%%", progress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //请求成功
+        MMLog(@"请求成功：%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //请求失败
+        MMLog(@"请求失败：%@",error);
+        
+    }];
+    
+    self.headerView.iconView.image = photoImage;
+    
 }
 
 #pragma mark --- Action 

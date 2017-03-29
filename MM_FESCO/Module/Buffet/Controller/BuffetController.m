@@ -85,16 +85,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         // 员工信息
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
     }
     if (indexPath.row == 1) {
         // 社保自助
-//        [self.view addSubview:self.socialSecurityShowView];
+        
+        [self.view addSubview:self.socialSecurityShowView];
     }
     if (indexPath.row == 2) {
         // 公积金自助
+        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
+        [view show];
     }
-    ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"此功能暂无开放,敬请期待!"];
-    [view show];
+    
 }
 #pragma  mark ----- SocialSecurityShowViewDelegate
 - (void)socialSecurityShowViewDelegateWithMessageTag:(NSInteger)messageTag viewTag:(NSInteger)viewTag{

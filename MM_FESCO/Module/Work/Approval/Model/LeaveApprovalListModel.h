@@ -49,6 +49,10 @@
 
 @property (nonatomic, assign) NSInteger applyId;
 
+@property (nonatomic, strong) NSString *holBeginApm;
+
+@property (nonatomic, strong) NSString *holEndApm;
+
 
 
 @end

@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) SocialSecurityCellView *nationView;
 
-@property (nonatomic, strong) UIImageView *iconView;
+
 
 
 @end
@@ -86,6 +86,15 @@
     
     
 }
+- (void)upLoadImage:(UIGestureRecognizer *)ges{
+    
+    if ([_delegate respondsToSelector:@selector(socialSecurityHearerViewDelegateUpLoadImage)]) {
+        [_delegate socialSecurityHearerViewDelegateUpLoadImage];
+    }
+    
+    
+}
+
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
@@ -140,6 +149,9 @@
     if (_iconView == nil) {
         _iconView = [[UIImageView alloc] init];
         _iconView.image = [UIImage imageNamed:@"Buffer_Icon"];
+        _iconView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(upLoadImage:)];
+        [_iconView addGestureRecognizer:tap];
     }
     return _iconView;
 }

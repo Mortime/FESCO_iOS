@@ -26,6 +26,7 @@
 #import "LaterTimeStatisticController.h"
 #import "OverTimeStatistiscController.h"
 #import "ReimburseController.h"
+#import "BuffetController.h"
 
 
 static NSString *kMallID = @"MallID";
@@ -272,6 +273,11 @@ static NSString *kMallID = @"MallID";
     }
     
     if (indexPath.row == 7) {
+       // 社保
+//        BuffetController *buffVC = [[BuffetController alloc] init];
+//        buffVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:buffVC animated:YES];
+        
         
     }
     if (indexPath.row == 8) {
