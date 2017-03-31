@@ -97,6 +97,20 @@ typedef NS_ENUM(NSUInteger,RePurchaseBookType){
     
 };
 
+typedef NS_ENUM(NSUInteger,chooseDataType){
+    
+    nation,   // 民族
+    country     // 国家
+    
+};
+typedef NS_ENUM(NSUInteger,upPictureType){
+    
+    userPhone,   // 照片
+    cardPositive,    // 身份证正面
+    cardReverse        // 身份证反面
+    
+    
+};
 
 
 

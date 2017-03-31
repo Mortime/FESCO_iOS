@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SocialSecurityCellView.h"
 
 @protocol SocialSecurityHearerViewDelegate <NSObject>
 
-- (void)socialSecurityHearerViewDelegateWithTag:(NSInteger)tag;
 
 @optional
+
+- (void)socialSecurityHearerViewDelegateWithTag:(NSInteger)tag;
+
+- (void)socialSecurityHearerViewDelegateBackDataWithTextFiled:(UITextField *)textFiled tag:(NSInteger)tag;
 
 - (void)socialSecurityHearerViewDelegateUpLoadImage;
 
@@ -22,5 +26,12 @@
 @property (nonatomic, weak) id<SocialSecurityHearerViewDelegate>delegate;
 
 @property (nonatomic, strong) UIImageView *iconView;
+
+@property (nonatomic, strong) SocialSecurityCellView *nameView;
+
+@property (nonatomic, strong) SocialSecurityCellView *sexView;
+
+@property (nonatomic, strong) SocialSecurityCellView *nationView;
+
 
 @end

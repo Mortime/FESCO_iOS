@@ -323,6 +323,7 @@
 		7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */ = {isa = PBXBuildFile; fileRef = 7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */; };
 		7662B5D61E35987C007951E9 /* YBWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7662B5D51E35987C007951E9 /* YBWelcomeController.m */; };
 		7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7682502E1DE29FE9007520BD /* ReimburseModel.m */; };
+		768F36401E8CD48200D8D377 /* MMChooseTextFileWithSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
 		76929B211DDEA90F00775AF3 /* NewPurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B201DDEA90F00775AF3 /* NewPurchaseRecordCell.m */; };
@@ -1075,6 +1076,8 @@
 		7662B5D51E35987C007951E9 /* YBWelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWelcomeController.m; sourceTree = "<group>"; };
 		7682502D1DE29FE9007520BD /* ReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseModel.h; sourceTree = "<group>"; };
 		7682502E1DE29FE9007520BD /* ReimburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseModel.m; sourceTree = "<group>"; };
+		768F363E1E8CD48200D8D377 /* MMChooseTextFileWithSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFileWithSS.h; sourceTree = "<group>"; };
+		768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFileWithSS.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
 		76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageProgressCollectionCell.m; sourceTree = "<group>"; };
 		76920B4A1DDC430D005B2B76 /* MPImageUploadProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageUploadProgressCell.h; sourceTree = "<group>"; };
@@ -1538,6 +1541,8 @@
 				597223471DADE05400D01A7A /* FillRecordView.m */,
 				597223481DADE05400D01A7A /* MMChooseTextFile.h */,
 				597223491DADE05400D01A7A /* MMChooseTextFile.m */,
+				768F363E1E8CD48200D8D377 /* MMChooseTextFileWithSS.h */,
+				768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */,
 				5972234A1DADE05400D01A7A /* popOutView.h */,
 				5972234B1DADE05400D01A7A /* popOutView.m */,
 			);
@@ -3431,6 +3436,7 @@
 				597223AE1DADE05400D01A7A /* OverTimeListModel.m in Sources */,
 				761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */,
 				59A59E1C1D499EF2001F3122 /* DVVToolBarView.m in Sources */,
+				768F36401E8CD48200D8D377 /* MMChooseTextFileWithSS.m in Sources */,
 				76383D011E0A2277004D4E13 /* NOBookChooseModel.m in Sources */,
 				59EC915E1D98CB5900E802FA /* EaseMessageTimeCell.m in Sources */,
 				76BB95611DD058A3000E6EF1 /* NewReimburseController.m in Sources */,

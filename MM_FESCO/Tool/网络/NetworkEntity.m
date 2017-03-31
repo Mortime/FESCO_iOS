@@ -443,7 +443,7 @@
     // 取出审批人多对应的id
     NSString *ID = @"";
     NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_applySignup];
-//            MMLog(@"数据库返回数据: %@",dataBaseDic);
+            MMLog(@"数据库返回数据: %@",dataBaseDic);
     NSArray *paramArray = [dataBaseDic objectForKey:@"approvalManList"];
     if (paramArray.count) {
         for (NSDictionary *dic in paramArray) {
@@ -1947,5 +1947,148 @@
     
     
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
+}
+/*
+ * 上传图片
+ */
++ (void)postUpLoadPictureWithParamDic:(NSDictionary *)paramDic urlStr:(NSString *)urlStr name:(NSString *)name fileName:(NSString *)fileName picData:(NSData *)photeoData success:(UpPictureSuccessBlock)success failure:(UpPictureFailureBlock)failure{
+    //1.创建管理者对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
+    NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+    NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    securityPolicy.allowInvalidCertificates = YES;
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    securityPolicy.validatesDomainName = NO;
+    [securityPolicy setPinnedCertificates:certSet];
+    manager.securityPolicy  = securityPolicy;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],urlStr];
+    //2.上传文件
+//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"userOneBigPhoto.png",@"uploadFile",[UserInfoModel defaultUserInfo].empId,@"emp_Id",[UserInfoModel defaultUserInfo].custId,@"cust_Id",@"1",@"pic_Type",nil];
+    [manager POST:urlString parameters:paramDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+        //        NSData* imageData = UIImagePNGRepresentation(photoImage);
+        NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* totalPath = [documentPath stringByAppendingPathComponent:@"userOneBigPhotoInfo"];
+        
+        //保存到 document
+        [photeoData writeToFile:totalPath atomically:NO];
+        
+        MMLog(@"totalPath = %@",totalPath);
+        
+        //保存到 NSUserDefaults
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:totalPath forKey:@"userOneBigPhotoInfo"];
+        
+        
+        UIImage *selfPhoto = [UIImage imageWithContentsOfFile:totalPath];
+        
+        NSData *photeoData11 = UIImageJPEGRepresentation(selfPhoto, 0.5);
+        
+        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //        [defaults setObject:photeoData11 forKey:kUsreIcon];
+        
+        
+        //上传文件参数
+        [formData appendPartWithFileData:photeoData11 name:@"uploadFile" fileName:@"userOneBigPhoto.png" mimeType:@"image/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //打印上传进度
+        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+        MMLog(@"==============oooooo%.2lf%%", progress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //请求成功
+        MMLog(@"请求成功：%@",responseObject);
+        success(responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //请求失败
+        MMLog(@"请求失败：%@",error);
+        failure(error);
+        
+    }];
+
+}
+/*
+ *
+ *  员工社保信息查询
+ *
+ */
++ (void)postGetButtetInfoSuccess:(UpPictureSuccessBlock)success failure:(UpPictureFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"methodname":@"emp/getEmpsInsInfo.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/getEmpsInsInfo.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+
+}
+/**
+ *  员工社保信息自助保存
+ 
+ */
++ (void)postSaveBuffetInfoWithEmpName:(NSString *)empName gender:(NSString *)gender nation:(NSString *)nation birthday:(NSString *)birthday card:(NSString *)card nationality:(NSString *)nationality workCode:(NSString *)workCode workDate:(NSString *)workDate hukouType:(NSString *)hukouType address:(NSString *)address Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+        NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                          @"emp_Name":empName,
+                          @"gender":gender,
+                          @"nation":nation,
+                          @"birthday":birthday,
+                          @"yanglao_Iden_Card":card,
+                          @"resid_Permit_Code":workCode,
+                          @"nationality":nationality,
+                          @"work_Date":workDate,
+                          @"hukou_Type":hukouType,
+                          @"residential_Addr":address,
+                          @"methodname":@"emp/updateEmpIns.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"emp/updateEmpIns.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
 @end

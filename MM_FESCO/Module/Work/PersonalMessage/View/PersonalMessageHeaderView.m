@@ -223,7 +223,6 @@
 - (UILabel *)nameLabel{
     if (_nameLabel == nil) {
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.text = @"Vaivel";
         _nameLabel.font = [UIFont systemFontOfSize:16];
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.textAlignment = NSTextAlignmentCenter;

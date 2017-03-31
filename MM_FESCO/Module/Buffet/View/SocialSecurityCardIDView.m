@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) UIImageView *cardIDImageView;
+
 
 
 @end

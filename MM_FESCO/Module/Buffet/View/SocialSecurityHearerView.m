@@ -7,17 +7,12 @@
 //
 
 #import "SocialSecurityHearerView.h"
-#import "SocialSecurityCellView.h"
+
 
 @interface SocialSecurityHearerView ()
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) SocialSecurityCellView *nameView;
-
-@property (nonatomic, strong) SocialSecurityCellView *sexView;
-
-@property (nonatomic, strong) SocialSecurityCellView *nationView;
 
 
 
@@ -94,7 +89,11 @@
     
     
 }
-
+- (void)backDataWithTextFiled:(UITextField *)textFiled tag:(NSInteger)tag{
+    if ([_delegate respondsToSelector:@selector(socialSecurityHearerViewDelegateBackDataWithTextFiled:tag:)]) {
+        [_delegate socialSecurityHearerViewDelegateBackDataWithTextFiled:textFiled tag:tag];
+    }
+}
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
@@ -106,11 +105,12 @@
     if (_nameView == nil) {
         _nameView = [[SocialSecurityCellView alloc] init];
         _nameView.leftTitle = @"姓名";
-        _nameView.placeHold = @"请输入姓名";
+//        _nameView.userInteractionEnabled = NO;
+        _nameView.textFileStr = [UserInfoModel defaultUserInfo].empName;
         _nameView.isExist = YES;
         _nameView.backgroundColor = [UIColor clearColor];
         [_nameView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-            //            [self initHourTime:textField.text];
+                        [self backDataWithTextFiled:textField tag:70000];
         }];
     }
     return _nameView;
@@ -123,7 +123,7 @@
         _sexView.backgroundColor = [UIColor clearColor];
         _sexView.dataArray = @[@"男",@"女"];
         [_sexView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-            //            [self initHourTime:textField.text];
+             [self backDataWithTextFiled:textField tag:70001];
         }];
     }
     return _sexView;
@@ -135,9 +135,9 @@
         _nationView.placeHold = @"请选择民族";
         _nationView.backgroundColor = [UIColor clearColor];
         _nationView.rightTextFiled.enabled = NO;
-        [_nationView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-            //            [self initHourTime:textField.text];
-        }];
+//        [_nationView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+//            //            [self initHourTime:textField.text];
+//        }];
         _nationView.userInteractionEnabled = YES;
         _nationView.tag = 12301;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taps:)];

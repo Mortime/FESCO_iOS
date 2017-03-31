@@ -62,24 +62,24 @@ typedef void (^NetworkFailureBlock) (NSError *failure);
      failure:(NetworkFailureBlock)failure;
 
 
-///**
-// *  AFN POST上传图片
-// *
-// *  @param path URL地址
-// *
-// *  @param params 请求参数 (NSDictionary)
-// *
-// *  @param success 请求成功返回值（NSArray or NSDictionary）
-// *
-// *  @param images 需要上传的图片数组，二进制格式的图片
-// *
-// *  @param failure 请求失败值 (NSError)
-// */
-//+ (void)postWithImagePath:(NSString *)path
-//                   params:(NSDictionary *)params
-//                   images:(NSArray *)images
-//                  success:(NetworkSuccessBlock)success
-//                  failure:(NetworkFailureBlock)failure;
+/**
+ *  AFN POST上传图片
+ *
+ *  @param path URL地址
+ *
+ *  @param params 请求参数 (NSDictionary)
+ *
+ *  @param success 请求成功返回值（NSArray or NSDictionary）
+ *
+ *  @param images 需要上传的图片数组，二进制格式的图片
+ *
+ *  @param failure 请求失败值 (NSError)
+ */
++ (void)postWithImagePath:(NSString *)path
+                   params:(NSDictionary *)params
+                   images:(NSArray *)images
+                  success:(NetworkSuccessBlock)success
+                  failure:(NetworkFailureBlock)failure;
 
 /**
  *  错误处理

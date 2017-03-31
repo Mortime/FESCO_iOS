@@ -8,6 +8,7 @@
 
 #import "FillApplyView.h"
 #import "MMChooseTextFile.h"
+#import "MMChooseTextFileWithSS.h"
 
 
 
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) MMChooseTextFile *signType;
 
 // 签到时间
-@property (nonatomic, strong) MMChooseTextFile *signTime;
+@property (nonatomic, strong) MMChooseTextFileWithSS *signTime;
 
 // 签到地点
 @property (nonatomic, strong) MMChooseTextFile *signAddress;
@@ -60,6 +61,7 @@
 }
 
 - (void)initUI{
+    
     [self addSubview:self.signType];
     [self addSubview:self.signTime];
     [self addSubview:self.signAddress];
@@ -104,6 +106,8 @@
         make.right.mas_equalTo(self.mas_right);
         make.height.mas_equalTo(@50);
     }];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTimeTypeChangeNotifition object:self];
 }
 -(void)initData{
     __weak typeof(self) ws = self;
@@ -149,7 +153,7 @@
 - (void)showData{
     // 取出全部数据
     NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_applySignup];
-//        MMLog(@"数据库返回数据: %@",dataBaseDic);
+        MMLog(@"数据库返回数据: %@",dataBaseDic);
     
     NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                NSUserDomainMask,
@@ -210,7 +214,7 @@
     }
     if (indexTag == 404 ) {
         // 审批人
-         MMLog(@"审批人回调");
+         MMLog(@"审批人回调 %@",textfile.text);
         _peopleStr = textfile.text;
     }
 }
@@ -249,7 +253,7 @@
         if ([msg isEqualToString:@"success"]) {
             [self showMsg:@"提交成功"];
         }
-        if ([msg isEqualToString:@"erroe"]) {
+        if ([msg isEqualToString:@"error"]) {
             [self showMsg:@"提交失败"];
         }
         _commitButton.userInteractionEnabled = YES;
@@ -285,11 +289,12 @@
     }
     return _signType;
 }
-- (MMChooseTextFile *)signTime{
+- (MMChooseTextFileWithSS *)signTime{
     if (_signTime == nil) {
-        _signTime = [[MMChooseTextFile alloc] init];
+        _signTime = [[MMChooseTextFileWithSS alloc] init];
         _signTime.leftTitle = @"签到时间";
         _signTime.placeHold = @"请选择签到时间";
+        
         _signTime.isShowDataPickView = YES;
         _signTime.tag = 401;
         [_signTime dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {

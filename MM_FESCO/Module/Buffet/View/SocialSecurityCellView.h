@@ -26,7 +26,7 @@ typedef void(^SocialSecurityTextFieldBlock)(UITextField *textField,NSInteger ind
 
 @property (nonatomic,assign) BOOL isExist; // 是否可输入 , 默认不可输入
 
-@property (nonatomic, assign) NSString *timeType;  // 当显示dataPickView 时 设置日期格式  默认为 yyyy-MM-dd HH:mm
+
 
 /**
  *  textField结束编辑

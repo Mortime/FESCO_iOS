@@ -50,6 +50,19 @@
         return model;
     }
 }
+- (NSArray*)emotionFormessageViewController:(EaseMessageViewController *)viewController
+{
+    NSMutableArray *emotions = [NSMutableArray array];
+    for (NSString *name in [EaseEmoji allEmoji]) {
+        EaseEmotion *emotion = [[EaseEmotion alloc] initWithName:@"" emotionId:name emotionThumbnail:name emotionOriginal:name emotionOriginalURL:@"" emotionType:EMEmotionDefault];
+        [emotions addObject:emotion];
+    }
+    EaseEmotion *temp = [emotions objectAtIndex:0];
+    EaseEmotionManager *managerDefault = [[EaseEmotionManager alloc] initWithType:EMEmotionDefault emotionRow:3 emotionCol:7 emotions:emotions tagImage:[UIImage imageNamed:temp.emotionId]];
+    
+    
+    return @[managerDefault];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     

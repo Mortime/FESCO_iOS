@@ -113,7 +113,7 @@
 
 // 完成国家plist文件
 - (void)buffetDataCountPlist{
-    [NetworkEntity postNationerAndCountryWithType:@"country" Success:^(id responseObject) {
+    [NetworkEntity postNationerAndCountryWithType:@"nationality" Success:^(id responseObject) {
         MMLog(@"NationerAndCountry ========= responseObject ============%@",responseObject);
         if (responseObject) {
             NSDictionary *dataArray = [responseObject objectForKey:@"dictInfo"];
@@ -132,10 +132,11 @@
             }
             
             //这里使用的是位于工程自身的plist（手动新建的那一个）
-            NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"nation"ofType:@"plist"];
+            NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"country"ofType:@"plist"];
             NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
             [self soreHeaerGroupWithDic:dataDic];
             [dataDic writeToFile:plistPath atomically:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ReUI" object:self];
         }
         
         
@@ -149,107 +150,107 @@
 #pragma mark --- Publick
 - (void)headerWithPin:(NSString *)header objectDic:(NSString *)dicStr subNumber:(int)i {
     if ([header isEqualToString:@"a"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray1  addObject:dic];
     }
     if ([header isEqualToString:@"b"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray2  addObject:dic];
     }
     if ([header isEqualToString:@"c"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray3   addObject:dic];
     }
     if ([header isEqualToString:@"d"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray4   addObject:dic];
     }
     if ([header isEqualToString:@"e"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray5  addObject:dic];
     }
     if ([header isEqualToString:@"f"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray6  addObject:dic];
     }
     if ([header isEqualToString:@"g"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray7  addObject:dic];
     }
     if ([header isEqualToString:@"h"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray8   addObject:dic];
     }
     if ([header isEqualToString:@"i"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray9   addObject:dic];
     }
     if ([header isEqualToString:@"j"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray10  addObject:dic];
     }
     if ([header isEqualToString:@"k"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray11  addObject:dic];
     }
     if ([header isEqualToString:@"l"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray12  addObject:dic];
     }
     if ([header isEqualToString:@"m"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray13  addObject:dic];
     }
     if ([header isEqualToString:@"n"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray4  addObject:dic];
     }
     if ([header isEqualToString:@"o"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray15  addObject:dic];
     }
     if ([header isEqualToString:@"p"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray16  addObject:dic];
     }
     if ([header isEqualToString:@"q"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray17  addObject:dic];
     }
     if ([header isEqualToString:@"r"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray18  addObject:dic];
     }
     if ([header isEqualToString:@"s"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray19  addObject:dic];
     }
     if ([header isEqualToString:@"t"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray20  addObject:dic];
     }
     if ([header isEqualToString:@"u"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray21  addObject:dic];
     }
     if ([header isEqualToString:@"v"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray22 addObject:dic];
     }
     if ([header isEqualToString:@"w"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray23  addObject:dic];
     }
     if ([header isEqualToString:@"x"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray24  addObject:dic];
     }
     if ([header isEqualToString:@"y"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray25  addObject:dic];
     }
     if ([header isEqualToString:@"z"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i], nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:dicStr,[NSString stringWithFormat:@"%d",i + 1], nil];
         [_nationArray26  addObject:dic];
     }
 }

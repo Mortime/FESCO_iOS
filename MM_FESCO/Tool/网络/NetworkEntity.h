@@ -11,6 +11,10 @@
 #import "AFNetworking.h"
 #import "NewPurchaseRecordModel.h"
 
+typedef void (^UpPictureSuccessBlock) (id responseObject);
+typedef void (^UpPictureFailureBlock) (NSError *failure);
+
+
 @interface NetworkEntity : NSObject
 
 #pragma ================== 注册 登录 =====================
@@ -714,4 +718,20 @@
  
  */
 + (void)postNewVersionShowUserSuccess:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+
+/*
+ * 上传图片
+ */
++ (void)postUpLoadPictureWithParamDic:(NSDictionary *)paramDic urlStr:(NSString *)urlStr name:(NSString *)name fileName:(NSString *)fileName picData:(NSData *)photeoData success:(UpPictureSuccessBlock)success failure:(UpPictureFailureBlock)failure;
+/*
+ *
+ *  员工社保信息查询
+ *
+ */
++ (void)postGetButtetInfoSuccess:(UpPictureSuccessBlock)success failure:(UpPictureFailureBlock)failure;
+/**
+ *  员工社保信息自助保存
+ 
+ */
++ (void)postSaveBuffetInfoWithEmpName:(NSString *)empName gender:(NSString *)gender nation:(NSString *)nation birthday:(NSString *)birthday card:(NSString *)card nationality:(NSString *)nationality workCode:(NSString *)workCode workDate:(NSString *)workDate hukouType:(NSString *)hukouType address:(NSString *)address Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end

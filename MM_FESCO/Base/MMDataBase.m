@@ -95,22 +95,26 @@ static FMDatabase *_db;
 //返回全部数据
 + (NSDictionary *)allDatalistWithTname:(NSString *)tname {
     
-    NSString *sli = [NSString stringWithFormat:@"SELECT * FROM %@",tname];
     
-    FMResultSet *set = [_db executeQuery:sli];
-    
-    
-    while (set.next) {
+    if ([_db open]) {
+        NSString *sli = [NSString stringWithFormat:@"SELECT * FROM %@",tname];
         
-        // 获得当前所指向的数据
-        NSData *dictData = [set objectForColumnName:@"itemDict"];
+        FMResultSet *set = [_db executeQuery:sli];
+        
+        
+        while (set.next) {
+            
+            // 获得当前所指向的数据
+            NSData *dictData = [set objectForColumnName:@"itemDict"];
+            
+            return [NSKeyedUnarchiver unarchiveObjectWithData:dictData];
+            
+            
+            
+        }
 
-        return [NSKeyedUnarchiver unarchiveObjectWithData:dictData];
-        
-    
-        
     }
-    return nil;
+       return nil;
 }
 
 //通过一组数据的唯一标识判断数据是否存在  t_phoneList

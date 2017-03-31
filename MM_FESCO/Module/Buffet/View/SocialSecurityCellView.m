@@ -106,9 +106,6 @@
         self.rightTextFiled.inputView = nil;
     }
     
-    if (_timeType) {
-        _dateView.datePickerMode = UIDatePickerModeDate;
-    }
 }
 #pragma mark ----- UIScrollerDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -160,10 +157,7 @@
     //创建一个日期格式
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     //设置日期的显示格式
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm";
-    if (_timeType) {
-        fmt.dateFormat = @"yyyy-MM-dd";
-    }
+    fmt.dateFormat = @"yyyy-MM-dd";
     //将日期转为指定格式显示
     NSString *dateStr = [fmt stringFromDate:datePicker.date];
     _rightTextFiled.text = dateStr;
@@ -229,7 +223,7 @@
         //设置本地语言
         _dateView.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
         //设置日期显示的格式
-        _dateView.datePickerMode = UIDatePickerModeDateAndTime;
+        _dateView.datePickerMode = UIDatePickerModeDate;
         //监听datePicker的ValueChanged事件
         [_dateView addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
         

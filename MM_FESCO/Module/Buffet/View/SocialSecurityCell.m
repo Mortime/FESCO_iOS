@@ -37,6 +37,7 @@
         make.bottom.mas_equalTo(self.mas_bottom);
         
     }];
+    _socialTextFiledView.tag = self.tag;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -49,6 +50,7 @@
 - (SocialSecurityCellView *)socialTextFiledView{
     if (_socialTextFiledView == nil) {
         _socialTextFiledView = [[SocialSecurityCellView alloc] init];
+        
     }
     return   _socialTextFiledView;
 }
