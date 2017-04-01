@@ -26,6 +26,8 @@ typedef void(^SocialSecurityTextFieldBlock)(UITextField *textField,NSInteger ind
 
 @property (nonatomic,assign) BOOL isExist; // 是否可输入 , 默认不可输入
 
+@property (nonatomic, strong) UIView *lineView;
+
 
 
 /**

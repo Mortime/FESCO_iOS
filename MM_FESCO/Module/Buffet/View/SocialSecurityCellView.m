@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UILabel *leftLabel;
 
-@property (nonatomic, strong) UIView *lineView;
+
 
 @property (strong, nonatomic) UIPickerView *pickerView;
 
