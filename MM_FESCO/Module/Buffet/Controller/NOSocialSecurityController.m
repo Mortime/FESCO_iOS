@@ -95,7 +95,9 @@
     [NetworkEntity postGetButtetInfoSuccess:^(id responseObject) {
         MMLog(@"GetButtetInfo =======responseObject=====%@",responseObject);
         
-        if ([responseObject objectForKey:@"empIns"]) {
+        if ([responseObject objectForKey:@"empIns"] == nil || [[responseObject objectForKey:@"empIns"] isEqual:[NSNull null]]) {
+            // 不作处理
+        } else {
             NSDictionary *param = [responseObject objectForKey:@"empIns"];
             _isSaveData= YES;
             _cancelButton.backgroundColor = [UIColor grayColor];
@@ -150,11 +152,13 @@
                 
                 NSData *data3 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"photoPic"] options:0];
                 _headerView.iconView.image = [UIImage imageWithData:data3];
-
+                
             }
-
+            
             [_tableView reloadData];
+
         }
+
     } failure:^(NSError *failure) {
         MMLog(@"GetButtetInfo =======failure=====%@",failure);
     }];

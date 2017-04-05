@@ -31,6 +31,8 @@
 
 @property (nonatomic, strong) NSString *cardID; // 身份证号
 
+@property (nonatomic, strong) NSString *name; // 姓名
+
 @property (nonatomic, assign) BOOL cardPositiveSuccess; // 身份证正面上传
 @property (nonatomic, assign) BOOL cardReverseSuccess; // 身份证反面上传
 
@@ -65,14 +67,18 @@
     [NetworkEntity postGetButtetInfoSuccess:^(id responseObject) {
         MMLog(@"GetButtetInfo =======responseObject=====%@",responseObject);
         
-        if ([responseObject objectForKey:@"empIns"]) {
+        
+        if ([responseObject objectForKey:@"empIns"] == nil || [[responseObject objectForKey:@"empIns"] isEqual:[NSNull null]]) {
+           // 不作处理
+        } else {
             NSDictionary *param = [responseObject objectForKey:@"empIns"];
             _isSaveData= YES;
             _cancelButton.backgroundColor = [UIColor grayColor];
             _cancelButton.userInteractionEnabled = NO;
             
             _cardID = [param objectForKey:@"yiliao_Iden_Card"];
-
+            _name = [param objectForKey:@"yiliao_Name"];
+            
             if (_isSaveData) {
                 _oneCardIDView.userInteractionEnabled = NO;
                 _twoCardIDView.userInteractionEnabled = NO;
@@ -95,35 +101,61 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 1;
+    return 2;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *cellID = @"socialSecurityID";
-    SocialSecurityCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-    if (!cell) {
-        cell = [[SocialSecurityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        cell.socialTextFiledView.lineView.hidden = YES;
-    }
-    cell.socialTextFiledView.isExist = YES;
-            [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"身份证号 = %@ indexTag = %lu",textField.text,indexTag);
-                _cardID = textField.text;
-            }];
-            if (_isSaveData) {
-                cell.socialTextFiledView.rightTextFiled.text = _cardID;
-                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
-            }
-    cell.socialTextFiledView.leftTitle = @"身份证号";
-    cell.socialTextFiledView.placeHold = @"请输入身份证号";
-    
-    return cell;
+    if (indexPath.row == 0) {
+        static NSString *cellID = @"socialSecurity";
+        SocialSecurityCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[SocialSecurityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell.socialTextFiledView.textFileStr = [[UserInfoModel defaultUserInfo] empName];
+        }
+        cell.socialTextFiledView.isExist = YES;
+        
+        [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            MMLog(@"姓名 = %@ indexTag = %lu",textField.text,indexTag);
+            _name = textField.text;
+        }];
+        if (_isSaveData) {
+            cell.socialTextFiledView.rightTextFiled.text = _name;
+            cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+        }
+        cell.socialTextFiledView.leftTitle = @"姓名";
+        cell.socialTextFiledView.placeHold = @"请输入姓名";
+        
+        
+        return cell;
 
+    }else{
+        static NSString *cellID = @"socialSecurityID";
+        SocialSecurityCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[SocialSecurityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+//            cell.socialTextFiledView.lineView.hidden = YES;
+        }
+        cell.socialTextFiledView.isExist = YES;
+        [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            MMLog(@"身份证号 = %@ indexTag = %lu",textField.text,indexTag);
+            _cardID = textField.text;
+        }];
+        if (_isSaveData) {
+            cell.socialTextFiledView.rightTextFiled.text = _cardID;
+            cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+        }
+        cell.socialTextFiledView.leftTitle = @"身份证号";
+        cell.socialTextFiledView.placeHold = @"请输入身份证号";
+        
+        return cell;
+
+    }
+    
     
 }
 #pragma mark --- Action
@@ -139,9 +171,10 @@
         [toastView show];
         return;
     }
+    if (!_name) {
+        _name = [UserInfoModel defaultUserInfo].empName;
+    }
     if (!_cardID) {
-        
-        
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入身份证号"];
         [toastView show];
         return;
@@ -155,6 +188,7 @@
         }
         
     }
+   
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"信息一旦保存,就无法修改,是否保存?" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // 取消
@@ -163,7 +197,7 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 确定
         
-        [NetworkEntity postSaveBuffetInfoWithEmpName:@"" gender:@"" nation:@"" birthday:@"" card:_cardID nationality:@"" workCode:@"" workDate:@"" hukouType:@"" address:@"" Success:^(id responseObject) {
+        [NetworkEntity postSaveBuffetInfoWithEmpName:_name gender:@"" nation:@"" birthday:@"" card:_cardID nationality:@"" workCode:@"" workDate:@"" hukouType:@"" address:@"" Success:^(id responseObject) {
             MMLog(@"SaveBuffetInfo =======responseObject=====%@",responseObject);
             if (responseObject) {
                 if ( [[responseObject objectForKey:@"message"]isEqualToString:@"success"]) {
@@ -171,7 +205,7 @@
                     [toastView show];
                     [self.navigationController popViewControllerAnimated:YES];
                 }else{
-                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
+                    ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:[responseObject objectForKey:@"message"]];
                     [toastView show];
                 }
             }else {ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"保存失败"];
