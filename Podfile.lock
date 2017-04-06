@@ -27,9 +27,9 @@ PODS:
   - FMDB/standard (2.6.2)
   - HappyDNS (0.3.10)
   - IQKeyboardManager (3.3.7)
-  - JCore (1.1.0)
-  - JPush (3.0.1):
-    - JCore (~> 1.1.0)
+  - JCore (1.1.2)
+  - JPush (3.0.3):
+    - JCore (~> 1.1.1)
   - JSONKit (1.4)
   - M13ProgressSuite (1.2.9)
   - Mantle (2.0.7):
@@ -101,8 +101,8 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
-  JCore: 7382f2c62e6fcf08305b735e91f0fb771f448d3d
-  JPush: 427daa60236d0faa9f379cd5bbeb923103162058
+  JCore: 9e9bd280a38090d66aca0a7547581cd29804c6eb
+  JPush: 8ea7c5bee363191cb5214f5d34ae11e1c5494722
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9

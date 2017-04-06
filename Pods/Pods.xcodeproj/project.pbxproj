@@ -992,7 +992,6 @@
 		2E523CD9CF95349F19B959F85E3674B8 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		2E7CBCF0B6C07B8C2E4F2B19232705FA /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstants.h; path = IQKeyBoardManager/Constants/IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
 		2EF9D9CDBCF79A1B21B78880F2EAB77F /* NSObject+RACDeallocating.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACDeallocating.h"; path = "ReactiveCocoa/NSObject+RACDeallocating.h"; sourceTree = "<group>"; };
-		2EFE45AA372E9A16853710D123A98EDC /* libjpush-ios-3.0.1.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.1.a"; sourceTree = "<group>"; };
 		2F8CFD1F87B4FC2D05452CCD8BBEF8EF /* NJKWebViewProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NJKWebViewProgress-prefix.pch"; sourceTree = "<group>"; };
 		2F9ED7ECCB5B71484DC3B0A195339261 /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
 		3002ABBA32EF8C23C99FD7EC5AF733B6 /* RACCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACCommand.h; path = ReactiveCocoa/RACCommand.h; sourceTree = "<group>"; };
@@ -1353,6 +1352,7 @@
 		A8BA2C3E0DA6C172F9BB7C27AE646969 /* MJPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyKey.h; path = MJExtension/MJPropertyKey.h; sourceTree = "<group>"; };
 		A8D54304DDD06B4667F9D47E1E21E194 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		A9DB7448E3C5EAB0A253BC27F16299FC /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		A9F84DC424715BBB0728B37CE6043547 /* libjcore-ios-1.1.2.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.2.a"; sourceTree = "<group>"; };
 		AA5A9B30567219C128B80DDB97D7D68D /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
 		AA7B8E529FCABCAE4E1027F9C0F35CC1 /* NSURLConnection+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLConnection+RACSupport.h"; path = "ReactiveCocoa/NSURLConnection+RACSupport.h"; sourceTree = "<group>"; };
 		AB7A70D7EAF1F3E06ACAF18BCBB98BEF /* NSString+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+RACSupport.m"; path = "ReactiveCocoa/NSString+RACSupport.m"; sourceTree = "<group>"; };
@@ -1437,6 +1437,7 @@
 		C6B3580CB74BA2DDBD196E24511A2DA4 /* UICollectionReusableView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UICollectionReusableView+RACSignalSupport.m"; path = "ReactiveCocoa/UICollectionReusableView+RACSignalSupport.m"; sourceTree = "<group>"; };
 		C6CBC0F3D1ADF3ACF674BD7AE970E833 /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
 		C6FEA8E5450A962F4CDBDDFD5603BDD3 /* QNRefresher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNRefresher.m; path = HappyDNS/QNRefresher.m; sourceTree = "<group>"; };
+		C70DC8F8B8AFEA9F28534097C9CBBCB3 /* libjpush-ios-3.0.3.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.3.a"; sourceTree = "<group>"; };
 		C75D329DA114D3657A4CBCFCE8BBE5CF /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		C830CA1FC73CBA706D255CFB8E8F4FA0 /* RACPassthroughSubscriber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACPassthroughSubscriber.h; path = ReactiveCocoa/RACPassthroughSubscriber.h; sourceTree = "<group>"; };
 		C84ED0FE12FC003C6DA258DBE46E03CD /* NSObject+RACPropertySubscribing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACPropertySubscribing.h"; path = "ReactiveCocoa/NSObject+RACPropertySubscribing.h"; sourceTree = "<group>"; };
@@ -1533,7 +1534,6 @@
 		E3CBF26B0513031B29FCCE6FE10991E5 /* UIApplication+M13ProgressSuite.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+M13ProgressSuite.m"; path = "Classes/Application/UIApplication+M13ProgressSuite.m"; sourceTree = "<group>"; };
 		E405AA44B5DD542EF16EA6A201E394D2 /* RACBehaviorSubject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACBehaviorSubject.h; path = ReactiveCocoa/RACBehaviorSubject.h; sourceTree = "<group>"; };
 		E4E299F9E50F6123DC068A5F17FC5103 /* UMSocialControllerService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UMSocialControllerService.h; path = Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_4.4/Header/UMSocialControllerService.h; sourceTree = "<group>"; };
-		E503FC32A13F5D349AA2276720F89294 /* libjcore-ios-1.1.0.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.0.a"; sourceTree = "<group>"; };
 		E553F84CD3916C7FF290252F4D18E5B1 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		E5933C709C4C994158A7443BEDFDA5FB /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFMDB.a; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E598D5BCB02DA4ADFB0F76A5AE7C8A4B /* SDWebImageDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDecoder.h; path = SDWebImage/SDWebImageDecoder.h; sourceTree = "<group>"; };
@@ -1818,14 +1818,6 @@
 			path = SDCycleScrollView;
 			sourceTree = "<group>";
 		};
-		0BA1FC037CBCC7EEAB0D7C4E1E23CF48 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E503FC32A13F5D349AA2276720F89294 /* libjcore-ios-1.1.0.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		11E8997C6F99360D0386007387FF5CE4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,7 +1830,7 @@
 			isa = PBXGroup;
 			children = (
 				350C4857D22A89278EC247E6F5ED7AC3 /* JPUSHService.h */,
-				84C808CEE5CB9B715350B0AC545C51EA /* Frameworks */,
+				E338F276187DD85902ADCD80EF1C1F22 /* Frameworks */,
 			);
 			name = JPush;
 			path = JPush;
@@ -2344,7 +2336,7 @@
 		77F9C09298E43FFD1AD6AF1F572763D3 /* JCore */ = {
 			isa = PBXGroup;
 			children = (
-				0BA1FC037CBCC7EEAB0D7C4E1E23CF48 /* Frameworks */,
+				EB23BCB212D68E0AD286D079A781357A /* Frameworks */,
 			);
 			name = JCore;
 			path = JCore;
@@ -2416,14 +2408,6 @@
 				90F1D2ED6A256A937748D546C47D3301 /* mapapi.bundle */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		84C808CEE5CB9B715350B0AC545C51EA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2EFE45AA372E9A16853710D123A98EDC /* libjpush-ios-3.0.1.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		85E857E938056441F4F63FBFE46DDF04 /* Default */ = {
@@ -3057,6 +3041,14 @@
 			path = "../Target Support Files/FMDB";
 			sourceTree = "<group>";
 		};
+		E338F276187DD85902ADCD80EF1C1F22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C70DC8F8B8AFEA9F28534097C9CBBCB3 /* libjpush-ios-3.0.3.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E45C6D83A489BEA936E42970F56955A2 /* Pods-MM_FESCO */ = {
 			isa = PBXGroup;
 			children = (
@@ -3141,6 +3133,14 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MJExtension";
+			sourceTree = "<group>";
+		};
+		EB23BCB212D68E0AD286D079A781357A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9F84DC424715BBB0728B37CE6043547 /* libjcore-ios-1.1.2.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EB57DDB3388FBC701046A1E93218737F /* Frameworks */ = {

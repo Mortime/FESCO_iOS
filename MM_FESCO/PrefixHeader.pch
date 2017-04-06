@@ -34,7 +34,7 @@
 #import "NSDate+Category.h"
 #import "YBBaseNavigationController.h"
 #import "HMNagationController.h"
-#import "EMSDK.h"
+#import <HyphenateLite/HyphenateLite.h>
 #import "MWPhotoBrowser.h"
 #import "UIImageView+EMWebCache.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
