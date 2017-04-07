@@ -336,8 +336,20 @@
     _titleName.text = listModel.holName;
     _name.text = listModel.empName;
     _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
-    _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
-    _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
+    if (listModel.holBeginApm && ![listModel.holBeginApm isEqualToString:@"null"]) {
+        
+        _startTime.text =  [NSString stringWithFormat:@"开始时间: %@ %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:listModel.beginTime],listModel.holBeginApm];
+    }else{
+        _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+    }
+    if (listModel.holEndApm && ![listModel.holBeginApm isEqualToString:@"null"]) {
+        _endTime.text = [NSString stringWithFormat:@"结束时间: %@ %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:listModel.endTime],listModel.holEndApm];
+    }else{
+        _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
+    }
+
+//    _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+//    _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
     
     [_flagBottomButon setTitle:[NSString stringWithFormat:@"审批人:%@",listModel.currApprovalMan] forState:UIControlStateNormal];
     MMLog(@"listModel.statusType == %lu",listModel.statusType);

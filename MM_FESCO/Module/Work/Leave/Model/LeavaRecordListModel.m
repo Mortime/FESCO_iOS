@@ -19,7 +19,9 @@
               @"holName":@"hol_Name",
               @"statusType":@"exam_End_Is",
               @"currApprovalMan":@"currApprovalMan",
-              @"leaveID":@"hol_Emp_Exam_Id"
+              @"leaveID":@"hol_Emp_Exam_Id",
+              @"holBeginApm":@"hol_Begin_Apm",
+              @"holEndApm":@"hol_End_Apm"
               };
 }
 

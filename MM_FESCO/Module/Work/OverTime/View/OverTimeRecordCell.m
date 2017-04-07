@@ -78,7 +78,7 @@
     
     [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgView.mas_top).offset(10);
-        make.right.mas_equalTo(self.bgView.mas_right).offset(-20);
+        make.right.mas_equalTo(self.bgView.mas_right).offset(-10);
         make.width.mas_equalTo(@100);
         make.height.mas_equalTo(@80);
         
@@ -273,8 +273,17 @@
 - (void)setListModel:(OverTimeRecordListModel *)listModel{
         _name.text = listModel.empName;
         _applyTime.text = [NSString stringWithFormat:@"申请时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.applyDate]];
+    if (listModel.holBeginApm && ![listModel.holBeginApm isEqualToString:@"null"]) {
+        
+        _startTime.text =  [NSString stringWithFormat:@"开始时间: %@ %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:listModel.beginTime],listModel.holBeginApm];
+    }else{
         _startTime.text =  [NSString stringWithFormat:@"开始时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.beginTime]];
+    }
+    if (listModel.holEndApm && ![listModel.holBeginApm isEqualToString:@"null"]) {
+        _endTime.text = [NSString stringWithFormat:@"结束时间: %@ %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:listModel.endTime],listModel.holEndApm];
+    }else{
         _endTime.text = [NSString stringWithFormat:@"结束时间: %@",[NSDate dateFromSSWithDateType:@"yyyy-MM-dd HH:mm" ss:listModel.endTime]];
+    }
     
     [_flagBottomButon setTitle:[NSString stringWithFormat:@"审批人:%@",listModel.applyMan] forState:UIControlStateNormal];
     MMLog(@"listModel.statusType == %lu",listModel.statusType);

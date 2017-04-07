@@ -17,7 +17,10 @@
               @"empName":@"emp_Name",
               @"endTime":@"end_Time",
               @"statusType":@"exam_End_Is",
-              @"applyMan":@"currApprovalMan"
+              @"applyMan":@"currApprovalMan",
+              @"holBeginApm":@"hol_Begin_Apm",
+              @"holEndApm":@"hol_End_Apm"
+
               };
 }
 

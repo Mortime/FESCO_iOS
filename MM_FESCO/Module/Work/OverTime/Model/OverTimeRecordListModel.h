@@ -43,4 +43,9 @@
 
 @property (nonatomic, strong) NSString *applyMan;  // 审批人
 
+@property (nonatomic, strong) NSString *holBeginApm;
+
+@property (nonatomic, strong) NSString *holEndApm;
+
+
 @end
