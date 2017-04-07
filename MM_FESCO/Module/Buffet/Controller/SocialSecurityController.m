@@ -76,23 +76,26 @@
         
         if (param == nil || [param isEqual:[NSNull null]]) {
            // 不作处理
-        }else if([[responseObject objectForKey:@"errcode"] integerValue] == 1){
+        }else if([[responseObject objectForKey:@"errcode"] integerValue] == 0){
             // 此时只有图片保存成功,不为空的值进行赋值,其他仍可以编辑
-            _paramDic = param;
-            _isEdit = YES;
+//            _paramDic = param;
+//            _isEdit = YES;
             
-            
-            
-            
-            _oneCardIDView.userInteractionEnabled = NO;
-            _twoCardIDView.userInteractionEnabled = NO;
             // 图片赋值
-            NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
-            _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
-            _cardPositiveSuccess = YES;
-            NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
-            _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
-            _cardReverseSuccess = YES;
+            if ([responseObject objectForKey:@"idcard1"]) {
+                NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
+                _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
+                _cardPositiveSuccess = YES;
+                _oneCardIDView.userInteractionEnabled = NO;
+  
+            }
+            if ([responseObject objectForKey:@"idcard2"]) {
+                NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
+                _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
+                _cardReverseSuccess = YES;
+                _twoCardIDView.userInteractionEnabled = NO;
+            }
+            
             [_tableView reloadData];
 
             
@@ -152,13 +155,13 @@
             cell.socialTextFiledView.rightTextFiled.text = _name;
             cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
         }
-        if (_isEdit) {
-            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Name"]]) {
-                _cardID = [_paramDic objectForKey:@"yiliao_Name"];
-                cell.socialTextFiledView.rightTextFiled.text = _cardID;
-                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
-            }
-        }
+//        if (_isEdit) {
+//            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Name"]]) {
+//                _cardID = [_paramDic objectForKey:@"yiliao_Name"];
+//                cell.socialTextFiledView.rightTextFiled.text = _cardID;
+//                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+//            }
+//        }
 
         cell.socialTextFiledView.leftTitle = @"姓名";
         cell.socialTextFiledView.placeHold = @"请输入姓名";
@@ -183,13 +186,13 @@
             cell.socialTextFiledView.rightTextFiled.text = _cardID;
             cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
         }
-        if (_isEdit) {
-            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Iden_Card"]]) {
-                _cardID = [_paramDic objectForKey:@"yiliao_Iden_Card"];
-                cell.socialTextFiledView.rightTextFiled.text = _cardID;
-                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
-            }
-        }
+//        if (_isEdit) {
+//            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Iden_Card"]]) {
+//                _cardID = [_paramDic objectForKey:@"yiliao_Iden_Card"];
+//                cell.socialTextFiledView.rightTextFiled.text = _cardID;
+//                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+//            }
+//        }
         cell.socialTextFiledView.leftTitle = @"身份证号";
         cell.socialTextFiledView.placeHold = @"请输入身份证号";
         

@@ -97,6 +97,36 @@
         
         if ([responseObject objectForKey:@"empIns"] == nil || [[responseObject objectForKey:@"empIns"] isEqual:[NSNull null]]) {
             // 不作处理
+        }else if([[responseObject objectForKey:@"errcode"] integerValue] == 0){
+            // 此时只有图片保存成功,不为空的值进行赋值,其他仍可以编辑
+            
+            
+            
+            // 图片赋值
+            if ([responseObject objectForKey:@"idcard1"]) {
+                NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
+                _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
+                _cardPositiveSuccess = YES;
+                _oneCardIDView.userInteractionEnabled = NO;
+                
+            }
+            if ([responseObject objectForKey:@"idcard2"]) {
+                NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
+                _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
+                _cardReverseSuccess = YES;
+                _twoCardIDView.userInteractionEnabled = NO;
+
+            }
+            if ([responseObject objectForKey:@"photoPic"]) {
+                NSData *data3 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"photoPic"] options:0];
+                _headerView.iconView.image = [UIImage imageWithData:data3];
+                _photoSuccess = YES;
+                _headerView.iconView.userInteractionEnabled = NO;
+            }
+           
+            [_tableView reloadData];
+            
+            
         } else {
             NSDictionary *param = [responseObject objectForKey:@"empIns"];
             _isSaveData= YES;
