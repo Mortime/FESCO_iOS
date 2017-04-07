@@ -45,7 +45,7 @@
     self = [super init];
     if (self) {
         [self initAttribute];
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     }
     return self;
 }
@@ -260,7 +260,7 @@
     if (!_scrollView) {
         
         _scrollView = [UIScrollView new];
-        _scrollView.backgroundColor = [UIColor whiteColor];
+        _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.delegate = self;
         _scrollView.frame = CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
         self.scrollView.contentSize = CGSizeMake(VIEW_WIDTH * 3, VIEW_HEIGHT);
@@ -299,7 +299,7 @@
     if (!_centerImageView){
         
         _centerImageView = [UIImageView new];
-        _centerImageView.backgroundColor = [UIColor whiteColor];
+        _centerImageView.backgroundColor = [UIColor clearColor];
         _centerImageView.frame = CGRectMake(VIEW_WIDTH, 0, VIEW_WIDTH, VIEW_HEIGHT);
         [self addTouchForImageView:_centerImageView];
         if (_placeImage) {

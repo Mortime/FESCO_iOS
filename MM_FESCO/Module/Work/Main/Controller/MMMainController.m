@@ -109,6 +109,7 @@ static NSString *kMallID = @"MallID";
     
    _cycleImageView = [[MMCycleShowImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 101)];
     _cycleImageView.placeImage = img;
+    _cycleImageView.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
     _cycleImageView.imagesUrlArray = @[@"Home_SycleOne",@"Home_CycleTwo.png",@"Home_CycleThree.png"];
     [_cycleImageView setPageControlLocation:0 isCycle:YES];
     

@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) BOOL isSaveData; // 是否保存过, 默认NO
 
+@property (nonatomic, assign) BOOL isEdit; // 是否可以编辑输入, 默认NO
+
 @property (nonatomic, strong) NSString *cardID; // 身份证号
 
 @property (nonatomic, strong) NSString *name; // 姓名
@@ -37,6 +39,8 @@
 @property (nonatomic, assign) BOOL cardReverseSuccess; // 身份证反面上传
 
 @property (nonatomic, assign) upPictureType picType;
+
+@property (nonatomic, strong) NSDictionary *paramDic; // 数据字典用于判断是否可以编辑
 
 
 @end
@@ -61,17 +65,39 @@
     _cardPositiveSuccess= NO;
     _cardReverseSuccess = NO;
     _isSaveData = NO;
+    _isEdit = NO;
     [self getInfoData];
 }
 - (void)getInfoData{
     [NetworkEntity postGetButtetInfoSuccess:^(id responseObject) {
         MMLog(@"GetButtetInfo =======responseObject=====%@",responseObject);
+        _paramDic = nil;
+        NSDictionary *param = [responseObject objectForKey:@"empIns"];
         
-        
-        if ([responseObject objectForKey:@"empIns"] == nil || [[responseObject objectForKey:@"empIns"] isEqual:[NSNull null]]) {
+        if (param == nil || [param isEqual:[NSNull null]]) {
            // 不作处理
-        } else {
-            NSDictionary *param = [responseObject objectForKey:@"empIns"];
+        }else if([[responseObject objectForKey:@"errcode"] integerValue] == 1){
+            // 此时只有图片保存成功,不为空的值进行赋值,其他仍可以编辑
+            _paramDic = param;
+            _isEdit = YES;
+            
+            
+            
+            
+            _oneCardIDView.userInteractionEnabled = NO;
+            _twoCardIDView.userInteractionEnabled = NO;
+            // 图片赋值
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
+            _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
+            _cardPositiveSuccess = YES;
+            NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
+            _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
+            _cardReverseSuccess = YES;
+            [_tableView reloadData];
+
+            
+        }else {
+            
             _isSaveData= YES;
             _cancelButton.backgroundColor = [UIColor grayColor];
             _cancelButton.userInteractionEnabled = NO;
@@ -126,6 +152,14 @@
             cell.socialTextFiledView.rightTextFiled.text = _name;
             cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
         }
+        if (_isEdit) {
+            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Name"]]) {
+                _cardID = [_paramDic objectForKey:@"yiliao_Name"];
+                cell.socialTextFiledView.rightTextFiled.text = _cardID;
+                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+            }
+        }
+
         cell.socialTextFiledView.leftTitle = @"姓名";
         cell.socialTextFiledView.placeHold = @"请输入姓名";
         
@@ -148,6 +182,13 @@
         if (_isSaveData) {
             cell.socialTextFiledView.rightTextFiled.text = _cardID;
             cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+        }
+        if (_isEdit) {
+            if (![self isNUllWithText:[_paramDic objectForKey:@"yiliao_Iden_Card"]]) {
+                _cardID = [_paramDic objectForKey:@"yiliao_Iden_Card"];
+                cell.socialTextFiledView.rightTextFiled.text = _cardID;
+                cell.socialTextFiledView.rightTextFiled.userInteractionEnabled = NO;
+            }
         }
         cell.socialTextFiledView.leftTitle = @"身份证号";
         cell.socialTextFiledView.placeHold = @"请输入身份证号";
@@ -279,6 +320,7 @@
             _twoCardIDView.cardIDImageView.image = photoImage;
             _cardReverseSuccess = YES;
             
+            
         }
         
         
@@ -293,7 +335,13 @@
     
     
 }
-
+- (BOOL)isNUllWithText:(NSString *)text{
+    if (text == nil ||[text  isEqual:[NSNull null]]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
