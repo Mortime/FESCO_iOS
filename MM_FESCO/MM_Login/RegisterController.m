@@ -270,11 +270,11 @@
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
     }
-    // 验证邮箱和手机号
-    if (!([_mailStr isValidateEmail]||[_mailStr checkTel])) {
-        [self showTotasViewWithMes:@"请输入正确的邮箱或手机号"];
-        return;
-    }
+//    // 验证邮箱和手机号
+//    if (!([_mailStr isValidateEmail]||[_mailStr checkTel])) {
+//        [self showTotasViewWithMes:@"请输入正确的邮箱或手机号"];
+//        return;a
+//    }
     
     self.codeNumButton.userInteractionEnabled = NO;
     [self startPainting];

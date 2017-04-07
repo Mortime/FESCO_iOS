@@ -9,6 +9,7 @@
 #import "OverTimeApplyView.h"
 
 #import "OverTimeApplyCell.h"
+#import "OverTimeApplySSCell.h"
 
 @interface OverTimeApplyView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -19,6 +20,10 @@
 @property (nonatomic, strong) UIButton *commitButton;
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, assign) BOOL isApplyOverTime; // 是否有加班申请的权限,默认 Yes
+
+@property (nonatomic, strong) NSString *messageError;
 
 
 @end
@@ -46,6 +51,7 @@
 - (instancetype)initWithFrame:(CGRect)frame  {
     self = [super initWithFrame:frame];
     if (self) {
+        _isApplyOverTime = YES;
         [self initUI];
         [self initData];
     }
@@ -75,11 +81,16 @@
     [NetworkEntity postOverTimeApplyMessageSuccess:^(id responseObject) {
         MMLog(@"OverTimeApplyMessage ========responseObject=========%@",responseObject);
         // 审批人选择
-        NSArray  *applyPeople = [responseObject objectForKey:@"availableApprovalManList"];
-        _resultArray =  applyPeople;
-        for (NSDictionary *dic in applyPeople) {
-            NSString *str = [dic objectForKey:@"emp_Name"];
-            [_pickDataArray addObject:str];
+            _isApplyOverTime = YES;
+            NSArray  *applyPeople = [responseObject objectForKey:@"availableApprovalManList"];
+            _resultArray =  applyPeople;
+            for (NSDictionary *dic in applyPeople) {
+                NSString *str = [dic objectForKey:@"emp_Name"];
+                [_pickDataArray addObject:str];
+            }
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 1) {
+            _isApplyOverTime = NO;
+            _messageError = [responseObject objectForKey:@"message"];
         }
         [self refreshUI];
         
@@ -97,27 +108,57 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat{
     
-    static NSString *IDCell = @"cellID";
-    OverTimeApplyCell *cell = [tableView dequeueReusableCellWithIdentifier:IDCell];
-    if (!cell) {
+    if (indexPat.row == 0 || indexPat.row == 1) {
+        static NSString *IDCell = @"cellIDSS";
+        OverTimeApplySSCell *cell = [tableView dequeueReusableCellWithIdentifier:IDCell];
+        if (!cell) {
+            
+            cell = [[OverTimeApplySSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
+        }
         
-        cell = [[OverTimeApplyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
+        cell.index = indexPat.row + 3000;
+        cell.pickData = _pickDataArray;
+        
+        cell.leftTitle = self.leftTitleArray[indexPat.row];
+        cell.placeTitle = self.placeTitleArray[indexPat.row];
+        [cell.textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+        
+        return cell;
+ 
+    }else{
+        static NSString *IDCell = @"cellID";
+        OverTimeApplyCell *cell = [tableView dequeueReusableCellWithIdentifier:IDCell];
+        if (!cell) {
+            
+            cell = [[OverTimeApplyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDCell];
+        }
+        
+        cell.index = indexPat.row + 3000;
+        cell.pickData = _pickDataArray;
+        
+        cell.leftTitle = self.leftTitleArray[indexPat.row];
+        cell.placeTitle = self.placeTitleArray[indexPat.row];
+        [cell.textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
+            [self initWithTextFile:textField indexTag:indexTag];
+        }];
+        
+        return cell;
+
     }
     
-    cell.index = indexPat.row + 3000;
-    cell.pickData = _pickDataArray;
     
-    cell.leftTitle = self.leftTitleArray[indexPat.row];
-    cell.placeTitle = self.placeTitleArray[indexPat.row];
-    [cell.textFile dvv_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-        [self initWithTextFile:textField indexTag:indexTag];
-    }];
-    
-    return cell;
     
 }
 #pragma mark ---- Action
 - (void)didClick:(UIButton *)sender{
+    
+    if (!_isApplyOverTime) {
+        [self.parementVC showTotasViewWithMes:_messageError];
+        return;
+    }
+    
     if (_beginTime == nil || [_beginTime isEqualToString:@" "]) {
         [self.parementVC showTotasViewWithMes:@"请选择开始时间"];
         return;

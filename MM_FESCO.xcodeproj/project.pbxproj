@@ -382,6 +382,7 @@
 		76F4778D1E8A546400C73A64 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778C1E8A546400C73A64 /* country.plist */; };
 		76F4778F1E8A598600C73A64 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778E1E8A598600C73A64 /* test.plist */; };
 		76F477921E8B91DC00C73A64 /* BuffetDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F477911E8B91DC00C73A64 /* BuffetDataTool.m */; };
+		76FA7D1B1E972BF0002A56A4 /* OverTimeApplySSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FA7D1A1E972BF0002A56A4 /* OverTimeApplySSCell.m */; };
 		76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A0A1E487B8700828054 /* zrfesco.cer */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */; };
@@ -1173,6 +1174,8 @@
 		76F4778E1E8A598600C73A64 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
 		76F477901E8B91DC00C73A64 /* BuffetDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuffetDataTool.h; sourceTree = "<group>"; };
 		76F477911E8B91DC00C73A64 /* BuffetDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetDataTool.m; sourceTree = "<group>"; };
+		76FA7D191E972BF0002A56A4 /* OverTimeApplySSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplySSCell.h; sourceTree = "<group>"; };
+		76FA7D1A1E972BF0002A56A4 /* OverTimeApplySSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplySSCell.m; sourceTree = "<group>"; };
 		76FE9A0A1E487B8700828054 /* zrfesco.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco.cer; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
@@ -1702,6 +1705,8 @@
 			children = (
 				5972237B1DADE05400D01A7A /* OverTimeApplyCell.h */,
 				5972237C1DADE05400D01A7A /* OverTimeApplyCell.m */,
+				76FA7D191E972BF0002A56A4 /* OverTimeApplySSCell.h */,
+				76FA7D1A1E972BF0002A56A4 /* OverTimeApplySSCell.m */,
 				5972237D1DADE05400D01A7A /* OverTimeApplyView.h */,
 				5972237E1DADE05400D01A7A /* OverTimeApplyView.m */,
 				5972237F1DADE05400D01A7A /* OverTimeRecordCell.h */,
@@ -3341,6 +3346,7 @@
 				76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */,
 				76F02FEC1DD4541100D32771 /* UIImage+RoundedCorner.m in Sources */,
 				597223C41DADE05400D01A7A /* FillRecordCell.m in Sources */,
+				76FA7D1B1E972BF0002A56A4 /* OverTimeApplySSCell.m in Sources */,
 				762B92A31E95CD0200BFFF9B /* UIImage+EMGIF.m in Sources */,
 				59A59E1D1D499EF2001F3122 /* HMButton.m in Sources */,
 				59A59E201D499EF2001F3122 /* PortraitView.m in Sources */,
