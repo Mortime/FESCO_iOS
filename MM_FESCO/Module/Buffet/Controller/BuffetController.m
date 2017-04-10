@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"自助";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.imgArray = @[@"Buffet_Ruzhi",@"Buffet_Shebao",@"Buffet_Gongjijin"];
