@@ -48,6 +48,12 @@ static NSString * const reuseID  = @"PhoneListCell";
     // 用户头像加
 //    [self initIconUrl];
     [self initData];
+    
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    UILabel *label = [[UILabel alloc] init];
+    label.tag = 0;
+    [self barViewItemSelect:label];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -209,60 +215,6 @@ static NSString * const reuseID  = @"PhoneListCell";
 
     }
     
-    
-    
-    
-    
-    
-    
-//    [MMDataBase isExistWithId:@"exist" tname:t_phoneList isExist:^(BOOL isExist) {
-//        if (isExist) {
-//            // 数据已经存在
-//            [ws initDataUI];
-//            
-//        }else{
-//            // 数据不存在,进行网络请求
-//            
-//            [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-//                                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
-//                [MMDataBase initializeDatabaseWithTableName:t_phoneList baseBlock:^(BOOL isSuccess) {
-//                    if (isSuccess) {
-//                        // 表创建成功
-//                        MMLog(@"表创建成功");
-//                        // 添加判断数据是否存在的字段
-//                        NSDictionary *dic = (NSDictionary *)responseObject;
-//                        NSMutableDictionary *mutableDic = dic.mutableCopy;
-//                        [mutableDic setValue:@"exist" forKey:@"ID"];
-//                        
-//                        // 保存数据
-//                        [MMDataBase saveItemDict:mutableDic tname:t_phoneList];
-//                        [ws initDataUI];
-//                        
-//                        
-//                    }
-//
-//                }];
-//                
-//                
-//            } failure:^(NSError *failure) {
-//                MMLog(@"PhoneListController =====failure ==========%@",failure);
-//            }];
-//            
-//            
-//        }
-//
-//    }];
-  
-    
-    //                NSString *groupName = [dic objectForKey:@"group_Name"];
-    //                NSInteger empid = [[dic objectForKey:@"emp_Id"] integerValue];
-    //                NSString *empName = [dic objectForKey:@"emp_Name"];
-    //                NSString *mobile = [dic objectForKey:@"mobile"];
-    //                NSString *phone = [dic objectForKey:@"phone"];
-    //
-    //                NSString *sql1 = [NSString stringWithFormat:
-    //                                  @"INSERT INTO '%@' ('%@', '%@', '%@','%@','%@') VALUES ('%@','%lu','%@', '%@', '%@')",
-    //                                  @"PHONELIST", @"group_Name", @"emp_Id", @"emp_Name",@"mobile",@"phone", groupName, empid,empName,mobile,phone];
 }
 - (void)initDataUI{
     // 取出全部数据
