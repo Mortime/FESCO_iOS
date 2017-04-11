@@ -245,12 +245,14 @@
     [NetworkTool POST:urlStr params:dic success:success failure:failure];
 
 }
-+ (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
++ (void)postPhoneNumberListWithCustId:(NSString *)custid version:(NSUInteger)version updateTime:(NSString *)updateTime success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
     
     if (!custid ) {
         return [NetworkTool missParagramerCallBackFailure:failure];
     }
     NSDictionary *dic = @{@"cust_Id":custid,
+                          @"cust_Version_Num":[NSString stringWithFormat:@"%lu",version],
+                          @"updateTime":updateTime,
                           @"methodname":@"emp/getAllPhoneNumber.json"};
     
     NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];

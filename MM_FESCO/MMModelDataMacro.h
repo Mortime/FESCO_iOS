@@ -50,6 +50,9 @@
 #define kSignUpTime @"SignUpTime" // 签到成功时间
 #define KAvtarUrlVersion  @"AvtarUrlVersion" // 保存头像的版本号,用于服务器更新头像
 
+#define kNewPhoneVersion @"NewPhoneVersion" // 保存版本号,用通讯录除头像外信息的更新
+
+#define kNewPhoneDate @"NewPhoneDate" // 保存日期,用通讯录除头像外信息的更新
 
 
 

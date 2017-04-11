@@ -148,8 +148,8 @@
 {
     // 配置环信
     EMOptions *options = [EMOptions optionsWithAppkey:@"1187170223115321#payrollpen"];
-    options.apnsCertName = @"iOSJPushDev";
-//        options.apnsCertName = @"iOSJPushPro";
+//    options.apnsCertName = @"iOSJPushDev";
+        options.apnsCertName = @"iOSJPushPro";
     [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
@@ -176,7 +176,7 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     // Required
     //@param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
-    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:NO];
+    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:YES];
     
     
     

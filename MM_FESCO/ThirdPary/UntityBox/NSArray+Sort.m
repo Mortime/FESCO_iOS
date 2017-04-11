@@ -43,7 +43,7 @@
             }
         }
     }
-    
+    MMLog(@"_groupArr  = %@",_groupArr);
     return _groupArr;
 
 }

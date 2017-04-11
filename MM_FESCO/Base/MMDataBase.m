@@ -35,6 +35,14 @@ static FMDatabase *_db;
     
     if ([_db open]) {
         // 创建数据库表
+        if ([tname isEqualToString:@"t_newPhoneList"]) {
+            // 创建联系人数据库表
+            NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,empID integer,name text,groupName text,mobile text,phone text)",tname];
+            BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
+            initDatabaseBlock(result);
+
+        }
+        
         if ([tname isEqualToString:@"t_userIconUrl"]) {
             // 创建用户头像数据库表
             NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,empID integer,avtar blob)",tname];
@@ -46,19 +54,6 @@ static FMDatabase *_db;
             BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
             initDatabaseBlock(result);
         }else{
-            /*
-             
-             @"moneyAmount":_moneyNumber,
-             @"spendBegin":_startTime,
-             @"spendEnd":_endTime,
-             @"billNum":_billNumber,
-             @"picUrl":_picUrl,
-             @"picDesc":_picStr,
-             @"detailMemo":_memo,
-             @"spendCity":_cityName
-             
-             */
-            
             // 返回创建表的结果
             
             NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY, itemDict blob NOT NULL, idStr text NOT NULL)",tname];
@@ -289,8 +284,76 @@ static FMDatabase *_db;
 
 }
 
+// 通讯录模块  数据删除和插入
 
-
-
-
+/*插入数据*/
++ (void)addNewPhoneListEmpID:(NSInteger)empID name:(NSString *)name mobile:(NSString *)mobile phone:(NSString *)phone groupName:(NSString *)groupName baseBlock:(initDatabaseBlock)initDatabaseBlock{
+    if ([_db open]) {
+        NSString *sql =@"INSERT INTO t_newPhoneList(empID, name,groupName,mobile,phone) VALUES (?,?,?,?,?)";
+        BOOL bResult = [_db executeUpdate:sql, @(empID),name,groupName,mobile,phone];
+        initDatabaseBlock(bResult);
+        [_db close];
+    }
+}
+/*删除一条数据*/
++ (void)deletePhoneWithEmpID:(NSInteger)empID baseBlock:(initDatabaseBlock)initDatabaseBlock{
+    if ([_db open]) {
+        [_db executeUpdate:@"DELETE FROM t_newPhoneList WHERE empID = ?",@(empID)];
+        [_db close];
+    }
+}
+/*表中所有数据*/
+// 根据表名 得到一个表全部数据
++ (NSArray *)allNewPhoneList{
+    
+    NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* path = [docsdir stringByAppendingPathComponent:FESCODATABASE];
+    _db = [FMDatabase databaseWithPath:path];
+//    [_db open];
+    
+    /*
+     NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY,empID integer,name text,mobile text,phone text,groupName text)",tname];
+     BOOL result= [_db executeUpdate:sql];        // 返回创建表的结果
+     initDatabaseBlock(result);
+     */
+    NSMutableArray *resultArray = [NSMutableArray array];
+    if ([_db open]) {
+        FMResultSet *resultSet = nil;
+        resultSet = [_db executeQuery:@"SELECT * FROM t_newPhoneList"];
+        
+        // 遍历查询结果
+        while (resultSet.next) {
+            
+            NSInteger empID = [resultSet intForColumn:@"empID"];
+            
+            NSString *name = [resultSet stringForColumn:@"name"];
+            
+            NSString *mobile = [resultSet stringForColumn:@"mobile"];
+            
+            NSString *phone = [resultSet stringForColumn:@"phone"];
+            
+            NSString *groupName = [resultSet stringForColumn:@"groupName"];
+            
+            
+//            MMLog(@"mobile ===== %@,phone = %@",mobile,groupName);
+            
+            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%lu",empID],@"emp_Id",name,@"emp_Name",groupName,@"group_Name",mobile,@"mobile",phone,@"phone", nil];
+            MMLog(@"-===========dic = %@",dic);
+            [resultArray addObject:dic];
+            
+        }
+        
+        MMLog(@"allNewPhoneList = dict = %@",resultArray);
+        
+        //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:0 error:NULL];
+        //    if (!jsonData) {
+        //        return nil;
+        //    }
+        //
+        //    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+ 
+   }
+   return resultArray;
+}
 @end

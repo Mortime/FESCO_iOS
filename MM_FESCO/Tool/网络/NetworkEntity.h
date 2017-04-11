@@ -118,7 +118,7 @@ typedef void (^UpPictureFailureBlock) (NSError *failure);
  *  @param cust_Id （req）  公司id
  
  */
-+ (void)postPhoneNumberListWithCustId:(NSString *)custid  success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
++ (void)postPhoneNumberListWithCustId:(NSString *)custid version:(NSUInteger)version updateTime:(NSString *)updateTime success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 
 
 /**

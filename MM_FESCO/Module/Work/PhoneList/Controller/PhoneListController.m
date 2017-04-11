@@ -30,7 +30,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 // 全部员工的信息
-@property (nonatomic, strong) NSArray *allPersonMessageArray;
+@property (nonatomic, strong) NSMutableArray *allPersonMessageArray;
 
 @property (nonatomic, strong) UIButton *searchButton;
 
@@ -46,7 +46,8 @@ static NSString * const reuseID  = @"PhoneListCell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     // 用户头像加
-    [self initIconUrl];
+//    [self initIconUrl];
+    [self initData];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -136,45 +137,121 @@ static NSString * const reuseID  = @"PhoneListCell";
 }
 - (void)initData{
     
+    
     __weak typeof(self) ws = self;
     
-    [MMDataBase isExistWithId:@"exist" tname:t_phoneList isExist:^(BOOL isExist) {
-        if (isExist) {
-            // 数据已经存在
-            [ws initDataUI];
-            
-        }else{
-            // 数据不存在,进行网络请求
-            
-            [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
-                                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
-                [MMDataBase initializeDatabaseWithTableName:t_phoneList baseBlock:^(BOOL isSuccess) {
+   // 根据版本号和日期进行数据库的更新
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    MMLog(@"[defaults objectForKey:kNewPhoneVersion] = %@",[defaults objectForKey:kNewPhoneDate]);
+    if (![defaults objectForKey:kNewPhoneVersion]) {
+        // 版本号为空,第一次保存数据
+        [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId version:0 updateTime:@"" success:^(id responseObject) {
+            if (responseObject) {
+                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+                [MMDataBase initializeDatabaseWithTableName:@"t_newPhoneList" baseBlock:^(BOOL isSuccess) {
                     if (isSuccess) {
                         // 表创建成功
                         MMLog(@"表创建成功");
-                        // 添加判断数据是否存在的字段
-                        NSDictionary *dic = (NSDictionary *)responseObject;
-                        NSMutableDictionary *mutableDic = dic.mutableCopy;
-                        [mutableDic setValue:@"exist" forKey:@"ID"];
-                        
-                        // 保存数据
-                        [MMDataBase saveItemDict:mutableDic tname:t_phoneList];
-                        [ws initDataUI];
+                        NSArray *array = [responseObject objectForKey:@"emps"];
+                        for (NSDictionary *dic in array) {
+                            [MMDataBase addNewPhoneListEmpID:[[dic objectForKey:@"emp_Id"] integerValue] name:[dic objectForKey:@"emp_Name"] mobile:[dic objectForKey:@"mobile"] phone:[dic objectForKey:@"phone"] groupName:[dic objectForKey:@"group_Name"] baseBlock:^(BOOL isSuccess) {
+                                if (isSuccess) {
+                                    // 保存成功
+                                }
+                            }];
+                        }
                         
                         
                     }
-
+                    
                 }];
-                
-                
-            } failure:^(NSError *failure) {
-                MMLog(@"PhoneListController =====failure ==========%@",failure);
-            }];
-            
-            
-        }
+                // 保存版本号  更新时间
+                [defaults setObject:[responseObject objectForKey:@"newCustVersion"] forKey:kNewPhoneVersion];
+                [defaults setObject:[responseObject objectForKey:@"updateTime"] forKey:kNewPhoneDate];
+                [ws initDataUI];
 
-    }];
+
+            }
+        } failure:^(NSError *failure) {
+            
+        }];
+    }else{
+        // 更新数据库
+        [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId version:[[defaults objectForKey:kNewPhoneVersion] integerValue] updateTime:[defaults objectForKey:kNewPhoneDate] success:^(id responseObject) {
+            if (responseObject) {
+                MMLog(@"PhoneListController === 更新 ==responseObject =============%@",responseObject);
+                
+                // 删除
+                for ( NSString *str in [responseObject objectForKey:@"deleteIds"]) {
+                    [MMDataBase deletePhoneWithEmpID:[str integerValue] baseBlock:^(BOOL isSuccess) {
+                        
+                    }];
+                }
+                // 插入
+                
+                for (NSDictionary *dic in [responseObject objectForKey:@"emps"]) {
+                    [MMDataBase addNewPhoneListEmpID:[[dic objectForKey:@"emp_Id"] integerValue] name:[dic objectForKey:@"emp_Name"] mobile:[dic objectForKey:@"mobile"] phone:[dic objectForKey:@"phone"] groupName:[dic objectForKey:@"group_Name"] baseBlock:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            // 保存成功
+                        }
+                    }];
+
+                }
+                // 保存版本号  更新时间
+                [defaults setObject:[responseObject objectForKey:@"newCustVersion"] forKey:kNewPhoneVersion];
+                [defaults setObject:[responseObject objectForKey:@"updateTime"] forKey:kNewPhoneDate];
+                [ws initDataUI];
+
+            }
+        } failure:^(NSError *failure) {
+            
+        }];
+
+    }
+    
+    
+    
+    
+    
+    
+    
+//    [MMDataBase isExistWithId:@"exist" tname:t_phoneList isExist:^(BOOL isExist) {
+//        if (isExist) {
+//            // 数据已经存在
+//            [ws initDataUI];
+//            
+//        }else{
+//            // 数据不存在,进行网络请求
+//            
+//            [NetworkEntity postPhoneNumberListWithCustId:[UserInfoModel defaultUserInfo].custId success:^(id responseObject) {
+//                                MMLog(@"PhoneListController =====responseObject =============%@",responseObject);
+//                [MMDataBase initializeDatabaseWithTableName:t_phoneList baseBlock:^(BOOL isSuccess) {
+//                    if (isSuccess) {
+//                        // 表创建成功
+//                        MMLog(@"表创建成功");
+//                        // 添加判断数据是否存在的字段
+//                        NSDictionary *dic = (NSDictionary *)responseObject;
+//                        NSMutableDictionary *mutableDic = dic.mutableCopy;
+//                        [mutableDic setValue:@"exist" forKey:@"ID"];
+//                        
+//                        // 保存数据
+//                        [MMDataBase saveItemDict:mutableDic tname:t_phoneList];
+//                        [ws initDataUI];
+//                        
+//                        
+//                    }
+//
+//                }];
+//                
+//                
+//            } failure:^(NSError *failure) {
+//                MMLog(@"PhoneListController =====failure ==========%@",failure);
+//            }];
+//            
+//            
+//        }
+//
+//    }];
   
     
     //                NSString *groupName = [dic objectForKey:@"group_Name"];
@@ -189,7 +266,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 }
 - (void)initDataUI{
     // 取出全部数据
-    NSDictionary *dataBaseDic = [MMDataBase allDatalistWithTname:t_phoneList];
+    self.paramArray = [MMDataBase allNewPhoneList];
 //    MMLog(@"数据库返回数据: %@",dataBaseDic);
     
     NSArray *resultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
@@ -197,8 +274,6 @@ static NSString * const reuseID  = @"PhoneListCell";
                                                                YES);
     NSString *restltDocumentDirectory = [resultPaths lastObject];
     MMLog(@"path ===== path ======= %@",restltDocumentDirectory);
-    
-    self.paramArray =   [dataBaseDic objectForKey:@"emps"];
     
     // 对数组进行排序
     NSArray *resultArray = [NSArray sortGroupWithDataSouce:_paramArray keyStr:@"group_Name"];
@@ -209,7 +284,8 @@ static NSString * const reuseID  = @"PhoneListCell";
         NSString *gropName = [dic objectForKey:@"group_Name"];
         [gropNameArray addObject:gropName];
     }
-    self.allPersonMessageArray = resultArray;
+    self.allPersonMessageArray = resultArray.mutableCopy;
+    
     self.gropArray = gropNameArray;
     
     
@@ -228,7 +304,9 @@ static NSString * const reuseID  = @"PhoneListCell";
 {
     PhoneListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     NSString *title = _gropArray[indexPath.row];
+    
     cell.personListArray = self.allPersonMessageArray[indexPath.row];
+    MMLog(@"self.allPersonMessageArray[indexPath.row] = %@",self.allPersonMessageArray[indexPath.row]);
     cell.pareVC = self;
     cell.urlString = title;
 //    cell.pareVC = self;

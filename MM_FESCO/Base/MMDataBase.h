@@ -49,5 +49,12 @@ typedef void (^existData) (BOOL isExist); // 判断数据是否存在
 // 根据empID在数据库中查询avtar
 + (NSData *)getAvtarDateWith:(NSInteger)empID;
 
+// 通讯录除头像外信息更新
 
+/*插入数据*/
++ (void)addNewPhoneListEmpID:(NSInteger)empID name:(NSString *)name mobile:(NSString *)mobile phone:(NSString *)phone groupName:(NSString *)groupName baseBlock:(initDatabaseBlock)initDatabaseBlock;
+/*删除数据*/
++ (void)deletePhoneWithEmpID:(NSInteger)empID baseBlock:(initDatabaseBlock)initDatabaseBlock;
+/*得到数据*/
++ (NSArray *)allNewPhoneList;
 @end
