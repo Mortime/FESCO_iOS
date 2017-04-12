@@ -2093,4 +2093,33 @@
     
     [NetworkTool POST:urlStr params:param success:success failure:failure];
 }
+// 工资数据查询
++ (void)postSalaryBarDataWithYear:(NSString *)year success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure{
+    NSDictionary *dic = @{
+                          @"emp_Id":[UserInfoModel defaultUserInfo].empId,
+                         @"cust_Id":[UserInfoModel defaultUserInfo].custId,
+                          @"years":year,
+                         @"methodname":@"salary/getEmpSalarys.json"
+                          };
+    
+    NSString *jsonParam =  [NSString jsonToJsonStingWith:dic];
+    
+    NSString *sign = [NSString sortKeyWith:dic];
+    
+    NSLog(@"%@%@",jsonParam,sign);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",[NetworkTool domain],@"salary/getEmpSalarys.json"];
+    
+    NSDictionary *param = @{@"jsonParam":jsonParam,
+                            
+                            @"sign":sign,
+                            
+                            @"tokenkey":[UserInfoModel defaultUserInfo].token
+                            
+                            
+                            };
+    
+    
+    [NetworkTool POST:urlStr params:param success:success failure:failure];
+}
 @end

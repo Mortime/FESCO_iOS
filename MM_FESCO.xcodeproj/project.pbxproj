@@ -166,6 +166,9 @@
 		59FC07A31D95137600C1D0E0 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC07A21D95137600C1D0E0 /* libiconv.tbd */; };
 		59FC09441D952A9A00C1D0E0 /* DVVDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */; };
 		59FC09451D952A9A00C1D0E0 /* DVVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */; };
+		760478B21E9DBBD800CFB10A /* SalaryBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478B11E9DBBD800CFB10A /* SalaryBarController.m */; };
+		760478B91E9DC6D800CFB10A /* SalaryBarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */; };
+		760478BC1E9E151E00CFB10A /* SalaryBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478BB1E9E151E00CFB10A /* SalaryBarCell.m */; };
 		760A7EF11E0B6B1F0036C6C6 /* NetworkDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */; };
 		760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */; };
 		760A7EFD1E0CCE9F0036C6C6 /* SocialSecurityShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */; };
@@ -734,6 +737,12 @@
 		59FC09411D952A9A00C1D0E0 /* DVVDockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVDockItem.m; sourceTree = "<group>"; };
 		59FC09421D952A9A00C1D0E0 /* DVVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVTabBarController.h; sourceTree = "<group>"; };
 		59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVTabBarController.m; sourceTree = "<group>"; };
+		760478B01E9DBBD800CFB10A /* SalaryBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarController.h; sourceTree = "<group>"; };
+		760478B11E9DBBD800CFB10A /* SalaryBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarController.m; sourceTree = "<group>"; };
+		760478B71E9DC6D800CFB10A /* SalaryBarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarHeaderView.h; sourceTree = "<group>"; };
+		760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarHeaderView.m; sourceTree = "<group>"; };
+		760478BA1E9E151E00CFB10A /* SalaryBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarCell.h; sourceTree = "<group>"; };
+		760478BB1E9E151E00CFB10A /* SalaryBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarCell.m; sourceTree = "<group>"; };
 		760A7EEF1E0B6B1F0036C6C6 /* NetworkDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataTool.h; sourceTree = "<group>"; };
 		760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataTool.m; sourceTree = "<group>"; };
 		760A7EF21E0CB6070036C6C6 /* SocialSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityController.h; sourceTree = "<group>"; };
@@ -1362,6 +1371,7 @@
 		597223021DADE05400D01A7A /* Work */ = {
 			isa = PBXGroup;
 			children = (
+				760478AB1E9DBB5100CFB10A /* Salary */,
 				764499CE1DCC7D5A00A6404F /* Reimburse */,
 				597223031DADE05400D01A7A /* Approval */,
 				597223311DADE05400D01A7A /* Check */,
@@ -2155,6 +2165,35 @@
 				59FC09431D952A9A00C1D0E0 /* DVVTabBarController.m */,
 			);
 			path = DVVTabBarController;
+			sourceTree = "<group>";
+		};
+		760478AB1E9DBB5100CFB10A /* Salary */ = {
+			isa = PBXGroup;
+			children = (
+				760478B31E9DBBE000CFB10A /* View */,
+				760478AF1E9DBBD800CFB10A /* Controller */,
+			);
+			path = Salary;
+			sourceTree = "<group>";
+		};
+		760478AF1E9DBBD800CFB10A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				760478B01E9DBBD800CFB10A /* SalaryBarController.h */,
+				760478B11E9DBBD800CFB10A /* SalaryBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		760478B31E9DBBE000CFB10A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				760478B71E9DC6D800CFB10A /* SalaryBarHeaderView.h */,
+				760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */,
+				760478BA1E9E151E00CFB10A /* SalaryBarCell.h */,
+				760478BB1E9E151E00CFB10A /* SalaryBarCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		761C373C1E09299A007E1607 /* Controller */ = {
@@ -3262,6 +3301,7 @@
 				597223C71DADE05400D01A7A /* popOutView.m in Sources */,
 				597223AF1DADE05400D01A7A /* SignUpApprovalListModel.m in Sources */,
 				76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */,
+				760478B91E9DC6D800CFB10A /* SalaryBarHeaderView.m in Sources */,
 				59E729EC1D6A8AD700920CC1 /* DVVImagePickerControllerManager.m in Sources */,
 				597223CE1DADE05400D01A7A /* LeaveApplyView.m in Sources */,
 				762B92921E95CD0200BFFF9B /* MWGridViewController.m in Sources */,
@@ -3280,6 +3320,7 @@
 				597223C11DADE05400D01A7A /* CheckRecordView.m in Sources */,
 				762B92CE1E95CD0200BFFF9B /* EaseUserCell.m in Sources */,
 				597223CB1DADE05400D01A7A /* LeaveApplyRecordController.m in Sources */,
+				760478B21E9DBBD800CFB10A /* SalaryBarController.m in Sources */,
 				76F02FCC1DD4531B00D32771 /* QBAssetsCollectionViewLayout.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
 				762B92D41E95CD0200BFFF9B /* EaseBubbleView+Gif.m in Sources */,
@@ -3294,6 +3335,7 @@
 				597223D11DADE05400D01A7A /* MMMainController.m in Sources */,
 				597223C21DADE05400D01A7A /* CheckView.m in Sources */,
 				76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */,
+				760478BC1E9E151E00CFB10A /* SalaryBarCell.m in Sources */,
 				5901494B1D8FBDD200B2BAE2 /* YBBaseNavigationController.m in Sources */,
 				597223E31DADE05400D01A7A /* PhoneListModel.m in Sources */,
 				76CBDCE81DDB064700272D91 /* CityButton.m in Sources */,

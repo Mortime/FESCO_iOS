@@ -734,4 +734,8 @@ typedef void (^UpPictureFailureBlock) (NSError *failure);
  
  */
 + (void)postSaveBuffetInfoWithEmpName:(NSString *)empName gender:(NSString *)gender nation:(NSString *)nation birthday:(NSString *)birthday card:(NSString *)card nationality:(NSString *)nationality workCode:(NSString *)workCode workDate:(NSString *)workDate hukouType:(NSString *)hukouType address:(NSString *)address Success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
+/**
+ *  工资数据查询
+ */
++ (void)postSalaryBarDataWithYear:(NSString *)year success:(NetworkSuccessBlock)success failure:(NetworkFailureBlock)failure;
 @end
