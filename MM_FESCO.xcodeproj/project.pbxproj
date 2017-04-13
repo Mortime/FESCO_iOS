@@ -335,6 +335,7 @@
 		76929B211DDEA90F00775AF3 /* NewPurchaseRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B201DDEA90F00775AF3 /* NewPurchaseRecordCell.m */; };
 		76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */; };
 		76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */; };
+		76A5F3BC1E9F786F00F3C5D0 /* SalaryBarSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A5F3BB1E9F786F00F3C5D0 /* SalaryBarSectionView.m */; };
 		76AB716A1DDAFCF8001B2D0D /* PurchaseCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */; };
 		76B1F5CC1DFE4360001EBAB5 /* NOBookPurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1F5CB1DFE4360001EBAB5 /* NOBookPurchaseController.m */; };
 		76B1F5CF1DFE44C9001EBAB5 /* NOBookPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1F5CE1DFE44C9001EBAB5 /* NOBookPurchaseCell.m */; };
@@ -1087,6 +1088,8 @@
 		76929B231DDEAD7100775AF3 /* NewPurchaseRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPurchaseRecordModel.m; sourceTree = "<group>"; };
 		76929B251DDEEB8E00775AF3 /* GroupInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoModel.h; sourceTree = "<group>"; };
 		76929B261DDEEB8E00775AF3 /* GroupInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoModel.m; sourceTree = "<group>"; };
+		76A5F3BA1E9F786F00F3C5D0 /* SalaryBarSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarSectionView.h; sourceTree = "<group>"; };
+		76A5F3BB1E9F786F00F3C5D0 /* SalaryBarSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarSectionView.m; sourceTree = "<group>"; };
 		76AB71681DDAFCF8001B2D0D /* PurchaseCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCityCell.h; sourceTree = "<group>"; };
 		76AB71691DDAFCF8001B2D0D /* PurchaseCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCityCell.m; sourceTree = "<group>"; };
 		76B1F5CA1DFE4360001EBAB5 /* NOBookPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOBookPurchaseController.h; sourceTree = "<group>"; };
@@ -2192,6 +2195,8 @@
 				760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */,
 				760478BA1E9E151E00CFB10A /* SalaryBarCell.h */,
 				760478BB1E9E151E00CFB10A /* SalaryBarCell.m */,
+				76A5F3BA1E9F786F00F3C5D0 /* SalaryBarSectionView.h */,
+				76A5F3BB1E9F786F00F3C5D0 /* SalaryBarSectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3248,6 +3253,7 @@
 				76383CFE1E0A18DC004D4E13 /* NOBookChooseCell.m in Sources */,
 				597223E81DAE08B400D01A7A /* MMPageControl.m in Sources */,
 				762B92B51E95CD0200BFFF9B /* PSTGridLayoutSection.m in Sources */,
+				76A5F3BC1E9F786F00F3C5D0 /* SalaryBarSectionView.m in Sources */,
 				762B92761E95CD0200BFFF9B /* amrFileCodec.mm in Sources */,
 				762B92A61E95CD0200BFFF9B /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				763256E51DD318DE00C9C903 /* NewPurchaseSubTitleCell.m in Sources */,

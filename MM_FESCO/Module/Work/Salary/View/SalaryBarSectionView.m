@@ -1,15 +1,14 @@
 //
-//  SalaryBarCell.m
+//  SalaryBarSectionView.m
 //  MM_FESCO
 //
-//  Created by Mortimey on 2017/4/12.
+//  Created by Mortimey on 2017/4/13.
 //  Copyright © 2017年 Mortimey. All rights reserved.
 //
 
-#import "SalaryBarCell.h"
+#import "SalaryBarSectionView.h"
 
-@interface SalaryBarCell ()
-
+@interface SalaryBarSectionView ()
 @property (nonatomic, strong) UIView *topLineView;
 @property (nonatomic, strong) UIView *cycleView;
 @property (nonatomic, strong) UIView *bottomLineView;
@@ -18,22 +17,18 @@
 @property (nonatomic ,strong) UILabel *salaryTypeLabel;
 @property (nonatomic ,strong) UILabel *moneyLabel;
 
-
 @end
-
-@implementation SalaryBarCell
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+@implementation SalaryBarSectionView
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self == [super initWithFrame:frame]) {
         [self initUI];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor colorWithHexString:@"1abddc"];
-        
+        UITapGestureRecognizer *gap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickArrow)];
+        [self addGestureRecognizer:gap];
     }
     return self;
 }
-
 - (void)initUI{
+    self.backgroundColor = [UIColor colorWithHexString:@"1abddc"];
     [self addSubview:self.cycleView];
     [self addSubview:self.topLineView];
     [self addSubview:self.bottomLineView];
@@ -41,9 +36,7 @@
     [self addSubview:self.salaryTypeLabel];
     [self addSubview:self.moneyLabel];
     [self addSubview:self.flagButton];
-    
-    
-    
+
 }
 - (void)layoutSubviews{
     [self.cycleView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -95,17 +88,20 @@
         make.width.mas_equalTo(@9);
         
     }];
+    _monthLabel.text = _monthStr;
+    _moneyLabel.text = _moneyStr;
+    _flagButton.tag = _indexTag;
 }
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
+// 箭头点击
+- (void)didClickArrow:(UIButton *)sender{
+    if ([_delegate respondsToSelector:@selector(SalaryBarSectionViewDelegateWith:)]) {
+        [_delegate SalaryBarSectionViewDelegateWith:_flagButton];
+    }
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    
+- (void)didClickArrow{
+    if ([_delegate respondsToSelector:@selector(SalaryBarSectionViewDelegateWith:)]) {
+        [_delegate SalaryBarSectionViewDelegateWith:_flagButton];
+    }
 }
 #pragma mark ---- Lazy 加载
 
@@ -169,8 +165,10 @@
         _flagButton.backgroundColor = [UIColor clearColor];
         [_flagButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_flagButton setBackgroundImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
-
-}
+        [_flagButton addTarget:self action:@selector(didClickArrow:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
     return _flagButton;
 }
 @end
+

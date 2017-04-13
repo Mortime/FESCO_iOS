@@ -9,8 +9,9 @@
 #import "SalaryBarController.h"
 #import "SalaryBarHeaderView.h"
 #import "SalaryBarCell.h"
+#import "SalaryBarSectionView.h"
 
-@interface SalaryBarController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SalaryBarController ()<UITableViewDelegate,UITableViewDataSource,SalaryBarSectionViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -33,6 +34,10 @@
 
 @property (nonatomic, strong) NSMutableArray *yearsArray;
 
+@property (nonatomic, strong) NSMutableArray *monthArray;
+
+
+
 @end
 
 @implementation SalaryBarController
@@ -42,6 +47,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"工资数据汇总";
+    _monthArray = [NSMutableArray array];
     _yearsArray = [self yearsData];
     _yearText =[_yearsArray lastObject];
     self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
@@ -65,13 +71,42 @@
 - (void)initData{
     [NetworkEntity postSalaryBarDataWithYear:_yearText success:^(id responseObject) {
         MMLog(@"SalaryBarData  =======responseObject=====%@",responseObject);
+        if ([[responseObject objectForKey:@"errcode"] integerValue]== 0) {
+            NSMutableArray *marginArray = [NSMutableArray array];
+            NSDictionary *param = [responseObject objectForKey:@"dataMap"];
+            NSArray *allKey = [param allKeys];
+            for (NSString *key in allKey) {
+                if ([[param objectForKey:key] count] == 0) {
+                    [marginArray addObject:key];
+                }
+            }
+            
+         _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
+            MMLog(@"_monthArray = %@",_monthArray);
+            [_tableView reloadData];
+        }
     } failure:^(NSError *failure) {
         MMLog(@"SalaryBarData  =======failure=====%@",failure);
+        [self showTotasViewWithMes:@"网络错误"];
     }];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    SalaryBarSectionView *sectionView = [[SalaryBarSectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 30)];
+    sectionView.monthStr = _monthArray[section];
+    sectionView.moneyStr =  @"¥ 20000";
+    sectionView.indexTag = section;
+    sectionView.delegate = self;
+    return sectionView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return _monthArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,6 +134,14 @@
     } completion:^(BOOL finished) {
     }];
    }
+// SalaryBarSectionViewDelegate
+- (void)SalaryBarSectionViewDelegateWith:(UIButton *)sender{
+    [UIView animateWithDuration:0.5 animations:^{
+        sender.transform = CGAffineTransformRotate(sender.transform, M_PI);
+        
+    } completion:^(BOOL finished) {
+    }];
+}
 // 选择年份回调
 - (void)selectYearWithLaber:(UILabel *)label{
     MMLog(@"lable tag %lu",label.tag);
@@ -118,6 +161,22 @@
         
         [resultArray addObject:[NSString stringWithFormat:@"%lu",margin]];
     }
+    return resultArray;
+}
+/* 数据进行排序(降序) */
+- (NSArray *)sortDataWithArray:(NSArray *)data{
+    
+    NSComparator finderSort = ^(id string1,id string2){
+        
+        if ([string1 integerValue] < [string2 integerValue]) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }else if ([string1 integerValue] > [string2 integerValue]){
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        else
+            return (NSComparisonResult)NSOrderedSame;
+    };
+    NSArray *resultArray = [data sortedArrayUsingComparator:finderSort];
     return resultArray;
 }
 - (void)didReceiveMemoryWarning {
