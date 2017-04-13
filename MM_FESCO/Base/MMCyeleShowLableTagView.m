@@ -52,6 +52,7 @@
         DDChannelLabel *label = [DDChannelLabel channelLabelWithTitle:channel];
         label.frame = CGRectMake(x, 0, label.width + margin, h);
         label.textColor = [UIColor whiteColor];
+        label.font  = [UIFont systemFontOfSize:14];
         label.text = tagArray[i];
         
         [_smallScrollView addSubview:label];
