@@ -21,7 +21,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 @interface PhoneListController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 
 // 企业部门
-@property (nonatomic, strong) NSArray *gropArray;
+@property (nonatomic, strong) NSMutableArray *gropArray;
 
 // 部门列表展示
 @property (nonatomic, strong) MMCyeleShowLableTagView *tagView;
@@ -46,14 +46,14 @@ static NSString * const reuseID  = @"PhoneListCell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     // 用户头像加
-//    [self initIconUrl];
-    [self initData];
+    [self initIconUrl];
     
 }
 - (void)viewWillDisappear:(BOOL)animated{
     UILabel *label = [[UILabel alloc] init];
     label.tag = 0;
     [self barViewItemSelect:label];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -237,11 +237,12 @@ static NSString * const reuseID  = @"PhoneListCell";
         [gropNameArray addObject:gropName];
     }
     self.allPersonMessageArray = resultArray.mutableCopy;
-    
+
+    // 当两者数据不相同时,进行添加 (*** 当其中一个组改变组名时,目前存在bug), 防止重复添加
+    if (self.gropArray.count != gropNameArray.count) {
+        [_tagView initTag:gropNameArray];
+    }
     self.gropArray = gropNameArray;
-    
-    
-    [_tagView initTag:_gropArray];
     [self.collectionView reloadData];
     
     
