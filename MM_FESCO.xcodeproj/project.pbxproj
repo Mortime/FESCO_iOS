@@ -329,6 +329,9 @@
 		7662B5D31E359809007951E9 /* 红色.tag6.savedSearch in Resources */ = {isa = PBXBuildFile; fileRef = 7662B5D21E359809007951E9 /* 红色.tag6.savedSearch */; };
 		7662B5D61E35987C007951E9 /* YBWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7662B5D51E35987C007951E9 /* YBWelcomeController.m */; };
 		7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7682502E1DE29FE9007520BD /* ReimburseModel.m */; };
+		7689DA0E1EA0A4E400B073F5 /* SalaryBarPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA0D1EA0A4E400B073F5 /* SalaryBarPopView.m */; };
+		7689DA111EA0A63B00B073F5 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA101EA0A63B00B073F5 /* NewPagedFlowView.m */; };
+		7689DA141EA0A65200B073F5 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA131EA0A65200B073F5 /* PGIndexBannerSubiew.m */; };
 		768F36401E8CD48200D8D377 /* MMChooseTextFileWithSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
@@ -1076,6 +1079,12 @@
 		7662B5D51E35987C007951E9 /* YBWelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWelcomeController.m; sourceTree = "<group>"; };
 		7682502D1DE29FE9007520BD /* ReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseModel.h; sourceTree = "<group>"; };
 		7682502E1DE29FE9007520BD /* ReimburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseModel.m; sourceTree = "<group>"; };
+		7689DA0C1EA0A4E400B073F5 /* SalaryBarPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarPopView.h; sourceTree = "<group>"; };
+		7689DA0D1EA0A4E400B073F5 /* SalaryBarPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarPopView.m; sourceTree = "<group>"; };
+		7689DA0F1EA0A63B00B073F5 /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
+		7689DA101EA0A63B00B073F5 /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
+		7689DA121EA0A65200B073F5 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
+		7689DA131EA0A65200B073F5 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		768F363E1E8CD48200D8D377 /* MMChooseTextFileWithSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFileWithSS.h; sourceTree = "<group>"; };
 		768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFileWithSS.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
@@ -2197,6 +2206,12 @@
 				760478BB1E9E151E00CFB10A /* SalaryBarCell.m */,
 				76A5F3BA1E9F786F00F3C5D0 /* SalaryBarSectionView.h */,
 				76A5F3BB1E9F786F00F3C5D0 /* SalaryBarSectionView.m */,
+				7689DA0C1EA0A4E400B073F5 /* SalaryBarPopView.h */,
+				7689DA0D1EA0A4E400B073F5 /* SalaryBarPopView.m */,
+				7689DA0F1EA0A63B00B073F5 /* NewPagedFlowView.h */,
+				7689DA101EA0A63B00B073F5 /* NewPagedFlowView.m */,
+				7689DA121EA0A65200B073F5 /* PGIndexBannerSubiew.h */,
+				7689DA131EA0A65200B073F5 /* PGIndexBannerSubiew.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3237,6 +3252,7 @@
 				761601D31DFAA7BC006F9B59 /* NSString+FontAwesome.m in Sources */,
 				597222ED1DADDE5900D01A7A /* MMDataBase.m in Sources */,
 				762B92C71E95CD0200BFFF9B /* FixFopen.c in Sources */,
+				7689DA141EA0A65200B073F5 /* PGIndexBannerSubiew.m in Sources */,
 				76515B3D1DED12BA0054E910 /* ProgressStatusCell.m in Sources */,
 				76929B271DDEEB8E00775AF3 /* GroupInfoModel.m in Sources */,
 				5994C4721D8271FD007660DD /* MMLoginTool.m in Sources */,
@@ -3329,6 +3345,7 @@
 				760478B21E9DBBD800CFB10A /* SalaryBarController.m in Sources */,
 				76F02FCC1DD4531B00D32771 /* QBAssetsCollectionViewLayout.m in Sources */,
 				597223B71DADE05400D01A7A /* OverTimeCell.m in Sources */,
+				7689DA0E1EA0A4E400B073F5 /* SalaryBarPopView.m in Sources */,
 				762B92D41E95CD0200BFFF9B /* EaseBubbleView+Gif.m in Sources */,
 				764223BD1E1D415E0094DEBB /* ReimburseApprovalListModel.m in Sources */,
 				76CBDCEB1DDB064800272D91 /* CityListViewController.m in Sources */,
@@ -3467,6 +3484,7 @@
 				762B92DE1E95CD0200BFFF9B /* EaseTextView.m in Sources */,
 				76929B241DDEAD7100775AF3 /* NewPurchaseRecordModel.m in Sources */,
 				763256F11DD319D900C9C903 /* NewPurchaseBookController.m in Sources */,
+				7689DA111EA0A63B00B073F5 /* NewPagedFlowView.m in Sources */,
 				762B92DC1E95CD0200BFFF9B /* EaseChatToolbarItem.m in Sources */,
 				760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */,
 				762B92B81E95CD0200BFFF9B /* EaseConversationModel.m in Sources */,

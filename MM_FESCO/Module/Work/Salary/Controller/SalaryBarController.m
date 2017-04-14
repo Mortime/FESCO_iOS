@@ -10,6 +10,7 @@
 #import "SalaryBarHeaderView.h"
 #import "SalaryBarCell.h"
 #import "SalaryBarSectionView.h"
+#import "SalaryBarPopView.h"
 
 @interface SalaryBarController ()<UITableViewDelegate,UITableViewDataSource,SalaryBarSectionViewDelegate>
 
@@ -156,7 +157,18 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    SalaryBarPopView *pushView = [[SalaryBarPopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+    UIButton *disButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    disButton.frame = CGRectMake(self.view.width - 40, 0, 40, 40);
+    disButton.backgroundColor = [UIColor cyanColor];
+    [disButton addTarget:self action:@selector(didClickDis:) forControlEvents:UIControlEventTouchUpInside];
+    [pushView addSubview:disButton];
+    [self.view addSubview:pushView];
+}
+// 移除弹出视图
+- (void)didClickDis:(UIButton *)sender{
+    UIView *subView = (UIView *)[sender superview];
+    [subView removeFromSuperview];
 }
 // SalaryBarSectionViewDelegate
 - (void)SalaryBarSectionViewDelegateWith:(UIButton *)sender{
