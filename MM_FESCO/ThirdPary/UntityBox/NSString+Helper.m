@@ -342,4 +342,12 @@
     }
     return nil;
 }
+// 服务器返回 "null", 判断是否为空
++ (BOOL)isNUllWithText:(NSString *)text{
+    if (text == nil ||[text  isEqual:[NSNull null]]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 @end

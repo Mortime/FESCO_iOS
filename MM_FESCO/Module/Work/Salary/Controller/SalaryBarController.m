@@ -36,6 +36,10 @@
 
 @property (nonatomic, strong) NSMutableArray *monthArray;
 
+@property (nonatomic, strong) NSMutableArray *monthAllSalaryArray;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 
 
 @end
@@ -48,6 +52,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"工资数据汇总";
     _monthArray = [NSMutableArray array];
+    _monthAllSalaryArray = [NSMutableArray array];
+    _dataArray = [NSMutableArray array];
     _yearsArray = [self yearsData];
     _yearText =[_yearsArray lastObject];
     self.view.backgroundColor = MM_MAIN_FONTCOLOR_BLUE;
@@ -76,12 +82,24 @@
             NSDictionary *param = [responseObject objectForKey:@"dataMap"];
             NSArray *allKey = [param allKeys];
             for (NSString *key in allKey) {
-                if ([[param objectForKey:key] count] == 0) {
+                if ([[param objectForKey:key] count] != 0) {
                     [marginArray addObject:key];
                 }
             }
             
          _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
+            
+            for (NSString *monthKey in _monthArray) {
+                NSDictionary *param = [responseObject objectForKey:@"dataMap"];
+                // 实发工资
+                CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
+                [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
+                // 数据字典
+                NSDictionary *mightDic = [param objectForKey:monthKey];
+                NSMutableDictionary *mutableDic = mightDic.mutableCopy;
+                [mutableDic setObject:@"0" forKey:@"isShowDetail"];
+                [_dataArray addObject:mutableDic];
+            }
             MMLog(@"_monthArray = %@",_monthArray);
             [_tableView reloadData];
         }
@@ -93,7 +111,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     SalaryBarSectionView *sectionView = [[SalaryBarSectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 30)];
     sectionView.monthStr = _monthArray[section];
-    sectionView.moneyStr =  @"¥ 20000";
+    sectionView.moneyStr =  [NSString stringWithFormat:@"¥ %@",[_monthAllSalaryArray objectAtIndex:section]];
     sectionView.indexTag = section;
     sectionView.delegate = self;
     return sectionView;
@@ -105,8 +123,14 @@
     return _monthArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 0;
+    NSDictionary *dic = [_dataArray objectAtIndex:section];
+    NSMutableDictionary *mightDic = dic.mutableCopy;
+    if ([[dic objectForKey:@"isShowDetail"] integerValue] == 1) {
+        [mightDic removeObjectForKey:@"isShowDetail"];
+        return [mightDic allKeys].count;
+    }else{
+        return 0;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -121,32 +145,52 @@
     if (!cell) {
         cell = [[SalaryBarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    
+    // 取出月份
+    NSDictionary *monthDic = [_dataArray objectAtIndex:indexPath.section];
+    NSMutableDictionary *mightDic = monthDic.mutableCopy;
+    [mightDic removeObjectForKey:@"isShowDetail"];
+    cell.salaryTypeStr = [mightDic allKeys][indexPath.row];
+    CGFloat moneyResult = [self salaryRealAllNumberWithDic:mightDic];
+    cell.moneyStr = [NSString stringWithFormat:@"¥ %.2f",moneyResult];
     return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SalaryBarCell *cell = (SalaryBarCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [UIView animateWithDuration:0.5 animations:^{
-        cell.flagButton.transform = CGAffineTransformRotate(cell.flagButton.transform, M_PI);
-        
-    } completion:^(BOOL finished) {
-    }];
-   }
+}
 // SalaryBarSectionViewDelegate
 - (void)SalaryBarSectionViewDelegateWith:(UIButton *)sender{
     [UIView animateWithDuration:0.5 animations:^{
         sender.transform = CGAffineTransformRotate(sender.transform, M_PI);
         
     } completion:^(BOOL finished) {
+        // 取出月份
+        NSDictionary *monthDic = [_dataArray objectAtIndex:sender.tag];
+        NSMutableDictionary *monthMutDic = monthDic.mutableCopy;
+        NSInteger isFlag = [[monthDic objectForKey:@"isShowDetail"] integerValue];
+        if (isFlag ==0) {
+            isFlag = 1;
+        }else if (isFlag == 1){
+            isFlag = 0;
+        }
+        [monthMutDic setObject:[NSString stringWithFormat:@"%lu",isFlag] forKey:@"isShowDetail"];
+        [_dataArray replaceObjectAtIndex:sender.tag withObject:monthMutDic];
+        MMLog(@"replaceObjectAtIndex  = %@",_dataArray);
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:sender.tag];
+        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+
     }];
+    
 }
 // 选择年份回调
 - (void)selectYearWithLaber:(UILabel *)label{
     MMLog(@"lable tag %lu",label.tag);
     NSString *year = [_yearsArray objectAtIndex:label.tag];
     _yearText = year;
+    // 防止数据复用,此处清除所有数据
+    [_dataArray removeAllObjects];
+    [_monthAllSalaryArray removeAllObjects];
+    [_monthArray removeAllObjects];
     [self initData];
 }
 // 获得展示的年份
@@ -178,6 +222,74 @@
     };
     NSArray *resultArray = [data sortedArrayUsingComparator:finderSort];
     return resultArray;
+}
+/* 工资总和计算 */
+- (CGFloat)salaryAllNumberWithDic:(NSDictionary *)dic{
+    NSArray *keyArray = [dic allKeys];
+    CGFloat allNumber = 0;
+    for (NSString *key in keyArray) {
+        if ([[dic objectForKey:key] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *mightDic = [dic objectForKey:key];
+            NSArray *mightKeyArray = [mightDic allKeys];
+            for (NSString *migthKey in mightKeyArray) {
+                // 判断所对应的value 是否为空
+                if (![NSString isNUllWithText:[mightDic objectForKey:migthKey]]) {
+                    // 不为空
+                    // 去除掉 EMP_ID , ID, MONTH, EMP_NAME 所对应的key值
+                    if (![migthKey isEqualToString:@"EMP_ID"] &&![migthKey isEqualToString:@"ID"] &&![migthKey isEqualToString:@"MONTH"] &&![migthKey isEqualToString:@"EMP_NAME"]) {
+                        allNumber = allNumber + [[mightDic objectForKey:migthKey] floatValue];
+                    }
+                    
+                }
+            }
+        }else{
+            // 判断所对应的value 是否为空
+            if (![NSString isNUllWithText:[dic objectForKey:key]]) {
+                // 不为空
+                if (![key isEqualToString:@"EMP_ID"] &&![key isEqualToString:@"ID"] &&![key isEqualToString:@"MONTH"] &&![key isEqualToString:@"EMP_NAME"]) {
+                    allNumber = allNumber + [[dic objectForKey:key] floatValue];
+                }
+                
+            }
+
+        }
+    }
+    return allNumber;
+}
+/* 工资实发总和计算 (分红实发, 股票期权实发, 劳务实发, 离职费实发, 年终奖实发,工资实发)*/
+- (CGFloat)salaryRealAllNumberWithDic:(NSDictionary *)dic{
+    NSArray *allKey = [dic allKeys];
+    CGFloat allNumber = 0;
+    for (NSString *key in allKey) {
+        NSDictionary *resultDic = [dic objectForKey:key];
+        if ([key isEqualToString:@"工资"]) {
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"工资实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"工资实发"] floatValue];
+            }
+        }else if ([key isEqualToString:@"分红"]){
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"分红实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"分红实发"] floatValue];
+            }
+        }else if ([key isEqualToString:@"股票期权"]){
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"股票期权实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"股票期权实发"] floatValue];
+            }
+
+        }else if ([key isEqualToString:@"劳务"]){
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"劳务实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"劳务实发"] floatValue];
+            }
+        }else if ([key isEqualToString:@"离职费"]){
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"离职费实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"离职费实发"] floatValue];
+            }
+        }else if ([key isEqualToString:@"年终奖"]){
+            if (![NSString isNUllWithText:[resultDic objectForKey:@"年终奖实发"]]) {
+                allNumber = allNumber + [[resultDic objectForKey:@"年终奖实发"] floatValue];
+            }
+        }
+    }
+    return allNumber;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

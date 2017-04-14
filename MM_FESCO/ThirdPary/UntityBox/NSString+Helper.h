@@ -137,4 +137,8 @@
  *   根据月份返回英文状态下的月份
  */
 + (NSString *)enlishMonthWithNumberMon:(NSString *)numberMon;
+/*
+ 服务器返回 "null", 判断是否为空
+ */
++ (BOOL)isNUllWithText:(NSString *)text;
 @end

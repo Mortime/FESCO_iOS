@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SalaryBarCell : UITableViewCell
-@property (nonatomic, strong) UIButton *flagButton;
+
+@property (nonatomic,strong) NSString *salaryTypeStr;
+@property (nonatomic,strong) NSString *moneyStr;
+
 @end

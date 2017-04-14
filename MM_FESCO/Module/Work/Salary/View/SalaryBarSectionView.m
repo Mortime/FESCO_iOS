@@ -92,12 +92,7 @@
     _moneyLabel.text = _moneyStr;
     _flagButton.tag = _indexTag;
 }
-// 箭头点击
-- (void)didClickArrow:(UIButton *)sender{
-    if ([_delegate respondsToSelector:@selector(SalaryBarSectionViewDelegateWith:)]) {
-        [_delegate SalaryBarSectionViewDelegateWith:_flagButton];
-    }
-}
+// 手势点击
 - (void)didClickArrow{
     if ([_delegate respondsToSelector:@selector(SalaryBarSectionViewDelegateWith:)]) {
         [_delegate SalaryBarSectionViewDelegateWith:_flagButton];
@@ -165,7 +160,6 @@
         _flagButton.backgroundColor = [UIColor clearColor];
         [_flagButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_flagButton setBackgroundImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
-        [_flagButton addTarget:self action:@selector(didClickArrow:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _flagButton;
