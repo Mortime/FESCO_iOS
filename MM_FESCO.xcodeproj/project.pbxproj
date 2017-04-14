@@ -332,6 +332,7 @@
 		7689DA0E1EA0A4E400B073F5 /* SalaryBarPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA0D1EA0A4E400B073F5 /* SalaryBarPopView.m */; };
 		7689DA111EA0A63B00B073F5 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA101EA0A63B00B073F5 /* NewPagedFlowView.m */; };
 		7689DA141EA0A65200B073F5 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA131EA0A65200B073F5 /* PGIndexBannerSubiew.m */; };
+		7689DA171EA0AF2100B073F5 /* SalaryBarPopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DA161EA0AF2100B073F5 /* SalaryBarPopCell.m */; };
 		768F36401E8CD48200D8D377 /* MMChooseTextFileWithSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */; };
 		76920B4C1DDC430D005B2B76 /* MPImageProgressCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B491DDC430D005B2B76 /* MPImageProgressCollectionCell.m */; };
 		76920B4D1DDC430D005B2B76 /* MPImageUploadProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76920B4B1DDC430D005B2B76 /* MPImageUploadProgressCell.m */; };
@@ -1085,6 +1086,8 @@
 		7689DA101EA0A63B00B073F5 /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
 		7689DA121EA0A65200B073F5 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		7689DA131EA0A65200B073F5 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
+		7689DA151EA0AF2100B073F5 /* SalaryBarPopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarPopCell.h; sourceTree = "<group>"; };
+		7689DA161EA0AF2100B073F5 /* SalaryBarPopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarPopCell.m; sourceTree = "<group>"; };
 		768F363E1E8CD48200D8D377 /* MMChooseTextFileWithSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMChooseTextFileWithSS.h; sourceTree = "<group>"; };
 		768F363F1E8CD48200D8D377 /* MMChooseTextFileWithSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMChooseTextFileWithSS.m; sourceTree = "<group>"; };
 		76920B481DDC430D005B2B76 /* MPImageProgressCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageProgressCollectionCell.h; sourceTree = "<group>"; };
@@ -2204,6 +2207,8 @@
 				760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */,
 				760478BA1E9E151E00CFB10A /* SalaryBarCell.h */,
 				760478BB1E9E151E00CFB10A /* SalaryBarCell.m */,
+				7689DA151EA0AF2100B073F5 /* SalaryBarPopCell.h */,
+				7689DA161EA0AF2100B073F5 /* SalaryBarPopCell.m */,
 				76A5F3BA1E9F786F00F3C5D0 /* SalaryBarSectionView.h */,
 				76A5F3BB1E9F786F00F3C5D0 /* SalaryBarSectionView.m */,
 				7689DA0C1EA0A4E400B073F5 /* SalaryBarPopView.h */,
@@ -3239,6 +3244,7 @@
 				76D12A891DD95C5600249133 /* BankInfoModel.m in Sources */,
 				76CBDCE71DDB064700272D91 /* ButtonGroupView.m in Sources */,
 				7682502F1DE29FE9007520BD /* ReimburseModel.m in Sources */,
+				7689DA171EA0AF2100B073F5 /* SalaryBarPopCell.m in Sources */,
 				597223DC1DADE05400D01A7A /* PersonalMessageController.m in Sources */,
 				59C90C3A1D5C281700CE0385 /* NSDateFormatter+sharedDateFormatter.m in Sources */,
 				762B92D11E95CD0200BFFF9B /* EaseMessageCell.m in Sources */,

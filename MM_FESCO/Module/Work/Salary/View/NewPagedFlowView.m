@@ -177,12 +177,12 @@
                     
                     CGFloat inset = (_pageSize.height * (1 - _minimumPageScale)) * (delta / _pageSize.height)/2.0;
                     cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(inset, inset, inset, inset));
-                    cell.mainImageView.frame = cell.bounds;
+                    cell.mainView.frame = cell.bounds;
                 } else {
                     cell.coverView.alpha = _minimumPageAlpha;
                     CGFloat inset = _pageSize.height * (1 - _minimumPageScale) / 2.0 ;
                     cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(inset, inset, inset, inset));
-                    cell.mainImageView.frame = cell.bounds;
+                    cell.mainView.frame = cell.bounds;
                 }
     
             }

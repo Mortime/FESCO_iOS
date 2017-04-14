@@ -21,11 +21,13 @@
 /**
  *  主图
  */
-@property (nonatomic, strong) UIImageView *mainImageView;
+@property (nonatomic, strong) UITableView *mainView;
 
 /**
  *  用来变色的view
  */
 @property (nonatomic, strong) UIView *coverView;
+
+@property (nonatomic, strong) NSDictionary *dic;
 
 @end

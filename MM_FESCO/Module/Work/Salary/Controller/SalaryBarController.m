@@ -12,7 +12,7 @@
 #import "SalaryBarSectionView.h"
 #import "SalaryBarPopView.h"
 
-@interface SalaryBarController ()<UITableViewDelegate,UITableViewDataSource,SalaryBarSectionViewDelegate>
+@interface SalaryBarController ()<UITableViewDelegate,UITableViewDataSource,SalaryBarSectionViewDelegate,SalaryBarPopViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -157,18 +157,20 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SalaryBarPopView *pushView = [[SalaryBarPopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
-    UIButton *disButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    disButton.frame = CGRectMake(self.view.width - 40, 0, 40, 40);
-    disButton.backgroundColor = [UIColor cyanColor];
-    [disButton addTarget:self action:@selector(didClickDis:) forControlEvents:UIControlEventTouchUpInside];
-    [pushView addSubview:disButton];
+    SalaryBarPopView *pushView = [[SalaryBarPopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,kMMHeight)];
+    NSDictionary *dic = [_dataArray objectAtIndex:indexPath.section];
+    MMLog(@"dicdicdicdicdic%@",dic);
+    NSMutableDictionary *mutDic = dic.mutableCopy;
+    [mutDic removeObjectForKey:@"isShowDetail"];
+    pushView.dataDic = mutDic;
+    pushView.delegate = self;
     [self.view addSubview:pushView];
 }
 // 移除弹出视图
-- (void)didClickDis:(UIButton *)sender{
+- (void)SalaryBarPopViewDelegateWithSender:(UIButton *)sender{
     UIView *subView = (UIView *)[sender superview];
     [subView removeFromSuperview];
+
 }
 // SalaryBarSectionViewDelegate
 - (void)SalaryBarSectionViewDelegateWith:(UIButton *)sender{

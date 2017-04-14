@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SalaryBarPopView : UIView
+@protocol SalaryBarPopViewDelegate <NSObject>
 
+- (void)SalaryBarPopViewDelegateWithSender:(UIButton *)sender;
+
+@end
+@interface SalaryBarPopView : UIView
+@property (nonatomic, strong) NSDictionary *dataDic; // 一个月所有数据
+@property (nonatomic, weak) id <SalaryBarPopViewDelegate> delegate;
+- (void)refreshUI;
 @end
