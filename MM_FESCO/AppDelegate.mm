@@ -148,8 +148,8 @@
 {
     // 配置环信
     EMOptions *options = [EMOptions optionsWithAppkey:@"1187170223115321#payrollpen"];
-    options.apnsCertName = @"iOSJPushDev";
-//        options.apnsCertName = @"iOSJPushPro";
+//    options.apnsCertName = @"iOSJPushDev";
+        options.apnsCertName = @"iOSJPushPro";
     [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
@@ -176,7 +176,7 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     // Required
     //@param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
-    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:NO];
+    [JPUSHService setupWithOption:launchOptions appKey:@"16bf989abad0ce9125fb0c73" channel:nil apsForProduction:YES];
     
     
     
@@ -453,38 +453,56 @@
         MMLog(@"NewVersionShowUser ===responseObject=========%@",responseObject);
         
         NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
-        NSString *appVersion = [NSString stringWithFormat:@"v%@",[infoDic objectForKey:@"CFBundleShortVersionString"]];
+        NSString *appVersion = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"CFBundleShortVersionString"]];
+        NSArray *appArray = [appVersion componentsSeparatedByString:@"."];
         
         if (responseObject) {
             NSArray *dataVersion = [responseObject objectForKey:@"appStore"];
             NSDictionary *dataDic = [dataVersion lastObject];
-            NSString *versionStr = [dataDic objectForKey:@"version_Name"];
-            if ([versionStr isEqualToString:appVersion]) {
-                // 没有新版本,直接跳过
-            }else if(![versionStr isEqualToString:appVersion]){
-                // 有新版本,给出提示
-                
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您有新的版本,请去更新!" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    // 取消
-                    
-                }]];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    // 确定
-                    NSString *str = @"https://itunes.apple.com/us/app/%E4%B9%A6%E8%96%AA/id1198059158?mt=8";
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-                    
-                }]];
-                
-                DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
-                [rootVC presentViewController:alertController animated:YES completion:nil];
+            NSString *versionStr = [[dataDic objectForKey:@"version_Name"] substringFromIndex:1];
+            // v1.2.3  v1.2.4 比较更新
+            NSArray *netArray = [versionStr componentsSeparatedByString:@"."];
+            
+            if ([appArray[0] integerValue] == [netArray[0] integerValue] ) {
+                if ([appArray[1] integerValue] == [netArray[1] integerValue]) {
+                    if ([appArray[2] integerValue] == [netArray[2] integerValue]){
+                        
+                    }else if ([appArray[2] integerValue] < [netArray[2] integerValue]){
+                        //提示更新
+                        [self showUpdateVersion];
+                    }
+                }else if ([appArray[1] integerValue] < [netArray[1] integerValue]){
+                    //提示更新
+                    [self showUpdateVersion];
+                }
+            }else if ([appArray[0] integerValue] < [netArray[0] integerValue]){
+                //提示更新
+                [self showUpdateVersion];
                 
             }
-        }
+            
+}
         
         
     } failure:^(NSError *failure) {
         MMLog(@"NewVersionShowUser ===failure=========%@",failure);
     }];
+}
+- (void)showUpdateVersion{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您有新的版本,请去更新!" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // 取消
+        
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 确定
+        NSString *str = @"https://itunes.apple.com/us/app/%E4%B9%A6%E8%96%AA/id1198059158?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+    }]];
+    
+    DVVTabBarController *rootVC = (DVVTabBarController *)self.window.rootViewController;
+    [rootVC presentViewController:alertController animated:YES completion:nil];
+
 }
 @end
