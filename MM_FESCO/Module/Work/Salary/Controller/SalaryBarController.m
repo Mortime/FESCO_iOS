@@ -164,6 +164,7 @@
     [mutDic removeObjectForKey:@"isShowDetail"];
     pushView.dataDic = mutDic;
     pushView.delegate = self;
+    pushView.indexTag = indexPath.row;
     [self.view addSubview:pushView];
 }
 // 移除弹出视图

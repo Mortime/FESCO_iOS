@@ -14,6 +14,7 @@
 
 @end
 @interface SalaryBarPopView : UIView
+@property (nonatomic, assign) NSInteger indexTag;
 @property (nonatomic, strong) NSDictionary *dataDic; // 一个月所有数据
 @property (nonatomic, weak) id <SalaryBarPopViewDelegate> delegate;
 - (void)refreshUI;

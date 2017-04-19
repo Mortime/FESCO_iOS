@@ -89,7 +89,7 @@ typedef enum{
 /**
  *  当前是第几页
  */
-@property (nonatomic, assign, readonly) NSInteger currentPageIndex;
+@property (nonatomic, assign, readonly) NSInteger currentPageIndex;  
 
 /**
  *  定时器

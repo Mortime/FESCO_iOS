@@ -30,4 +30,6 @@
 
 @property (nonatomic, strong) NSDictionary *dic;
 
+@property (nonatomic, strong) NSString *title;
+
 @end

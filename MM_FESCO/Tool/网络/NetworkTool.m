@@ -21,7 +21,7 @@
 
 //#define  HOST_TEST_DAMIAN  @"https://192.168.0.39:8090/payroll"   // 测试服务器地址  tu  https://192.168.0.39:8090
 
-//#define QA_TEST
+#define QA_TEST
 
 @implementation AFHttpClient
 

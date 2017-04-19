@@ -46,6 +46,7 @@
     pageFlowView.minimumPageScale = 0.85;
     pageFlowView.isCarousel = NO;
     pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
+    [pageFlowView scrollToPage:_indexTag];
     
     //提前告诉有多少页
     //    pageFlowView.orginPageCount = self.imageArray.count;
@@ -100,6 +101,7 @@
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
         bannerView.dic = [_dataDic objectForKey:key];
+        bannerView.title = key;
     }
     //在这里下载网络图片
     //  [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:hostUrlsImg,imageDict[@"img"]]] placeholderImage:[UIImage imageNamed:@""]];
@@ -128,8 +130,8 @@
 - (UIButton *)popButton{
     if (_popButton == nil) {
         _popButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _popButton.frame = CGRectMake(kMMWidth - 40, 0, 40, 40);
-        _popButton.backgroundColor = [UIColor cyanColor];
+        _popButton.frame = CGRectMake(kMMWidth - 32, 0, 32, 32);
+        [_popButton setBackgroundImage:[UIImage imageNamed:@"Buffer_Fork_BG"] forState:UIControlStateNormal];
         [_popButton addTarget:self action:@selector(didClickDis:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _popButton;
