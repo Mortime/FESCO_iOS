@@ -177,6 +177,7 @@
 		760A7F061E0D1B700036C6C6 /* SocialSecurityHearerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F051E0D1B700036C6C6 /* SocialSecurityHearerView.m */; };
 		760A7F091E0D20200036C6C6 /* SocialSecurityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
+		76149DC01EAD846800F1282A /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76149DBF1EAD846800F1282A /* zrfesco.cer */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
 		761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 761601CA1DFAA7BC006F9B59 /* FontAwesome.ttf */; };
@@ -391,7 +392,6 @@
 		76F4778F1E8A598600C73A64 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F4778E1E8A598600C73A64 /* test.plist */; };
 		76F477921E8B91DC00C73A64 /* BuffetDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F477911E8B91DC00C73A64 /* BuffetDataTool.m */; };
 		76FA7D1B1E972BF0002A56A4 /* OverTimeApplySSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FA7D1A1E972BF0002A56A4 /* OverTimeApplySSCell.m */; };
-		76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76FE9A0A1E487B8700828054 /* zrfesco.cer */; };
 		76FEB0B51DBD8F33008ED422 /* OverTimeStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */; };
 		76FF25EF1E27719A00B6B22C /* ProgressReimburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF25EE1E27719A00B6B22C /* ProgressReimburseModel.m */; };
 		F58695894A44DEB24A883CFF /* libPods-MM_FESCO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2715EDED2AD43181CF343F /* libPods-MM_FESCO.a */; };
@@ -764,6 +764,7 @@
 		760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCell.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
+		76149DBF1EAD846800F1282A /* zrfesco.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zrfesco.cer; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
 		761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApplyManModel.m; sourceTree = "<group>"; };
 		761601BD1DFAA26E006F9B59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1200,7 +1201,6 @@
 		76F477911E8B91DC00C73A64 /* BuffetDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuffetDataTool.m; sourceTree = "<group>"; };
 		76FA7D191E972BF0002A56A4 /* OverTimeApplySSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeApplySSCell.h; sourceTree = "<group>"; };
 		76FA7D1A1E972BF0002A56A4 /* OverTimeApplySSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeApplySSCell.m; sourceTree = "<group>"; };
-		76FE9A0A1E487B8700828054 /* zrfesco.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco.cer; sourceTree = "<group>"; };
 		76FEB0B31DBD8F33008ED422 /* OverTimeStatisticHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticHeaderView.h; sourceTree = "<group>"; };
 		76FEB0B41DBD8F33008ED422 /* OverTimeStatisticHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticHeaderView.m; sourceTree = "<group>"; };
 		76FF25ED1E27719A00B6B22C /* ProgressReimburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressReimburseModel.h; sourceTree = "<group>"; };
@@ -1920,7 +1920,7 @@
 		597762151D489AE000BD8472 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				76FE9A0A1E487B8700828054 /* zrfesco.cer */,
+				76149DBF1EAD846800F1282A /* zrfesco.cer */,
 				59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */,
 				597762161D489AE000BD8472 /* main.m */,
 				5977621E1D489AE000BD8472 /* Main.storyboard */,
@@ -3134,8 +3134,8 @@
 				76F02FCE1DD4531B00D32771 /* QBImagePickerController.strings in Resources */,
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
 				597762201D489AE000BD8472 /* Main.storyboard in Resources */,
-				76FE9A0B1E487B8700828054 /* zrfesco.cer in Resources */,
 				762B92B61E95CD0200BFFF9B /* MWPhotoBrowser.bundle in Resources */,
+				76149DC01EAD846800F1282A /* zrfesco.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

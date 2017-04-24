@@ -13,6 +13,7 @@
 #import "MMLoginController.h"
 #import "JZUserLoginManager.h"
 
+//#define  HOST_LINE_DOMAIN  @"https://192.168.0.39:4443/payroll" // 正式服务器地址
 #define  HOST_LINE_DOMAIN  @"https://www.payrollpen.com/payroll" // 正式服务器地址
 
 #define  HOST_TEST_DAMIAN  @"https://11.0.197.196:8443/payroll"   // 测试服务器地址  rui
@@ -21,7 +22,7 @@
 
 //#define  HOST_TEST_DAMIAN  @"https://192.168.0.39:8090/payroll"   // 测试服务器地址  tu  https://192.168.0.39:8090
 
-#define QA_TEST
+//#define QA_TEST
 
 @implementation AFHttpClient
 
@@ -33,12 +34,17 @@
         _sharedClient = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[NetworkTool domain]]];
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
-        NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
-        NSData * certData =[NSData dataWithContentsOfFile:cerPath];
-        MMLog(@"certData == %@",certData);
-        NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
-        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+//        NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
+//        NSData * certData =[NSData dataWithContentsOfFile:cerPath];
         
+        NSData *cerData = [[NSData alloc] initWithBase64EncodedString:kHttpsCerBase64 options:0];
+        
+        
+        
+        MMLog(@"certData == %@",cerData);
+        NSSet * certSet = [[NSSet alloc] initWithObjects:cerData, nil];
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        MMLog(@"certSet == %@",certSet);
         securityPolicy.allowInvalidCertificates = YES;
         //validatesDomainName 是否需要验证域名，默认为YES；
          securityPolicy.validatesDomainName = NO;

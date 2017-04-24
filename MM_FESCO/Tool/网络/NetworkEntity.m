@@ -1959,9 +1959,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
-    NSData * certData =[NSData dataWithContentsOfFile:cerPath];
-    NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+   NSData *cerData = [[NSData alloc] initWithBase64EncodedString:kHttpsCerBase64 options:0];
+    NSSet * certSet = [[NSSet alloc] initWithObjects:cerData, nil];
     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
     securityPolicy.allowInvalidCertificates = YES;
     //validatesDomainName 是否需要验证域名，默认为YES；

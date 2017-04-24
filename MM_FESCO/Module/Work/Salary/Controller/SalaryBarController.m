@@ -81,28 +81,31 @@
         if ([[responseObject objectForKey:@"errcode"] integerValue]== 0) {
             NSMutableArray *marginArray = [NSMutableArray array];
             NSDictionary *param = [responseObject objectForKey:@"dataMap"];
-            NSArray *allKey = [param allKeys];
-            for (NSString *key in allKey) {
-                if ([[param objectForKey:key] count] != 0) {
-                    [marginArray addObject:key];
+            if (param) {
+                NSArray *allKey = [param allKeys];
+                for (NSString *key in allKey) {
+                    if ([[param objectForKey:key] count] != 0) {
+                        [marginArray addObject:key];
+                    }
                 }
+                
+                _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
+                
+                for (NSString *monthKey in _monthArray) {
+                    NSDictionary *param = [responseObject objectForKey:@"dataMap"];
+                    // 实发工资
+                    CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
+                    [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
+                    // 数据字典
+                    NSDictionary *mightDic = [param objectForKey:monthKey];
+                    NSMutableDictionary *mutableDic = mightDic.mutableCopy;
+                    [mutableDic setObject:@"0" forKey:@"isShowDetail"];
+                    [_dataArray addObject:mutableDic];
+                }
+                MMLog(@"_monthArray = %@",_monthArray);
+                [_tableView reloadData];
+
             }
-            
-         _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
-            
-            for (NSString *monthKey in _monthArray) {
-                NSDictionary *param = [responseObject objectForKey:@"dataMap"];
-                // 实发工资
-                CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
-                [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
-                // 数据字典
-                NSDictionary *mightDic = [param objectForKey:monthKey];
-                NSMutableDictionary *mutableDic = mightDic.mutableCopy;
-                [mutableDic setObject:@"0" forKey:@"isShowDetail"];
-                [_dataArray addObject:mutableDic];
-            }
-            MMLog(@"_monthArray = %@",_monthArray);
-            [_tableView reloadData];
         }
     } failure:^(NSError *failure) {
         MMLog(@"SalaryBarData  =======failure=====%@",failure);
