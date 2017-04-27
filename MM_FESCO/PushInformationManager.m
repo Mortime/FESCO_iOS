@@ -47,8 +47,8 @@
         
     }else if ([type isEqualToString:@"reservationcoachcomment"]) {
         // 获取到教练评价
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"有教练对您评价啦，赶快去查看吧！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-        [alertView show];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"有教练对您评价啦，赶快去查看吧！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+//        [alertView show];
         
 //        UIViewController *viewC = self.ViewController;
 //        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"有教练对您评价啦，赶快去查看吧" preferredStyle:UIAlertControllerStyleAlert];
@@ -69,8 +69,8 @@
        
     }else if ([type isEqualToString:@"systemmsg"]) {
         // 系统消息
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您有一条系统消息，赶快去查看吧！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-        [alertView show];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您有一条系统消息，赶快去查看吧！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+//        [alertView show];
 
     }
 }

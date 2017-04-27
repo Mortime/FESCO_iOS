@@ -11,7 +11,7 @@
 @implementation NSString (PinYin4Cocoa)
 
 
-- (NSInteger)indexOfString:(NSString *)s {
+- (int)indexOfString:(NSString *)s {
     NSAssert3((s!=nil), @"Error, s is a nil string, %s, %s, %d", __FILE__, __FUNCTION__, __LINE__);
     if ([s length] == 0) {
         return 0;
@@ -34,7 +34,7 @@
     return range.location == NSNotFound ? -1 : (int) range.location;
 }
 
-- (NSInteger)indexOf:(int)ch {
+- (int)indexOf:(int)ch {
     //    unichar c = (unichar) ch;
     //    for(int i=0;i<self.length;i++)
     //        if(c == [self characterAtIndex:i])

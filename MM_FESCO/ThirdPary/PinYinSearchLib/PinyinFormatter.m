@@ -9,8 +9,8 @@
 #import "NSString+PinYin4Cocoa.h"
 
 @interface PinyinFormatter ()
-+(NSInteger)getNumericValue:(unichar)c;
-+(NSInteger)indexOfChar:(int*) table ch:(unichar)c;
++(int)getNumericValue:(unichar)c;
++(int)indexOfChar:(int*) table ch:(unichar)c;
 @end    
 
 @implementation PinyinFormatter
@@ -105,7 +105,7 @@ static unichar numericValues[] = {
         unmarkedVowel = [ouStr characterAtIndex:0];
       }
       else {
-        for (int i = [lowerCasePinyinStr length] - 1; i >= 0; i--) {
+        for (int i = (int)[lowerCasePinyinStr length] - 1; i >= 0; i--) {
           if ([[NSString valueOfChar:[lowerCasePinyinStr characterAtIndex:i]] matchesPatternRegexPattern:@"[aeiouv]"]) {
             indexOfUnmarkedVowel = i;
             unmarkedVowel = [lowerCasePinyinStr characterAtIndex:i];
@@ -137,7 +137,7 @@ static unichar numericValues[] = {
   }
 }
 
-+(NSInteger)getNumericValue:(unichar)c
++(int)getNumericValue:(unichar)c
 {
     if (c < 128) {
         // Optimized for ASCII
@@ -168,7 +168,7 @@ static unichar numericValues[] = {
 
 }
 
-+(NSInteger)indexOfChar:(int*) table ch:(unichar)c{
++(int)indexOfChar:(int*) table ch:(unichar)c{
     NSInteger len=sizeof(table)/sizeof(table[0]);
     for (int i = 0; i < len; i++) {
         if (table[i] == (int) c) {

@@ -10,9 +10,9 @@
 
 @interface NSString (PinYin4Cocoa)
 
-- (NSInteger)indexOfString:(NSString *)s;
+- (int)indexOfString:(NSString *)s;
 - (NSInteger)indexOfString:(NSString *)s fromIndex:(int)index;
-- (NSInteger)indexOf:(int)ch;
+- (int)indexOf:(int)ch;
 - (NSInteger)indexOf:(int)ch fromIndex:(int)index;
 + (NSString *)valueOfChar:(unichar)value;
 
