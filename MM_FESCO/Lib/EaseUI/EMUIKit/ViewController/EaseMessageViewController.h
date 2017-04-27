@@ -11,10 +11,11 @@
  */
 
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
+#import <time.h>
 #import "EaseRefreshTableViewController.h"
-
 #import "IMessageModel.h"
 #import "EaseMessageModel.h"
 #import "EaseBaseMessageCell.h"

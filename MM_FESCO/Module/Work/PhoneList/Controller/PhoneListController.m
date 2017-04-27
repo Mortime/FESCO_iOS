@@ -137,6 +137,8 @@ static NSString * const reuseID  = @"PhoneListCell";
         }
     } failure:^(NSError *failure) {
         MMLog(@"PhoneNumberListIconUrl =====failure ==========%@",failure);
+//        [self showTotasViewWithMes:@"网络错误"];
+        [self initData];
     }];
     
 
@@ -179,7 +181,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 
             }
         } failure:^(NSError *failure) {
-            
+            [self showTotasViewWithMes:@"网络错误"];
         }];
     }else{
         // 更新数据库
@@ -210,7 +212,7 @@ static NSString * const reuseID  = @"PhoneListCell";
 
             }
         } failure:^(NSError *failure) {
-            
+            [self showTotasViewWithMes:@"网络错误"];
         }];
 
     }

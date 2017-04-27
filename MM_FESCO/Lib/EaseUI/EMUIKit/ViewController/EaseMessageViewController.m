@@ -50,6 +50,10 @@
     NSMutableArray *_atTargets;
     
     dispatch_queue_t _messageQueue;
+    
+    AVPlayerViewController *_moviePlayer;
+    AVPlayer *_player;
+    AVPlayerItem *_item;
 }
 
 @property (strong, nonatomic) id<IMessageModel> playingVoiceModel;
@@ -710,11 +714,24 @@
         [self _sendHasReadResponseForMessages:@[model.message]
                                        isRead:YES];
         
+
+        //设置本地视频路径
         NSURL *videoURL = [NSURL fileURLWithPath:localPath];
-        MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-        [moviePlayerController.moviePlayer prepareToPlay];
-        moviePlayerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-        [self presentMoviePlayerViewControllerAnimated:moviePlayerController];
+        
+        AVAsset *asset = [AVAsset assetWithURL:videoURL];
+        
+        _item=[AVPlayerItem playerItemWithAsset:asset];
+        
+        _player=[AVPlayer playerWithPlayerItem:_item];
+        
+        //初始化AVPlayerViewController
+        _moviePlayer=[[AVPlayerViewController alloc]init];
+        
+        _moviePlayer.player= _player;
+        [self presentViewController:_moviePlayer animated:YES completion:nil];
+        
+        
+        
     };
     
     __weak typeof(self) weakSelf = self;

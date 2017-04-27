@@ -30,9 +30,6 @@
 
 @end
 
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-
 #define kVersion @"kVersion"
 
 
@@ -90,13 +87,13 @@
     for (int i = 0; i < nameArray.count; i++) {
         
         UIImageView *imageView = [UIImageView new];
-        imageView.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        imageView.frame = CGRectMake(i * kMMWidth, 0, kMMWidth, kMMHeight);
         imageView.image = [UIImage imageNamed:nameArray[i]];
         imageView.tag = i;
         
         [self.scrollView addSubview:imageView];
     }
-    self.scrollView.contentSize = CGSizeMake(nameArray.count * SCREEN_WIDTH, 0);
+    self.scrollView.contentSize = CGSizeMake(nameArray.count * kMMWidth, 0);
     [self createGoButton:nameArray.count - 1];
 }
 
@@ -111,7 +108,7 @@
     [button.layer setCornerRadius:btnHeight / 2.f];
 //    [button setTitle:@"点击进入" forState:UIControlStateNormal];
     
-    button.frame = CGRectMake((SCREEN_WIDTH - btnWidth) / 2, SCREEN_HEIGHT - btnHeight - btnBottom +  28, btnWidth, btnHeight);
+    button.frame = CGRectMake((kMMWidth - btnWidth) / 2, kMMHeight - btnHeight - btnBottom +  28, btnWidth, btnHeight);
     button.backgroundColor = [UIColor clearColor];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -142,7 +139,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    NSInteger currentPage = scrollView.contentOffset.x / SCREEN_WIDTH;
+    NSInteger currentPage = scrollView.contentOffset.x / kMMWidth;
     self.pageControl.currentPage = currentPage;
 }
 
@@ -175,7 +172,7 @@
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [UIScrollView new];
-        _scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        _scrollView.frame = CGRectMake(0, 0, kMMWidth, kMMHeight);
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
@@ -189,21 +186,11 @@
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
         _pageControl = [UIPageControl new];
-        _pageControl.frame = CGRectMake(0, 50, SCREEN_WIDTH, 10);
+        _pageControl.frame = CGRectMake(0, 50, kMMWidth, 10);
         _pageControl.pageIndicatorTintColor = [UIColor colorWithHexString:@"#FFFFFF" alpha:0.2];
         _pageControl.currentPageIndicatorTintColor = [UIColor lightGrayColor];
     }
     return _pageControl;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
