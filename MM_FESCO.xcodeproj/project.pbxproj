@@ -12,7 +12,6 @@
 		59182B351D6448CE00842352 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B341D6448CE00842352 /* NSData+AES.m */; };
 		59182B3B1D644C7B00842352 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B391D644C7B00842352 /* GTMBase64.m */; };
 		59182B3F1D644D7E00842352 /* NSString+BASE64.m in Sources */ = {isa = PBXBuildFile; fileRef = 59182B3E1D644D7E00842352 /* NSString+BASE64.m */; };
-		592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 592306211DAB8410004D65DD /* NSDate+LSCore.m */; };
 		5942A68A1DB9A18C008FAFA8 /* OverTimeStatistiscController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5942A6891DB9A18C008FAFA8 /* OverTimeStatistiscController.m */; };
 		5942A68D1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5942A68C1DB9A6B1008FAFA8 /* OverTimeStatisticCell.m */; };
 		59474CF61D6D863000DC6E50 /* MMSQManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59474CF51D6D863000DC6E50 /* MMSQManagerTool.m */; };
@@ -442,8 +441,6 @@
 		59182B3A1D644C7B00842352 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		59182B3D1D644D7E00842352 /* NSString+BASE64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BASE64.h"; sourceTree = "<group>"; };
 		59182B3E1D644D7E00842352 /* NSString+BASE64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BASE64.m"; sourceTree = "<group>"; };
-		592306201DAB8410004D65DD /* NSDate+LSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LSCore.h"; sourceTree = "<group>"; };
-		592306211DAB8410004D65DD /* NSDate+LSCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LSCore.m"; sourceTree = "<group>"; };
 		5942A6881DB9A18C008FAFA8 /* OverTimeStatistiscController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatistiscController.h; sourceTree = "<group>"; };
 		5942A6891DB9A18C008FAFA8 /* OverTimeStatistiscController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatistiscController.m; sourceTree = "<group>"; };
 		5942A68B1DB9A6B1008FAFA8 /* OverTimeStatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticCell.h; sourceTree = "<group>"; };
@@ -2069,8 +2066,6 @@
 				5996FFB21D5876BE0005307C /* NSString+MD5.m */,
 				59182B331D6448CE00842352 /* NSData+AES.h */,
 				59182B341D6448CE00842352 /* NSData+AES.m */,
-				592306201DAB8410004D65DD /* NSDate+LSCore.h */,
-				592306211DAB8410004D65DD /* NSDate+LSCore.m */,
 				597222E31DADDDEC00D01A7A /* NSArray+Sort.h */,
 				597222E41DADDDEC00D01A7A /* NSArray+Sort.m */,
 			);
@@ -3498,7 +3493,6 @@
 				761601D41DFAA7BC006F9B59 /* UIFont+FontAwesome.m in Sources */,
 				761C0E981DD1C66500886083 /* NewReimburseConsumePopViewCell.m in Sources */,
 				762B92DF1E95CD0200BFFF9B /* EaseFaceView.m in Sources */,
-				592306221DAB8410004D65DD /* NSDate+LSCore.m in Sources */,
 				76929B211DDEA90F00775AF3 /* NewPurchaseRecordCell.m in Sources */,
 				59F651041D70338C000596A7 /* ChineseInclude.m in Sources */,
 				764223C01E1DD06B0094DEBB /* ReimburseApprovalDetailController.m in Sources */,

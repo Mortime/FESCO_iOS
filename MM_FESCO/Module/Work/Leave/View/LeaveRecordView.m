@@ -10,7 +10,6 @@
 #import "LeaveRecordCell.h"
 #import "LeavaRecordListModel.h"
 #import "MMNoDataShowBGView.h"
-#import "NSDate+LSCore.h"
 @interface LeaveRecordView ()<UITableViewDelegate,UITableViewDataSource,LeaveRecordCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
