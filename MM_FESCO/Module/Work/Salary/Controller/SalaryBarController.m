@@ -80,33 +80,38 @@
         MMLog(@"SalaryBarData  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue]== 0) {
             NSMutableArray *marginArray = [NSMutableArray array];
-            NSDictionary *param = [responseObject objectForKey:@"dataMap"];
-            if (param) {
-                NSArray *allKey = [param allKeys];
-                for (NSString *key in allKey) {
-                    if ([[param objectForKey:key] count] != 0) {
-                        [marginArray addObject:key];
+            if ([[responseObject objectForKey:@"dataMap"] isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *param = [responseObject objectForKey:@"dataMap"];
+                if (param) {
+                    NSArray *allKey = [param allKeys];
+                    for (NSString *key in allKey) {
+                        if ([[param objectForKey:key] count] != 0) {
+                            [marginArray addObject:key];
+                        }
                     }
+                    
+                    _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
+                    
+                    for (NSString *monthKey in _monthArray) {
+                        NSDictionary *param = [responseObject objectForKey:@"dataMap"];
+                        // 实发工资
+                        CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
+                        [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
+                        // 数据字典
+                        NSDictionary *mightDic = [param objectForKey:monthKey];
+                        NSMutableDictionary *mutableDic = mightDic.mutableCopy;
+                        [mutableDic setObject:@"0" forKey:@"isShowDetail"];
+                        [_dataArray addObject:mutableDic];
+                    }
+                    MMLog(@"_monthArray = %@",_monthArray);
+                    [_tableView reloadData];
+                    
                 }
-                
-                _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
-                
-                for (NSString *monthKey in _monthArray) {
-                    NSDictionary *param = [responseObject objectForKey:@"dataMap"];
-                    // 实发工资
-                    CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
-                    [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
-                    // 数据字典
-                    NSDictionary *mightDic = [param objectForKey:monthKey];
-                    NSMutableDictionary *mutableDic = mightDic.mutableCopy;
-                    [mutableDic setObject:@"0" forKey:@"isShowDetail"];
-                    [_dataArray addObject:mutableDic];
-                }
-                MMLog(@"_monthArray = %@",_monthArray);
-                [_tableView reloadData];
-
+ 
+            }else{
+                [self showTotasViewWithMes:@"数据错误"];
             }
-        }
+                   }
     } failure:^(NSError *failure) {
         MMLog(@"SalaryBarData  =======failure=====%@",failure);
         [self showTotasViewWithMes:@"网络错误"];
@@ -338,7 +343,6 @@
         _numberLabel.backgroundColor = [UIColor clearColor];
         _numberLabel.font = [UIFont systemFontOfSize:12];
         _numberLabel.textColor = [UIColor whiteColor];
-        _numberLabel.text = @"NO:007";
         
     }
     return _numberLabel;

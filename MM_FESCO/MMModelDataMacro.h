@@ -45,7 +45,7 @@
 #define kGroupName @"GroupName"     // 本地保存组名
 #define kGroupID @"GroupID"     // 本地保存组名
 #define kPicUpSuccessID  @"PicUpSuccessID"  // 图片上传成功存储的ID
-#define kHttpsCerKey  @"zrfesco"
+#define kHttpsCerKey  @"zrfesco_before"
 #define kEmpIdKey @"EmpIdKey" // 签到成功后保存empId, 防止一个手机一天内打多次卡
 #define kSignUpTime @"SignUpTime" // 签到成功时间
 #define KAvtarUrlVersion  @"AvtarUrlVersion" // 保存头像的版本号,用于服务器更新头像

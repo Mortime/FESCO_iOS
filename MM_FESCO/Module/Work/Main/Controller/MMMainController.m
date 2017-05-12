@@ -99,11 +99,11 @@ static NSString *kMallID = @"MallID";
     
 //    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"审批",@"加班",@"通讯录",@"签到统计",@"迟到排行",@"加班排行",@"报销",@"薪酬列表",@"HRS数据录入",@"HRS数据勘查"];
     
-    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"加班",@"签到统计",@"迟到排行",@"加班排行"];
+    self.titleArray  = @[@"个人信息",@"考勤",@"休假",@"加班",@"签到统计",@"迟到排行",@"加班排行",@"工资数据"];
 
 //    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Xiujiashenpi",@"HomeFlag_Jiabanshenqing",@"HomeFlag_Tongxunlv",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_BaoXiao",@"HomeFlag_Xinchouliebiao",@"HomeFlag_Shujuluru",@"HomeFlag_Shujukancha"];
     
-    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Jiabanshenqing",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang"];
+    self.imgArray = @[@"HomeFlag_Message",@"HomeFlag_Sign",@"HomeFlag_Xiujiajilu",@"HomeFlag_Jiabanshenqing",@"HomeFlag_qiandaotongji",@"HomeFlag_Chidaopaihang",@"HomeFlag_Jiabanpaihang",@"HomeFlag_Shujukancha"];
 
     
     UIImage *img = [UIImage imageNamed:@"Home_SycleOne"];
@@ -221,6 +221,7 @@ static NSString *kMallID = @"MallID";
         PersonalMessageController *personalMegVC = [[PersonalMessageController alloc] init];
          personalMegVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:personalMegVC animated:YES];
+    
         
     }
     if (indexPath.row == 1) {
@@ -275,18 +276,19 @@ static NSString *kMallID = @"MallID";
     }
     
     if (indexPath.row == 7) {
-       // 社保
-        BuffetController *buffVC = [[BuffetController alloc] init];
-        buffVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:buffVC animated:YES];
-        
-        
-    }
-    if (indexPath.row == 8) {
         // 工资
         SalaryBarController *salaryVC = [[SalaryBarController alloc] init];
         salaryVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:salaryVC animated:YES];
+
+        
+        
+    }
+    if (indexPath.row == 8) {
+        // 社保
+        BuffetController *buffVC = [[BuffetController alloc] init];
+        buffVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:buffVC animated:YES];
 
         
     }

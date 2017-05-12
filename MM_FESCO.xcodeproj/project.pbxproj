@@ -168,6 +168,7 @@
 		760478B21E9DBBD800CFB10A /* SalaryBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478B11E9DBBD800CFB10A /* SalaryBarController.m */; };
 		760478B91E9DC6D800CFB10A /* SalaryBarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */; };
 		760478BC1E9E151E00CFB10A /* SalaryBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760478BB1E9E151E00CFB10A /* SalaryBarCell.m */; };
+		760841321EC583E10064AD68 /* zrfesco_before.cer in Resources */ = {isa = PBXBuildFile; fileRef = 760841311EC583E10064AD68 /* zrfesco_before.cer */; };
 		760A7EF11E0B6B1F0036C6C6 /* NetworkDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */; };
 		760A7EF41E0CB6070036C6C6 /* SocialSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EF31E0CB6070036C6C6 /* SocialSecurityController.m */; };
 		760A7EFD1E0CCE9F0036C6C6 /* SocialSecurityShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7EFC1E0CCE9F0036C6C6 /* SocialSecurityShowView.m */; };
@@ -176,7 +177,6 @@
 		760A7F061E0D1B700036C6C6 /* SocialSecurityHearerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F051E0D1B700036C6C6 /* SocialSecurityHearerView.m */; };
 		760A7F091E0D20200036C6C6 /* SocialSecurityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */; };
 		760E448E1DBA0D7300672D5C /* OverTimeStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */; };
-		76149DC01EAD846800F1282A /* zrfesco.cer in Resources */ = {isa = PBXBuildFile; fileRef = 76149DBF1EAD846800F1282A /* zrfesco.cer */; };
 		761601BC1DFA5A00006F9B59 /* ReimburseApplyManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */; };
 		761601D11DFAA7BC006F9B59 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761601C91DFAA7BC006F9B59 /* FAImageView.m */; };
 		761601D21DFAA7BC006F9B59 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 761601CA1DFAA7BC006F9B59 /* FontAwesome.ttf */; };
@@ -745,6 +745,7 @@
 		760478B81E9DC6D800CFB10A /* SalaryBarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarHeaderView.m; sourceTree = "<group>"; };
 		760478BA1E9E151E00CFB10A /* SalaryBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalaryBarCell.h; sourceTree = "<group>"; };
 		760478BB1E9E151E00CFB10A /* SalaryBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalaryBarCell.m; sourceTree = "<group>"; };
+		760841311EC583E10064AD68 /* zrfesco_before.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = zrfesco_before.cer; sourceTree = "<group>"; };
 		760A7EEF1E0B6B1F0036C6C6 /* NetworkDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataTool.h; sourceTree = "<group>"; };
 		760A7EF01E0B6B1F0036C6C6 /* NetworkDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataTool.m; sourceTree = "<group>"; };
 		760A7EF21E0CB6070036C6C6 /* SocialSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSecurityController.h; sourceTree = "<group>"; };
@@ -761,7 +762,6 @@
 		760A7F081E0D20200036C6C6 /* SocialSecurityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSecurityCell.m; sourceTree = "<group>"; };
 		760E448C1DBA0D7300672D5C /* OverTimeStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverTimeStatisticModel.h; sourceTree = "<group>"; };
 		760E448D1DBA0D7300672D5C /* OverTimeStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverTimeStatisticModel.m; sourceTree = "<group>"; };
-		76149DBF1EAD846800F1282A /* zrfesco.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zrfesco.cer; sourceTree = "<group>"; };
 		761601BA1DFA5A00006F9B59 /* ReimburseApplyManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseApplyManModel.h; sourceTree = "<group>"; };
 		761601BB1DFA5A00006F9B59 /* ReimburseApplyManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseApplyManModel.m; sourceTree = "<group>"; };
 		761601BD1DFAA26E006F9B59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1917,7 +1917,7 @@
 		597762151D489AE000BD8472 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				76149DBF1EAD846800F1282A /* zrfesco.cer */,
+				760841311EC583E10064AD68 /* zrfesco_before.cer */,
 				59F4D63C1D814B9E00C56E5D /* MMShuxin.plist */,
 				597762161D489AE000BD8472 /* main.m */,
 				5977621E1D489AE000BD8472 /* Main.storyboard */,
@@ -3123,6 +3123,7 @@
 				59E99B641DB866C2002D0486 /* Images.xcassets in Resources */,
 				76F4778B1E8A52B500C73A64 /* nation.plist in Resources */,
 				59F6510B1D70338C000596A7 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				760841321EC583E10064AD68 /* zrfesco_before.cer in Resources */,
 				76CBDCE91DDB064700272D91 /* citydict.plist in Resources */,
 				762B92E41E95CD0200BFFF9B /* EaseUIResource.bundle in Resources */,
 				597762251D489AE000BD8472 /* LaunchScreen.storyboard in Resources */,
@@ -3130,7 +3131,6 @@
 				597762221D489AE000BD8472 /* Assets.xcassets in Resources */,
 				597762201D489AE000BD8472 /* Main.storyboard in Resources */,
 				762B92B61E95CD0200BFFF9B /* MWPhotoBrowser.bundle in Resources */,
-				76149DC01EAD846800F1282A /* zrfesco.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

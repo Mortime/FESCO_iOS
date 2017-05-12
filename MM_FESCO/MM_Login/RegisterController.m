@@ -240,20 +240,18 @@
     [NetworkEntity postRegisterNumberWithMail:_mailStr userName:_userName password:_password success:^(id responseObject) {
         
         MMLog(@"RegisterNumber ========responseObject ============%@",responseObject);
-        if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
-            [self showTotasViewWithMes:@"该用户已经存在"];
-            return;
-        }
-        if ([[responseObject objectForKey:@"message"] isEqualToString:@"success"]) {
-            [self showTotasViewWithMes:@"注册成功"];
+        
+        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0 ) {
+            [self showTotasViewWithMes:[responseObject objectForKey:@"message"]];
             [self dismissViewControllerAnimated:YES completion:nil];
+        }else if([[responseObject objectForKey:@"errcode"] integerValue] == 1){
+            [self showTotasViewWithMes:[responseObject objectForKey:@"message"]];
         }
-
         
     } failure:^(NSError *failure) {
         
         MMLog(@"RegisterNumber ========failure ============%@",failure);
-        [self showTotasViewWithMes:@"注册失败"];
+        [self showTotasViewWithMes:@"网络错误"];
         
     }];
 }
