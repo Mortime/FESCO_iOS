@@ -222,17 +222,17 @@
 - (void)didSignButon:(UIButton *)sender{
     NSString *msg ;
     if ((_type != 1) && (_type != 2) &&(_type != 3) ) {
-        msg = @"请选择签到类型";
+        msg = @"请选择考勤类型";
         [self showMsg:msg];
         return;
     }
     if (_timeStr == nil || [_timeStr isEqualToString:@""] ) {
-        msg = @"请选择签到时间";
+        msg = @"请选择考勤时间";
         [self showMsg:msg];
         return;
     }
     if (_addStr == nil || [_addStr isEqualToString:@""] ) {
-        msg = @"请选择签到地点";
+        msg = @"请选择考勤地点";
         [self showMsg:msg];
         return;
     }
@@ -275,8 +275,8 @@
 - (MMChooseTextFile *)signType{
     if (_signType == nil) {
         _signType = [[MMChooseTextFile alloc] init];
-        _signType.leftTitle = @"签到类型";
-        _signType.placeHold = @"请选择签到类型";
+        _signType.leftTitle = @"考勤类型";
+        _signType.placeHold = @"请选择考勤类型";
         NSArray *typeArray = @[@"签到",@"签退",@"外勤"];
         _signType.dataArray = typeArray;
         _signType.tag = 400;
@@ -292,8 +292,8 @@
 - (MMChooseTextFileWithSS *)signTime{
     if (_signTime == nil) {
         _signTime = [[MMChooseTextFileWithSS alloc] init];
-        _signTime.leftTitle = @"签到时间";
-        _signTime.placeHold = @"请选择签到时间";
+        _signTime.leftTitle = @"考勤时间";
+        _signTime.placeHold = @"请选择考勤时间";
         
         _signTime.isShowDataPickView = YES;
         _signTime.tag = 401;
@@ -309,8 +309,8 @@
 - (MMChooseTextFile *)signAddress{
     if (_signAddress == nil) {
         _signAddress = [[MMChooseTextFile alloc] init];
-        _signAddress.leftTitle = @"签到地点";
-        _signAddress.placeHold = @"请选择签到地点";
+        _signAddress.leftTitle = @"考勤地点";
+        _signAddress.placeHold = @"请选择考勤地点";
         NSArray *addressArray = @[@"外企",@"丹棱街5号微软大厦",@"东方梅地亚中心",@"海淀区公积金",@"上海中心一幢",@"信达资本",@"金凤科技",@"东方广场经贸城西2座",@"FESCO",@"微软",@"东三环北路8号亮马大厦",@"海淀社保",@"上海中国保险大厦",@"海淀区复兴路乙20号",@"中国银行(北京国际贸易中心支行)",@"雨霖大厦",@"新加坡航空",@"北京同仁堂健康药业股份有限公司",@"北京海淘车科技有限公司",@"FESCO西区"];
         _signAddress.dataArray = addressArray;
         _signAddress.tag = 402;
