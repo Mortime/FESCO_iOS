@@ -74,6 +74,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QBImagePickerController-QBImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QBImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -112,6 +122,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>04C2C6FFF9E98F39C14E8073D6932D1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
@@ -122,32 +137,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16214A4850F2AFAB8797FCC34BC29FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>175B076ED45EB1A3E40F58BA14036467</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D50E03D6C4EEA76966C3816FE394126</key>
+		<key>1F050511C5E9CC8C6C4699444285961C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>281C8F2B1EEC24DCA42E6DEEC7D5C79F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>34FC52D9937618D70EFAC9B6B29A0BB9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>528E506F86298642EF23E7DBD9B41646</key>
+		<key>47495B6AC51DA3CFADB7B08978941370</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,6 +162,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>82491CC5C0F554180BED302F3A613E96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
 		<dict>
 			<key>primary</key>
@@ -172,17 +177,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96CD239CD40E066928B877B4FC678BD4</key>
+		<key>918CD6229B347AEA1F79E2F6B75AA796</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>975659178E8BC0CB41C792DC32B0D16C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9894F6F731C04C49D3842B4A50A46B27</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,6 +202,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B705F63EC2BACF2A840AFC0AAE4AB22D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BDB45DD6D41488A346190E17DEF63592</key>
 		<dict>
 			<key>primary</key>
@@ -212,7 +217,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC9A32C0D323BF03A81817A5983E4A19</key>
+		<key>D05CF908C93DEFD2C74FDF85EEB24232</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2FDA7B9AB961082A4CA5C8BFB3FA1B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5B54E714211D812EAA3536475793323</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F665E14544E2D436F6A2D943ED4D94D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

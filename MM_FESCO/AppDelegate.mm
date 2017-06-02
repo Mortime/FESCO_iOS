@@ -75,12 +75,6 @@
 //        }
 //        
 //    }
-
-    
-    
-    
-    
-    
     
     application.applicationIconBadgeNumber = 0;
     // 清空签到成功的时间
@@ -160,8 +154,6 @@
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
         [application registerUserNotificationSettings:settings];
     }
-    
-    
     
     // 配置JPush
     [JPUSHService resetBadge];

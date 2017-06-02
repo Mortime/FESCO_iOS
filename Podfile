@@ -26,4 +26,5 @@ pod 'ReactiveCocoa', '~> 2.5'
 pod 'M13ProgressSuite', '~> 1.2.7'
 pod 'YYModel'
 pod 'ZipArchive'
+pod 'QBImagePickerController'
 end
