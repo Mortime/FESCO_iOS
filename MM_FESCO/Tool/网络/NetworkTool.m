@@ -33,68 +33,68 @@
         _sharedClient = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[NetworkTool domain]]];
         _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"application/x-javascript",@"text/plain",@"image/gif",@"image/*", nil];
-//        NSString *cerPath = [[NSBundle mainBundle] pathForResource:kHttpsCerKey ofType:@"cer"];
-//        NSData * cerData =[NSData dataWithContentsOfFile:cerPath];
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"MMCerTest" ofType:@"cer"];
+        NSData * cerData =[NSData dataWithContentsOfFile:cerPath];
         
-        NSData *cerData = [[NSData alloc] initWithBase64EncodedString:kHttpsCerBase64 options:0];
+//        NSData *cerData = [[NSData alloc] initWithBase64EncodedString:kHttpsCerBase64 options:0];
         
         
         
         MMLog(@"certData == %@",cerData);
         NSSet * certSet = [[NSSet alloc] initWithObjects:cerData, nil];
-        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         MMLog(@"certSet == %@",certSet);
         securityPolicy.allowInvalidCertificates = YES;
         //validatesDomainName 是否需要验证域名，默认为YES；
          securityPolicy.validatesDomainName = NO;
         [securityPolicy setPinnedCertificates:certSet];
         _sharedClient.securityPolicy  = securityPolicy;
-        [_sharedClient setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) {
-            DLog(@"setSessionDidBecomeInvalidBlock");
-        }];
-        [_sharedClient setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
-            NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-            __autoreleasing NSURLCredential *credential =nil;
-            if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-                if([_sharedClient.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
-                    credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-                    if(credential) {
-                        disposition =NSURLSessionAuthChallengeUseCredential;
-                    } else {
-                        disposition =NSURLSessionAuthChallengePerformDefaultHandling;
-                    }
-                } else {
-                    disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-                }
-            } else {
-                // client authentication
-                SecIdentityRef identity = NULL;
-                SecTrustRef trust = NULL;
-                NSString *p12 = [[NSBundle mainBundle] pathForResource:@"clientkey"ofType:@"p12"];
-                NSFileManager *fileManager =[NSFileManager defaultManager];
-                
-                if(![fileManager fileExistsAtPath:p12])
-                {
-                    NSLog(@"client.p12:not exist");
-                }
-                else
-                {
-                    NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
-                    
-                    if ([NSString extractIdentity:&identity andTrust:&trust fromPKCS12Data:PKCS12Data])
-                    {
-                        SecCertificateRef certificate = NULL;
-                        SecIdentityCopyCertificate(identity, &certificate);
-                        const void*certs[] = {certificate};
-                        CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
-                        credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
-                        disposition =NSURLSessionAuthChallengeUseCredential;
-                    }
-                }
-            }
-            *_credential = credential;
-            return disposition;
-        }];
+//        [_sharedClient setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) {
+//            DLog(@"setSessionDidBecomeInvalidBlock");
+//        }];
+//        [_sharedClient setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
+//            NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+//            __autoreleasing NSURLCredential *credential =nil;
+//            if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+//                if([_sharedClient.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+//                    credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+//                    if(credential) {
+//                        disposition =NSURLSessionAuthChallengeUseCredential;
+//                    } else {
+//                        disposition =NSURLSessionAuthChallengePerformDefaultHandling;
+//                    }
+//                } else {
+//                    disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+//                }
+//            } else {
+//                // client authentication
+//                SecIdentityRef identity = NULL;
+//                SecTrustRef trust = NULL;
+//                NSString *p12 = [[NSBundle mainBundle] pathForResource:@"clientkey"ofType:@"p12"];
+//                NSFileManager *fileManager =[NSFileManager defaultManager];
+//                
+//                if(![fileManager fileExistsAtPath:p12])
+//                {
+//                    NSLog(@"client.p12:not exist");
+//                }
+//                else
+//                {
+//                    NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
+//                    
+//                    if ([NSString extractIdentity:&identity andTrust:&trust fromPKCS12Data:PKCS12Data])
+//                    {
+//                        SecCertificateRef certificate = NULL;
+//                        SecIdentityCopyCertificate(identity, &certificate);
+//                        const void*certs[] = {certificate};
+//                        CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
+//                        credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
+//                        disposition =NSURLSessionAuthChallengeUseCredential;
+//                    }
+//                }
+//            }
+//            *_credential = credential;
+//            return disposition;
+//        }];
 
         [_sharedClient.requestSerializer setValue:[[UserInfoModel defaultUserInfo] token] forHTTPHeaderField:@"authorization"];
         

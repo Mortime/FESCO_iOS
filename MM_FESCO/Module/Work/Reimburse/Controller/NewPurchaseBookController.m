@@ -341,9 +341,9 @@
             return;
         }
         QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
-        [imagePickerController.selectedAssetURLs removeAllObjects];
-        [imagePickerController.selectedAssetURLs addObjectsFromArray:self.curUploadImageHelper.selectedAssetURLs];
-        imagePickerController.filterType = QBImagePickerControllerFilterTypePhotos;
+        [imagePickerController.selectedAssets removeAllObjects];
+        [imagePickerController.selectedAssets addObjectsFromArray:self.curUploadImageHelper.selectedAssetURLs];
+        imagePickerController.mediaType = QBImagePickerMediaTypeImage;
         imagePickerController.delegate = self;
         imagePickerController.maximumNumberOfSelection = kupdateMaximumNumberOfImage;
         imagePickerController.allowsMultipleSelection = YES;
@@ -378,7 +378,7 @@
 
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didSelectAssets:(NSArray *)assets{
     NSMutableArray *selectedAssetURLs = [NSMutableArray new];
-    [imagePickerController.selectedAssetURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [imagePickerController.selectedAssets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         MMLog(@"obj == %@",obj);
         [selectedAssetURLs addObject:obj];
     }];

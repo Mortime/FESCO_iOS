@@ -54,5 +54,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM_FESCO/Tool/&#x7f51;&#x7edc;/NetworkTool.m"
+            timestampString = "546327602.7692291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "+POST:params:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM_FESCO/Tool/&#x7f51;&#x7edc;/NetworkTool.m"
+            timestampString = "546327602.7695071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "+POST:params:success:failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43+[NetworkTool POST:params:success:failure:]_block_invoke.77"
+                  moduleName = "MM_FESCO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/Tool/%E7%BD%91%E7%BB%9C/NetworkTool.m"
+                  timestampString = "546243149.285399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.78"
+                  moduleName = "MM_FESCO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangyatao/Desktop/FESCO_iOS-master/MM_FESCO/Tool/%E7%BD%91%E7%BB%9C/NetworkTool.m"
+                  timestampString = "546243149.290005"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -1,4 +1,4 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 target 'MM_FESCO' do
 inhibit_all_warnings!
 
@@ -15,8 +15,6 @@ pod 'SDCycleScrollView','~> 1.3'
 pod 'NJKWebViewProgress'
 pod 'JPush'
 pod 'MJRefresh'
-pod 'UMengAnalytics-NO-IDFA'
-pod 'UMengSocial', '~> 4.4'
 pod 'TencentOpenApiSDK', '~> 2.9.5'
 pod 'JSONKit'
 pod 'MJExtension'

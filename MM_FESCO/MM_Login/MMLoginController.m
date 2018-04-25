@@ -186,29 +186,7 @@
 #pragma make --- Action
 - (void)pushHomeMainController:(UIButton *)btn{
     
-    
-    
-    
-    
-    
-//    NSDictionary *param  = @{@"cust_Id": @"zhang",
-//                             @"emp_Id":@"yatao",
-//                             @"methodname":@"emp/loadEmpInfo.json"};
-//    NSString *re = [NSString jsonToJsonStingWith:param];
-//
-//    
-//    
-//    return;
-//    
-//
-//    NSLog(@"self.phone = %@",self.phoneNumTextField.text);
-    
     if (self.phoneNumTextField.text == nil || [self.phoneNumTextField.text isEqualToString:@""]) {
-//        [self showTotasViewWithMes:@"请输入密码"]; a
-        
-        
-        
-        MMLog(@"self.phone = %@",self.phoneNumTextField.text);
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入邮箱"];
         [toastView show];
 
@@ -216,8 +194,6 @@
     }
     
     if (self.passwordTextField.text == nil || [self.passwordTextField.text isEqualToString:@""]) {
-        //        [self showTotasViewWithMes:@"请输入密码"];
-        
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"请输入密码"];
         [toastView show];
         
@@ -253,8 +229,8 @@
             
             // 基本数据保存
             NSMutableDictionary * loginInfo = [responseObject mutableCopy];
-            [loginInfo setValue:_phoneNumTextField.text forKey:@"MM_phoneNum"];
-            [loginInfo setValue:_passwordTextField.text forKey:@"MM_password"];
+            [loginInfo setValue:self.phoneNumTextField.text forKey:@"MM_phoneNum"];
+            [loginInfo setValue:self.passwordTextField.text forKey:@"MM_password"];
             [loginInfo setValue:loginTime forKey:@"MM_loginTime"];
             
             
@@ -330,7 +306,7 @@
         
         MMLog(@"failure = %@",failure);
         
-                    [MBProgressHUD hideHUDForView:self.view animated:NO];
+            [MBProgressHUD hideHUDForView:self.view animated:NO];
                 ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"网络连接失败"];
                 [toastView show];
 //        [self showTotasViewWithMes:@"网络连接失败"];

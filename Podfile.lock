@@ -1,52 +1,51 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
   - BaiduMapAPI (2.8.1):
     - BaiduMapAPI/Default (= 2.8.1)
   - BaiduMapAPI/Default (2.8.1):
     - BaiduMapAPI/Universal
   - BaiduMapAPI/Universal (2.8.1)
-  - ChameleonFramework (2.0.4):
-    - ChameleonFramework/Default (= 2.0.4)
-  - ChameleonFramework/Default (2.0.4)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - HappyDNS (0.3.10)
-  - IQKeyboardManager (3.3.7)
-  - JCore (1.1.3)
-  - JPush (3.0.5):
-    - JCore (~> 1.1.1)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - HappyDNS (0.3.13)
+  - IQKeyboardManager (6.0.2)
+  - JCore (1.1.9)
+  - JPush (3.0.9):
+    - JCore (~> 1.1.7)
   - JSONKit (1.4)
   - M13ProgressSuite (1.2.9)
   - Mantle (2.0.7):
     - Mantle/extobjc (= 2.0.7)
   - Mantle/extobjc (2.0.7)
-  - Masonry (1.0.2)
+  - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.15.3)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - QBImagePickerController (2.6.0)
-  - Qiniu (7.1.5):
-    - AFNetworking (~> 3)
+  - QBImagePickerController (3.4.0)
+  - Qiniu (7.2.3):
     - HappyDNS (~> 0.3)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -64,8 +63,6 @@ PODS:
   - TencentOpenApiSDK (2.9.5):
     - TencentOpenApiSDK/Basic (= 2.9.5)
   - TencentOpenApiSDK/Basic (2.9.5)
-  - UMengAnalytics-NO-IDFA (4.2.5)
-  - UMengSocial (4.4)
   - YYModel (1.0.4)
   - ZipArchive (1.4.0)
 
@@ -91,40 +88,36 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7)
   - SSKeychain
   - TencentOpenApiSDK (~> 2.9.5)
-  - UMengAnalytics-NO-IDFA
-  - UMengSocial (~> 4.4)
   - YYModel
   - ZipArchive
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   BaiduMapAPI: 2d03e12a51d5c6c49ece555c6bdda8562635cc02
-  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
-  IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
-  JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
-  JPush: dd0b776998aa705a6242b947bf72e5a640387cfe
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HappyDNS: 17732b07a75bb9756bd6fe04452609e8da8c663e
+  IQKeyboardManager: c49d59e358aeeffaa0280aa305093c2b194d2607
+  JCore: 27598485098d0db99d2812cba048003457d08cfb
+  JPush: 003d9eaef8ba2df76de32573d0c8aa62b92b3c82
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  QBImagePickerController: 095c2b2973de4da267334d2cfcac989c2eb5cdc2
-  Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  Qiniu: ae0fea1cc379fae1560d8748ac537e0fbeb8626e
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   TencentOpenApiSDK: a0d7716edd6eb438d65828168e8e5137301b436d
-  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: b9b9c5baa78314192530b004d6a02311c6f18ea6
+PODFILE CHECKSUM: 9a678221d78fe617dab172eb80fe40cc03815728
 
-COCOAPODS: 1.2.1.beta.1
+COCOAPODS: 1.3.1
