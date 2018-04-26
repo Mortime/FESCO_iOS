@@ -488,7 +488,7 @@
  */
 - (void)asyncAddContact:(NSString *)aUsername
                 message:(NSString *)aMessage
-                success:(void (^)())aSuccessBlock
+                success:(void (^)(void))aSuccessBlock
                 failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -addContact:message:completion:");
 
 /*!
@@ -547,7 +547,7 @@
  *
  */
 - (void)asyncDeleteContact:(NSString *)aUsername
-                   success:(void (^)())aSuccessBlock
+                   success:(void (^)(void))aSuccessBlock
                    failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -deleteContact:completion:");
 
 /*!
@@ -587,7 +587,7 @@
  */
 - (void)asyncAddUserToBlackList:(NSString *)aUsername
                relationshipBoth:(BOOL)aBoth
-                        success:(void (^)())aSuccessBlock
+                        success:(void (^)(void))aSuccessBlock
                         failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -addUserToBlackList:completion:");
 
 /*!
@@ -607,7 +607,7 @@
  *
  */
 - (void)asyncRemoveUserFromBlackList:(NSString *)aUsername
-                             success:(void (^)())aSuccessBlock
+                             success:(void (^)(void))aSuccessBlock
                              failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -removeUserFromBlackList:completion:");
 
 /*!
@@ -627,7 +627,7 @@
  *
  */
 - (void)asyncAcceptInvitationForUsername:(NSString *)aUsername
-                                 success:(void (^)())aSuccessBlock
+                                 success:(void (^)(void))aSuccessBlock
                                  failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -approveFriendRequestFromUser:completion:");
 
 /*!
@@ -647,6 +647,6 @@
  *
  */
 - (void)asyncDeclineInvitationForUsername:(NSString *)aUsername
-                                  success:(void (^)())aSuccessBlock
+                                  success:(void (^)(void))aSuccessBlock
                                   failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -declineFriendRequestFromUser:completion:");
 @end

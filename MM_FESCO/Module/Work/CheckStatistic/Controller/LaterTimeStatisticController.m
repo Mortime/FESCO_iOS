@@ -33,16 +33,17 @@
     
 }   
 - (void)initData{
+    WS(ws);
     [NetworkEntity postLaterTimeStatisticSuccess:^(id responseObject) {
         MMLog(@"laterTimeStatistic  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"rankList"] count]) {
             NSArray *array =  [responseObject objectForKey:@"rankList"];
             for (NSDictionary *dic in array) {
                 LaterTimeStatisticModel *model = [LaterTimeStatisticModel yy_modelWithDictionary:dic];
-                [self.dataArray addObject:model];
+                [ws.dataArray addObject:model];
                 
             }
-            [_tableView reloadData];
+            [ws.tableView reloadData];
         }
     } failure:^(NSError *failure) {
         MMLog(@"laterTimeStatistic  =======failure=====%@",failure);

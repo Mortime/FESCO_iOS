@@ -175,51 +175,51 @@ typedef enum{
 
 #pragma mark - Deprecated methods
 
-/*!
- *  \~chinese
- *  有用户加入聊天室
- *
- *  @param aChatroom    加入的聊天室
- *  @param aUsername    加入者
- *
- *  \~english
- *  Delegate method will be invoked when a user joins a chat room
- *
- *  @param aChatroom    Joined chatroom
- *  @param aUsername    The user who joined chatroom
- */
-- (void)didReceiveUserJoinedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername __deprecated_msg("Use -userDidJoinChatroom:user:");
-
-/*!
- *  \~chinese
- *  有用户离开聊天室
- *
- *  @param aChatroom    离开的聊天室
- *  @param aUsername    离开者
- *
- *  \~english
- *  A user leaved chatroom
- *
- *  @param aChatroom    Leaved chatroom
- *  @param aUsername    The user who leaved chatroom
- */
-- (void)didReceiveUserLeavedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername __deprecated_msg("Use -userDidLeaveChatroom:reason:");
-
-/*!
- *  \~chinese
- *  被踢出聊天室
- *
- *  @param aChatroom    被踢出的聊天室
- *  @param aReason      被踢出聊天室的原因
- *
- *  \~english
- *  User was kicked out from a chatroom
- *
- *  @param aChatroom    The chatroom which user was kicked out from
- *  @param aReason      The reason of user was kicked out
- */
-- (void)didReceiveKickedFromChatroom:(EMChatroom *)aChatroom
-                              reason:(EMChatroomBeKickedReason)aReason __deprecated_msg("Use -didDismissFromChatroom:reason:");
+///*!
+// *  \~chinese
+// *  有用户加入聊天室
+// *
+// *  @param aChatroom    加入的聊天室
+// *  @param aUsername    加入者
+// *
+// *  \~english
+// *  Delegate method will be invoked when a user joins a chat room
+// *
+// *  @param aChatroom    Joined chatroom
+// *  @param aUsername    The user who joined chatroom
+// */
+//- (void)didReceiveUserJoinedChatroom:(EMChatroom *)aChatroom
+//                            username:(NSString *)aUsername __deprecated_msg("Use -userDidJoinChatroom:user:");
+//
+///*!
+// *  \~chinese
+// *  有用户离开聊天室
+// *
+// *  @param aChatroom    离开的聊天室
+// *  @param aUsername    离开者
+// *
+// *  \~english
+// *  A user leaved chatroom
+// *
+// *  @param aChatroom    Leaved chatroom
+// *  @param aUsername    The user who leaved chatroom
+// */
+//- (void)didReceiveUserLeavedChatroom:(EMChatroom *)aChatroom
+//                            username:(NSString *)aUsername __deprecated_msg("Use -userDidLeaveChatroom:reason:");
+//
+///*!
+// *  \~chinese
+// *  被踢出聊天室
+// *
+// *  @param aChatroom    被踢出的聊天室
+// *  @param aReason      被踢出聊天室的原因
+// *
+// *  \~english
+// *  User was kicked out from a chatroom
+// *
+// *  @param aChatroom    The chatroom which user was kicked out from
+// *  @param aReason      The reason of user was kicked out
+// */
+//- (void)didReceiveKickedFromChatroom:(EMChatroom *)aChatroom
+//                              reason:(EMChatroomBeKickedReason)aReason __deprecated_msg("Use -didDismissFromChatroom:reason:");
 @end

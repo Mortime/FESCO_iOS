@@ -101,7 +101,7 @@
     
 }
 - (void)initData{
-    
+    WS(ws);
     [_dataArray removeAllObjects];
     [NetworkEntity postReimburseListSuccess:^(id responseObject) {
         
@@ -111,9 +111,9 @@
             NSArray *dicArray = [responseObject objectForKey:@"list"];
             for (NSDictionary *dic in dicArray) {
                 ReimburseModel *model = [ReimburseModel yy_modelWithDictionary:dic];
-                [_dataArray addObject:model];
+                [ws.dataArray addObject:model];
             }
-            [_tableView reloadData];
+            [ws.tableView reloadData];
            
         }
     } failure:^(NSError *failure) {
@@ -121,26 +121,7 @@
     }];
     
 }
-//- (void)initDataNOBook{
-//    [NetworkEntity postPurchaseRecordSuccess:^(id responseObject) {
-////        MMLog(@"PurchaseRecord  =======responseObject=====%@",responseObject);
-//        CGFloat number = 0;
-//        if ([[responseObject objectForKey:@"errcode"] integerValue] == 0) {
-//            NSArray *array = [responseObject objectForKey:@"list"];
-//            if (array.count) {
-//                for (NSDictionary *dic in array) {
-//                    number = number + [[dic objectForKey:@"money_Amount"] integerValue];
-//                }
-//            }
-//            _leftRecordView.textViewStr = [NSString stringWithFormat:@"%lu条消费记录\n共%.f元",array.count,number];
-//        }
-//    } failure:^(NSError *failure) {
-//        MMLog(@"PurchaseRecord  =======failure=====%@",failure);
-//        ToastAlertView *view = [[ToastAlertView alloc] initWithTitle:@"网络错误"];
-//        [view show];
-//    }];
-//
-//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _dataArray.count;
@@ -165,6 +146,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ReimburseModel *model = _dataArray[indexPath.row];
+    WS(ws);
     if (model.statusReimburse == 0) {
         // 待提交状态
         [_netWorkRecordArray removeAllObjects];
@@ -175,26 +157,26 @@
                 NSArray *array = [dic objectForKey:@"details"];
                 for (NSDictionary *dic in array) {
                     EditMessageModel *model = [EditMessageModel yy_modelWithDictionary:dic];
-                    [_netWorkRecordArray addObject:model];
+                    [ws.netWorkRecordArray addObject:model];
     
                 }
                 
                 NewReimburseController *newReimburseVC = [[NewReimburseController alloc] init];
                 newReimburseVC.rePurchaseBook = editReimburseBook;
-                newReimburseVC.reimburseModel = _dataArray[indexPath.row];
-                newReimburseVC.netWorkRecordArray = _netWorkRecordArray;
+                newReimburseVC.reimburseModel = ws.dataArray[indexPath.row];
+                newReimburseVC.netWorkRecordArray = ws.netWorkRecordArray;
                 newReimburseVC.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:newReimburseVC animated:YES];
+                [ws.navigationController pushViewController:newReimburseVC animated:YES];
 
             }
         } failure:^(NSError *failure) {
-            MMLog(@"EditReimburseBook (编辑时基本信息)  =======failure=====%@",failure);
+            
         }];
     }else{
         ProgressReimburseController *progressVC = [[ProgressReimburseController alloc] init];
         progressVC.model = model;
         progressVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:progressVC animated:YES];
+        [ws.navigationController pushViewController:progressVC animated:YES];
     }
 }
 #pragma mark --- Action

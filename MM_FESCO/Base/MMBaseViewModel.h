@@ -10,7 +10,7 @@
 
 @interface MMBaseViewModel : NSObject
 
-typedef void(^BaseViewModelUpdataBlock)();
+typedef void(^BaseViewModelUpdataBlock)(void);
 
 //** 调用刷新和加载回调Block **//
 - (BOOL)successRefreshBlock;

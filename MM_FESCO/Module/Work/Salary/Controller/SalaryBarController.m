@@ -76,6 +76,7 @@
     [self.view addSubview:self.tableView];
 }
 - (void)initData{
+    WS(ws);
     [NetworkEntity postSalaryBarDataWithYear:_yearText success:^(id responseObject) {
         MMLog(@"SalaryBarData  =======responseObject=====%@",responseObject);
         if ([[responseObject objectForKey:@"errcode"] integerValue]== 0) {
@@ -90,28 +91,28 @@
                         }
                     }
                     
-                    _monthArray = [self sortDataWithArray:marginArray].mutableCopy;
+                    ws.monthArray = [self sortDataWithArray:marginArray].mutableCopy;
                     
-                    for (NSString *monthKey in _monthArray) {
+                    for (NSString *monthKey in ws.monthArray) {
                         NSDictionary *param = [responseObject objectForKey:@"dataMap"];
                         // 实发工资
-                        CGFloat result = [self salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
-                        [_monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
+                        CGFloat result = [ws salaryRealAllNumberWithDic:[param objectForKey:monthKey]];
+                        [ws.monthAllSalaryArray addObject:[NSString stringWithFormat:@"%.2f",result]];
                         // 数据字典
                         NSDictionary *mightDic = [param objectForKey:monthKey];
                         NSMutableDictionary *mutableDic = mightDic.mutableCopy;
                         [mutableDic setObject:@"0" forKey:@"isShowDetail"];
-                        [_dataArray addObject:mutableDic];
+                        [ws.dataArray addObject:mutableDic];
                     }
                     MMLog(@"_monthArray = %@",_monthArray);
-                    [_tableView reloadData];
+                    [ws.tableView reloadData];
                     
                 }
  
             }else{
-                [self showTotasViewWithMes:@"数据错误"];
+                [ws showTotasViewWithMes:@"数据错误"];
             }
-                   }
+}
     } failure:^(NSError *failure) {
         MMLog(@"SalaryBarData  =======failure=====%@",failure);
         [self showTotasViewWithMes:@"网络错误"];
@@ -183,12 +184,13 @@
 }
 // SalaryBarSectionViewDelegate
 - (void)SalaryBarSectionViewDelegateWith:(UIButton *)sender{
+    WS(ws);
     [UIView animateWithDuration:0.5 animations:^{
         sender.transform = CGAffineTransformRotate(sender.transform, M_PI);
         
     } completion:^(BOOL finished) {
         // 取出月份
-        NSDictionary *monthDic = [_dataArray objectAtIndex:sender.tag];
+        NSDictionary *monthDic = [ws.dataArray objectAtIndex:sender.tag];
         NSMutableDictionary *monthMutDic = monthDic.mutableCopy;
         NSInteger isFlag = [[monthDic objectForKey:@"isShowDetail"] integerValue];
         if (isFlag ==0) {
@@ -197,10 +199,9 @@
             isFlag = 0;
         }
         [monthMutDic setObject:[NSString stringWithFormat:@"%lu",isFlag] forKey:@"isShowDetail"];
-        [_dataArray replaceObjectAtIndex:sender.tag withObject:monthMutDic];
-        MMLog(@"replaceObjectAtIndex  = %@",_dataArray);
+        [ws.dataArray replaceObjectAtIndex:sender.tag withObject:monthMutDic];
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:sender.tag];
-        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+        [ws.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 
     }];
     

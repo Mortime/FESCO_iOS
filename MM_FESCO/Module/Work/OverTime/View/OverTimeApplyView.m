@@ -78,10 +78,11 @@
 
 #pragma mark - 刷新数据
 - (void)networkRequest {
+    WS(ws);
     [NetworkEntity postOverTimeApplyMessageSuccess:^(id responseObject) {
         MMLog(@"OverTimeApplyMessage ========responseObject=========%@",responseObject);
         // 审批人选择
-            _isApplyOverTime = YES;
+            ws.isApplyOverTime = YES;
             NSArray  *applyPeople = [responseObject objectForKey:@"availableApprovalManList"];
             _resultArray =  applyPeople;
             for (NSDictionary *dic in applyPeople) {
@@ -89,10 +90,10 @@
                 [_pickDataArray addObject:str];
             }
         if ([[responseObject objectForKey:@"errcode"] integerValue] == 1) {
-            _isApplyOverTime = NO;
-            _messageError = [responseObject objectForKey:@"message"];
+            ws.isApplyOverTime = NO;
+            ws.messageError = [responseObject objectForKey:@"message"];
         }
-        [self refreshUI];
+        [ws refreshUI];
         
     } failure:^(NSError *failure) {
         MMLog(@"OverTimeApplyMessage ========failure============%@",failure);
@@ -203,6 +204,7 @@
         timeUntiy = 3;
     }
     _commitButton.userInteractionEnabled = NO;
+    WS(ws);
     [NetworkEntity postCommitOverTimeApplyWihtTimeUnit:timeUntiy workDuration:_timeDuring beginTime:_beginTime endTime:_endTime reason:_applyIdea approvalMan:applyPeopleID Success:^(id responseObject) {
         
 //        MMLog(@"CommitOverTimeApply ========responseObject=========%@",responseObject);
@@ -215,11 +217,11 @@
         if ([[responseObject objectForKey:@"message"] isEqualToString:@"duplicate"]) {
             [self.parementVC showTotasViewWithMes:@"该加班时间段已经存在,请重新选择!"];
         }
-        _commitButton.userInteractionEnabled = YES;
+        ws.commitButton.userInteractionEnabled = YES;
     } failure:^(NSError *failure) {
         MMLog(@"CommitOverTimeApply ========failure=========%@",failure);
-        _commitButton.userInteractionEnabled = YES;
-        [self.parementVC showTotasViewWithMes:@"网络错误"];
+        ws.commitButton.userInteractionEnabled = YES;
+        [ws.parementVC showTotasViewWithMes:@"网络错误"];
     }];
     
 }

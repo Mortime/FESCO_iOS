@@ -631,7 +631,7 @@
  */
 - (void)asyncRegisterWithUsername:(NSString *)aUsername
                          password:(NSString *)aPassword
-                          success:(void (^)())aSuccessBlock
+                          success:(void (^)(void))aSuccessBlock
                           failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -registerWithUsername:password:completion:");
 
 /*!
@@ -654,7 +654,7 @@
  */
 - (void)asyncLoginWithUsername:(NSString *)aUsername
                       password:(NSString *)aPassword
-                       success:(void (^)())aSuccessBlock
+                       success:(void (^)(void))aSuccessBlock
                        failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -loginWithUsername:password:completion");
 
 /*!
@@ -674,7 +674,7 @@
  *  @result Error
  */
 - (void)asyncLogout:(BOOL)aIsUnbindDeviceToken
-            success:(void (^)())aSuccessBlock
+            success:(void (^)(void))aSuccessBlock
             failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -logout:completion:");
 
 /*!
@@ -693,7 +693,7 @@
  *  @param aFailureBlock    The callback block of failure
  */
 - (void)asyncBindDeviceToken:(NSData *)aDeviceToken
-                     success:(void (^)())aSuccessBlock
+                     success:(void (^)(void))aSuccessBlock
                      failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -registerForRemoteNotificationsWithDeviceToken:completion:");
 
 /*!
@@ -713,7 +713,7 @@
  *
  */
 - (void)asyncSetApnsNickname:(NSString *)aNickname
-                     success:(void (^)())aSuccessBlock
+                     success:(void (^)(void))aSuccessBlock
                      failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -updatePushNotifiationDisplayName:copletion");
 
 /*!
@@ -746,7 +746,7 @@
  *  @param aFailureBlock    The callback block of failure
  *
  */
-- (void)asyncUpdatePushOptionsToServer:(void (^)())aSuccessBlock
+- (void)asyncUpdatePushOptionsToServer:(void (^)(void))aSuccessBlock
                                failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -updatePushNotificationOptionsToServerWithCompletion:");
 
 /*!
@@ -762,7 +762,7 @@
  *  @param aSuccessBlock    The callback block of success
  *  @param aFailureBlock    The callback block of failure
  */
-- (void)asyncUploadLogToServer:(void (^)())aSuccessBlock
+- (void)asyncUploadLogToServer:(void (^)(void))aSuccessBlock
                        failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -uploadDebugLogToServerWithCompletion:");
 
 /*!

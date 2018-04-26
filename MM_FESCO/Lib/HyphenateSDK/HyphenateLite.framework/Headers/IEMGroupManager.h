@@ -2193,7 +2193,7 @@
  */
 - (void)asyncAcceptJoinApplication:(NSString *)aGroupId
                          applicant:(NSString *)aUsername
-                           success:(void (^)())aSuccessBlock
+                           success:(void (^)(void))aSuccessBlock
                            failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -approveJoinGroupRequest:sender:completion:");
 
 /*!
@@ -2220,7 +2220,7 @@
 - (void)asyncDeclineJoinApplication:(NSString *)aGroupId
                           applicant:(NSString *)aUsername
                              reason:(NSString *)aReason
-                            success:(void (^)())aSuccessBlock
+                            success:(void (^)(void))aSuccessBlock
                             failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -declineJoinGroupRequest:sender:reason:completion:");
 
 /*!
@@ -2272,7 +2272,7 @@
 - (void)asyncDeclineInvitationFromGroup:(NSString *)aGroupId
                                 inviter:(NSString *)aUsername
                                  reason:(NSString *)aReason
-                                success:(void (^)())aSuccessBlock
+                                success:(void (^)(void))aSuccessBlock
                                 failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -declineGroupInvitation:inviter:reason:completion:");
 
 /*!
@@ -2296,7 +2296,7 @@
  */
 - (void)asyncIgnoreGroupPush:(NSString *)aGroupId
                       ignore:(BOOL)aIsIgnore
-                     success:(void (^)())aSuccessBlock
+                     success:(void (^)(void))aSuccessBlock
                      failure:(void (^)(EMError *aError))aFailureBlock __deprecated_msg("Use -updatePushServiceForGroup:isPushEnabled:completion:");
 
 @end

@@ -94,41 +94,15 @@
 - (void)initData{
     [NetworkEntity postSignUpApproalMessageWithApply:_listModel.applyid Success:^(id responseObject) {
         
-        /*
-         
-         lastApprovalStep =     {
-         "apply_Id" = 31;
-         "approval_Man" = 163;
-         "approval_Man_Str" = "\U80e1\U677e";
-         "approval_Time" = 1476691856000;
-         "is_Over" = 1;
-         "is_Pass" = 1;
-         "is_Pass_Str" = "\U901a\U8fc7\U5ba1\U6279";
-         memo = "<null>";
-         "next_Approval_Man" = 163;
-         "step_Id" = 220;
-         };
-
-         */
-        
-        
-        
+        WS(ws);
         MMLog(@"SignUpApproalMessage ====== responseObject====%@",responseObject);
         NSArray *allKey = [responseObject allKeys];
-        
-        
-        
         for (NSString *keyStr in allKey) {
             if ([keyStr isEqualToString:@"lastApprovalStep"]) {
-                 _isShowLaterMessage = YES;
+                 ws.isShowLaterMessage = YES;
                 NSDictionary *dic = [responseObject objectForKey:keyStr];
-                
-                MMLog(@"lastApprovalStep == %@",dic);
-                
-                
-                
                 NSString *lastDate = [NSDate dateFromSSWithss:[NSString stringWithFormat:@"%@",[dic objectForKey:@"approval_Time"]]];
-                [_bottomDataArray addObject:lastDate];
+                [ws.bottomDataArray addObject:lastDate];
                 NSString *lastRelutt = @"";
                 NSInteger result = [[dic objectForKey:@"is_Pass"] integerValue];
                 if (result == 0) {
@@ -138,23 +112,17 @@
                     lastRelutt = @"通过";
                 }
                 
-                [_bottomDataArray addObject:lastRelutt];
-
-            
+                [ws.bottomDataArray addObject:lastRelutt];
                 NSString *lastMemo = [dic objectForKey:@"memo"];
                 if (lastMemo == nil  || [lastMemo isKindOfClass:[NSNull class]]) {
                     lastMemo = @"暂无";
                 }
-                [_bottomDataArray addObject:lastMemo];
-                
-              
+                [ws.bottomDataArray addObject:lastMemo];
             }
         }
-        if (!_isShowLaterMessage) {
-            _isShowLaterMessage = NO;
+        if (!ws.isShowLaterMessage) {
+            ws.isShowLaterMessage = NO;
         }
-        
-        
         NSDictionary *applyMessage = [responseObject objectForKey:@"apply"];
         // 基本信息展示
         NSInteger signType = [[applyMessage objectForKey:@"check_Type"] integerValue];
@@ -171,27 +139,25 @@
         NSString *beginTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"check_Time"]];
         NSString *address = [applyMessage objectForKey:@"cust_Addr"];
         NSString *endTime = [NSDate dateFromSSWithss:[applyMessage objectForKey:@"apply_Date"]];
-        
         NSString *reason = @"暂无";
         if (![[applyMessage objectForKey:@"memo"] isKindOfClass:[NSNull class]]) {
            reason = [applyMessage objectForKey:@"memo"];
         }
         
-        self.headerBottomArray = @[typeStr,beginTime,address,endTime];
-        self.topDataArray = @[reason];
+        ws.headerBottomArray = @[typeStr,beginTime,address,endTime];
+        ws.topDataArray = @[reason];
         
         // 审批人选择
         NSArray  *applyPeople = [responseObject objectForKey:@"availableApprovalManList"];
-        _resultArray =  applyPeople;
+        ws.resultArray =  applyPeople;
         for (NSDictionary *dic in applyPeople) {
             NSString *str = [dic objectForKey:@"emp_Name"];
-            [_pickDataArray addObject:str];
+            [ws.pickDataArray addObject:str];
         }
         
         // 网络请求成功后添加头部视图
-        self.tableView.tableHeaderView = self.headerView;
-        
-        [_tableView reloadData];
+        ws.tableView.tableHeaderView = ws.headerView;
+        [ws.tableView reloadData];
 
         
         

@@ -92,6 +92,7 @@
     
     }
 - (void)getInfoData{
+    WS(ws);
     [NetworkEntity postGetButtetInfoSuccess:^(id responseObject) {
         MMLog(@"GetButtetInfo =======responseObject=====%@",responseObject);
         
@@ -99,93 +100,90 @@
             // 不作处理
         }else if([[responseObject objectForKey:@"errcode"] integerValue] == 0){
             // 此时只有图片保存成功,不为空的值进行赋值,其他仍可以编辑
-            
-            
-            
             // 图片赋值
             if ([responseObject objectForKey:@"idcard1"]) {
                 NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
-                _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
-                _cardPositiveSuccess = YES;
-                _oneCardIDView.userInteractionEnabled = NO;
+                ws.oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
+                ws.cardPositiveSuccess = YES;
+                ws.oneCardIDView.userInteractionEnabled = NO;
                 
             }
             if ([responseObject objectForKey:@"idcard2"]) {
                 NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
-                _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
-                _cardReverseSuccess = YES;
-                _twoCardIDView.userInteractionEnabled = NO;
+                ws.twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
+                ws.cardReverseSuccess = YES;
+                ws.twoCardIDView.userInteractionEnabled = NO;
 
             }
             if ([responseObject objectForKey:@"photoPic"]) {
                 NSData *data3 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"photoPic"] options:0];
-                _headerView.iconView.image = [UIImage imageWithData:data3];
-                _photoSuccess = YES;
-                _headerView.iconView.userInteractionEnabled = NO;
+                ws.headerView.iconView.image = [UIImage imageWithData:data3];
+                ws.photoSuccess = YES;
+                ws.headerView.iconView.userInteractionEnabled = NO;
             }
            
-            [_tableView reloadData];
+            [ws.tableView reloadData];
             
             
         } else {
             NSDictionary *param = [responseObject objectForKey:@"empIns"];
-            _isSaveData= YES;
-            _cancelButton.backgroundColor = [UIColor grayColor];
-            _cancelButton.userInteractionEnabled = NO;
-            _name = [param objectForKey:@"yiliao_Name"];
+            ws.isSaveData= YES;
+            ws.cancelButton.backgroundColor = [UIColor grayColor];
+            ws.cancelButton.userInteractionEnabled = NO;
+            ws.name = [param objectForKey:@"yiliao_Name"];
             if ([[param objectForKey:@"gender"] integerValue] == 1) {
-                _gender = @"男";
+                ws.gender = @"男";
             }else if ([[param objectForKey:@"gender"] integerValue] == 2) {
-                _gender = @"女";
+                ws.gender = @"女";
             }
-            _nationCode = [param objectForKey:@"nationStr"];
-            _birthDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[NSString stringWithFormat:@"%lu",[[param objectForKey:@"birthday"] integerValue]]];
-            _cardID = [param objectForKey:@"yiliao_Iden_Card"];
-            _countryCode = [param objectForKey:@"nationality"];
+            ws.nationCode = [param objectForKey:@"nationStr"];
+            ws.birthDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[NSString stringWithFormat:@"%lu",[[param objectForKey:@"birthday"] integerValue]]];
+            ws.cardID = [param objectForKey:@"yiliao_Iden_Card"];
+            ws.countryCode = [param objectForKey:@"nationality"];
             if ([param objectForKey:@"resid_Permit_Code"] && ![[param objectForKey:@"resid_Permit_Code"] isEqual:[NSNull null]]) {
                 
-                _wordID = [param objectForKey:@"resid_Permit_Code"];
+                ws.wordID = [param objectForKey:@"resid_Permit_Code"];
             }else{
-                _wordID = @"暂无";
+                ws.wordID = @"暂无";
             }
-            _workDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[NSString stringWithFormat:@"%lu",[[param objectForKey:@"work_Date"] integerValue]]];
+            ws.workDate = [NSDate dateFromSSWithDateType:@"yyyy-MM-dd" ss:[NSString stringWithFormat:@"%lu",[[param objectForKey:@"work_Date"] integerValue]]];
             if ([[param objectForKey:@"hukou_Type"] integerValue] == 1) {
-                _populationType = @"城镇";
+                ws.populationType = @"城镇";
             }else if ([[param objectForKey:@"hukou_Type"] integerValue] == 2) {
-                _populationType = @"农村";
+                ws.populationType = @"农村";
             }else{
-                _populationType = @"其他";
+                ws.populationType = @"其他";
             }
-            _address = [param objectForKey:@"residential_Addr"];
+            ws.address = [param objectForKey:@"residential_Addr"];
             
-            if (_isSaveData) {
-                _headerView.nameView.rightTextFiled.text = _name;
-                _headerView.nameView.rightTextFiled.userInteractionEnabled = NO;
+            if (ws.isSaveData) {
+                ws.headerView.nameView.rightTextFiled.text = ws.name;
+                ws.headerView.nameView.rightTextFiled.userInteractionEnabled = NO;
                 
-                _headerView.sexView.rightTextFiled.text = _gender;
-                _headerView.sexView.rightTextFiled.userInteractionEnabled = NO;
+                ws.headerView.sexView.rightTextFiled.text = ws.gender;
+                ws.headerView.sexView.rightTextFiled.userInteractionEnabled = NO;
                 
-                _headerView.nationView.rightTextFiled.text = _nationCode;
-                _headerView.nationView.rightTextFiled.userInteractionEnabled = NO;
+                ws.headerView.nationView.rightTextFiled.text = ws.nationCode;
+                ws.headerView.nationView.rightTextFiled.userInteractionEnabled = NO;
                 
-                _headerView.iconView.userInteractionEnabled = NO;
+                ws.headerView.iconView.userInteractionEnabled = NO;
                 
-                _oneCardIDView.userInteractionEnabled = NO;
-                _twoCardIDView.userInteractionEnabled = NO;
+                ws.oneCardIDView.userInteractionEnabled = NO;
+                ws.twoCardIDView.userInteractionEnabled = NO;
                 
                 // 图片赋值
                 NSData *data = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard1"] options:0];
-                _oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
+                ws.oneCardIDView.cardIDImageView.image = [UIImage imageWithData:data];
                 
                 NSData *data2 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"idcard2"] options:0];
-                _twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
+                ws.twoCardIDView.cardIDImageView.image = [UIImage imageWithData:data2];
                 
                 NSData *data3 = [[NSData alloc]initWithBase64EncodedString:[responseObject objectForKey:@"photoPic"] options:0];
-                _headerView.iconView.image = [UIImage imageWithData:data3];
+                ws.headerView.iconView.image = [UIImage imageWithData:data3];
                 
             }
             
-            [_tableView reloadData];
+            [ws.tableView reloadData];
 
         }
 
@@ -219,7 +217,7 @@
     return 44;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(ws);
         static NSString *cellID = @"socialSecurityID";
         SocialSecurityCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -235,8 +233,7 @@
             cell.tag = 500001;
             cell.socialTextFiledView.isShowDataPickView = YES;
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"出生日期 = %@ indexTag = %lu",textField.text,indexTag);
-                _birthDate = textField.text;
+                ws.birthDate = textField.text;
             }];
             if (_isSaveData) {
                 cell.socialTextFiledView.rightTextFiled.text = _birthDate;
@@ -248,8 +245,7 @@
             cell.socialTextFiledView.isExist = YES;
             cell.tag = 500002;
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"身份证号 = %@ indexTag = %lu",textField.text,indexTag);
-                _cardID = textField.text;
+                ws.cardID = textField.text;
             }];
             if (_isSaveData) {
                 cell.socialTextFiledView.rightTextFiled.text = _cardID;
@@ -281,8 +277,7 @@
             cell.socialTextFiledView.isExist = YES;
             cell.tag = 500003;
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"工作居住证号 = %@ indexTag = %lu",textField.text,indexTag);
-                _wordID = textField.text;
+                ws.wordID = textField.text;
             }];
             if (_isSaveData) {
                 cell.socialTextFiledView.rightTextFiled.text = _wordID;
@@ -294,8 +289,7 @@
             cell.socialTextFiledView.isShowDataPickView = YES;
             cell.tag = 500004;
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"参加工作时间 = %@ indexTag = %lu",textField.text,indexTag);
-                _workDate = textField.text;
+                ws.workDate = textField.text;
             }];
             if (_isSaveData) {
                 cell.socialTextFiledView.rightTextFiled.text = _workDate;
@@ -309,11 +303,11 @@
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
                 MMLog(@"户口性质 = %@ indexTag = %lu",textField.text,indexTag);
                 if ([textField.text isEqualToString:@"农村"]) {
-                    _populationType = @"2";
+                    ws.populationType = @"2";
                 }else if ([textField.text isEqualToString:@"城镇"]) {
-                    _populationType = @"1";
+                    ws.populationType = @"1";
                 }else{
-                    _populationType = @"3";
+                    ws.populationType = @"3";
                 }
                
                 
@@ -328,8 +322,7 @@
             cell.socialTextFiledView.isExist = YES;
             cell.tag = 500006;
             [cell.socialTextFiledView MM_setTextFieldDidEndEditingBlock:^(UITextField *textField, NSInteger indexTag) {
-                MMLog(@"居住地址 = %@ indexTag = %lu",textField.text,indexTag);
-                _address = textField.text;
+                ws.address = textField.text;
             }];
             if (_isSaveData) {
                 cell.socialTextFiledView.rightTextFiled.text = _address;
@@ -410,11 +403,8 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *photoImage = [info valueForKey:UIImagePickerControllerEditedImage];
     NSData *photeoData = UIImageJPEGRepresentation(photoImage, 0.5);
-    
     NSDictionary *dict = nil;
-    
     NSString *name = nil;
-    
     NSString *fileName  = nil;
     if (_picType == userPhone) {
         // 照片
@@ -433,28 +423,23 @@
         name = @"uploadFile";
         fileName = @"cardReverse.png";
     }
-
-    
-    
-    
-    
-    
+    WS(ws);
     [NetworkEntity postUpLoadPictureWithParamDic:dict urlStr:@"emp/uploadInsPic.json" name:name fileName:fileName picData:photeoData success:^(id responseObject) {
         //请求成功
         MMLog(@"请求成功：%@",responseObject);
-        if (_picType == userPhone) {
+        if (ws.picType == userPhone) {
             // 照片
             self.headerView.iconView.image = photoImage;
-            _photoSuccess = YES;
-        }else if (_picType == cardPositive){
+            ws.photoSuccess = YES;
+        }else if (ws.picType == cardPositive){
             // 身份证正面
-            _oneCardIDView.cardIDImageView.image = photoImage;
-            _cardPositiveSuccess = YES;
+            ws.oneCardIDView.cardIDImageView.image = photoImage;
+            ws.cardPositiveSuccess = YES;
           
-        }else if (_picType == cardReverse){
+        }else if (ws.picType == cardReverse){
             // 身份证反面
-            _twoCardIDView.cardIDImageView.image = photoImage;
-            _cardReverseSuccess = YES;
+            ws.twoCardIDView.cardIDImageView.image = photoImage;
+            ws.cardReverseSuccess = YES;
             
         }
 
@@ -462,7 +447,6 @@
         
     } failure:^(NSError *failure) {
         //请求失败
-        MMLog(@"请求失败：%@",failure);
         ToastAlertView *toastView = [[ToastAlertView alloc] initWithTitle:@"上传失败"];
         [toastView show];
     }];

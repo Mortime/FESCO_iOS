@@ -53,7 +53,7 @@
 
 extern UIImage *EMSDScaledImageForKey(NSString *key, UIImage *image);
 
-typedef void(^EMSDWebImageNoParamsBlock)();
+typedef void(^EMSDWebImageNoParamsBlock)(void);
 
 #define dispatch_main_sync_safe(block)\
     if ([NSThread isMainThread]) {\

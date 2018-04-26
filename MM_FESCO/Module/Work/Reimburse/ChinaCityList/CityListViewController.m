@@ -162,44 +162,17 @@
 - (void)ininHeaderView
 {
     
-//    _tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 250)];
-//    _tableHeaderView.backgroundColor = [UIColor clearColor];
-//
-//    
-//    //热门城市
-//    UILabel *title3 = [[UILabel alloc]initWithFrame:CGRectMake(16, 10, 160, 21)];
-//    title3.text = @"热门城市";
-//    title3.font = [UIFont systemFontOfSize:12];
-//    title3.textColor = [UIColor lightGrayColor];
-//    [_tableHeaderView addSubview:title3];
-//    
-//    
-//    long row = _arrayHotCity.count/3;
-//    if (_arrayHotCity.count%3 > 0) {
-//        row += 1;
-//    }
-//    CGFloat hotViewHight = 60*row;
-//    _hotCityGroupView = [[ButtonGroupView alloc]initWithFrame:CGRectMake(0, title3.frame.origin.y+title3.frame.size.height+10, _tableHeaderView.frame.size.width, hotViewHight)];
-//    _hotCityGroupView.backgroundColor = [UIColor clearColor];
-//    _hotCityGroupView.delegate = self;
-//    _hotCityGroupView.columns = 3;
-//    _hotCityGroupView.items = [self GetCityDataSoucre:_arrayHotCity];
-//    [_tableHeaderView addSubview:_hotCityGroupView];
-//    
-//    
-//    _tableHeaderView.frame = CGRectMake(0, 0, _tableView.frame.size.width, _hotCityGroupView.frame.origin.y+_hotCityGroupView.frame.size.height);
-    
+    WS(ws);
     [self getCityData];
     [_tableView reloadData];
     // 显示出来控件
     _searchContentView.userInteractionEnabled = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _tableView.alpha = 1;
-        _searchContentView.alpha = 1;
+        ws.tableView.alpha = 1;
+        ws.searchContentView.alpha = 1;
     }];
-//    [UIView animateWithDuration:0.3 animations:^{
-        _tableView.tableHeaderView = _tableHeaderView;
-//    }];
+    ws.tableView.tableHeaderView = ws.tableHeaderView;
+
 }
 
 - (NSArray*)GetCityDataSoucre:(NSArray*)ary

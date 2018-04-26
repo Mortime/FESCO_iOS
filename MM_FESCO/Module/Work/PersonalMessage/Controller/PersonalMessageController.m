@@ -86,31 +86,25 @@
 
 - (void)initData{
     
-    
     NSDictionary *sign = @{@"cust_Id":[UserInfoModel defaultUserInfo].custId,
                            @"emp_Id":[UserInfoModel defaultUserInfo].empId,
                            @"methodname":@"emp/loadEmpInfo.json"};
     NSString *md5Str  = [NSString sortKeyWith:sign];
-    MMLog(@"md5Str = %@",md5Str);
-    
+    WS(ws);
     [NetworkEntity postPersonMessageWithCustId:[UserInfoModel defaultUserInfo].custId emptId:[UserInfoModel defaultUserInfo].empId tokenkeyID:[UserInfoModel defaultUserInfo].token sign:md5Str success:^(id responseObject) {
         MMLog(@"=============   PersonlMessagecong responseObject =  %@",responseObject);
-        _personalMessageModel = [PersonalMessageModel yy_modelWithDictionary:responseObject];
-        
-        _headerView.nameLabel.text = _personalMessageModel.empName;
-        if (_personalMessageModel.gender == 1) {
-        [self storeData:@"男" forKey:kSex];
-        }else if (_personalMessageModel.gender == 2){
-        [self storeData:@"女" forKey:kSex];
+        ws.personalMessageModel = [PersonalMessageModel yy_modelWithDictionary:responseObject];
+        ws.headerView.nameLabel.text = ws.personalMessageModel.empName;
+        if (ws.personalMessageModel.gender == 1) {
+        [ws storeData:@"男" forKey:kSex];
+        }else if (ws.personalMessageModel.gender == 2){
+        [ws storeData:@"女" forKey:kSex];
         }else{
-//            _headerView.sexTextFiled.text = @"暂无";
+
         }
-        
         // 保存姓名和性别
-        [self storeData:_personalMessageModel.empName forKey:kName];
-//        [self storeData:_headerView.sexTextFiled.text forKey:kSex];
-    
-        [self.tableView reloadData];
+        [ws storeData:ws.personalMessageModel.empName forKey:kName];
+        [ws.tableView reloadData];
         
     } failure:^(NSError *failure) {
         MMLog(@"=============   PersonlMessagecong failure =  %@",failure);

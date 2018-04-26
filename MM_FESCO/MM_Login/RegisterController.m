@@ -259,25 +259,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didClickCodeNum{
-    MMLog(@"点击了发送验证吗");
     _codeTime = 60;
     [self.mailTextFiled.rightTextFiled resignFirstResponder];
-    
-    
     if (_mailStr == nil || [_mailStr isEqualToString:@""]) {
         [self showTotasViewWithMes:@"请输入邮箱"];
         return;
     }
-//    // 验证邮箱和手机号
-//    if (!([_mailStr isValidateEmail]||[_mailStr checkTel])) {
-//        [self showTotasViewWithMes:@"请输入正确的邮箱或手机号"];
-//        return;a
-//    }
-    
     self.codeNumButton.userInteractionEnabled = NO;
     [self startPainting];
-    
-    
+    WS(ws);
     [NetworkEntity postRegisterCodeNumberWithMail:_mailStr success:^(id responseObject) {
         MMLog(@"RegisterCodeNumber ========responseObject ============%@",responseObject);
         if (responseObject) {
@@ -285,34 +275,34 @@
             
             for (NSString *str in allkey) {
                 if ([str isEqualToString:@"ValidateCode"]) {
-                     [self showTotasViewWithMes:@"验证码发送成功"];
-                    _ValidateCode = [[responseObject objectForKey:@"ValidateCode"] integerValue];
+                     [ws showTotasViewWithMes:@"验证码发送成功"];
+                    ws.ValidateCode = [[responseObject objectForKey:@"ValidateCode"] integerValue];
                     return ;
 
                 }
             }
 
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"invalid email address"] || [[responseObject objectForKey:@"message"] isEqualToString:@"invalid phone number"]) {
-                [self showTotasViewWithMes:@"系统没有信息,请联系HR"];
-                self.codeNumButton.userInteractionEnabled = YES;
-                [self  stopPainting];
-                [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [ws showTotasViewWithMes:@"系统没有信息,请联系HR"];
+                ws.codeNumButton.userInteractionEnabled = YES;
+                [ws  stopPainting];
+                [ws.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
                 return;
             }
             if ([[responseObject objectForKey:@"message"] isEqualToString:@"already exist"]) {
-                [self showTotasViewWithMes:@"该用户已经存在"];
-                self.codeNumButton.userInteractionEnabled = YES;
-                [self  stopPainting];
-                [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [ws showTotasViewWithMes:@"该用户已经存在"];
+                ws.codeNumButton.userInteractionEnabled = YES;
+                [ws  stopPainting];
+                [ws.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
                 return;
             }
         }
     } failure:^(NSError *failure) {
         MMLog(@"RegisterCodeNumber ========failure ============%@",failure);
-        self.codeNumButton.userInteractionEnabled = YES;
-        [self  stopPainting];
-        [self.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [self showTotasViewWithMes:@"网络错误"];
+        ws.codeNumButton.userInteractionEnabled = YES;
+        [ws stopPainting];
+        [ws.codeNumButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [ws showTotasViewWithMes:@"网络错误"];
     }];
 
 }

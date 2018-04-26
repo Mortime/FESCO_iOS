@@ -10,7 +10,6 @@
 #import <AFNetworkActivityIndicatorManager.h>
 
 @interface NetMonitor ()
-@property (readwrite,nonatomic,assign) NetMonitorState _netMonitorState;
 @property (strong, nonatomic) AFNetworkReachabilityManager *AFManager;
 @end
 @implementation NetMonitor
@@ -25,22 +24,22 @@
 }
 - (id)init {
     if (self = [super init]) {
-
+        WS(ws);
         _AFManager = [AFNetworkReachabilityManager sharedManager];
         [_AFManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             NSLog(@"status");
 
             switch (status) {
                 case AFNetworkReachabilityStatusUnknown:
-                    __netMonitorState = NetMonitorStateUnkown;
+                    ws.netMonitorState = NetMonitorStateUnkown;
                     break;
                     case AFNetworkReachabilityStatusReachableViaWiFi:
-                    __netMonitorState = NetMonitorStateWiFi;
-                    _netStateExplain = @"WiFi";
+                    ws.netMonitorState = NetMonitorStateWiFi;
+                    ws.netStateExplain = @"WiFi";
                     break;
                     case AFNetworkReachabilityStatusReachableViaWWAN:
-                    __netMonitorState = NetMonitorStateWWAN;
-                    _netStateExplain = @"3G";
+                    ws.netMonitorState = NetMonitorStateWWAN;
+                    ws.netStateExplain = @"3G";
                     break;
                     case AFNetworkReachabilityStatusNotReachable:
                 {

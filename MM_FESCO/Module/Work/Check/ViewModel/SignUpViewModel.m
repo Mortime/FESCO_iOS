@@ -35,7 +35,7 @@
     _checkIndex = 1;
     _fillIndex = 1;
     NSInteger index = 0;
-    
+    WS(ws);
     if (_recodeType == RecodeTypeCheck) {
         
         index = _checkIndex;
@@ -47,16 +47,16 @@
                 return ;
             }
             
-            [_checkListArray removeAllObjects];
+            [ws.checkListArray removeAllObjects];
             NSArray *checkArray = [responseObject objectForKey:@"list"];
             
             for (NSDictionary *dic in checkArray) {
                 
                 CheckListModel *checkModel = [CheckListModel yy_modelWithDictionary:dic];
-                [_checkListArray addObject:checkModel];
+                [ws.checkListArray addObject:checkModel];
             }
             
-            [self successRefreshBlock];
+            [ws successRefreshBlock];
 
             
             
@@ -71,24 +71,20 @@
         index = _fillIndex;
         
         [NetworkEntity postFillListWithSuccess:^(id responseObject) {
-            
-            MMLog(@"fillList ====== responseObject======%@",responseObject);
-            
-            
+        
             if (responseObject == nil) {
                 return ;
             }
-            
-            [_fillListArray removeAllObjects];
+            [ws.fillListArray removeAllObjects];
             NSArray *fillArray = [responseObject objectForKey:@"list"];
             
             for (NSDictionary *dic in fillArray) {
                 
                 FillListModel *fillModel = [FillListModel yy_modelWithDictionary:dic];
-                [_fillListArray addObject:fillModel];
+                [ws.fillListArray addObject:fillModel];
             }
             
-            [self successRefreshBlock];
+            [ws successRefreshBlock];
 
         } failure:^(NSError *failure) {
             

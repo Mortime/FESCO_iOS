@@ -264,32 +264,32 @@
 
 #pragma mark - EMChatManagerChatroomDelegate
 
-- (void)didReceiveUserJoinedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername
-{
-    CGRect frame = self.chatToolbar.frame;
-    [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.join", @"\'%@\'join chatroom\'%@\'"), aUsername, aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
-}
-
-- (void)didReceiveUserLeavedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername
-{
-    CGRect frame = self.chatToolbar.frame;
-    [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.leave.hint", @"\'%@\'leave chatroom\'%@\'"), aUsername, aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
-}
-
-- (void)didReceiveKickedFromChatroom:(EMChatroom *)aChatroom
-                              reason:(EMChatroomBeKickedReason)aReason
-{
-    if ([_conversation.conversationId isEqualToString:aChatroom.chatroomId])
-    {
-        _isKicked = YES;
-        CGRect frame = self.chatToolbar.frame;
-        [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.remove", @"be removed from chatroom\'%@\'"), aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
-        [self.navigationController popToViewController:self animated:NO];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+//- (void)didReceiveUserJoinedChatroom:(EMChatroom *)aChatroom
+//                            username:(NSString *)aUsername
+//{
+//    CGRect frame = self.chatToolbar.frame;
+//    [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.join", @"\'%@\'join chatroom\'%@\'"), aUsername, aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
+//}
+//
+//- (void)didReceiveUserLeavedChatroom:(EMChatroom *)aChatroom
+//                            username:(NSString *)aUsername
+//{
+//    CGRect frame = self.chatToolbar.frame;
+//    [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.leave.hint", @"\'%@\'leave chatroom\'%@\'"), aUsername, aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
+//}
+//
+//- (void)didReceiveKickedFromChatroom:(EMChatroom *)aChatroom
+//                              reason:(EMChatroomBeKickedReason)aReason
+//{
+//    if ([_conversation.conversationId isEqualToString:aChatroom.chatroomId])
+//    {
+//        _isKicked = YES;
+//        CGRect frame = self.chatToolbar.frame;
+//        [self showHint:[NSString stringWithFormat:NSEaseLocalizedString(@"chatroom.remove", @"be removed from chatroom\'%@\'"), aChatroom.chatroomId] yOffset:-frame.size.height + KHintAdjustY];
+//        [self.navigationController popToViewController:self animated:NO];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//}
 
 #pragma mark - getter
 
